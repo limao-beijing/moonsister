@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y92"
+        android:background="@color/background_white_color">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/app_back_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toRightOf="@+id/back"
+            android:text="@string/send_dynamic"
+            android:textColor="@color/text_black_color" />
+
+        <TextView
+            android:id="@+id/tv_send_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:text="@string/publish"
+            android:textColor="@color/background_red_color" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y1"
+        android:background="@color/background_white_color"
+        android:gravity="top|left"
+        android:hint="@string/hint_dynamic_text"
+        android:lines="5"
+        android:padding="@dimen/x10"
+        android:paddingLeft="@dimen/x30"
+        android:textColor="@color/text_black_color"
+        android:textColorHint="@color/gray_color" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/background_white_color"
+        android:padding="@dimen/x30">
+
+        <ImageView
+            android:id="@+id/video_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop" />
+
+        <com.moonsister.tcjy.widget.NoScrollGridView
+
+            android:id="@+id/gv_pic_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:horizontalSpacing="@dimen/x30"
+            android:numColumns="3"
+            android:verticalSpacing="@dimen/x30"></com.moonsister.tcjy.widget.NoScrollGridView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y30"
+        android:background="@color/background_white_color"
+        android:padding="@dimen/x40">
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/loading"
+            android:textColor="@color/text_black_color" />
+
+
+        <com.moonsister.tcjy.widget.MySwitch
+            android:id="@+id/ms_sm_getmessage"
+            android:layout_width="@dimen/x138"
+            android:layout_height="@dimen/y46"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30" />
+    </RelativeLayout>
+
+</LinearLayout>

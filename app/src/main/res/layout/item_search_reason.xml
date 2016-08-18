@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.moonsister.tcjy.widget.RoundedImageView
+        android:id="@+id/riv_user_image"
+        android:layout_width="@dimen/x120"
+        android:layout_height="@dimen/x120"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/x30"
+        android:src="@mipmap/load_small" />
+
+    <TextView
+        android:id="@+id/tv_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/x30"
+        android:background="@drawable/shape_background_text_white_color"
+        android:drawableLeft="@mipmap/add_wacth_icon"
+        android:drawablePadding="@dimen/x2"
+        android:paddingBottom="@dimen/x15"
+        android:paddingLeft="@dimen/x25"
+        android:paddingRight="@dimen/x25"
+        android:paddingTop="@dimen/x15"
+        android:text="@string/wacth"
+        android:textColor="@color/home_navigation_text_red"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/riv_user_image"
+        android:layout_marginRight="@dimen/x20"
+        android:layout_toLeftOf="@+id/tv_submit"
+        android:layout_toRightOf="@+id/riv_user_image"
+        android:enabled="true"
+        android:singleLine="true"
+        android:text="@string/loading"
+        android:textColor="@color/text_black_color" />
+
+    <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/im_newgoodfriend"-->
+        <!--android:background="@mipmap/newfriend"-->
+        <!--/>-->
+
+    <TextView
+        android:id="@+id/tv_user_fen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_user_name"
+        android:layout_marginRight="@dimen/x20"
+        android:layout_marginTop="@dimen/x10"
+        android:layout_toLeftOf="@+id/tv_submit"
+        android:layout_toRightOf="@+id/riv_user_image"
+        android:singleLine="true"
+        android:text="@string/loading"
+        android:textColor="@color/home_navigation_text_gred"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_user_fen"
+        android:layout_marginRight="@dimen/x20"
+        android:layout_marginTop="@dimen/x10"
+        android:layout_toLeftOf="@+id/tv_submit"
+        android:layout_toRightOf="@+id/riv_user_image"
+        android:singleLine="true"
+        android:text="@string/loading"
+        android:textColor="@color/home_navigation_text_gred"
+        android:textSize="13sp" />
+
+
+</RelativeLayout>

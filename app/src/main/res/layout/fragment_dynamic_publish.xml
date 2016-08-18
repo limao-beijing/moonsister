@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y1"
+        android:background="@color/background_white_color"
+        android:gravity="top|left"
+        android:hint="@string/dynamic_publish_edittext_hint"
+        android:lines="5"
+        android:padding="@dimen/x30"
+        android:textColor="@color/text_black_color"
+        android:textColorHint="@color/gray_color" />
+
+    <FrameLayout
+        android:id="@+id/fl_upload_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_white_color" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x30"
+        android:background="@color/white"
+        android:padding="@dimen/x30">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/dynamic_charge"
+            android:textColor="#798186" />
+
+        <com.moonsister.tcjy.widget.MySwitch
+            android:id="@+id/ms_dynamic_charge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <View
+        style="@style/horizontal_light_thin_divider"
+        android:paddingLeft="@dimen/x30" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/x30">
+
+        <TextView
+            android:id="@+id/text_show_adress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/dynamic_show_adress"
+            android:textColor="#798186" />
+
+        <TextView
+            android:id="@+id/tv_show_adress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_toRightOf="@+id/text_show_adress"
+            android:text="@string/dynamic_show_adress"
+            android:textColor="#b6baba" />
+
+        <com.moonsister.tcjy.widget.MySwitch
+            android:id="@+id/ms_adress_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_label_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></FrameLayout>
+</LinearLayout>

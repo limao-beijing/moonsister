@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linear"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/app_line"
+    android:paddingBottom="@dimen/x200">
+
+    <TextView
+        android:id="@+id/wacth_boy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x200"
+        android:layout_marginTop="@dimen/y200"
+        android:background="@drawable/shape_background_text_white_color"
+        android:padding="@dimen/x20"
+        android:text="@string/nearby_wacth_boy" />
+
+    <TextView
+        android:id="@+id/wacth_girl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/x200"
+        android:layout_marginTop="@dimen/y200"
+        android:background="@drawable/shape_background_text_white_color"
+        android:padding="@dimen/x20"
+        android:text="@string/nearby_wacth_girl" />
+
+    <TextView
+        android:id="@+id/nearby_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y400"
+        android:background="@drawable/shape_background_text_white_color"
+        android:padding="@dimen/x20"
+        android:text="@string/nearby_all" />
+</RelativeLayout>

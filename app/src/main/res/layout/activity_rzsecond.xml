@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/app_titlebar" />
+
+    <LinearLayout
+
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/app_title_bar"
+        android:orientation="vertical"
+        android:padding="@dimen/x20">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@mipmap/option_selected1" />
+
+
+            <ImageView
+                android:id="@+id/iv_second"
+                android:layout_width="@dimen/x140"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_first"
+                android:background="@mipmap/selected_interlinkage" />
+
+
+            <ImageView
+                android:id="@+id/iv_third"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_second"
+                android:background="@mipmap/option_selected2" />
+
+
+            <ImageView
+                android:id="@+id/iv_four"
+                android:layout_width="@dimen/x140"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_third"
+                android:background="@mipmap/interlinkage" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_four"
+                android:background="@mipmap/option_selected3" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/x5"
+            android:paddingTop="@dimen/x15">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="完善个人信息"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/order_text_small2" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="上传个人照片"
+                android:textColor="@color/title_text"
+                android:textSize="@dimen/order_text_small2" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text=" 照片审核"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/order_text_small2" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/linear1"
+        android:background="@color/j_wheel_timebtn_pre" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line1"
+        android:orientation="vertical"
+        android:padding="@dimen/x20">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请上传至少六张个人照片"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/order_text_small3" />
+
+        <ImageView
+            android:id="@+id/tv_add_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/x25"
+            android:background="@mipmap/add_images" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/x25"
+            android:background="@color/j_wheel_timebtn_pre" />
+
+        <com.moonsister.tcjy.widget.NoScrollGridView
+            android:id="@+id/grid_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x25"
+            android:background="@color/gray_color"
+            android:horizontalSpacing="@dimen/x30"
+            android:numColumns="3"
+            android:verticalSpacing="@dimen/x30" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/x25"
+            android:background="@color/j_wheel_timebtn_pre" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_submit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x100"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/btn_examine_and_verify"
+        android:gravity="center" />
+</RelativeLayout>

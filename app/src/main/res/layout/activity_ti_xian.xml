@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/line_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/app_titlebar" />
+
+    <RelativeLayout
+
+        android:id="@+id/layout_swicth_card"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x200"
+        android:background="@color/white"
+        android:padding="@dimen/x35">
+
+        <ImageView
+            android:id="@+id/iv_bank_logo"
+            android:layout_width="@dimen/x150"
+            android:layout_height="@dimen/x100"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_toRightOf="@+id/iv_bank_logo"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_bank_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/loading"
+                android:textColor="@color/title_text"
+                android:textSize="@dimen/order_text_small6" />
+
+            <TextView
+                android:id="@+id/tv_bank_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x15"
+                android:text="@string/loading"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/order_text_small2" />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/x50"
+            android:src="@mipmap/panel_return" />
+
+
+        <TextView
+            android:id="@+id/tv_add_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background_white_color"
+            android:gravity="center"
+            android:text="@string/add_card"
+            android:textColor="@color/text_black_color"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x30"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/x35">
+
+        <TextView
+            android:id="@+id/tv_add_alipay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/shape_background_text_white_color"
+            android:drawableLeft="@mipmap/alipay_icon"
+            android:gravity="center"
+            android:padding="@dimen/x25"
+            android:text="@string/add_alipay_card"
+            android:textColor="@color/text_black_color" />
+
+        <TextView
+            android:id="@+id/tv_add_bank_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x50"
+            android:layout_weight="1"
+            android:background="@drawable/shape_background_text_white_color"
+            android:drawableLeft="@mipmap/winxinpay_icon"
+            android:gravity="center"
+            android:padding="@dimen/x25"
+            android:text="@string/add_winxin_card"
+            android:textColor="@color/text_black_color" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/j_wheel_timebtn_pre" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/x25">
+
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="转出金额："
+            android:textColor="@color/title_text"
+            android:textSize="@dimen/order_text_small4" />
+
+        <EditText
+            android:id="@+id/et_input_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_money"
+            android:background="@null"
+            android:hint="本次可转出10001"
+            android:inputType="number"
+            android:padding="@dimen/x7"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/order_text_small4" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/x25"
+        android:paddingTop="@dimen/x15"
+        android:text="每次转出金额需≥200" />
+
+    <TextView
+        android:id="@+id/tv_sure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/x70"
+        android:background="@mipmap/btn_affirm" />
+</LinearLayout>

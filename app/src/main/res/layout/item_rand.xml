@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/x10"
+    android:paddingTop="@dimen/x10">
+
+    <RelativeLayout
+        android:id="@+id/layout_rank"
+        android:layout_width="@dimen/x80"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <ImageView
+            android:id="@+id/bg_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:id="@+id/tv_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="@color/app_line" />
+    </RelativeLayout>
+
+
+    <com.moonsister.tcjy.widget.RoundedImageView
+        android:id="@+id/iv_head"
+        android:layout_width="@dimen/x92"
+        android:layout_height="@dimen/x92"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/layout_rank" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_toRightOf="@+id/iv_head"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="名称名称"
+            android:textColor="@color/title_text" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/x10"
+            android:text="2568954 经验礼物"
+            android:textColor="@color/app_line" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_focus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/x30"
+        android:background="@drawable/shape_background_text_white_color"
+        android:drawablePadding="@dimen/x2"
+        android:paddingBottom="@dimen/x15"
+        android:paddingLeft="@dimen/x25"
+        android:paddingRight="@dimen/x25"
+        android:paddingTop="@dimen/x15" />
+</RelativeLayout>

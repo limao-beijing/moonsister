@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_white_color">
+
+    <RelativeLayout
+        android:id="@+id/layout_input"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y400">
+
+        <ImageView
+            android:id="@+id/add_icom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/add_header_icon" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/gray_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y30"
+        android:layout_below="@+id/layout_input"
+        android:background="@color/text_gray_color" />
+
+    <RelativeLayout
+        android:id="@+id/layout_sex"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y92"
+        android:layout_below="@+id/gray_line"
+        android:layout_margin="@dimen/x30"
+        android:background="@drawable/shape_background_text_white_color"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_sex"
+            style="@style/textview_login"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/sex_icon"
+            android:drawablePadding="@dimen/x10"
+            android:paddingLeft="@dimen/x30"
+            android:text="@string/sex" />
+
+        <TextView
+            android:id="@+id/tv_boy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toRightOf="@+id/tv_sex"
+            android:drawablePadding="@dimen/x5"
+            android:drawableRight="@drawable/selector_sex_icon"
+            android:text="@string/boy"
+            android:textColor="@color/text_gray_color" />
+
+        <TextView
+            android:id="@+id/girls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x60"
+            android:layout_toRightOf="@+id/tv_boy"
+            android:drawablePadding="@dimen/x5"
+            android:drawableRight="@drawable/selector_sex_icon"
+            android:text="@string/girls"
+            android:textColor="@color/text_gray_color" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y92"
+        android:layout_below="@+id/layout_sex"
+        android:layout_margin="@dimen/x30"
+        android:background="@drawable/shape_background_text_white_color"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_pwd"
+            style="@style/textview_login"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/password_icon"
+            android:drawablePadding="@dimen/x10"
+            android:paddingLeft="@dimen/x30"
+            android:text="@string/password" />
+
+        <EditText
+            android:id="@+id/edit_password"
+            style="@style/edittext_login"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_pwd"
+            android:hint="@string/input_password"
+            android:inputType="textPassword" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/id_tv_load"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y92"
+        android:layout_below="@+id/layout_pwd"
+        android:layout_margin="@dimen/x30"
+        android:background="@drawable/shape_background_text_white_color"
+        android:gravity="center"
+        android:text="@string/str_login"
+        android:textColor="@color/background_red_color" />
+</RelativeLayout>

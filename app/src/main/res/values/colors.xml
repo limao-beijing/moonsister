@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="app_line">#dbdbdb</color>
+    <!--app 灰色底-->
+    <color name="app_gred_background">#f5f5f5</color>
+    <!--首页导航栏文字颜色-灰-->
+    <color name="home_navigation_text_gred">#999999</color>
+    <!--首页导航栏文件颜色-红色-->
+    <color name="home_navigation_text_red">@color/background_red_color</color>
+    <!--app inflate-->
+    <color name="app_inflate_color">#FFFFFF</color>
+    <!--主页导航栏颜色-->
+    <color name="home_navigation_text_black">#333333</color>
+    <!--红色背景-->
+    <color name="background_red_color">#FF3366</color>
+    <!--白色背景-->
+    <color name="backgroud_yellow_color">#FF7F00</color>
+    <!--黄色背景-->
+
+    <color name="background_white_color">@android:color/white</color>
+    <!--文字灰色-->
+    <color name="text_gray_color">#464545</color>
+    <color name="gray_color">@android:color/darker_gray</color>
+    <!--文字亮色-->
+    <color name="text_blue_color">#6495ED</color>
+    <!--文字黑色-->
+    <color name="text_black_color">@android:color/black</color>
+    <color name="app_background">@color/gray_color</color>
+
+
+    <color name="text_select_color">#ff3366</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="j_wheel_timebtn_pre">#CCCCCC</color>
+    <color name="layout_bg">#ffffff</color>
+    <color name="line_color">#E2E2E2</color>
+
+    <color name="text_gred_color">#999999</color>
+    <color name="text_yellow_color">#FF7F00</color>
+    <color name="title_text">#464545</color>
+    <color name="blue">#1498fb</color>
+    <color name="grid_state_pressed">#1Affffff</color>
+    <color name="grid_state_focused">#80000000</color>
+
+    <color name="transparent_white">#88ffffff</color>
+    <color name="black">#ff000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="half_transparent">#88000000</color>
+    <color name="color_f9f9f9">#f9f9f9</color>
+    <color name="color_c6c6c6">#c6c6c6</color>
+
+    <!--刷新头头-->
+    <color name="ptr_header_bg">#323232</color>
+    <color name="action_bar_bg">#232426</color>
+    <color name="stroke_bg">#2b2b2b</color>
+
+    <!--刷新尾部-->
+    <color name="ptr_footer_tx">#8e8e8e</color>
+
+    <!--朋友圈色值-->
+    <color name="nick">#517fae</color>
+    <color name="item_bottom_text">#8e8e8e</color>
+    <color name="item_showmore_click">#c6c6c6</color>
+    <color name="line_bg">#e5e5e5</color>
+
+    <!--点赞popup色值-->
+    <color name="comment_popup_bg">#4c5154</color>
+    <color name="comment_popup_tx_bg">#c7c7c7</color>
+
+    <!--文字颜色-->
+    <color name="text_hint_color">#bababa</color>
+    <color name="normal_font_color">#1A1A1A</color>
+
+    <!--other-->
+    <color name="wechat_green_bg">#10d21c</color>
+    <color name="comment_click_bg">#CCD2DF</color>
+    <color name="delete_click_bg">#EAEAEA</color>
+
+    <!--图片点击颜色-->
+    <color name="img_foregroundColor">#85414141</color>
+
+    <!--popup背景蒙层-->
+    <color name="popup_background">#8e030303</color>
+    <color name="text_time_gray_color">#999999</color>
+    <color name="yellow">#ffff00</color>
+    <color name="text_color">#999999</color>
+    <color name="color_1d262e">#1d262e</color>
+    <color name="color_ffd305">#ffd305</color>
+    <color name="color_2a343e">#2a343e</color>
+    <color name="color_ff8201">#ff8201</color>
+    <!-- PictureSelectorActivity -->
+    <color name="picsel_toolbar">#393A3E</color>
+    <color name="picsel_toolbar_transparent">#F0393A3E</color>
+    <color name="picsel_toolbar_send_normal">#45C018</color>
+    <color name="picsel_toolbar_send_pressed">#3E7D2C</color>
+    <color name="picsel_toolbar_send_disable">#3E7D2C</color>
+    <color name="picsel_toolbar_send_text_disable">#AAAAAA</color>
+    <color name="picsel_toolbar_send_text_normal">#FFFFFF</color>
+    <color name="picsel_grid_mask">#00000000</color>
+    <color name="picsel_grid_mask_pressed">#80000000</color>
+    <color name="picsel_catalog_shadow">#C0000000</color>
+    <!-- PicturePreviewActivity -->
+    <color name="picprev_toolbar_transparent">@color/picsel_toolbar_transparent</color>
+    <color name="card_background">#ffffff</color>
+    <color name="card_shadow">#10000000</color>
+</resources>
+

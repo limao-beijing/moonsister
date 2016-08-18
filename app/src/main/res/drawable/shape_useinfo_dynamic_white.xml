@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<stroke android:color="@color/background_red_color" />-->
+    <solid android:color="@color/background_white_color" />
+    <stroke
+        android:width="@dimen/x1"
+        android:color="@color/home_navigation_text_red" />
+</shape>

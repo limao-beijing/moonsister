@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/line_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/app_titlebar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/x25"
+
+            android:text="2G/3G省流量模式提醒"
+            android:textColor="@color/title_text"
+            android:textSize="@dimen/order_text_small3" />
+
+
+        <!--<com.cttouzi.administrator.mimei.widget.SlideSwitch-->
+        <!--android:layout_width="10dp"-->
+        <!--android:layout_height="50dip"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--slideswitch:isOpen="false"-->
+        <!--slideswitch:shape="circle"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginRight="@dimen/x30"-->
+        <!--slideswitch:themeColor="#f200aa96" >-->
+        <!--</com.cttouzi.administrator.mimei.widget.SlideSwitch>-->
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_changepwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x25"
+        android:background="@color/white"
+        android:drawableRight="@mipmap/icon_arrow_right"
+        android:padding="@dimen/x25"
+        android:text="密码修改"
+        android:textColor="@color/title_text"
+        android:textSize="@dimen/order_text_small3" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/j_wheel_timebtn_pre" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableRight="@mipmap/icon_arrow_right"
+        android:padding="@dimen/x25"
+        android:text="帮助中心"
+        android:textColor="@color/title_text"
+        android:textSize="@dimen/order_text_small3" />
+
+    <RelativeLayout
+        android:id="@+id/layout_delete_cache"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x25"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:padding="@dimen/x25"
+            android:text="清除缓存"
+            android:textColor="@color/title_text"
+            android:textSize="@dimen/order_text_small3" />
+
+        <TextView
+            android:layout_marginRight="@dimen/x30"
+            android:id="@+id/tv_cache_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/title_text"
+            android:textSize="@dimen/order_text_small3" />
+
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/j_wheel_timebtn_pre" />
+
+
+    <RelativeLayout
+        android:id="@+id/layout_verson_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_versonName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+
+            android:padding="@dimen/x25"
+            android:text="版本号v.2.9.1"
+            android:textColor="@color/title_text"
+            android:textSize="@dimen/order_text_small3" />
+
+        <TextView
+            android:id="@+id/tv_verson_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawablePadding="@dimen/x20"
+
+            android:drawableRight="@mipmap/icon_arrow_right"
+            android:padding="@dimen/x25"
+            android:text="已是最新版本"
+            android:textColor="@color/j_wheel_timebtn_pre"
+            android:textSize="@dimen/order_text_small3" />
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/timeout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x25"
+        android:background="@color/white"
+        android:drawableRight="@mipmap/icon_arrow_right"
+        android:padding="@dimen/x25"
+        android:text="退出登录"
+        android:textColor="@color/title_text"
+        android:textSize="@dimen/order_text_small3" />
+
+</LinearLayout>

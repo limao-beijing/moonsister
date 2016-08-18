@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x90"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/rl_channel_find"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_toLeftOf="@+id/btn_search_pager_cancel"
+            android:background="@mipmap/sy_srk">
+
+            <ImageButton
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x20"
+                android:background="@null"
+                android:src="@mipmap/sy_bd_ss" />
+
+            <EditText
+                android:id="@+id/et_channel_find"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y60"
+                android:background="@null"
+                android:hint="请输入关键词"
+                android:paddingLeft="@dimen/x60"
+                android:textColor="@color/text_black_color"
+                android:textColorHint="@color/gray_color"
+                android:textCursorDrawable="@null"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_search_pager_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y60"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:gravity="center"
+            android:padding="@dimen/x10"
+            android:text="取消"
+            android:textColor="@color/text_black_color"
+            android:textSize="16sp" />
+
+        <View
+            style="@style/horizontal_line_style"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+
+    <com.moonsister.tcjy.widget.XListView
+        android:id="@+id/xlv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"></com.moonsister.tcjy.widget.XListView>
+
+    <TextView
+        android:id="@+id/tv_not_data"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y60"
+        android:gravity="center"
+        android:text="@string/not_search_reason"
+        android:textColor="@color/text_black_color" />
+
+</LinearLayout>

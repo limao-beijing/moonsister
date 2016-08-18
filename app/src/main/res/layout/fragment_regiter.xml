@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_white_color"
+    android:paddingTop="@dimen/y416">
+
+    <RelativeLayout
+        android:id="@+id/layout_input"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y190"
+        android:layout_margin="@dimen/x30"
+        android:background="@drawable/shape_background_text_white_color">
+
+
+        <ImageView
+            android:id="@+id/center_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y3"
+            android:layout_centerVertical="true"
+            android:background="@color/app_line" />
+
+        <TextView
+            android:id="@+id/tv_security_code"
+            style="@style/textview_login"
+            android:layout_width="@dimen/x200"
+            android:layout_height="@dimen/y92"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="@string/get_security_code" />
+
+        <ImageView
+            android:layout_width="@dimen/x3"
+            android:layout_height="@dimen/y94"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/tv_security_code"
+            android:background="@color/app_line" />
+
+        <EditText
+            android:id="@+id/et_phone_number"
+            style="@style/edittext_login"
+            android:layout_height="@dimen/y92"
+            android:layout_above="@+id/center_line"
+            android:gravity="center_vertical"
+            android:hint="@string/input_phone_number"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/et_security_code"
+            style="@style/edittext_login"
+            android:layout_width="@dimen/x500"
+            android:layout_height="@dimen/y92"
+            android:layout_below="@+id/center_line"
+            android:ems="6"
+            android:gravity="center_vertical"
+            android:hint="@string/input_Security_code"
+            android:inputType="number" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_submit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y92"
+        android:layout_below="@+id/layout_input"
+        android:layout_margin="@dimen/x30"
+        android:background="@drawable/shape_background_text_white_color"
+        android:gravity="center"
+        android:text="@string/str_register"
+        android:textColor="@color/background_red_color" />
+</RelativeLayout>

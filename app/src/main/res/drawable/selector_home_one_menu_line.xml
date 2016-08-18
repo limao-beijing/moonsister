@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_selected="true">
+        <shape>
+            <size android:width="@dimen/x80" android:height="@dimen/y4" />
+
+            <solid android:color="@color/home_navigation_text_red" />
+        </shape>
+    </item>
+
+    <item android:state_selected="false">
+        <shape>
+            <size android:width="@dimen/x80" android:height="@dimen/y4" />
+
+            <solid android:color="@android:color/transparent" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <size android:width="@dimen/x80" android:height="@dimen/y4" />
+
+            <solid android:color="@android:color/transparent" />
+        </shape>
+    </item>
+
+</selector>

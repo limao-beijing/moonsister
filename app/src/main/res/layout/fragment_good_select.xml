@@ -1,0 +1,22 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_white_color">
+
+    <com.moonsister.tcjy.widget.XListView
+        android:id="@+id/recyclerview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_marginRight="@dimen/x10" />
+
+    <TextView
+        android:id="@+id/text_empty"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:background="#dcdcdc"
+        android:gravity="center"
+        android:text="emptyView"
+        android:visibility="gone" />
+</RelativeLayout>

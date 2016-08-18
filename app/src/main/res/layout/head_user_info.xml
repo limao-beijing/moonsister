@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <ImageView
+
+        android:id="@+id/user_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y421"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/x40"
+
+        android:src="@mipmap/icon_back_white" />
+
+    <ImageView
+        android:id="@+id/iv_guardian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/x32"
+        android:layout_marginTop="@dimen/y135"
+        android:src="@mipmap/guardian"
+        android:visibility="gone" />
+
+    <com.moonsister.tcjy.widget.RoundedImageView
+        android:layout_width="@dimen/x82"
+        android:layout_height="@dimen/y82"
+        android:layout_alignBaseline="@id/iv_guardian"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/iv_guardian"
+        android:layout_marginRight="@dimen/x50"
+        android:src="@mipmap/load_small"
+        android:visibility="gone" />
+
+
+    <com.moonsister.tcjy.widget.RoundedImageView
+        android:id="@+id/iv_user_icon"
+        android:layout_width="@dimen/x150"
+        android:layout_height="@dimen/y150"
+        android:layout_below="@+id/user_background"
+        android:layout_marginLeft="@dimen/y30"
+        android:layout_marginTop="@dimen/user_icon"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/load_small" />
+
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_background"
+        android:layout_marginLeft="@dimen/x36"
+        android:layout_toRightOf="@+id/iv_user_icon"
+        android:text="@string/loading"
+        android:textColor="@color/text_black_color"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/tv_wacth_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tv_user_name"
+        android:layout_below="@+id/user_background"
+        android:layout_marginRight="@dimen/x50"
+        android:paddingTop="@dimen/x10" />
+
+
+    <LinearLayout
+        android:id="@+id/layot_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_user_name"
+        android:layout_marginBottom="@dimen/x20"
+        android:layout_marginTop="@dimen/x20"
+        android:layout_toRightOf="@+id/iv_user_icon"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/layot_fen_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/tv_fen_number"
+                style="@style/text_user_info_number"
+                android:text="@string/loading" />
+
+            <TextView
+                style="@style/text_user_info_number"
+                android:layout_below="@+id/tv_fen_number"
+                android:text="@string/str_fen"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_wacth_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/tv_wacth_number"
+                style="@style/text_user_info_number"
+                android:layout_centerHorizontal="true"
+                android:text="@string/loading" />
+
+            <TextView
+                style="@style/text_user_info_number"
+                android:layout_below="@+id/tv_wacth_number"
+                android:layout_centerHorizontal="true"
+                android:text="@string/wacth"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_dynamic_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/tv_dynamic_number"
+                style="@style/text_user_info_number"
+                android:layout_centerHorizontal="true"
+                android:text="@string/loading" />
+
+            <TextView
+                style="@style/text_user_info_number"
+                android:layout_below="@+id/tv_dynamic_number"
+                android:layout_centerHorizontal="true"
+                android:text="@string/dynamic"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_flower_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/tv_flower_number"
+                style="@style/text_user_info_number"
+                android:layout_centerHorizontal="true"
+                android:text="@string/loading" />
+
+            <TextView
+                style="@style/text_user_info_number"
+                android:layout_below="@+id/tv_flower_number"
+                android:layout_centerHorizontal="true"
+                android:text="@string/flower"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_add_v"
+        android:layout_width="@dimen/x30"
+        android:layout_height="@dimen/x30"
+        android:layout_alignBottom="@+id/iv_user_icon"
+        android:layout_marginLeft="-10dp"
+        android:layout_toRightOf="@id/iv_user_icon"
+        android:src="@mipmap/add_v_icon" />
+    <!--
+        <LinearLayout
+            android:id="@+id/layout_text_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/last_refresh_time"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toRightOf="@+id/iv_user_icon"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_fen_number"
+                style="@style/text_user_info_number"
+                android:text="@string/loading" />
+
+            <TextView
+                android:id="@+id/tv_wacth_number"
+                style="@style/text_user_info_number"
+                android:text="@string/loading" />
+
+            <TextView
+                android:id="@+id/tv_dynamic_number"
+                style="@style/text_user_info_number"
+                android:text="@string/loading" />
+
+            <TextView
+                android:id="@+id/tv_flower_number"
+                style="@style/text_user_info_number"
+                android:text="@string/loading" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layot_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_text_number"
+            android:layout_marginBottom="@dimen/x30"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toRightOf="@+id/iv_user_icon"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_user_info_number"
+                android:text="@string/str_fen"
+                android:textSize="12sp" />
+
+            <TextView
+                style="@style/text_user_info_number"
+                android:text="@string/wacth"
+                android:textSize="12sp" />
+
+            <TextView
+                style="@style/text_user_info_number"
+                android:text="@string/dynamic"
+                android:textSize="12sp" />
+
+            <TextView
+                style="@style/text_user_info_number"
+                android:text="@string/flower"
+                android:textSize="12sp" />
+
+
+        </LinearLayout>-->
+
+    <RelativeLayout
+        android:id="@+id/layout_click_wacth"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y60"
+        android:layout_below="@+id/layot_text"
+        android:layout_margin="@dimen/y30"
+        android:layout_marginBottom="@dimen/x20"
+        android:background="@drawable/shape_two_half_round">
+
+
+        <TextView
+            android:id="@+id/tv_wacth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@mipmap/puls"
+            android:drawablePadding="@dimen/x10"
+            android:text="@string/wacth"
+            android:textColor="@color/text_black_color"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line"
+        style="@style/horizontal_line_style"
+        android:layout_below="@+id/layout_click_wacth" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x20"
+        android:layout_below="@+id/line"
+        android:background="@color/app_gred_background" />
+
+</RelativeLayout>

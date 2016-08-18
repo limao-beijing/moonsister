@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/line_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/app_titlebar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/white"
+        android:gravity="center"
+        android:paddingTop="@dimen/x30">
+
+        <TextView
+            android:id="@+id/tv_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/x25"
+
+            android:text="@string/old_password"
+            android:textColor="@color/text_black_color"
+            android:textSize="@dimen/order_text_small2" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_pwd"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/old_password"
+                android:layout_width="@dimen/x400"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x25"
+                android:layout_marginTop="@dimen/x10"
+                android:background="@drawable/et_shaper"
+                android:padding="@dimen/x7"
+                android:singleLine="true"
+                android:textColor="@color/text_black_color" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x25"
+                android:paddingTop="@dimen/x10"
+
+                android:text="8-12位字母、数字组成"
+                android:textSize="@dimen/order_text_small2" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/white"
+        android:gravity="center"
+        android:paddingTop="@dimen/x10">
+
+        <TextView
+            android:id="@+id/tv_newpwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/x25"
+
+            android:text="@string/new_password"
+            android:textColor="@color/text_black_color"
+            android:textSize="@dimen/order_text_small2" />
+
+        <EditText
+            android:id="@+id/new_password"
+            android:layout_width="@dimen/x400"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x25"
+            android:layout_marginTop="@dimen/x10"
+            android:layout_toRightOf="@+id/tv_newpwd"
+            android:background="@drawable/et_shaper"
+            android:padding="@dimen/x7"
+            android:singleLine="true"
+            android:textColor="@color/text_black_color" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/white"
+        android:gravity="center"
+        android:paddingTop="@dimen/x10">
+
+        <TextView
+            android:id="@+id/tv_again"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/x23"
+
+            android:text="@string/again_input"
+            android:textColor="@color/text_black_color"
+            android:textSize="@dimen/order_text_small2" />
+
+        <EditText
+            android:id="@+id/new_input_password"
+            android:layout_width="@dimen/x400"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/x10"
+            android:layout_toRightOf="@+id/tv_again"
+            android:background="@drawable/et_shaper"
+            android:padding="@dimen/x7"
+            android:singleLine="true"
+            android:textColor="@color/text_black_color" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/white"
+        android:gravity="center"
+        android:paddingBottom="@dimen/x20"
+        android:paddingTop="@dimen/x20">
+
+
+        <TextView
+            android:id="@+id/tv_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+
+            android:layout_marginLeft="@dimen/x100"
+            android:background="@color/text_select_color"
+            android:paddingBottom="@dimen/x10"
+            android:paddingLeft="@dimen/x50"
+            android:paddingRight="@dimen/x50"
+            android:paddingTop="@dimen/x10"
+            android:text="@string/rc_cs_submit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/order_text_small2" />
+
+
+        <TextView
+            android:id="@+id/tv_reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toRightOf="@+id/tv_submit"
+            android:background="@color/line_color"
+            android:paddingBottom="@dimen/x10"
+            android:paddingLeft="@dimen/x50"
+            android:paddingRight="@dimen/x50"
+            android:paddingTop="@dimen/x10"
+            android:text="@string/reset"
+            android:textSize="@dimen/order_text_small2" />
+
+    </RelativeLayout>
+
+</LinearLayout>

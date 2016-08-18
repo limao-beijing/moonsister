@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/app_titlebar" />
+
+    <LinearLayout
+
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/app_title_bar"
+        android:orientation="vertical"
+        android:padding="@dimen/x20">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@mipmap/option_selected1" />
+
+
+            <ImageView
+                android:id="@+id/iv_second"
+                android:layout_width="@dimen/x140"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_first"
+                android:background="@mipmap/interlinkage" />
+
+
+            <ImageView
+                android:id="@+id/iv_third"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_second"
+                android:background="@mipmap/option_selected2" />
+
+
+            <ImageView
+                android:id="@+id/iv_four"
+                android:layout_width="@dimen/x140"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_third"
+                android:background="@mipmap/interlinkage" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_four"
+                android:background="@mipmap/option_selected3" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/x5"
+            android:paddingTop="@dimen/x15">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="完善个人信息"
+                android:textColor="@color/title_text"
+                android:textSize="@dimen/order_text_small2" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="上传个人照片"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/order_text_small2" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text=" 照片审核"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/order_text_small2" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/linear1"
+        android:background="@color/j_wheel_timebtn_pre" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line1"
+
+        android:orientation="vertical">
+
+        <com.moonsister.tcjy.widget.RoundedImageView
+            android:id="@+id/iv_avater"
+            android:layout_width="@dimen/x130"
+            android:layout_height="@dimen/x130"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/x30"
+
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/x30"
+            android:background="@color/j_wheel_timebtn_pre" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/x25"
+            android:text="@string/renzhengxin"
+            android:textColor="@color/text_color" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/j_wheel_timebtn_pre" />
+
+        <RelativeLayout
+            android:id="@+id/layout_nike"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/x25">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nike"
+                android:textColor="@color/text_color" />
+
+            <TextView
+                android:id="@+id/tv_nike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawablePadding="@dimen/x30"
+                android:drawableRight="@mipmap/icon_arrow_right"
+                android:text="小丽"
+                android:textColor="@color/title_text" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/j_wheel_timebtn_pre" />
+
+
+        <RelativeLayout
+            android:id="@+id/layout_sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/x25">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sex"
+                android:textColor="@color/text_color" />
+
+            <TextView
+                android:id="@+id/tv_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawablePadding="@dimen/x30"
+                android:drawableRight="@mipmap/icon_arrow_right"
+                android:text="@string/girls"
+                android:textColor="@color/title_text" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/j_wheel_timebtn_pre" />
+
+        <RelativeLayout
+            android:id="@+id/layout_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/x25">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="城市"
+                android:textColor="@color/text_color" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawablePadding="@dimen/x30"
+                android:drawableRight="@mipmap/icon_arrow_right"
+                android:text="北京.北京"
+                android:textColor="@color/title_text" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/j_wheel_timebtn_pre" />
+
+        <RelativeLayout
+            android:id="@+id/layout_height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/x25">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="身高"
+                android:textColor="@color/text_color" />
+
+            <TextView
+                android:id="@+id/tv_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawablePadding="@dimen/x30"
+                android:drawableRight="@mipmap/icon_arrow_right"
+                android:text="178"
+                android:textColor="@color/title_text" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/j_wheel_timebtn_pre" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/select"
+            android:layout_marginTop="@dimen/x10"
+            android:textColor="@color/backgroud_yellow_color"
+            android:gravity="right"/>
+        <TextView
+            android:id="@+id/tv_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x50"
+            android:layout_centerHorizontal="true"
+            android:background="@mipmap/btn_next"
+            android:gravity="center" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="规则说明"
+            android:gravity="right"
+            android:layout_marginTop="@dimen/x20"
+            android:textColor="@color/text_blue_color"/>
+    </LinearLayout>
+
+</RelativeLayout>

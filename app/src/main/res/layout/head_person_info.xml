@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_white_color">
+
+    <ImageView
+
+        android:id="@+id/user_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y421"
+        android:scaleType="centerCrop" />
+
+    <com.moonsister.tcjy.widget.RoundedImageView
+        android:id="@+id/iv_user_icon"
+        android:layout_width="@dimen/x150"
+        android:layout_height="@dimen/y150"
+        android:layout_below="@+id/user_background"
+        android:layout_marginLeft="@dimen/y30"
+        android:layout_marginTop="@dimen/user_icon"
+        android:src="@mipmap/load_small" />
+
+    <ImageView
+        android:id="@+id/tv_add_v"
+        android:layout_width="@dimen/x30"
+        android:layout_height="@dimen/x30"
+        android:layout_alignBottom="@+id/iv_user_icon"
+        android:layout_marginLeft="-12dp"
+        android:layout_toRightOf="@id/iv_user_icon"
+        android:src="@mipmap/add_v_icon" />
+
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_background"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/x17"
+        android:layout_toRightOf="@+id/iv_user_icon"
+        android:text="@string/loading"
+        android:textColor="@color/text_black_color" />
+
+    <TextView
+        android:id="@+id/tv_user_all_income"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_user_name"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/y15"
+        android:layout_toRightOf="@+id/iv_user_icon"
+        android:text="@string/loading"
+        android:textColor="@color/text_black_color" />
+
+    <TextView
+        android:id="@+id/tv_user_day_income"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_user_all_income"
+        android:layout_below="@+id/tv_user_name"
+        android:layout_marginLeft="@dimen/x100"
+        android:layout_toRightOf="@+id/tv_user_all_income"
+        android:text="@string/loading"
+        android:textColor="@color/text_black_color" />
+
+    <LinearLayout
+        android:id="@+id/layout_info"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y90"
+        android:layout_below="@+id/iv_user_icon"
+        android:layout_marginBottom="@dimen/x10"
+        android:layout_marginTop="@dimen/x20"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/layout_fen"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_fen_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/loading"
+                android:textColor="@color/text_black_color" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_fen_number"
+                android:layout_centerHorizontal="true"
+                android:text="@string/str_fen"
+                android:textColor="@color/gray_color"
+                android:textSize="12sp" />
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="@dimen/x1"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/x15"
+            android:layout_marginTop="@dimen/x15"
+            android:background="@color/gray_color" />
+
+        <RelativeLayout
+            android:id="@+id/layout_wacth"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_wacth_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/loading"
+                android:textColor="@color/text_black_color" />
+
+            <TextView
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_wacth_number"
+                android:layout_centerHorizontal="true"
+                android:text="@string/wacth"
+                android:textColor="@color/gray_color"
+                android:textSize="12sp" />
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="@dimen/x1"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/x15"
+            android:layout_marginTop="@dimen/x15"
+            android:background="@color/gray_color" />
+
+        <RelativeLayout
+            android:id="@+id/rl_dynamic"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_dynamic_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/loading"
+                android:textColor="@color/text_black_color" />
+
+            <TextView
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_dynamic_number"
+                android:layout_centerHorizontal="true"
+                android:text="@string/dynamic"
+                android:textColor="@color/gray_color"
+                android:textSize="12sp" />
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="@dimen/x1"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/x15"
+            android:layout_marginTop="@dimen/x15"
+            android:background="@color/gray_color" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_flower_number"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/loading"
+                android:textColor="@color/text_black_color"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_flower_number"
+                android:layout_centerHorizontal="true"
+                android:text="@string/flower"
+                android:textColor="@color/gray_color"
+                android:textSize="12sp" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line"
+        style="@style/horizontal_line_style"
+        android:layout_below="@+id/layout_info" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x20"
+        android:layout_below="@+id/line"
+        android:background="@color/app_gred_background" />
+
+</RelativeLayout>

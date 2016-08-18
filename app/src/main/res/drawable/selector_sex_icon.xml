@@ -1,0 +1,5 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@mipmap/affirm_icon" android:state_selected="true" />
+    <item android:drawable="@mipmap/not_affirm" android:state_selected="false" />
+    <item android:drawable="@mipmap/not_affirm" />
+</selector>

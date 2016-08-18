@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/x15">
+
+    <com.moonsister.tcjy.widget.RoundedImageView
+        android:id="@+id/riv_item_user_image"
+        android:layout_width="@dimen/x82"
+        android:layout_height="@dimen/y82"
+        android:layout_marginLeft="@dimen/x15" />
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/riv_item_user_image"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_toRightOf="@+id/riv_item_user_image"
+        android:text="@string/loading"
+        android:textColor="@color/text_black_color" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/riv_item_user_image"
+        android:layout_marginRight="@dimen/x30"
+        android:text="@string/loading"
+        android:textColor="@color/text_time_gray_color" />
+
+    <TextView
+        android:id="@+id/tv_comment_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_user_name"
+        android:layout_below="@+id/tv_user_name"
+        android:layout_marginTop="@dimen/x10"
+        android:text="@string/loading"
+        android:textColor="@color/text_gray_color" />
+</RelativeLayout>

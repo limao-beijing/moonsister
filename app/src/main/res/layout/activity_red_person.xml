@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/app_titlebar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x240"
+        android:background="@mipmap/bg_renzheng">
+
+        <com.moonsister.tcjy.widget.RoundedImageView
+            android:id="@+id/iv_avater"
+            android:layout_width="@dimen/x120"
+            android:layout_height="@dimen/x120"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/x30"
+            android:background="@drawable/shape_background_yellow_color" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x95"
+        android:gravity="center"
+        android:text="认证特权"
+        android:textSize="25sp"
+        android:textColor="@color/text_blue_color"/>
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x50"
+        android:paddingLeft="@dimen/x10"
+        android:paddingStart="@dimen/x150"
+        android:text="@string/renzheng_rule"
+        android:textColor="@color/text_gray_color"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_apply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/x150"
+        android:background="@drawable/shape_background_text_red_color"
+        android:gravity="center"
+        android:padding="@dimen/x25"
+        android:text="@string/apply_renzheng"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:paddingBottom="@dimen/x10"
+        android:textColor="@color/text_yellow_color"
+        android:paddingStart="@dimen/x10"
+        android:textSize="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/x30"
+        android:text="@string/renzheng_condition"
+        />
+</LinearLayout>

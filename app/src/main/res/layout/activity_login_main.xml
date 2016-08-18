@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/layou_navigation_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y90"
+        android:background="@color/app_inflate_color"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/view_line"
+            style="@style/app_line_horizontal"
+            android:layout_above="@+id/layou_navigation"
+            android:layout_alignParentBottom="true" />
+
+        <ImageView
+            android:id="@+id/view_center_line"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:id="@+id/tv_navigation_login"
+            style="@style/text_color_home_one_menu"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_toLeftOf="@+id/view_center_line"
+            android:text="@string/str_login" />
+
+        <TextView
+            android:id="@+id/tv_navigation_register"
+            style="@style/text_color_home_one_menu"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_toRightOf="@+id/view_center_line"
+            android:text="@string/str_register" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/app_back_icon" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLyout_login_main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layou_navigation_title" />
+</RelativeLayout>

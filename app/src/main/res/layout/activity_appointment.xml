@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_appointment">
+
+    <ImageView
+        android:id="@+id/tv_appointment_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y200"
+        android:src="@mipmap/appointment_text" />
+
+    <ImageView
+        android:id="@+id/signed_commercial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_appointment_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y100"
+        android:src="@mipmap/icon_cooked_cerealssmall" />
+
+
+    <TextView
+        style="@style/style_text_appointment"
+        android:layout_alignStart="@+id/signed_commercial"
+        android:layout_below="@+id/signed_commercial"
+        android:layout_marginTop="@dimen/y20"
+        android:text="@string/about_rice" />
+
+
+    <ImageView
+        android:id="@+id/signed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/signed_commercial"
+        android:layout_marginRight="@dimen/x100"
+        android:layout_toLeftOf="@+id/signed_commercial"
+        android:src="@mipmap/icon_commercesmall_42" />
+
+    <TextView
+        style="@style/style_text_appointment"
+        android:layout_alignStart="@+id/signed"
+        android:layout_below="@+id/signed"
+        android:layout_marginTop="@dimen/y20"
+        android:text="@string/signed" />
+
+
+    <ImageView
+        android:id="@+id/iv_asleep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/signed_commercial"
+        android:layout_marginLeft="@dimen/x100"
+        android:layout_toRightOf="@+id/signed_commercial"
+        android:src="@mipmap/icon_commercesmall_42" />
+
+
+    <TextView
+        style="@style/style_text_appointment"
+        android:layout_alignStart="@+id/iv_asleep"
+        android:layout_below="@+id/iv_asleep"
+        android:layout_marginTop="@dimen/y20"
+        android:text="@string/iv_asleep" />
+
+    <ImageView
+        android:id="@+id/tv_appointment_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signed_commercial"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/x100"
+        android:src="@mipmap/icon_moviessmall" />
+
+    <TextView
+        style="@style/style_text_appointment"
+        android:layout_alignStart="@+id/tv_appointment_photo"
+        android:layout_below="@+id/tv_appointment_photo"
+        android:layout_marginTop="@dimen/y20"
+        android:text="@string/wacth_movie" />
+
+
+    <ImageView
+        android:id="@+id/iv_wacth_movie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signed_commercial"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="@dimen/x100"
+        android:layout_marginTop="@dimen/x100"
+        android:layout_toLeftOf="@+id/tv_appointment_photo"
+        android:src="@mipmap/icon_commercesmall" />
+
+    <TextView
+        style="@style/style_text_appointment"
+        android:layout_alignStart="@+id/iv_wacth_movie"
+        android:layout_below="@+id/iv_wacth_movie"
+        android:layout_marginTop="@dimen/y20"
+        android:text="@string/wacth_movie" />
+
+    <ImageView
+        android:id="@+id/iv_travel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signed_commercial"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/x100"
+        android:layout_marginTop="@dimen/x100"
+        android:layout_toRightOf="@+id/tv_appointment_photo"
+        android:src="@mipmap/icon_moviessmall" />
+
+    <TextView
+        style="@style/style_text_appointment"
+        android:layout_alignStart="@+id/iv_travel"
+        android:layout_below="@+id/iv_travel"
+        android:layout_marginTop="@dimen/y20"
+        android:text="@string/wacth_movie" />
+</RelativeLayout>

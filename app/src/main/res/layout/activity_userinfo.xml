@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_gred_background"
+    android:orientation="vertical">
+
+    <include layout="@layout/app_titlebar" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/background_white_color">
+
+        <com.moonsister.tcjy.widget.RoundedImageView
+            android:id="@+id/riv_user_image"
+            android:layout_width="@dimen/x120"
+            android:layout_height="@dimen/x120"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/x30"
+            android:src="@mipmap/load_small" />
+
+        <TextView
+            android:id="@+id/tv_charm"
+            style="@style/info_change_text"
+            android:layout_below="@+id/riv_user_image"
+            android:layout_marginBottom="@dimen/x30"
+            android:layout_marginTop="@dimen/x30" />
+
+        <TextView
+            android:id="@+id/tv_sex"
+            style="@style/info_change_text"
+            android:layout_below="@+id/riv_user_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/x30"
+            android:layout_marginTop="@dimen/x30"
+            android:text="@string/loading" />
+
+        <TextView
+            android:id="@+id/tv_level"
+            style="@style/info_change_text"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/riv_user_image"
+            android:layout_marginBottom="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_marginTop="@dimen/x30" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_signature"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x92"
+        android:layout_marginTop="@dimen/x30"
+        android:background="@color/background_white_color"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_signature_text"
+            style="@style/info_change_text"
+            android:text="@string/personalized_signature_change" />
+
+        <TextView
+            android:id="@+id/tv_signature"
+            style="@style/info_change_show_text"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_toRightOf="@id/tv_signature_text"
+            android:text="@string/not_available" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_introduction"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x92"
+        android:layout_marginTop="@dimen/x2"
+        android:background="@color/background_white_color"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_introduction_text"
+            style="@style/info_change_text"
+            android:text="@string/user_introduction_change" />
+
+        <TextView
+            android:id="@+id/tv_introduction"
+            style="@style/info_change_show_text"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_toRightOf="@+id/tv_introduction_text"
+            android:text="@string/not_available" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_height"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x92"
+        android:layout_marginTop="@dimen/x30"
+        android:background="@color/background_white_color"
+        android:gravity="center_vertical">
+
+        <TextView
+            style="@style/info_change_text"
+            android:text="@string/heigth_change" />
+
+        <TextView
+            android:id="@+id/tv_height"
+            style="@style/info_change_show_text"
+            android:layout_alignParentRight="true"
+            android:text="@string/not_available" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_weight"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x92"
+        android:layout_marginTop="@dimen/x2"
+        android:background="@color/background_white_color"
+        android:gravity="center_vertical">
+
+        <TextView
+            style="@style/info_change_text"
+            android:text="@string/weight_change" />
+
+        <TextView
+            android:id="@+id/tv_weight"
+            style="@style/info_change_show_text"
+            android:layout_alignParentRight="true"
+            android:text="@string/not_available" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_address"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x92"
+        android:layout_marginTop="@dimen/x2"
+        android:background="@color/background_white_color"
+        android:gravity="center_vertical">
+
+        <TextView
+            style="@style/info_change_text"
+            android:text="@string/address_change" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            style="@style/info_change_show_text"
+            android:layout_alignParentRight="true"
+            android:text="@string/not_available" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_job"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x92"
+        android:layout_marginTop="@dimen/x2"
+        android:background="@color/background_white_color"
+        android:gravity="center_vertical">
+
+        <TextView
+            style="@style/info_change_text"
+            android:text="@string/job_change" />
+
+        <TextView
+            android:id="@+id/tv_job"
+            style="@style/info_change_show_text"
+            android:layout_alignParentRight="true"
+            android:text="@string/not_available" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_education"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x92"
+        android:layout_marginTop="@dimen/x2"
+        android:background="@color/background_white_color"
+        android:gravity="center_vertical">
+
+        <TextView
+            style="@style/info_change_text"
+            android:text="@string/education_change" />
+
+        <TextView
+            android:id="@+id/tv_education"
+            style="@style/info_change_show_text"
+            android:layout_alignParentRight="true"
+            android:text="@string/not_available" />
+    </RelativeLayout>
+</LinearLayout>

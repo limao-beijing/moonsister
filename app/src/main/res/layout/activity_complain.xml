@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/line_color">
+
+    <include
+        android:id="@+id/top"
+        layout="@layout/comman_title_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/x30"
+        android:paddingLeft="@dimen/x25">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/x30"
+
+            android:paddingTop="@dimen/x30"
+            android:text="申诉理由："
+            android:textColor="@color/title_text"
+            android:textSize="@dimen/order_text_small5" />
+
+        <RadioGroup
+            android:id="@+id/orderBy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:button="@drawable/radio_selector"
+                android:checked="true"
+                android:paddingLeft="@dimen/x20"
+                android:text="鲜肉未赴约。"
+                android:textColor="@color/text_gray_color" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x20"
+                android:layout_marginTop="@dimen/x10"
+                android:button="@drawable/radio_selector"
+                android:paddingLeft="@dimen/x20"
+                android:text="其他。"
+                android:textColor="@color/text_gray_color" />
+        </RadioGroup>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
+            android:background="@color/j_wheel_timebtn_pre" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/x20"
+
+            android:paddingTop="@dimen/x30"
+            android:text="详细描述："
+            android:textColor="@color/title_text"
+            android:textSize="@dimen/order_text_small5" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/panel_input"
+            android:gravity="top"
+            android:lines="4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/x20"
+
+            android:paddingTop="@dimen/x20"
+            android:text="我们将在三个工作日内作出处理！"
+            android:textColor="@color/text_gray_color"
+            android:textSize="@dimen/order_text_small2" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/x40"
+        android:background="@mipmap/btn_submit" />
+</RelativeLayout>

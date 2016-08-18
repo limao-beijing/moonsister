@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="moneys">
+        <item>8</item>
+        <item>28</item>
+        <item>69</item>
+        <item>122</item>
+        <item>258</item>
+        <item>520</item>
+        <item>666</item>
+        <item>999</item>
+        <item>1314</item>
+    </string-array>
+    <string-array name="flower_name">
+
+        <item>约吧</item>
+        <item>爱吧</item>
+        <item>要吗</item>
+        <item>爱上你</item>
+        <item>爱我吧</item>
+        <item>我爱你</item>
+        <item>想约你</item>
+        <item>土豪随便花</item>
+        <item>想泡你</item>
+    </string-array>
+    <string-array name="flower_money">
+        <item>18</item>
+        <item>28</item>
+        <item>122</item>
+        <item>230</item>
+        <item>258</item>
+        <item>520</item>
+        <item>666</item>
+        <item>1314</item>
+        <item>9420</item>
+    </string-array>
+</resources>

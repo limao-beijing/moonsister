@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+
+        android:id="@+id/layou_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_home_page"
+            style="@style/home_text"
+            android:drawableTop="@drawable/selector_home_text_draw"
+            android:text="@string/app_home_page" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_im_page"
+                style="@style/home_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawableTop="@drawable/selector_im_text_draw"
+                android:text="@string/app_im_page" />
+
+            <TextView
+                android:id="@+id/tv_msg_number"
+                android:layout_width="@dimen/x35"
+                android:layout_height="@dimen/x35"
+                android:layout_marginLeft="-8dp"
+                android:layout_toRightOf="@+id/tv_im_page"
+                android:background="@drawable/shapw_red_point"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="9sp"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/tv_center_page"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:src="@drawable/selector_center_text_draw" />
+
+        <TextView
+            android:id="@+id/tv_find_page"
+            style="@style/home_text"
+            android:drawableTop="@drawable/selector_find_text_draw"
+            android:text="@string/find" />
+
+        <TextView
+            android:id="@+id/tv_my_page"
+            style="@style/home_text"
+            android:drawableTop="@drawable/selector_my_text_draw"
+            android:text="@string/app__my_page" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/view_line"
+        style="@style/app_line_horizontal"
+        android:layout_above="@+id/layou_navigation" />
+
+
+    <FrameLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/view_line">'
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/appx_banner_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/view_line"
+        android:layout_centerHorizontal="true"></RelativeLayout>
+
+    <include
+        layout="@layout/recording_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+</RelativeLayout>
