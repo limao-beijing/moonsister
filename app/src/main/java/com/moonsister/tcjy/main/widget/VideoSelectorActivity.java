@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -21,11 +22,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.utils.DateUtils;
 import com.moonsister.tcjy.utils.SDUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.TextFormater;
+import com.moonsister.tcjy.utils.URIUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
 import com.moonsister.tcjy.widget.RecyclingImageView;
 import com.moonsister.tcjy.widget.takevideo.TakeVideoActivity;
@@ -109,8 +112,8 @@ public class VideoSelectorActivity extends Activity implements AdapterView.OnIte
         if (data == null)
             return;
         if (requestCode == 100) {
-//            String path = data.getData().getPath();
-            setResult(Activity.RESULT_OK, data);
+            Uri data1 = data.getData();
+            setResult(Activity.RESULT_OK, data.putExtra("path", URIUtils.getRealFilePath(getApplicationContext(), data1)));
             finish();
         }
     }
@@ -201,8 +204,9 @@ public class VideoSelectorActivity extends Activity implements AdapterView.OnIte
             // Finally load the image asynchronously into the ImageView, this
             // also takes care of
             // setting a placeholder image while the background thread runs
-            String st1 = getResources().getString(R.string.Video_footage);
+
             if (position == 0) {
+                String st1 = getResources().getString(R.string.Video_footage);
                 holder.icon.setVisibility(View.GONE);
                 holder.tvDur.setVisibility(View.GONE);
                 holder.tvSize.setText(st1);
@@ -215,7 +219,9 @@ public class VideoSelectorActivity extends Activity implements AdapterView.OnIte
                 holder.tvDur.setText(DateUtils.toTime(entty.duration));
                 holder.tvSize.setText(TextFormater.getDataSize(entty.size));
                 try {
-                    holder.imageView.setImageBitmap(BitmapFactory.decodeFile(VideoUtils.getInstance().getVideoThumbnail(entty.filePath)));
+                    holder.imageView.setImageBitmap(ThumbnailUtils.createVideoThumbnail(entty.filePath, MediaStore.Images.Thumbnails.MICRO_KIND));
+
+//                    holder.imageView.setImageBitmap(BitmapFactory.decodeFile());z
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

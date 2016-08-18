@@ -92,7 +92,7 @@ public class VideoUtils {
             return resultPath;
         }
         File f = new File(path);
-        File file = new File(SDUtils.getInternalMemoryPath() + "/data/" + ConfigUtils.getInstance().getApplicationContext().getPackageName(),System.currentTimeMillis()
+        File file = new File(SDUtils.getInternalMemoryPath() + "/data/" + ConfigUtils.getInstance().getApplicationContext().getPackageName(), System.currentTimeMillis()
                 + ".jpg");
         Bitmap bitmap = null;
         FileOutputStream fos = null;
@@ -104,8 +104,8 @@ public class VideoUtils {
             if (bitmap == null) {
                 LogUtils.d("chatactivity",
                         "problem load FREE_VIDEO thumbnail bitmap,use default icon");
-                bitmap = BitmapFactory.decodeResource(ConfigUtils.getInstance().getApplicationContext()
-                        .getResources(), R.drawable.app_panel_video_icon);
+                bitmap = ImageUtils.compressImageWithPathSzie(ConfigUtils.getInstance().getApplicationContext()
+                        .getResources(), R.drawable.app_panel_video_icon, 300, 300);
             }
             fos = new FileOutputStream(file);
             bitmap.compress(CompressFormat.JPEG, 100, fos);
