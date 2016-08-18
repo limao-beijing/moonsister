@@ -143,7 +143,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/line"
         android:padding="@dimen/x25"
-        android:text="你提交的申请正在审核中"
+        android:text="您已完成申请，可以正常发布动态、评论，与别人聊天等。"
         android:textColor="@color/title_text"
         android:textSize="@dimen/order_text_small4" />
 
