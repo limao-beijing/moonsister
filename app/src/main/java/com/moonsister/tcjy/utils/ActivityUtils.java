@@ -48,6 +48,7 @@ import com.moonsister.tcjy.my.widget.RZFirstActivity;
 import com.moonsister.tcjy.my.widget.RZSecondActivity;
 import com.moonsister.tcjy.my.widget.RZThidActivity;
 import com.moonsister.tcjy.my.widget.RefundActivity;
+import com.moonsister.tcjy.my.widget.RuleActivity;
 import com.moonsister.tcjy.my.widget.SettingActivity;
 import com.moonsister.tcjy.my.widget.SwitchCardActivity;
 import com.moonsister.tcjy.my.widget.TiXianRecordActivity;
@@ -573,4 +574,10 @@ public class ActivityUtils {
     public static void startDynamicPublishActivity() {
         startActivity(DynamicPublishActivity.class);
     }
+
+    //规则说明    定义跳转的activity
+    public static void startRuleActivity() {
+        startActivity(RuleActivity.class);
+    }
+
 }
