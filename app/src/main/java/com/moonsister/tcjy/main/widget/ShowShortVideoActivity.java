@@ -60,26 +60,32 @@ public class ShowShortVideoActivity extends BaseActivity implements
 //            return;
 //        }
 //        vv.setVideoURI(Uri.fromFile(new File(path)));
-        Uri uri = Uri.parse(path);
-        vv.setVideoURI(uri);
-        vv.setOnCompletionListener(new OnCompletionListener() {
+        try {
+            Uri uri = Uri.parse(path);
+            vv.setVideoURI(uri);
+            vv.setOnCompletionListener(new OnCompletionListener() {
 
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                if (vv != null) {
-                    finish();
-                }
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    if (vv != null) {
+                        finish();
+                    }
 
-            }
-        });
-        vv.setOnPreparedListener(new OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                if (vv != null) {
-                    startPlay();
                 }
-            }
-        });
+            });
+            vv.setOnPreparedListener(new OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    if (vv != null) {
+                        startPlay();
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            UIUtils.showToast(this, "该视频不支持播放");
+        }
+
 
     }
 

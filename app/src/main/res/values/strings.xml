@@ -234,5 +234,6 @@
     <string name="tv_ren">您需要支付10元人民币进行付费认证，付费认证后，认证费用将作为保证金存在您的财务中心，满一个月后，保证金可消费，可提现。</string>
     <string name="talk">规则说明</string>
     <string name="dynamic_uploading">动态上传中，请稍等....</string>
+    <string name="get_loction_video_fileing">正在获取本地的视频，请稍等....</string>
 
 </resources>

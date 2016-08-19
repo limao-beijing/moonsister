@@ -22,6 +22,7 @@ import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -220,17 +221,17 @@ public class DynamicPublishModelImpl implements DynamicPublishModel {
         }
     }
 
-    public void upLoadVideo(String videoPath, ArrayList<DynamicContent> aliyunPtahs, boolean isCharge) throws ClientException, ServiceException {
+    public void upLoadVideo(String srcVideoPath, ArrayList<DynamicContent> aliyunPtahs, boolean isCharge) throws ClientException, ServiceException {
 
 
         //视频
-        String vidoPath = AliyunManager.getInstance().upLoadFile(videoPath, FilePathUtlis.FileType.MP4);
+        String vidoPath = AliyunManager.getInstance().upLoadFile(srcVideoPath, FilePathUtlis.FileType.MP4);
         //图片
-        Bitmap videoThumbnail = ThumbnailUtils.createVideoThumbnail(videoPath, MediaStore.Images.Thumbnails.MINI_KIND);
+        String videoThumbnail = VideoUtils.getInstance().getVideoThumbnail(srcVideoPath);
 //        String videoThumbnail = VideoUtils.getInstance().getVideoThumbnail(videoPath);
-//        Bitmap size = ImageUtils.compressImageWithPathSzie(videoThumbnail, 200, 160);
+        Bitmap size = ImageUtils.compressImageWithPathSzie(videoThumbnail, 1280, 720);
         //压缩大小
-        Bitmap bitmap = ImageUtils.compressImage(videoThumbnail, 100);
+        Bitmap bitmap = ImageUtils.compressImage(size, 100);
         String loadFile = AliyunManager.getInstance().upLoadFiletFromByteArray(ImageUtils.getBitmapByte(bitmap), FilePathUtlis.FileType.JPG);
         DynamicContent content = new DynamicContent();
         content.setV(vidoPath);
@@ -253,7 +254,10 @@ public class DynamicPublishModelImpl implements DynamicPublishModel {
         } else {
             content.setS("");
         }
-
+        File file = new File(videoThumbnail);
+        if (file.exists() && file.isFile()) {
+            file.delete();
+        }
         aliyunPtahs.add(content);
     }
 

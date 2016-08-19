@@ -5,7 +5,9 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaMetadataRetriever;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,6 +26,7 @@ import android.widget.Toast;
 
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
+import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.utils.DateUtils;
 import com.moonsister.tcjy.utils.ImageUtils;
 import com.moonsister.tcjy.utils.SDUtils;
@@ -49,14 +52,22 @@ import rx.schedulers.Schedulers;
 /**
  * Created by jb on 2016/8/9.
  */
-public class VideoSelectorActivity extends Activity implements AdapterView.OnItemClickListener {
+public class VideoSelectorActivity extends BaseActivity implements AdapterView.OnItemClickListener {
     private List<VideoEntity> mList;
     private ImageAdapter mAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video_selector);
+    protected String initTitleName() {
+        return UIUtils.getStringRes(R.string.video);
+    }
+
+    @Override
+    protected View setRootContentView() {
+        return UIUtils.inflateLayout(R.layout.activity_video_selector);
+    }
+
+    @Override
+    protected void initView() {
         mList = new ArrayList<VideoEntity>();
         GridView mGridView = (GridView) findViewById(R.id.gridView);
         mAdapter = new ImageAdapter(getApplicationContext());
@@ -69,14 +80,21 @@ public class VideoSelectorActivity extends Activity implements AdapterView.OnIte
                 getVideoInfo();
             }
         });
+    }
 
+    @Override
+    protected String initProgressDialogMsg() {
+        return UIUtils.getStringRes(R.string.get_loction_video_fileing);
     }
 
     private void getVideoInfo() {
-        Observable.create(new Observable.OnSubscribe() {
+        showProgressDialog();
+        Observable.create(new Observable.OnSubscribe<String>() {
             @Override
-            public void call(Object o) {
+            public void call(Subscriber<? super String> subscriber) {
                 getVideoFile();
+                subscriber.onNext("");
+                subscriber.onCompleted();
             }
         }).observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -93,6 +111,7 @@ public class VideoSelectorActivity extends Activity implements AdapterView.OnIte
 
                     @Override
                     public void onNext(Object o) {
+                        hideProgressDialog();
                         if (mAdapter != null)
                             mAdapter.notifyDataSetChanged();
 
@@ -135,11 +154,19 @@ public class VideoSelectorActivity extends Activity implements AdapterView.OnIte
                     entty.ID = id;
                     entty.title = title;
                     entty.filePath = url;
+//                    MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+//                    retriever.setDataSource(entty.filePath);
+//                    Bitmap bitmap = retriever.getFrameAtTime();
+//                    if (bitmap == null)
+//                        continue;
                     entty.duration = duration;
                     entty.size = size;
                     String dataSize = TextFormater.getDataSize(entty.size);
-                    if (!StringUtis.isEmpty(dataSize) && !StringUtis.equals(dataSize, "error") && !dataSize.startsWith("-"))
+
+
+                    if (!StringUtis.isEmpty(dataSize) && !StringUtis.equals(dataSize, "error") && !dataSize.startsWith("-")) {
                         mList.add(entty);
+                    }
                 }
             } while (cursor.moveToNext());
 
@@ -148,14 +175,6 @@ public class VideoSelectorActivity extends Activity implements AdapterView.OnIte
             cursor.close();
             cursor = null;
         }
-        if (mAdapter != null)
-            UIUtils.onRunMainThred(new Runnable() {
-                @Override
-                public void run() {
-                    mAdapter.notifyDataSetChanged();
-                }
-            });
-
 
     }
 

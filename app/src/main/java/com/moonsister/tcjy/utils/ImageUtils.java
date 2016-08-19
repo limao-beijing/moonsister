@@ -364,7 +364,8 @@ public class ImageUtils {
      * @return size kb
      */
     public static Bitmap compressImage(Bitmap image, int size) {
-
+        if (image == null)
+            return null;
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         //质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
         image.compress(Bitmap.CompressFormat.JPEG, 80, baos);
