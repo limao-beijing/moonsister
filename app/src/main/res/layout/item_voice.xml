@@ -12,14 +12,14 @@
     <FrameLayout
         android:id="@+id/fl_content"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y350"
+        android:layout_height="@dimen/y400"
         android:background="@color/text_black_color">
 
         <ImageView
 
             android:id="@+id/iv_play_background"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/x650"
+            android:layout_height="@dimen/x400"
             android:layout_gravity="center"
             android:scaleType="centerCrop" />
 
@@ -33,7 +33,7 @@
 
     <TextView
         android:id="@+id/tv_show_redpacket"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/x400"
         android:layout_height="wrap_content"
         android:layout_below="@+id/fl_content"
         android:layout_marginLeft="@dimen/x10"
@@ -42,3 +42,4 @@
         android:textSize="12sp" />
 
 </RelativeLayout>
+

@@ -30,6 +30,7 @@
         android:layout_height="@dimen/x30"
         android:layout_marginTop="@dimen/x25"
         android:layout_toRightOf="@+id/tv_user_name"
+        android:src="@mipmap/newfriend"
         android:visibility="invisible"
         />
 

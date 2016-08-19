@@ -12,7 +12,7 @@
     <FrameLayout
         android:id="@+id/fl_content"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y350"
+        android:layout_height="@dimen/y400"
         android:background="@color/text_black_color">
 
         <VideoView
