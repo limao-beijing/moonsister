@@ -53,9 +53,10 @@ public class FrientViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBean>
         //判断是否是新好友，1为新好友，2则不是
         if(StringUtis.equals(dataBean.getIsnew(),"1")){
             mImageView.setVisibility(View.VISIBLE);//是新好友则显示新好友图标，提醒用户
-        }else if(StringUtis.equals(dataBean.getIsnew(),"2")){
+        }else{
             mImageView.setVisibility(View.INVISIBLE);//不是新好友则隐藏提示
-        } else if (StringUtis.equals(dataBean.getIsfollow(), "1")) {//关注则1，未关注则2
+        }
+        if (StringUtis.equals(dataBean.getIsfollow(), "1")) {//关注则1，未关注则2
 //            Drawable drawable = UIUtils.getResources().getDrawable(R.mipmap.delect_wacth);
 //            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             tvSubmit.setCompoundDrawables(null, null, null, null);
