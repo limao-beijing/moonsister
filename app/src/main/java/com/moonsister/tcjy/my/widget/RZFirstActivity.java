@@ -122,6 +122,7 @@ public class RZFirstActivity extends BaseActivity {
                 break;
             case R.id.layout_sex:
 //                ActivityUtils.startPersonInfoChangeActivity(PersonInfoChangeActivity.ChangeType.SEX);
+
                 break;
             case R.id.layout_address:
                 ActivityUtils.startPersonInfoChangeActivity(PersonInfoChangeActivity.ChangeType.ADDRESS);
