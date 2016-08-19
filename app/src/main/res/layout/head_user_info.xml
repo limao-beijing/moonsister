@@ -159,7 +159,8 @@
             <TextView
                 android:id="@+id/tv_flower_number"
                 style="@style/text_user_info_number"
-                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:layout_marginRight="@dimen/x20"
                 android:text="@string/loading" />
 
             <TextView
