@@ -59,9 +59,8 @@
         android:protectionLevel="signature" />
 
     <uses-permission android:name="io.rong.app.permission.MIPUSH_RECEIVE" />
+
     <!-- 小米 配置结束 < -->
-
-
     <application
         android:name=".ApplicationConfig"
         android:allowBackup="true"
@@ -91,7 +90,6 @@
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="1001" />
-
 
         <!-- 友盟  end -->
         <!-- 高德 start -->
@@ -237,7 +235,6 @@
         </receiver>
         <!-- 微信支付  end -->
 
-
         <activity
             android:name=".home.widget.SearchActivity"
             android:screenOrientation="portrait" />
@@ -301,6 +298,7 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
+        <activity android:name=".my.widget.RuleActivity"></activity>
     </application>
 
 </manifest>

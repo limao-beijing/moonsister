@@ -111,6 +111,7 @@
 
 
     <LinearLayout
+        android:id="@+id/lin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/line1"
@@ -159,8 +160,18 @@
         android:id="@+id/tv_submit"
         android:layout_width="match_parent"
         android:layout_height="@dimen/x100"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/linear1"
+        android:layout_marginTop="@dimen/x700"
         android:layout_centerHorizontal="true"
         android:background="@mipmap/btn_examine_and_verify"
         android:gravity="center" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_ren"
+        android:layout_marginTop="@dimen/x30"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginRight="@dimen/x20"
+        android:textColor="@color/text_gray_color"
+        android:layout_below="@+id/tv_submit"/>
 </RelativeLayout>

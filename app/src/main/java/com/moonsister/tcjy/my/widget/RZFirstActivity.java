@@ -36,6 +36,8 @@ public class RZFirstActivity extends BaseActivity {
     TextView tvAddress;
     @Bind(R.id.tv_height)
     TextView tvHeight;
+    @Bind(R.id.rule)
+    TextView rule;//规则说明
     private String avaterPath;
 
     @Override
@@ -112,14 +114,15 @@ public class RZFirstActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.layout_nike, R.id.layout_sex, R.id.layout_address, R.id.layout_height, R.id.tv_next, R.id.iv_avater})
+    @OnClick({R.id.layout_nike, R.id.layout_sex, R.id.layout_address, R.id.layout_height, R.id.tv_next, R.id.iv_avater,R.id.rule})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.layout_nike:
                 ActivityUtils.startPersonInfoChangeActivity(PersonInfoChangeActivity.ChangeType.NIKE);
                 break;
             case R.id.layout_sex:
-                ActivityUtils.startPersonInfoChangeActivity(PersonInfoChangeActivity.ChangeType.SEX);
+//                ActivityUtils.startPersonInfoChangeActivity(PersonInfoChangeActivity.ChangeType.SEX);
+
                 break;
             case R.id.layout_address:
                 ActivityUtils.startPersonInfoChangeActivity(PersonInfoChangeActivity.ChangeType.ADDRESS);
@@ -142,6 +145,10 @@ public class RZFirstActivity extends BaseActivity {
                             avaterPath = message;
                             ImageServerApi.showURLSamllImage(ivAvater, message);
                         }).create();
+
+                break;
+            case R.id.rule://规则说明监听
+                ActivityUtils.startRuleActivity();//调用方法实现跳转
 
                 break;
 

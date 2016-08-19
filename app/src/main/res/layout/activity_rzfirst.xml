@@ -278,11 +278,13 @@
             android:background="@mipmap/btn_next"
             android:gravity="center" />
         <TextView
+            android:id="@+id/rule"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="规则说明"
+            android:text="@string/talk"
             android:gravity="right"
             android:layout_marginTop="@dimen/x20"
+            android:layout_marginRight="@dimen/x20"
             android:textColor="@color/text_blue_color"/>
     </LinearLayout>
 
