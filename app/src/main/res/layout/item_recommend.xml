@@ -41,11 +41,10 @@
 
         <TextView
             android:id="@+id/card_year"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="35dp"
-            android:layout_marginLeft="@dimen/x150"
+            android:layout_marginLeft="@dimen/x300"
+            android:layout_marginTop="@dimen/x80"
             android:text="网红"
             android:textSize="20sp" />
 
@@ -53,10 +52,17 @@
             android:id="@+id/tv_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="167dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="@dimen/x80"
+            android:layout_marginLeft="@dimen/x420"
             android:text="年龄"
             android:textSize="20sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_age"
+            android:text="岁"
+            android:layout_marginTop="@dimen/x80"
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/tv_talk"
