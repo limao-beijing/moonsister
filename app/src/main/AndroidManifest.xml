@@ -135,6 +135,7 @@
         <activity
             android:name=".my.widget.CertificationActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".main.widget.ShowShortVideoActivity" />
         <activity
             android:name=".my.widget.RZFirstActivity"
             android:screenOrientation="portrait" />

@@ -158,8 +158,8 @@ public class DynamicPresenterImpl implements DynamicPresenter, onLoadDateSingleL
 
         if (t != null) {
             if (t.size() != 0) {
-                page++;
                 if (page == 1) {
+
                     UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList beanDataList = t.get(t.size() - 1);
                     if (StringUtis.equals(beanDataList.getIstop(), "1")) {
                         upID = beanDataList.getLatest_id();
@@ -193,6 +193,7 @@ public class DynamicPresenterImpl implements DynamicPresenter, onLoadDateSingleL
 
 
             }
+            page++;
         }
         mUserInfoView.loadUserinfo(t);
         mUserInfoView.hideLoading();

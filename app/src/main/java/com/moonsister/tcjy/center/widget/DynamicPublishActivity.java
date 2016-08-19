@@ -167,4 +167,9 @@ public class DynamicPublishActivity extends BaseFragmentActivity implements View
     public void transfePageMsg(String msg) {
         showToast(msg);
     }
+
+    @Override
+    protected String initProgressDialogMsg() {
+        return UIUtils.getStringRes(R.string.dynamic_uploading);
+    }
 }

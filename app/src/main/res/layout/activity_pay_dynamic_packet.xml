@@ -28,6 +28,7 @@
             android:layout_below="@+id/action_back"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/x30"
+            android:gravity="center"
             android:text="@string/buy_dynamic_vip"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_16" />

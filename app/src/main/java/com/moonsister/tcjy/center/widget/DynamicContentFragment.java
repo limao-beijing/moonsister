@@ -76,6 +76,8 @@ public class DynamicContentFragment extends BaseFragment {
      * @return
      */
     public List<String> getDynamicContent() {
+        if (dynamicType == null)
+            return null;
         List<String> dynamicContents = new ArrayList<String>();
         switch (dynamicType) {
             case PIC:
@@ -207,13 +209,13 @@ public class DynamicContentFragment extends BaseFragment {
             ShowPicAdapter showPicAdapter = new ShowPicAdapter(pics);
             noScrollGridView.setAdapter(showPicAdapter);
         } else if (requestCode == 2) {
-//            String video_path = data.getStringExtra("path");
-            String video_path = data.getData().getPath();
+            String video_path = data.getStringExtra("path");
+//            String video_path = data.getData().getPath();
             videoPath = video_path;
             ivAddContent.setVisibility(View.GONE);
             String videoThumbnail = VideoUtils.getInstance().getVideoThumbnail(video_path);
             ImageView imageView = new ImageView(getActivity());
-            imageView.setImageBitmap(BitmapFactory.decodeFile(videoThumbnail));
+            ImageServerApi.showURLBigImage(imageView, videoThumbnail);
             root.addView(imageView);
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) imageView.getLayoutParams();
             int dimension = (int) getResources().getDimension(R.dimen.x240);

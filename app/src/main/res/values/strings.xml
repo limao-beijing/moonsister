@@ -67,7 +67,7 @@
     <string name="login_action">未登录，请登录，</string>
     <string name="send_dynamic_wacth_pic">发红包,看照片</string>
     <string name="viewpager_indicator">%1$d/%2$d</string>
-    <string name="temporary_does_not">暂不支持大于10M的视频！</string>
+    <string name="temporary_does_not">暂不支持大于100M的视频！</string>
     <string name="Video_footage">拍摄录像</string>
     <string name="ok">ok</string>
     <string name="nike">昵称</string>
@@ -233,5 +233,6 @@
   \n3）若您在一个月内发布上述所说的违规内容，每发现一次，保证金冻结周期延期一个月，被发现超过三次者，保证金不予退还，同时将会对您进行降低会员级别或封号处理。</string>
     <string name="tv_ren">您需要支付10元人民币进行付费认证，付费认证后，认证费用将作为保证金存在您的财务中心，满一个月后，保证金可消费，可提现。</string>
     <string name="talk">规则说明</string>
+    <string name="dynamic_uploading">动态上传中，请稍等....</string>
 
 </resources>

@@ -1,6 +1,8 @@
 package com.moonsister.tcjy.center.model;
 
 import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
+import android.provider.MediaStore;
 
 import com.alibaba.sdk.android.oss.ClientException;
 import com.alibaba.sdk.android.oss.ServiceException;
@@ -224,10 +226,11 @@ public class DynamicPublishModelImpl implements DynamicPublishModel {
         //视频
         String vidoPath = AliyunManager.getInstance().upLoadFile(videoPath, FilePathUtlis.FileType.MP4);
         //图片
-        String videoThumbnail = VideoUtils.getInstance().getVideoThumbnail(videoPath);
-        Bitmap size = ImageUtils.compressImageWithPathSzie(videoThumbnail, 200, 160);
+        Bitmap videoThumbnail = ThumbnailUtils.createVideoThumbnail(videoPath, MediaStore.Images.Thumbnails.MINI_KIND);
+//        String videoThumbnail = VideoUtils.getInstance().getVideoThumbnail(videoPath);
+//        Bitmap size = ImageUtils.compressImageWithPathSzie(videoThumbnail, 200, 160);
         //压缩大小
-        Bitmap bitmap = ImageUtils.compressImage(size, 100);
+        Bitmap bitmap = ImageUtils.compressImage(videoThumbnail, 100);
         String loadFile = AliyunManager.getInstance().upLoadFiletFromByteArray(ImageUtils.getBitmapByte(bitmap), FilePathUtlis.FileType.JPG);
         DynamicContent content = new DynamicContent();
         content.setV(vidoPath);
@@ -236,9 +239,9 @@ public class DynamicPublishModelImpl implements DynamicPublishModel {
             //压缩质量
 
             //宽高压缩
-            Bitmap bitmapsize = ImageUtils.compressImageSzie(bitmap, 600, 480);
+//            Bitmap bitmapsize = ImageUtils.compressImageSzie(bitmap, 600, 480);
             //质量压缩
-            Bitmap bitmap1 = ImageUtils.compressImage(bitmapsize, 50);
+            Bitmap bitmap1 = ImageUtils.compressImage(bitmap, 50);
             //模糊
             Bitmap bitmap2 = FastBlur.doBlur(bitmap1, 20, true);
             byte[] bitmapByte = ImageUtils.getBitmapByte(bitmap2);
