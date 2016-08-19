@@ -1,7 +1,5 @@
 package com.moonsister.tcjy.center.presenter;
 
-import android.view.View;
-
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.LableBean;
 import com.moonsister.tcjy.center.model.LableFragmentModel;
@@ -31,11 +29,14 @@ public class LableFragmentPersenterImpl implements LableFragmentPersenter, BaseI
     public void loadData() {
         view.showLoading();
         model.loadData(page, this);
+
     }
 
     @Override
     public void onSuccess(LableBean lableBean, BaseIModel.DataType dataType) {
         view.setLable(lableBean);
+        if (lableBean != null && lableBean.getData() != null && lableBean.getData().size() != 0)
+            page++;
         view.hideLoading();
     }
 
