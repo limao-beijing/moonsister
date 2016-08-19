@@ -25,39 +25,83 @@ import android.widget.Toast;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.utils.DateUtils;
+import com.moonsister.tcjy.utils.ImageUtils;
 import com.moonsister.tcjy.utils.SDUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.TextFormater;
+import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.utils.URIUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
 import com.moonsister.tcjy.widget.RecyclingImageView;
 import com.moonsister.tcjy.widget.takevideo.TakeVideoActivity;
 import com.moonsister.tcjy.widget.takevideo.VideoEntity;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
 /**
  * Created by jb on 2016/8/9.
  */
 public class VideoSelectorActivity extends Activity implements AdapterView.OnItemClickListener {
-    List<VideoEntity> mList;
+    private List<VideoEntity> mList;
+    private ImageAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_selector);
         mList = new ArrayList<VideoEntity>();
-        getVideoFile();
-        final GridView mGridView = (GridView) findViewById(R.id.gridView);
-        ImageAdapter mAdapter = new ImageAdapter(getApplicationContext());
+        GridView mGridView = (GridView) findViewById(R.id.gridView);
+        mAdapter = new ImageAdapter(getApplicationContext());
         mGridView.setAdapter(mAdapter);
         mGridView.setOnItemClickListener(this);
 
+        UIUtils.sendDelayedOneMillis(new Runnable() {
+            @Override
+            public void run() {
+                getVideoInfo();
+            }
+        });
+
+    }
+
+    private void getVideoInfo() {
+        Observable.create(new Observable.OnSubscribe() {
+            @Override
+            public void call(Object o) {
+                getVideoFile();
+            }
+        }).observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Subscriber() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+                        if (mAdapter != null)
+                            mAdapter.notifyDataSetChanged();
+
+                    }
+                });
     }
 
     private void getVideoFile() {
+
         ContentResolver mContentResolver = getContentResolver();
         Cursor cursor = mContentResolver.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, null, null, null, MediaStore.Video.DEFAULT_SORT_ORDER);
 
@@ -76,12 +120,12 @@ public class VideoSelectorActivity extends Activity implements AdapterView.OnIte
                         .getColumnIndexOrThrow(MediaStore.Video.Media.DATA));
 
                 // 总播放时长：MediaStore.Audio.Media.DURATION
-                int duration = cursor
+                long duration = cursor
                         .getInt(cursor
                                 .getColumnIndexOrThrow(MediaStore.Video.Media.DURATION));
 
                 // 大小：MediaStore.Audio.Media.SIZE
-                int size = (int) cursor.getLong(cursor
+                long size = (int) cursor.getLong(cursor
                         .getColumnIndexOrThrow(MediaStore.Video.Media.SIZE));
                 if (StringUtis.isEmpty(url))
                     continue;
@@ -93,7 +137,9 @@ public class VideoSelectorActivity extends Activity implements AdapterView.OnIte
                     entty.filePath = url;
                     entty.duration = duration;
                     entty.size = size;
-                    mList.add(entty);
+                    String dataSize = TextFormater.getDataSize(entty.size);
+                    if (!StringUtis.isEmpty(dataSize) && !StringUtis.equals(dataSize, "error") && !dataSize.startsWith("-"))
+                        mList.add(entty);
                 }
             } while (cursor.moveToNext());
 
@@ -102,6 +148,13 @@ public class VideoSelectorActivity extends Activity implements AdapterView.OnIte
             cursor.close();
             cursor = null;
         }
+        if (mAdapter != null)
+            UIUtils.onRunMainThred(new Runnable() {
+                @Override
+                public void run() {
+                    mAdapter.notifyDataSetChanged();
+                }
+            });
 
 
     }
@@ -131,15 +184,15 @@ public class VideoSelectorActivity extends Activity implements AdapterView.OnIte
             Uri uri2 = Uri.fromFile(file);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, uri2);
             intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
-            intent.putExtra(MediaStore.EXTRA_SIZE_LIMIT, 1024 * 1024 * 10);
-            intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 10);
+            intent.putExtra(MediaStore.EXTRA_SIZE_LIMIT, 1024 * 1024 * 50);
+            intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 60);
 //            Intent intent = new Intent();
 //            intent.setClass(this, TakeVideoActivity.class);
             startActivityForResult(intent, 100);
         } else {
             VideoEntity vEntty = mList.get(position - 1);
             // 限制大小不能超过10M
-            if (vEntty.size > 1024 * 1024 * 10) {
+            if (vEntty.size > 1024 * 1024 * 100) {
                 String st = getResources().getString(R.string.temporary_does_not);
                 Toast.makeText(this, st, Toast.LENGTH_SHORT).show();
                 return;
@@ -219,8 +272,9 @@ public class VideoSelectorActivity extends Activity implements AdapterView.OnIte
                 holder.tvDur.setText(DateUtils.toTime(entty.duration));
                 holder.tvSize.setText(TextFormater.getDataSize(entty.size));
                 try {
-                    holder.imageView.setImageBitmap(ThumbnailUtils.createVideoThumbnail(entty.filePath, MediaStore.Images.Thumbnails.MICRO_KIND));
 
+                    ImageServerApi.showURLSamllImage(holder.imageView, VideoUtils.getInstance().getVideoThumbnail(entty.filePath));
+//                    holder.imageView.setImageBitmap(ImageUtils.compressImage(ThumbnailUtils.createVideoThumbnail(entty.filePath, MediaStore.Images.Thumbnails.MICRO_KIND), 10));
 //                    holder.imageView.setImageBitmap(BitmapFactory.decodeFile());z
                 } catch (Exception e) {
                     e.printStackTrace();

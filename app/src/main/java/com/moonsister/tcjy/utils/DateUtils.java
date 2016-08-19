@@ -72,17 +72,17 @@ public class DateUtils {
         return var3;
     }
 
-    public static String toTime(int var0) {
+    public static String toTime(long var0) {
         var0 /= 1000;
-        int var1 = var0 / 60;
+        long var1 = var0 / 60;
         boolean var2 = false;
         if (var1 >= 60) {
-            int var4 = var1 / 60;
+            long var4 = var1 / 60;
             var1 %= 60;
         }
 
-        int var3 = var0 % 60;
-        return String.format("%02d:%02d", new Object[]{Integer.valueOf(var1), Integer.valueOf(var3)});
+        long var3 = var0 % 60;
+        return String.format("%02d:%02d", new Object[]{Long.valueOf(var1), Long.valueOf(var3)});
     }
 
     public static String toTimeBySecond(int var0) {

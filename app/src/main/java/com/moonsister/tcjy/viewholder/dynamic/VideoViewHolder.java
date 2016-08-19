@@ -112,37 +112,37 @@ public class VideoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.Use
                 if (StringUtis.equals(bean.getIspay(), "2")) {
                     ActivityUtils.startPayDynamicRedPackketActivity(bean.getMoney(), bean.getLatest_id());
                 } else {
-                    playVideo(bean);
+                    ActivityUtils.startShowShortVideoActivity(bean.getVideo());
                 }
             }
         });
     }
 
-    private void playVideo(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
-
-        if (play != null && bean != null && !StringUtis.isEmpty(bean.getVideo())) {
-            Uri uri = Uri.parse(bean.getVideo());
-            play.setVideoURI(uri);
-            play.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mp) {
-                    iv_play_background.setVisibility(View.GONE);
-                    iv_play.setVisibility(View.GONE);
-                    play.start();
-                }
-            });
-
-            play.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    mp.stop();
-                    iv_play_background.setVisibility(View.VISIBLE);
-                    iv_play.setVisibility(View.VISIBLE);
-                    play.stopPlayback();
-                }
-            });
-        }
-    }
+//    private void playVideo(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
+//
+//        if (play != null && bean != null && !StringUtis.isEmpty(bean.getVideo())) {
+//            Uri uri = Uri.parse(bean.getVideo());
+//            play.setVideoURI(uri);
+//            play.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//                @Override
+//                public void onPrepared(MediaPlayer mp) {
+//                    iv_play_background.setVisibility(View.GONE);
+//                    iv_play.setVisibility(View.GONE);
+//                    play.start();
+//                }
+//            });
+//
+//            play.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                @Override
+//                public void onCompletion(MediaPlayer mp) {
+//                    mp.stop();
+//                    iv_play_background.setVisibility(View.VISIBLE);
+//                    iv_play.setVisibility(View.VISIBLE);
+//                    play.stopPlayback();
+//                }
+//            });
+//        }
+//    }
 
     @Override
     protected void onItemclick(View view, UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean, int position) {

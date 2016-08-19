@@ -91,9 +91,27 @@ public class VideoUtils {
         if (path == null || "".equals(path)) {
             return resultPath;
         }
+
         File f = new File(path);
-        File file = new File(SDUtils.getInternalMemoryPath() + "/data/" + ConfigUtils.getInstance().getApplicationContext().getPackageName(), System.currentTimeMillis()
-                + ".jpg");
+        if (!f.exists())
+            return "";
+        String savePtah = "";
+        if (path.endsWith(".mp4")) {
+            savePtah = path.substring(0, path.lastIndexOf(".mp4"));
+
+        } else if (path.endsWith(".MP4")) {
+            savePtah = path.substring(0, path.lastIndexOf(".MP4"));
+        } else {
+            savePtah = SDUtils.getInternalMemoryPath() + "/data/" + ConfigUtils.getInstance().getApplicationContext().getPackageName() + File.separator + System.currentTimeMillis();
+        }
+        File fileDir = new File(savePtah);
+        if (!fileDir.exists()) {
+            fileDir.mkdirs();
+        }
+        File file = new File(savePtah, ".jpg");
+        if (file.exists()) {
+            return file.getAbsolutePath();
+        }
         Bitmap bitmap = null;
         FileOutputStream fos = null;
         MediaMetadataRetriever retriever = new MediaMetadataRetriever();
@@ -105,7 +123,7 @@ public class VideoUtils {
                 LogUtils.d("chatactivity",
                         "problem load FREE_VIDEO thumbnail bitmap,use default icon");
                 bitmap = ImageUtils.compressImageWithPathSzie(ConfigUtils.getInstance().getApplicationContext()
-                        .getResources(), R.drawable.app_panel_video_icon, 300, 300);
+                        .getResources(), R.drawable.app_panel_video_icon, 90, 90);
             }
             fos = new FileOutputStream(file);
             bitmap.compress(CompressFormat.JPEG, 100, fos);

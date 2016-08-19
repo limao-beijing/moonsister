@@ -18,19 +18,15 @@ public class ProgressDialog {
         progressDialog.setContentView(R.layout.dialog);
         progressDialog.setCancelable(false);
         progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        msg=activity.getResources().getString(R.string.pregress_text);
+        msg = getProgressDialogMsg();
         tv = (TextView) progressDialog.findViewById(R.id.id_tv_loadingmsg);
 //        progressDialog.show();
     }
 
-    public void setProgressDialogMsg(String msg) {
-
-        this.msg = msg;
-    }
 
     public void show() {
         if (progressDialog != null && !progressDialog.isShowing()) {
-            if (tv!=null)
+            if (tv != null)
                 tv.setText(msg);
             progressDialog.show();
             isShow = true;
@@ -48,4 +44,7 @@ public class ProgressDialog {
         return isShow;
     }
 
+    public String getProgressDialogMsg() {
+        return "玩命加载中...";
+    }
 }

@@ -76,6 +76,8 @@ public class DynamicContentFragment extends BaseFragment {
      * @return
      */
     public List<String> getDynamicContent() {
+        if (dynamicType == null)
+            return null;
         List<String> dynamicContents = new ArrayList<String>();
         switch (dynamicType) {
             case PIC:

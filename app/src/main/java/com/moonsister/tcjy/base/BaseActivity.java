@@ -15,6 +15,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.manager.DeviceManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import com.umeng.analytics.MobclickAgent;
@@ -209,8 +210,22 @@ public abstract class BaseActivity extends RxAppCompatActivity {
      * 初始化加载进度条
      */
     private void initProgressDialog() {
-        progressDialog = new ProgressDialog(this);
+        progressDialog = new ProgressDialog(this) {
+            @Override
+            public String getProgressDialogMsg() {
+                String s = initProgressDialogMsg();
+                if (!StringUtis.isEmpty(s))
+                    return s;
+                return super.getProgressDialogMsg();
+            }
+        };
     }
+
+    protected String initProgressDialogMsg() {
+        return null;
+    }
+
+    ;
 
     /**
      * 显示加载jindt

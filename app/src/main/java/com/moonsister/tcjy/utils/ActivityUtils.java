@@ -34,6 +34,7 @@ import com.moonsister.tcjy.main.widget.RecommendMemberActivity;
 import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
 import com.moonsister.tcjy.main.widget.DynamicActivity;
 import com.moonsister.tcjy.main.widget.RelationActivity;
+import com.moonsister.tcjy.main.widget.ShowShortVideoActivity;
 import com.moonsister.tcjy.main.widget.SwitchItemActivity;
 import com.moonsister.tcjy.main.widget.UserinfoActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
@@ -580,4 +581,17 @@ public class ActivityUtils {
         startActivity(RuleActivity.class);
     }
 
+    /**
+     * 播放页面
+     *
+     * @param path
+     */
+    public static void startShowShortVideoActivity(String path) {
+        if (!StringUtis.isEmpty(path)) {
+            Intent intent = new Intent(getContext(), ShowShortVideoActivity.class);
+            intent.putExtra("path", path);
+            startActivity(intent);
+        }
+
+    }
 }
