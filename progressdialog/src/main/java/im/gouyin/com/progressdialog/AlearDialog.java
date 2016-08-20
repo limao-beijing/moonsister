@@ -72,6 +72,8 @@ public class AlearDialog {
     }
 
     private String getContent() {
+        if (activity == null)
+            return "";
         String content = "";
         switch (type) {
             case Certification_publish:
