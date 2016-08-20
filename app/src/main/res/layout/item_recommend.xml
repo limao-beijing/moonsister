@@ -48,7 +48,7 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/white"
        >
 
@@ -60,45 +60,53 @@
             android:text="小猫咪"
             android:textColor="#333"
             android:textSize="25sp" />
+        <RelativeLayout
+            android:id="@+id/relat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="@dimen/x30"
+                android:layout_height="@dimen/x30"
+                android:id="@+id/yy"
+                android:src="@drawable/gril"
+                android:layout_centerHorizontal="true"
 
-        <TextView
-            android:id="@+id/card_year"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x165"
-            android:layout_marginTop="@dimen/x80"
-            android:text="网红"
-            android:textSize="20sp" />
-        <ImageView
-            android:layout_width="@dimen/x30"
-            android:layout_height="@dimen/x30"
-            android:id="@+id/age_image"
-            android:background="@drawable/gril"
-            android:gravity="center_horizontal"
-            android:layout_marginLeft="@dimen/x320"
-            android:layout_marginTop="@dimen/x100"
-            />
-        <TextView
-            android:id="@+id/tv_age"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x410"
-            android:layout_marginTop="@dimen/x80"
-            android:text="年龄"
-            android:textSize="20sp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="岁"
-            android:textSize="20sp"
-            android:layout_toRightOf="@+id/tv_age"
-            android:layout_marginTop="@dimen/x80"/>
+                android:layout_marginTop="@dimen/x90"
+                />
+            <TextView
+                android:id="@+id/card_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/yy"
+                android:layout_marginRight="@dimen/x20"
+                android:layout_marginTop="@dimen/x80"
+                android:text="网红"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/yy"
+                android:layout_marginTop="@dimen/x80"
+                android:layout_marginLeft="@dimen/x20"
+                android:text="年龄"
+                android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="岁"
+                android:textSize="20sp"
+                android:layout_toRightOf="@+id/tv_age"
+                android:layout_marginTop="@dimen/x80"/>
+        </RelativeLayout>
+
         <TextView
             android:id="@+id/tv_talk"
             android:layout_width="@dimen/x550"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_below="@+id/tv_age"
+            android:layout_below="@+id/relat"
             android:layout_marginLeft="@dimen/x85"
             android:layout_marginRight="@dimen/x85"
             android:layout_marginTop="@dimen/x50"
