@@ -1,17 +1,21 @@
 package com.moonsister.tcjy.my.persenter;
 
 import com.moonsister.tcjy.AppConstant;
+import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.DefaultDataBean;
+import com.moonsister.tcjy.bean.WithdRawDepositBean;
 import com.moonsister.tcjy.my.model.WithdRawDepositModelImpl;
 import com.moonsister.tcjy.my.model.WithdRawDepositModel;
 import com.moonsister.tcjy.my.view.WithdRawDepositView;
 import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tcjy.utils.VideoUtils;
 
 /**
  * Created by jb on 2016/7/2.
  */
-public class WithdRawDepositPresenterImpl implements WithdRawDepositPresenter, BaseIModel.onLoadDateSingleListener<DefaultDataBean> {
+public class WithdRawDepositPresenterImpl implements WithdRawDepositPresenter, BaseIModel.onLoadDateSingleListener<WithdRawDepositBean> {
     private WithdRawDepositView view;
     private WithdRawDepositModel model;
 
@@ -33,16 +37,18 @@ public class WithdRawDepositPresenterImpl implements WithdRawDepositPresenter, B
     }
 
     @Override
-    public void onSuccess(DefaultDataBean defaultDataBean, BaseIModel.DataType dataType) {
-        if (!StringUtis.equals(defaultDataBean.getCode(), AppConstant.code_request_success)) {
-            view.transfePageMsg(defaultDataBean.getMsg());
-            view.hideLoading();
-            return;
-        }
-        if (defaultDataBean.getObj() != null && defaultDataBean.getObj() instanceof String) {
+    public void onSuccess(WithdRawDepositBean bean, BaseIModel.DataType dataType) {
+        if (bean != null) {
+            if (StringUtis.equals(bean.getCode(), "1")) {
+                view.setloadEnableMoney(bean);
+            } else {
+                view.transfePageMsg(bean.getMsg());
+            }
 
-            view.setloadEnableMoney((String)defaultDataBean.getObj());
+        } else {
+            view.transfePageMsg(UIUtils.getStringRes(R.string.request_failed));
         }
+
         view.hideLoading();
 
     }

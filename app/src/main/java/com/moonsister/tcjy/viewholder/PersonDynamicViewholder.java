@@ -68,6 +68,11 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
 
             }
         });
+        if (UserInfoManager.getInstance().getMemoryPersonInfoDetail().getVipStatus() == 1) {
+            vip_money.setText("VIP会员");
+        } else {
+            vip_money.setText("VIP充值");
+        }
         if (baseinfo != null) {
             ImageServerApi.showURLBigImage(userBackground, baseinfo.getLike_image());
             ImageServerApi.showURLSamllImage(ivUserIcon, baseinfo.getFace());
@@ -90,7 +95,6 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
             } else tv_add_v.setVisibility(View.GONE);
 
 
-
         }
 
         UserInfoDetailBean.UserInfoDetailDataBean.Addons addons = bean.getAddons();
@@ -106,7 +110,7 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
 
     }
 
-    @OnClick({R.id.iv_user_icon, R.id.layout_wacth, R.id.layout_fen, R.id.rl_dynamic,R.id.vip_money})
+    @OnClick({R.id.iv_user_icon, R.id.layout_wacth, R.id.layout_fen, R.id.rl_dynamic, R.id.vip_money})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_user_icon:
@@ -124,14 +128,10 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
                 break;
             case R.id.vip_money:
                 //我的页面VIP会员
-                int m=UserInfoManager.getInstance().getMemoryPersonInfoDetail().getVipStatus();
-                if(m == 1){
+                int m = UserInfoManager.getInstance().getMemoryPersonInfoDetail().getVipStatus();
+                if (m == 1) {
                     vip_money.setText("VIP会员");
-//                    ActivityUtils.startYesActivity();//是会员跳转充值页面
-//                    ActivityUtils.startBuyVipActivity();
-                }else{
-                    vip_money.setText("VIP充值");
-//                    ActivityUtils.startNoActivity();//不是会员跳转认证页面
+                } else {
                     ActivityUtils.startBuyVipActivity();
                 }
                 break;

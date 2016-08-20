@@ -26,6 +26,7 @@ import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.bean.UserPermissionBean;
 import com.moonsister.tcjy.bean.VersionInfo;
+import com.moonsister.tcjy.bean.WithdRawDepositBean;
 import com.moonsister.tcjy.main.widget.RecommendMemberFragment;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UnicodeUtils;
@@ -401,7 +402,7 @@ public class ServerApi {
          * @return
          */
         @FormUrlEncoded
-        @POST("Apply/pub")
+        @POST("Apply/goadd_info")
         Observable<DefaultDataBean> sendAllRzInfo(@Field("province") String address1,
                                                   @Field("city") String address2,
                                                   @Field("height") String height,
@@ -434,8 +435,9 @@ public class ServerApi {
                                                     @Query("channel") String channel);
 
         @GET("Withdraw/get_withdraw_money")
-        Observable<DefaultDataBean> getEnableMoney(@Query("authcode") String authcode,
-                                                   @Query("channel") String channel);
+        Observable<WithdRawDepositBean> getEnableMoney(@Query("authcode") String authcode,
+                                                       @Query("vvv") String apiVersions,
+                                                       @Query("channel") String channel);
 
         /**
          * 提现基本信息

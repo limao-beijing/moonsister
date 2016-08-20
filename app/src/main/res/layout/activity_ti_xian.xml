@@ -19,6 +19,7 @@
             android:id="@+id/iv_bank_logo"
             android:layout_width="@dimen/x150"
             android:layout_height="@dimen/x100"
+            android:layout_centerVertical="true"
             android:scaleType="centerCrop" />
 
         <LinearLayout
@@ -50,7 +51,6 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/iv_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -62,7 +62,7 @@
         <TextView
             android:id="@+id/tv_add_card"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/x200"
             android:background="@color/background_white_color"
             android:gravity="center"
             android:text="@string/add_card"
@@ -150,9 +150,11 @@
 
     <TextView
         android:id="@+id/tv_sure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x92"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/x70"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/x100"
         android:background="@mipmap/btn_affirm" />
 </LinearLayout>

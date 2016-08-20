@@ -1,20 +1,24 @@
 package com.moonsister.tcjy.my.widget;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
+import com.moonsister.tcjy.bean.WithdRawDepositBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.persenter.WithdRawDepositPresenter;
 import com.moonsister.tcjy.my.persenter.WithdRawDepositPresenterImpl;
 import com.moonsister.tcjy.my.view.WithdRawDepositView;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 
@@ -22,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -38,6 +43,12 @@ public class WithdRawDepositActivity extends BaseActivity implements WithdRawDep
     TextView tv_enable_money;
     @Bind(R.id.tv_chongzhi)
     TextView tvChongZhi;
+    @Bind(R.id.tv_certification_money)
+    TextView tvCertificationMoney;
+    @Bind(R.id.tv_earnings_money)
+    TextView tvEarningsMoney;
+    @Bind(R.id.get_certification_money)
+    TextView get_certification_money;
     private MyAccountChongZFragment chongZFragment;
     private MyAccountTiXianFragment tiXianFragment;
     private List<Fragment> fragmentList;
@@ -116,9 +127,19 @@ public class WithdRawDepositActivity extends BaseActivity implements WithdRawDep
     }
 
     @Override
-    public void setloadEnableMoney(String str) {
-        tv_enable_money.setText(UIUtils.getStringRes(R.string.enable_money) + " : " + str);
+    public void setloadEnableMoney(WithdRawDepositBean bean) {
+        if (bean == null || bean.getData() == null)
+            return;
+        tv_enable_money.setText(String.format(UIUtils.getStringRes(R.string.enable_money), bean.getData().getWithdraw_money()));
+        if (StringUtis.string2Double(bean.getData().getFrozen_money()) > 0) {
+            get_certification_money.setVisibility(View.VISIBLE);
+            tvCertificationMoney.setVisibility(View.VISIBLE);
+            tvCertificationMoney.setText(String.format(UIUtils.getStringRes(R.string.certification_money), bean.getData().getFrozen_money()));
+        }
+
+        tvEarningsMoney.setText(String.format(UIUtils.getStringRes(R.string.earnings_money), bean.getData().getIsfrozen()));
     }
+
 
     class MyFrageStatePagerAdapter extends FragmentPagerAdapter {
 
@@ -161,7 +182,7 @@ public class WithdRawDepositActivity extends BaseActivity implements WithdRawDep
 
     }
 
-    @OnClick({R.id.tv_chongzhi, R.id.tv_tixian, R.id.get_money})
+    @OnClick({R.id.tv_chongzhi, R.id.tv_tixian, R.id.get_money, R.id.get_certification_money})
     public void onClick(View v) {
         switch (v.getId()) {
 
@@ -173,6 +194,9 @@ public class WithdRawDepositActivity extends BaseActivity implements WithdRawDep
                 break;
             case R.id.get_money:
                 ActivityUtils.startGetMoneyActivity();
+                break;
+            case R.id.get_certification_money:
+                ActivityUtils.startRuleActivity();
                 break;
         }
     }
