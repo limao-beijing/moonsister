@@ -10,6 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/y421"
         android:scaleType="centerCrop" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:id="@+id/vip_money"
+        android:text="VIP会员"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/y300"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="@dimen/x50"
+        android:paddingRight="@dimen/x50"
+        android:background="@drawable/shape_my_money"/>
 
     <com.moonsister.tcjy.widget.RoundedImageView
         android:id="@+id/iv_user_icon"

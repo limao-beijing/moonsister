@@ -14,6 +14,8 @@ import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
+import org.w3c.dom.Text;
+
 import butterknife.Bind;
 import butterknife.OnClick;
 
@@ -41,6 +43,9 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
     TextView tvFlowerNumber;
     @Bind(R.id.tv_add_v)
     ImageView tv_add_v;
+    //我的页面VIP会员
+    @Bind(R.id.vip_money)
+    TextView vip_money;
 
     @Override
     protected View initView() {
@@ -84,6 +89,8 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
                 tv_add_v.setVisibility(View.VISIBLE);
             } else tv_add_v.setVisibility(View.GONE);
 
+
+
         }
 
         UserInfoDetailBean.UserInfoDetailDataBean.Addons addons = bean.getAddons();
@@ -99,7 +106,7 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
 
     }
 
-    @OnClick({R.id.iv_user_icon, R.id.layout_wacth, R.id.layout_fen, R.id.rl_dynamic})
+    @OnClick({R.id.iv_user_icon, R.id.layout_wacth, R.id.layout_fen, R.id.rl_dynamic,R.id.vip_money})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_user_icon:
@@ -114,6 +121,19 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
                 break;
             case R.id.rl_dynamic:
                 ActivityUtils.startDynamicActivity(UserInfoManager.getInstance().getUid());
+                break;
+            case R.id.vip_money:
+                //我的页面VIP会员
+                int m=UserInfoManager.getInstance().getMemoryPersonInfoDetail().getVipStatus();
+                if(m == 1){
+                    vip_money.setText("VIP会员");
+//                    ActivityUtils.startYesActivity();//是会员跳转充值页面
+//                    ActivityUtils.startBuyVipActivity();
+                }else{
+                    vip_money.setText("VIP充值");
+//                    ActivityUtils.startNoActivity();//不是会员跳转认证页面
+                    ActivityUtils.startBuyVipActivity();
+                }
                 break;
         }
 

@@ -57,7 +57,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="小猫咪"
             android:textColor="#333"
             android:textSize="25sp" />
         <RelativeLayout
@@ -80,7 +79,6 @@
                 android:layout_toLeftOf="@+id/yy"
                 android:layout_marginRight="@dimen/x20"
                 android:layout_marginTop="@dimen/x80"
-                android:text="网红"
                 android:textSize="20sp" />
 
             <TextView
@@ -90,12 +88,10 @@
                 android:layout_toRightOf="@+id/yy"
                 android:layout_marginTop="@dimen/x80"
                 android:layout_marginLeft="@dimen/x20"
-                android:text="年龄"
                 android:textSize="20sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="岁"
                 android:textSize="20sp"
                 android:layout_toRightOf="@+id/tv_age"
                 android:layout_marginTop="@dimen/x80"/>
@@ -111,11 +107,9 @@
             android:layout_marginRight="@dimen/x85"
             android:layout_marginTop="@dimen/x50"
             android:textSize="20sp"
-            android:text="是谁说过的，痛苦挖掘了温柔的洞穴，我藏身不知经年。" />
-
+            android:layout_marginBottom="@dimen/x100"
+            />
     </RelativeLayout>
-    <!--</RelativeLayout>-->
-
 
 
 </LinearLayout>
