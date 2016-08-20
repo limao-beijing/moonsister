@@ -594,4 +594,12 @@ public class ActivityUtils {
         }
 
     }
+//    //我的页面是会员    定义跳转的activity
+//    public static void startYesActivity() {
+//        startActivity(BuyVipActivity.class);
+//    }
+//    //我的页面不是会员    定义跳转的activity
+//    public static void startNoActivity() {
+//        startActivity(RZFirstActivity.class);
+//    }
 }
