@@ -218,7 +218,7 @@
     <string name="vip_3_low_money">省30元</string>
     <string name="tv_recommend">推荐</string>
     <string name="vip_prerogative_explain">VIP 特权说明</string>
-    <string name="vip_prerogative_explain_">1.免费查看所有会员的私密收费动态；\n2.与非好友会员免费聊天；\n3.发起视频聊天、语音聊天。</string>
+    <string name="vip_prerogative_explain_">1.免费查看所有会员的私密收费动态；\n2.与非好友会员免费聊天；</string>
     <string name="immediately_dredge">立即开通</string>
     <string name="appbar_vip">开通VIP会员</string>
     <string name="buy_dynamic_vip">该条为私密收费内容，\n需要付费购买才能观看，\nVIP会员可以全站免费观看。</string>

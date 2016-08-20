@@ -38,6 +38,7 @@ public class DynamicCommentViewHolder extends BaseRecyclerViewHolder<CommentData
         tvCommentContent.setText(bean.getTitle());
         tvTime.setText(TimeUtils.getDynamicTimeString(bean.getCreate_time()));
         tvUserName.setText(bean.getNickname());
+//        tvUserName.setText(bean.getStatus());
     }
 
     @Override

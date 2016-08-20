@@ -54,9 +54,16 @@ public class CardAdapter extends BaseAdapter {
             holder.mCardName = (TextView) convertView.findViewById(R.id.card_name);
             holder.tv_age = (TextView) convertView.findViewById(R.id.tv_age);
             holder.mCardYear = (TextView) convertView.findViewById(R.id.card_year);
+            holder.age_image = (ImageView) convertView.findViewById(R.id.age_image);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
+        }
+        String sex=mCardList.get(position).getSex();
+        if(sex=="1"){
+            holder.age_image.setImageResource(R.drawable.man);
+        }else{
+            holder.age_image.setImageResource(R.drawable.gril);
         }
         ImageServerApi.showURLBigImage(holder.mCardImageView, mCardList.get(position).getFace());
         holder.mCardName.setText(mCardList.get(position).getNickname());
@@ -71,5 +78,6 @@ public class CardAdapter extends BaseAdapter {
         TextView mCardYear;
         TextView tv_age;
         ImageView mCardImageView;
+        ImageView age_image;
     }
 }
