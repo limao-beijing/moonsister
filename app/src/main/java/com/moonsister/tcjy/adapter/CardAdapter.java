@@ -54,7 +54,7 @@ public class CardAdapter extends BaseAdapter {
             holder.mCardName = (TextView) convertView.findViewById(R.id.card_name);
             holder.tv_age = (TextView) convertView.findViewById(R.id.tv_age);
             holder.mCardYear = (TextView) convertView.findViewById(R.id.card_year);
-            holder.age_image = (ImageView) convertView.findViewById(R.id.age_image);
+            holder.age_image = (ImageView) convertView.findViewById(R.id.yy);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
