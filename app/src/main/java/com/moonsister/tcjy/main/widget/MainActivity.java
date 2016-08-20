@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.baidu.BaiduManager;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.ApplicationConfig;
 import com.moonsister.tcjy.R;
@@ -29,9 +28,6 @@ import com.moonsister.tcjy.main.presenter.MainPresenter;
 import com.moonsister.tcjy.main.presenter.MainPresenterImpl;
 import com.moonsister.tcjy.main.view.MainView;
 import com.moonsister.tcjy.manager.GaodeManager;
-
-import io.rong.imkit.IMManager;
-
 import com.moonsister.tcjy.manager.RecommendMananger;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.widget.MyFragment;
@@ -45,6 +41,7 @@ import com.trello.rxlifecycle.ActivityEvent;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import io.rong.imkit.IMManager;
 import io.rong.imkit.RongyunManager;
 import io.rong.imkit.provider.MyConversationBehaviorListener;
 import io.rong.imlib.model.Conversation;
@@ -173,7 +170,7 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void switch2Home() {
-        BaiduManager.getInstance(this).show(this, appx_banner_container);
+//        BaiduManager.getInstance(this).show(this, appx_banner_container);
         if (homeFragment == null)
             homeFragment = new HomeFragment();
         enterPage(homeFragment);
