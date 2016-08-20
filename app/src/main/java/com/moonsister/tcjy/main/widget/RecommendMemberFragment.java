@@ -29,6 +29,7 @@ public class RecommendMemberFragment extends BaseFragment {
     @Bind(R.id.sfav)
     SwipeFlingAdapterView flingContainer;
     private CardAdapter adapter;
+
 //    private RecommendMemberFragmentPresenter presenter;
 
     @Override
