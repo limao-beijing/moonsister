@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.adapter;
 
+import android.app.job.JobInfo;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,6 +56,7 @@ public class CardAdapter extends BaseAdapter {
             holder.tv_age = (TextView) convertView.findViewById(R.id.tv_age);
             holder.mCardYear = (TextView) convertView.findViewById(R.id.card_year);
             holder.age_image = (ImageView) convertView.findViewById(R.id.yy);
+            holder.tv_talk = (TextView) convertView.findViewById(R.id.tv_talk);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -69,6 +71,7 @@ public class CardAdapter extends BaseAdapter {
         holder.mCardName.setText(mCardList.get(position).getNickname());
         holder.tv_age.setText((mCardList.get(position).getBirthday() == null) ? "0" : mCardList.get(position).getBirthday());
         holder.mCardYear.setText((mCardList.get(position).getProfession() == null) ? "" : mCardList.get(position).getProfession());
+        holder.tv_talk.setText(mCardList.get(position).getSignature());
         return convertView;
     }
 
@@ -79,5 +82,6 @@ public class CardAdapter extends BaseAdapter {
         TextView tv_age;
         ImageView mCardImageView;
         ImageView age_image;
+        TextView tv_talk;
     }
 }
