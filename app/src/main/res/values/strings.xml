@@ -115,7 +115,7 @@
     <string name="Logoff_notification">下线通知</string>
     <string name="connect_conflict">同一帐号已在其他设备登录</string>
     <string name="text_numer_more_150">字数不能超过150</string>
-    <string name="renzheng_rule">*   发布免费动态，收费高质量动态；\n\n\n*   享受打赏、红包、礼物特权；\n\n\n*   与所有非好友会员畅快聊天</string>
+    <string name="renzheng_rule">*   发布免费动态，收费高质量动态；\n\n*   享受打赏、红包、礼物特权；\n\n*   与所有非好友会员畅快聊天</string>
     <string name="input">输入</string>
     <string name="input_text_number_100">输入文字不能大于一百</string>
     <string name="search">搜索</string>
@@ -148,8 +148,8 @@
     <string name="delete">删除</string>
     <string name="report">举报</string>
     <string name="apply_renzheng">申请认证</string>
-    <string name="renzheng_condition">为了避免不良会员发布无意义，不良信息，以及利用第三方机器人进行会员多开（如微信陌陌等），行坑蒙拐骗、色情等不合法的会员行为，我们启用严格认证机制。</string>
-    <string name="red_person_renzheng">红人认证</string>
+    <string name="renzheng_condition">为了避免不良会员发布无意义，不良信息，以及利用第三方机器人进行会员多开（如微信陌陌等），行坑蒙拐骗、色情等不合法的会员行为，我们启用严格认证机制。请花费1分钟时间，按照提示完成认证，开启认证会员特权。</string>
+    <string name="red_person_renzheng">会员诚信度认证</string>
     <string name="pic_size_error">照片的数量不正确</string>
     <string name="network_error">网络异常请稍后再试</string>
     <string name="login_code_timeout">身份信息已过期，请重新登录</string>
@@ -218,7 +218,7 @@
     <string name="vip_3_low_money">省30元</string>
     <string name="tv_recommend">推荐</string>
     <string name="vip_prerogative_explain">VIP 特权说明</string>
-    <string name="vip_prerogative_explain_">1.免费查看所有会员的私密收费动态；\n2.与非好友会员免费聊天；</string>
+    <string name="vip_prerogative_explain_">1.免费查看所有会员的私密收费动态；\n2.与非好友会员免费聊天。</string>
     <string name="immediately_dredge">立即开通</string>
     <string name="appbar_vip">开通VIP会员</string>
     <string name="buy_dynamic_vip">该条为私密收费内容，\n需要付费购买才能观看，\nVIP会员可以全站免费观看。</string>
@@ -235,5 +235,6 @@
     <string name="talk">规则说明</string>
     <string name="dynamic_uploading">动态上传中，请稍等....</string>
     <string name="get_loction_video_fileing">正在获取本地的视频，请稍等....</string>
+    <string name="renzheng">认证特权</string>
 
 </resources>
