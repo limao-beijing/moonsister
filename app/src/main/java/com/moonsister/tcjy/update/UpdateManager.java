@@ -308,6 +308,7 @@ public class UpdateManager implements UpdateManagerView, View.OnClickListener {
                 System.currentTimeMillis());
         notification.contentView = new RemoteViews(ConfigUtils.getInstance().getApplicationContext()
                 .getPackageName(), R.layout.up_notification);
+        notification.contentView.setTextViewText(R.id.down_tv, appName);
         notification.flags = Notification.FLAG_ONGOING_EVENT
                 | Notification.FLAG_AUTO_CANCEL;
         notification.icon = android.R.drawable.stat_sys_download;
