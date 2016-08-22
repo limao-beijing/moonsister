@@ -158,6 +158,9 @@
             android:name=".my.widget.SettingActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".my.widget.FollowActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".my.widget.WithdRawDepositActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -300,6 +303,7 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".my.widget.RuleActivity"></activity>
+
     </application>
 
 </manifest>

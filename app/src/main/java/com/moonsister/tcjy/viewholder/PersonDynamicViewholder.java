@@ -29,10 +29,6 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
     ImageView ivUserIcon;
     @Bind(R.id.tv_user_name)
     TextView tvUserName;
-    @Bind(R.id.tv_user_all_income)
-    TextView tvUserAllIncome;
-    @Bind(R.id.tv_user_day_income)
-    TextView tvUserDayIncome;
     @Bind(R.id.tv_fen_number)
     TextView tvFenNumber;
     @Bind(R.id.tv_wacth_number)
@@ -45,8 +41,11 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
     ImageView tv_add_v;
     //我的页面VIP会员
     @Bind(R.id.vip_money)
-    TextView vip_money;
-
+    ImageView vip_money;
+    @Bind(R.id.tv_user_all_income)//总收入
+            TextView tvUserAllIncome;
+    @Bind(R.id.tv_user_day_income)//今日收入
+            TextView tvUserDayIncome;
     @Override
     protected View initView() {
         View headView = UIUtils.inflateLayout(R.layout.head_person_info);
@@ -68,7 +67,7 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
 
             }
         });
-        if (baseinfo != null) {
+            if (baseinfo != null) {
             ImageServerApi.showURLBigImage(userBackground, baseinfo.getLike_image());
             ImageServerApi.showURLSamllImage(ivUserIcon, baseinfo.getFace());
             tvUserName.setText(baseinfo.getNickname());
@@ -95,8 +94,8 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
 
         UserInfoDetailBean.UserInfoDetailDataBean.Addons addons = bean.getAddons();
         if (addons != null) {
-            tvUserAllIncome.setText(UIUtils.getStringRes(R.string.all_income) + addons.getIncome_all() + UIUtils.getStringRes(R.string.yuan));
-            tvUserDayIncome.setText(UIUtils.getStringRes(R.string.day_income) + addons.getIncome_today() + UIUtils.getStringRes(R.string.yuan));
+            tvUserAllIncome.setText(addons.getIncome_all() + UIUtils.getStringRes(R.string.yuan));
+            tvUserDayIncome.setText(addons.getIncome_today() + UIUtils.getStringRes(R.string.yuan));
             tvFenNumber.setText(addons.getUfann());
             tvDynamicNumber.setText(addons.getUlatn());
             tvFlowerNumber.setText(addons.getUflon());
@@ -106,31 +105,32 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
 
     }
 
-    @OnClick({R.id.iv_user_icon, R.id.layout_wacth, R.id.layout_fen, R.id.rl_dynamic,R.id.vip_money})
+    @OnClick({R.id.iv_user_icon,})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_user_icon:
+//                R.id.layout_wacth, R.id.layout_fen, R.id.rl_dynamic
                 ActivityUtils.startUserInfoChangeActivity();
                 break;
-            case R.id.layout_wacth:
-
-                ActivityUtils.startWacthRelationActivity(UserInfoManager.getInstance().getUid());
-                break;
-            case R.id.layout_fen:
-                ActivityUtils.startFenRelationActivity(UserInfoManager.getInstance().getUid());
-                break;
-            case R.id.rl_dynamic:
-                ActivityUtils.startDynamicActivity(UserInfoManager.getInstance().getUid());
-                break;
+//            case R.id.layout_wacth:
+//
+//                ActivityUtils.startWacthRelationActivity(UserInfoManager.getInstance().getUid());
+//                break;
+//            case R.id.layout_fen:
+//                ActivityUtils.startFenRelationActivity(UserInfoManager.getInstance().getUid());
+//                break;
+//            case R.id.rl_dynamic:
+//                ActivityUtils.startDynamicActivity(UserInfoManager.getInstance().getUid());
+//                break;
             case R.id.vip_money:
                 //我的页面VIP会员
                 int m=UserInfoManager.getInstance().getMemoryPersonInfoDetail().getVipStatus();
                 if(m == 1){
-                    vip_money.setText("VIP会员");
+                    vip_money.setImageResource(R.mipmap.ifvip);
 //                    ActivityUtils.startYesActivity();//是会员跳转充值页面
 //                    ActivityUtils.startBuyVipActivity();
                 }else{
-                    vip_money.setText("VIP充值");
+                    vip_money.setVisibility(View.GONE);
 //                    ActivityUtils.startNoActivity();//不是会员跳转认证页面
                     ActivityUtils.startBuyVipActivity();
                 }

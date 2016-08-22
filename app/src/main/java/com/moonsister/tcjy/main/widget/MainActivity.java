@@ -34,6 +34,7 @@ import io.rong.imkit.IMManager;
 
 import com.moonsister.tcjy.manager.RecommendMananger;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.my.widget.HreatFragment;
 import com.moonsister.tcjy.my.widget.MyFragment;
 import com.moonsister.tcjy.update.UpdateManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
@@ -213,7 +214,8 @@ public class MainActivity extends BaseActivity implements MainView {
             return;
         }
         if (myFragment == null)
-            myFragment = new MyFragment();
+//            myFragment = new MyFragment();
+            myFragment=new HreatFragment();
 
         enterPage(myFragment);
 

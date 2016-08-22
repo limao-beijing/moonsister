@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.moonsister.tcjy.widget.RoundedImageView
+        android:id="@+id/riv_friend_image"
+        android:layout_width="@dimen/x120"
+        android:layout_height="@dimen/x120"
+        android:layout_margin="@dimen/x30"
+        android:src="@mipmap/load_small" />
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/riv_friend_image"
+        android:layout_toRightOf="@+id/riv_friend_image"
+        android:layout_marginTop="@dimen/x10"
+        android:text="@string/loading"
+        android:textColor="@color/text_black_color" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textview_work"
+        android:layout_toRightOf="@+id/tv_user_name"
+        android:layout_marginTop="@dimen/x38"
+        android:layout_marginLeft="@dimen/x22"
+        android:background="@drawable/backgroup_red"
+        android:text="网红"
+        />
+
+    <TextView
+        android:id="@+id/tv_friend_fen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_user_name"
+        android:layout_marginRight="@dimen/x20"
+        android:layout_marginTop="@dimen/x15"
+        android:layout_toRightOf="@+id/riv_friend_image"
+        android:singleLine="true"
+        android:text="@string/loading"
+        android:textColor="@color/home_navigation_text_gred"
+        android:textSize="13sp" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/delete_follow"
+        android:background="@mipmap/delete_follow"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/x38"
+        android:layout_marginTop="@dimen/y40"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消关注"
+        android:layout_below="@+id/delete_follow"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/x10"
+        android:layout_marginRight="@dimen/x15"/>
+</RelativeLayout>

@@ -43,7 +43,9 @@ import com.moonsister.tcjy.my.widget.AppointmentActivity;
 import com.moonsister.tcjy.my.widget.BirthdayActivity;
 import com.moonsister.tcjy.my.widget.CertificationActivity;
 import com.moonsister.tcjy.my.widget.ChangepwdActivity;
+import com.moonsister.tcjy.my.widget.FollowActivity;
 import com.moonsister.tcjy.my.widget.GetMoneyActivity;
+import com.moonsister.tcjy.my.widget.HreatFragment;
 import com.moonsister.tcjy.my.widget.MyOrderActivity;
 import com.moonsister.tcjy.my.widget.RZFirstActivity;
 import com.moonsister.tcjy.my.widget.RZSecondActivity;
@@ -594,10 +596,15 @@ public class ActivityUtils {
         }
 
     }
-//    //我的页面是会员    定义跳转的activity
-//    public static void startYesActivity() {
-//        startActivity(BuyVipActivity.class);
-//    }
+//    //我的页面gridview中跳转关注页面   定义跳转的activity
+    public static void startFollowActivity() {
+        startActivity(FollowActivity.class);
+    }
+
+    //关注页面中返回键的监听
+    public static void startHreatFragment(){
+        startActivity(HreatFragment.class);
+    }
 //    //我的页面不是会员    定义跳转的activity
 //    public static void startNoActivity() {
 //        startActivity(RZFirstActivity.class);
