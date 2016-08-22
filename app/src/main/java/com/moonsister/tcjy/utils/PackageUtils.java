@@ -1,6 +1,8 @@
 package com.moonsister.tcjy.utils;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 
 import com.moonsister.tcjy.BuildConfig;
 
@@ -42,6 +44,28 @@ public class PackageUtils {
 //            e.printStackTrace();
 //        }
         return BuildConfig.VERSION_NAME;
+    }
+
+    /**
+     * huqo
+     *
+     * @return
+     */
+    public static String getPackageName() {
+        return BuildConfig.APPLICATION_ID;
+
+    }
+
+    public static ApplicationInfo getApplicationInfo(Context context, String packageName, int flags) {
+        try {
+            if (context == null)
+                return null;
+            return context.getPackageManager().getApplicationInfo(getPackageName(), flags);
+        } catch (PackageManager.NameNotFoundException e) {
+
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

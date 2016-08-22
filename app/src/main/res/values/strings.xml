@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">同城交友</string>
+    <string name="app_name">约爱</string>
     <!--<string name="app_name">探探寂陌陌生人-求约爱</string>-->
     <string name="app_home_page">首页</string>
     <string name="app_im_page">聊天</string>
@@ -108,8 +108,8 @@
     <string name="day_income">当日收入</string>
     <string name="yuan">元</string>
     <string name="show_wacth_redpacket">%1$s人看了照片，共%2$s元</string>
-    <string name="show_wacth_video" >%1$s人偷窥了视频，共%2$s元</string>
-    <string name="show_wacth_voice" >%1$s人偷听了语音，共%2$s元</string>
+    <string name="show_wacth_video">%1$s人偷窥了视频，共%2$s元</string>
+    <string name="show_wacth_voice">%1$s人偷听了语音，共%2$s元</string>
     <string name="pay">支付</string>
     <string name="switch_flower">请选择花束</string>
     <string name="rongyun_offline">您已在别的设备上登录，请重新登录</string>
