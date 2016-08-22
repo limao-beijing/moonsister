@@ -79,7 +79,7 @@ public class VoiceViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.Use
         }
         if (bean.getType() == DynamicAdapter.TYPE_CHARGE_VOICE) {
             if (tv_show_redpacket != null) {
-                String format = String.format(UIUtils.getStringRes(R.string.show_wacth_redpacket), bean.getLredn() == null ? 0 : bean.getLredn(), bean.getTmoney() == null ? 0 : bean.getTmoney());
+                String format = String.format(UIUtils.getStringRes(R.string.show_wacth_voice), bean.getLredn() == null ? 0 : bean.getLredn(), bean.getTmoney() == null ? 0 : bean.getTmoney());
                 tv_show_redpacket.setText(format);
                 tv_show_redpacket.setVisibility(View.VISIBLE);
             }

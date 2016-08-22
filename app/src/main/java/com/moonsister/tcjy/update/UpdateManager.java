@@ -74,9 +74,9 @@ public class UpdateManager implements UpdateManagerView, View.OnClickListener {
      * 检测软件更新
      */
     public void checkUpdate() {
-        if (!NetWorkUtil.isWifiAvailable(mContext)) {// wifi情况下下载更新包;
-            return;
-        }
+//        if (!NetWorkUtil.isWifiAvailable(mContext)) {// wifi情况下下载更新包;
+//            return;
+//        }
         //本都存储的升级号与当前软件的版本号3种情况：
         //a:大于,说明本地已有下载好的升级包，用户没有安装
         //b:等于,说明当前版本相同，需要进行网络检查是否有更新版本
@@ -308,6 +308,7 @@ public class UpdateManager implements UpdateManagerView, View.OnClickListener {
                 System.currentTimeMillis());
         notification.contentView = new RemoteViews(ConfigUtils.getInstance().getApplicationContext()
                 .getPackageName(), R.layout.up_notification);
+        notification.contentView.setTextViewText(R.id.down_tv, appName);
         notification.flags = Notification.FLAG_ONGOING_EVENT
                 | Notification.FLAG_AUTO_CANCEL;
         notification.icon = android.R.drawable.stat_sys_download;

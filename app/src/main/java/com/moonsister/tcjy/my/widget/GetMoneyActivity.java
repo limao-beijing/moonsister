@@ -42,7 +42,8 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
     RelativeLayout layout_swicth_card;
     private GetMoneyPersenter persenter;
     private String number;
-    private  String cardType;
+    private String cardType;
+
     @Override
     protected View setRootContentView() {
         persenter = new GetMoneyPersenterImpl();
@@ -61,11 +62,11 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
     }
 
 
-    @OnClick({R.id.iv_right, R.id.layout_swicth_card, R.id.tv_add_alipay, R.id.tv_add_bank_card, R.id.tv_sure})
+    @OnClick({R.id.layout_swicth_card, R.id.tv_add_alipay, R.id.tv_add_bank_card, R.id.tv_sure})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.layout_swicth_card:
-                ActivityUtils.startSwitchCardActivity(number,cardType);
+                ActivityUtils.startSwitchCardActivity(number, cardType);
                 setSwicthCardRxbus();
                 break;
             case R.id.tv_add_alipay:
@@ -92,8 +93,6 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
                     return;
                 }
                 persenter.PaySubmit(number, i);
-                break;
-            case R.id.iv_right:
                 break;
         }
     }

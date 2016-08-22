@@ -132,13 +132,14 @@ public class RZSecondActivity extends BaseActivity implements RZSecondView {
         }
         //点击提交审核后弹出dialog提醒用户是否继续
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("继续需要支付10元，是否继续？");
+        String s = getResources().getString(R.string.tv_ren) + getString(R.string.pay_is_go);
+        builder.setMessage(s);
         builder.setTitle("提示");
         //dialog确认监听，用户点击确认则提交审核，得到并且判断之前的数据，跳转页面及带参数
         builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
+                dialog.dismiss();
 //                　　    Main.this.finish();
                 Intent intent = getIntent();//跳转
                 if (intent == null)
@@ -171,15 +172,15 @@ public class RZSecondActivity extends BaseActivity implements RZSecondView {
 
                 persenter.submit(address1, address2, height, sexid, nike, avaterpath, pics);
             }
-            });
+        });
         //dialog取消监听
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int which) {
-                   dialog.dismiss();
-                  }
-            });
-         builder.create().show();
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
 
     }
 
@@ -201,6 +202,7 @@ public class RZSecondActivity extends BaseActivity implements RZSecondView {
     @Override
     public void success() {
         ActivityUtils.startRZThidActivity();
+        RxBus.getInstance().send(Events.EventEnum.CERTIFICATION_PAGE_FINISH, null);
         finish();
     }
 }

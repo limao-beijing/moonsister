@@ -9,7 +9,7 @@ import java.util.Date;
  * Created by jb on 2016/7/23.
  */
 public class PayLog {
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = false;
 
     public static boolean getDeBugState() {
         return DEBUG;

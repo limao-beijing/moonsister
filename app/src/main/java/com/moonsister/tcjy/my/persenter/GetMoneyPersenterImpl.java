@@ -63,10 +63,12 @@ public class GetMoneyPersenterImpl implements GetMoneyPersenter, BaseIModel.onLo
                             view.pageFinish();
                         }
                     });
+                } else {
+                    view.transfePageMsg(bean.getMsg());
                 }
                 break;
         }
-        view.transfePageMsg(bean.getMsg());
+
 
     }
 

@@ -35,5 +35,8 @@ public interface AppConstant {
      */
     String code_request_success = "1";
 
-
+    /**
+     * 接口版本
+     */
+    String API_VERSION = "1";
 }
