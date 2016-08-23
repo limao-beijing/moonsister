@@ -141,7 +141,7 @@
     <string name="weight">体重</string>
     <string name="change_user_info">修改资料</string>
     <string name="old_password">原密码</string>
-    <string name="new_password">新密码</string>
+    <string name="new_password">新 密 码</string>
     <string name="again_input">再次输入</string>
     <string name="reset">重置</string>
     <string name="not_same">不一样</string>
@@ -242,6 +242,9 @@
     <string name="certification_money">认证费 ： %1$s 元( 冻结 )</string>
     <string name="earnings_money">收     益 ： %1$s 元</string>
     <string name="pay_is_go">继续需要支付10元，是否继续？</string>
+    <string name="affirm_password">确认密码</string>
+    <string name="submit">提交</string>
+    <string name="find_pws">找回密码</string>
 
 
 </resources>
