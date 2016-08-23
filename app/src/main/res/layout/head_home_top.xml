@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/head_top_navigation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <TextView
+        style="@style/text_home_top_navigation"
+        android:background="@drawable/selector_home_top_bg_left"
+        android:text="@string/home_hot" />
+
+    <TextView
+        style="@style/text_home_top_navigation"
+        android:background="@drawable/selector_home_top_bg_center"
+        android:text="@string/home_nearby" />
+
+    <TextView
+        style="@style/text_home_top_navigation"
+        android:background="@drawable/selector_home_top_bg_right"
+        android:text="@string/home_nearby" />
+</LinearLayout>

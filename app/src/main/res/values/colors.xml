@@ -19,6 +19,9 @@
     <!--白色背景-->
     <color name="backgroud_yellow_color">#FF7F00</color>
     <!--黄色背景-->
+    <color name="backgroud_black_color">#000000</color>
+    <!---->
+    <color name="my_follow_color">#FFD305</color>
 
     <color name="background_white_color">@android:color/white</color>
     <!--文字灰色-->
@@ -87,7 +90,8 @@
     <color name="text_time_gray_color">#999999</color>
     <color name="yellow">#ffff00</color>
     <color name="text_color">#999999</color>
-    <color name="color_1d262e">#1d262e</color>
+    <color name="grid_line">#778998</color>
+
     <color name="color_ffd305">#ffd305</color>
     <color name="color_2a343e">#2a343e</color>
     <color name="color_ff8201">#ff8201</color>
@@ -106,5 +110,10 @@
     <color name="picprev_toolbar_transparent">@color/picsel_toolbar_transparent</color>
     <color name="card_background">#ffffff</color>
     <color name="card_shadow">#10000000</color>
+    <color name="yellow_ffd305">#ffd305</color>
+    <color name="white_d6dde4">#d6dde4</color>
+    <!--深蓝-->
+    <color name="blue_dark_151c22">#151c22</color>
+    <color name="color_1d262e">#1d262e</color>
 </resources>
 

@@ -4,7 +4,10 @@ package com.moonsister.tcjy;
  * Created by jb on 2016/6/20.
  */
 public interface AppConstant {
-    String CHANNEL_ID = "1002";
+    /**
+     * 渠道id
+     */
+    String CHANNEL_ID = "1000";
     /**
      * 用户id
      */
