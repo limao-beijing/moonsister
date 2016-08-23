@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
 
-        applicationId "com.moonsister.tcjy"
+        applicationId "com.goudayou.sexybelle"
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode;
@@ -22,10 +22,10 @@ android {
             keyPassword "limao123456"
         }
          release {
-             storeFile file("../app/key/moonsister.jks")
-             storePassword "limao123456"
-             keyAlias "same_city"
-             keyPassword "limao123456"
+//             storeFile file("../app/key/moonsister.jks")
+//             storePassword "limao123456"
+//             keyAlias "same_city"
+//             keyPassword "limao123456"
          }
     }
     buildTypes {
@@ -62,7 +62,7 @@ dependencies {
     compile project(':IMKit')
     compile project(':pay')
     compile project(':progressdialog')
-    /* compile project(':baidu')*/
+     compile project(':baidu')
     //阿里云
     compile files('src/main/libs/aliyun-oss-sdk-android-2.2.0.jar')
     compile files('src/main/libs/AMap_Location_V2.6.0_20160628.jar')
