@@ -31,10 +31,10 @@
 
         <meta-data
             android:name="BDAPPID"
-            android:value="8412743" />
+            android:value="8537757" />
         <meta-data
             android:name="BDAPPKEY"
-            android:value="7njBzRfmgi2wvKsA7lHZKia05bLdymiU" />
+            android:value="0UXVQpo0a62Zx8xPPsEGvOPVBGIGOGQa" />
     </application>
 
 </manifest>
