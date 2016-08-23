@@ -169,7 +169,7 @@
     <string name="birthday">生日</string>
     <string name="together">相互</string>
     <string name="not_search_reason">没有找相关用户</string>
-    <string name="pic_size_not_six">照片不能少于六张</string>
+    <string name="pic_size_not_six">照片不能少于一张</string>
     <string name="not_low_one">少于一元</string>
     <string name="not_more">超过上限</string>
     <string name="show_verson_name">版本号 ：</string>

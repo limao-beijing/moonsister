@@ -211,8 +211,8 @@ public class MainActivity extends BaseActivity implements MainView {
             return;
         }
         if (myFragment == null)
-//            myFragment = new MyFragment();
-            myFragment=new HreatFragment();
+            myFragment = new MyFragment();
+//            myFragment=new HreatFragment();
 
         enterPage(myFragment);
 

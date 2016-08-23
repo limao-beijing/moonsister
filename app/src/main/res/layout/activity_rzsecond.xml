@@ -131,7 +131,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="请上传至少六张个人照片"
+                    android:text="请上传至少一张个人照片"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/order_text_small3" />
 
