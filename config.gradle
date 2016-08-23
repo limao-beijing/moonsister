@@ -4,8 +4,8 @@ ext {
             buildToolsVersion: "23.0.1",
             minSdkVersion    : 17,
             targetSdkVersion : 21,
-            versionCode      : 20,
-            versionName      : "1.2.1"
+            versionCode      : 10000,
+            versionName      : "2.3.0"
     ]
     dependencies = [
             "numberprogressbar"     : "com.daimajia.numberprogressbar:library:1.2@aar",
