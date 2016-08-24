@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">约爱</string>
+    <string name="app_name">邂逅</string>
     <!--<string name="app_name">探探寂陌陌生人-求约爱</string>-->
     <string name="app_home_page">首页</string>
     <string name="app_im_page">聊天</string>
@@ -245,6 +245,7 @@
     <string name="affirm_password">确认密码</string>
     <string name="submit">提交</string>
     <string name="find_pws">找回密码</string>
+    <string name="failed">失败</string>
 
 
 </resources>
