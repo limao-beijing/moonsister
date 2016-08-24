@@ -53,7 +53,7 @@ public class LoginFragmentPersenterImpl implements LoginFragmentPersenter, BaseI
             } else
                 loginView.transfePageMsg(loginBean.getMsg());
         } else {
-            loginView.transfePageMsg(UIUtils.getResources().getString(R.string.str_login) + UIUtils.getStringRes(R.string.request_failed));
+            loginView.transfePageMsg(UIUtils.getResources().getString(R.string.str_login) + UIUtils.getStringRes(R.string.failed));
 
         }
         loginView.hideLoading();
@@ -64,7 +64,7 @@ public class LoginFragmentPersenterImpl implements LoginFragmentPersenter, BaseI
     @Override
     public void onFailure(String msg) {
 
-        loginView.transfePageMsg(UIUtils.getResources().getString(R.string.str_login) + UIUtils.getStringRes(R.string.request_failed));
+        loginView.transfePageMsg(msg);
         LogUtils.e(this, msg);
         loginView.hideLoading();
     }

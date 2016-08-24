@@ -9,6 +9,7 @@ import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.FrientBaen;
 import com.moonsister.tcjy.bean.GetMoneyBean;
 import com.moonsister.tcjy.bean.GoodSelectBaen;
+import com.moonsister.tcjy.bean.HomeTopItemBean;
 import com.moonsister.tcjy.bean.LableBean;
 import com.moonsister.tcjy.bean.LoginBean;
 import com.moonsister.pay.tencent.PayBean;
@@ -904,6 +905,24 @@ public class ServerApi {
         @GET("follow/get_list_friends_all")
         Observable<UserFriendListBean> getUserFriendList(@Query("authcode") String authcode,
                                                          @Query("channel") String channelId);
+
+        /**
+         * 首页标签
+         *
+         * @param page
+         * @param tagId
+         * @param homeType
+         * @param apiVersion
+         * @param channelId
+         * @param authcode
+         */
+        @GET("index/tlist")
+        Observable<HomeTopItemBean> getHomeTopItem(@Query("page") int page,
+                                                   @Query("tagid") String tagId,
+                                                   @Query("search_type") int homeType,
+                                                   @Query("version_type") String apiVersion,
+                                                   @Query("channel") String channelId,
+                                                   @Query("authcode") String authcode);
     }
 }
 

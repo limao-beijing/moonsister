@@ -23,8 +23,12 @@ public class EnumConstant {
             return type;
         }
     }
+
+    /**
+     * 支付类型
+     */
     public enum PayType {
-        ALI_PAY("alipay"), WX_PAY("wxpay"),IAPP_PAY("iapppay");
+        ALI_PAY("alipay"), WX_PAY("wxpay"), IAPP_PAY("iapppay");
         private final String type;
 
         private PayType(String type) {
@@ -32,6 +36,22 @@ public class EnumConstant {
         }
 
         public String getType() {
+            return type;
+        }
+    }
+
+    /**
+     * 首页类型
+     */
+    public enum HomeTopFragmentTop {
+        HOT(1), NAERBY(2), NEW(3);
+        private final int type;
+
+        private HomeTopFragmentTop(int type) {
+            this.type = type;
+        }
+
+        public int getType() {
             return type;
         }
     }

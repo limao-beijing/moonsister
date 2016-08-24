@@ -23,6 +23,7 @@ import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.find.widget.FindFragment;
 import com.moonsister.tcjy.home.widget.HomeFragment;
+import com.moonsister.tcjy.home.widget.HomeTopFragment;
 import com.moonsister.tcjy.im.widget.IMHomeFragment;
 import com.moonsister.tcjy.main.presenter.MainPresenter;
 import com.moonsister.tcjy.main.presenter.MainPresenterImpl;
@@ -173,7 +174,8 @@ public class MainActivity extends BaseActivity implements MainView {
     public void switch2Home() {
 //        BaiduManager.getInstance(this).show(this, appx_banner_container);
         if (homeFragment == null)
-            homeFragment = new HomeFragment();
+//            homeFragment = new HomeFragment();
+            homeFragment = new HomeTopFragment();
         enterPage(homeFragment);
     }
 
@@ -212,7 +214,7 @@ public class MainActivity extends BaseActivity implements MainView {
         }
         if (myFragment == null)
 //            myFragment = new MyFragment();
-            myFragment=new HreatFragment();
+            myFragment = new HreatFragment();
 
         enterPage(myFragment);
 

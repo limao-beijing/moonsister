@@ -132,7 +132,7 @@ public abstract class BaseFragment extends BaseRxFragment implements View.OnTouc
      * 隐藏fragment
      */
     protected void hideFragment(Fragment hide, Fragment show, @IdRes int resid) {
-        if (hide == null || show == null)
+        if (show == null)
             return;
         FragmentUtils.switchHideFragment(getChildFragmentManager(), resid, hide, show);
     }
