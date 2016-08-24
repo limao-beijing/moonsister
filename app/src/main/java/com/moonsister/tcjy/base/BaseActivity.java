@@ -23,6 +23,7 @@ import com.umeng.analytics.MobclickAgent;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import im.gouyin.com.progressdialog.ProgressDialog;
 
 /**

@@ -23,6 +23,7 @@ import com.moonsister.tcjy.home.widget.SearchReasonActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordActivity;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
 import com.moonsister.tcjy.main.widget.BuyVipActivity;
+import com.moonsister.tcjy.main.widget.BuyVipFragment;
 import com.moonsister.tcjy.main.widget.DynamicAtionActivity;
 import com.moonsister.tcjy.main.widget.DynamicDatailsActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordNextActivity;
@@ -46,6 +47,7 @@ import com.moonsister.tcjy.my.widget.ChangepwdActivity;
 import com.moonsister.tcjy.my.widget.FollowActivity;
 import com.moonsister.tcjy.my.widget.GetMoneyActivity;
 import com.moonsister.tcjy.my.widget.HreatFragment;
+import com.moonsister.tcjy.my.widget.MakeMessageActivity;
 import com.moonsister.tcjy.my.widget.MyOrderActivity;
 import com.moonsister.tcjy.my.widget.RZFirstActivity;
 import com.moonsister.tcjy.my.widget.RZSecondActivity;
@@ -56,6 +58,7 @@ import com.moonsister.tcjy.my.widget.SettingActivity;
 import com.moonsister.tcjy.my.widget.SwitchCardActivity;
 import com.moonsister.tcjy.my.widget.TiXianRecordActivity;
 import com.moonsister.tcjy.my.widget.UserInfoChangeActivity;
+import com.moonsister.tcjy.my.widget.VIPMoneyActivity;
 import com.moonsister.tcjy.my.widget.WithdRawDepositActivity;
 import com.moonsister.tcjy.widget.image.CropImageMainActivity;
 import com.moonsister.tcjy.widget.image.PhonePicActivity;
@@ -604,6 +607,11 @@ public class ActivityUtils {
     //关注页面中返回键的监听
     public static void startHreatFragment(){
         startActivity(HreatFragment.class);
+    }
+    //关注页面中返回键的监听
+    //跳转动态管理页面
+    public static void startMakeMessageActivity(){
+        startActivity(MakeMessageActivity.class);
     }
 //    //我的页面不是会员    定义跳转的activity
 //    public static void startNoActivity() {

@@ -69,8 +69,17 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         switch (images[i]){
-            case R.mipmap.mysee:
+            case R.mipmap.mysee://我关注的
                 ActivityUtils.startFollowActivity();
+                break;
+            case R.mipmap.seemy://关注我的
+                ActivityUtils.startFollowActivity();
+                break;
+            case R.mipmap.makemessage:
+                ActivityUtils.startMakeMessageActivity();
+                break;
+            case R.mipmap.vipmoney://VIP充值
+                ActivityUtils.startBuyVipActivity();
                 break;
         }
 

@@ -1,23 +1,13 @@
-package com.moonsister.tcjy.main.widget;
+package com.moonsister.tcjy.my.widget;
 
-import android.graphics.Color;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.text.Html;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.AbsoluteSizeSpan;
-import android.text.style.ForegroundColorSpan;
-import android.view.KeyCharacterMap;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseFragment;
+import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
@@ -25,18 +15,19 @@ import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenter;
 import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenterImpl;
 import com.moonsister.tcjy.main.view.BuyVipFragmentView;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
-import java.util.AbstractCollection;
+import org.w3c.dom.Text;
 
 import butterknife.Bind;
 import butterknife.OnClick;
 
 /**
- * Created by jb on 2016/8/12.
+ * Created by x on 2016/8/24.
  */
-public class BuyVipFragment extends BaseFragment implements BuyVipFragmentView {
+public class VIPMoneyActivity extends BaseActivity implements BuyVipFragmentView {
     @Bind(R.id.riv_avater)
     RoundedImageView rivAvater;
     @Bind(R.id.iv_add_v)
@@ -55,19 +46,19 @@ public class BuyVipFragment extends BaseFragment implements BuyVipFragmentView {
     TextView vipCombo1Text;
     @Bind(R.id.iv_select_1)
     ImageView ivSelect1;
-    private int select;
+    @Bind(R.id.tv_buy)
+    TextView tv_bug;
     private BuyVipFragmentPersenter persenter;
-
+    private int select;
     @Override
-    protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    protected View setRootContentView() {
         persenter = new BuyVipFragmentPersenterImpl();
         persenter.attachView(this);
-        return UIUtils.inflateLayout(R.layout.fragme_buy_vip);
-//        return UIUtils.inflateLayout(R.layout.activity_vipmoney);
+        return UIUtils.inflateLayout(R.layout.activity_vipmoney);
     }
 
     @Override
-    protected void initData() {
+    protected void initView() {
         ImageServerApi.showURLSamllImage(rivAvater, UserInfoManager.getInstance().getAvater());
         int certificationStatus = UserInfoManager.getInstance().getCertificationStatus();
         ivAddV.setVisibility(certificationStatus == 1 ? View.VISIBLE : View.INVISIBLE);
@@ -78,11 +69,6 @@ public class BuyVipFragment extends BaseFragment implements BuyVipFragmentView {
         vipCombo1Text.setText(Html.fromHtml(String.format(string, "1", 50)));
         selectBuy(ivSelect12);
     }
-
-    public static Fragment newInstance() {
-        return new BuyVipFragment();
-    }
-
     private void selectBuy(View view) {
         ivSelect12.setVisibility(view == ivSelect12 ? View.VISIBLE : View.INVISIBLE);
         ivSelect3.setVisibility(view == ivSelect3 ? View.VISIBLE : View.INVISIBLE);
@@ -133,7 +119,7 @@ public class BuyVipFragment extends BaseFragment implements BuyVipFragmentView {
         PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
         memoryPersonInfoDetail.setVipStatus(1);
         UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
-        getActivity().finish();
+        this.finish();
 
     }
 }

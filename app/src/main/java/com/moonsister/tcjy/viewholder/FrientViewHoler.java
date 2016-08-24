@@ -60,7 +60,8 @@ public class FrientViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBean>
 //            Drawable drawable = UIUtils.getResources().getDrawable(R.mipmap.delect_wacth);
 //            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             tvSubmit.setCompoundDrawables(null, null, null, null);
-            tvSubmit.setText(UIUtils.getStringRes(R.string.already_wacth));
+//            tvSubmit.setText(UIUtils.getStringRes(R.string.already_wacth));
+            tvSubmit.setText(UIUtils.getStringRes(R.string.delete_wacth));
             tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.home_navigation_text_gred));
             tvSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override

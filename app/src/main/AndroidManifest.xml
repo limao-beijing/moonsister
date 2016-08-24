@@ -188,6 +188,11 @@
         <activity
             android:name=".my.widget.ChangepwdActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".my.widget.MakeMessageActivity"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".my.widget.SettingActivity"
             android:screenOrientation="portrait" />

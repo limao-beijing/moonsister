@@ -6,12 +6,12 @@
     <RelativeLayout
         android:id="@+id/relative"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y500"
+        android:layout_height="@dimen/y410"
         android:background="@color/backgroud_black_color">
         <ImageView
             android:id="@+id/iv_user_icon"
-            android:layout_width="@dimen/x250"
-            android:layout_height="@dimen/y250"
+            android:layout_width="@dimen/x200"
+            android:layout_height="@dimen/y200"
             android:background="@drawable/custom_imageview"
             android:scaleType="centerInside"
             android:layout_marginTop="@dimen/y62"
@@ -25,14 +25,14 @@
             android:layout_marginRight="@dimen/x70"
             android:layout_marginTop="@dimen/y138"
             android:text="@string/loading"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textColor="#778999" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_user_all_income"
             android:text="总收入"
-            android:textSize="20sp"
+            android:textSize="13sp"
             android:layout_toLeftOf="@+id/iv_user_icon"
             android:layout_marginTop="@dimen/x14"
             android:layout_marginRight="@dimen/x90"
@@ -45,14 +45,14 @@
             android:layout_marginLeft="@dimen/x70"
             android:layout_marginTop="@dimen/y138"
             android:text="@string/loading"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textColor="#778999" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_user_day_income"
             android:text="今日收入"
-            android:textSize="20sp"
+            android:textSize="13sp"
             android:layout_toRightOf="@+id/iv_user_icon"
             android:layout_marginTop="@dimen/x14"
             android:layout_marginLeft="@dimen/x70"
@@ -66,7 +66,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/x32"
             android:text="@string/loading"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textColor="#778998" />
 
         <TextView
@@ -76,10 +76,10 @@
             android:text="呵呵"
             android:textColor="@color/white"
             android:layout_marginTop="@dimen/x34"
-            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginLeft="@dimen/x20"
             android:layout_below="@+id/iv_user_icon"
             android:layout_toRightOf="@+id/tv_user_name"
-            android:background="@drawable/backgroud_yellow"/>
+            android:background="@drawable/backgroup_red"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -107,6 +107,8 @@
             android:layout_below="@+id/tv_user_name"
             android:layout_marginTop="@dimen/x17"
             android:text="22岁"
+            android:textSize="12sp"
+            android:layout_marginRight="@dimen/x20"
             android:textColor="#778998"
             />
         <ImageView
@@ -140,7 +142,7 @@
             android:layout_below="@+id/tv_user_name"
             />
         <ImageView
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="40dp"
             android:id="@+id/image_look_people"
             android:background="@drawable/look_people"
@@ -154,15 +156,15 @@
             android:textColor="#778998"
             android:gravity="center"
             android:layout_marginTop="@dimen/x20"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:text="预览个人主页"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/vip_money"
             android:src="@mipmap/ifvip"
-            android:layout_marginTop="@dimen/x250"
-            android:layout_marginLeft="@dimen/x500"/>
+            android:layout_marginTop="@dimen/x200"
+            android:layout_marginLeft="@dimen/x480"/>
     </RelativeLayout>
 
     <GridView
@@ -170,7 +172,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"
-        android:verticalSpacing="5.0px"
+        android:verticalSpacing="1.0px"
         android:horizontalSpacing="5.0px"
         android:layout_below="@+id/relative"
         android:numColumns="3"></GridView>

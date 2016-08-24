@@ -85,28 +85,28 @@ public class RelationActivity extends BaseActivity implements RelationActivityVi
 
         if (frientBaen == null) {
 //            xlv.setNoMore();
-            xlv.loadMoreComplete();
-            xlv.refreshComplete();
-            return;
-        }
-        if (frientBaen.getData() == null || frientBaen.getData().size() == 0) {
-//            xlv.setNoMore();
-            xlv.loadMoreComplete();
-            xlv.refreshComplete();
-            return;
-        }
-        if (adapter == null) {
-            adapter = new FrientAdapter(frientBaen.getData(), this);
-            adapter.setPageType(type);
-            if (xlv != null)
-                xlv.setAdapter(adapter);
-        } else {
-            adapter.addListData(frientBaen.getData());
-            adapter.onRefresh();
-        }
         xlv.loadMoreComplete();
         xlv.refreshComplete();
-
-
+        return;
     }
+    if (frientBaen.getData() == null || frientBaen.getData().size() == 0) {
+//            xlv.setNoMore();
+        xlv.loadMoreComplete();
+        xlv.refreshComplete();
+        return;
+    }
+    if (adapter == null) {
+        adapter = new FrientAdapter(frientBaen.getData(), this);
+        adapter.setPageType(type);
+        if (xlv != null)
+            xlv.setAdapter(adapter);
+    } else {
+        adapter.addListData(frientBaen.getData());
+        adapter.onRefresh();
+    }
+    xlv.loadMoreComplete();
+    xlv.refreshComplete();
+
+
+}
 }
