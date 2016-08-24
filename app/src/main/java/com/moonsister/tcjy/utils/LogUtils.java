@@ -1,9 +1,9 @@
 package com.moonsister.tcjy.utils;
 
+import android.util.Log;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import android.util.Log;
 
 public class LogUtils {
     private static final boolean DEBUG = false;

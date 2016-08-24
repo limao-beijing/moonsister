@@ -94,6 +94,7 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="f67c2044a115a5b6132fee61adcc5adb" />
+
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService" />
         <!-- 高德 end -->
@@ -111,7 +112,6 @@
 
                 <data
                     android:host="com.xiehouyou.lovelife"
-                    android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>
         </activity>
@@ -129,6 +129,7 @@
 
                 <data
                     android:host="com.xiehouyou.lovelife"
+
                     android:pathPrefix="/subconversationlist"
                     android:scheme="rong" />
             </intent-filter>

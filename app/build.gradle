@@ -27,6 +27,7 @@ android {
              keyAlias "same_city"
              keyPassword "limao123456"
          }*/
+
     }
     buildTypes {
 
@@ -63,6 +64,7 @@ dependencies {
     compile project(':pay')
     compile project(':progressdialog')
     /* compile project(':baidu')*/
+
     //阿里云
     compile files('src/main/libs/aliyun-oss-sdk-android-2.2.0.jar')
     compile files('src/main/libs/AMap_Location_V2.6.0_20160628.jar')
