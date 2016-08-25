@@ -81,19 +81,19 @@
         <!-- 友盟 start -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5788bb7367e58e23e1002d37" />
+            android:value="57bd3b7c67e58ecfb9001ff1" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="1003" />
+            android:value="1007" />
         <!--API  接口-->
         <meta-data
             android:name="API_CHANNEL"
-            android:value="1003" />
+            android:value="1007" />
         <!-- 友盟  end -->
         <!-- 高德 start -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="09592d8387908aee969896ad32f33f6e" />
+            android:value="1540c80b188eb17adfaab103f2bad733" />
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService" />
         <!-- 高德 end -->
@@ -110,7 +110,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="com.datingyou.jimo"
+                    android:host="com.txiehouy.xieho"
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>
@@ -128,7 +128,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="com.datingyou.jimo"
+                    android:host="com.txiehouy.xieho"
                     android:pathPrefix="/subconversationlist"
                     android:scheme="rong" />
             </intent-filter>

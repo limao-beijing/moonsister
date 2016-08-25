@@ -38,6 +38,11 @@ public class FindPasswordNextActivity extends BaseActivity implements FindPasswo
     }
 
     @Override
+    protected String initTitleName() {
+        return UIUtils.getStringRes(R.string.find_pwd);
+    }
+
+    @Override
     public void showLoading() {
         showProgressDialog();
     }

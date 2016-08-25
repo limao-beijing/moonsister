@@ -38,6 +38,7 @@ public class FindPasswordActivity extends BaseActivity implements FindPasswordAc
 
     @Override
     protected void initView() {
+        tvSubmit.setText(UIUtils.getStringRes(R.string.find_pwd));
         presenter = new FindPasswordActivityPresenterImpl();
         presenter.attachView(this);
     }

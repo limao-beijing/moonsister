@@ -126,7 +126,7 @@ public class RZSecondActivity extends BaseActivity implements RZSecondView {
             showToast(UIUtils.getStringRes(R.string.not_empty));
             return;
         }
-        if (pics.size() < 6) {
+        if (pics.size() < 1) {
             showToast(UIUtils.getStringRes(R.string.pic_size_not_six));
             return;
         }

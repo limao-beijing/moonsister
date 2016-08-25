@@ -174,8 +174,8 @@ public class MainActivity extends BaseActivity implements MainView {
     public void switch2Home() {
 //        BaiduManager.getInstance(this).show(this, appx_banner_container);
         if (homeFragment == null)
-//            homeFragment = new HomeFragment();
-            homeFragment = new HomeTopFragment();
+            homeFragment = new HomeFragment();
+//            homeFragment = new HomeTopFragment();
         enterPage(homeFragment);
     }
 
@@ -213,8 +213,8 @@ public class MainActivity extends BaseActivity implements MainView {
             return;
         }
         if (myFragment == null)
-//            myFragment = new MyFragment();
-            myFragment = new HreatFragment();
+            myFragment = new MyFragment();
+//            myFragment = new HreatFragment();
 
         enterPage(myFragment);
 
