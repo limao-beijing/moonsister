@@ -47,7 +47,19 @@
             android:text="@string/vip_enjoy_prerogative"
             android:textColor="@color/color_ff8201"
             android:textSize="@dimen/text_size_18" />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/vip_que"
+            android:text="点此查看特权"
+            android:textColor="#B0E0E6"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/text_size_18"
+            android:layout_marginTop="@dimen/x40"
+            android:layout_marginBottom="@dimen/x40"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_alignParentBottom="true"
+            />
     </RelativeLayout>
 
     <TextView
@@ -62,7 +74,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/x92"
         android:background="@color/white">
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/vipmost"
+            android:layout_centerVertical="true"
+            android:id="@+id/vipmost"/>
         <TextView
             android:id="@+id/vip_combo_12_text"
             android:layout_width="wrap_content"
@@ -70,6 +87,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/x30"
             android:textColor="@color/black"
+            android:layout_toRightOf="@+id/vipmost"
             android:textSize="@dimen/text_size_18" />
 
         <RelativeLayout
@@ -132,7 +150,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/x92"
         android:background="@color/white">
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/vipnext"
+            android:layout_centerVertical="true"
+            android:id="@+id/vipnext"/>
         <TextView
             android:id="@+id/vip_combo_3_text"
             android:layout_width="wrap_content"
@@ -140,6 +163,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/x30"
             android:textColor="@color/black"
+            android:layout_toRightOf="@+id/vipnext"
             android:textSize="@dimen/text_size_18" />
 
         <RelativeLayout
@@ -191,7 +215,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/x92"
         android:background="@color/white">
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/vipxiao"
+            android:layout_centerVertical="true"
+            android:id="@+id/vipxiao"/>
         <TextView
             android:id="@+id/vip_combo_1_text"
             android:layout_width="wrap_content"
@@ -199,6 +228,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/x30"
             android:textColor="@color/black"
+            android:layout_toRightOf="@+id/vipxiao"
             android:textSize="@dimen/text_size_18" />
 
 

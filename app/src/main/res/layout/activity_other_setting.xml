@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/line_color"
+    android:background="@color/line_back"
     android:orientation="vertical">
 
     <include layout="@layout/app_titlebar" />
@@ -19,8 +19,8 @@
             android:padding="@dimen/x25"
 
             android:text="2G/3G省流量模式提醒"
-            android:textColor="@color/title_text"
-            android:textSize="@dimen/order_text_small3" />
+            android:textColor="@color/titile_text_color"
+            android:textSize="@dimen/order_text_small4" />
 
 
         <!--<com.cttouzi.administrator.mimei.widget.SlideSwitch-->
@@ -39,13 +39,13 @@
         android:id="@+id/tv_changepwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/x25"
+        android:layout_marginTop="@dimen/x20"
         android:background="@color/white"
         android:drawableRight="@mipmap/icon_arrow_right"
         android:padding="@dimen/x25"
         android:text="密码修改"
         android:textColor="@color/title_text"
-        android:textSize="@dimen/order_text_small3" />
+        android:textSize="@dimen/order_text_small4" />
 
     <View
         android:layout_width="match_parent"
@@ -60,13 +60,13 @@
         android:padding="@dimen/x25"
         android:text="帮助中心"
         android:textColor="@color/title_text"
-        android:textSize="@dimen/order_text_small3" />
+        android:textSize="@dimen/order_text_small4" />
 
     <RelativeLayout
         android:id="@+id/layout_delete_cache"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/x25"
+        android:layout_marginTop="@dimen/x20"
         android:background="@color/white">
 
         <TextView
@@ -76,7 +76,7 @@
             android:padding="@dimen/x25"
             android:text="清除缓存"
             android:textColor="@color/title_text"
-            android:textSize="@dimen/order_text_small3" />
+            android:textSize="@dimen/order_text_small4" />
 
         <TextView
             android:layout_marginRight="@dimen/x30"
@@ -86,7 +86,7 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:textColor="@color/title_text"
-            android:textSize="@dimen/order_text_small3" />
+            android:textSize="@dimen/order_text_small4" />
 
     </RelativeLayout>
 
@@ -112,7 +112,7 @@
             android:padding="@dimen/x25"
             android:text="版本号v.2.9.1"
             android:textColor="@color/title_text"
-            android:textSize="@dimen/order_text_small3" />
+            android:textSize="@dimen/order_text_small4" />
 
         <TextView
             android:id="@+id/tv_verson_status"
@@ -120,26 +120,34 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:drawablePadding="@dimen/x20"
-
             android:drawableRight="@mipmap/icon_arrow_right"
             android:padding="@dimen/x25"
             android:text="已是最新版本"
             android:textColor="@color/j_wheel_timebtn_pre"
-            android:textSize="@dimen/order_text_small3" />
+            android:textSize="@dimen/order_text_small4" />
 
 
     </RelativeLayout>
-
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/y88"
         android:id="@+id/timeout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/x25"
-        android:background="@color/white"
-        android:drawableRight="@mipmap/icon_arrow_right"
-        android:padding="@dimen/x25"
-        android:text="退出登录"
-        android:textColor="@color/title_text"
-        android:textSize="@dimen/order_text_small3" />
+        android:background="@mipmap/setting"
+        android:layout_marginTop="@dimen/y100"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:text="退出登录"/>
+    <!--<TextView-->
+        <!--android:id="@+id/timeout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="@dimen/x25"-->
+        <!--android:background="@color/white"-->
+        <!--android:drawableRight="@mipmap/icon_arrow_right"-->
+        <!--android:padding="@dimen/x25"-->
+        <!--android:text="退出登录"-->
+        <!--android:textColor="@color/title_text"-->
+        <!--android:textSize="@dimen/order_text_small3" />-->
 
 </LinearLayout>

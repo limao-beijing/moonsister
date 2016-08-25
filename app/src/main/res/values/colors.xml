@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="app_line">#dbdbdb</color>
+    <color name="text_huang">#FF8C00</color>
     <!--app 灰色底-->
     <color name="app_gred_background">#f5f5f5</color>
     <!--首页导航栏文字颜色-灰-->
@@ -40,10 +41,12 @@
     <color name="j_wheel_timebtn_pre">#CCCCCC</color>
     <color name="layout_bg">#ffffff</color>
     <color name="line_color">#E2E2E2</color>
+    <color name="line_back">#ECF0F2</color>
 
     <color name="text_gred_color">#999999</color>
     <color name="text_yellow_color">#FF7F00</color>
     <color name="title_text">#464545</color>
+    <color name="titile_text_color">#1D262E</color>
     <color name="blue">#1498fb</color>
     <color name="grid_state_pressed">#1Affffff</color>
     <color name="grid_state_focused">#80000000</color>

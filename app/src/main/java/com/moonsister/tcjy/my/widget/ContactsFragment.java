@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.my.widget;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
+import com.moonsister.tcjy.adapter.FriendlyAdapter;
 import com.moonsister.tcjy.adapter.FrientAdapter;
 import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.bean.FrientBaen;
@@ -28,11 +30,12 @@ public class ContactsFragment extends BaseFragment implements RelationActivityVi
     private RelationActivityPresenterImpl presenter;
     private boolean isLoadMord;
     private int type;
-    private String uid;
-    private FrientAdapter adapter;
+
+    private FriendlyAdapter adapter;
+    String uid;
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        type = getActivity().getIntent().getIntExtra("type", 0);
+//        type = getActivity().getIntent().getIntExtra("type", 0);
         uid = getActivity().getIntent().getStringExtra("uid");
         type=2;
         presenter=new RelationActivityPresenterImpl();
@@ -43,6 +46,7 @@ public class ContactsFragment extends BaseFragment implements RelationActivityVi
 
     @Override
     protected void initData() {
+
         xListView.setVerticalLinearLayoutManager();
         xListView.setPullRefreshEnabled(false);
         xListView.setLoadingListener(new XRecyclerView.LoadingListener() {
@@ -61,8 +65,8 @@ public class ContactsFragment extends BaseFragment implements RelationActivityVi
 
     @Override
     public void setFrientData(FrientBaen frientBaen) {
-        adapter = new FrientAdapter(frientBaen.getData(), this);
-        adapter.setPageType(type);
+//        adapter = new FriendlyAdapter(frientBaen.getData(), this);
+//        adapter.setPageType(type);
         if (frientBaen == null) {
 //            xlv.setNoMore();
             xListView.loadMoreComplete();
@@ -76,7 +80,7 @@ public class ContactsFragment extends BaseFragment implements RelationActivityVi
             return;
         }
         if (adapter == null) {
-            adapter = new FrientAdapter(frientBaen.getData(), this);
+            adapter = new FriendlyAdapter(frientBaen.getData(), this);
             adapter.setPageType(type);
             if (xListView != null)
                 xListView.setAdapter(adapter);

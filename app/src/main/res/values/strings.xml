@@ -16,6 +16,7 @@
     <string name="send_flowers">送花</string>
     <string name="str_fen">粉丝</string>
     <string name="wacth">关注</string>
+    <string name="pingbi">屏蔽TA</string>
     <string name="dynamic">动态</string>
     <string name="flower">花束</string>
     <string name="activity_name_dynamic_datails">动态详情</string>
@@ -249,6 +250,7 @@
     <string name="failed">失败</string>
     <string name="home_new">新锐</string>
     <string name="load_error">网络请求失败,请刷新</string>
-
+    <string name="text">请在录制过程中大声念出以下随机文字</string>
+    <string name="refrering">你需要支付100金币(1元=10金币)进行付费认证，付费成功后，认证费用将作为保证金存在你的财务中心，满一个月后，保证金可消费，可提现。</string>
 
 </resources>

@@ -47,8 +47,10 @@ import com.moonsister.tcjy.my.widget.ChangepwdActivity;
 import com.moonsister.tcjy.my.widget.FollowActivity;
 import com.moonsister.tcjy.my.widget.GetMoneyActivity;
 import com.moonsister.tcjy.my.widget.HreatFragment;
+import com.moonsister.tcjy.my.widget.InsertActivity;
 import com.moonsister.tcjy.my.widget.MakeMessageActivity;
 import com.moonsister.tcjy.my.widget.MyOrderActivity;
+import com.moonsister.tcjy.my.widget.PersonalActivity;
 import com.moonsister.tcjy.my.widget.RZFirstActivity;
 import com.moonsister.tcjy.my.widget.RZSecondActivity;
 import com.moonsister.tcjy.my.widget.RZThidActivity;
@@ -60,6 +62,7 @@ import com.moonsister.tcjy.my.widget.TiXianRecordActivity;
 import com.moonsister.tcjy.my.widget.UserInfoChangeActivity;
 import com.moonsister.tcjy.my.widget.VIPMoneyActivity;
 import com.moonsister.tcjy.my.widget.WithdRawDepositActivity;
+import com.moonsister.tcjy.widget.RenZhengActivity;
 import com.moonsister.tcjy.widget.image.CropImageMainActivity;
 import com.moonsister.tcjy.widget.image.PhonePicActivity;
 import com.moonsister.tcjy.widget.image.ShowImageActivity;
@@ -600,8 +603,11 @@ public class ActivityUtils {
 
     }
 //    //我的页面gridview中跳转关注页面   定义跳转的activity
-    public static void startFollowActivity() {
-        startActivity(FollowActivity.class);
+    public static void startFollowActivity(String uid,int type) {
+        Intent intent=new Intent(getContext(),FollowActivity.class);
+        intent.putExtra("type",type);
+        intent.putExtra("uid",uid);
+        startActivity(intent);
     }
 
     //关注页面中返回键的监听
@@ -612,6 +618,18 @@ public class ActivityUtils {
     //跳转动态管理页面
     public static void startMakeMessageActivity(){
         startActivity(MakeMessageActivity.class);
+    }
+    //跳转动态管理页面
+    public static void startInsertActivity(){
+        startActivity(InsertActivity.class);
+    }
+    //跳转VIP认证页面
+    public static void startRenZhengActivity(){
+        startActivity(RenZhengActivity.class);
+    }
+    //跳转修改资料页面
+    public static void startPersonalActivity(){
+        startActivity(PersonalActivity.class);
     }
 //    //我的页面不是会员    定义跳转的activity
 //    public static void startNoActivity() {

@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
+import com.moonsister.tcjy.adapter.FriendAdapter;
 import com.moonsister.tcjy.adapter.FrientAdapter;
 import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.bean.FrientBaen;
@@ -40,12 +41,16 @@ public class ChatFollowFragment extends BaseFragment implements RelationActivity
     private boolean isLoadMord;
     private int type;
     private String uid;
-    private FrientAdapter adapter;
-
+    FriendAdapter adapter;
+    public static final int PAGE_WACTH = 1;
+    public static final int PAGE_FEN = 2;
+    public static final int PAGE_MAIN = 3;
+    public static final int PAGE_FRIEND = 4;//好友状态
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        type = getActivity().getIntent().getIntExtra("type", 0);
-        uid = getActivity().getIntent().getStringExtra("uid");
+//        Intent intent=getActivity().getIntent();
+//        type = getActivity().getIntent().getIntExtra("type", 0);
+//        uid = getActivity().getIntent().getStringExtra("uid");
         type=1;
         presenter=new RelationActivityPresenterImpl();
         presenter.attachView(this);
@@ -76,8 +81,8 @@ public class ChatFollowFragment extends BaseFragment implements RelationActivity
 
     @Override
     public void setFrientData(FrientBaen frientBaen) {
-        adapter = new FrientAdapter(frientBaen.getData(), this);
-        adapter.setPageType(type);
+//        adapter = new FriendAdapter(frientBaen.getData(), this);
+//        adapter.setPageType(type);
         if (frientBaen == null) {
 //            xlv.setNoMore();
             xListView.loadMoreComplete();
@@ -91,7 +96,7 @@ public class ChatFollowFragment extends BaseFragment implements RelationActivity
             return;
         }
         if (adapter == null) {
-            adapter = new FrientAdapter(frientBaen.getData(), this);
+            adapter = new FriendAdapter(frientBaen.getData(), this);
             adapter.setPageType(type);
             if (xListView != null)
                 xListView.setAdapter(adapter);
@@ -122,4 +127,7 @@ public class ChatFollowFragment extends BaseFragment implements RelationActivity
     }
 
 
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 }

@@ -47,7 +47,19 @@
             android:text="@string/vip_enjoy_prerogative"
             android:textColor="@color/color_ff8201"
             android:textSize="@dimen/text_size_18" />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/vip_que"
+            android:text="点此查看特权"
+            android:textColor="#B0E0E6"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/text_size_18"
+            android:layout_marginTop="@dimen/x40"
+            android:layout_marginBottom="@dimen/x40"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_alignParentBottom="true"
+            />
     </RelativeLayout>
 
     <TextView
@@ -79,18 +91,23 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/x30"
             android:layout_toRightOf="@+id/vip_combo_12_text">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/vipmost"
+                android:id="@+id/vipmost"/>
 
             <TextView
                 android:id="@+id/vip_12_low_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-
+                android:layout_toRightOf="@+id/vipmost"
                 android:text="@string/vip_12_low_money"
                 android:textColor="@color/gray_color" />
 
             <View
-
+                android:layout_toRightOf="@+id/vip_12_low_money"
                 style="@style/horizontal_line_style"
                 android:layout_width="@dimen/x120"
                 android:layout_alignLeft="@+id/vip_12_low_money"

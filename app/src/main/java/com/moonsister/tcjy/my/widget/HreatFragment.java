@@ -9,8 +9,10 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 
+import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
+import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.HreatViewholder;
@@ -30,6 +32,8 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
     @Bind(R.id.gridView)//我页面中gridview
     GridView gridView;
     //gridview中的item数据与图片
+    String uid;
+    int type;
     String[] images_text=new String[]{"我关注的","关注我的","动态管理","VIP充值","申请认证","兴趣修改","悬赏管理","约见管理","修改资料","财务中心","屏蔽手机联系人","   设置"};
     int[] images=new int[]{R.mipmap.mysee,R.mipmap.seemy,R.mipmap.makemessage,R.mipmap.vipmoney,R.mipmap.viprenzheng,R.mipmap.insert,R.mipmap.xuanshang,R.mipmap.yousee,R.mipmap.make,R.mipmap.money,R.mipmap.phone,R.mipmap.domake};
     @Override
@@ -40,6 +44,7 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
 
     @Override
     protected void initData() {
+        uid= UserInfoManager.getInstance().getUid();
         List<Map<String,Object>> listItems = new ArrayList<Map<String, Object>>();
         //循环加载数据到gridview中
         for (int i=0;i<images_text.length;i++) {
@@ -70,16 +75,28 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         switch (images[i]){
             case R.mipmap.mysee://我关注的
-                ActivityUtils.startFollowActivity();
-                break;
+
+                ActivityUtils.startFollowActivity(uid,1);
             case R.mipmap.seemy://关注我的
-                ActivityUtils.startFollowActivity();
+                ActivityUtils.startFollowActivity(uid,2);
                 break;
-            case R.mipmap.makemessage:
+            case R.mipmap.makemessage://动态管理
                 ActivityUtils.startMakeMessageActivity();
                 break;
             case R.mipmap.vipmoney://VIP充值
                 ActivityUtils.startBuyVipActivity();
+                break;
+            case R.mipmap.insert:
+                ActivityUtils.startInsertActivity();
+                break;
+            case R.mipmap.viprenzheng:
+                ActivityUtils.startRenZhengActivity();
+                break;
+            case R.mipmap.make:
+
+                break;
+            case R.mipmap.domake:
+                ActivityUtils.startSettingActivity();
                 break;
         }
 

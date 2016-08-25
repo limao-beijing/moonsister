@@ -37,6 +37,14 @@
             android:gravity="center"
             android:textColor="#D6DDE4"
             android:text="关注我的"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_pingbi"
+            android:background="@mipmap/nosee"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/x70"
+            />
     </LinearLayout>
     <FrameLayout
         android:id="@+id/fragmentlayout"

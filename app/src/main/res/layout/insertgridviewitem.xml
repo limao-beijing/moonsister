@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/x253"
+    android:layout_height="@dimen/y251">
+    <ImageView
+        android:layout_width="@dimen/x213"
+        android:layout_height="@dimen/y231"
+        android:id="@+id/insert_image"
+        android:layout_marginTop="@dimen/y20"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginRight="@dimen/x20"
+        android:padding="@dimen/x10"
+        android:background="@color/black"
+        />
+    <CheckBox
+        android:layout_width="@dimen/x40"
+        android:layout_height="@dimen/x40"
+        android:id="@+id/insert_checkbox"
+        android:layout_marginTop="@dimen/y20"
+
+        android:background="@mipmap/check"
+        android:layout_marginLeft="@dimen/x180"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:background="@mipmap/foods"
+        android:layout_marginTop="@dimen/y195"
+        android:layout_marginLeft="@dimen/x40"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="哈哈"
+        android:id="@+id/insert_text"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/y195"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/x30"
+        />
+</RelativeLayout>

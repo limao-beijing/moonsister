@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.my.widget;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -32,7 +33,6 @@ public class FollowActivity extends BaseActivity implements RelationActivityView
     @Bind(R.id.image_back)
     ImageView imageBack;
 
-
     private ChatFollowFragment mChatFg;
     private ContactsFragment mContactsFg;
     Fragment currentFragment;
@@ -46,6 +46,7 @@ public class FollowActivity extends BaseActivity implements RelationActivityView
     @Override
     protected void initView() {
         mChatFg = new ChatFollowFragment();
+        mChatFg.setUid(getIntent().getStringExtra("uid"));
         mContactsFg = new ContactsFragment();
 
         FragmentUtils.switchHideFragment(getSupportFragmentManager(),R.id.fragmentlayout,currentFragment,mChatFg);
@@ -75,6 +76,7 @@ public class FollowActivity extends BaseActivity implements RelationActivityView
 
 
     @OnClick({R.id.my_follow, R.id.follow_my})
+
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.my_follow:
