@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.bean.model.BaseFragmentActivity;
+import com.moonsister.tcjy.base.BaseFragmentActivity;
 import com.moonsister.tcjy.center.presenter.DynamicPublishPresenter;
 import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
 import com.moonsister.tcjy.center.view.DefaultDynamicView;

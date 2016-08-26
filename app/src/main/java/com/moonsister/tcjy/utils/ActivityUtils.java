@@ -19,6 +19,7 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.find.widget.NearbyActivity;
 import com.moonsister.tcjy.find.widget.RankActivity;
 import com.moonsister.tcjy.home.widget.SearchActivity;
+import com.moonsister.tcjy.home.widget.SearchFragmentActivity;
 import com.moonsister.tcjy.home.widget.SearchReasonActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordActivity;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
@@ -604,50 +605,63 @@ public class ActivityUtils {
         }
 
     }
-//    //我的页面gridview中跳转关注页面   定义跳转的activity
-    public static void startFollowActivity(String uid,int type) {
-        Intent intent=new Intent(getContext(),FollowActivity.class);
-        intent.putExtra("type",type);
-        intent.putExtra("uid",uid);
+
+    //    //我的页面gridview中跳转关注页面   定义跳转的activity
+    public static void startFollowActivity(String uid, int type) {
+        Intent intent = new Intent(getContext(), FollowActivity.class);
+        intent.putExtra("type", type);
+        intent.putExtra("uid", uid);
         startActivity(intent);
     }
 
     //关注页面中返回键的监听
-    public static void startHreatFragment(){
+    public static void startHreatFragment() {
         startActivity(HreatFragment.class);
     }
+
     //关注页面中返回键的监听
     //跳转动态管理页面
-    public static void startMakeMessageActivity(){
+    public static void startMakeMessageActivity() {
         startActivity(MakeMessageActivity.class);
     }
+
     //跳转动态管理页面
-    public static void startInsertActivity(){
+    public static void startInsertActivity() {
         startActivity(InsertActivity.class);
     }
+
     //跳转VIP认证页面
-    public static void startRenZhengActivity(){
+    public static void startRenZhengActivity() {
         startActivity(RenZhengActivity.class);
     }
+
     //跳转修改资料页面
-    public static void startPersonalActivity(){
+    public static void startPersonalActivity() {
         startActivity(PersonalActivity.class);
     }
+
     //跳转财务中心页面
-    public static void startMoneyActivity(){
+    public static void startMoneyActivity() {
         startActivity(MoneyActivity.class);
     }
+
     //跳转余额充值界面
-    public static void startRechargeActivity(){
+    public static void startRechargeActivity() {
         startActivity(RechargeActivity.class);
     }
+
     //跳转提现界面
-    public static void startWithdrawActivity(){
+    public static void startWithdrawActivity() {
         startActivity(WithdrawActivity.class);
     }
+
     //跳转余额充值界面
-    public static void startAddActivity(){
+    public static void startAddActivity() {
         startActivity(AddActivity.class);
+    }
+
+    public static void startSearchFragmentActivity() {
+        startActivity(SearchFragmentActivity.class);
     }
 //    //我的页面不是会员    定义跳转的activity
 //    public static void startNoActivity() {

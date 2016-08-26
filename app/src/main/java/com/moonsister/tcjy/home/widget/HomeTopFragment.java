@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
+import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
 
 import butterknife.Bind;
@@ -40,7 +41,7 @@ public class HomeTopFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_search:
-
+                ActivityUtils.startSearchFragmentActivity();
                 break;
             case R.id.tv_home_hot:
                 if (homeHotFragment == null) {

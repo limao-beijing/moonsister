@@ -1,4 +1,4 @@
-package com.moonsister.tcjy.bean.model;
+package com.moonsister.tcjy.base;
 
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
@@ -24,7 +24,6 @@ public abstract class BaseFragmentActivity extends BaseActivity {
 
     @Override
     protected View setRootContentView() {
-
         return UIUtils.inflateLayout(R.layout.activity_base_fragment);
     }
 

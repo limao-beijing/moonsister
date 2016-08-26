@@ -53,6 +53,7 @@
 
     <color name="transparent_white">#88ffffff</color>
     <color name="black">#ff000000</color>
+    <color name="black_1d262e">#1D262E</color>
     <color name="transparent">#00000000</color>
     <color name="half_transparent">#88000000</color>
     <color name="color_f9f9f9">#f9f9f9</color>
@@ -120,5 +121,7 @@
     <color name="color_1d262e">#1d262e</color>
     <color name="yellow_ffd305">#ffd305</color>
     <color name="white_d6dde4">#d6dde4</color>
+    <color name="text_gray_778998">#778998</color>
+    <color name="white_778998">#778998</color>
 </resources>
 

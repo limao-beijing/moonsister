@@ -6,11 +6,12 @@
     <RelativeLayout
         android:id="@+id/rl_dynamic"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x300">
+        android:layout_height="@dimen/x300"
+        android:paddingTop="@dimen/x15">
 
         <View
             android:id="@+id/vw_cener_line"
-            android:layout_width="@dimen/x3"
+            android:layout_width="@dimen/x10"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true" />
 
@@ -34,7 +35,8 @@
                 android:layout_marginLeft="@dimen/x15"
                 android:layout_marginTop="@dimen/x15"
                 android:drawableLeft="@mipmap/wacth_number"
-                android:drawablePadding="@dimen/x5" />
+                android:drawablePadding="@dimen/x5"
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/tv_content_left"
@@ -48,6 +50,13 @@
                 android:lines="2"
                 android:text="@string/loading"
                 android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/iv_dynamic_type_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -75,8 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/home_top_pic" />
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/tv_content_right"
@@ -100,31 +108,42 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/rl_dynamic"
         android:layout_centerVertical="true"
+        android:layout_marginBottom="@dimen/x15"
+        android:layout_marginTop="@dimen/x15"
         android:gravity="center_vertical">
 
         <com.moonsister.tcjy.widget.RoundedImageView
             android:id="@+id/riv_user_image"
-            android:layout_width="@dimen/x92"
-            android:layout_height="@dimen/x92"
-            android:layout_margin="@dimen/x30" />
+            android:layout_width="@dimen/x50"
+            android:layout_height="@dimen/x50" />
 
         <TextView
             android:id="@+id/tv_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/loading" />
+            android:layout_marginLeft="@dimen/x10"
+            android:text="@string/loading"
+            android:textColor="@color/black_1d262e"
+            android:textSize="@dimen/text_size_16" />
 
         <TextView
             android:id="@+id/tv_job"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x15"
-            android:text="@string/loading" />
+            android:layout_marginLeft="@dimen/x10"
+            android:background="@drawable/shape_job_bg"
+            android:gravity="center"
+            android:paddingLeft="@dimen/x10"
+            android:paddingRight="@dimen/x10"
+
+            android:text="@string/loading"
+            android:textSize="@dimen/text_size_12" />
 
         <ImageView
             android:id="@+id/iv_sex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10"
             android:src="@mipmap/gril" />
 
         <TextView
@@ -132,8 +151,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x15"
-            android:text="@string/loading" />
+            android:text="@string/loading"
+            android:textColor="@color/text_gray_778998"
+            android:textSize="@dimen/text_size_12" />
 
+        <TextView
+            android:id="@+id/tv_tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x15"
+            android:enabled="true"
+            android:singleLine="true"
+            android:text="@string/loading"
+            android:textColor="@color/text_gray_778998"
+            android:textSize="@dimen/text_size_12" />
     </LinearLayout>
 
 </RelativeLayout>

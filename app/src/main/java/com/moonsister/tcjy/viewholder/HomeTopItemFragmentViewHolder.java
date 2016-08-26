@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.viewholder;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -10,9 +11,12 @@ import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.HomeTopItemBean;
+import com.moonsister.tcjy.center.widget.DynamicContentFragment;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ConfigUtils;
+import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
 import java.util.List;
@@ -47,10 +51,14 @@ public class HomeTopItemFragmentViewHolder extends BaseRecyclerViewHolder<HomeTo
     TextView tvAge;
     @Bind(R.id.iv_dynamic_type_right)
     ImageView iv_dynamic_type_right;
+    @Bind(R.id.iv_dynamic_type_left)
+    ImageView iv_dynamic_type_left;
     @Bind(R.id.tv_user_name)
     TextView tv_user_name;
     @Bind(R.id.ll_tag_content)
     LinearLayout llTagContent;
+    @Bind(R.id.tv_tags)
+    TextView tvTags;
 
     public HomeTopItemFragmentViewHolder(View view) {
         super(view);
@@ -68,11 +76,16 @@ public class HomeTopItemFragmentViewHolder extends BaseRecyclerViewHolder<HomeTo
             ImageServerApi.showURLBigImage(ivDynamicBgLeft, listletfBean.getPic());
             tvContentLeft.setText(listletfBean.getTitle());
             tvWacthNumberLeft.setText(listletfBean.getViews());
+            setClickTODymic(ivDynamicBgLeft, listletfBean.getLid());
+            showDynamicType(iv_dynamic_type_left, listletfBean.getType());
             //right
             ImageServerApi.showURLBigImage(ivDynamicBgRight, listrightBean.getPic());
             tvContentRight.setText(listrightBean.getTitle());
             tvWacthNumberRight.setText(listrightBean.getViews());
+            setClickTODymic(ivDynamicBgRight, listrightBean.getLid());
+            showDynamicType(iv_dynamic_type_right, listrightBean.getType());
         }
+
         HomeTopItemBean.DataBean.UinfoBean uinfo = dataBean.getUinfo();
         if (uinfo != null) {
             ImageServerApi.showURLSamllImage(rivUserImage, uinfo.getFace());
@@ -84,28 +97,69 @@ public class HomeTopItemFragmentViewHolder extends BaseRecyclerViewHolder<HomeTo
             }
             tvJob.setText(uinfo.getProfession());
             tvAge.setText(uinfo.getAge());
-            setUserTag(uinfo.getUsertags());
+            String usertags = uinfo.getUsertags();
+            if (!StringUtis.isEmpty(usertags) && usertags.contains("|||")) {
+                String tag = "  ";
+                String replace = usertags.replace("|||", tag);
+                tvTags.setText(replace);
+
+            }
+        }
+
+
+    }
+
+    /**
+     * 点击去动态
+     *
+     * @param view
+     * @param dynamicId
+     */
+    private void setClickTODymic(View view, String dynamicId) {
+        if (view == null || StringUtis.isEmpty(dynamicId))
+            return;
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startDynamicActivity(dynamicId);
+            }
+        });
+
+    }
+
+    /**
+     * 显示收费标示
+     *
+     * @param view
+     * @param type
+     */
+    private void showDynamicType(ImageView view, int type) {
+        if (type == 0 || view == null)
+            return;
+        if (type == EnumConstant.DynamicType.FREE_VIDEO.getValue()
+                || type == EnumConstant.DynamicType.FREE_VOICE.getValue()
+                || type == EnumConstant.DynamicType.FREE_PIC.getValue()) {
+            view.setVisibility(View.GONE);
+        } else {
+            view.setVisibility(View.VISIBLE);
+            if (type == EnumConstant.DynamicType.CHARGE_PIC.getValue()) {
+                view.setImageResource(R.mipmap.home_top_pic);
+            } else if (type == EnumConstant.DynamicType.CHARGE_VOICE.getValue()) {
+                view.setImageResource(R.mipmap.home_top_voice);
+            } else {
+                view.setImageResource(R.mipmap.home_top_video);
+            }
         }
 
     }
 
     @Override
     protected void onItemclick(View view, HomeTopItemBean.DataBean dataBean, int position) {
-//        ActivityUtils.startDynamicActivity(dataBean.getId());
+        HomeTopItemBean.DataBean.UinfoBean uinfo = dataBean.getUinfo();
+        if (uinfo == null)
+            return;
+        ActivityUtils.startDynamicActivity(uinfo.getUid());
     }
 
-    public void setUserTag(String userTag) {
-        if (llTagContent == null)
-            return;
-        if (!StringUtis.isEmpty(userTag) && userTag.contains("|||")) {
-            String[] split = userTag.split("|||");
-            if (split != null) {
-                for (int i = 0; i < split.length; i++) {
-                    TextView view = new TextView(ConfigUtils.getInstance().getApplicationContext());
-                    view.setText(split[i]);
-                    llTagContent.addView(view);
-                }
-            }
-        }
-    }
+
 }

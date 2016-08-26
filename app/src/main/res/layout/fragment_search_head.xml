@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/x96"
+    android:background="@color/blue_dark_151c22">
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/x20"
+        android:background="@drawable/shape_search_edittext_bg_778998"
+        android:paddingBottom="@dimen/x17"
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x30"
+        android:paddingTop="@dimen/x17"
+        android:text="@string/cancel"
+        android:textColor="@color/white_d6dde4"
+        android:textSize="@dimen/text_size_12" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x70"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x20"
+        android:layout_toLeftOf="@+id/tv_cancel"
+        android:background="@drawable/shape_search_edittext_bg_d6dde4">
+
+        <ImageView
+            android:id="@+id/iv_search_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/search_blackicon" />
+
+        <ImageView
+            android:id="@+id/iv_search_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/search_cancel" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginRight="@dimen/x10"
+            android:layout_toLeftOf="@+id/iv_search_cancel"
+            android:layout_toRightOf="@+id/iv_search_icon"
+            android:background="@null"
+            android:hint="@string/search"
+            android:textColorHint="@color/text_gray_778998"
+            android:textSize="@dimen/text_size_12" />
+
+    </RelativeLayout>
+</RelativeLayout>

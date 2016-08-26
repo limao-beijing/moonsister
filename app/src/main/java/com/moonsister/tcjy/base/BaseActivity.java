@@ -32,8 +32,8 @@ import im.gouyin.com.progressdialog.ProgressDialog;
 public abstract class BaseActivity extends RxAppCompatActivity {
     protected String TAG = this.getClass().getSimpleName();
     protected View mRootView;
-    private View titleView;
     private ProgressDialog progressDialog;
+    protected View titleView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +42,11 @@ public abstract class BaseActivity extends RxAppCompatActivity {
             ((ApplicationConfig) ConfigUtils.getInstance().getApplicationContext()).addActivity(this);
         onBaseCreate(savedInstanceState);
         mRootView = setRootContentView();
+        titleView = mRootView.findViewById(R.id.app_title_bar);
+        if (titleView != null)
+            initTitieBar(titleView);
+
+
         if (mRootView == null) {
             if (LogUtils.getDeBugState())
                 throw new RuntimeException("root layout not null");
@@ -52,12 +57,8 @@ public abstract class BaseActivity extends RxAppCompatActivity {
 
         ButterKnife.bind(this);
         initView();
-        View titleView = mRootView.findViewById(R.id.app_title_bar);
-        if (titleView != null)
-            initTitieBar(titleView);
         // 方向锁定
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
     }
 
     protected void showToast(String msg) {

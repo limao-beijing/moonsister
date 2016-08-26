@@ -236,7 +236,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".my.widget.AddCardActivity"
-             android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".my.widget.InsertActivity"
             android:screenOrientation="portrait" />
@@ -264,6 +264,7 @@
             android:name=".main.widget.SwitchItemActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyDialogStyleBottom" />
+        <activity android:name=".home.widget.SearchFragmentActivity" />
         <!-- 微信支付  start -->
         <activity
             android:name=".wxapi.WXPayEntryActivity"
