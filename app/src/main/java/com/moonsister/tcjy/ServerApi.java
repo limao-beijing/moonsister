@@ -923,6 +923,11 @@ public class ServerApi {
                                                    @Query("version_type") String apiVersion,
                                                    @Query("channel") String channelId,
                                                    @Query("authcode") String authcode);
+
+        /**
+         *屏蔽
+         *
+         */
     }
 }
 

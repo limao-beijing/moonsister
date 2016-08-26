@@ -43,6 +43,7 @@
             android:id="@+id/image_pingbi"
             android:background="@mipmap/nosee"
             android:layout_gravity="center"
+            android:visibility="invisible"
             android:layout_marginLeft="@dimen/x70"
             />
     </LinearLayout>

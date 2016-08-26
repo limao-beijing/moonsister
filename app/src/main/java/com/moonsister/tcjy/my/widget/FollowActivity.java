@@ -32,7 +32,8 @@ public class FollowActivity extends BaseActivity implements RelationActivityView
     TextView follow_my;
     @Bind(R.id.image_back)
     ImageView imageBack;
-
+    @Bind(R.id.image_pingbi)
+    ImageView image_pingbi;
     private ChatFollowFragment mChatFg;
     private ContactsFragment mContactsFg;
     Fragment currentFragment;
@@ -85,13 +86,18 @@ public class FollowActivity extends BaseActivity implements RelationActivityView
                 my_follow.setTextColor(getResources().getColor(R.color.text_follow_color));
                 follow_my.setBackgroundResource(R.mipmap.my_follow);
                 follow_my.setTextColor(getResources().getColor(R.color.text_followmy_color));
+                image_pingbi.setVisibility(View.INVISIBLE);
                 break;
             case R.id.follow_my:
                 FragmentUtils.switchHideFragment(getSupportFragmentManager(),R.id.fragmentlayout,mChatFg,mContactsFg);
-                my_follow.setBackgroundResource(R.mipmap.my_foll);
+                my_follow.setBackgroundResource(R.mipmap.follow_my);
                 my_follow.setTextColor(getResources().getColor(R.color.text_followmy_color));
                 follow_my.setTextColor(getResources().getColor(R.color.text_follow_color));
-                follow_my.setBackgroundResource(R.mipmap.my_follow);
+                follow_my.setBackgroundResource(R.mipmap.foll_my);
+                image_pingbi.setVisibility(View.VISIBLE);
+                break;
+            case R.id.image_pingbi:
+
                 break;
         }
     }

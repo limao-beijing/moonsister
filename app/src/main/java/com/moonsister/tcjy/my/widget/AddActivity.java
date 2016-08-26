@@ -7,13 +7,12 @@ import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.utils.UIUtils;
 
 /**
- * Created by x on 2016/8/25.
+ * Created by x on 2016/8/26.
  */
-public class PersonalActivity extends BaseActivity {
-
+public class AddActivity extends BaseActivity{
     @Override
     protected View setRootContentView() {
-        return UIUtils.inflateLayout(R.layout.personalactivity);
+        return UIUtils.inflateLayout(R.layout.activity_add);
     }
 
     @Override

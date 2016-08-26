@@ -23,7 +23,6 @@ import com.moonsister.tcjy.home.widget.SearchReasonActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordActivity;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
 import com.moonsister.tcjy.main.widget.BuyVipActivity;
-import com.moonsister.tcjy.main.widget.BuyVipFragment;
 import com.moonsister.tcjy.main.widget.DynamicAtionActivity;
 import com.moonsister.tcjy.main.widget.DynamicDatailsActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordNextActivity;
@@ -39,6 +38,7 @@ import com.moonsister.tcjy.main.widget.ShowShortVideoActivity;
 import com.moonsister.tcjy.main.widget.SwitchItemActivity;
 import com.moonsister.tcjy.main.widget.UserinfoActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.my.widget.AddActivity;
 import com.moonsister.tcjy.my.widget.AddCardActivity;
 import com.moonsister.tcjy.my.widget.AppointmentActivity;
 import com.moonsister.tcjy.my.widget.BirthdayActivity;
@@ -49,6 +49,7 @@ import com.moonsister.tcjy.my.widget.GetMoneyActivity;
 import com.moonsister.tcjy.my.widget.HreatFragment;
 import com.moonsister.tcjy.my.widget.InsertActivity;
 import com.moonsister.tcjy.my.widget.MakeMessageActivity;
+import com.moonsister.tcjy.my.widget.MoneyActivity;
 import com.moonsister.tcjy.my.widget.MyOrderActivity;
 import com.moonsister.tcjy.my.widget.PersonalActivity;
 import com.moonsister.tcjy.my.widget.RZFirstActivity;
@@ -60,8 +61,9 @@ import com.moonsister.tcjy.my.widget.SettingActivity;
 import com.moonsister.tcjy.my.widget.SwitchCardActivity;
 import com.moonsister.tcjy.my.widget.TiXianRecordActivity;
 import com.moonsister.tcjy.my.widget.UserInfoChangeActivity;
-import com.moonsister.tcjy.my.widget.VIPMoneyActivity;
 import com.moonsister.tcjy.my.widget.WithdRawDepositActivity;
+import com.moonsister.tcjy.my.widget.RechargeActivity;
+import com.moonsister.tcjy.my.widget.WithdrawActivity;
 import com.moonsister.tcjy.widget.RenZhengActivity;
 import com.moonsister.tcjy.widget.image.CropImageMainActivity;
 import com.moonsister.tcjy.widget.image.PhonePicActivity;
@@ -630,6 +632,22 @@ public class ActivityUtils {
     //跳转修改资料页面
     public static void startPersonalActivity(){
         startActivity(PersonalActivity.class);
+    }
+    //跳转财务中心页面
+    public static void startMoneyActivity(){
+        startActivity(MoneyActivity.class);
+    }
+    //跳转余额充值界面
+    public static void startRechargeActivity(){
+        startActivity(RechargeActivity.class);
+    }
+    //跳转提现界面
+    public static void startWithdrawActivity(){
+        startActivity(WithdrawActivity.class);
+    }
+    //跳转余额充值界面
+    public static void startAddActivity(){
+        startActivity(AddActivity.class);
     }
 //    //我的页面不是会员    定义跳转的activity
 //    public static void startNoActivity() {

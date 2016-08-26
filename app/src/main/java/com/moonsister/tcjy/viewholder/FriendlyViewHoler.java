@@ -18,6 +18,7 @@ import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * Created by x on 2016/8/25.
@@ -33,6 +34,7 @@ public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBea
     TextView tvSubmit;
     @Bind(R.id.xin)
     ImageView xin;
+    String str;
     //    @Bind(R.id.imageView)
 //    ImageView mImageView;//提示用户是否为网红的图标
     private FriendlyAdapter adapter;
@@ -52,59 +54,28 @@ public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBea
         tvContent.setText(dataBean.getSignature());
         tvUserName.setText(dataBean.getNickname());
         tvSubmit.setTag(position);
-        //判断是否是新好友，1为新好友，2则不是
-//        if(StringUtis.equals(dataBean.getIsnew(),"1")){
-//            mImageView.setVisibility(View.VISIBLE);//是新好友则显示新好友图标，提醒用户
-//        }else{
-//            mImageView.setVisibility(View.INVISIBLE);//不是新好友则隐藏提示
-//        }
-        if (StringUtis.equals(dataBean.getIsfollow(), "1")) {//关注则1，未关注则2
-//            Drawable drawable = UIUtils.getResources().getDrawable(R.mipmap.delect_wacth);
-//            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-//            tvSubmit.setCompoundDrawables(null, null, null, null);
-//            tvSubmit.setText(UIUtils.getStringRes(R.string.already_wacth));
-//            tvSubmit.setText(UIUtils.getStringRes(R.string.delete_wacth));
-//            tvSubmit.setText(UIUtils.getStringRes(R.string.pingbi));
-//            tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.home_navigation_text_gred));
 
-            tvSubmit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    UIUtils.showToast(ConfigUtils.getInstance().getActivityContext(), UIUtils.getStringRes(R.string.already) + UIUtils.getStringRes(R.string.together) + UIUtils.getStringRes(R.string.wacth));
-                    tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.home_navigation_text_gred));
-                    xin.setImageResource(R.mipmap.zuixin);
-                    tvSubmit.setText("取消屏蔽");
-                }
-            });
-
-        } else if (StringUtis.equals(dataBean.getIsfollow(), "2")) {
-//            Drawable drawable = UIUtils.getResources().getDrawable(R.mipmap.add_wacth_icon);
-//            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-//            tvSubmit.setCompoundDrawables(drawable, null, null, null);
-            tvSubmit.setText(UIUtils.getStringRes(R.string.pingbi));
-//            tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.home_navigation_text_red));
             tvSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.text_huang));
                     xin.setImageResource(R.mipmap.zuixin);
                     tvSubmit.setText("取消屏蔽");
+                    str= (String) tvSubmit.getText();
+                    if(str=="取消屏蔽"){
+                        tvSubmit.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.home_navigation_text_gred));
+                                xin.setImageResource(R.mipmap.onexin);
+                                tvSubmit.setText("屏蔽TA");
+                            }
+                        });
+                    }
 //                    adapter.setClick(position);
                 }
             });
-        } else {
-            tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.home_navigation_text_gred));
-            tvSubmit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    tvSubmit.setText("取消屏蔽");
-                    tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.home_navigation_text_gred));
-                    xin.setImageResource(R.mipmap.zuixin);
 
-//                    adapter.setClick(position);
-                }
-            });
-        }
 
         /// 这一步必须要做,否则不会显示.
 
@@ -125,4 +96,13 @@ public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBea
     public void setAdapter(FriendlyAdapter adapter) {
         this.adapter = adapter;
     }
+
+//    @OnClick(R.id.delete_textview)
+//    public void onClick(View view) {
+//        switch (view.getId()){
+//            case R.id.delete_textview:
+//
+//                break;
+//        }
+//    }
 }

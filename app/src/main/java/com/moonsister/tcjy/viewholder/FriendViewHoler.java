@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.viewholder;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.provider.Settings;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.moonsister.tcjy.DaggerAppComponent;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.FriendAdapter;
@@ -73,6 +75,7 @@ public class FriendViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBean>
                 @Override
                 public void onClick(View v) {
                     UIUtils.showToast(ConfigUtils.getInstance().getActivityContext(), UIUtils.getStringRes(R.string.already) + UIUtils.getStringRes(R.string.together) + UIUtils.getStringRes(R.string.wacth));
+
                     adapter.setClick(position);
                 }
             });

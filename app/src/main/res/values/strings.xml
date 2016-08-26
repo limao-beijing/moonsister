@@ -252,5 +252,6 @@
     <string name="load_error">网络请求失败,请刷新</string>
     <string name="text">请在录制过程中大声念出以下随机文字</string>
     <string name="refrering">你需要支付100金币(1元=10金币)进行付费认证，付费成功后，认证费用将作为保证金存在你的财务中心，满一个月后，保证金可消费，可提现。</string>
-
+    <string name="withdraw_text">每提现一笔，需缴纳第三方收取的通道费6%。</string>
+    <string name="withdraw">五个工作日到账</string>
 </resources>

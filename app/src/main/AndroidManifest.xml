@@ -309,6 +309,12 @@
         <activity android:name=".my.widget.RuleActivity"></activity>
         <activity android:name=".my.widget.MakeMessageActivity"></activity>
         <activity android:name=".widget.RenZhengActivity"></activity>
+        <activity android:name=".my.widget.PersonalActivity"></activity>
+        <activity android:name=".my.widget.MoneyActivity"></activity>
+        <activity android:name=".my.widget.WithdrawActivity"></activity>
+        <activity android:name=".my.widget.RechargeActivity"></activity>
+        <activity android:name=".my.widget.AddActivity"></activity>
+
 
     </application>
 

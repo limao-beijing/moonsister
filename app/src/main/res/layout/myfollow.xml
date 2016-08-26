@@ -73,6 +73,7 @@ android:layout_alignBottom="@+id/riv_user_image"
 
 android:layout_toRightOf="@+id/riv_user_image"
 android:enabled="true"
+        android:maxEms="10"
 android:singleLine="true"
 android:text="@string/loading"
 android:textColor="@color/home_navigation_text_gred"

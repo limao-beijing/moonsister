@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
@@ -16,6 +18,8 @@ import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.HreatViewholder;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,8 +38,32 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
     //gridview中的item数据与图片
     String uid;
     int type;
-    String[] images_text=new String[]{"我关注的","关注我的","动态管理","VIP充值","申请认证","兴趣修改","悬赏管理","约见管理","修改资料","财务中心","屏蔽手机联系人","   设置"};
-    int[] images=new int[]{R.mipmap.mysee,R.mipmap.seemy,R.mipmap.makemessage,R.mipmap.vipmoney,R.mipmap.viprenzheng,R.mipmap.insert,R.mipmap.xuanshang,R.mipmap.yousee,R.mipmap.make,R.mipmap.money,R.mipmap.phone,R.mipmap.domake};
+    @Bind(R.id.iv_user_icon)//用户头像
+    ImageView iv_user_icon;
+    @Bind(R.id.tv_user_all_income)//总收入
+    TextView tv_user_all_income;
+    @Bind(R.id.tv_user_day_income)//今日收入
+    TextView tv_user_day_income;
+    @Bind(R.id.tv_user_name)//用户名
+    TextView tv_user_name;
+    @Bind(R.id.tv_work)//用户职业
+    TextView tv_work;
+    @Bind(R.id.tv_time)//时间
+    TextView tv_time;
+    @Bind(R.id.tv_age)//年龄
+    TextView tv_age;
+    @Bind(R.id.image_gril)//性别
+    ImageView image_gril;
+    @Bind(R.id.tv_address)//地址
+    TextView tv_address;
+    @Bind(R.id.tv_look_people)//预览个人主页
+    TextView tv_look_people;
+    @Bind(R.id.vip_money)//是否为VIP
+    ImageView vip_money;
+    String[] images_text=new String[]{"我关注的","关注我的","动态管理","VIP充值","申请认证","兴趣修改","修改资料","财务中心","设置"};
+//    "悬赏管理","约见管理""屏蔽手机联系人"
+    int[] images=new int[]{R.mipmap.mysee,R.mipmap.seemy,R.mipmap.makemessage,R.mipmap.vipmoney,R.mipmap.viprenzheng,R.mipmap.insert,R.mipmap.make,R.mipmap.money,R.mipmap.domake};
+//    ,R.mipmap.phone,R.mipmap.xuanshang,R.mipmap.yousee,
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -92,8 +120,11 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
             case R.mipmap.viprenzheng:
                 ActivityUtils.startRenZhengActivity();
                 break;
-            case R.mipmap.make:
-
+            case R.mipmap.make://修改资料
+                ActivityUtils.startPersonalActivity();
+                break;
+            case R.mipmap.money://财务中心
+                ActivityUtils.startMoneyActivity();
                 break;
             case R.mipmap.domake:
                 ActivityUtils.startSettingActivity();
