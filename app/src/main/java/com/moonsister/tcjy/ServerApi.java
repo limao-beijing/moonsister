@@ -10,6 +10,7 @@ import com.moonsister.tcjy.bean.FrientBaen;
 import com.moonsister.tcjy.bean.GetMoneyBean;
 import com.moonsister.tcjy.bean.GoodSelectBaen;
 import com.moonsister.tcjy.bean.HomeTopItemBean;
+import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.LableBean;
 import com.moonsister.tcjy.bean.LoginBean;
 import com.moonsister.pay.tencent.PayBean;
@@ -926,8 +927,32 @@ public class ServerApi {
 
         /**
          *屏蔽
+         * @param type
+         * @param to_uid
          *
          */
+
+        @GET("shield/shield_act")
+        Observable<FrientBaen> getPingbiRelation(@Query("type") int type,
+                                                @Query("to_uid") String to_uid);
+
+        /**
+         * 兴趣选项
+         *  @param page
+         * @param tagname
+         * @param pagesize  */
+        @GET("tags/get_xingqu_all")
+        Observable<InsertBaen> getInsertRelation(@Query("page") int page,
+                                                 @Query("tagname") String tagname,
+                                                 @Query("pagesize") int pagesize,
+                                                 @Query("channel") String channelId,
+                                                 @Query("authcode") String authcode);
+
+        /**
+         * 个人资料
+         *
+         * */
+
     }
 }
 

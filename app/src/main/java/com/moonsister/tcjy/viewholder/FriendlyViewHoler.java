@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
+import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.adapter.FriendAdapter;
 import com.moonsister.tcjy.adapter.FriendlyAdapter;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;

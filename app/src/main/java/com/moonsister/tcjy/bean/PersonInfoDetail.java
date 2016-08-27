@@ -14,6 +14,13 @@ public class PersonInfoDetail extends BaseDataBean {
     private String nickname;
     private boolean isLogin;
     private String sex;
+    private String income_all;//总收入
+    private String income_today;//今日收入
+    private String age;
+    private String brith;
+    private String address;
+    private String profession;
+
     /**
      * 认证状态 1 已认证  2 认证中  3 未认证
      */
@@ -93,6 +100,10 @@ public class PersonInfoDetail extends BaseDataBean {
         this.vipStatus = vipStatus;
     }
 
+    public int getVipStatus() {
+        return vipStatus;
+    }
+
     public void setUserFriendList(List<String> userFriendList) {
         this.userFriendList = userFriendList;
     }
@@ -101,7 +112,55 @@ public class PersonInfoDetail extends BaseDataBean {
         return userFriendList;
     }
 
-    public int getVipStatus() {
-        return vipStatus;
+
+    public String getIncome_all() {
+        return income_all;
     }
+
+    public void setIncome_all(String income_all) {
+        this.income_all = income_all;
+    }
+
+    public String getIncome_today() {
+        return income_today;
+    }
+
+    public void setIncome_today(String income_today) {
+        this.income_today = income_today;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getBrith() {
+        return brith;
+    }
+
+    public void setbrith(String brith) {
+        this.brith = brith;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setaddress(String address) {
+        this.address = address;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
+
+
+
 }

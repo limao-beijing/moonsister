@@ -1,6 +1,5 @@
 package com.moonsister.tcjy.my.widget;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,13 +10,15 @@ import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import com.moonsister.tcjy.AppConstant;
+import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tcjy.viewholder.BaseHolder;
 import com.moonsister.tcjy.viewholder.HreatViewholder;
+import com.moonsister.tcjy.viewholder.PersonDynamicViewholder;
 
 import org.w3c.dom.Text;
 
@@ -31,7 +32,7 @@ import butterknife.Bind;
 /**
  * Created by x on 2016/8/22.
  */
-public class HreatFragment extends BaseFragment implements AdapterView.OnItemClickListener {
+public class HreatFragment extends BaseFragment implements AdapterView.OnItemClickListener{
     private HreatViewholder hreatViewholder;
     @Bind(R.id.gridView)//我页面中gridview
     GridView gridView;
@@ -72,6 +73,27 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
 
     @Override
     protected void initData() {
+        ImageServerApi.showURLSamllImage(iv_user_icon, UserInfoManager.getInstance().getAvater());
+        tv_user_name.setText(UserInfoManager.getInstance().getNickeName());
+        String userSex=UserInfoManager.getInstance().getUserSex();
+        if(userSex=="男"){
+            image_gril.setBackgroundResource(R.mipmap.nan);
+        }else{
+            image_gril.setBackgroundResource(R.mipmap.gril);
+        }
+        int m=UserInfoManager.getInstance().getMemoryPersonInfoDetail().getVipStatus();
+        if(m==1){
+            vip_money.setVisibility(View.VISIBLE);
+        }else{
+            vip_money.setVisibility(View.INVISIBLE);
+        }
+        tv_user_all_income.setText(UserInfoManager.getInstance().getAll_Income());
+        tv_user_day_income.setText(UserInfoManager.getInstance().getDay_Income());
+        tv_age.setText(UserInfoManager.getInstance().getAge());
+        tv_time.setText(UserInfoManager.getInstance().getBrith());
+        tv_address.setText(UserInfoManager.getInstance().getAddress());
+        tv_work.setText(UserInfoManager.getInstance().getProfession());
+
         uid= UserInfoManager.getInstance().getUid();
         List<Map<String,Object>> listItems = new ArrayList<Map<String, Object>>();
         //循环加载数据到gridview中
@@ -117,7 +139,7 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
             case R.mipmap.insert:
                 ActivityUtils.startInsertActivity();
                 break;
-            case R.mipmap.viprenzheng:
+            case R.mipmap.viprenzheng://申请认证
                 ActivityUtils.startRenZhengActivity();
                 break;
             case R.mipmap.make://修改资料
@@ -132,4 +154,5 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
         }
 
     }
+
 }

@@ -180,6 +180,30 @@ public class UserInfoManager {
         return info.getId();
     }
 
+    //总收入
+    public String getAll_Income(){
+        return info.getIncome_all();
+    }
+    //今日收入
+    public String getDay_Income(){
+        return info.getIncome_today();
+    }
+    //用户年龄
+    public String getAge(){
+        return info.getAge();
+    }
+    //用户出生年月
+    public String getBrith(){
+        return info.getBrith();
+    }
+    //用户地址
+    public String getAddress(){
+        return info.getAddress();
+    }
+    //用户职业
+    public String getProfession(){
+        return info.getProfession();
+    }
     /**
      * 获取好友列表
      *
