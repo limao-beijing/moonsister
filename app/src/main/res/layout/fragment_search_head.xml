@@ -47,6 +47,7 @@
             android:src="@mipmap/search_cancel" />
 
         <EditText
+            android:id="@+id/et_content"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"

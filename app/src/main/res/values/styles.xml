@@ -169,12 +169,12 @@
 
 
     <style name="text_home_top_navigation" parent="android:Widget.TextView">
-
-        <item name="android:padding">@dimen/x15</item>
+        <item name="android:paddingTop">@dimen/x10</item>
+        <item name="android:paddingBottom">@dimen/x10</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:textSize">@dimen/text_size_11</item>
+        <item name="android:textSize">@dimen/text_size_17</item>
         <item name="android:textColor">@drawable/selector_text_home_top_navigation</item>
         <item name="android:gravity">center</item>
     </style>
