@@ -8,4 +8,5 @@ import com.moonsister.tcjy.home.view.SearchFragmentView;
  */
 public interface SearchFragmentPersenter extends BaseIPresenter<SearchFragmentView>{
     void loadKeyMate(String key);
+
 }

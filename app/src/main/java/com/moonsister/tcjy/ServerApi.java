@@ -7,6 +7,7 @@ import com.moonsister.tcjy.bean.CertificationStatusBean;
 import com.moonsister.tcjy.bean.ChooseKeyBean;
 import com.moonsister.tcjy.bean.CommentDataListBean;
 import com.moonsister.tcjy.bean.DefaultDataBean;
+import com.moonsister.tcjy.bean.DynamicBean;
 import com.moonsister.tcjy.bean.FrientBaen;
 import com.moonsister.tcjy.bean.GetMoneyBean;
 import com.moonsister.tcjy.bean.GoodSelectBaen;
@@ -31,7 +32,6 @@ import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.bean.UserPermissionBean;
 import com.moonsister.tcjy.bean.VersionInfo;
 import com.moonsister.tcjy.bean.WithdRawDepositBean;
-import com.moonsister.tcjy.main.widget.RecommendMemberFragment;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UnicodeUtils;
 import com.moonsister.tcjy.utils.gson.GsonConverterFactory;
@@ -158,7 +158,8 @@ public class ServerApi {
 
 
     public interface AppAPI {
-        String baseUrl = "http://2.yytbzs.cn:88/index.php/index/";
+        String baseUrl = "http://2test.yytbzs.cn:88/index.php/index/";
+//        String baseUrl = "http://2.yytbzs.cn:88/index.php/index/";
 //        String baseUrl = "http://mimei.cntttt.com:88/public/index.php/index/";
 
         /**
@@ -969,6 +970,25 @@ public class ServerApi {
         @GET("search/search_hot")
         Observable<ChooseKeyBean> getLoadChooesKey(@Query("authcode") String authcode,
                                                    @Query("channel") String channelId);
+
+        /**
+         * 搜索结果
+         *
+         * @param key
+         * @param searchType
+         * @param page
+         * @param authcode
+         * @param channelId
+         * @param apiVersion
+         * @return
+         */
+        @GET("search/index")
+        Observable<DynamicBean> getSearchFragmentReason(@Query("key") String key,
+                                                        @Query("search_type") int searchType,
+                                                        @Query("page") int page,
+                                                        @Query("authcode") String authcode,
+                                                        @Query("channel") String channelId,
+                                                        @Query("version_type") String apiVersion);
 
     }
 }

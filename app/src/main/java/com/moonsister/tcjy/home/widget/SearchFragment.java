@@ -46,6 +46,8 @@ public class SearchFragment extends BaseFragment implements SearchHeaderFragment
     private PopupWindow popupWindow;
     private ListView lv;
     private SearchFragmentPersenter persenter;
+    private Fragment currFragment;
+    private SearchReasonFragment reasonFragment;
     private String key;
 
     public static Fragment newInstance() {
@@ -61,12 +63,14 @@ public class SearchFragment extends BaseFragment implements SearchHeaderFragment
 
     @Override
     protected void initData() {
+
         searchHeadFragment = SearchHeaderFragment.newInstance();
         replaceFramgent(searchHeadFragment, R.id.fl_search_head);
         searchHeadFragment.setSearchHeaderFragmentListener(this);
         searchContentFragment = SearchContentFragment.newInstance();
-        replaceFramgent(searchContentFragment, R.id.fl_search_content);
-
+        reasonFragment = SearchReasonFragment.newInstance();
+        hideFragment(reasonFragment, R.id.fl_search_content);
+        hideFragment(searchContentFragment, R.id.fl_search_content);
     }
 
 
@@ -86,6 +90,20 @@ public class SearchFragment extends BaseFragment implements SearchHeaderFragment
             }
             persenter.loadKeyMate(key);
         }
+    }
+
+    @Override
+    public void search(String key) {
+        if (StringUtis.isEmpty(key))
+            return;
+        if (popupWindow != null && popupWindow.isShowing()) {
+            popupWindow.dismiss();
+            popupWindow = null;
+        }
+
+        hideFragment(reasonFragment, R.id.fl_search_content);
+        reasonFragment.loadSearch(key);
+
     }
 
 

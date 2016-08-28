@@ -25,7 +25,6 @@ public class HomeTopFragment extends BaseFragment {
     @Bind(R.id.tv_home_new)
     TextView tvHomeNew;
     private HomeTopItemFragment homeHotFragment, homeNearbyFragment, honeNewFragment;
-    private BaseFragment currFragment;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -73,11 +72,10 @@ public class HomeTopFragment extends BaseFragment {
 
         if (fragment == null)
             return;
-        hideFragment(currFragment, fragment, R.id.fl_content);
+        hideFragment( fragment, R.id.fl_content);
         tvHomeHot.setSelected(fragment == homeHotFragment);
         tvHomeNearby.setSelected(fragment == homeNearbyFragment);
         tvHomeNew.setSelected(fragment == honeNewFragment);
-        currFragment = fragment;
 
     }
 

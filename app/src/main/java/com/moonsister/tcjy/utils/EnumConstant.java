@@ -10,7 +10,7 @@ public class EnumConstant {
      * @return
      */
     public enum DynamicType {
-        CHARGE_PIC(1), FREE_PIC(2), FREE_VIDEO(3), FREE_VOICE(4), CHARGE_VOICE(5), CHARGE_VIDEO(6);
+        CHARGE_PIC(1), FREE_PIC(2), FREE_VIDEO(3), FREE_VOICE(4), CHARGE_VOICE(5), CHARGE_VIDEO(6), USER(100);
 
 
         private final int type;
@@ -48,6 +48,19 @@ public class EnumConstant {
         private final int type;
 
         private HomeTopFragmentTop(int type) {
+            this.type = type;
+        }
+
+        public int getType() {
+            return type;
+        }
+    }
+
+    public enum SearchType {
+        all(0), user(1), dynamic(2);
+        private final int type;
+
+        private SearchType(int type) {
             this.type = type;
         }
 

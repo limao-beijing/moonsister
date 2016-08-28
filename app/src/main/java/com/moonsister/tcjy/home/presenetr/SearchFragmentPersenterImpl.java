@@ -31,6 +31,7 @@ public class SearchFragmentPersenterImpl implements SearchFragmentPersenter, Bas
         model.loadKeyMate(key, this);
     }
 
+
     @Override
     public void onSuccess(KeyMateBean keyMateBean, BaseIModel.DataType dataType) {
         if (keyMateBean == null) {
