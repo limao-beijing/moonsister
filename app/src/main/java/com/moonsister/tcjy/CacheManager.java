@@ -119,6 +119,10 @@ public class CacheManager {
          * 搜索历史
          */
         String SEARCH_HISTPRY = "search_histpry";
+        /**
+         * 搜索关键词
+         */
+        String SEARCH_KEY_HISTPRY = "search_key_histpry";
     }
 
 

@@ -16,7 +16,9 @@
     <com.moonsister.tcjy.widget.FlowLayout
         android:id="@+id/fl_hot_key"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x30" />
 
     <TextView
         android:layout_width="match_parent"
@@ -25,5 +27,10 @@
         android:paddingLeft="@dimen/x30"
         android:text="@string/historic_record"
         android:textColor="@color/text_gray_778998" />
+
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
 
 </LinearLayout>

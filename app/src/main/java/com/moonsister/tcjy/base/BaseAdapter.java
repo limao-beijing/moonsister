@@ -8,20 +8,15 @@ package com.moonsister.tcjy.base;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
-    Context mContext;
     List<T> mList;
 
     public BaseAdapter() {
-        this.mList = new ArrayList();
-    }
-
-    public BaseAdapter(Context context) {
-        this.mContext = context;
         this.mList = new ArrayList();
     }
 
@@ -33,8 +28,8 @@ public abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
         int index = this.getCount();
         int position = -1;
 
-        while(index-- > 0) {
-            if(message.equals(this.getItem(index))) {
+        while (index-- > 0) {
+            if (message.equals(this.getItem(index))) {
                 position = index;
                 break;
             }
@@ -47,8 +42,8 @@ public abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
         int index = this.getCount();
         int position = -1;
 
-        while(index-- > 0) {
-            if(this.getItemId(index) == id) {
+        while (index-- > 0) {
+            if (this.getItemId(index) == id) {
                 position = index;
                 break;
             }
@@ -65,7 +60,7 @@ public abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
         Object[] arr$ = collection;
         int len$ = collection.length;
 
-        for(int i$ = 0; i$ < len$; ++i$) {
+        for (int i$ = 0; i$ < len$; ++i$) {
             Object t = arr$[i$];
             this.mList.add((T) t);
         }
@@ -93,26 +88,26 @@ public abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
     }
 
     public int getCount() {
-        return this.mList == null?0:this.mList.size();
+        return this.mList == null ? 0 : this.mList.size();
     }
 
     public T getItem(int position) {
-        return this.mList == null?null:(position >= this.mList.size()?null:this.mList.get(position));
+        return this.mList == null ? null : (position >= this.mList.size() ? null : this.mList.get(position));
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
         View view;
-        if(convertView != null) {
+        if (convertView != null) {
             view = convertView;
         } else {
-            view = this.newView(this.mContext, position, parent);
+            view = this.newView(parent.getContext(), position, parent);
         }
 
         this.bindView(view, position, this.getItem(position));
         return view;
     }
 
-    protected abstract View newView(Context var1, int var2, ViewGroup var3);
+    protected abstract View newView(Context context, int position, ViewGroup parent);
 
-    protected abstract void bindView(View var1, int var2, T var3);
+    protected abstract void bindView(View view, int position, T t);
 }
