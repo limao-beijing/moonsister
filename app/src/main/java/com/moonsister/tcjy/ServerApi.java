@@ -4,6 +4,7 @@ package com.moonsister.tcjy;
 import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.CardInfoBean;
 import com.moonsister.tcjy.bean.CertificationStatusBean;
+import com.moonsister.tcjy.bean.ChooseKeyBean;
 import com.moonsister.tcjy.bean.CommentDataListBean;
 import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.DynamicBean;
@@ -12,6 +13,7 @@ import com.moonsister.tcjy.bean.GetMoneyBean;
 import com.moonsister.tcjy.bean.GoodSelectBaen;
 import com.moonsister.tcjy.bean.HomeTopItemBean;
 import com.moonsister.tcjy.bean.InsertBaen;
+import com.moonsister.tcjy.bean.KeyMateBean;
 import com.moonsister.tcjy.bean.LableBean;
 import com.moonsister.tcjy.bean.LoginBean;
 import com.moonsister.pay.tencent.PayBean;
@@ -935,7 +937,7 @@ public class ServerApi {
 
         @GET("shield/shield_act")
         Observable<FrientBaen> getPingbiRelation(@Query("type") int type,
-                                                @Query("to_uid") String to_uid);
+                                                 @Query("to_uid") String to_uid);
 
         /**
          * 兴趣选项
@@ -973,6 +975,10 @@ public class ServerApi {
                                                         @Query("channel") String channelId,
                                                         @Query("version_type") String apiVersion);
 
+
+        Observable<ChooseKeyBean> getLoadChooesKey(String authcode, String channelId);
+
+        Observable<KeyMateBean> getKeyMath(String key, String authcode, String channelId);
     }
 }
 
