@@ -15,4 +15,10 @@
         <attr name="min_adapter_stack" format="integer" />
         <attr name="max_visible" format="integer" />
     </declare-styleable>
+    <declare-styleable name="roundedimageview">
+    <attr name="border_thickness" format="dimension" />
+    <attr name="border_inside_color" format="color" />
+    <attr name="border_outside_color" format="color"></attr>
+</declare-styleable>
 </resources>
+

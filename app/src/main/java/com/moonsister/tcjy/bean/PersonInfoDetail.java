@@ -16,10 +16,10 @@ public class PersonInfoDetail extends BaseDataBean {
     private String sex;
     private String income_all;//总收入
     private String income_today;//今日收入
-    private String age;
-    private String brith;
-    private String address;
-    private String profession;
+    private String age;//用户年龄
+    private String brith;//用户生日
+    private String address;//用户住址
+    private String profession;//用户职业
 
     /**
      * 认证状态 1 已认证  2 认证中  3 未认证

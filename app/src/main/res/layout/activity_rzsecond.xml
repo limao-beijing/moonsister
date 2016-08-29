@@ -177,15 +177,15 @@
             </LinearLayout>
 
 
-            <!--<TextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_ren"
+                android:text="@string/renzhen"
                 android:layout_marginTop="@dimen/x30"
                 android:layout_marginLeft="@dimen/x20"
                 android:layout_marginRight="@dimen/x20"
                 android:textColor="@color/text_gray_color"
-                android:layout_below="@+id/tv_submit"/>-->
+                android:layout_below="@+id/ll_content"/>
         </RelativeLayout>
     </ScrollView>
 </LinearLayout>

@@ -67,6 +67,8 @@ public class VIPMoneyActivity extends BaseActivity implements BuyVipFragmentView
         vipCombo12Text.setText(Html.fromHtml(String.format(string, "12", 300)));
         vipCombo3Text.setText(Html.fromHtml(String.format(string, "3", 120)));
         vipCombo1Text.setText(Html.fromHtml(String.format(string, "1", 50)));
+//        vipCombo12Text.setText(Html.fromHtml(String.format(string, "12", 299)));
+//        vipCombo3Text.setText(Html.fromHtml(String.format(string, "3", 119)));
         selectBuy(ivSelect12);
     }
     private void selectBuy(View view) {

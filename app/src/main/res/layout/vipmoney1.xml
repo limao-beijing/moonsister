@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_gred_background"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x200"
+        android:background="@color/white">
+
+        <com.moonsister.tcjy.widget.RoundedImageView
+            android:id="@+id/riv_avater"
+            android:layout_width="@dimen/x120"
+            android:layout_height="@dimen/x120"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/x30"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/iv_add_v"
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/x30"
+            android:layout_alignBottom="@+id/riv_avater"
+            android:layout_marginLeft="-23dp"
+            android:layout_toRightOf="@+id/riv_avater"
+            android:src="@mipmap/add_v_icon" />
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x40"
+            android:layout_toRightOf="@id/riv_avater"
+            android:text="@string/loading"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/x40"
+            android:layout_marginTop="@dimen/x40"
+            android:layout_toRightOf="@id/riv_avater"
+            android:text="@string/vip_enjoy_prerogative"
+            android:textColor="@color/color_ff8201"
+            android:textSize="@dimen/text_size_18" />
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/vip_que"-->
+            <!--android:text="点此查看特权"-->
+            <!--android:textColor="#B0E0E6"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:textSize="@dimen/text_size_18"-->
+            <!--android:layout_marginTop="@dimen/x40"-->
+            <!--android:layout_marginBottom="@dimen/x40"-->
+            <!--android:layout_marginRight="@dimen/x20"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--/>-->
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/x30"
+        android:text="@string/vip_combo"
+        android:textColor="@color/gray_color" />'
+
+    <RelativeLayout
+        android:id="@+id/layout_combo_12"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x92"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/vip_combo_12_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18" />
+
+        <RelativeLayout
+            android:id="@+id/layout_vip_12_low_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toRightOf="@+id/vip_combo_12_text">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/vipmost"
+                android:id="@+id/vipmost"/>
+
+            <TextView
+                android:id="@+id/vip_12_low_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/vipmost"
+                android:text="@string/vip_12_low_money"
+                android:textColor="@color/gray_color" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="可查看私密资料，"
+                android:layout_below="@+id/vip_12_low_money"
+                android:layout_marginTop="@dimen/y5"/>
+            <View
+                android:layout_toRightOf="@+id/vip_12_low_money"
+                style="@style/horizontal_line_style"
+                android:layout_width="@dimen/x120"
+                android:layout_alignLeft="@+id/vip_12_low_money"
+                android:layout_centerVertical="true"
+                android:background="@color/black" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toRightOf="@+id/layout_vip_12_low_money"
+            android:background="@drawable/shape_text_ffd"
+            android:padding="@dimen/x12"
+            android:text="@string/tv_recommend"
+            android:textColor="@color/color_ff8201" />
+
+        <ImageView
+            android:id="@+id/iv_select_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/vip_selected" />
+
+        <View
+            style="@style/horizontal_line_style"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_combo_3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x92"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/vip_combo_3_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18" />
+
+        <RelativeLayout
+            android:id="@+id/layout_vip_3_low_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toRightOf="@+id/vip_combo_3_text">
+
+            <TextView
+                android:id="@+id/vip_3_low_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+
+                android:text="@string/vip_3_low_money"
+                android:textColor="@color/gray_color" />
+
+            <View
+                style="@style/horizontal_line_style"
+                android:layout_width="@dimen/x100"
+                android:layout_alignLeft="@+id/vip_3_low_money"
+                android:layout_centerVertical="true"
+                android:background="@color/black" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="每天1.1元，可没费查看私密资料；"
+                android:layout_below="@+id/vip_3_low_money"
+                android:layout_marginTop="@dimen/y5"/>
+        </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/iv_select_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/vip_selected" />
+
+        <View
+            style="@style/horizontal_line_style"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30" />
+    </RelativeLayout>
+
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/layout_combo_1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/x92"-->
+        <!--android:background="@color/white">-->
+        <!--<TextView-->
+            <!--android:id="@+id/vip_combo_1_text"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="@dimen/x30"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:textSize="@dimen/text_size_18" />-->
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/layout_vip_1_low_money"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="@dimen/x30"-->
+            <!--android:layout_toRightOf="@+id/vip_combo_1_text">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/vip_1_low_money"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerVertical="true"-->
+
+                <!--android:text="@string/vip_3_low_money"-->
+                <!--android:textColor="@color/gray_color" />-->
+
+            <!--<View-->
+                <!--style="@style/horizontal_line_style"-->
+                <!--android:layout_width="@dimen/x10"-->
+                <!--android:layout_alignLeft="@+id/vip_1_low_money"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:background="@color/black" />-->
+
+        <!--</RelativeLayout>-->
+
+
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_select_1"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginRight="@dimen/x30"-->
+            <!--android:src="@mipmap/vip_selected" />-->
+
+    <!--</RelativeLayout>-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/x50"
+        android:text="VIP 专享"
+        android:textColor="@color/gray_color"
+        android:textSize="@dimen/text_size_16" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/x30"
+        android:text="私密照片，私密视频，私密语音，私密图片随便看"
+        android:textColor="@color/gray_color" />
+
+    <TextView
+
+        android:id="@+id/tv_buy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/x30"
+        android:layout_marginTop="@dimen/x50"
+        android:background="@drawable/shape_text_full_ffd"
+        android:gravity="center"
+        android:padding="@dimen/x30"
+        android:text="@string/immediately_dredge"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_17" />
+</LinearLayout>

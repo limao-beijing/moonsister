@@ -45,6 +45,8 @@ public class MoneyActivity extends BaseActivity{
     TextView id_friend_tv;
     @Bind(R.id.id_tab_line_iv)//游标
     ImageView id_tab_line_iv;
+    @Bind(R.id.image_back)
+    ImageView image_back;
     @Bind(R.id.id_tab_line_iv1)
     ImageView id_tab_line_iv1;
     OneFragment oneFragment;
@@ -64,7 +66,7 @@ public class MoneyActivity extends BaseActivity{
         FragmentUtils.switchHideFragment(getSupportFragmentManager(),R.id.fragmentlayout,currentFragment,oneFragment);
     }
 
-    @OnClick({R.id.id_chat_tv,R.id.id_friend_tv,R.id.withdraw,R.id.recharge})
+    @OnClick({R.id.id_chat_tv,R.id.id_friend_tv,R.id.withdraw,R.id.recharge,R.id.image_back})
 
     public void onClick(View view) {
         switch (view.getId()){
@@ -89,6 +91,9 @@ public class MoneyActivity extends BaseActivity{
                 break;
             case R.id.recharge:
                 ActivityUtils.startRechargeActivity();
+                break;
+            case R.id.image_back:
+                MoneyActivity.this.finish();
                 break;
         }
     }

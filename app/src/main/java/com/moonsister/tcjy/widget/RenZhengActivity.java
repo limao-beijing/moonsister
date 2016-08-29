@@ -14,17 +14,20 @@ import com.moonsister.tcjy.my.view.RZSecondView;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * Created by x on 2016/8/25.
  */
-public class RenZhengActivity extends BaseActivity implements RZSecondView{
+public class RenZhengActivity extends BaseActivity implements RZSecondView {
     @Bind(R.id.riv_avater)//用户头像
     ImageView riv_avater;
     @Bind(R.id.vip_id)//会员ID
     TextView vip_id;
     @Bind(R.id.phone)//绑定手机号
     TextView phone;
+    @Bind(R.id.image_back)
+    ImageView image_back;
     private RZSecondPersenter persenter;
     @Override
     protected View setRootContentView() {
@@ -40,6 +43,8 @@ public class RenZhengActivity extends BaseActivity implements RZSecondView{
 
 //        phone.setText(UserInfoManager.getInstance().);
     }
+
+
 
     @Override
     public void success() {
@@ -59,5 +64,14 @@ public class RenZhengActivity extends BaseActivity implements RZSecondView{
     @Override
     public void transfePageMsg(String msg) {
 
+    }
+
+    @OnClick(R.id.image_back)
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.image_back:
+                RenZhengActivity.this.finish();
+                break;
+        }
     }
 }

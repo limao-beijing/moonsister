@@ -4,7 +4,6 @@ package com.moonsister.tcjy;
 import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.CardInfoBean;
 import com.moonsister.tcjy.bean.CertificationStatusBean;
-import com.moonsister.tcjy.bean.ChooseKeyBean;
 import com.moonsister.tcjy.bean.CommentDataListBean;
 import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.FrientBaen;
@@ -12,7 +11,6 @@ import com.moonsister.tcjy.bean.GetMoneyBean;
 import com.moonsister.tcjy.bean.GoodSelectBaen;
 import com.moonsister.tcjy.bean.HomeTopItemBean;
 import com.moonsister.tcjy.bean.InsertBaen;
-import com.moonsister.tcjy.bean.KeyMateBean;
 import com.moonsister.tcjy.bean.LableBean;
 import com.moonsister.tcjy.bean.LoginBean;
 import com.moonsister.pay.tencent.PayBean;
@@ -928,23 +926,21 @@ public class ServerApi {
                                                    @Query("authcode") String authcode);
 
         /**
-         * 屏蔽
-         *
+         *屏蔽
          * @param type
          * @param to_uid
+         *
          */
 
         @GET("shield/shield_act")
         Observable<FrientBaen> getPingbiRelation(@Query("type") int type,
-                                                 @Query("to_uid") String to_uid);
+                                                @Query("to_uid") String to_uid);
 
         /**
          * 兴趣选项
-         *
-         * @param page
+         *  @param page
          * @param tagname
-         * @param pagesize
-         */
+         * @param pagesize  */
         @GET("tags/get_xingqu_all")
         Observable<InsertBaen> getInsertRelation(@Query("page") int page,
                                                  @Query("tagname") String tagname,
@@ -953,22 +949,9 @@ public class ServerApi {
                                                  @Query("authcode") String authcode);
 
         /**
-         * 联想关键词
+         * 个人资料
          *
-         * @param key
-         * @param authcode
-         */
-        @GET("search/like_keys")
-        Observable<KeyMateBean> getKeyMath(@Query("key") String key,
-                                           @Query("authcode") String authcode,
-                                           @Query("channel") String channelId);
-
-        /**
-         * 热门推荐
-         */
-        @GET("search/search_hot")
-        Observable<ChooseKeyBean> getLoadChooesKey(@Query("authcode") String authcode,
-                                                   @Query("channel") String channelId);
+         * */
 
     }
 }

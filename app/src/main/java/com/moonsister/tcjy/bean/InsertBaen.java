@@ -7,6 +7,7 @@ import java.util.List;
  */
 public class InsertBaen extends BaseBean{
 
+
     /**
      * tagid : 18
      * tagname : 惊世才艺
@@ -51,5 +52,7 @@ public class InsertBaen extends BaseBean{
         public void setImg(String img) {
             this.img = img;
         }
+
+
     }
 }

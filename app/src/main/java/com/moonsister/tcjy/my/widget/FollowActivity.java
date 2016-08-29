@@ -13,6 +13,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.FrientBaen;
 import com.moonsister.tcjy.main.view.RelationActivityView;
+import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.FragmentUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 
@@ -76,7 +77,7 @@ public class FollowActivity extends BaseActivity implements RelationActivityView
 
 
 
-    @OnClick({R.id.my_follow, R.id.follow_my})
+    @OnClick({R.id.my_follow, R.id.follow_my,R.id.image_back})
 
     public void onClick(View view) {
         switch (view.getId()) {
@@ -97,6 +98,10 @@ public class FollowActivity extends BaseActivity implements RelationActivityView
                 image_pingbi.setVisibility(View.VISIBLE);
                 break;
             case R.id.image_pingbi:
+
+                break;
+            case R.id.image_back:
+                FollowActivity.this.finish();
 
                 break;
         }

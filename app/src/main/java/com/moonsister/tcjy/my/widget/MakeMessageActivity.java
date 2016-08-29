@@ -38,7 +38,7 @@ public class MakeMessageActivity extends BaseActivity{
 //        moneyfragment=new MoneyFragment();
 //        FragmentUtils.switchHideFragment(getSupportFragmentManager(),R.id.fragmentlayout,currentFragment,makefragment);
     }
-    @OnClick({R.id.my_follow, R.id.follow_my})
+    @OnClick({R.id.my_follow, R.id.follow_my,R.id.image_back})
 
     public void onClick(View view) {
         switch (view.getId()) {
@@ -55,6 +55,9 @@ public class MakeMessageActivity extends BaseActivity{
                 my_follow.setTextColor(getResources().getColor(R.color.text_followmy_color));
                 follow_my.setTextColor(getResources().getColor(R.color.text_follow_color));
                 follow_my.setBackgroundResource(R.mipmap.my_follow);
+                break;
+            case R.id.image_back:
+                MakeMessageActivity.this.finish();
                 break;
         }
     }

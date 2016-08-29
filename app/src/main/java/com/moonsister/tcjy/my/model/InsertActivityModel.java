@@ -12,5 +12,7 @@ public interface InsertActivityModel extends BaseIModel{
 //    void loadData(int tagid, String tagname,int img, EnumConstant.HomeTopFragmentTop homeType,onLoadDateSingleListener<InsertBaen> listener);
 
     void loadData(int tagid, String tagname, int img, onLoadDateSingleListener<InsertBaen> listener);
+
+    void sendData(EnumConstant.PayType iappPay, int tagid, onLoadDateSingleListener<InsertBaen> listener);
 }
 

@@ -180,6 +180,16 @@ public class UserInfoManager {
         return info.getId();
     }
 
+
+    /**
+     * 获取好友列表
+     *
+     * @return
+     */
+    public List<String> getUserFrientList() {
+        return info.getUserFriendList();
+    }
+
     //总收入
     public String getAll_Income(){
         return info.getIncome_all();
@@ -203,13 +213,5 @@ public class UserInfoManager {
     //用户职业
     public String getProfession(){
         return info.getProfession();
-    }
-    /**
-     * 获取好友列表
-     *
-     * @return
-     */
-    public List<String> getUserFrientList() {
-        return info.getUserFriendList();
     }
 }
