@@ -80,6 +80,12 @@ public class SearchHeaderFragment extends BaseFragment implements TextWatcher {
         if (listener != null) {
             listener.onChange(s.toString());
         }
+        etContent.setSelection(s.length());
+    }
+
+    public void setEditTextText(String key) {
+        if (etContent != null)
+            etContent.setText(key);
     }
 
     /**

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.DynamicAdapter;
 import com.moonsister.tcjy.base.BaseFragment;
+import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
@@ -296,7 +297,7 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
     }
 
     @Override
-    public void setListData(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> list) {
+    public void setListData(List<DynamicItemBean> list) {
         if (mAdapter == null) {
             mAdapter = new DynamicAdapter(list);
             mAdapter.setView(this);

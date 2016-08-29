@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.my.view;
 
 import com.moonsister.tcjy.base.BaseIView;
+import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
 
@@ -20,7 +21,7 @@ public interface MyFragmentView extends BaseIView {
 
     void swich2PersonSetting();
 
-    void setListData(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> t);
+    void setListData(List<DynamicItemBean> t);
 
     void setUserInfo(UserInfoDetailBean bean);
 

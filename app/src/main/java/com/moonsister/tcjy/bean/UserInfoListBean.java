@@ -18,13 +18,13 @@ public class UserInfoListBean extends BaseBean {
     }
 
     public static class UserInfoListBeanData {
-        private List<UserInfoListBeanDataList> list;
+        private List<DynamicItemBean> list;
 
-        public List<UserInfoListBeanDataList> getList() {
+        public List<DynamicItemBean> getList() {
             return this.list;
         }
 
-        public void setList(List<UserInfoListBeanDataList> list) {
+        public void setList(List<DynamicItemBean> list) {
             this.list = list;
         }
 

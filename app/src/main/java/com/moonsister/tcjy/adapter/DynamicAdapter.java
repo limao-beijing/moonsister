@@ -7,6 +7,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIView;
 import com.moonsister.tcjy.base.BaseRecyclerViewAdapter;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
+import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.utils.StringUtis;
@@ -20,7 +21,7 @@ import java.util.List;
 /**
  * Created by pc on 2016/6/6.
  */
-public class DynamicAdapter extends BaseRecyclerViewAdapter<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
+public class DynamicAdapter extends BaseRecyclerViewAdapter<DynamicItemBean> {
     /**
      * type 动态类型 1红包图集，2普通图文，3普通小视频动态，4免费语音，5付费语音，6付费视频
      */
@@ -92,7 +93,7 @@ public class DynamicAdapter extends BaseRecyclerViewAdapter<UserInfoListBean.Use
             return;
         if (datas != null) {
             for (int i = 0; i < datas.size(); i++) {
-                UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList ls = datas.get(i);
+                DynamicItemBean ls = datas.get(i);
                 if (ls != null && StringUtis.equals(ls.getLatest_id(), bean.getData().getLatest_id())) {
                     switch (ls.getType()) {
                         case TYPE_CHARGE_PIC:
@@ -166,8 +167,8 @@ public class DynamicAdapter extends BaseRecyclerViewAdapter<UserInfoListBean.Use
     }
 
     public void deleteDynamic(String id) {
-        UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean = null;
-        for (UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList data : datas) {
+        DynamicItemBean bean = null;
+        for (DynamicItemBean data : datas) {
             if (StringUtis.equals(data.getLatest_id(), id)) {
                 bean = data;
                 break;

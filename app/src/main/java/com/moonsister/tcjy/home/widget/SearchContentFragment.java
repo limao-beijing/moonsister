@@ -81,7 +81,7 @@ public class SearchContentFragment extends BaseFragment implements SearchContent
 
     @Override
     public void transfePageMsg(String msg) {
-        transfePageMsg(msg);
+        showToast(msg);
     }
 
     @Override
@@ -90,7 +90,7 @@ public class SearchContentFragment extends BaseFragment implements SearchContent
             return;
         for (String s : datas) {
             TextView tv = (TextView) UIUtils.inflateLayout(
-                    R.layout.activity_search_tv, flHotKey);
+                    R.layout.bg_search_key, flHotKey);
             tv.setText(s);
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override

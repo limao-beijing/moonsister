@@ -8,5 +8,5 @@ import com.moonsister.tcjy.utils.EnumConstant;
  * Created by jb on 2016/8/28.
  */
 public interface SearchReasonFragmentPersenter extends BaseIPresenter<SearchReasonFragmentView> {
-    void loadSearchReason(String key, EnumConstant.SearchType type);
+    void loadSearchReason(String key, boolean isLoadMore, EnumConstant.SearchType type);
 }

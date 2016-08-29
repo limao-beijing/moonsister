@@ -17,6 +17,7 @@ import com.moonsister.tcjy.adapter.DynamicAdapter;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.DefaultDataBean;
+import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.utils.ActivityUtils;
@@ -32,7 +33,7 @@ import butterknife.Bind;
 /**
  * Created by pc on 2016/6/4.
  */
-public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
+public class DynamicViewHolder extends BaseRecyclerViewHolder<DynamicItemBean> {
 
 
     @Bind(R.id.riv_user_image)
@@ -95,7 +96,7 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
     }
 
     @Override
-    public void onBindData(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
+    public void onBindData(DynamicItemBean bean) {
         tvStr.setText(bean.getTitle());
         switch (bean.getType()) {
             case DynamicAdapter.TYPE_CHARGE_PIC:
@@ -116,7 +117,7 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
      *
      * @param bean
      */
-    private void setTVData(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
+    private void setTVData(DynamicItemBean bean) {
         if (bean == null)
             return;
         ImageServerApi.showURLImage(playBackground, bean.getVimg());
@@ -167,7 +168,7 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
      *
      * @param bean
      */
-    private void setPICData(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
+    private void setPICData(DynamicItemBean bean) {
         if (bean == null)
             return;
         dynamicAction(bean);
@@ -230,7 +231,7 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
      *
      * @param bean
      */
-    private void dynamicAction(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
+    private void dynamicAction(DynamicItemBean bean) {
         tv_wacth_number.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -281,15 +282,15 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
     }
 
     @Override
-    protected void onItemclick(View view, UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean, int position) {
+    protected void onItemclick(View view, DynamicItemBean bean, int position) {
         ActivityUtils.startDynamicDatailsActivity(bean);
     }
 
 
     private static class PicGridView extends BaseAdapter {
-        private UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean;
+        private DynamicItemBean bean;
 
-        public PicGridView(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
+        public PicGridView(DynamicItemBean bean) {
             this.bean = bean;
         }
 

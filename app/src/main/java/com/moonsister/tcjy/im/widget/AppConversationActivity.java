@@ -48,7 +48,8 @@ public class AppConversationActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        certificationStatus();
+        if (!StringUtis.equals("1000", mTargetId))
+            certificationStatus();
     }
 
     public void certificationStatus() {

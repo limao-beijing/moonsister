@@ -10,11 +10,12 @@ import com.moonsister.tcjy.CacheManager;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.SearchReasonFragmentAdapter;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.bean.DynamicBean;
+import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.home.presenetr.SearchReasonFragmentPersenter;
 import com.moonsister.tcjy.home.presenetr.SearchReasonFragmentPersenterImpl;
 import com.moonsister.tcjy.home.view.SearchReasonFragmentView;
 import com.moonsister.tcjy.utils.EnumConstant;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.widget.XListView;
 
 import java.util.ArrayList;
@@ -30,6 +31,8 @@ public class SearchReasonFragment extends BaseFragment implements SearchReasonFr
     XListView xlv;
     private SearchReasonFragmentPersenter persenter;
     private SearchReasonFragmentAdapter adapter;
+    private String key;
+    private boolean isLoadMore = false;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class SearchReasonFragment extends BaseFragment implements SearchReasonFr
     @Override
     protected void initData() {
         xlv.setVerticalLinearLayoutManager();
+        xlv.setPullRefreshEnabled(false);
         xlv.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
@@ -49,7 +53,8 @@ public class SearchReasonFragment extends BaseFragment implements SearchReasonFr
 
             @Override
             public void onLoadMore() {
-
+                isLoadMore = true;
+                persenter.loadSearchReason(key, isLoadMore, EnumConstant.SearchType.all);
             }
         });
     }
@@ -59,20 +64,19 @@ public class SearchReasonFragment extends BaseFragment implements SearchReasonFr
     }
 
     public void loadSearch(String key) {
+        if (StringUtis.isEmpty(key))
+            return;
         if (CacheManager.isExist4DataCache(getContext(), CacheManager.CachePath.SEARCH_KEY_HISTPRY)) {
             ArrayList<String> keys = CacheManager.readObject(getContext(), CacheManager.CachePath.SEARCH_KEY_HISTPRY);
             if (keys == null) {
                 keys = new ArrayList<String>();
                 keys.add(key);
             } else {
-                if (keys.contains(key)) {
-                    keys.remove(key);
-                    keys.add(0, key);
-                } else {
-                    if (keys.size() >= 6) {
-                        for (int i = keys.size() - 1; i >= 5; i--) {
-                            keys.remove(i);
-                        }
+                for (int i = 0; i < keys.size(); i++) {
+                    if (i > 5) {
+                        keys.remove(keys.get(i));
+                    } else if (StringUtis.equals(key, keys.get(i))) {
+                        keys.remove(keys.get(i));
                     }
                 }
                 keys.add(0, key);
@@ -83,8 +87,9 @@ public class SearchReasonFragment extends BaseFragment implements SearchReasonFr
             keys.add(key);
             CacheManager.saveObject(getContext(), keys, CacheManager.CachePath.SEARCH_KEY_HISTPRY);
         }
-        persenter.loadSearchReason(key, EnumConstant.SearchType.user);
-
+        isLoadMore = false;
+        persenter.loadSearchReason(key, isLoadMore, EnumConstant.SearchType.user);
+        this.key = key;
     }
 
     @Override
@@ -95,33 +100,35 @@ public class SearchReasonFragment extends BaseFragment implements SearchReasonFr
     @Override
     public void hideLoading() {
         hideProgressDialog();
+        if (xlv != null) {
+            xlv.loadMoreComplete();
+            xlv.refreshComplete();
+        }
     }
 
     @Override
     public void transfePageMsg(String msg) {
-        transfePageMsg(msg);
+        showToast(msg);
     }
+
 
     @Override
-    public void setLoadResult(List<DynamicBean.DataBean.ListBean> data) {
-
-    }
-
-
-   /* @Override
-    public void setLoadResult(List<DynamicBean.DataBean.ListBean> data) {
+    public void setLoadResult(List<DynamicItemBean> data) {
 
         if (xlv != null) {
             if (adapter == null) {
                 adapter = new SearchReasonFragmentAdapter(data);
                 xlv.setAdapter(adapter);
             } else {
-                adapter.clean();
+                if (!isLoadMore)
+                    adapter.clean();
                 adapter.addListData(data);
                 adapter.onRefresh();
             }
+
         }
 
-    }*/
+
+    }
 
 }

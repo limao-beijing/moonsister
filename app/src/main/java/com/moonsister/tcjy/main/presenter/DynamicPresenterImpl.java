@@ -5,6 +5,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.base.BaseIModel.onLoadDateSingleListener;
 import com.moonsister.tcjy.bean.DefaultDataBean;
+import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
@@ -20,7 +21,7 @@ import java.util.List;
 /**
  * Created by pc on 2016/6/6.
  */
-public class DynamicPresenterImpl implements DynamicPresenter, onLoadDateSingleListener<UserInfoDetailBean>, BaseIModel.onLoadListDateListener<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
+public class DynamicPresenterImpl implements DynamicPresenter, onLoadDateSingleListener<UserInfoDetailBean>, BaseIModel.onLoadListDateListener<DynamicItemBean> {
     private DynamicView mUserInfoView;
     private DynamicModel mUserInfoModel;
     private int page = 1;
@@ -154,18 +155,18 @@ public class DynamicPresenterImpl implements DynamicPresenter, onLoadDateSingleL
     }
 
     @Override
-    public void onSuccess(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> t, BaseIModel.DataType dataType) {
+    public void onSuccess(List<DynamicItemBean> t, BaseIModel.DataType dataType) {
 
         if (t != null) {
             if (t.size() != 0) {
                 if (page == 1) {
 
-                    UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList beanDataList = t.get(t.size() - 1);
+                    DynamicItemBean beanDataList = t.get(t.size() - 1);
                     if (StringUtis.equals(beanDataList.getIstop(), "1")) {
                         upID = beanDataList.getLatest_id();
                         t.remove(beanDataList);
-                        UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList beanDataList1 = null;
-                        for (UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean : t) {
+                        DynamicItemBean beanDataList1 = null;
+                        for (DynamicItemBean bean : t) {
                             if (StringUtis.equals(bean.getLatest_id(), upID)) {
                                 beanDataList1 = bean;
                                 break;
@@ -179,8 +180,8 @@ public class DynamicPresenterImpl implements DynamicPresenter, onLoadDateSingleL
 
                 } else {
                     if (!StringUtis.isEmpty(upID)) {
-                        UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList beanDataList1 = null;
-                        for (UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean : t) {
+                        DynamicItemBean beanDataList1 = null;
+                        for (DynamicItemBean bean : t) {
                             if (StringUtis.equals(bean.getLatest_id(), upID)) {
                                 beanDataList1 = bean;
                                 break;

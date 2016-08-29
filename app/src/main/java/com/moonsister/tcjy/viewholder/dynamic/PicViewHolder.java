@@ -14,6 +14,7 @@ import com.moonsister.tcjy.adapter.DynamicAdapter;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.DefaultDataBean;
+import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.utils.ActivityUtils;
@@ -29,7 +30,7 @@ import butterknife.Bind;
 /**
  * Created by jb on 2016/8/11.
  */
-public class PicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
+public class PicViewHolder extends BaseRecyclerViewHolder<DynamicItemBean> {
     @Bind(R.id.riv_user_image)
     RoundedImageView rivUserImage;
     @Bind(R.id.tv_user_name)
@@ -59,7 +60,7 @@ public class PicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.UserI
     }
 
     @Override
-    public void onBindData(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
+    public void onBindData(DynamicItemBean bean) {
         if (bean == null)
             return;
         dynamicAction(bean);
@@ -117,7 +118,7 @@ public class PicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.UserI
     }
 
     @Override
-    protected void onItemclick(View view, UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean, int position) {
+    protected void onItemclick(View view,DynamicItemBean bean, int position) {
         ActivityUtils.startDynamicDatailsActivity(bean);
     }
 
@@ -126,7 +127,7 @@ public class PicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.UserI
      *
      * @param bean
      */
-    private void dynamicAction(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
+    private void dynamicAction(DynamicItemBean bean) {
         tv_wacth_number.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -177,9 +178,9 @@ public class PicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.UserI
     }
 
     private static class PicGridViewAdapter extends BaseAdapter {
-        private UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean;
+        private DynamicItemBean bean;
 
-        public PicGridViewAdapter(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
+        public PicGridViewAdapter(DynamicItemBean bean) {
             this.bean = bean;
         }
 
