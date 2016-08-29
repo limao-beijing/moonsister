@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 
 import com.moonsister.tcjy.AppConstant;
+import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
 import com.moonsister.tcjy.bean.TiXinrRecordBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
@@ -134,7 +135,7 @@ public class ActivityUtils {
      *
      * @param bean
      */
-    public static void startDynamicDatailsActivity(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
+    public static void startDynamicDatailsActivity(DynamicItemBean bean) {
         if (bean == null)
             return;
         Intent intent = new Intent(ConfigUtils.getInstance().getApplicationContext(), DynamicDatailsActivity.class);

@@ -4,6 +4,7 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.base.BaseIModel;
+import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
@@ -23,7 +24,7 @@ public class DynamicModelImpl implements DynamicModel {
 
 
     @Override
-    public void loadUserInfoData(String userId, int page, BaseIModel.onLoadListDateListener<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> listener) {
+    public void loadUserInfoData(String userId, int page, BaseIModel.onLoadListDateListener<DynamicItemBean> listener) {
         String authcode = UserInfoManager.getInstance().getAuthcode();
         ServerApi.getAppAPI().getPersonDynamincList(userId, authcode, page, AppConstant.CHANNEL_ID)
                 .subscribeOn(Schedulers.io())
@@ -45,7 +46,7 @@ public class DynamicModelImpl implements DynamicModel {
                         if (userInfoListBean != null) {
                             UserInfoListBean.UserInfoListBeanData data = userInfoListBean.getData();
                             if (data != null) {
-                                List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> list = data.getList();
+                                List<DynamicItemBean> list = data.getList();
                                 listener.onSuccess(list, BaseIModel.DataType.DATA_ZERO);
                             }
                         } else

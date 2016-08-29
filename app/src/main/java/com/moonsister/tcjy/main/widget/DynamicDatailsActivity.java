@@ -10,6 +10,7 @@ import com.moonsister.tcjy.adapter.DynamicDetailsAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.CommentDataListBean;
+import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.event.Events;
@@ -47,8 +48,8 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
     EditText edInput;
     private DynamicDetailsAdapter mAdapter;
     private DynamincDatailsPresenter presenter;
-    private UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList userInfo;
-    private BaseRecyclerViewHolder<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> holder;
+    private DynamicItemBean userInfo;
+    private BaseRecyclerViewHolder<DynamicItemBean> holder;
 
     @Override
 
@@ -111,7 +112,7 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
 
     @Override
     protected View setRootContentView() {
-        userInfo = (UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList) getIntent().getSerializableExtra(AppConstant.DYNAMIC_DATAILS);
+        userInfo = (DynamicItemBean) getIntent().getSerializableExtra(AppConstant.DYNAMIC_DATAILS);
         if (userInfo == null) {
             finish();
             return null;

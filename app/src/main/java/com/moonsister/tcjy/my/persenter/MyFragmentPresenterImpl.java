@@ -4,6 +4,7 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.DefaultDataBean;
+import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
@@ -19,7 +20,7 @@ import java.util.List;
 /**
  * Created by jb on 2016/6/27.
  */
-public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.onLoadListDateListener<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList>, BaseIModel.onLoadDateSingleListener {
+public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.onLoadListDateListener<DynamicItemBean>, BaseIModel.onLoadDateSingleListener {
     private MyFragmentView view;
     private MyFragmentModel model;
     private int page = 2;
@@ -108,19 +109,19 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
 
 
     @Override
-    public void onSuccess(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> t, BaseIModel.DataType dataType) {
+    public void onSuccess(List<DynamicItemBean> t, BaseIModel.DataType dataType) {
         switch (dataType) {
             case DATA_ZERO:
                 if (t != null) {
                     if (t.size() != 0) {
                         if (page == 1) {
 
-                            UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList beanDataList = t.get(t.size() - 1);
+                            DynamicItemBean beanDataList = t.get(t.size() - 1);
                             if (StringUtis.equals(beanDataList.getIstop(), "1")) {
                                 upID = beanDataList.getLatest_id();
                                 t.remove(beanDataList);
-                                UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList beanDataList1 = null;
-                                for (UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean : t) {
+                                DynamicItemBean beanDataList1 = null;
+                                for (DynamicItemBean bean : t) {
                                     if (StringUtis.equals(bean.getLatest_id(), upID)) {
                                         beanDataList1 = bean;
                                         break;
@@ -134,8 +135,8 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
 
                         } else {
                             if (!StringUtis.isEmpty(upID)) {
-                                UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList beanDataList1 = null;
-                                for (UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean : t) {
+                                DynamicItemBean beanDataList1 = null;
+                                for (DynamicItemBean bean : t) {
                                     if (StringUtis.equals(bean.getLatest_id(), upID)) {
                                         beanDataList1 = bean;
                                         break;

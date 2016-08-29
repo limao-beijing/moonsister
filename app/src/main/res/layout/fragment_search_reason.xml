@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+   <!-- <view
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x2"
+        android:background="@color/text_gray_778998" />
+-->
+   <!-- <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x92"
+        android:background="@color/blue_dark_151c22"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_all"
+                style="@style/style_search_result_navigtion"
+                android:layout_centerInParent="true"
+                android:text="@string/all" />
+
+            <View
+                android:id="@+id/view_all_line"
+                style="@style/style_search_result_navigtion_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x2"
+                android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_type_user"
+                style="@style/style_search_result_navigtion"
+                android:layout_centerInParent="true"
+                android:text="@string/tv_search_type_user" />
+
+            <View
+                android:id="@+id/view_user_line"
+                style="@style/style_search_result_navigtion_line"
+                android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_type_dynamic"
+                style="@style/style_search_result_navigtion"
+                android:layout_centerInParent="true"
+                android:text="@string/tv_search_type_dynamic" />
+
+            <View
+                android:id="@+id/view_dynamic_line"
+                style="@style/style_search_result_navigtion_line"
+                android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+
+    </LinearLayout>-->
+
+    <com.moonsister.tcjy.widget.XListView
+        android:id="@+id/xlv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.moonsister.tcjy.widget.XListView>
+
+</LinearLayout>

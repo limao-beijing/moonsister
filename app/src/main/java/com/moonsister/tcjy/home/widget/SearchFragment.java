@@ -35,7 +35,7 @@ import butterknife.ButterKnife;
 /**
  * Created by jb on 2016/8/26.
  */
-public class SearchFragment extends BaseFragment implements SearchHeaderFragment.onSearchHeaderFragmentListener, SearchFragmentView {
+public class SearchFragment extends BaseFragment implements SearchHeaderFragment.onSearchHeaderFragmentListener, SearchFragmentView, SearchContentFragment.SearchContentFragmentListtener {
 
     @Bind(R.id.fl_search_head)
     FrameLayout flSearchHead;
@@ -46,6 +46,8 @@ public class SearchFragment extends BaseFragment implements SearchHeaderFragment
     private PopupWindow popupWindow;
     private ListView lv;
     private SearchFragmentPersenter persenter;
+    private Fragment currFragment;
+    private SearchReasonFragment reasonFragment;
     private String key;
 
     public static Fragment newInstance() {
@@ -61,12 +63,15 @@ public class SearchFragment extends BaseFragment implements SearchHeaderFragment
 
     @Override
     protected void initData() {
+
         searchHeadFragment = SearchHeaderFragment.newInstance();
         replaceFramgent(searchHeadFragment, R.id.fl_search_head);
         searchHeadFragment.setSearchHeaderFragmentListener(this);
         searchContentFragment = SearchContentFragment.newInstance();
-        replaceFramgent(searchContentFragment, R.id.fl_search_content);
-
+        searchContentFragment.setSearchContentFragmentListtener(this);
+        reasonFragment = SearchReasonFragment.newInstance();
+        hideFragment(reasonFragment, R.id.fl_search_content);
+        hideFragment(searchContentFragment, R.id.fl_search_content);
     }
 
 
@@ -86,6 +91,26 @@ public class SearchFragment extends BaseFragment implements SearchHeaderFragment
             }
             persenter.loadKeyMate(key);
         }
+    }
+
+    @Override
+    public void search(String key) {
+        if (StringUtis.isEmpty(key))
+            return;
+        searchHeadFragment.setEditTextText(key);
+        if (popupWindow != null && popupWindow.isShowing()) {
+            popupWindow.dismiss();
+            popupWindow = null;
+        }
+
+        hideFragment(reasonFragment, R.id.fl_search_content);
+        reasonFragment.loadSearch(key);
+
+    }
+
+    @Override
+    public void onClickKey(String key) {
+        search(key);
     }
 
 
@@ -178,6 +203,7 @@ public class SearchFragment extends BaseFragment implements SearchHeaderFragment
         }
     }
 
+
     public class KeyMateAdapter extends BaseAdapter<String> {
 
 
@@ -195,9 +221,15 @@ public class SearchFragment extends BaseFragment implements SearchHeaderFragment
             if (!StringUtis.isEmpty(key)) {
                 int color = view.getContext().getResources().getColor(R.color.yellow_ffd305);
                 SpannableStringBuilder builder = new SpannableStringBuilder(s);
-                builder.setSpan(new ForegroundColorSpan(color), 0, key.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                builder.setSpan(new ForegroundColorSpan(color), 0, key.length() < s.length() ? key.length() : s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 ((TextView) view).setText(builder);
             }
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    search(s);
+                }
+            });
         }
 
         @Override

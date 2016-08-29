@@ -196,4 +196,19 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:gravity">center</item>
     </style>
+    <!--搜索类型导航-->
+    <style name="style_search_result_navigtion" parent="android:Widget.TextView">
+        <item name="android:textColor">@drawable/selector_home_text_color</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_17</item>
+    </style>
+
+    <style name="style_search_result_navigtion_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/x2</item>
+        <item name="android:background">@drawable/selector_home_text_color</item>
+        <item name="android:paddingLeft">@dimen/x10</item>
+        <item name="android:paddingRight">@dimen/x10</item>
+    </style>
 </resources>

@@ -18,17 +18,27 @@ public class UserInfoListBean extends BaseBean {
     }
 
     public static class UserInfoListBeanData {
-        private List<UserInfoListBeanDataList> list;
+        private List<DynamicItemBean> list;
 
-        public List<UserInfoListBeanDataList> getList() {
+        public List<DynamicItemBean> getList() {
             return this.list;
         }
 
-        public void setList(List<UserInfoListBeanDataList> list) {
+        public void setList(List<DynamicItemBean> list) {
             this.list = list;
         }
 
         public static class UserInfoListBeanDataList extends BaseDataBean {
+
+
+            //用户
+
+            private String isfollow;
+            private String signature;
+            private String fansnum;
+            private int dtype;
+            //动态
+            private String tags;
             private String lkpicn;
             private ArrayList<String> img;
             private long create_time;
@@ -52,9 +62,51 @@ public class UserInfoListBean extends BaseBean {
             private String isauth;
             //置顶
             private String istop;
+
+            public String getIsfollow() {
+                return isfollow;
+            }
+
+            public void setIsfollow(String isfollow) {
+                this.isfollow = isfollow;
+            }
+
+            public String getSignature() {
+                return signature;
+            }
+
+            public void setSignature(String signature) {
+                this.signature = signature;
+            }
+
+            public String getFansnum() {
+                return fansnum;
+            }
+
+            public void setFansnum(String fansnum) {
+                this.fansnum = fansnum;
+            }
+
+            public String getTags() {
+                return tags;
+            }
+
+            public void setTags(String tags) {
+                this.tags = tags;
+            }
+
+            public int getDtype() {
+                return dtype;
+            }
+
+            public void setDtype(int dtype) {
+                this.dtype = dtype;
+            }
+
             /**
              * 1 已支付  2 未支付
              */
+
 
             private String ispay;
 

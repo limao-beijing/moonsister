@@ -8,6 +8,7 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.DynamicAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
+import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
@@ -184,7 +185,7 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
     }
 
     @Override
-    public void loadUserinfo(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> list) {
+    public void loadUserinfo(List<DynamicItemBean> list) {
 
         if (mAdapter == null) {
             mAdapter = new DynamicAdapter(list);

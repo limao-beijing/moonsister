@@ -28,6 +28,7 @@ public abstract class BaseFragment extends BaseRxFragment implements View.OnTouc
     private ProgressDialog progressDialog;
     protected Resources resources;
     protected Activity mActivity;
+    private Fragment curFragment;
 
     @Nullable
     @Override
@@ -131,11 +132,13 @@ public abstract class BaseFragment extends BaseRxFragment implements View.OnTouc
     /**
      * 隐藏fragment
      */
-    protected void hideFragment(Fragment hide, Fragment show, @IdRes int resid) {
+    protected void hideFragment(Fragment show, @IdRes int resid) {
         if (show == null)
             return;
-        FragmentUtils.switchHideFragment(getChildFragmentManager(), resid, hide, show);
+        FragmentUtils.switchHideFragment(getChildFragmentManager(), resid, curFragment, show);
+        curFragment = show;
     }
+
 
 
 }

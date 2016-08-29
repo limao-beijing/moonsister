@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
+import com.moonsister.tcjy.utils.StringUtis;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -45,7 +46,13 @@ public class SearchHeaderFragment extends BaseFragment implements TextWatcher {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_cancel:
-                getActivity().finish();
+                if (StringUtis.equals(tvCancel.getText().toString(), getString(R.string.cancel)))
+                    getActivity().finish();
+                else {
+                    if (listener != null) {
+                        listener.search(etContent.getText().toString());
+                    }
+                }
                 break;
             case R.id.iv_search_cancel:
                 etContent.setText("");
@@ -65,9 +72,20 @@ public class SearchHeaderFragment extends BaseFragment implements TextWatcher {
 
     @Override
     public void afterTextChanged(Editable s) {
+        if (StringUtis.isEmpty(s.toString())) {
+            tvCancel.setText(getText(R.string.cancel));
+        } else {
+            tvCancel.setText(getString(R.string.search));
+        }
         if (listener != null) {
             listener.onChange(s.toString());
         }
+        etContent.setSelection(s.length());
+    }
+
+    public void setEditTextText(String key) {
+        if (etContent != null)
+            etContent.setText(key);
     }
 
     /**
@@ -75,6 +93,8 @@ public class SearchHeaderFragment extends BaseFragment implements TextWatcher {
      */
     public interface onSearchHeaderFragmentListener {
         void onChange(String key);
+
+        void search(String key);
     }
 
     public void setSearchHeaderFragmentListener(onSearchHeaderFragmentListener listener) {

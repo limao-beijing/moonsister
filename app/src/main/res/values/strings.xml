@@ -257,4 +257,7 @@
     <string name="withdraw">五个工作日到账</string>
     <string name="hot_search">热门搜索</string>
     <string name="historic_record">历史记录</string>
+    <string name="all">全部</string>
+    <string name="tv_search_type_user">只看会员</string>
+    <string name="tv_search_type_dynamic">只看动态</string>
 </resources>
