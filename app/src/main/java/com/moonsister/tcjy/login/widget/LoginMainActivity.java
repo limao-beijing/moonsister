@@ -47,9 +47,11 @@ public class LoginMainActivity extends BaseActivity implements LoginMainView {
     protected View setRootContentView() {
         presenter = new LoginMainPresenterImpl(this);
         return UIUtils.inflateLayout(R.layout.activity_login_main);
+//        return UIUtils.inflateLayout(R.layout.login_page);
     }
 
     private BaseFragment currentFragment, loginFragment, regiterFragment;
+//    private BaseFragment currentFragment, loginFragment;
 
     @Override
     public void swicth2Login() {

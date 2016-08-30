@@ -6,8 +6,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.base.BaseFragment;
@@ -28,6 +30,8 @@ import butterknife.OnClick;
  * Created by pc on 2016/6/13.
  */
 public class LoginFragment extends BaseFragment implements LoginFragmentView {
+    @Bind(R.id.iv_user_icon)//用户头像
+    ImageView iv_user_icon;
     @Bind(R.id.et_phone_number)
     EditText etPhoneNumber;
     @Bind(R.id.et_password)
@@ -46,12 +50,13 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         persenter = new LoginFragmentPersenterImpl();
         persenter.attachView(this);
-        return UIUtils.inflateLayout(R.layout.fragment_login, container);
+//        return UIUtils.inflateLayout(R.layout.fragment_login, container);
+        return UIUtils.inflateLayout(R.layout.login_page);
     }
 
     @Override
     protected void initData() {
-
+        ImageServerApi.showURLSamllImage(iv_user_icon, UserInfoManager.getInstance().getAvater());
     }
 
     @Override

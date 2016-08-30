@@ -1,19 +1,13 @@
 package com.moonsister.tcjy.main.model;
 
-import com.moonsister.pay.aibeipay.AiBeiPayManager;
 import com.moonsister.pay.tencent.PayBean;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.AuthenticationBean;
-import com.moonsister.tcjy.event.Events;
-import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import rx.Observable;
@@ -27,7 +21,7 @@ import rx.schedulers.Schedulers;
 public class ManorGrilActivityModelImpl implements ManorGrilActivityModel {
     @Override
     public void getAuthentication(EnumConstant.PayType payType, int sex, onLoadDateSingleListener<String> listener) {
-        Observable<AuthenticationBean> observable = ServerApi.getAppAPI().getAuthentication(payType.getType(), sex, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+//        Observable<AuthenticationBean> observable = ServerApi.getAppAPI().getAuthentication(payType.getType(), sex, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
 //        observable.subscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread())
 //                .subscribe(new Subscriber<AuthenticationBean>() {
@@ -42,7 +36,10 @@ public class ManorGrilActivityModelImpl implements ManorGrilActivityModel {
 //                        listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
 //                    }
 //
+//                    @Override
+//                    public void onNext(AuthenticationBean authenticationBean) {
 //
+//                    }
 //
 //                    @Override
 //                    public void onNext(PayBean bean) {

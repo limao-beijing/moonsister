@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#636363"><!--添加的背景-->
 
     <RelativeLayout
         android:id="@+id/layou_navigation_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y90"
         android:background="@color/app_inflate_color"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:visibility="gone"><!--添加的隐藏-->
 
         <ImageView
             android:id="@+id/view_line"
@@ -27,14 +29,16 @@
             style="@style/text_color_home_one_menu"
             android:layout_marginRight="@dimen/x20"
             android:layout_toLeftOf="@+id/view_center_line"
-            android:text="@string/str_login" />
+            android:text="@string/str_login"
+            android:visibility="invisible"/><!--添加的-->
 
         <TextView
             android:id="@+id/tv_navigation_register"
             style="@style/text_color_home_one_menu"
             android:layout_marginLeft="@dimen/x20"
             android:layout_toRightOf="@+id/view_center_line"
-            android:text="@string/str_register" />
+            android:text="@string/str_register"
+            android:visibility="invisible"/><!--添加的-->
 
         <ImageView
             android:layout_width="wrap_content"
