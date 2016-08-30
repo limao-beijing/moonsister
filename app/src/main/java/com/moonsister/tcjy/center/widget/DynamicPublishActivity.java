@@ -100,7 +100,7 @@ public class DynamicPublishActivity extends BaseFragmentActivity implements View
         DynamicContentFragment.DynamicType dynamicType = dyf.getDynamicType();
         if (dynamicType == DynamicContentFragment.DynamicType.PIC) {
             if (charge) {
-                if (dynamicContent.size() < 6) {
+                if (dynamicContent.size() < 5) {
                     showToast(UIUtils.getStringRes(R.string.dynamic_pic_not_more_6));
                     return;
                 }

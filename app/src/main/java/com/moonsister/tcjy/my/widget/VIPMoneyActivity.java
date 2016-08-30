@@ -15,11 +15,8 @@ import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenter;
 import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenterImpl;
 import com.moonsister.tcjy.main.view.BuyVipFragmentView;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
-
-import org.w3c.dom.Text;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -50,6 +47,7 @@ public class VIPMoneyActivity extends BaseActivity implements BuyVipFragmentView
     TextView tv_bug;
     private BuyVipFragmentPersenter persenter;
     private int select;
+
     @Override
     protected View setRootContentView() {
         persenter = new BuyVipFragmentPersenterImpl();
@@ -69,6 +67,7 @@ public class VIPMoneyActivity extends BaseActivity implements BuyVipFragmentView
         vipCombo1Text.setText(Html.fromHtml(String.format(string, "1", 50)));
         selectBuy(ivSelect12);
     }
+
     private void selectBuy(View view) {
         ivSelect12.setVisibility(view == ivSelect12 ? View.VISIBLE : View.INVISIBLE);
         ivSelect3.setVisibility(view == ivSelect3 ? View.VISIBLE : View.INVISIBLE);
@@ -93,7 +92,7 @@ public class VIPMoneyActivity extends BaseActivity implements BuyVipFragmentView
                 selectBuy(ivSelect1);
                 break;
             case R.id.tv_buy:
-                persenter.buyVIP(select);
+                persenter.buyVIP(select, "");
                 break;
         }
     }

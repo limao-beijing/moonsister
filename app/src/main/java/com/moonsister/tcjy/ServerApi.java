@@ -729,7 +729,8 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("Location/update_data")
-        Observable<DefaultDataBean> getuploadPhoneInfo(@Field("address") String serialize);
+        Observable<DefaultDataBean> getuploadPhoneInfo(@Field("address") String serialize,
+                                                       @Query("channel") String channel);
 
         /**
          * 获取关注列表
@@ -828,14 +829,14 @@ public class ServerApi {
          *
          * @param payType
          * @param opentype
-         * @param authcode
-         * @return
+         * @param phone
+         * @param authcode @return
          */
         @FormUrlEncoded
         @POST("mmvip/openvip")
         Observable<PayBean> getBuyVIP(@Field("pay_type") String payType,
                                       @Field("opentype") int opentype,
-                                      @Field("authcode") String authcode,
+                                      @Field("fee_mobile") String phone, @Field("authcode") String authcode,
                                       @Field("channel") String channel);
 
         /**
@@ -846,7 +847,8 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("apply/gobuy")
-        Observable<PayBean> getCertificationPay(@Field("authcode") String authcode);
+        Observable<PayBean> getCertificationPay(@Field("authcode") String authcode,
+                                                @Field("channel") String channel);
 
         /**
          * 推送用户信息

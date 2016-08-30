@@ -68,32 +68,36 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity
-            android:name=".main.widget.MainActivity"
-            android:screenOrientation="portrait">
+        <activity android:name=".main.widget.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".main.widget.MainActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
 
         <!-- 友盟 start -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="57bd3b7c67e58ecfb9001ff1" />
+            android:value="57be97bee0f55a68b40040c1" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="1007" />
+            android:value="1009" />
         <!--API  接口-->
         <meta-data
             android:name="API_CHANNEL"
-            android:value="1007" />
+            android:value="1009" />
         <!-- 友盟  end -->
         <!-- 高德 start -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="1540c80b188eb17adfaab103f2bad733" />
+            android:value="d96700c0f996fd9bc3cb5e5239ec7b2f" />
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService" />
         <!-- 高德 end -->
@@ -110,7 +114,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="com.txiehouy.xieho"
+                    android:host="com.spbfq.kpjy"
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>
@@ -128,7 +132,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="com.txiehouy.xieho"
+                    android:host="com.spbfq.kpjy"
                     android:pathPrefix="/subconversationlist"
                     android:scheme="rong" />
             </intent-filter>

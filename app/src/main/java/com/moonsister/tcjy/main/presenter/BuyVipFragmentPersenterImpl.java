@@ -28,9 +28,9 @@ public class BuyVipFragmentPersenterImpl implements BuyVipFragmentPersenter, Bas
     }
 
     @Override
-    public void buyVIP(int number) {
+    public void buyVIP(int number, String phone) {
         view.showLoading();
-        model.buyVIP(EnumConstant.PayType.IAPP_PAY, number, this);
+        model.buyVIP(EnumConstant.PayType.IAPP_PAY, number,phone, this);
     }
 
     @Override

@@ -12,6 +12,7 @@ import android.view.KeyCharacterMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenter;
 import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenterImpl;
 import com.moonsister.tcjy.main.view.BuyVipFragmentView;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
@@ -55,7 +57,14 @@ public class BuyVipFragment extends BaseFragment implements BuyVipFragmentView {
     TextView vipCombo1Text;
     @Bind(R.id.iv_select_1)
     ImageView ivSelect1;
-    private int select;
+
+    @Bind(R.id.vip_12_low_money_rule)
+    TextView vip_12_low_money_rule;
+    @Bind(R.id.vip_3_low_money_rule)
+    TextView vip_3_low_money_rule;
+    @Bind(R.id.et_input_phone)
+    EditText et_input_phone;
+    private int select = 12;
     private BuyVipFragmentPersenter persenter;
 
     @Override
@@ -73,9 +82,13 @@ public class BuyVipFragment extends BaseFragment implements BuyVipFragmentView {
         ivAddV.setVisibility(certificationStatus == 1 ? View.VISIBLE : View.INVISIBLE);
         tvUserName.setText(UserInfoManager.getInstance().getNickeName());
         String string = getResources().getString(R.string.combo_type);
-        vipCombo12Text.setText(Html.fromHtml(String.format(string, "12", 300)));
-        vipCombo3Text.setText(Html.fromHtml(String.format(string, "3", 120)));
+        vipCombo12Text.setText(Html.fromHtml(String.format(string, "12", 229)));
+        vipCombo3Text.setText(Html.fromHtml(String.format(string, "3", 119)));
         vipCombo1Text.setText(Html.fromHtml(String.format(string, "1", 50)));
+
+        String vip_rule_type = getResources().getString(R.string.vip_rule_type);
+        vip_12_low_money_rule.setText(Html.fromHtml(String.format(vip_rule_type, "[返200话费]", "免费查看全站异性会员私密视频，私密图片，私密语音，手机号，微信号等私密资料。")));
+        vip_3_low_money_rule.setText(Html.fromHtml(String.format(vip_rule_type, "[返100话费]", "免费查看全站异性会员私密视频，私密图片，私密语音，手机号，微信号。")));
         selectBuy(ivSelect12);
     }
 
@@ -89,15 +102,15 @@ public class BuyVipFragment extends BaseFragment implements BuyVipFragmentView {
         ivSelect1.setVisibility(view == ivSelect1 ? View.VISIBLE : View.INVISIBLE);
     }
 
-    @OnClick({R.id.layout_combo_12, R.id.layout_combo_3, R.id.layout_combo_1, R.id.tv_buy})
+    @OnClick({R.id.layout_combo_12, R.id.layout_combo_3, R.id.layout_combo_1, R.id.tv_buy, R.id.vip_12_low_money_rule, R.id.vip_3_low_money_rule})
     public void onClick(View view) {
         switch (view.getId()) {
-
+            case R.id.vip_12_low_money_rule:
             case R.id.layout_combo_12:
                 selectBuy(ivSelect12);
                 select = 12;
                 break;
-
+            case R.id.vip_3_low_money_rule:
             case R.id.layout_combo_3:
                 selectBuy(ivSelect3);
                 select = 3;
@@ -107,7 +120,16 @@ public class BuyVipFragment extends BaseFragment implements BuyVipFragmentView {
                 selectBuy(ivSelect1);
                 break;
             case R.id.tv_buy:
-                persenter.buyVIP(select);
+                String phone = et_input_phone.getText().toString();
+                if (StringUtis.isEmpty(phone)) {
+                    showToast(UIUtils.getStringRes(R.string.input_phone_number));
+                    return;
+                }
+                if (phone.length() < 11) {
+                    showToast(UIUtils.getStringRes(R.string.input_phone_number) + UIUtils.getStringRes(R.string.error));
+                    return;
+                }
+                persenter.buyVIP(select, phone);
                 break;
         }
     }

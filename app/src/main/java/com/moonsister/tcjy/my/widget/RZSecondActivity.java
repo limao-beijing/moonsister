@@ -132,7 +132,7 @@ public class RZSecondActivity extends BaseActivity implements RZSecondView {
         }
         //点击提交审核后弹出dialog提醒用户是否继续
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        String s = getResources().getString(R.string.tv_ren) + getString(R.string.pay_is_go);
+        String s = getResources().getString(R.string.tv_ren);
         builder.setMessage(s);
         builder.setTitle("提示");
         //dialog确认监听，用户点击确认则提交审核，得到并且判断之前的数据，跳转页面及带参数

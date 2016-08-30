@@ -26,8 +26,8 @@ public class BuyVipFragmentModelImpl implements BuyVipFragmentModel {
 
 
     @Override
-    public void buyVIP(EnumConstant.PayType payType, int number, onLoadDateSingleListener<String> listener) {
-        Observable<PayBean> observable = ServerApi.getAppAPI().getBuyVIP(payType.getType(), number, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+    public void buyVIP(EnumConstant.PayType payType, int number, String phone, onLoadDateSingleListener<String> listener) {
+        Observable<PayBean> observable = ServerApi.getAppAPI().getBuyVIP(payType.getType(), number,phone, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<PayBean>() {

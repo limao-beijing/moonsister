@@ -108,7 +108,7 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
         phoneInfoUtils.setTel2(phoneMunber);
         String serialize = JsonUtils.serialize(phoneInfoUtils);
         LogUtils.e(this, serialize);
-        Observable<DefaultDataBean> observable = ServerApi.getAppAPI().getuploadPhoneInfo(serialize);
+        Observable<DefaultDataBean> observable = ServerApi.getAppAPI().getuploadPhoneInfo(serialize,AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<BaseBean>() {
             @Override
             public void onSuccess(BaseBean bean) {
