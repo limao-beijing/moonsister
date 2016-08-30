@@ -262,4 +262,5 @@
     <string name="tv_search_type_dynamic">只看动态</string>
     <string name="reg_text">为了您的账户安全\n请及时绑定手机</string>
     <string name="fillout_message">19860万会员求真相，\n98万同兴趣者等你撩！</string>
+    <string name="activity_vip">充值成功后，注意信息保密，避免他人冒领。\n请按照系统提示，领取手机费返还。</string>
 </resources>
