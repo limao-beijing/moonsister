@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_gred_background"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x200"
+        android:background="@color/white">
+
+        <com.moonsister.tcjy.widget.RoundedImageView
+            android:id="@+id/riv_avater"
+            android:layout_width="@dimen/x120"
+            android:layout_height="@dimen/x120"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/x30"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/iv_add_v"
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/x30"
+            android:layout_alignBottom="@+id/riv_avater"
+            android:layout_marginLeft="-23dp"
+            android:layout_toRightOf="@+id/riv_avater"
+            android:src="@mipmap/add_v_icon" />
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x40"
+            android:layout_toRightOf="@id/riv_avater"
+            android:text="@string/loading"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/x40"
+            android:layout_marginTop="@dimen/x40"
+            android:layout_toRightOf="@id/riv_avater"
+            android:text="@string/vip_enjoy_prerogative"
+            android:textColor="@color/color_ff8201"
+            android:textSize="@dimen/text_size_18" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y20"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/vipone"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/viptwo"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y96"
+        android:layout_marginTop="@dimen/y50"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="16sp"
+            android:layout_margin="@dimen/x20"
+            android:text="手机号码"/>
+        <EditText
+            android:layout_width="@dimen/x600"
+            android:layout_height="match_parent"
+            android:hint="请填写您要返话费的手机号"
+            android:paddingLeft="@dimen/x20"
+            android:background="@drawable/ed_backgroud"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y50"
+        android:layout_marginLeft="@dimen/x20"
+        android:text="@string/activity_vip"/>
+    <TextView
+        android:id="@+id/tv_buy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x100"
+        android:background="@drawable/shape_text_full_ffd"
+        android:gravity="center"
+        android:padding="@dimen/x30"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:text="@string/immediately_dredge"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_17" />
+</LinearLayout>
