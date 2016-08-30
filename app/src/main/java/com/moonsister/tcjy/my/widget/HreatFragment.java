@@ -16,9 +16,7 @@ import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tcjy.viewholder.BaseHolder;
 import com.moonsister.tcjy.viewholder.HreatViewholder;
-import com.moonsister.tcjy.viewholder.PersonDynamicViewholder;
 
 import org.w3c.dom.Text;
 
@@ -61,10 +59,10 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
     TextView tv_look_people;
     @Bind(R.id.vip_money)//是否为VIP
     ImageView vip_money;
-    String[] images_text=new String[]{"我关注的","关注我的","动态管理","VIP充值","申请认证","兴趣修改","修改资料","财务中心","设置"};
-//    "悬赏管理","约见管理""屏蔽手机联系人"
-    int[] images=new int[]{R.mipmap.mysee,R.mipmap.seemy,R.mipmap.makemessage,R.mipmap.vipmoney,R.mipmap.viprenzheng,R.mipmap.insert,R.mipmap.make,R.mipmap.money,R.mipmap.domake};
-//    ,R.mipmap.phone,R.mipmap.xuanshang,R.mipmap.yousee,
+    String[] images_text=new String[]{"我关注的","关注我的","动态管理","VIP充值","申请认证","兴趣修改","悬赏管理","约见管理","修改资料","财务中心","屏蔽手机联系人","设置"};
+//
+    int[] images=new int[]{R.mipmap.mysee,R.mipmap.seemy,R.mipmap.makemessage,R.mipmap.vipmoney,R.mipmap.viprenzheng,R.mipmap.insert,R.mipmap.xuanshang,R.mipmap.yousee,R.mipmap.make,R.mipmap.money,R.mipmap.phone,R.mipmap.domake};
+//    ,,
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 

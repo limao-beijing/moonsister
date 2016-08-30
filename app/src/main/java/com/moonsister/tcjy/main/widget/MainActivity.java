@@ -91,6 +91,7 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public boolean isAddActivity() {
+
         return false;
     }
 

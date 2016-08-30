@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5c5c5c">
+
+    <com.moonsister.tcjy.my.view.RoundImageView
+        android:id="@+id/iv_user_icon"
+        android:layout_width="@dimen/x300"
+        android:layout_height="@dimen/y300"
+        android:background="@drawable/custom_imageview"
+        android:scaleType="centerInside"
+        android:layout_marginTop="@dimen/y178"
+        android:layout_centerHorizontal="true"
+        />
+    <RelativeLayout
+
+        android:id="@+id/layout_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_user_icon"
+        android:layout_marginTop="@dimen/y122">
+
+        <TextView
+            android:id="@+id/tv_username"
+            style="@style/textview_login"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/login_page_people"
+            android:drawablePadding="@dimen/x10"
+            android:paddingBottom="@dimen/y30"
+            android:paddingLeft="@dimen/x30" />
+
+        <EditText
+            android:id="@+id/et_phone_number"
+            style="@style/edittext_login"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_username"
+            android:hint="@string/input_phone_number" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y92"
+        android:layout_below="@+id/layout_username"
+        android:layout_margin="@dimen/x30"
+        android:background="@drawable/shape_background_text_white_color">
+
+        <TextView
+            android:id="@+id/tv_pwd"
+            style="@style/textview_login"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/password_icon"
+            android:drawablePadding="@dimen/x10"
+            android:paddingLeft="@dimen/x30"
+            android:text="@string/password" />
+
+        <EditText
+            android:id="@+id/et_password"
+            style="@style/edittext_login"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_pwd"
+            android:hint="@string/input_password"
+            android:inputType="textPassword" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_forget_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/layout_pwd"
+        android:layout_marginRight="@dimen/x30"
+        android:text="@string/forget_password" />
+
+    <TextView
+        android:id="@+id/submit_login"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y92"
+        android:layout_below="@+id/tv_forget_password"
+        android:layout_margin="@dimen/x30"
+        android:background="@drawable/shape_background_text_white_color"
+        android:gravity="center"
+        android:text="@string/str_login"
+        android:textColor="@color/background_red_color" />
+</RelativeLayout>

@@ -976,23 +976,9 @@ public class ServerApi {
                                                         @Query("version_type") String apiVersion);
 
 
-        /**
-         * 联想关键词
-         *
-         * @param key
-         * @param authcode
-         */
-        @GET("search/like_keys")
-        Observable<KeyMateBean> getKeyMath(@Query("key") String key,
-                                           @Query("authcode") String authcode,
-                                           @Query("channel") String channelId);
+        Observable<ChooseKeyBean> getLoadChooesKey(String authcode, String channelId);
 
-        /**
-         * 热门推荐
-         */
-        @GET("search/search_hot")
-        Observable<ChooseKeyBean> getLoadChooesKey(@Query("authcode") String authcode,
-                                                   @Query("channel") String channelId);
+        Observable<KeyMateBean> getKeyMath(String key, String authcode, String channelId);
     }
 }
 

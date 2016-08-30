@@ -12,9 +12,11 @@ import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
+import com.moonsister.tcjy.login.widget.RegActivity;
 import com.moonsister.tcjy.my.persenter.InsertActivityPersenter;
 import com.moonsister.tcjy.my.persenter.InsertActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.InsertActivityView;
+import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 
@@ -34,7 +36,7 @@ public class InsertActivity extends BaseActivity implements View.OnClickListener
     GridView gridView;
     @Bind(R.id.image_back)
     ImageView image_back;
-    String[] images_text=new String[]{"女神","附近异性","奇葩","走心","走肾","夫妻那些事","惊世才艺","网红秀场","笑死人","黑技巧","现场大事件","冷知识"};
+//    String[] images_text=new String[]{"女神","附近异性","奇葩","走心","走肾","夫妻那些事","惊世才艺","网红秀场","笑死人","黑技巧","现场大事件","冷知识"};
     InsertActivityPersenter persenter;
     int tagid;
     String tagname;
@@ -89,7 +91,8 @@ public class InsertActivity extends BaseActivity implements View.OnClickListener
 
                 break;
             case R.id.button1_text:
-//                persenter.sendData(p);
+                Intent intent=new Intent(InsertActivity.this,RegActivity.class);
+                startActivity(intent);
                 break;
             case R.id.image_back:
                 InsertActivity.this.finish();

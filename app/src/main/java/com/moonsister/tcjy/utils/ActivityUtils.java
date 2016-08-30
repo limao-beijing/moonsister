@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.provider.ContactsContract;
 
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.bean.DynamicItemBean;
@@ -24,10 +25,12 @@ import com.moonsister.tcjy.home.widget.SearchFragmentActivity;
 import com.moonsister.tcjy.home.widget.SearchReasonActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordActivity;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
+import com.moonsister.tcjy.login.widget.RegActivity;
 import com.moonsister.tcjy.main.widget.BuyVipActivity;
 import com.moonsister.tcjy.main.widget.DynamicAtionActivity;
 import com.moonsister.tcjy.main.widget.DynamicDatailsActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordNextActivity;
+import com.moonsister.tcjy.main.widget.ManorGrilActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentOrderActivity;
 import com.moonsister.tcjy.main.widget.PersonInfoChangeActivity;
@@ -664,6 +667,11 @@ public class ActivityUtils {
     public static void startSearchFragmentActivity() {
         startActivity(SearchFragmentActivity.class);
     }
+    //兴趣选择页跳注册页
+//    public static void startRegActivity() {
+//        Intent intent=new Intent(InsertActivity.this,RegActivity.class);
+//        startActivity(intent);
+//    }
 //    //我的页面不是会员    定义跳转的activity
 //    public static void startNoActivity() {
 //        startActivity(RZFirstActivity.class);

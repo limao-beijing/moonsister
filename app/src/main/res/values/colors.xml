@@ -17,8 +17,10 @@
     <color name="home_navigation_text_black">#333333</color>
     <!--红色背景-->
     <color name="background_red_color">#FF3366</color>
-    <!--白色背景-->
+    <!--黄色背景-->
     <color name="backgroud_yellow_color">#FF7F00</color>
+    <!--白色背景-->
+    <color name="backgroud_while_color">#FFFFFF</color>
     <!--黄色背景-->
     <color name="backgroud_black_color">#000000</color>
     <!---->

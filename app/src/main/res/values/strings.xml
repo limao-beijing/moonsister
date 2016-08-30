@@ -260,4 +260,6 @@
     <string name="all">全部</string>
     <string name="tv_search_type_user">只看会员</string>
     <string name="tv_search_type_dynamic">只看动态</string>
+    <string name="reg_text">为了您的账户安全\n请及时绑定手机</string>
+    <string name="fillout_message">19860万会员求真相，\n98万同兴趣者等你撩！</string>
 </resources>

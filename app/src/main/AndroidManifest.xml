@@ -69,6 +69,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".main.widget.ManorGrilActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".main.widget.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -144,6 +153,8 @@
             android:name=".login.widget.LoginMainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
+        <activity android:name=".login.widget.RegActivity"></activity>
+
         <activity
             android:name=".center.widget.DynamicSendActivity"
             android:screenOrientation="portrait" />
@@ -170,6 +181,7 @@
             android:name=".my.widget.CertificationActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".main.widget.ShowShortVideoActivity" />
+        <activity android:name=".main.widget.FillOutMessageActivity" />
         <activity
             android:name=".my.widget.RZFirstActivity"
             android:screenOrientation="portrait" />
@@ -315,6 +327,7 @@
         <activity android:name=".my.widget.WithdrawActivity"></activity>
         <activity android:name=".my.widget.RechargeActivity"></activity>
         <activity android:name=".my.widget.AddActivity"></activity>
+        r
 
 
     </application>
