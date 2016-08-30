@@ -1,9 +1,11 @@
 package com.moonsister.tcjy.home.widget;
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.CacheManager;
@@ -22,6 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by jb on 2016/8/28.
@@ -29,10 +33,23 @@ import butterknife.Bind;
 public class SearchReasonFragment extends BaseFragment implements SearchReasonFragmentView {
     @Bind(R.id.xlv)
     XListView xlv;
+    @Bind(R.id.tv_all)
+    TextView tvAll;
+    @Bind(R.id.view_all_line)
+    View viewAllLine;
+    @Bind(R.id.tv_type_user)
+    TextView tvTypeUser;
+    @Bind(R.id.view_user_line)
+    View viewUserLine;
+    @Bind(R.id.tv_type_dynamic)
+    TextView tvTypeDynamic;
+    @Bind(R.id.view_dynamic_line)
+    View viewDynamicLine;
     private SearchReasonFragmentPersenter persenter;
     private SearchReasonFragmentAdapter adapter;
     private String key;
     private boolean isLoadMore = false;
+    private EnumConstant.SearchType searchType = EnumConstant.SearchType.all;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,7 +71,7 @@ public class SearchReasonFragment extends BaseFragment implements SearchReasonFr
             @Override
             public void onLoadMore() {
                 isLoadMore = true;
-                persenter.loadSearchReason(key, isLoadMore, EnumConstant.SearchType.all);
+                persenter.loadSearchReason(key, isLoadMore, searchType);
             }
         });
     }
@@ -87,9 +104,12 @@ public class SearchReasonFragment extends BaseFragment implements SearchReasonFr
             keys.add(key);
             CacheManager.saveObject(getContext(), keys, CacheManager.CachePath.SEARCH_KEY_HISTPRY);
         }
+        searchType = EnumConstant.SearchType.all;
         isLoadMore = false;
-        persenter.loadSearchReason(key, isLoadMore, EnumConstant.SearchType.user);
+
+        persenter.loadSearchReason(key, isLoadMore, searchType);
         this.key = key;
+        selectColor(R.id.rl_all);
     }
 
     @Override
@@ -131,4 +151,39 @@ public class SearchReasonFragment extends BaseFragment implements SearchReasonFr
 
     }
 
+    @OnClick({R.id.rl_all, R.id.rl_user, R.id.rl_dynamic})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.rl_all:
+                searchType = EnumConstant.SearchType.all;
+                isLoadMore=false;
+                persenter.loadSearchReason(key, isLoadMore, searchType);
+                break;
+            case R.id.rl_user:
+                isLoadMore=false;
+                searchType = EnumConstant.SearchType.user;
+                persenter.loadSearchReason(key, isLoadMore, searchType);
+                break;
+            case R.id.rl_dynamic:
+                isLoadMore=false;
+                searchType = EnumConstant.SearchType.dynamic;
+                persenter.loadSearchReason(key, isLoadMore, searchType);
+                break;
+        }
+        selectColor(view.getId());
+    }
+
+    private void selectColor(@IdRes int id) {
+        int yellow = getResources().getColor(R.color.yellow_ff8201);
+        int transparent = getResources().getColor(R.color.transparent);
+        tvAll.setSelected(id == R.id.rl_all);
+        tvTypeUser.setSelected(id == R.id.rl_user);
+        tvTypeDynamic.setSelected(id == R.id.rl_dynamic);
+
+        viewAllLine.setBackgroundColor((id == R.id.rl_all) ? yellow : transparent);
+        viewUserLine.setBackgroundColor((id == R.id.rl_user) ? yellow : transparent);
+        viewDynamicLine.setBackgroundColor((id == R.id.rl_dynamic) ? yellow : transparent);
+
+
+    }
 }

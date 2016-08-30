@@ -1,20 +1,14 @@
 package com.moonsister.tcjy.my.widget;
 
-import android.content.Intent;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.SimpleAdapter;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.InsertAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.bean.GoodSelectBaen;
 import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
@@ -24,10 +18,7 @@ import com.moonsister.tcjy.my.view.InsertActivityView;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.Bind;
 
