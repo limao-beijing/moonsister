@@ -24,4 +24,6 @@ dependencies {
     compile rootProject.ext.dependencies["appcompat-v7"]
     compile files('src/main/libs/BaiduAppX_V2.4.0_20160317.jar')
     compile files('src/main/libs/baidu_cuid.jar')
+    compile files('src/main/libs/android-query-full.0.26.7.jar')
+    compile files('src/main/libs/Baidu_MobAds_SDK.jar')
 }
