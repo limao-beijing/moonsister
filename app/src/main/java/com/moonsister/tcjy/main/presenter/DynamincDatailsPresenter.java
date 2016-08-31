@@ -13,4 +13,6 @@ public interface DynamincDatailsPresenter extends BaseIPresenter<DynamicDatailsV
     void sendComment(String id, String content, String pid);
 
     void deleteDynamic(String id);
+
+    void loadSingeDyamic(String latest_id);
 }

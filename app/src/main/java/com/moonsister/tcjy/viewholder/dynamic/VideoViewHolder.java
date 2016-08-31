@@ -143,7 +143,7 @@ public class VideoViewHolder extends BaseRecyclerViewHolder<DynamicItemBean> {
 
     @Override
     protected void onItemclick(View view, DynamicItemBean bean, int position) {
-        ActivityUtils.startDynamicDatailsActivity(bean);
+        ActivityUtils.startDynamicDatailsActivity(bean.getLatest_id(),bean.getType());
     }
 
     /**

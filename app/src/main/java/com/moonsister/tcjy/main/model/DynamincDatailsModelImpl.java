@@ -4,8 +4,10 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.base.BaseIModel;
+import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.CommentDataListBean;
 import com.moonsister.tcjy.bean.DefaultDataBean;
+import com.moonsister.tcjy.bean.DynamicDatailsBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.UIUtils;
@@ -46,17 +48,34 @@ public class DynamincDatailsModelImpl implements DynamincDatailsModel {
     @Override
     public void sendComment(String id, String content, String pid, onLoadDateSingleListener listenter) {
 
-        Observable<DefaultDataBean> observable = ServerApi.getAppAPI().getSendComment(id, content, pid, UserInfoManager.getInstance().getAuthcode(),AppConstant.CHANNEL_ID);
+        Observable<DefaultDataBean> observable = ServerApi.getAppAPI().getSendComment(id, content, pid, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<DefaultDataBean>() {
             @Override
             public void onSuccess(DefaultDataBean bean) {
-               listenter.onSuccess(bean, DataType.DATA_ZERO);
+                listenter.onSuccess(bean, DataType.DATA_ZERO);
             }
 
             @Override
             public void onFailure(String msg) {
-               listenter.onFailure(msg);
+                listenter.onFailure(msg);
             }
         });
     }
+
+    @Override
+    public void loadSingeDyamic(String latest_id, onLoadDateSingleListener<BaseBean> listener) {
+        Observable<DynamicDatailsBean> observable = ServerApi.getAppAPI().getDynamicDatail(latest_id, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID, AppConstant.API_VERSION);
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<BaseBean>() {
+            @Override
+            public void onSuccess(BaseBean bean) {
+                listener.onSuccess(bean, DataType.DATA_ONE);
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                listener.onFailure(msg);
+            }
+        });
+    }
+
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.ContactsContract;
+import android.support.annotation.IdRes;
 
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.bean.DynamicItemBean;
@@ -136,14 +137,14 @@ public class ActivityUtils {
     /**
      * 动态详情页面跳转
      *
-     * @param bean
+     * @param
      */
-    public static void startDynamicDatailsActivity(DynamicItemBean bean) {
-        if (bean == null)
+    public static void startDynamicDatailsActivity(String dynamicId, int dynamicType) {
+        if (StringUtis.isEmpty(dynamicId) || dynamicType == 0)
             return;
         Intent intent = new Intent(ConfigUtils.getInstance().getApplicationContext(), DynamicDatailsActivity.class);
-        intent.putExtra(AppConstant.DYNAMIC_DATAILS, bean);
-        LogUtils.d(TAG, bean.getId());
+        intent.putExtra("id", dynamicId);
+        intent.putExtra("type", dynamicType);
         startActivity(intent);
     }
 

@@ -2,6 +2,7 @@ package com.moonsister.tcjy.main.view;
 
 import com.moonsister.tcjy.base.BaseIView;
 import com.moonsister.tcjy.bean.CommentDataListBean;
+import com.moonsister.tcjy.bean.DynamicDatailsBean;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface DynamicDatailsView extends BaseIView {
     void CommentSuccess();
 
     void deleteDynamic(String id);
+
+    void setDynamicDatails(DynamicDatailsBean bean);
 }

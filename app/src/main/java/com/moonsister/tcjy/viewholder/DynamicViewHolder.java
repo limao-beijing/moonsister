@@ -214,7 +214,7 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<DynamicItemBean> {
         gvUserPic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ActivityUtils.startDynamicDatailsActivity(bean);
+                ActivityUtils.startDynamicDatailsActivity(bean.getLatest_id(),bean.getType());
             }
         });
         gvUserPic.setOnTouchInvalidPositionListener(new NoScrollGridView.OnTouchInvalidPositionListener() {
@@ -283,7 +283,7 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<DynamicItemBean> {
 
     @Override
     protected void onItemclick(View view, DynamicItemBean bean, int position) {
-        ActivityUtils.startDynamicDatailsActivity(bean);
+        ActivityUtils.startDynamicDatailsActivity(bean.getLatest_id(),bean.getType());
     }
 
 

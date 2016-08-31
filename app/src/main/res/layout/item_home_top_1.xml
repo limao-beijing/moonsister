@@ -47,9 +47,11 @@
                 android:layout_marginLeft="@dimen/x15"
                 android:layout_marginRight="@dimen/x15"
                 android:enabled="true"
+                android:gravity="bottom"
                 android:lines="2"
                 android:text="@string/loading"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12" />
 
             <ImageView
                 android:id="@+id/iv_dynamic_type_left"
@@ -95,9 +97,11 @@
                 android:layout_marginLeft="@dimen/x15"
                 android:layout_marginRight="@dimen/x15"
                 android:enabled="true"
+                android:gravity="bottom"
                 android:lines="2"
                 android:text="@string/loading"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12" />
         </RelativeLayout>
 
     </RelativeLayout>

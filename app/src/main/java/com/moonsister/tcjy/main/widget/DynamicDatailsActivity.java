@@ -10,6 +10,7 @@ import com.moonsister.tcjy.adapter.DynamicDetailsAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.CommentDataListBean;
+import com.moonsister.tcjy.bean.DynamicDatailsBean;
 import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
@@ -48,18 +49,36 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
     EditText edInput;
     private DynamicDetailsAdapter mAdapter;
     private DynamincDatailsPresenter presenter;
-    private DynamicItemBean userInfo;
+    private String dynamicId;
+
     private BaseRecyclerViewHolder<DynamicItemBean> holder;
 
     @Override
+    protected View setRootContentView() {
+        dynamicId = getIntent().getStringExtra("id");
+        int dynamicType = getIntent().getIntExtra("type", -1);
+        initHeader(dynamicType);
+        if (StringUtis.isEmpty(dynamicId))
+            finish();
+        presenter = new DynamincDatailsPresenterImpl();
+        presenter.attachView(this);
+        return UIUtils.inflateLayout(R.layout.activity_dynamic_datails);
+    }
 
+    @Override
+    protected String initTitleName() {
+        return getResources().getString(R.string.activity_name_dynamic_datails);
+    }
+
+    @Override
     protected void initView() {
         setRx();
         recyclerView.setVerticalLinearLayoutManager();
         recyclerView.setPullRefreshEnabled(false);
-        if (userInfo != null) {
-            presenter.loadCommentListData(userInfo.getLatest_id());
-        }
+        presenter.loadCommentListData(dynamicId);
+
+
+        presenter.loadSingeDyamic(dynamicId);
         recyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
@@ -68,7 +87,8 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
 
             @Override
             public void onLoadMore() {
-                presenter.loadCommentListData(userInfo.getLatest_id());
+
+                presenter.loadCommentListData(dynamicId);
             }
         });
 
@@ -96,36 +116,22 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
                     if (events != null && mAdapter != null) {
                         Object message = events.message;
                         if (message instanceof PayRedPacketPicsBean) {
-                            PayRedPacketPicsBean bean = (PayRedPacketPicsBean) message;
-                            userInfo.setIspay("1");
-                            userInfo.getSimg();
-                            userInfo.getSimg().clear();
-                            userInfo.getSimg().addAll(bean.getData().getSimg());
-                            userInfo.getImg().clear();
-                            userInfo.getImg().addAll(bean.getData().getImg());
-                            holder.onBindData(userInfo);
+//                            PayRedPacketPicsBean bean = (PayRedPacketPicsBean) message;
+//                            userInfo.setIspay("1");
+//                            userInfo.getSimg();
+//                            userInfo.getSimg().clear();
+//                            userInfo.getSimg().addAll(bean.getData().getSimg());
+//                            userInfo.getImg().clear();
+//                            userInfo.getImg().addAll(bean.getData().getImg());
+//                            holder.onBindData(userInfo);
+                            if (presenter != null)
+                                presenter.loadSingeDyamic(dynamicId);
                         }
                     }
                 })
                 .create();
     }
 
-    @Override
-    protected View setRootContentView() {
-        userInfo = (DynamicItemBean) getIntent().getSerializableExtra(AppConstant.DYNAMIC_DATAILS);
-        if (userInfo == null) {
-            finish();
-            return null;
-        }
-        presenter = new DynamincDatailsPresenterImpl();
-        presenter.attachView(this);
-        return UIUtils.inflateLayout(R.layout.activity_dynamic_datails);
-    }
-
-    @Override
-    protected String initTitleName() {
-        return getResources().getString(R.string.activity_name_dynamic_datails);
-    }
 
     @Override
     public void loadData(List<CommentDataListBean.DataBean> datas) {
@@ -133,8 +139,8 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
             mAdapter = new DynamicDetailsAdapter(datas);
             View view = UIUtils.inflateLayout(R.layout.item_home_one_menu);
 //            holder = new DynamicViewHolder(view, userInfo.getType());
-            initHeader(userInfo.getType());
-            holder.onBindData(userInfo);
+
+//            holder.onBindData(userInfo);
             holder.setView(this);
             recyclerView.addHeaderView(holder.getRootView());
             recyclerView.setAdapter(mAdapter);
@@ -199,6 +205,12 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
     }
 
     @Override
+    public void setDynamicDatails(DynamicDatailsBean bean) {
+        if (bean != null)
+            holder.onBindData(bean.getData());
+    }
+
+    @Override
     public void showLoading() {
         showProgressDialog();
     }
@@ -228,7 +240,7 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
             showToast(UIUtils.getStringRes(R.string.input_text_number_100));
             return;
         }
-        presenter.sendComment(userInfo.getLatest_id(), s, "");
+        presenter.sendComment(dynamicId, s, "");
         edInput.setText("");
     }
 

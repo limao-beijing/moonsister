@@ -76,13 +76,13 @@ public class HomeTopItemFragmentViewHolder extends BaseRecyclerViewHolder<HomeTo
             ImageServerApi.showURLBigImage(ivDynamicBgLeft, listletfBean.getPic());
             tvContentLeft.setText(listletfBean.getTitle());
             tvWacthNumberLeft.setText(listletfBean.getViews());
-            setClickTODymic(ivDynamicBgLeft, listletfBean.getLid());
+            setClickTODymic(ivDynamicBgLeft, listletfBean.getLid(), listletfBean.getType());
             showDynamicType(iv_dynamic_type_left, listletfBean.getType());
             //right
             ImageServerApi.showURLBigImage(ivDynamicBgRight, listrightBean.getPic());
             tvContentRight.setText(listrightBean.getTitle());
             tvWacthNumberRight.setText(listrightBean.getViews());
-            setClickTODymic(ivDynamicBgRight, listrightBean.getLid());
+            setClickTODymic(ivDynamicBgRight, listrightBean.getLid(), listrightBean.getType());
             showDynamicType(iv_dynamic_type_right, listrightBean.getType());
         }
 
@@ -115,13 +115,13 @@ public class HomeTopItemFragmentViewHolder extends BaseRecyclerViewHolder<HomeTo
      * @param view
      * @param dynamicId
      */
-    private void setClickTODymic(View view, String dynamicId) {
+    private void setClickTODymic(View view, String dynamicId, int type) {
         if (view == null || StringUtis.isEmpty(dynamicId))
             return;
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityUtils.startDynamicActivity(dynamicId);
+                ActivityUtils.startDynamicDatailsActivity(dynamicId, type);
             }
         });
 
