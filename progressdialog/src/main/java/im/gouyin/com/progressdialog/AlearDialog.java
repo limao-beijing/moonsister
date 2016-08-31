@@ -83,7 +83,7 @@ public class AlearDialog {
                 content = activity.getResources().getString(R.string.certification_comment_text);
                 break;
             case Certification_im:
-                content = activity.getResources().getString(R.string.certification_im_text);
+                content = "  " + activity.getResources().getString(R.string.certification_im_text);
                 break;
         }
         return content;
