@@ -3,6 +3,7 @@ package com.moonsister.tcjy.center.presenter;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
+import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.center.model.BuyDynamicRedPacketModel;
 import com.moonsister.tcjy.center.model.BuyDynamicRedPacketModelImpl;

@@ -4,6 +4,7 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.CertificationStatusBean;
+import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.bean.RongyunBean;
 import com.moonsister.tcjy.bean.UserFriendListBean;
@@ -21,6 +22,7 @@ import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.List;
+import java.util.Objects;
 
 import io.rong.imkit.RongyunManager;
 import io.rong.imkit.provider.RedPacketProvider;

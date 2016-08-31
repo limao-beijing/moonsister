@@ -3,6 +3,7 @@ package com.moonsister.tcjy.im.prsenter;
 
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.FrientBaen;
+import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.im.model.FrientFragmentModel;
 import com.moonsister.tcjy.im.model.FrientFragmentModelImpl;
 import com.moonsister.tcjy.my.view.FrientFragmentView;

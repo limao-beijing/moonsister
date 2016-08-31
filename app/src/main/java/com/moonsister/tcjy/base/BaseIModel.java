@@ -1,5 +1,9 @@
 package com.moonsister.tcjy.base;
 
+import com.moonsister.tcjy.bean.BackInsertBean;
+import com.moonsister.tcjy.bean.GetMoneyBean;
+import com.moonsister.tcjy.bean.InsertBaen;
+
 import java.util.List;
 
 /**
@@ -10,10 +14,8 @@ public interface BaseIModel {
     public interface onLoadDateSingleListener<T> {
         /**
          * 数据加载成功
-         *
-         * @param t
-         * @param
-         */
+         *  @param
+         * @param */
         void onSuccess(T t, DataType dataType);
 
         /**

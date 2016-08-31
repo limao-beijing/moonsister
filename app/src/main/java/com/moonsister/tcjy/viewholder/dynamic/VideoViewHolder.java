@@ -1,9 +1,6 @@
 package com.moonsister.tcjy.viewholder.dynamic;
 
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -15,10 +12,9 @@ import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.DynamicItemBean;
-import com.moonsister.tcjy.bean.UserInfoListBean;
+import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.TimeUtils;
 import com.moonsister.tcjy.utils.UIUtils;

@@ -1,16 +1,14 @@
 package com.moonsister.tcjy.my.persenter;
 
-import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.DefaultDataBean;
+import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.WithdRawDepositBean;
 import com.moonsister.tcjy.my.model.WithdRawDepositModelImpl;
 import com.moonsister.tcjy.my.model.WithdRawDepositModel;
 import com.moonsister.tcjy.my.view.WithdRawDepositView;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tcjy.utils.VideoUtils;
 
 /**
  * Created by jb on 2016/7/2.

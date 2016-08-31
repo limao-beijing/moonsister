@@ -1,9 +1,9 @@
 package com.moonsister.tcjy.login.presenter;
 
 
-import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.BaseBean;
+import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.RegiterBean;
 import com.moonsister.tcjy.login.model.RegiterFragmentModel;
 import com.moonsister.tcjy.login.model.RegiterFragmentModelImpl;
@@ -45,7 +45,7 @@ public class RegiterFragmentPresenerImpl implements RegiterFragmentPresener, Bas
 
 
     @Override
-    public void onSuccess(BaseBean baseBean,BaseIModel.DataType type) {
+    public void onSuccess(BaseBean baseBean, BaseIModel.DataType type) {
         view.hideLoading();
         if (baseBean != null) {
             if ("1".equals(baseBean.getCode()))

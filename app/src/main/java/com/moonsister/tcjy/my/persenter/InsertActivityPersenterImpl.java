@@ -2,21 +2,20 @@ package com.moonsister.tcjy.my.persenter;
 
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.GetMoneyBean;
+import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.model.InsertActivityImpl;
 import com.moonsister.tcjy.my.model.InsertActivityModel;
 import com.moonsister.tcjy.my.view.InsertActivityView;
-import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 /**
  * Created by x on 2016/8/27.
  */
-public class InsertActivityPersenterImpl implements InsertActivityPersenter, BaseIModel.onLoadDateSingleListener<InsertBaen> {
+public class InsertActivityPersenterImpl implements InsertActivityPersenter, BaseIModel.onLoadDateSingleListener<BaseBean> {
     private InsertActivityView view;
     private InsertActivityModel model;
 
@@ -28,9 +27,9 @@ public class InsertActivityPersenterImpl implements InsertActivityPersenter, Bas
     }
 
     @Override
-    public void sendData(int tagid) {
+    public void sendData(int tlist) {
         view.showLoading();
-        model.sendData(EnumConstant.PayType.IAPP_PAY, tagid, this);
+        model.sendData(tlist, this);
     }
 
     @Override
@@ -47,18 +46,18 @@ public class InsertActivityPersenterImpl implements InsertActivityPersenter, Bas
 
 
     @Override
-    public void onSuccess(InsertBaen insertBaen, BaseIModel.DataType dataType) {
+    public void onSuccess(BaseBean baseBean, BaseIModel.DataType dataType) {
         view.hideLoading();
-        if (insertBaen == null) {
+        if (baseBean == null) {
             return;
         }
 
         switch (dataType) {
             case DATA_ZERO:
-                view.setBasicInfo((InsertBaen) insertBaen);
+                view.setBasicInfo((InsertBaen) baseBean);
                 break;
             case DATA_ONE:
-                if (StringUtis.equals(insertBaen.getCode(), AppConstant.code_request_success)) {
+                if (StringUtis.equals(baseBean.getCode(), AppConstant.code_request_success)) {
                     RxBus.getInstance().send(Events.EventEnum.MONEY_CHANGE, null);
                     UIUtils.sendDelayedOneMillis(new Runnable() {
                         @Override
@@ -67,7 +66,7 @@ public class InsertActivityPersenterImpl implements InsertActivityPersenter, Bas
                         }
                     });
                 } else {
-                    view.transfePageMsg(insertBaen.getMsg());
+                    view.transfePageMsg(baseBean.getMsg());
                 }
                 break;
         }

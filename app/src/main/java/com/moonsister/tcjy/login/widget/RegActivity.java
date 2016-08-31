@@ -2,12 +2,21 @@ package com.moonsister.tcjy.login.widget;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
+import com.moonsister.tcjy.bean.PersonInfoDetail;
+import com.moonsister.tcjy.login.presenter.RegActivityPresenter;
+import com.moonsister.tcjy.login.presenter.RegActivityPresenterImpl;
+import com.moonsister.tcjy.login.view.RegThridActivityView;
+import com.moonsister.tcjy.main.view.ManorGrilActivityView;
 import com.moonsister.tcjy.main.widget.FillOutMessageActivity;
 import com.moonsister.tcjy.main.widget.MainActivity;
+import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.utils.ConfigUtils;
+import com.moonsister.tcjy.utils.FragmentUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;
@@ -16,12 +25,27 @@ import butterknife.OnClick;
 /**
  * Created by x on 2016/8/30.
  */
-public class RegActivity extends BaseActivity{
-    @Bind(R.id.tv_submit)
-    TextView tv_submit;
-    @Bind(R.id.let_go)
+public class RegActivity extends BaseActivity implements RegThridActivityView {
+    @Bind(R.id.et_phone_number)//手机号
+    EditText etPhoneNumber;
+    @Bind(R.id.reg_edit_password)//密码
+            EditText reg_edit_password;
+    @Bind(R.id.reg_edit_brith)//出生年月日
+            EditText reg_edit_brith;
+    @Bind(R.id.et_security_code)//输入验证码
+    EditText etCode;
+    @Bind(R.id.tv_submit)//完成注册
+    TextView tvSubmit;
+    @Bind(R.id.let_go)//先去逛逛
     TextView let_go;
-
+    @Bind(R.id.tv_security_code)//获取验证码
+    TextView tvSecurityCode;
+    RegActivityPresenter persenter;
+    String mobile;
+    String pwd;
+    String birthday;
+    String code;
+    private int currCount;
     @Override
     protected View setRootContentView() {
         return UIUtils.inflateLayout(R.layout.activity_reg);
@@ -29,20 +53,91 @@ public class RegActivity extends BaseActivity{
 
     @Override
     protected void initView() {
+        persenter=new RegActivityPresenterImpl();
+        persenter.attachView(this);
+        persenter.getThrid(mobile, pwd, birthday, code);
+    }
+
+    @OnClick({R.id.tv_submit,R.id.tv_security_code,})
+    public void onClick(View view) {
+
+        if (view.getId() == R.id.tv_security_code) {
+            mobile = etPhoneNumber.getText().toString().trim();
+
+            if (!mobile.isEmpty()) {
+                currCount = 0;
+                persenter.getSecurityCode(mobile);
+
+            } else{
+//                showToast(resources.getString(R.string.input_phone_number) + resources.getString(R.string.not_empty));
+            }
+
+        } else if (view.getId() == R.id.tv_submit) {
+
+            code = etCode.getText().toString().trim();
+            mobile = etPhoneNumber.getText().toString().trim();
+            birthday = reg_edit_password.getText().toString().trim();
+            pwd=reg_edit_password.getText().toString().trim();
+            if (code == null || code.isEmpty() || mobile == null || mobile.isEmpty()||birthday == null || birthday.isEmpty() || pwd == null || pwd.isEmpty()) {
+//                showToast(resources.getString(R.string.input_Security_code) + resources.getString(R.string.input_phone_number) + resources.getString(R.string.not_empty));
+
+            } else {
+                persenter.getThrid(mobile, pwd,birthday,code);
+            }
+            Intent intent=new Intent(RegActivity.this,MainActivity.class);
+            startActivity(intent);
+        }
+    }
+
+
+    @Override
+    public void requestFailed(String reason) {
+        showToast(reason);
+    }
+
+    @Override
+    public void LoopMsg() {
+        ConfigUtils.getInstance().getMainHandler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (tvSecurityCode==null)
+                    return;
+                if (currCount <= 60) {
+                    tvSecurityCode.setClickable(false);
+                    tvSecurityCode.setFocusable(false);
+                    tvSecurityCode.setText((60 - currCount) + "s");
+                    LoopMsg();
+                    currCount++;
+                } else {
+                    tvSecurityCode.setText(getResources().getString(R.string.agein_get_code));
+                    tvSecurityCode.setClickable(true);
+                    tvSecurityCode.setFocusable(true);
+                }
+            }
+        }, 1000);
+    }
+    @Override
+    public void showLoading() {
 
     }
 
-    @OnClick({R.id.tv_submit,R.id.let_go})
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.tv_submit:
-                Intent intent=new Intent(RegActivity.this, FillOutMessageActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.let_go:
-                Intent in=new Intent(RegActivity.this, MainActivity.class);
-                startActivity(in);
-                break;
-        }
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void transfePageMsg(String msg) {
+            showToast(msg);
+    }
+
+    @Override
+    public void getThrid() {
+//        PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();//获得对象
+//        memoryPersonInfoDetail.;//保存值
+//        UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
+        Intent intent=new Intent(RegActivity.this, FillOutMessageActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 }

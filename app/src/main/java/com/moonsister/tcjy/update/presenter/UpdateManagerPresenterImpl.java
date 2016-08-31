@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
+import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.VersionInfo;
 import com.moonsister.tcjy.update.UpdateManager;
 import com.moonsister.tcjy.update.model.UpdateManagerModel;

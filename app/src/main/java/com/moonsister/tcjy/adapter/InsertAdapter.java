@@ -20,6 +20,7 @@ import com.moonsister.tcjy.my.widget.InsertActivity;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +30,7 @@ import java.util.Map;
 public class InsertAdapter extends BaseAdapter{
     Context context;
     List<InsertBaen.DataBean> data;
+    List<Integer> list=new ArrayList<Integer>();
     public InsertAdapter(Context context, List<InsertBaen.DataBean> data) {
         this.context=context;
         this.data=data;
@@ -73,7 +75,8 @@ public class InsertAdapter extends BaseAdapter{
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 final boolean checked = finalHolder1.check.isChecked();
                 int k=data.get(position).getTagid();
-                
+//                list.add(k);
+
             }
         });
         return convertView;

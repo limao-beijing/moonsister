@@ -6,6 +6,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.CommentDataListBean;
 import com.moonsister.tcjy.bean.DefaultDataBean;
+import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.main.model.DynamincDatailsModel;
 import com.moonsister.tcjy.main.model.DynamincDatailsModelImpl;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;

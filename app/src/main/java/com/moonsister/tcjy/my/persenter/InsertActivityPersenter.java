@@ -8,5 +8,5 @@ import com.moonsister.tcjy.my.view.InsertActivityView;
  */
 public interface InsertActivityPersenter extends BaseIPresenter<InsertActivityView> {
      void LoadData(int tagid,String tagname,int img);
-     void sendData(int tagid);
+     void sendData(int tlist);
 }

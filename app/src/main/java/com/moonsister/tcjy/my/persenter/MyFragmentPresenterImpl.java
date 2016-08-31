@@ -5,9 +5,8 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.DynamicItemBean;
-import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
+import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
-import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.my.model.MyFragmentModel;
 import com.moonsister.tcjy.my.model.MyFragmentModelImpl;
@@ -16,6 +15,7 @@ import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by jb on 2016/6/27.

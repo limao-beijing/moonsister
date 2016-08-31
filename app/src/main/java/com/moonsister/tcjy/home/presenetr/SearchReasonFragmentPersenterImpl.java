@@ -3,11 +3,11 @@ package com.moonsister.tcjy.home.presenetr;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.DynamicBean;
 import com.moonsister.tcjy.bean.DynamicItemBean;
+import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.home.model.SearchReasonFragmentModel;
 import com.moonsister.tcjy.home.model.SearchReasonFragmentModelImpl;
 import com.moonsister.tcjy.home.view.SearchReasonFragmentView;
 import com.moonsister.tcjy.utils.EnumConstant;
-import com.moonsister.tcjy.utils.StringUtis;
 
 import java.util.List;
 

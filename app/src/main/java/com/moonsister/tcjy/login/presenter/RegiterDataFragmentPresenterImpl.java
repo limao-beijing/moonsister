@@ -3,12 +3,15 @@ package com.moonsister.tcjy.login.presenter;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.BaseBean;
+import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.login.model.RegiterDataFragmentModel;
 import com.moonsister.tcjy.login.model.RegiterDataFragmentModelImpl;
 import com.moonsister.tcjy.login.view.RegiterDataFragmentView;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
+
+import java.util.Objects;
 
 /**
  * Created by jb on 2016/6/15.

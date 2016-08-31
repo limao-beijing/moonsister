@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.InsertAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
+import com.moonsister.tcjy.bean.BackInsertBean;
 import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
@@ -21,14 +22,16 @@ import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * Created by x on 2016/8/25.
  */
-public class InsertActivity extends BaseActivity implements View.OnClickListener, InsertActivityView {
+public class InsertActivity extends BaseActivity implements InsertActivityView {
     @Bind(R.id.button_text)//重设
     Button button;
     @Bind(R.id.button1_text)//已选好
@@ -45,6 +48,10 @@ public class InsertActivity extends BaseActivity implements View.OnClickListener
     InsertAdapter adapter;
     List<InsertBaen.DataBean> data;
     int p;
+    int tlist;
+    List<Integer> list=new ArrayList<Integer>();
+    StringBuffer sbr=new StringBuffer();
+    int a;
     @Override
     protected View setRootContentView() {
 //        UIUtils.inflateLayout(R.layout.insertgridviewitem);
@@ -56,44 +63,39 @@ public class InsertActivity extends BaseActivity implements View.OnClickListener
         persenter=new InsertActivityPersenterImpl();
         persenter.attachView(this);
         persenter.LoadData(tagid,tagname,img);
+        persenter.sendData(tlist);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 p=data.get(i).getTagid();
+                list.add(p);
 
             }
         });
-        button.setOnClickListener(this);
-        button1.setOnClickListener(this);
-//        List<Integer> list=new ArrayList<Integer>();
-//        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-//                int p=data
-//            }
-//        });
+        for (int i = 0; i < list.size(); i++) {
+
+           sbr.append(list.get(i));
+            if (i!=list.size()-1){
+                sbr.append(",");
+            }
         }
-        //利用simpleAdapter适配器适配数据
-//        SimpleAdapter simpleAdapter = new SimpleAdapter(this, listItems,
-//                R.layout.insertgridviewitem, new String[] { "t" }, new int[] {
-//                R.id.insert_text, });
-
-//        gridView.setAdapter(simpleAdapter);
-//
-
-//    }
+        String str=sbr.toString();
+        a = Integer.parseInt(str);
+    }
 
 
 
-    @Override
+
+    @OnClick({R.id.button_text,R.id.button1_text})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.button_text:
 
                 break;
             case R.id.button1_text:
-                Intent intent=new Intent(InsertActivity.this,RegActivity.class);
-                startActivity(intent);
+                persenter.sendData(a);
+                success();
+
                 break;
             case R.id.image_back:
                 InsertActivity.this.finish();
@@ -101,18 +103,7 @@ public class InsertActivity extends BaseActivity implements View.OnClickListener
         }
     }
 
-    private void setSwicthCardRxbus() {
-        RxBus.with(this)
-                .setEndEvent(ActivityEvent.DESTROY)
-                .setEvent(Events.EventEnum.CLICK_SWITCH_CARD_POSITION)
-                .onNext(events -> {
-                    if (events != null && events.message instanceof InsertBaen) {
-                        setBasicInfo((InsertBaen) events.message);
-                    }
-                })
-                .create();
 
-    }
     @Override
     public void setBasicInfo(InsertBaen getInsertBean) {
 
@@ -121,12 +112,16 @@ public class InsertActivity extends BaseActivity implements View.OnClickListener
         adapter=new InsertAdapter(this,data);
         gridView.setAdapter(adapter);
 
+
     }
 
     @Override
     public void success() {
-
+        Intent intent=new Intent(InsertActivity.this,RegActivity.class);
+        startActivity(intent);
+        this.finish();
     }
+
 
     @Override
     public void showLoading() {
@@ -139,6 +134,6 @@ public class InsertActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void transfePageMsg(String msg) {
-
+        showToast(msg);
     }
 }

@@ -1,8 +1,7 @@
 package com.moonsister.tcjy.home.presenetr;
 
-import android.view.View;
-
 import com.moonsister.tcjy.base.BaseIModel;
+import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.KeyMateBean;
 import com.moonsister.tcjy.home.model.SearchFragmentModel;
 import com.moonsister.tcjy.home.model.SearchFragmentModelImpl;

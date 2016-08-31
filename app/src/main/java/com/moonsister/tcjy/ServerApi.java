@@ -1,6 +1,7 @@
 package com.moonsister.tcjy;
 
 
+import com.moonsister.tcjy.bean.BackInsertBean;
 import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.CardInfoBean;
 import com.moonsister.tcjy.bean.CertificationStatusBean;
@@ -21,6 +22,8 @@ import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.RankBean;
 import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
+import com.moonsister.tcjy.bean.RegOneBean;
+import com.moonsister.tcjy.bean.RegThridBean;
 import com.moonsister.tcjy.bean.RegiterBean;
 import com.moonsister.tcjy.bean.RongyunBean;
 import com.moonsister.tcjy.bean.SearchReasonBaen;
@@ -979,6 +982,54 @@ public class ServerApi {
         Observable<ChooseKeyBean> getLoadChooesKey(String authcode, String channelId);
 
         Observable<KeyMateBean> getKeyMath(String key, String authcode, String channelId);
+
+
+        /**
+         * 男女选择页
+         *
+         * @param sex
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("usernew/reg_step1")
+        Observable<RegOneBean> getRegOneBean(@Field("sex") int sex,
+                                             @Field("version_type") String apiVersion,
+                                             @Field("channel") String channel);
+
+        /**
+         * 兴趣返回
+         *
+         * @param tlist
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("tags/set_xingqu")
+        Observable<BackInsertBean> makeInsertBean(@Field("tlist ") int tlist ,
+                                                  @Field("version_type") String apiVersion,
+                                                  @Field("authcode") String authcode,
+                                                  @Field("channel") String channel);
+
+        /**
+         * 填写用户基本信息
+         *
+         * @param mobile
+         * @param pwd
+         * @param birthday
+         * @param code
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("usernew/reg_step3")
+        Observable<RegThridBean> getRegThridBean(@Field("mobile") String mobile,
+                                                 @Field("pwd") String pwd,
+                                                 @Field("birthday") String birthday,
+                                                 @Field("code") String code,
+                                                 @Field("version_type") String apiVersion,
+                                                 @Field("authcode") String authcode,
+                                                 @Field("channel") String channel);
+
+
+        Observable<RegThridBean> sendSecurityCode(String mobile, String apiVersion, String channelId);
     }
 }
 

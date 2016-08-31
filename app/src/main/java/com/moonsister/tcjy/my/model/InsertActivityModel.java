@@ -1,6 +1,8 @@
 package com.moonsister.tcjy.my.model;
 
 import com.moonsister.tcjy.base.BaseIModel;
+import com.moonsister.tcjy.bean.BackInsertBean;
+import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.my.persenter.InsertActivityPersenterImpl;
 import com.moonsister.tcjy.utils.EnumConstant;
@@ -11,8 +13,9 @@ import com.moonsister.tcjy.utils.EnumConstant;
 public interface InsertActivityModel extends BaseIModel{
 //    void loadData(int tagid, String tagname,int img, EnumConstant.HomeTopFragmentTop homeType,onLoadDateSingleListener<InsertBaen> listener);
 
-    void loadData(int tagid, String tagname, int img, onLoadDateSingleListener<InsertBaen> listener);
+    void loadData(int tagid, String tagname, int img, onLoadDateSingleListener<BaseBean> listener);
 
-    void sendData(EnumConstant.PayType iappPay, int tagid, onLoadDateSingleListener<InsertBaen> listener);
+    void sendData(int tlist, onLoadDateSingleListener<BaseBean> listener);
+
 }
 
