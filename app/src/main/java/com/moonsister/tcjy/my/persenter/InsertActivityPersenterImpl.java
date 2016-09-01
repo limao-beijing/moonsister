@@ -27,7 +27,7 @@ public class InsertActivityPersenterImpl implements InsertActivityPersenter, Bas
     }
 
     @Override
-    public void sendData(int tlist) {
+    public void sendData(String tlist) {
         view.showLoading();
         model.sendData(tlist, this);
     }

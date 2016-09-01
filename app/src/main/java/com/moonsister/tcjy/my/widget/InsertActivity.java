@@ -48,10 +48,11 @@ public class InsertActivity extends BaseActivity implements InsertActivityView {
     InsertAdapter adapter;
     List<InsertBaen.DataBean> data;
     int p;
-    int tlist;
+    String tlist;
     List<Integer> list=new ArrayList<Integer>();
     StringBuffer sbr=new StringBuffer();
     int a;
+    String str;
     @Override
     protected View setRootContentView() {
 //        UIUtils.inflateLayout(R.layout.insertgridviewitem);
@@ -72,15 +73,7 @@ public class InsertActivity extends BaseActivity implements InsertActivityView {
 
             }
         });
-        for (int i = 0; i < list.size(); i++) {
 
-           sbr.append(list.get(i));
-            if (i!=list.size()-1){
-                sbr.append(",");
-            }
-        }
-        String str=sbr.toString();
-        a = Integer.parseInt(str);
     }
 
 
@@ -93,7 +86,15 @@ public class InsertActivity extends BaseActivity implements InsertActivityView {
 
                 break;
             case R.id.button1_text:
-                persenter.sendData(a);
+                for (int i = 0; i < list.size(); i++) {
+
+//                    sbr.append(list.get(i));
+                    if (i!=list.size()-1){
+                        sbr.append(list.get(i)+",");
+                    }
+                }
+                str=sbr.toString();
+                persenter.sendData(str);
                 success();
 
                 break;

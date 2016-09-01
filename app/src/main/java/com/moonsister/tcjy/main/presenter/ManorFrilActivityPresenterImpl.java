@@ -42,7 +42,7 @@ public class ManorFrilActivityPresenterImpl implements ManorFrilActivityPresente
             view.transfePageMsg(UIUtils.getStringRes(R.string.request_failed));
         } else {
             if (StringUtis.equals(regOneBean.getCode(), AppConstant.code_request_success)){
-                view.getReg("");
+                view.getReg("authcode");
             }
             view.transfePageMsg(regOneBean.getMsg());
         }

@@ -15,7 +15,7 @@ public interface InsertActivityModel extends BaseIModel{
 
     void loadData(int tagid, String tagname, int img, onLoadDateSingleListener<BaseBean> listener);
 
-    void sendData(int tlist, onLoadDateSingleListener<BaseBean> listener);
+    void sendData(String tlist, onLoadDateSingleListener<BaseBean> listener);
 
 }
 

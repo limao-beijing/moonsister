@@ -1033,7 +1033,7 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("tags/set_xingqu")
-        Observable<BackInsertBean> makeInsertBean(@Field("tlist ") int tlist ,
+        Observable<BackInsertBean> makeInsertBean(@Field("tlist ") String tlist ,
                                                   @Field("version_type") String apiVersion,
                                                   @Field("authcode") String authcode,
                                                   @Field("channel") String channel);

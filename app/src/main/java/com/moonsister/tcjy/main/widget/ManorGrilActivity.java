@@ -41,7 +41,7 @@ public class ManorGrilActivity extends BaseActivity implements ManorGrilActivity
     protected void initView() {
         persenter=new ManorFrilActivityPresenterImpl();
         persenter.attachView(this);
-        persenter.regOne(1);
+//        persenter.regOne(1);
     }
 
    @OnClick({R.id.imageview_man,R.id.imageview_gril,R.id.textview_login})
@@ -65,10 +65,10 @@ public class ManorGrilActivity extends BaseActivity implements ManorGrilActivity
     }
 
     @Override
-    public void getReg(String s) {
+    public void getReg(String authcode) {
 //        RxBus.getInstance().send(Events.EventEnum.BUY_VIP_SUCCESS, null);
         PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();//获得对象
-        memoryPersonInfoDetail.setAuthcode(s);//保存值
+        memoryPersonInfoDetail.setAuthcode(authcode);//保存值
         UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
 
         Intent intent=new Intent(ManorGrilActivity.this, InsertActivity.class);

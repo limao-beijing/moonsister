@@ -51,7 +51,7 @@ public class InsertActivityImpl implements InsertActivityModel {
 //    }
 
     @Override
-    public void sendData(int tlist, onLoadDateSingleListener<BaseBean> listener) {
+    public void sendData(String tlist, onLoadDateSingleListener<BaseBean> listener) {
         Observable<BackInsertBean> observable = ServerApi.getAppAPI().makeInsertBean(tlist, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID ,AppConstant.API_VERSION);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<BaseBean>() {
             @Override
