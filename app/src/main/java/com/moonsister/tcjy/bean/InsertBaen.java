@@ -28,6 +28,15 @@ public class InsertBaen extends BaseBean{
         private int tagid;
         private String tagname;
         private String img;
+        boolean ischeck;
+
+        public boolean ischeck() {
+            return ischeck;
+        }
+
+        public void setIscheck(boolean ischeck) {
+            this.ischeck = ischeck;
+        }
 
         public int getTagid() {
             return tagid;

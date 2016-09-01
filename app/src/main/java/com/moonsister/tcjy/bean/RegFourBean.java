@@ -3,9 +3,9 @@ package com.moonsister.tcjy.bean;
 import java.util.List;
 
 /**
- * Created by x on 2016/8/31.
+ * Created by x on 2016/9/1.
  */
-public class BackInsertBean extends BaseBean {
+public class RegFourBean extends BaseBean{
 
     private List<?> data;
 

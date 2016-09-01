@@ -3,6 +3,7 @@ package com.moonsister.tcjy.login.widget;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
@@ -24,10 +25,11 @@ public class LoginMainActivity extends BaseActivity implements LoginMainView {
 
     @Bind(R.id.frameLyout_login_main_content)
     FrameLayout frameLyoutHomeContent;
-    @Bind(R.id.tv_navigation_login)
+    @Bind(R.id.tv_navigation_login)//登录按钮
     TextView tv_navigation_login;
-    @Bind(R.id.tv_navigation_register)
+    @Bind(R.id.tv_navigation_register)//注册按钮
     TextView tv_navigation_register;
+
     private LoginMainPresenter presenter;
     private FragmentManager fragmentManager;
     protected String regiterCode;

@@ -23,6 +23,7 @@ import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.RankBean;
 import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
+import com.moonsister.tcjy.bean.RegFourBean;
 import com.moonsister.tcjy.bean.RegOneBean;
 import com.moonsister.tcjy.bean.RegThridBean;
 import com.moonsister.tcjy.bean.RegiterBean;
@@ -190,7 +191,7 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("User/register_send_mobile_code")
-        Observable<BaseBean> sendSecurityCode(@Field("mobile") String mobile,
+        Observable<RegThridBean> sendSecurityCode(@Field("mobile") String mobile,
                                               @Field("channel") String channel);
 
         /**
@@ -738,7 +739,7 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("Location/update_data")
-        Observable<DefaultDataBean> getuploadPhoneInfo(@Field("address") String serialize);
+        Observable<RegThridBean> getuploadPhoneInfo(@Field("address") String serialize);
 
         /**
          * 获取关注列表
@@ -1033,10 +1034,10 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("tags/set_xingqu")
-        Observable<BackInsertBean> makeInsertBean(@Field("tlist ") String tlist ,
-                                                  @Field("version_type") String apiVersion,
+        Observable<BackInsertBean> makeInsertBean(@Field("tlist") String tlist ,
                                                   @Field("authcode") String authcode,
-                                                  @Field("channel") String channel);
+                                                  @Field("channel") String channel,
+                                                  @Field("version_type") String apiVersion);
 
         /**
          * 填写用户基本信息
@@ -1053,13 +1054,28 @@ public class ServerApi {
                                                  @Field("pwd") String pwd,
                                                  @Field("birthday") String birthday,
                                                  @Field("code") String code,
-                                                 @Field("version_type") String apiVersion,
                                                  @Field("authcode") String authcode,
+                                                 @Field("version_type") String apiVersion,
                                                  @Field("channel") String channel);
 
 
         Observable<RegThridBean> sendSecurityCode(String mobile, String apiVersion, String channelId);
 
+
+        /**
+         * 填写资料页面
+         *
+         * @param face
+         * @param nickname
+         *
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("usernew/reg_step4")
+        Observable<RegFourBean> getRegFourBean(@Field("face ") String face ,
+                                                @Field("nickname ") String nickname ,
+                                                @Field("authcode") String authcode,
+                                                @Field("channel") String channel);
     }
 }
 

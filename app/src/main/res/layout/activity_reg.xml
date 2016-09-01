@@ -51,6 +51,7 @@
         android:textSize="16sp"
         android:paddingLeft="@dimen/x15"
         android:textColor="@color/black"
+        android:password="true"
         android:textColorHint="@color/white_d6dde4"
         android:hint="请输入密码"/>
     <EditText
@@ -65,7 +66,7 @@
         android:paddingLeft="@dimen/x15"
         android:textColor="@color/black"
         android:textColorHint="@color/white_d6dde4"
-        android:hint="出生年月日"/>
+        android:hint="出生年月日 如1988-12-25"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

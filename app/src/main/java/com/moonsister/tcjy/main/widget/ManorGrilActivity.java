@@ -50,12 +50,12 @@ public class ManorGrilActivity extends BaseActivity implements ManorGrilActivity
             case R.id.imageview_man:
 
                 persenter.regOne(1);
-                getReg("");
+
                 break;
             case R.id.imageview_gril:
-//                Intent in=new Intent(ManorGrilActivity.this, InsertActivity.class);
+
                 persenter.regOne(2);
-                getReg("");
+
                 break;
             case R.id.textview_login:
                 Intent i=new Intent(ManorGrilActivity.this, LoginMainActivity.class);

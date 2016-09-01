@@ -3,6 +3,7 @@ package com.moonsister.tcjy.login.model;
 import android.os.UserManager;
 
 import com.moonsister.tcjy.base.BaseIModel;
+import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.RegThridBean;
 
 /**

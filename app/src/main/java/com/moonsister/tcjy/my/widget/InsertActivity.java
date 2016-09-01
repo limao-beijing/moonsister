@@ -1,11 +1,13 @@
 package com.moonsister.tcjy.my.widget;
 
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.InsertAdapter;
@@ -64,42 +66,43 @@ public class InsertActivity extends BaseActivity implements InsertActivityView {
         persenter=new InsertActivityPersenterImpl();
         persenter.attachView(this);
         persenter.LoadData(tagid,tagname,img);
-        persenter.sendData(tlist);
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                p=data.get(i).getTagid();
-                list.add(p);
-
-            }
-        });
+//        persenter.sendData(tlist);
 
     }
-
-
 
 
     @OnClick({R.id.button_text,R.id.button1_text})
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.button_text:
+            case R.id.button_text://重置
+                for (int i = 0; i < data.size(); i++) {
 
-                break;
-            case R.id.button1_text:
-                for (int i = 0; i < list.size(); i++) {
+                    InsertBaen.DataBean bean = data.get(i);
+                    bean.setIscheck(false);
 
-//                    sbr.append(list.get(i));
-                    if (i!=list.size()-1){
-                        sbr.append(list.get(i)+",");
-                    }
                 }
-                str=sbr.toString();
-                persenter.sendData(str);
-                success();
+                adapter.notifyDataSetChanged();
+                break;
+            case R.id.button1_text://已选好
+                for (int i = 0; i < data.size(); i++) {
+                    if (data != null && data.get(i).ischeck()) {//判断为true的选项
+//                        String v = String.valueOf(data.get(i).getTagid());
+                        String v=Integer.toString(data.get(i).getTagid(), 16);//将int类型转换为string类型
+                        if(i!=data.size()-1){
+                            sbr.append(v+",");//拼接字符串
+                        }
+
+                        sbr.append(v );
+                        }
+
+                    }
+
+                     str=sbr.toString();
+                     persenter.sendData(str);//发送请求
 
                 break;
             case R.id.image_back:
-                InsertActivity.this.finish();
+                this.finish();
                 break;
         }
     }
@@ -112,9 +115,24 @@ public class InsertActivity extends BaseActivity implements InsertActivityView {
 
         adapter=new InsertAdapter(this,data);
         gridView.setAdapter(adapter);
+//        View view= LayoutInflater.from(this).inflate(R.layout.insertgridviewitem,null);
+//        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                ImageView insert_image= (ImageView) view.findViewById(R.id.insert_image);
+//                TextView text_box= (TextView) view.findViewById(R.id.insert_checkbox);
+//                insert_image.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+////                        if(data.get(i).ischeck()) {
+//                            text_box.setBackgroundResource(R.mipmap.checkbox);
+////                        }
+//                    }
+//                });
+            }
+//        });
 
-
-    }
+//    }
 
     @Override
     public void success() {

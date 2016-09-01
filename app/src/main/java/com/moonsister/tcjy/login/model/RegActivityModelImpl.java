@@ -5,6 +5,7 @@ import android.os.UserManager;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.base.BaseIModel;
+import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.RegThridBean;
 import com.moonsister.tcjy.login.model.RegActivityModel;
@@ -37,10 +38,12 @@ public class RegActivityModelImpl implements RegActivityModel {
         });
     }
 
+
+
     @Override
     public void getThridReg(String mobile, onLoadDateSingleListener<RegThridBean> listener) {
         uploadPhoneInfo(mobile);
-        Observable<RegThridBean> observable = ServerApi.getAppAPI().sendSecurityCode(mobile, AppConstant.API_VERSION, AppConstant.CHANNEL_ID);
+        Observable<RegThridBean> observable = ServerApi.getAppAPI().sendSecurityCode(mobile, AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<RegThridBean>() {
             @Override
             public void onSuccess(RegThridBean baseBean) {
@@ -59,10 +62,10 @@ public class RegActivityModelImpl implements RegActivityModel {
         phoneInfoUtils.setTel2(mobile);
         String serialize = JsonUtils.serialize(phoneInfoUtils);
         LogUtils.e(this, serialize);
-        Observable<DefaultDataBean> observable = ServerApi.getAppAPI().getuploadPhoneInfo(serialize);
-        ObservableUtils.parser(observable, new ObservableUtils.Callback<RegThridBean>() {
+        Observable<RegThridBean> observable = ServerApi.getAppAPI().getuploadPhoneInfo(serialize);
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<BaseBean>() {
             @Override
-            public void onSuccess(RegThridBean bean) {
+            public void onSuccess(BaseBean bean) {
 
             }
 

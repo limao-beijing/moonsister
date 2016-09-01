@@ -53,7 +53,7 @@ public class InsertAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
-        ViewHolder holder = null;
+         ViewHolder holder = null;
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -61,29 +61,39 @@ public class InsertAdapter extends BaseAdapter{
             holder = new ViewHolder();
             holder.insert_image = (ImageView) convertView.findViewById(R.id.insert_image);
             holder.insert_text = (TextView) convertView.findViewById(R.id.insert_text);
-            holder.check = (CheckBox) convertView.findViewById(R.id.insert_checkbox);
+            holder.text_box = (TextView) convertView.findViewById(R.id.insert_checkbox);
             convertView.setTag(holder);
         } else {
             holder= (ViewHolder) convertView.getTag();
         }
+        if ( data.get(position).ischeck()){
+            holder.text_box.setBackgroundResource(R.mipmap.checkbox);
+        }else
+            holder.text_box.setBackgroundResource(R.mipmap.check);
+
         ImageServerApi.showURLBigImage(holder.insert_image, data.get(position).getImg());
         holder.insert_text.setText(data.get(position).getTagname());
         final ViewHolder finalHolder = holder;
-        final ViewHolder finalHolder1 = holder;
-        holder.check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        holder.insert_image.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                final boolean checked = finalHolder1.check.isChecked();
-                int k=data.get(position).getTagid();
-//                list.add(k);
+            public void onClick(View view) {
+                InsertBaen.DataBean bean = data.get(position);
+                boolean check = bean.ischeck();
+                check=!check;
+                bean.setIscheck(check);
+                if (check){
+                    finalHolder.text_box.setBackgroundResource(R.mipmap.checkbox);
+                }else
+                    finalHolder.text_box.setBackgroundResource(R.mipmap.check);
 
             }
         });
+
         return convertView;
     }
     class ViewHolder{
         ImageView insert_image;
-        CheckBox check;
+        TextView text_box;
         TextView insert_text;
 
     }
