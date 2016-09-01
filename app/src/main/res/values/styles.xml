@@ -210,4 +210,10 @@
         <item name="android:paddingLeft">@dimen/x10</item>
         <item name="android:background">@color/yellow_ff8201</item>
     </style>
+
+    <style name="vertical_line">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">1dp</item>
+        <item name="android:background">@color/app_line</item>
+    </style>
 </resources>

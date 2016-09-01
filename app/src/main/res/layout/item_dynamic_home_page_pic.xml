@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.moonsister.tcjy.widget.RoundedImageView
+            android:id="@+id/riv_user_image"
+            android:layout_width="@dimen/x92"
+            android:layout_height="@dimen/x92"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/x30"/>
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/riv_user_image"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_toRightOf="@+id/riv_user_image"
+            android:text="@string/loading"
+            android:textColor="@color/black_1d262e"
+            android:textSize="@dimen/text_size_16"/>
+
+        <ImageView
+            android:id="@+id/iv_sex_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/riv_user_image"
+            android:layout_alignLeft="@+id/tv_user_name"
+            android:layout_toRightOf="@+id/riv_user_image"
+            android:src="@mipmap/gril"/>
+
+        <TextView
+            android:id="@+id/tv_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/riv_user_image"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_toRightOf="@+id/iv_sex_icon"
+            android:text="@string/loading"
+            android:textColor="@color/text_gray_778998"
+            android:textSize="@dimen/text_size_12"/>
+
+        <TextView
+            android:id="@+id/tv_user_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/riv_user_image"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_toRightOf="@+id/tv_sex"
+            android:text="@string/loading"
+            android:textColor="@color/text_gray_778998"
+            android:textSize="@dimen/text_size_12"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/dynamic_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x15"
+        android:layout_marginRight="@dimen/x15"
+        android:enabled="true"
+        android:lines="2"
+        android:padding="@dimen/x15"
+        android:text="@string/loading"
+        android:textColor="@color/black_1d262e"
+        android:textSize="@dimen/text_size_16"/>
+
+    <com.moonsister.tcjy.widget.NoScrollGridView
+        android:id="@+id/no_gv"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/x15"
+        android:layout_marginRight="@dimen/x15"
+        android:horizontalSpacing="@dimen/x10"
+        android:numColumns="3"
+        android:verticalSpacing="@dimen/x10"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x92"
+        android:gravity="center_vertical">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableLeft="@mipmap/home_page_like"
+                android:drawablePadding="@dimen/x10"
+                android:gravity="center"
+                android:text="@string/loading"
+                android:textColor="@color/text_gray_778998"
+                android:textSize="@dimen/text_size_12"/>
+        </FrameLayout>
+
+        <View
+            style="@style/vertical_line"
+            android:layout_marginBottom="@dimen/x15"
+            android:layout_marginTop="@dimen/x15"/>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_home_page_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableLeft="@mipmap/home_page_comment"
+                android:drawablePadding="@dimen/x10"
+                android:gravity="center"
+                android:text="@string/loading"
+                android:textColor="@color/text_gray_778998"
+                android:textSize="@dimen/text_size_12"/>
+        </FrameLayout>
+
+        <View
+            style="@style/vertical_line"
+            android:layout_marginBottom="@dimen/x15"
+            android:layout_marginTop="@dimen/x15"/>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_home_page_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableLeft="@mipmap/home_page_pay"
+                android:drawablePadding="@dimen/x10"
+                android:gravity="center"
+                android:text="@string/loading"
+                android:textColor="@color/text_gray_778998"
+                android:textSize="@dimen/text_size_12"/>
+        </FrameLayout>
+
+        <View
+            style="@style/vertical_line"
+            android:layout_marginBottom="@dimen/x15"
+            android:layout_marginTop="@dimen/x15"/>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_home_page_control"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableLeft="@mipmap/home_page_control"
+                android:gravity="center"
+                android:textColor="@color/text_gray_778998"
+                android:textSize="@dimen/text_size_12"/>
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

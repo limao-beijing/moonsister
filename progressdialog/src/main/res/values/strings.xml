@@ -6,6 +6,5 @@
     <string name="go_to_certification">去认证</string>
     <string name="certification_comment_text">为保证会员发布内容的真实性与合法性，您必须成为认证会员才可以进行评论</string>
     <string name="upgrad_vip">升级VIP</string>
-    <string name="certification_im_text">为避免骚扰，诈骗，酒托，饭托等违法行为，您必须认证或者成为VIP会员，才能与TA聊天
-</string>
+    <string name="certification_im_text">为避免骚扰，诈骗，酒托，饭托等违法行为，您必须认证或者成为VIP会员，才能与TA聊天</string>
 </resources>

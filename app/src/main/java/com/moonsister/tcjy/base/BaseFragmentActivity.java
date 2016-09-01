@@ -29,10 +29,16 @@ public abstract class BaseFragmentActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+
         FragmentUtils.swichReplaceFramgent(getSupportFragmentManager(), flBaseContent.getId(), initFragment());
         initData();
+        if (!isShowTitleView())
+            titleView.setVisibility(View.GONE);
     }
 
+    /**
+     * 初始化数据
+     */
     protected void initData() {
     }
 
@@ -86,5 +92,12 @@ public abstract class BaseFragmentActivity extends BaseActivity {
         currentFragment = f;
     }
 
-
+    /**
+     * 显示标图
+     *
+     * @return
+     */
+    public boolean isShowTitleView() {
+        return true;
+    }
 }

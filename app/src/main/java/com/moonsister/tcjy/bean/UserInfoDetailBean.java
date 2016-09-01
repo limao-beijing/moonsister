@@ -23,8 +23,15 @@ public class UserInfoDetailBean extends BaseBean {
         private String follow;
         private Baseinfo baseinfo;
         private String uid;
+        private int dynamicType = 1;
 
+        public int getDynamicType() {
+            return dynamicType;
+        }
 
+        public void setDynamicType(int dynamicType) {
+            this.dynamicType = dynamicType;
+        }
 
         public String getUid() {
             return uid;
@@ -53,6 +60,69 @@ public class UserInfoDetailBean extends BaseBean {
             private String like_image;
             // 1 已审核   2审核中  3 未审核
             private String isverify;
+            private String profession;
+            private String age;
+            private String latest_total;
+            private String latest_free;
+            private String latest_vip;
+            private String signature;
+            private String tags;
+
+            public String getSignature() {
+                return signature;
+            }
+
+            public void setSignature(String signature) {
+                this.signature = signature;
+            }
+
+            public String getTags() {
+                return tags;
+            }
+
+            public void setTags(String tags) {
+                this.tags = tags;
+            }
+
+            public String getLatest_total() {
+                return latest_total;
+            }
+
+            public void setLatest_total(String latest_total) {
+                this.latest_total = latest_total;
+            }
+
+            public String getLatest_free() {
+                return latest_free;
+            }
+
+            public void setLatest_free(String latest_free) {
+                this.latest_free = latest_free;
+            }
+
+            public String getLatest_vip() {
+                return latest_vip;
+            }
+
+            public void setLatest_vip(String latest_vip) {
+                this.latest_vip = latest_vip;
+            }
+
+            public String getAge() {
+                return age;
+            }
+
+            public void setAge(String age) {
+                this.age = age;
+            }
+
+            public String getProfession() {
+                return profession;
+            }
+
+            public void setProfession(String profession) {
+                this.profession = profession;
+            }
 
             public String getIsverify() {
                 return isverify;

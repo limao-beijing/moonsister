@@ -31,6 +31,7 @@ import com.moonsister.tcjy.main.widget.BuyVipActivity;
 import com.moonsister.tcjy.main.widget.DynamicAtionActivity;
 import com.moonsister.tcjy.main.widget.DynamicDatailsActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordNextActivity;
+import com.moonsister.tcjy.main.widget.HomePageActivity;
 import com.moonsister.tcjy.main.widget.ManorGrilActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentOrderActivity;
@@ -128,9 +129,22 @@ public class ActivityUtils {
      * 进入用户信息列表
      */
     public static void startDynamicActivity(String userId) {
-        Intent intent = new Intent(ConfigUtils.getInstance().getApplicationContext(), DynamicActivity.class);
+//        Intent intent = new Intent(ConfigUtils.getInstance().getApplicationContext(), DynamicActivity.class);
+//        LogUtils.e(TAG, "userid : " + userId);
+//        intent.putExtra(AppConstant.USER_ID, userId);
+//        startActivity(intent);
+        startHomePageActivity(userId);
+    }
+
+    /**
+     * 个人主页
+     *
+     * @param userId
+     */
+    public static void startHomePageActivity(String userId) {
+        Intent intent = new Intent(ConfigUtils.getInstance().getApplicationContext(), HomePageActivity.class);
         LogUtils.e(TAG, "userid : " + userId);
-        intent.putExtra(AppConstant.USER_ID, userId);
+        intent.putExtra("id", userId);
         startActivity(intent);
     }
 
