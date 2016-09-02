@@ -9,9 +9,8 @@ import java.util.List;
 public class DynamicItemBean extends BaseDataBean {
 
 
-
     //用户
-
+    private String age;
     private String isfollow;
     private String signature;
     private String fansnum;
@@ -41,6 +40,17 @@ public class DynamicItemBean extends BaseDataBean {
     private String isauth;
     //置顶
     private String istop;
+    /**
+     * 1 已支付  2 未支付
+     */
+
+
+    private String ispay;
+
+
+    public int getDtype() {
+        return dtype;
+    }
 
     public String getIspay() {
         return ispay;
@@ -50,15 +60,14 @@ public class DynamicItemBean extends BaseDataBean {
         this.ispay = ispay;
     }
 
-    /**
-     * 1 已支付  2 未支付
-     */
-
-
-    private String ispay;
-    public int getDtype() {
-        return dtype;
+    public String getAge() {
+        return age;
     }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
 
     public void setDtype(int dtype) {
         this.dtype = dtype;

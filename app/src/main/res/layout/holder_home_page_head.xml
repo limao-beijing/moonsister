@@ -27,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/x5"
             android:layout_marginRight="@dimen/x30"
             android:layout_marginTop="@dimen/x30"
             android:text="@string/more"
@@ -69,6 +70,11 @@
             android:layout_marginLeft="@dimen/x20"
             android:layout_marginTop="@dimen/x10"
             android:layout_toRightOf="@+id/riv_user_image"
+            android:background="@drawable/backgroup_red"
+            android:paddingBottom="@dimen/x5"
+            android:paddingLeft="@dimen/x10"
+            android:paddingRight="@dimen/x10"
+            android:paddingTop="@dimen/x5"
             android:text="@string/loading"
             android:textColor="@color/white"/>
 
@@ -83,7 +89,6 @@
             android:src="@mipmap/boy"/>
 
         <TextView
-
             android:id="@+id/tv_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -99,6 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/tv_age"
+            android:layout_marginLeft="@dimen/x15"
             android:layout_toRightOf="@+id/tv_age"
             android:enabled="true"
             android:singleLine="true"
