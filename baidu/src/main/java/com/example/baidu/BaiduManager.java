@@ -105,7 +105,7 @@ public class BaiduManager {
                 // 设置开屏可接受点击时，该回调可用
             }
         };
-        String adPlaceId = "2058622"; // 重要：请填上您的广告位ID，代码位错误会导致无法请求到广告
+        String adPlaceId = "2856248"; // 重要：请填上您的广告位ID，代码位错误会导致无法请求到广告
         new SplashAd(activity, viewGroup, listener, adPlaceId, true);
     }
 
@@ -121,7 +121,7 @@ public class BaiduManager {
 //        AppActivity.getActionBarColorTheme().set[Background|Title|Progress|Close]Color(0xFFDEDADB);
 
         // 创建广告View
-        String adPlaceId = "2015351"; //  重要：请填上您的广告位ID，代码位错误会导致无法请求到广告
+        String adPlaceId = "2856248"; //  重要：请填上您的广告位ID，代码位错误会导致无法请求到广告
         AdView adView = new AdView(activity, adPlaceId);
         // 设置监听器
         adView.setListener(new AdViewListener() {

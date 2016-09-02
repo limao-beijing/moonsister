@@ -37,7 +37,7 @@
         </receiver>
         <meta-data
             android:name="BaiduMobAd_APP_ID"
-            android:value="e866cfb0" />
+            android:value="c720ac1f" />
 
         <!-- for baidu xadsdk internal web-browser -->
         <!-- 非信息广告必须添加 -->
