@@ -19,7 +19,7 @@
         android:layout_width="@dimen/x120"
         android:layout_height="@dimen/y120"
         android:layout_gravity="center_horizontal"
-        android:src="@mipmap/load_small" />
+        android:background="@mipmap/load_small" />
 
     <TextView
         android:id="@+id/tv_msg"

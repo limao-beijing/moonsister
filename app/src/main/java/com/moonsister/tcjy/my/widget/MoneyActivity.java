@@ -62,6 +62,7 @@ public class MoneyActivity extends BaseActivity{
     protected void initView() {
 
         oneFragment=new OneFragment();
+
         twoFragment=new TwoFragment();
         FragmentUtils.switchHideFragment(getSupportFragmentManager(),R.id.fragmentlayout,currentFragment,oneFragment);
     }
