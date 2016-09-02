@@ -71,7 +71,6 @@
         <activity android:name=".main.widget.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -85,19 +84,19 @@
         <!-- 友盟 start -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="57c4f575e0f55a69b800159a" />
+            android:value="57baaa9f67e58e03c90030ef" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="1011" />
+            android:value="1002" />
         <!--API  接口-->
         <meta-data
             android:name="API_CHANNEL"
-            android:value="1011" />
+            android:value="1002" />
         <!-- 友盟  end -->
         <!-- 高德 start -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="a14e083cc37a1be1d08d3b7801e22653" />
+            android:value="e56ce610d4a17109c02b2236c1256b7a" />
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService" />
         <!-- 高德 end -->
@@ -114,7 +113,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="kbxxrqqa.kbxxrqqa.kbxxrqq"
+                    android:host="yhl.app.mylove"
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>
@@ -132,7 +131,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="kbxxrqqa.kbxxrqqa.kbxxrqq"
+                    android:host="yhl.app.mylove"
                     android:pathPrefix="/subconversationlist"
                     android:scheme="rong" />
             </intent-filter>

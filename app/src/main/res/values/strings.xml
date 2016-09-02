@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">免费看片-新热齐全</string>
+    <string name="app_name">夜约会</string>
     <!--<string name="app_name">探探寂陌陌生人-求约爱</string>-->
     <string name="app_home_page">首页</string>
     <string name="app_im_page">聊天</string>
@@ -235,7 +235,7 @@
     <string name="rule_talk">1）严格的认证的机制为了避免不良会员无意义信息和不良信息，以及利用第三方机器人进行会员多开（如微信陌陌多开）进行坑蒙拐骗、色情等不合法的会员行为，给平台用户一个纯净、健康的社交环境；
   \n2）申请认证需支付59元（人民币）保证金，保证金冻结周期为一个月，一个月内无违规行为（行骗、酒托、饭托、虚假信息、诈骗、赌博、色情等国家法律法规不允许的行为，以及纯广告信息等） ，保证金会直接解冻、您可以在财务中心查看，提现，也可用来消费；
   \n3）若您在一个月内发布上述所说的违规内容，每发现一次，保证金冻结周期延期一个月，被发现超过三次者，保证金不予退还，同时将会对您进行降低会员级别或封号处理。</string>
-    <string name="tv_ren">您需要支付59元人民币完成诚信认证，认证费将作为保证金返还到您的财务中心，一个月后可直接提现、消费。\n请确认是否支付诚信保证金？</string>
+    <string name="tv_ren">您需要支付59元人民币完成诚信认证，认证费将作为保证金返还到您的财务中心，认证保证金可直接提现、消费。\n请确认是否支付诚信保证金？</string>
     <string name="talk">规则说明</string>
     <string name="dynamic_uploading">动态上传中，请稍等....</string>
     <string name="get_loction_video_fileing">正在获取本地的视频，请稍等....</string>
@@ -252,7 +252,7 @@
     <string name="find_pwd">找回密码</string>
     <string name="affirm">确认</string>
     <string name="vip_rule">充值成功后，注意信息保密，避免他人冒领。请按照系统提示，领取手机话费返还。</string>
-    <string name="vip_rule_type"><![CDATA[ <font color="#ff8201">%1$s</font> %2$s]]></string>
+    <string name="vip_rule_type"><![CDATA[ <font color="#ff8201" ><big>%1$s</big></font> %2$s]]></string>
 
 
 </resources>
