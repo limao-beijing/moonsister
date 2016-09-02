@@ -144,7 +144,7 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
                 ActivityUtils.startPersonalActivity();
                 break;
             case R.mipmap.money://财务中心
-                ActivityUtils.startMoneyActivity();
+                ActivityUtils.startMoneyActivity(type);
                 break;
             case R.mipmap.domake:
                 ActivityUtils.startSettingActivity();

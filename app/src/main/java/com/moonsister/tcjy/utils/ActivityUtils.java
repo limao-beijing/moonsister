@@ -660,8 +660,10 @@ public class ActivityUtils {
     }
 
     //跳转财务中心页面
-    public static void startMoneyActivity() {
-        startActivity(MoneyActivity.class);
+    public static void startMoneyActivity(int type) {
+        Intent intent = new Intent(getContext(), MoneyActivity.class);
+        intent.putExtra("type", type);
+        startActivity(intent);
     }
 
     //跳转余额充值界面

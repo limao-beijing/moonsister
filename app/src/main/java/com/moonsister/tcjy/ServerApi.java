@@ -2,6 +2,7 @@ package com.moonsister.tcjy;
 
 
 import com.moonsister.tcjy.bean.BackInsertBean;
+import com.moonsister.tcjy.bean.BalanceBean;
 import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.CardInfoBean;
 import com.moonsister.tcjy.bean.CertificationStatusBean;
@@ -21,6 +22,7 @@ import com.moonsister.tcjy.bean.LoginBean;
 import com.moonsister.pay.tencent.PayBean;
 import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
+import com.moonsister.tcjy.bean.PersonalMessageBean;
 import com.moonsister.tcjy.bean.RankBean;
 import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
 import com.moonsister.tcjy.bean.RegFourBean;
@@ -1076,6 +1078,32 @@ public class ServerApi {
                                                 @Field("nickname ") String nickname ,
                                                 @Field("authcode") String authcode,
                                                 @Field("channel") String channel);
+
+        /**
+         * 查看用户资料页
+         *
+         * @param uid
+         * @return
+         */
+        @GET("user/user_detail_rule")
+        Observable<PersonalMessageBean> setPersonalMessage(@Query("uid") int uid ,
+                                                                @Query("authcode") String authcode,
+                                                                @Query("channel") String channelId,
+                                                                @Query("version_type") String apiVersion);
+
+        /**
+         *  财务中心页，收入和支出明细
+        *
+         * @param type
+         * @param page
+         * @return
+         */
+        @GET("balance/get_list")
+        Observable<BalanceBean> balance(@Query("type") int type ,
+                                                            @Query("page") int page,
+                                                            @Query("pagesize") int pagesize,
+                                                            @Query("authcode") String authcode,
+                                                           @Query("channel") String channelId);
     }
 }
 

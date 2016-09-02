@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y96"
@@ -84,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/iv_user_age"
-            android:text="22岁"
+            android:text="32岁"
             android:layout_marginTop="@dimen/y10"
             android:textColor="@color/home_navigation_text_gred"
             android:layout_toRightOf="@+id/im_user_sex"
@@ -192,6 +193,59 @@
             android:layout_marginLeft="@dimen/x220"
             android:background="@mipmap/look"/>
     </LinearLayout>
+
+    <!--<ScrollView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="@dimen/y20">-->
+        <!--<RelativeLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/text1"-->
+                <!--android:layout_margin="@dimen/x20"-->
+                <!--android:text="头像"/>-->
+            <!--<ImageView-->
+                <!--android:layout_width="@dimen/x50"-->
+                <!--android:layout_height="@dimen/y50"-->
+                <!--android:id="@+id/image1"-->
+                <!--android:layout_toRightOf="@+id/text1"-->
+                <!--android:layout_marginRight="@dimen/x20"-->
+                <!--android:background="@mipmap/ic_launcher"/>-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/text2"-->
+                <!--android:layout_margin="@dimen/x20"-->
+                <!--android:layout_below="@+id/text1"-->
+                <!--android:text="昵称"/>-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/text3"-->
+                <!--android:layout_toRightOf="@+id/text2"-->
+                <!--android:layout_below="@+id/text1"-->
+                <!--android:layout_margin="@dimen/x20"-->
+                <!--android:text="宝儿"/>-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/text4"-->
+                <!--android:layout_margin="@dimen/x20"-->
+                <!--android:layout_below="@+id/text2"-->
+                <!--android:text="个性签名"/>-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/text5"-->
+                <!--android:layout_toRightOf="@+id/text4"-->
+                <!--android:layout_below="@+id/text3"-->
+                <!--android:layout_margin="@dimen/x20"-->
+                <!--android:text="除了睡觉没有让我觉得开心的事了"/>-->
+        <!--</RelativeLayout>-->
+    <!--</ScrollView>-->
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="@dimen/y680"
