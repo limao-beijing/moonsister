@@ -39,7 +39,7 @@ public class ManorGrilActivity extends BaseActivity implements ManorGrilActivity
 
     @Override
     protected void initView() {
-        persenter=new ManorFrilActivityPresenterImpl();
+        persenter=new ManorFrilActivityPresenterImpl();//绑定
         persenter.attachView(this);
 //        persenter.regOne(1);
     }

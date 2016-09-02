@@ -43,7 +43,7 @@ public class RegActivityPresenterImpl implements RegActivityPresenter,BaseIModel
         view.hideLoading();
         if (regThridBean != null) {
             if ("1".equals(regThridBean.getCode()))
-                view.LoopMsg();
+//                view.LoopMsg(regThridBean.getData().g);
             view.requestFailed(regThridBean.getMsg());
         }
     }

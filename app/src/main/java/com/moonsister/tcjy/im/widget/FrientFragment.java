@@ -68,11 +68,13 @@ public class FrientFragment extends BaseFragment implements FrientFragmentView {
     protected void initData() {
         if (pageType == PAGE_MAIN) {
             layout_head.setVisibility(View.VISIBLE);
-            onClick(tvWacth);
+//            onClick(tvWacth);
+            onClick(tvFriend);
         } else {
             layout_head.setVisibility(View.GONE);
             initXListView();
         }
+
         RxBus.with(this)
                 .setEndEvent(FragmentEvent.DESTROY)
                 .setEvent(Events.EventEnum.FRIEND_CHANGE)

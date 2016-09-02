@@ -7,12 +7,13 @@
         android:id="@+id/layout_root"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-
+    <!--android:background="@color/app_gred_background"-->
     <RelativeLayout
-        android:background="@color/app_gred_background"
-        android:layout_height="@dimen/y60"
+        android:background="@color/white"
+        android:layout_height="@dimen/y0"
         android:layout_width="match_parent"
         android:id="@+id/layout_head">
+
 
     <!--<View-->
         <!--android:background="@color/app_line"-->
@@ -44,6 +45,7 @@
         android:text="@string/my_wacth"
         android:gravity="center"
         android:layout_toRightOf="@+id/tv_friend"/>
+        <!--android:visibility="invisible"/>&lt;!&ndash;添加的&ndash;&gt;-->
 
     <View
         android:id="@+id/center_line2"
@@ -59,7 +61,8 @@
         android:textColor="@drawable/selector_home_text_color"
         android:text="@string/my_fen"
         android:gravity="center"
-        android:layout_toRightOf="@id/tv_wacth" />
+        android:layout_toRightOf="@id/tv_wacth"/>
+        <!--android:visibility="invisible"/>&lt;!&ndash;添加的&ndash;&gt;-->
 
     <View
         android:layout_height="@dimen/x1"
