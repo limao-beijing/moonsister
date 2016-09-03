@@ -36,6 +36,7 @@
             android:layout_marginTop="@dimen/y80"
             android:hint="请输入金额"
             android:paddingLeft="@dimen/x130"
+            android:textColor="@color/black"
             android:background="@mipmap/edit_back"/>
         <TextView
             android:layout_width="wrap_content"

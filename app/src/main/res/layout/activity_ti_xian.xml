@@ -141,20 +141,45 @@
 
     </RelativeLayout>
 
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingLeft="@dimen/x25"-->
+        <!--android:paddingTop="@dimen/x15"-->
+        <!--android:text="每次转出金额需≥200" />-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/x25"
-        android:paddingTop="@dimen/x15"
-        android:text="每次转出金额需≥200" />
+        android:textColor="@color/text_gray_color"
+        android:text="@string/withdraw_text"
+        android:layout_marginTop="@dimen/x20"
+        android:layout_marginLeft="@dimen/x130"
+        />
 
+    <!--<TextView-->
+        <!--android:id="@+id/tv_sure"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/x92"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_marginLeft="@dimen/x30"-->
+        <!--android:layout_marginRight="@dimen/x30"-->
+        <!--android:layout_marginTop="@dimen/x100"-->
+        <!--android:background="@mipmap/btn_affirm" />-->
     <TextView
-        android:id="@+id/tv_sure"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x92"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="@dimen/x30"
-        android:layout_marginRight="@dimen/x30"
-        android:layout_marginTop="@dimen/x100"
-        android:background="@mipmap/btn_affirm" />
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_sure"
+        android:text="确认"
+        android:layout_marginTop="@dimen/y100"
+        android:background="@mipmap/withdraw"
+        android:textSize="18sp"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_gray_color"
+        android:text="@string/withdraw"
+        android:layout_marginTop="@dimen/x20"
+        android:layout_marginLeft="@dimen/x480"
+        />
 </LinearLayout>

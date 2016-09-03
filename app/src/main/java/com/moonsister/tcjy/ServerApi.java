@@ -3,6 +3,7 @@ package com.moonsister.tcjy;
 
 import com.moonsister.pay.tencent.PayBean;
 import com.moonsister.tcjy.bean.BackInsertBean;
+import com.moonsister.tcjy.bean.BackTermsBean;
 import com.moonsister.tcjy.bean.BalanceBean;
 import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.CardInfoBean;
@@ -1103,6 +1104,30 @@ public class ServerApi {
                                         @Query("pagesize") int pagesize,
                                         @Query("authcode") String authcode,
                                         @Query("channel") String channelId);
+
+        /**
+         * 充值页面
+         *
+         * @param money
+         * @param pay_type
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("recharge/pub")
+        Observable<PayBean> getrechargeBean(@Field("money") String money,
+                                            @Field("pay_type") String pay_type,
+                                            @Field("authcode") String authcode,
+                                            @Field("channel") String channel,
+                                            @Field("version_type") String apiVersion);
+
+        /**
+         * 获得验证词语
+         *
+         * @return
+         */
+        @GET("apply/get_apply_info_before")
+        Observable<BackTermsBean> backTermsBean(@Query("authcode") String authcode,
+                                                @Query("channel") String channelId);
     }
 }
 

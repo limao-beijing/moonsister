@@ -31,20 +31,21 @@ public class OneFragment extends BaseFragment implements BalanceActivityView{
     int type;
     int page;
     int pagesize;
+    String uid;
     List<BalanceBean.DataBean> data;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        type=1;
         mPresenter = new MoneyActivityPersenterImpl();
         mPresenter.attachView(this);
-        type=1;
-        mPresenter.moneyba(type,1,10);
+//        mPresenter.moneyba(type,1,10);
         return UIUtils.inflateLayout(R.layout.onefragment);
     }
 
     @Override
     protected void initData() {
-
+        mPresenter.moneyba(type,1,10);
     }
 
     @Override
@@ -57,7 +58,6 @@ public class OneFragment extends BaseFragment implements BalanceActivityView{
 
     }
 
-    @Override
     public void transfePageMsg(String msg) {
         showToast(msg);
     }
@@ -69,6 +69,8 @@ public class OneFragment extends BaseFragment implements BalanceActivityView{
         onfragment_listview.setAdapter(mAdapter);
 
     }
-
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
 }

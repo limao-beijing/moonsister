@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.my.widget;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -55,14 +56,17 @@ public class InsertActivity extends BaseActivity implements InsertActivityView {
     StringBuffer sbr=new StringBuffer();
     int a;
     String str;
+    String uu;
     @Override
     protected View setRootContentView() {
 //        UIUtils.inflateLayout(R.layout.insertgridviewitem);
+
         return UIUtils.inflateLayout(R.layout.insertactivity);//加载主页;
     }
 
     @Override
     protected void initView() {
+
         persenter=new InsertActivityPersenterImpl();
         persenter.attachView(this);
         persenter.LoadData(tagid,tagname,img);
@@ -84,25 +88,31 @@ public class InsertActivity extends BaseActivity implements InsertActivityView {
                 adapter.notifyDataSetChanged();
                 break;
             case R.id.button1_text://已选好
-                for (int i = 0; i < data.size(); i++) {
-                    if (data != null && data.get(i).ischeck()) {//判断为true的选项
-//                        String v = String.valueOf(data.get(i).getTagid());
-                        String v=Integer.toString(data.get(i).getTagid(), 16);//将int类型转换为string类型
-                        if(i!=data.size()-1){
-                            sbr.append(v+",");//拼接字符串
-                        }
 
-                        sbr.append(v );
+                    for (int i = 0; i < data.size(); i++) {
+                        if (data != null && data.get(i).ischeck()) {//判断为true的选项
+//                        String v = String.valueOf(data.get(i).getTagid());
+                            String v=Integer.toString(data.get(i).getTagid(), 16);//将int类型转换为string类型
+                            if(i!=data.size()-1){
+                                sbr.append(v+",");//拼接字符串
+                            }
+
+                            sbr.append(v );
                         }
 
                     }
 
-                     str=sbr.toString();
-                     persenter.sendData(str);//发送请求
+                    str=sbr.toString();
+                    persenter.sendData(str);//发送请求
+
+
+
 
                 break;
             case R.id.image_back:
-                this.finish();
+                    this.finish();
+
+
                 break;
         }
     }
@@ -136,9 +146,17 @@ public class InsertActivity extends BaseActivity implements InsertActivityView {
 
     @Override
     public void success() {
-        Intent intent=new Intent(InsertActivity.this,RegActivity.class);
-        startActivity(intent);
-        this.finish();
+        uu=getIntent().getStringExtra("my");
+        if(uu==null){
+            Intent intent=new Intent(InsertActivity.this,RegActivity.class);
+            startActivity(intent);
+            this.finish();
+
+        }else{
+            this.finish();
+        }
+
+
     }
 
 

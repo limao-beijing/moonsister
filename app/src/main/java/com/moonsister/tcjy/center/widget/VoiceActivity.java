@@ -28,6 +28,7 @@ public class VoiceActivity extends Activity {
             public void sendListener(String filePath, String fileName, String length, boolean isResend) {
                 isStop = false;
                 setData(filePath, fileName, length, isResend);
+
             }
 
             @Override

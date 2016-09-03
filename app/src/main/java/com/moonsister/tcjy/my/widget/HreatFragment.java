@@ -37,6 +37,7 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
     //gridview中的item数据与图片
     String uid;
     int type;
+    String my;
     @Bind(R.id.iv_user_icon)//用户头像
     ImageView iv_user_icon;
     @Bind(R.id.tv_user_all_income)//总收入
@@ -134,8 +135,8 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
             case R.mipmap.vipmoney://VIP充值
                 ActivityUtils.startBuyVipActivity();
                 break;
-            case R.mipmap.insert:
-                ActivityUtils.startInsertActivity();
+            case R.mipmap.insert://兴趣选项
+                ActivityUtils.startInsertActivity(my);
                 break;
             case R.mipmap.viprenzheng://申请认证
                 ActivityUtils.startRenZhengActivity();
@@ -144,7 +145,7 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
                 ActivityUtils.startPersonalActivity();
                 break;
             case R.mipmap.money://财务中心
-                ActivityUtils.startMoneyActivity(type);
+                ActivityUtils.startMoneyActivity(uid);
                 break;
             case R.mipmap.domake:
                 ActivityUtils.startSettingActivity();
