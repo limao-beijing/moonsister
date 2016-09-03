@@ -645,8 +645,10 @@ public class ActivityUtils {
     }
 
     //跳转动态管理页面
-    public static void startInsertActivity() {
-        startActivity(InsertActivity.class);
+    public static void startInsertActivity(String my) {
+        Intent intent=new Intent(getContext(),InsertActivity.class);
+        intent.putExtra("my","我爱你");
+        startActivity(intent);
     }
 
     //跳转VIP认证页面
@@ -660,9 +662,9 @@ public class ActivityUtils {
     }
 
     //跳转财务中心页面
-    public static void startMoneyActivity(int type) {
+    public static void startMoneyActivity(String uid) {
         Intent intent = new Intent(getContext(), MoneyActivity.class);
-        intent.putExtra("type", type);
+        intent.putExtra("uid", uid);
         startActivity(intent);
     }
 
@@ -684,6 +686,11 @@ public class ActivityUtils {
     public static void startSearchFragmentActivity() {
         startActivity(SearchFragmentActivity.class);
     }
+
+    public static void startRechaargeMoneyActivity() {
+        startActivity(MoneyActivity.class);
+    }
+
     //兴趣选择页跳注册页
 //    public static void startRegActivity() {
 //        Intent intent=new Intent(InsertActivity.this,RegActivity.class);
