@@ -1102,7 +1102,7 @@ public class ServerApi {
         Observable<BalanceBean> balance(@Query("type") int type,
                                         @Query("page") int page,
                                         @Query("pagesize") int pagesize,
-                                        @Query("authcode") String authcode,
+                                        @Query("authcode") String authcode,git
                                         @Query("channel") String channelId);
 
         /**
