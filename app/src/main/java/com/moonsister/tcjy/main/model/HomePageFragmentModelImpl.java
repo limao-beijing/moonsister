@@ -4,10 +4,10 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.bean.DynamicItemBean;
-import com.moonsister.tcjy.bean.UserInfoChangeBean;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
@@ -21,8 +21,8 @@ import rx.Observable;
  */
 public class HomePageFragmentModelImpl implements HomePageFragmentModel {
     @Override
-    public void loadDynamicData(String userId, int page, onLoadDateSingleListener<List<DynamicItemBean>> listener) {
-        Observable<UserInfoListBean> observable = ServerApi.getAppAPI().getPersonDynamincList(userId, UserInfoManager.getInstance().getAuthcode(), page, AppConstant.CHANNEL_ID);
+    public void loadDynamicData(String userId, int page, EnumConstant.SearchType type, onLoadDateSingleListener<List<DynamicItemBean>> listener) {
+        Observable<UserInfoListBean> observable = ServerApi.getAppAPI().getPersonDynamincList(userId, page, type.getType(), UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<UserInfoListBean>() {
             @Override
             public void onSuccess(UserInfoListBean bean) {

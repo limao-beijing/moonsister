@@ -26,7 +26,7 @@ public class DynamicModelImpl implements DynamicModel {
     @Override
     public void loadUserInfoData(String userId, int page, BaseIModel.onLoadListDateListener<DynamicItemBean> listener) {
         String authcode = UserInfoManager.getInstance().getAuthcode();
-        ServerApi.getAppAPI().getPersonDynamincList(userId, authcode, page, AppConstant.CHANNEL_ID)
+        ServerApi.getAppAPI().getPersonDynamincList(userId, page, 0, authcode, AppConstant.CHANNEL_ID)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<UserInfoListBean>() {
@@ -59,7 +59,7 @@ public class DynamicModelImpl implements DynamicModel {
     @Override
     public void loadUserInfodetail(String uid, BaseIModel.onLoadDateSingleListener listener) {
         String authcode = UserInfoManager.getInstance().getAuthcode();
-        ServerApi.getAppAPI().getUserInfoDetail(uid, authcode,AppConstant.CHANNEL_ID).observeOn(AndroidSchedulers.mainThread())
+        ServerApi.getAppAPI().getUserInfoDetail(uid, authcode, AppConstant.CHANNEL_ID).observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<UserInfoDetailBean>() {
                     @Override

@@ -1,6 +1,7 @@
 package com.moonsister.tcjy;
 
 
+import com.moonsister.pay.tencent.PayBean;
 import com.moonsister.tcjy.bean.BackInsertBean;
 import com.moonsister.tcjy.bean.BalanceBean;
 import com.moonsister.tcjy.bean.BaseBean;
@@ -19,7 +20,6 @@ import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.KeyMateBean;
 import com.moonsister.tcjy.bean.LableBean;
 import com.moonsister.tcjy.bean.LoginBean;
-import com.moonsister.pay.tencent.PayBean;
 import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.PersonalMessageBean;
@@ -39,7 +39,6 @@ import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.bean.UserPermissionBean;
 import com.moonsister.tcjy.bean.VersionInfo;
 import com.moonsister.tcjy.bean.WithdRawDepositBean;
-import com.moonsister.tcjy.main.widget.DynamicDatailsActivity;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UnicodeUtils;
 import com.moonsister.tcjy.utils.gson.GsonConverterFactory;
@@ -194,7 +193,7 @@ public class ServerApi {
         @FormUrlEncoded
         @POST("User/register_send_mobile_code")
         Observable<RegThridBean> sendSecurityCode(@Field("mobile") String mobile,
-                                              @Field("channel") String channel);
+                                                  @Field("channel") String channel);
 
         /**
          * 验证验证码
@@ -274,8 +273,9 @@ public class ServerApi {
          */
         @GET("Latest/get_latest_list")
         Observable<UserInfoListBean> getPersonDynamincList(@Query("uid") String userId,
-                                                           @Query("authcode") String authcode,
                                                            @Query("page") int page,
+                                                           @Query("ttype") int searchType,
+                                                           @Query("authcode") String authcode,
                                                            @Query("channel") String channel);
 
         /**
@@ -1036,7 +1036,7 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("tags/set_xingqu")
-        Observable<BackInsertBean> makeInsertBean(@Field("tlist") String tlist ,
+        Observable<BackInsertBean> makeInsertBean(@Field("tlist") String tlist,
                                                   @Field("authcode") String authcode,
                                                   @Field("channel") String channel,
                                                   @Field("version_type") String apiVersion);
@@ -1069,15 +1069,14 @@ public class ServerApi {
          *
          * @param face
          * @param nickname
-         *
          * @return
          */
         @FormUrlEncoded
         @POST("usernew/reg_step4")
-        Observable<RegFourBean> getRegFourBean(@Field("face ") String face ,
-                                                @Field("nickname ") String nickname ,
-                                                @Field("authcode") String authcode,
-                                                @Field("channel") String channel);
+        Observable<RegFourBean> getRegFourBean(@Field("face ") String face,
+                                               @Field("nickname ") String nickname,
+                                               @Field("authcode") String authcode,
+                                               @Field("channel") String channel);
 
         /**
          * 查看用户资料页
@@ -1086,24 +1085,24 @@ public class ServerApi {
          * @return
          */
         @GET("user/user_detail_rule")
-        Observable<PersonalMessageBean> setPersonalMessage(@Query("uid") int uid ,
-                                                                @Query("authcode") String authcode,
-                                                                @Query("channel") String channelId,
-                                                                @Query("version_type") String apiVersion);
+        Observable<PersonalMessageBean> setPersonalMessage(@Query("uid") int uid,
+                                                           @Query("authcode") String authcode,
+                                                           @Query("channel") String channelId,
+                                                           @Query("version_type") String apiVersion);
 
         /**
-         *  财务中心页，收入和支出明细
-        *
+         * 财务中心页，收入和支出明细
+         *
          * @param type
          * @param page
          * @return
          */
         @GET("balance/get_list")
-        Observable<BalanceBean> balance(@Query("type") int type ,
-                                                            @Query("page") int page,
-                                                            @Query("pagesize") int pagesize,
-                                                            @Query("authcode") String authcode,
-                                                           @Query("channel") String channelId);
+        Observable<BalanceBean> balance(@Query("type") int type,
+                                        @Query("page") int page,
+                                        @Query("pagesize") int pagesize,
+                                        @Query("authcode") String authcode,
+                                        @Query("channel") String channelId);
     }
 }
 

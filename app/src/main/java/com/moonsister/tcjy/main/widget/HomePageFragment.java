@@ -15,6 +15,7 @@ import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.main.presenter.HomePageFragmentPresenter;
 import com.moonsister.tcjy.main.presenter.HomePageFragmentPresenterImpl;
 import com.moonsister.tcjy.main.view.HomePageFragmentView;
+import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.viewholder.HomePageHeadHolder;
 import com.moonsister.tcjy.widget.XListView;
 
@@ -33,6 +34,7 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
     private String userId;
     private boolean isRefresh;
     private HomePageHeadHolder headHolder;
+    private EnumConstant.SearchType type = EnumConstant.SearchType.all;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,19 +51,40 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
     @Override
     protected void initData() {
         headHolder = new HomePageHeadHolder();
+        headHolder.setOnClickListener(new HomePageHeadHolder.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (presenter == null)
+                    return;
+                switch (view.getId()) {
+                    case R.id.rl_all:
+                        type = EnumConstant.SearchType.all;
+
+                        break;
+                    case R.id.rl_user:
+                        type = EnumConstant.SearchType.user;
+                        break;
+                    case R.id.rl_dynamic:
+                        type = EnumConstant.SearchType.dynamic;
+                        break;
+                }
+                isRefresh = true;
+                presenter.loadRefresh(userId, type);
+            }
+        });
         xlv.setVerticalLinearLayoutManager();
         xlv.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
                 isRefresh = true;
                 presenter.loadHeader(userId);
-                presenter.loadRefresh(userId);
+                presenter.loadRefresh(userId, type);
             }
 
             @Override
             public void onLoadMore() {
                 isRefresh = false;
-                presenter.loadMore(userId);
+                presenter.loadMore(userId, type);
             }
         });
         xlv.addHeaderView(headHolder.getContentView());

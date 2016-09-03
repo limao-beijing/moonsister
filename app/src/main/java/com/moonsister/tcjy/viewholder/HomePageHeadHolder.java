@@ -144,5 +144,17 @@ public class HomePageHeadHolder extends BaseHolder<UserInfoDetailBean> {
     public void onClick(View view) {
         selectColor(view.getId());
 
+        if (mListener != null)
+            mListener.onClick(view);
+    }
+
+    private OnClickListener mListener;
+
+    public void setOnClickListener(OnClickListener listener) {
+        this.mListener = listener;
+    }
+
+    public interface OnClickListener {
+        void onClick(View view);
     }
 }

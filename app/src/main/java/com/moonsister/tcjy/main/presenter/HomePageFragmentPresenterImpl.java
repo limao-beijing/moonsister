@@ -6,6 +6,7 @@ import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.main.model.HomePageFragmentModel;
 import com.moonsister.tcjy.main.model.HomePageFragmentModelImpl;
 import com.moonsister.tcjy.main.view.HomePageFragmentView;
+import com.moonsister.tcjy.utils.EnumConstant;
 
 import java.util.List;
 
@@ -29,10 +30,10 @@ public class HomePageFragmentPresenterImpl implements HomePageFragmentPresenter,
     }
 
     @Override
-    public void loadRefresh(String userId) {
+    public void loadRefresh(String userId,EnumConstant.SearchType type) {
         view.showLoading();
         page = 1;
-        model.loadDynamicData(userId, page, this);
+        model.loadDynamicData(userId, page,type, this);
 
     }
 
@@ -42,9 +43,9 @@ public class HomePageFragmentPresenterImpl implements HomePageFragmentPresenter,
     }
 
     @Override
-    public void loadMore(String userId) {
+    public void loadMore(String userId,EnumConstant.SearchType type) {
         view.showLoading();
-        model.loadDynamicData(userId, page, this);
+        model.loadDynamicData(userId, page,type, this);
     }
 
     @Override
