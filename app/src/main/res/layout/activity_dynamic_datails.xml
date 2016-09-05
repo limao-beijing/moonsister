@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-    <include layout="@layout/app_titlebar" />
+    <include layout="@layout/app_titlebar"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -16,10 +16,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/app_title_bar"
-            android:background="@color/app_gred_background" />
+            android:background="@color/app_gred_background"/>
 
 
     </FrameLayout>
 
-    <include layout="@layout/include_input_layout" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/include_input_layout"/>
+
+        <include
+            layout="@layout/layout_comment_action"/>
+    </RelativeLayout>
 </LinearLayout>

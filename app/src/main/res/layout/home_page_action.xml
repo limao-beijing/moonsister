@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center_vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_reward"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_reward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/home_page_reward"
+            android:drawablePadding="@dimen/x10"
+            android:gravity="center"
+            android:text="@string/action_reward"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/vertical_line"
+        android:layout_marginBottom="@dimen/x15"
+        android:layout_marginTop="@dimen/x15"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_im"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_im"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/home_page_comment"
+            android:drawablePadding="@dimen/x10"
+            android:gravity="center"
+            android:text="@string/im"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/vertical_line"
+        android:layout_marginBottom="@dimen/x15"
+        android:layout_marginTop="@dimen/x15"/>
+    android:layout_marginTop="@dimen/x15"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_wacth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_wacth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/home_page_wacth"
+            android:drawablePadding="@dimen/x10"
+            android:gravity="center"
+            android:text="@string/wacth"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/vertical_line"
+        android:layout_marginBottom="@dimen/x15"
+        android:layout_marginTop="@dimen/x15"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_pay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/home_page_pay"
+            android:drawablePadding="@dimen/x10"
+            android:gravity="center"
+            android:text="@string/reward"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/vertical_line"
+        android:layout_marginBottom="@dimen/x15"
+        android:layout_marginTop="@dimen/x15"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_flower"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_flower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/home_page_flower"
+            android:drawablePadding="@dimen/x10"
+            android:gravity="center"
+            android:text="@string/home_flower"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

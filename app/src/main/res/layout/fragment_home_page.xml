@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/layout_home_content"
+        layout="@layout/home_page_action"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x92"
+        android:layout_alignParentBottom="true"/>
+
+    <View
+        android:id="@+id/line"
+        style="@style/horizontal_line_style"
+        android:layout_above="@+id/layout_home_content"/>
 
     <com.moonsister.tcjy.widget.XListView
         android:id="@+id/xlv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.moonsister.tcjy.widget.XListView>
+        android:layout_height="match_parent"
+        android:layout_above="@+id/line"/>
 
-</LinearLayout>
+</RelativeLayout>

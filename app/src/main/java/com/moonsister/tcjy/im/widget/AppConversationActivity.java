@@ -48,7 +48,7 @@ public class AppConversationActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (!StringUtis.equals("1000", mTargetId))
+        if (!StringUtis.equals(getIntent().getData().getPath(), SYSTEM_PATH))
             certificationStatus();
     }
 

@@ -9,8 +9,7 @@ import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.homepage.HomePagePicViewHolder;
-import com.moonsister.tcjy.viewholder.dynamic.VideoViewHolder;
-import com.moonsister.tcjy.viewholder.dynamic.VoiceViewHolder;
+import com.moonsister.tcjy.viewholder.homepage.HomePageVideoViewHolder;
 
 import java.util.List;
 
@@ -54,14 +53,16 @@ public class HomePageFragmentAdapter extends BaseRecyclerViewAdapter<DynamicItem
             case TYPE_FREE_PIC:
                 holder = new HomePagePicViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_home_page_pic, parent));
                 break;
-            case TYPE_CHARGE_VIDEO:
-            case TYPE_FREE_VIDEO:
-                holder = new VideoViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_video, parent));
-                break;
             case TYPE_CHARGE_VOICE:
             case TYPE_FREE_VOICE:
-                holder = new VoiceViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_voice, parent));
+            case TYPE_CHARGE_VIDEO:
+            case TYPE_FREE_VIDEO:
+                holder = new HomePageVideoViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_home_page_video, parent));
                 break;
+//            case TYPE_CHARGE_VOICE:
+//            case TYPE_FREE_VOICE:
+//                holder = new HomePageVideoViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_home_page_video, parent));
+//                break;
         }
         return holder.getRootView();
     }

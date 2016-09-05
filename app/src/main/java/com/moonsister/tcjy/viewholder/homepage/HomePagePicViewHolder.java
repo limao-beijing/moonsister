@@ -43,6 +43,8 @@ public class HomePagePicViewHolder extends BaseRecyclerViewHolder<DynamicItemBea
     TextView tvHomePagePay;
     @Bind(R.id.tv_home_page_control)
     TextView tvHomePageControl;
+    @Bind(R.id.tv_user_like)
+    TextView tvUserLike;
 
     public HomePagePicViewHolder(View view) {
         super(view);
@@ -59,7 +61,7 @@ public class HomePagePicViewHolder extends BaseRecyclerViewHolder<DynamicItemBea
             ivSexIcon.setImageResource(R.mipmap.boy);
         } else
             ivSexIcon.setImageResource(R.mipmap.gril);
-//        tvSex.setText(dynamicItemBean.get);
+        tvSex.setText(dynamicItemBean.getAge());
         String tags = dynamicItemBean.getTags();
         if (!StringUtis.isEmpty(tags)) {
             tags = tags.replace("|||", "  ");
@@ -68,6 +70,7 @@ public class HomePagePicViewHolder extends BaseRecyclerViewHolder<DynamicItemBea
         dynamicContent.setText(dynamicItemBean.getTitle());
         tvHomePageComment.setText(dynamicItemBean.getLcomn());
         tvHomePagePay.setText(dynamicItemBean.getMoney());
+        tvUserLike.setText(dynamicItemBean.getLupn());
         noGv.setAdapter(new PicGridViewAdapter(dynamicItemBean));
         noGv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

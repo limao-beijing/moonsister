@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="60dp"
+              android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_reward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@mipmap/home_page_pay"
+            android:drawablePadding="@dimen/x10"
+            android:gravity="center"
+            android:text="@string/reward"
+            android:textColor="@color/text_gray_778998"
+            android:textSize="@dimen/text_size_16"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/vertical_line"
+        />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_comment_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@mipmap/home_page_comment"
+            android:drawablePadding="@dimen/x10"
+            android:gravity="center"
+            android:text="@string/comment"
+            android:textColor="@color/text_gray_778998"
+            android:textSize="@dimen/text_size_16"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/vertical_line"
+        />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_not_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@mipmap/not_like_icon"
+            android:drawablePadding="@dimen/x10"
+            android:gravity="center"
+            android:text="@string/not_like"
+            android:textColor="@color/text_gray_778998"
+            android:textSize="@dimen/text_size_16"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/vertical_line"
+        />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@mipmap/dynamic_like_icon"
+            android:drawablePadding="@dimen/x10"
+            android:gravity="center"
+            android:text="@string/like"
+            android:textColor="@color/text_gray_778998"
+            android:textSize="@dimen/text_size_16"/>
+    </RelativeLayout>
+
+</LinearLayout>

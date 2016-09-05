@@ -79,16 +79,29 @@
         android:textColor="@color/black_1d262e"
         android:textSize="@dimen/text_size_16"/>
 
-    <com.moonsister.tcjy.widget.NoScrollGridView
-        android:id="@+id/no_gv"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/x15"
-        android:layout_marginRight="@dimen/x15"
-        android:horizontalSpacing="@dimen/x10"
-        android:numColumns="3"
-        android:verticalSpacing="@dimen/x10"/>
+        android:layout_marginRight="@dimen/x15">
+        <ImageView
+            android:id="@+id/iv_bg"
+            android:layout_width="@dimen/x660"
+            android:layout_height="@dimen/x328"
+            android:layout_gravity="center"
+
+            android:scaleType="centerCrop"/>
+
+        <ImageView
+            android:id="@+id/iv_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/home_page_video_play"/>
+
+    </FrameLayout>
+
 
     <LinearLayout
         android:id="@+id/ll_action"

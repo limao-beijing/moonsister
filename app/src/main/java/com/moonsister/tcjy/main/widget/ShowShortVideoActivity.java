@@ -1,15 +1,12 @@
 package com.moonsister.tcjy.main.widget;
 
-import java.io.File;
-
-
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.net.Uri;
 import android.text.TextUtils;
-import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -46,6 +43,7 @@ public class ShowShortVideoActivity extends BaseActivity implements
 
     @Override
     protected void initView() {
+        showProgressDialog();
         vv = (VideoView) findViewById(R.id.vv);
         Intent intent = getIntent();
         path = intent.getStringExtra("path");
@@ -83,7 +81,9 @@ public class ShowShortVideoActivity extends BaseActivity implements
             });
         } catch (Exception e) {
             e.printStackTrace();
+            hideProgressDialog();
             UIUtils.showToast(this, "该视频不支持播放");
+
         }
 
 
@@ -92,10 +92,13 @@ public class ShowShortVideoActivity extends BaseActivity implements
     protected void startPlay() {
         try {
             vv.start();
+
             if (mRootView != null)
                 mRootView.setOnTouchListener(this);
         } catch (Exception e) {
             UIUtils.showToast(this, "该视频不支持播放");
+        } finally {
+            hideProgressDialog();
         }
 
     }
@@ -106,4 +109,13 @@ public class ShowShortVideoActivity extends BaseActivity implements
         return true;
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (KeyEvent.KEYCODE_BACK == keyCode) {
+            hideProgressDialog();
+            finish();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

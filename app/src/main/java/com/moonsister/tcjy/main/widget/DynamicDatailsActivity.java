@@ -1,9 +1,10 @@
 package com.moonsister.tcjy.main.widget;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 
-import com.moonsister.tcjy.AppConstant;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.DynamicAdapter;
 import com.moonsister.tcjy.adapter.DynamicDetailsAdapter;
@@ -13,7 +14,6 @@ import com.moonsister.tcjy.bean.CommentDataListBean;
 import com.moonsister.tcjy.bean.DynamicDatailsBean;
 import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
-import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.presenter.DynamincDatailsPresenter;
@@ -24,12 +24,10 @@ import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tcjy.viewholder.DynamicViewHolder;
-import com.moonsister.tcjy.viewholder.dynamic.PicViewHolder;
-import com.moonsister.tcjy.viewholder.dynamic.VideoViewHolder;
-import com.moonsister.tcjy.viewholder.dynamic.VoiceViewHolder;
+import com.moonsister.tcjy.viewholder.CommentDynacmicViewHolder;
+import com.moonsister.tcjy.viewholder.homepage.HomePagePicViewHolder;
+import com.moonsister.tcjy.viewholder.homepage.HomePageVideoViewHolder;
 import com.moonsister.tcjy.widget.XListView;
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import java.util.List;
@@ -159,23 +157,27 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
     private void initHeader(int type) {
         switch (type) {
             case DynamicAdapter.TYPE_CHARGE_PIC:
-                holder = new PicViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_pic));
-                break;
             case DynamicAdapter.TYPE_FREE_PIC:
-                holder = new PicViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_pic));
+                holder = new HomePagePicViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_home_page_pic));
                 break;
             case DynamicAdapter.TYPE_CHARGE_VIDEO:
-                holder = new VideoViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_video));
-                break;
             case DynamicAdapter.TYPE_FREE_VIDEO:
-                holder = new VideoViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_video));
-                break;
             case DynamicAdapter.TYPE_CHARGE_VOICE:
-                holder = new VoiceViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_voice));
-                break;
             case DynamicAdapter.TYPE_FREE_VOICE:
-                holder = new VoiceViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_voice));
+                holder = new HomePageVideoViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_home_page_video));
                 break;
+        }
+        if (holder != null && holder.getRootView() != null) {
+            View view = holder.getRootView().findViewById(R.id.ll_action);
+            if (view != null) {
+                view.setVisibility(View.GONE);
+            }
+            View view1 = holder.getRootView();
+            if (view1 instanceof ViewGroup) {
+                CommentDynacmicViewHolder dynacmicViewHolder = new CommentDynacmicViewHolder();
+                ((ViewGroup) view1).addView(dynacmicViewHolder.getContentView());
+            }
+
         }
     }
 

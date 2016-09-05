@@ -264,4 +264,10 @@
     <string name="fillout_message">19860万会员求真相，\n98万同兴趣者等你撩！</string>
     <string name="activity_vip">充值成功后，注意信息保密，避免他人冒领。\n请按照系统提示，领取手机费返还。</string>
     <string name="more">更多</string>
+    <string name="im">聊天</string>
+    <string name="home_flower">送花</string>
+    <string name="action_reward">悬赏</string>
+    <string name="comment">评论</string>
+    <string name="not_like">踩</string>
+    <string name="like">赞</string>
 </resources>

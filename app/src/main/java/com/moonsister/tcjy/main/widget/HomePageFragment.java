@@ -15,6 +15,7 @@ import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.main.presenter.HomePageFragmentPresenter;
 import com.moonsister.tcjy.main.presenter.HomePageFragmentPresenterImpl;
 import com.moonsister.tcjy.main.view.HomePageFragmentView;
+import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.viewholder.HomePageHeadHolder;
 import com.moonsister.tcjy.widget.XListView;
@@ -22,6 +23,7 @@ import com.moonsister.tcjy.widget.XListView;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * Created by jb on 2016/9/1.
@@ -108,8 +110,11 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
         }
     }
 
+    private UserInfoDetailBean userInfo;
+
     @Override
     public void setHeaderData(UserInfoDetailBean bean) {
+        this.userInfo = bean;
         if (headHolder != null) {
             headHolder.refreshView(bean);
         }
@@ -129,6 +134,28 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
     @Override
     public void transfePageMsg(String msg) {
         showToast(msg);
+    }
+
+
+    @OnClick({R.id.rl_reward, R.id.rl_im, R.id.rl_wacth, R.id.rl_pay, R.id.rl_flower})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.rl_reward:
+
+                break;
+            case R.id.rl_im:
+                if (userInfo != null && userInfo.getData() != null)
+                    ActivityUtils.startAppConversationActivity(userId, userInfo.getData().getBaseinfo().getNickname(), userInfo.getData().getBaseinfo().getFace());
+                break;
+            case R.id.rl_wacth:
+                break;
+            case R.id.rl_pay:
+                ActivityUtils.startRedpacketActivity(userId, RedpacketAcitivity.RedpacketType.TYPE_REDPACKET.getValue(), userInfo.getData().getBaseinfo().getFace());
+                break;
+            case R.id.rl_flower:
+                ActivityUtils.startRedpacketActivity(userId, RedpacketAcitivity.RedpacketType.TYPE_FLOWER.getValue(), userInfo.getData().getBaseinfo().getFace());
+                break;
+        }
     }
 }
 
