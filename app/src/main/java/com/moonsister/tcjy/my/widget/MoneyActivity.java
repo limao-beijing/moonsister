@@ -93,7 +93,7 @@ public class MoneyActivity extends BaseActivity implements WithdRawDepositView {
                 .create();
     }
 
-    @OnClick({R.id.id_chat_tv,R.id.id_friend_tv,R.id.withdraw,R.id.recharge,R.id.image_back})
+    @OnClick({R.id.id_chat_tv,R.id.id_friend_tv,R.id.withdraw,R.id.recharge,R.id.image_back,R.id.see_talk})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.id_chat_tv:
@@ -121,6 +121,9 @@ public class MoneyActivity extends BaseActivity implements WithdRawDepositView {
             case R.id.image_back:
                 MoneyActivity.this.finish();
                 break;
+            case R.id.see_talk:
+                ActivityUtils.startRuleActivity();
+                break;
 
         }
     }
@@ -133,7 +136,7 @@ public class MoneyActivity extends BaseActivity implements WithdRawDepositView {
 //        }else{
 //            balance.setText(s);
 //        }
-        balance.setText(str.getData().getWithdraw_money());
+        balance.setText(str.getData().getLast_money());
 
     }
 

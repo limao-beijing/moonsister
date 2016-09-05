@@ -8,6 +8,6 @@ import com.moonsister.tcjy.bean.BackTermsBean;
  */
 public interface RenZhengActivityView extends BaseIView {
     void success(BackTermsBean backTermsBean);
-//    void uploadSuccess(String path);
+    void finishPage();
 
 }

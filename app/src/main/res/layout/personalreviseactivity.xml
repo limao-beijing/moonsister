@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/app_titlebar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/app_title_bar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray_color"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+
+                android:id="@+id/layout_avater"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:layout_centerVertical="true"
+                    android:text="@string/avater_change" />
+
+                <com.moonsister.tcjy.widget.RoundedImageView
+                    android:id="@+id/riv_user_image"
+                    android:layout_width="@dimen/x120"
+                    android:layout_height="@dimen/x120"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="@dimen/x30"
+                    android:layout_marginRight="@dimen/x30"
+                    android:src="@mipmap/load_small" />
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                android:id="@+id/layout_like"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:layout_centerVertical="true"
+                    android:text="背景墙" />
+
+                <com.moonsister.tcjy.widget.RoundedImageView
+                    android:id="@+id/riv_like_image"
+                    android:layout_width="@dimen/x120"
+                    android:layout_height="@dimen/x120"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="@dimen/x30"
+                    android:layout_marginRight="@dimen/x30"
+                    android:src="@mipmap/load_small" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_nike_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:text="@string/nike_name_change" />
+
+                <TextView
+                    android:id="@+id/tv_nike_name"
+                    style="@style/info_change_show_text"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/not_available" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_signature"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:text="@string/personalized_signature_change" />
+
+                <TextView
+                    android:id="@+id/tv_signature"
+                    style="@style/info_change_show_text"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/not_available" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_sex"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:text="@string/sex_change" />
+
+                <TextView
+                    android:id="@+id/tv_sex"
+                    style="@style/info_change_show_text"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/not_available" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:text="出生年月" />
+
+                <TextView
+                    android:id="@+id/tv_birthday"
+                    style="@style/info_change_show_text"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/not_available" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_star_sign"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:text="星座" />
+
+                <TextView
+                    android:id="@+id/tv_star_sign"
+                    style="@style/info_change_show_text"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/not_available" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_birthplace"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:text="籍贯" />
+
+                <TextView
+                    android:id="@+id/tv_birthplace"
+                    style="@style/info_change_show_text"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/not_available" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_address"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:text="现居" />
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    style="@style/info_change_show_text"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/not_available" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_job"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:text="@string/job_change" />
+
+                <TextView
+                    android:id="@+id/tv_job"
+                    style="@style/info_change_show_text"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/not_available" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_hobby"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:text="兴趣爱好" />
+
+                <TextView
+                    android:id="@+id/tv_hobby"
+                    style="@style/info_change_show_text"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/not_available" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_self_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:text="自我印象" />
+
+                <TextView
+                    android:id="@+id/tv_self_image"
+                    style="@style/info_change_show_text"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/not_available" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_ishouse"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:text="是否有房" />
+
+                <TextView
+                    android:id="@+id/tv_ishouse"
+                    style="@style/info_change_show_text"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/not_available" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_marital_status"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:text="婚姻状况" />
+
+                <TextView
+                    android:id="@+id/tv_marital_status"
+                    style="@style/info_change_show_text"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/not_available" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/layout_distance_love"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:text="接受异地恋" />
+
+                <TextView
+                    android:id="@+id/tv_distance_love"
+                    style="@style/info_change_show_text"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/not_available" />
+            </RelativeLayout>
+
+
+
+
+
+
+
+            <RelativeLayout
+                android:id="@+id/layout_like_sex"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:text="喜欢的异性" />
+
+                <TextView
+                    android:id="@+id/tv_like_sex"
+                    style="@style/info_change_show_text"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/not_available" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_premarital_sex"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x30"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:text="婚前性行为" />
+
+                <TextView
+                    android:id="@+id/tv_premarital_sex"
+                    style="@style/info_change_show_text"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/not_available" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

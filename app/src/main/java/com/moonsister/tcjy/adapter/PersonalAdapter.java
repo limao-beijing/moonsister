@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -52,7 +53,7 @@ public class PersonalAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.personallistviewitem, parent, false);
             holder = new ViewHolder();
             holder.text_name = (TextView) convertView.findViewById(R.id.text_name);
-            holder.text_number = (TextView) convertView.findViewById(R.id.text_number);
+            holder.text_number = (EditText) convertView.findViewById(R.id.text_number);
             ;
             convertView.setTag(holder);
         } else {
@@ -60,10 +61,18 @@ public class PersonalAdapter extends BaseAdapter {
         }
 
         holder.text_name.setText(data.get(position).getName());
+        holder.text_number.setText(data.get(position).getValue());
+//
+//        String value = data.get(3).getValue();
+//        if(value=="1"){
+//            holder.text_number.setText("男");
+//        }else{
+//            holder.text_number.setText("女");
+//        }
         return convertView;
     }
     class ViewHolder{
         TextView text_name;
-        TextView text_number;
+        EditText text_number;
     }
 }

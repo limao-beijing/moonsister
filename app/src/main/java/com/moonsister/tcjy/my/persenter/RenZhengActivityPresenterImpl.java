@@ -9,8 +9,11 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.model.RenZhengActivityModel;
 import com.moonsister.tcjy.my.model.RenZhengActivityModelImpl;
 import com.moonsister.tcjy.my.view.RenZhengActivityView;
+import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+
+import java.util.List;
 
 /**
  * Created by x on 2016/9/3.
@@ -25,6 +28,18 @@ public class RenZhengActivityPresenterImpl implements RenZhengAcivityPresenter, 
         view.showLoading();
         model.loadData(this);
     }
+
+    @Override
+    public void submit(String address1, String address2) {
+        view.showLoading();
+        model.submit(address1, address2, this);
+    }
+
+//    @Override
+//    public void sendDynamic(EnumConstant.DynamicType dynamicType, String content, List<String> datas, String address) {
+//        view.showLoading();
+//        model.sendDynamicPics(dynamicType, content, datas, address, this);
+//    }
 
 //    @Override
 //    public void upLoadIcon(String iconPath) {

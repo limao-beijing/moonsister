@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tcjy.widget.RenZhengActivity;
 import com.moonsister.tcjy.widget.speak.PressToSpeakListenr;
 import com.moonsister.tcjy.widget.speak.VoicePlay;
 
@@ -28,7 +29,10 @@ public class VoiceActivity extends Activity {
             public void sendListener(String filePath, String fileName, String length, boolean isResend) {
                 isStop = false;
                 setData(filePath, fileName, length, isResend);
-
+//                Intent intent=new Intent(VoiceActivity.this, RenZhengActivity.class);
+//                intent.putExtra("path",filePath);
+//                setResult(RESULT_OK, intent); //intent为A传来的带有Bundle的intent，当然也可以自己定义新的Bundle
+//                finish();//此处一定要调用finish()方法
             }
 
             @Override
@@ -64,7 +68,7 @@ public class VoiceActivity extends Activity {
     }
 
     private void setData(String filePath, String fileName, String length, boolean isResend) {
-        Intent intent = new Intent();
+        Intent intent = new Intent(VoiceActivity.this, RenZhengActivity.class);
         intent.putExtra("path", filePath);
         intent.putExtra("length", length);
         setResult(Activity.RESULT_OK, intent);

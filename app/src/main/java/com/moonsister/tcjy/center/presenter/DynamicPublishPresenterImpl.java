@@ -39,6 +39,8 @@ public class DynamicPublishPresenterImpl implements DynamicPublishPresenter, Bas
 
     }
 
+
+
 //    @Override
 //    public void onSuccess(Objects o, BaseIModel.DataType dataType) {
 //        view.hideLoading();

@@ -7,11 +7,10 @@ import java.util.List;
  */
 public class PersonalMessageBean extends BaseBean{
 
-
     /**
-     * rules : [{"field":"smobile","name":"手机","edit":"2","isvip":"1"},{"field":"qq","name":"QQ","edit":"1","isvip":"1"},{"field":"weixin","name":"微信","edit":"1","isvip":"1"},{"field":"face","name":"头像","edit":"1","isvip":"0"},{"field":"nickname","name":"昵称","edit":"1","isvip":"0"},{"field":"signature","name":"个性签名","edit":"1","isvip":"0"},{"field":"sex","name":"性别","edit":"2","isvip":"0"},{"field":"birthday","name":"出生年月","edit":"1","isvip":"0"},{"field":"height","name":"身高","edit":"1","isvip":"0"},{"field":"weight","name":"体重","edit":"1","isvip":"0"},{"field":"residence","name":"现居","edit":"1","isvip":"0"},{"field":"profession","name":"职业","edit":"1","isvip":"0"},{"field":"hobby","name":"兴趣爱好","edit":"1","isvip":"0"}]
-     * dlist : {"face":"http://mimei.oss-cn-beijing.aliyuncs.com/public/face/moren.png","nickname":"mm1471248477864","signature":"新人加入，请记得关注我哦。","sex":1,"birthday":null,"height":"0","weight":"0","residence":null,"profession":null,"hobby":null}
-     * baseinfo : {"nickname":"mm1471248477864","sex":1,"face":"http://mimei.oss-cn-beijing.aliyuncs.com/public/face/moren.png","like_image":"http://mimei.oss-cn-beijing.aliyuncs.com/public/default-like-image.png","profession":null,"birthday":null,"signature":"新人加入，请记得关注我哦。","age":18,"vip_level":"0","isauth":"1","isfollow":"2"}
+     * rules : [{"field":"nickname","name":"昵称","edit":"1","isvip":"0","value":"mm1471248477864"},{"field":"signature","name":"个性签名","edit":"1","isvip":"0","value":"新人加入，请记得关注我哦。"},{"field":"sex","name":"性别","edit":"2","isvip":"0","value":1},{"field":"birthday","name":"出生年月","edit":"1","isvip":"0","value":""},{"field":"star_sign","name":"星座","edit":"1","isvip":"0","value":""},{"field":"birthplace","name":"籍贯","edit":"1","isvip":"0","value":""},{"field":"residence","name":"现居","edit":"1","isvip":"0","value":""},{"field":"profession","name":"职业","edit":"1","isvip":"0","value":""},{"field":"hobby","name":"兴趣爱好","edit":"1","isvip":"0","value":null},{"field":"self_image","name":"自我印象","edit":"1","isvip":"0","value":null},{"field":"ishouse","name":"是否有房","edit":"1","isvip":"0","value":null},{"field":"marital_status","name":"婚姻状况","edit":"1","isvip":"0","value":null},{"field":"distance_love","name":"接受异地恋","edit":"1","isvip":"0","value":null},{"field":"like_sex","name":"喜欢的异性","edit":"1","isvip":"0","value":null},{"field":"premarital_sex","name":"婚前性行为","edit":"1","isvip":"0","value":null}]
+     * dlist : {"face":"http://mimei.oss-cn-beijing.aliyuncs.com/public/face/moren.png","nickname":"mm1471248477864","signature":"新人加入，请记得关注我哦。","sex":1,"birthday":"","star_sign":"","birthplace":"","residence":"","profession":"","hobby":null,"self_image":null,"ishouse":null,"marital_status":null,"distance_love":null,"like_sex":null,"premarital_sex":null}
+     * baseinfo : {"nickname":"mm1471248477864","sex":1,"face":"http://mimei.oss-cn-beijing.aliyuncs.com/public/face/moren.png","like_image":"http://mimei.oss-cn-beijing.aliyuncs.com/public/default-like-image.png","profession":"","birthday":"","signature":"新人加入，请记得关注我哦。","age":23,"vip_level":"0","isauth":"1","isfollow":"2"}
      * vipinfo : {"smobile":null,"qq":null,"weixin":null}
      */
 
@@ -31,12 +30,18 @@ public class PersonalMessageBean extends BaseBean{
          * nickname : mm1471248477864
          * signature : 新人加入，请记得关注我哦。
          * sex : 1
-         * birthday : null
-         * height : 0
-         * weight : 0
-         * residence : null
-         * profession : null
+         * birthday :
+         * star_sign :
+         * birthplace :
+         * residence :
+         * profession :
          * hobby : null
+         * self_image : null
+         * ishouse : null
+         * marital_status : null
+         * distance_love : null
+         * like_sex : null
+         * premarital_sex : null
          */
 
         private DlistBean dlist;
@@ -45,10 +50,10 @@ public class PersonalMessageBean extends BaseBean{
          * sex : 1
          * face : http://mimei.oss-cn-beijing.aliyuncs.com/public/face/moren.png
          * like_image : http://mimei.oss-cn-beijing.aliyuncs.com/public/default-like-image.png
-         * profession : null
-         * birthday : null
+         * profession :
+         * birthday :
          * signature : 新人加入，请记得关注我哦。
-         * age : 18
+         * age : 23
          * vip_level : 0
          * isauth : 1
          * isfollow : 2
@@ -63,10 +68,11 @@ public class PersonalMessageBean extends BaseBean{
 
         private VipinfoBean vipinfo;
         /**
-         * field : smobile
-         * name : 手机
-         * edit : 2
-         * isvip : 1
+         * field : nickname
+         * name : 昵称
+         * edit : 1
+         * isvip : 0
+         * value : mm1471248477864
          */
 
         private List<RulesBean> rules;
@@ -109,11 +115,17 @@ public class PersonalMessageBean extends BaseBean{
             private String signature;
             private int sex;
             private String birthday;
-            private String height;
-            private String weight;
+            private String star_sign;
+            private String birthplace;
             private String residence;
             private String profession;
             private String hobby;
+            private String self_image;
+            private String ishouse;
+            private String marital_status;
+            private String distance_love;
+            private String like_sex;
+            private String premarital_sex;
 
             public String getFace() {
                 return face;
@@ -155,20 +167,20 @@ public class PersonalMessageBean extends BaseBean{
                 this.birthday = birthday;
             }
 
-            public String getHeight() {
-                return height;
+            public String getStar_sign() {
+                return star_sign;
             }
 
-            public void setHeight(String height) {
-                this.height = height;
+            public void setStar_sign(String star_sign) {
+                this.star_sign = star_sign;
             }
 
-            public String getWeight() {
-                return weight;
+            public String getBirthplace() {
+                return birthplace;
             }
 
-            public void setWeight(String weight) {
-                this.weight = weight;
+            public void setBirthplace(String birthplace) {
+                this.birthplace = birthplace;
             }
 
             public String getResidence() {
@@ -193,6 +205,54 @@ public class PersonalMessageBean extends BaseBean{
 
             public void setHobby(String hobby) {
                 this.hobby = hobby;
+            }
+
+            public String getSelf_image() {
+                return self_image;
+            }
+
+            public void setSelf_image(String self_image) {
+                this.self_image = self_image;
+            }
+
+            public String getIshouse() {
+                return ishouse;
+            }
+
+            public void setIshouse(String ishouse) {
+                this.ishouse = ishouse;
+            }
+
+            public String getMarital_status() {
+                return marital_status;
+            }
+
+            public void setMarital_status(String marital_status) {
+                this.marital_status = marital_status;
+            }
+
+            public String getDistance_love() {
+                return distance_love;
+            }
+
+            public void setDistance_love(String distance_love) {
+                this.distance_love = distance_love;
+            }
+
+            public String getLike_sex() {
+                return like_sex;
+            }
+
+            public void setLike_sex(String like_sex) {
+                this.like_sex = like_sex;
+            }
+
+            public String getPremarital_sex() {
+                return premarital_sex;
+            }
+
+            public void setPremarital_sex(String premarital_sex) {
+                this.premarital_sex = premarital_sex;
             }
         }
 
@@ -333,6 +393,7 @@ public class PersonalMessageBean extends BaseBean{
             private String name;
             private String edit;
             private String isvip;
+            private String value;
 
             public String getField() {
                 return field;
@@ -364,6 +425,14 @@ public class PersonalMessageBean extends BaseBean{
 
             public void setIsvip(String isvip) {
                 this.isvip = isvip;
+            }
+
+            public String getValue() {
+                return value;
+            }
+
+            public void setValue(String value) {
+                this.value = value;
             }
         }
     }

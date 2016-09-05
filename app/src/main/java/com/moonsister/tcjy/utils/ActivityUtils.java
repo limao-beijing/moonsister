@@ -59,6 +59,7 @@ import com.moonsister.tcjy.my.widget.MakeMessageActivity;
 import com.moonsister.tcjy.my.widget.MoneyActivity;
 import com.moonsister.tcjy.my.widget.MyOrderActivity;
 import com.moonsister.tcjy.my.widget.PersonalActivity;
+import com.moonsister.tcjy.my.widget.PersonalReviseActivity;
 import com.moonsister.tcjy.my.widget.RZFirstActivity;
 import com.moonsister.tcjy.my.widget.RZSecondActivity;
 import com.moonsister.tcjy.my.widget.RZThidActivity;
@@ -657,8 +658,11 @@ public class ActivityUtils {
     }
 
     //跳转修改资料页面
-    public static void startPersonalActivity() {
-        startActivity(PersonalActivity.class);
+    public static void startPersonalReviseActivity() {
+//        Intent intent=new Intent(getContext(),PersonalActivity.class);
+//        intent.putExtra("my","我爱你");
+//        startActivity(intent);
+        startActivity(PersonalReviseActivity.class);
     }
 
     //跳转财务中心页面

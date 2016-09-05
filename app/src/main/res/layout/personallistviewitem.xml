@@ -11,11 +11,13 @@
             android:text="呵呵"
             android:textSize="16sp"
             android:layout_margin="@dimen/x20" />
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/text_number"
             android:text="哈哈"
-            android:layout_marginTop="@dimen/x20"/>
+            android:layout_marginTop="@dimen/x20"
+            android:focusable="false"
+            android:background="@null"/>
 
 </LinearLayout>

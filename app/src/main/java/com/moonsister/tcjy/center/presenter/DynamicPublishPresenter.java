@@ -11,4 +11,5 @@ import java.util.List;
  */
 public interface DynamicPublishPresenter extends BaseIPresenter<DefaultDynamicView> {
     void sendDynamic(EnumConstant.DynamicType dynamicType, String content, List<String> datas, String address);
+
 }

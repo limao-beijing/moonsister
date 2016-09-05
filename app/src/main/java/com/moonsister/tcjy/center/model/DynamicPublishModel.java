@@ -10,4 +10,5 @@ import java.util.List;
  */
 public interface DynamicPublishModel extends BaseIModel {
     void sendDynamicPics(EnumConstant.DynamicType dynamicType, String content, List<String> datas, String address, onLoadDateSingleListener defaultDynamicPresenter);
+
 }

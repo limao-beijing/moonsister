@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.my.widget;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,11 +27,12 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * Created by x on 2016/8/22.
  */
-public class HreatFragment extends BaseFragment implements AdapterView.OnItemClickListener{
+public class HreatFragment extends BaseFragment implements AdapterView.OnItemClickListener {
     private HreatViewholder hreatViewholder;
     @Bind(R.id.gridView)//我页面中gridview
     GridView gridView;
@@ -142,16 +144,26 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
                 ActivityUtils.startRenZhengActivity();
                 break;
             case R.mipmap.make://修改资料
-                ActivityUtils.startPersonalActivity();
+                ActivityUtils.startPersonalReviseActivity();
                 break;
             case R.mipmap.money://财务中心
                 ActivityUtils.startMoneyActivity(uid);
                 break;
-            case R.mipmap.domake:
+            case R.mipmap.domake://设置
                 ActivityUtils.startSettingActivity();
                 break;
+
         }
 
     }
 
+    @OnClick(R.id.tv_look_people)
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.tv_look_people://个人资料
+                Intent intent=new Intent(getActivity(),PersonalActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
 }
