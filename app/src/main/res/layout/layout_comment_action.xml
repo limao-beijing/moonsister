@@ -5,6 +5,7 @@
               android:background="@color/white">
 
     <RelativeLayout
+        android:id="@+id/rl_reward"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1">
@@ -27,6 +28,7 @@
         />
 
     <RelativeLayout
+        android:id="@+id/rl_comment_content"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1">
@@ -49,6 +51,7 @@
         />
 
     <RelativeLayout
+        android:id="@+id/rl_not_like"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1">
@@ -71,6 +74,7 @@
         />
 
     <RelativeLayout
+        android:id="@+id/rl_like"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1">

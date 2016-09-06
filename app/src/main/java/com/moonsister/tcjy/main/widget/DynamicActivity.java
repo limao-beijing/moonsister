@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.DynamicAdapter;
@@ -11,7 +12,6 @@ import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
-import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.presenter.DynamicPresenter;
@@ -24,7 +24,6 @@ import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.DynamicHeadViewHolder;
 import com.moonsister.tcjy.widget.XListView;
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import java.util.List;
@@ -211,7 +210,7 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
     @Override
     public void switch2RewardActivity() {
 
-        ActivityUtils.startRedpacketActivity(userId, 1, avater);
+        ActivityUtils.startRedpacketActivity(userId, RedpacketAcitivity.RedpacketType.TYPE_REDPACKET, avater);
 
     }
 
@@ -228,7 +227,7 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
 
     @Override
     public void swicth2SendFlowersActivity() {
-        ActivityUtils.startRedpacketActivity(userId, 2, avater);
+        ActivityUtils.startRedpacketActivity(userId, RedpacketAcitivity.RedpacketType.TYPE_FLOWER, avater);
     }
 
     private void colseload() {

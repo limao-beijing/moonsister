@@ -36,6 +36,9 @@ public class DynamicItemBean extends BaseDataBean {
     private String money;
     private String video;
     private String tmoney;
+    private String comment_count;
+    private String view_num;
+    private String ldon;
     //1认证  0 未认证
     private String isauth;
     //置顶
@@ -271,5 +274,29 @@ public class DynamicItemBean extends BaseDataBean {
 
     public void setIstop(String istop) {
         this.istop = istop;
+    }
+
+    public String getComment_count() {
+        return comment_count;
+    }
+
+    public void setComment_count(String comment_count) {
+        this.comment_count = comment_count;
+    }
+
+    public String getView_num() {
+        return view_num;
+    }
+
+    public void setView_num(String view_num) {
+        this.view_num = view_num;
+    }
+
+    public String getLdon() {
+        return ldon;
+    }
+
+    public void setLdon(String ldon) {
+        this.ldon = ldon;
     }
 }

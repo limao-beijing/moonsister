@@ -52,7 +52,6 @@ public class DeviceManager {
         getSoftInputManager(context).hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-
     public static ClipboardManager getClipboardManager(Context context) {
         return (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
     }

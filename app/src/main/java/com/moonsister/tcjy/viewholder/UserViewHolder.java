@@ -9,6 +9,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
 import butterknife.Bind;
@@ -23,10 +24,16 @@ public class UserViewHolder extends BaseRecyclerViewHolder<DynamicItemBean> {
     TextView tvUserName;
     @Bind(R.id.textview_work)
     TextView textviewWork;
-    @Bind(R.id.tv_friend_fen)
-    TextView tvFriendFen;
-    @Bind(R.id.delete_follow)
-    ImageView deleteFollow;
+    @Bind(R.id.tv_wacth)
+    TextView tvWacth;
+    @Bind(R.id.iv_sex)
+    ImageView iv_sex;
+    @Bind(R.id.tv_age)
+    TextView tvAge;
+    @Bind(R.id.tv_signature)
+    TextView tv_signature;
+    @Bind(R.id.iv_add_v)
+    ImageView iv_add_v;
 
     public UserViewHolder(View view) {
         super(view);
@@ -39,8 +46,19 @@ public class UserViewHolder extends BaseRecyclerViewHolder<DynamicItemBean> {
         ImageServerApi.showURLSamllImage(rivFriendImage, dynamicItemBean.getFace());
         tvUserName.setText(dynamicItemBean.getNickname());
 //        textviewWork.setText(dynamicItemBean.);
-        tvFriendFen.setText(dynamicItemBean.getFansnum());
-
+        tvAge.setText(dynamicItemBean.getAge());
+        tv_signature.setText(dynamicItemBean.getSignature());
+        String sex = dynamicItemBean.getSex();
+        if (StringUtis.equals(sex, "1")) {
+            iv_sex.setImageResource(R.mipmap.boy);
+        } else {
+            iv_sex.setImageResource(R.mipmap.gril);
+        }
+        if (StringUtis.equals(dynamicItemBean.getIsauth(), "1")) {
+            iv_add_v.setVisibility(View.VISIBLE);
+        } else {
+            iv_add_v.setVisibility(View.GONE);
+        }
     }
 
     @Override

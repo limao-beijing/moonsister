@@ -88,7 +88,7 @@ public class HomePagePicViewHolder extends BaseRecyclerViewHolder<DynamicItemBea
 
     @Override
     protected void onItemclick(View view, DynamicItemBean dynamicItemBean, int position) {
-
+        ActivityUtils.startDynamicDatailsActivity(dynamicItemBean.getLatest_id(), dynamicItemBean.getType());
     }
 
     private static class PicGridViewAdapter extends BaseAdapter {

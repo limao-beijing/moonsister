@@ -4,7 +4,6 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.CertificationStatusBean;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.bean.RongyunBean;
 import com.moonsister.tcjy.bean.UserFriendListBean;
@@ -15,6 +14,7 @@ import com.moonsister.tcjy.main.model.MainActivityModel;
 import com.moonsister.tcjy.main.model.MainActivityModelImpl;
 import com.moonsister.tcjy.main.view.MainView;
 import com.moonsister.tcjy.main.widget.MainActivity;
+import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.LogUtils;
@@ -22,7 +22,6 @@ import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.List;
-import java.util.Objects;
 
 import io.rong.imkit.RongyunManager;
 import io.rong.imkit.provider.RedPacketProvider;
@@ -119,7 +118,7 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
 
                     @Override
                     public void onPluginClick(String userId, String name, String path) {
-                        ActivityUtils.startRedpacketActivity(userId, 1, path);
+                        ActivityUtils.startRedpacketActivity(userId, RedpacketAcitivity.RedpacketType.TYPE_REDPACKET, path);
                     }
                 });
             }

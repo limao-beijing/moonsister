@@ -45,11 +45,16 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
     XListView recyclerView;
     @Bind(R.id.ed_input)
     EditText edInput;
+    @Bind(R.id.id_layout_input)
+    View id_layout_input;
+    @Bind(R.id.id_layout_comment)
+    View id_layout_comment;
     private DynamicDetailsAdapter mAdapter;
     private DynamincDatailsPresenter presenter;
     private String dynamicId;
 
     private BaseRecyclerViewHolder<DynamicItemBean> holder;
+    private CommentDynacmicViewHolder dynacmicViewHolder;
 
     @Override
     protected View setRootContentView() {
@@ -87,6 +92,16 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
             public void onLoadMore() {
 
                 presenter.loadCommentListData(dynamicId);
+            }
+        });
+        mRootView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                if (bottom > oldBottom) {
+                    LogUtils.d(this, "键盘关闭");
+                    if (id_layout_comment != null)
+                        id_layout_comment.setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -174,7 +189,7 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
             }
             View view1 = holder.getRootView();
             if (view1 instanceof ViewGroup) {
-                CommentDynacmicViewHolder dynacmicViewHolder = new CommentDynacmicViewHolder();
+                dynacmicViewHolder = new CommentDynacmicViewHolder();
                 ((ViewGroup) view1).addView(dynacmicViewHolder.getContentView());
             }
 
@@ -206,10 +221,16 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
         });
     }
 
+    private DynamicDatailsBean mDatailsBean;
+
     @Override
     public void setDynamicDatails(DynamicDatailsBean bean) {
-        if (bean != null)
+        if (bean != null) {
+            this.mDatailsBean = bean;
+
             holder.onBindData(bean.getData());
+            dynacmicViewHolder.refreshView(bean);
+        }
     }
 
     @Override
@@ -229,8 +250,32 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
 
     private String s;
 
-    @OnClick(R.id.btn_send)
-    public void onClick() {
+    @OnClick({R.id.rl_comment_content, R.id.rl_reward, R.id.rl_not_like, R.id.rl_like, R.id.btn_send})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.rl_comment_content:
+                id_layout_comment.setVisibility(View.GONE);
+                showSoftInput(edInput);
+                break;
+
+            case R.id.rl_not_like:
+                break;
+            case R.id.rl_like:
+                break;
+            case R.id.btn_send:
+                sendComment();
+                break;
+            case R.id.rl_reward:
+                if (mDatailsBean != null && mDatailsBean.getData() != null) {
+                    DynamicItemBean data = mDatailsBean.getData();
+                    ActivityUtils.startRedpacketActivity(data.getUid(), RedpacketAcitivity.RedpacketType.TYPE_REDPACKET, data.getFace());
+                }
+                break;
+        }
+    }
+
+
+    private void sendComment() {
         if (certificationStatus())
             return;
         s = edInput.getText().toString();
@@ -273,4 +318,6 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
         }
         return iscertificationStatus;
     }
+
+
 }

@@ -150,10 +150,10 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
             case R.id.rl_wacth:
                 break;
             case R.id.rl_pay:
-                ActivityUtils.startRedpacketActivity(userId, RedpacketAcitivity.RedpacketType.TYPE_REDPACKET.getValue(), userInfo.getData().getBaseinfo().getFace());
+                ActivityUtils.startRedpacketActivity(userId, RedpacketAcitivity.RedpacketType.TYPE_REDPACKET, userInfo.getData().getBaseinfo().getFace());
                 break;
             case R.id.rl_flower:
-                ActivityUtils.startRedpacketActivity(userId, RedpacketAcitivity.RedpacketType.TYPE_FLOWER.getValue(), userInfo.getData().getBaseinfo().getFace());
+                ActivityUtils.startRedpacketActivity(userId, RedpacketAcitivity.RedpacketType.TYPE_FLOWER, userInfo.getData().getBaseinfo().getFace());
                 break;
         }
     }

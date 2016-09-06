@@ -99,7 +99,7 @@ public class HomePageVideoViewHolder extends BaseRecyclerViewHolder<DynamicItemB
 
     @Override
     protected void onItemclick(View view, DynamicItemBean dynamicItemBean, int position) {
-
+        ActivityUtils.startDynamicDatailsActivity(dynamicItemBean.getLatest_id(), dynamicItemBean.getType());
     }
 
 

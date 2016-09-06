@@ -4,14 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.provider.ContactsContract;
-import android.support.annotation.IdRes;
 
-import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
 import com.moonsister.tcjy.bean.TiXinrRecordBean;
-import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.center.widget.BuyDynamicRedPackketActivity;
 import com.moonsister.tcjy.center.widget.DefaultDynamicSendActivity;
 import com.moonsister.tcjy.center.widget.DynamicPublishActivity;
@@ -25,12 +20,11 @@ import com.moonsister.tcjy.home.widget.SearchActivity;
 import com.moonsister.tcjy.home.widget.SearchFragmentActivity;
 import com.moonsister.tcjy.home.widget.SearchReasonActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordActivity;
+import com.moonsister.tcjy.login.widget.FindPasswordNextActivity;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
-import com.moonsister.tcjy.login.widget.RegActivity;
 import com.moonsister.tcjy.main.widget.BuyVipActivity;
 import com.moonsister.tcjy.main.widget.DynamicAtionActivity;
 import com.moonsister.tcjy.main.widget.DynamicDatailsActivity;
-import com.moonsister.tcjy.login.widget.FindPasswordNextActivity;
 import com.moonsister.tcjy.main.widget.HomePageActivity;
 import com.moonsister.tcjy.main.widget.ManorGrilActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentActivity;
@@ -39,7 +33,6 @@ import com.moonsister.tcjy.main.widget.PersonInfoChangeActivity;
 import com.moonsister.tcjy.main.widget.PictureSelectorActivity;
 import com.moonsister.tcjy.main.widget.RecommendMemberActivity;
 import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
-import com.moonsister.tcjy.main.widget.DynamicActivity;
 import com.moonsister.tcjy.main.widget.RelationActivity;
 import com.moonsister.tcjy.main.widget.ShowShortVideoActivity;
 import com.moonsister.tcjy.main.widget.SwitchItemActivity;
@@ -58,11 +51,11 @@ import com.moonsister.tcjy.my.widget.InsertActivity;
 import com.moonsister.tcjy.my.widget.MakeMessageActivity;
 import com.moonsister.tcjy.my.widget.MoneyActivity;
 import com.moonsister.tcjy.my.widget.MyOrderActivity;
-import com.moonsister.tcjy.my.widget.PersonalActivity;
 import com.moonsister.tcjy.my.widget.PersonalReviseActivity;
 import com.moonsister.tcjy.my.widget.RZFirstActivity;
 import com.moonsister.tcjy.my.widget.RZSecondActivity;
 import com.moonsister.tcjy.my.widget.RZThidActivity;
+import com.moonsister.tcjy.my.widget.RechargeActivity;
 import com.moonsister.tcjy.my.widget.RefundActivity;
 import com.moonsister.tcjy.my.widget.RuleActivity;
 import com.moonsister.tcjy.my.widget.SettingActivity;
@@ -70,7 +63,6 @@ import com.moonsister.tcjy.my.widget.SwitchCardActivity;
 import com.moonsister.tcjy.my.widget.TiXianRecordActivity;
 import com.moonsister.tcjy.my.widget.UserInfoChangeActivity;
 import com.moonsister.tcjy.my.widget.WithdRawDepositActivity;
-import com.moonsister.tcjy.my.widget.RechargeActivity;
 import com.moonsister.tcjy.my.widget.WithdrawActivity;
 import com.moonsister.tcjy.widget.RenZhengActivity;
 import com.moonsister.tcjy.widget.image.CropImageMainActivity;
@@ -235,14 +227,14 @@ public class ActivityUtils {
      * @param typ
      * @param avater
      */
-    public static void startRedpacketActivity(String userId, int typ, String avater) {
+    public static void startRedpacketActivity(String userId, RedpacketAcitivity.RedpacketType typ, String avater) {
         if (!UserInfoManager.getInstance().isLogin()) {
             RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
             return;
         }
         Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), RedpacketAcitivity.class);
         intent.putExtra("id", userId);
-        intent.putExtra("type", typ);
+        intent.putExtra("type", typ.getValue());
         intent.putExtra("avater", avater);
         startActivity(intent);
     }
@@ -647,8 +639,8 @@ public class ActivityUtils {
 
     //跳转动态管理页面
     public static void startInsertActivity(String my) {
-        Intent intent=new Intent(getContext(),InsertActivity.class);
-        intent.putExtra("my","我爱你");
+        Intent intent = new Intent(getContext(), InsertActivity.class);
+        intent.putExtra("my", "我爱你");
         startActivity(intent);
     }
 
@@ -693,6 +685,13 @@ public class ActivityUtils {
 
     public static void startRechaargeMoneyActivity() {
         startActivity(MoneyActivity.class);
+    }
+
+    /**
+     * 选择男女
+     */
+    public static void startManorGrilActivity() {
+        startActivity(ManorGrilActivity.class);
     }
 
     //兴趣选择页跳注册页

@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.base;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.ApplicationConfig;
@@ -23,7 +26,6 @@ import com.umeng.analytics.MobclickAgent;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import im.gouyin.com.progressdialog.ProgressDialog;
 
 /**
@@ -88,6 +90,15 @@ public abstract class BaseActivity extends RxAppCompatActivity {
      */
     public void hideSoftInput() {
         DeviceManager.hideSoftInput(this, getCurrentFocus());
+    }
+
+    public void showSoftInput(EditText editText) {
+        editText.setFocusable(true);
+        editText.setFocusableInTouchMode(true);
+        editText.requestFocus();
+        InputMethodManager inputManager =
+                (InputMethodManager) editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.showSoftInput(editText, 0);
     }
 
     /**
