@@ -39,7 +39,7 @@ public class PersonInfoChangeActivity extends BaseActivity {
      * 修改的类型
      */
     public enum ChangeType {
-        HEIGHT(1), SEX(2), NIKE(3), ADDRESS(4), SIGNATURE(5), INTRODUCTION(6), EDUCATION(7), JOB(8), WEIGHT(9), BIRTHDAY(10);
+        NIKE(1),HEIGHT(3), SEX(2), ADDRESS(4), SIGNATURE(5), INTRODUCTION(6), EDUCATION(7), JOB(8), WEIGHT(9), BIRTHDAY(10);
         int chengeType;
 
         private ChangeType(int type) {
@@ -59,13 +59,14 @@ public class PersonInfoChangeActivity extends BaseActivity {
 
         switch (i) {
             case 1:
-                type = ChangeType.HEIGHT;
+                type = ChangeType.NIKE;
+
                 break;
             case 2:
                 type = ChangeType.SEX;
                 break;
             case 3:
-                type = ChangeType.NIKE;
+                type = ChangeType.HEIGHT;
                 break;
             case 4:
                 type = ChangeType.ADDRESS;
@@ -94,13 +95,11 @@ public class PersonInfoChangeActivity extends BaseActivity {
     protected String initTitleName() {
         setRx();
         String title = null;
-        switch (type.getValue()) {
+        switch (type.chengeType) {
             case 1:
-                title = UIUtils.getStringRes(R.string.height);
-                tvMonad.setText(UIUtils.getStringRes(R.string.cm));
-                tvMonad.setTextColor(UIUtils.getResources().getColor(R.color.text_black_color));
-                etInfo.setHint(title);
-                etInfo.setInputType(InputType.TYPE_CLASS_NUMBER);
+                title = UIUtils.getStringRes(R.string.nike);
+                tvMonad.setVisibility(View.GONE);
+
                 break;
             case 2:
                 etInfo.setVisibility(View.INVISIBLE);
@@ -114,8 +113,11 @@ public class PersonInfoChangeActivity extends BaseActivity {
                 setRx();
                 break;
             case 3:
-                title = UIUtils.getStringRes(R.string.nike);
-                tvMonad.setVisibility(View.GONE);
+                title = UIUtils.getStringRes(R.string.height);
+                tvMonad.setText(UIUtils.getStringRes(R.string.cm));
+                tvMonad.setTextColor(UIUtils.getResources().getColor(R.color.text_black_color));
+                etInfo.setHint(title);
+                etInfo.setInputType(InputType.TYPE_CLASS_NUMBER);
                 break;
             case 4:
                 title = UIUtils.getStringRes(R.string.address);

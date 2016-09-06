@@ -118,6 +118,7 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
                     }
                 });
     }
+
     public void upLoadVideo(String srcVideoPath, ArrayList<DynamicContent> aliyunPtahs, boolean isCharge) throws ClientException, ServiceException {
 
 

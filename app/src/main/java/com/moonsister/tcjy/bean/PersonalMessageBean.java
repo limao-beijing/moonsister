@@ -13,6 +13,24 @@ public class PersonalMessageBean extends BaseBean{
      * baseinfo : {"nickname":"mm1471248477864","sex":1,"face":"http://mimei.oss-cn-beijing.aliyuncs.com/public/face/moren.png","like_image":"http://mimei.oss-cn-beijing.aliyuncs.com/public/default-like-image.png","profession":"","birthday":"","signature":"新人加入，请记得关注我哦。","age":23,"vip_level":"0","isauth":"1","isfollow":"2"}
      * vipinfo : {"smobile":null,"qq":null,"weixin":null}
      */
+    int userId;
+    String userName;
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
 
     private DataBean data;
 

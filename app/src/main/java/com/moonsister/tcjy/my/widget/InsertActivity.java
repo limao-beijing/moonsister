@@ -103,7 +103,9 @@ public class InsertActivity extends BaseActivity implements InsertActivityView {
                     }
 
                     str=sbr.toString();
+
                     persenter.sendData(str);//发送请求
+
 
 
 

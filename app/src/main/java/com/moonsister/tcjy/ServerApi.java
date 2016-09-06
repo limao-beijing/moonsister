@@ -1128,6 +1128,21 @@ public class ServerApi {
         @GET("apply/get_apply_info_before")
         Observable<BackTermsBean> backTermsBean(@Query("authcode") String authcode,
                                                 @Query("channel") String channelId);
+
+        /**
+         * 资料修改后的数据传递
+         *
+         * @param contents
+         * @param authcode
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("recharge/pub")
+        Observable<PersonalMessageBean> getUserJsonBean(@Field("contents") String contents,
+                                                 @Field("authcode") String authcode,
+                                                 @Field("channel") String channel,
+                                                 @Field("version_type") String apiVersion);
+
     }
 }
 

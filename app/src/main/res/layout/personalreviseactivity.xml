@@ -2,9 +2,9 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <include layout="@layout/app_titlebar" />
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,6 +17,29 @@
             android:background="@color/gray_color"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y96"
+                android:orientation="horizontal"
+                android:background="@color/black">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/image_back"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:background="@mipmap/back"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="资料修改"
+                    android:gravity="center"
+                    android:layout_marginLeft="@dimen/x250"
+                    android:textSize="18sp"
+                    android:textColor="#D6DDE4"
+                    android:layout_marginTop="@dimen/x23"
+                    />
+            </LinearLayout>
 
             <RelativeLayout
 
@@ -78,10 +101,12 @@
                     style="@style/info_change_text"
                     android:text="@string/nike_name_change" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_nike_name"
                     style="@style/info_change_show_text"
+                    android:layout_width="match_parent"
                     android:layout_alignParentRight="true"
+                    android:background="@null"
                     android:text="@string/not_available" />
             </RelativeLayout>
 
@@ -97,10 +122,12 @@
                     style="@style/info_change_text"
                     android:text="@string/personalized_signature_change" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_signature"
                     style="@style/info_change_show_text"
+                    android:layout_width="match_parent"
                     android:layout_alignParentRight="true"
+                    android:background="@null"
                     android:text="@string/not_available" />
             </RelativeLayout>
 
@@ -116,10 +143,12 @@
                     style="@style/info_change_text"
                     android:text="@string/sex_change" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_sex"
                     style="@style/info_change_show_text"
                     android:layout_alignParentRight="true"
+                    android:focusable="false"
+                    android:background="@null"
                     android:text="@string/not_available" />
             </RelativeLayout>
 
@@ -135,10 +164,12 @@
                     style="@style/info_change_text"
                     android:text="出生年月" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_birthday"
+                    android:layout_width="match_parent"
                     style="@style/info_change_show_text"
                     android:layout_alignParentRight="true"
+                    android:background="@null"
                     android:text="@string/not_available" />
             </RelativeLayout>
 
@@ -154,10 +185,12 @@
                     style="@style/info_change_text"
                     android:text="星座" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_star_sign"
+                    android:layout_width="match_parent"
                     style="@style/info_change_show_text"
                     android:layout_alignParentRight="true"
+                    android:background="@null"
                     android:text="@string/not_available" />
             </RelativeLayout>
 
@@ -173,10 +206,12 @@
                     style="@style/info_change_text"
                     android:text="籍贯" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_birthplace"
+                    android:layout_width="match_parent"
                     style="@style/info_change_show_text"
                     android:layout_alignParentRight="true"
+                    android:background="@null"
                     android:text="@string/not_available" />
             </RelativeLayout>
 
@@ -192,10 +227,12 @@
                     style="@style/info_change_text"
                     android:text="现居" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_address"
                     style="@style/info_change_show_text"
                     android:layout_alignParentRight="true"
+                    android:layout_width="match_parent"
+                    android:background="@null"
                     android:text="@string/not_available" />
             </RelativeLayout>
 
@@ -211,10 +248,12 @@
                     style="@style/info_change_text"
                     android:text="@string/job_change" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_job"
                     style="@style/info_change_show_text"
                     android:layout_alignParentRight="true"
+                    android:layout_width="match_parent"
+                    android:background="@null"
                     android:text="@string/not_available" />
             </RelativeLayout>
 
@@ -230,10 +269,12 @@
                     style="@style/info_change_text"
                     android:text="兴趣爱好" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_hobby"
                     style="@style/info_change_show_text"
                     android:layout_alignParentRight="true"
+                    android:layout_width="match_parent"
+                    android:background="@null"
                     android:text="@string/not_available" />
             </RelativeLayout>
 
@@ -249,10 +290,12 @@
                     style="@style/info_change_text"
                     android:text="自我印象" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_self_image"
                     style="@style/info_change_show_text"
                     android:layout_alignParentRight="true"
+                    android:layout_width="match_parent"
+                    android:background="@null"
                     android:text="@string/not_available" />
             </RelativeLayout>
 
@@ -268,10 +311,12 @@
                     style="@style/info_change_text"
                     android:text="是否有房" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_ishouse"
                     style="@style/info_change_show_text"
                     android:layout_alignParentRight="true"
+                    android:layout_width="match_parent"
+                    android:background="@null"
                     android:text="@string/not_available" />
             </RelativeLayout>
 
@@ -287,10 +332,12 @@
                     style="@style/info_change_text"
                     android:text="婚姻状况" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_marital_status"
                     style="@style/info_change_show_text"
                     android:layout_alignParentRight="true"
+                    android:layout_width="match_parent"
+                    android:background="@null"
                     android:text="@string/not_available" />
             </RelativeLayout>
 
@@ -307,10 +354,12 @@
                     style="@style/info_change_text"
                     android:text="接受异地恋" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_distance_love"
                     style="@style/info_change_show_text"
                     android:layout_alignParentRight="true"
+                    android:layout_width="match_parent"
+                    android:background="@null"
                     android:text="@string/not_available" />
             </RelativeLayout>
 
@@ -326,16 +375,17 @@
                 android:layout_height="@dimen/x92"
                 android:layout_marginTop="@dimen/x2"
                 android:background="@color/background_white_color"
-                android:gravity="center_vertical"
-                android:visibility="gone">
+                android:gravity="center_vertical">
 
                 <TextView
                     style="@style/info_change_text"
                     android:text="喜欢的异性" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_like_sex"
                     style="@style/info_change_show_text"
+                    android:layout_width="match_parent"
+                    android:background="@null"
                     android:layout_alignParentRight="true"
                     android:text="@string/not_available" />
             </RelativeLayout>
@@ -344,7 +394,7 @@
                 android:id="@+id/layout_premarital_sex"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/x92"
-                android:layout_marginTop="@dimen/x30"
+                android:layout_marginTop="@dimen/x2"
                 android:background="@color/background_white_color"
                 android:gravity="center_vertical">
 
@@ -352,10 +402,12 @@
                     style="@style/info_change_text"
                     android:text="婚前性行为" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_premarital_sex"
                     style="@style/info_change_show_text"
                     android:layout_alignParentRight="true"
+                    android:layout_width="match_parent"
+                    android:background="@null"
                     android:text="@string/not_available" />
             </RelativeLayout>
 

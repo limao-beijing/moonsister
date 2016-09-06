@@ -167,10 +167,19 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
         }
 
         iv_user_most.setText(data1.getSignature());//用户签名
+        String isvip = data.get(0).getIsvip();
+        if(isvip=="0"){
+            if_user_vip.setVisibility(View.INVISIBLE);
+        }else{
+            if_user_vip.setVisibility(View.VISIBLE);
+        }
         String Vip_level=data1.getVip_level();//VIP等级
         if(Vip_level=="0"){
+
             im_user_vip.setVisibility(View.INVISIBLE);
             if_user_vip.setVisibility(View.INVISIBLE);
+        }else{
+
         }
         String smobile = data3.getSmobile();//用户手机号
         if(smobile==null){

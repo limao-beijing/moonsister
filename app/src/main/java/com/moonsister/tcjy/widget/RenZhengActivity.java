@@ -244,6 +244,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
             case R.id.input:
 //                presenter1.sendDynamic(type1, txtContent1, dynamicContent1, voicepat);
                 submit();
+//
                 break;
         }
     }
