@@ -34,10 +34,12 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
     TextView tvBankName;
     @Bind(R.id.tv_bank_number)
     TextView tvBankNumber;
-    @Bind(R.id.et_input_money)
+    @Bind(R.id.et_input_money)//转出金额输入框
     EditText etInputMoney;
     @Bind(R.id.tv_add_card)
     TextView tv_add_card;
+    @Bind(R.id.tv_sure)//确认按钮
+    TextView tv_sure;
     @Bind(R.id.layout_swicth_card)
     RelativeLayout layout_swicth_card;
     private GetMoneyPersenter persenter;
@@ -48,17 +50,24 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
     protected View setRootContentView() {
         persenter = new GetMoneyPersenterImpl();
         persenter.attachView(this);
+
         return UIUtils.inflateLayout(R.layout.activity_ti_xian);
     }
 
     @Override
     protected String initTitleName() {
         return UIUtils.getStringRes(R.string.withdraw_deposit);
+
     }
 
     @Override
     protected void initView() {
+        String s = etInputMoney.getText().toString();
+        if(s!=null){
+            tv_sure.setBackgroundResource(R.mipmap.recharge);//金额输入框不为空时确认按钮变颜色
+        }
         persenter.loadbasicInfo();
+
     }
 
 
@@ -92,8 +101,10 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
                     showToast(UIUtils.getStringRes(R.string.money_number_more_200));
                     return;
                 }
+
                 persenter.PaySubmit(number, i);
                 break;
+
         }
     }
 
@@ -107,6 +118,7 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
                     }
                 })
                 .create();
+
 
     }
 
@@ -143,6 +155,7 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
         cardType = data.getType();
         tvBankNumber.setText(number);
         ImageServerApi.showURLSamllImage(ivBankLogo, data.getLogo());
+
     }
 
     @Override

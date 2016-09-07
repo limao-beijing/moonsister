@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.my.widget;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -93,7 +94,7 @@ public class MoneyActivity extends BaseActivity implements WithdRawDepositView {
                 .create();
     }
 
-    @OnClick({R.id.id_chat_tv,R.id.id_friend_tv,R.id.withdraw,R.id.recharge,R.id.image_back,R.id.see_talk})
+    @OnClick({R.id.id_chat_tv,R.id.id_friend_tv,R.id.withdraw,R.id.recharge,R.id.image_back,R.id.see_talk,R.id.talk})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.id_chat_tv:
@@ -123,6 +124,10 @@ public class MoneyActivity extends BaseActivity implements WithdRawDepositView {
                 break;
             case R.id.see_talk:
                 ActivityUtils.startRuleActivity();
+                break;
+            case R.id.talk:
+                Intent intent=new Intent(MoneyActivity.this,TalkActivity.class);
+                startActivity(intent);
                 break;
 
         }

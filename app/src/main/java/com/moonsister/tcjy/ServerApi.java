@@ -1143,6 +1143,20 @@ public class ServerApi {
                                                  @Field("channel") String channel,
                                                  @Field("version_type") String apiVersion);
 
+        /**
+         * 上传视频和语音
+         *
+         * @param apply_image
+         * @param order_id
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("apply/goadd_info_v")
+        Observable<BackTermsBean> getupto(@Field("apply_image") String apply_image,
+                                            @Field("order_id") String order_id,
+                                                        @Field("authcode") String auhcode,
+                                                        @Field("channel") String channel);
+
     }
 }
 

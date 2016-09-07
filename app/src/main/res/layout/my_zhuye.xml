@@ -141,12 +141,12 @@
             android:layout_toRightOf="@+id/right_imageview"
             android:layout_below="@+id/tv_user_name"
             />
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:id="@+id/image_look_people"
-            android:background="@drawable/look_people"
-            android:layout_alignParentRight="true"
+        <!--<ImageView-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:id="@+id/image_look_people"-->
+            <!--android:background="@drawable/look_people"-->
+            <!--android:layout_alignParentRight="true"-->
             />
         <TextView
             android:layout_width="wrap_content"

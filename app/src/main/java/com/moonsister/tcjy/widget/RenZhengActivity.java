@@ -2,8 +2,10 @@ package com.moonsister.tcjy.widget;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -43,8 +45,10 @@ import com.moonsister.tcjy.my.view.RenZhengActivityView;
 import com.moonsister.tcjy.my.widget.InsertActivity;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
+import com.moonsister.tcjy.utils.SDUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tcjy.utils.URIUtils;
 import com.moonsister.tcjy.widget.speak.PressToSpeakListenr;
 import com.trello.rxlifecycle.ActivityEvent;
 
@@ -86,9 +90,9 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
     private Bitmap bitmap = null;
 //    String videoasset;
     String facePath;
-    String voicepat;
-    String xmlpath;
+    String realFilePath;
     private DynamicPublishFragment dyf;
+    CharSequence text;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -103,6 +107,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
         return UIUtils.inflateLayout(R.layout.renzhengactivity);
     }
 
+    String path;
     @Override
     protected void initView() {
         RxBus.with(this)
@@ -110,8 +115,8 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
                 .setEvent(Events.EventEnum.CERTIFICATION_PAGE_FINISH)
                 .onNext(events -> pageFinish())
                 .create();
-//        ImageServerApi.showURLSamllImage(riv_avater, UserInfoManager.getInstance().getAvater());
-//        vip_id.setText(UserInfoManager.getInstance().getUid());
+        ImageServerApi.showURLSamllImage(riv_avater, UserInfoManager.getInstance().getAvater());
+        vip_id.setText(UserInfoManager.getInstance().getUid());
 
     }
     private void pageFinish() {
@@ -121,16 +126,28 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
 
 //        phone.setText(UserInfoManager.getInstance().);
 
-
+    String uri2;
     /**
      * 录制视频
      **/
     public void startrecord(View view) {
-        Intent mIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-        mIntent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 0.5);
-        startActivityForResult(mIntent, RECORD_VIDEO);
-    }
 
+
+        Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        intent.setAction("android.media.action.VIDEO_CAPTURE");
+        intent.addCategory("android.intent.category.DEFAULT");
+        File file = new File(SDUtils.getRootFile(this) + File.separator + System.currentTimeMillis() + ".mp4");
+        if (file.exists()) {
+            file.delete();
+        }
+        uri2 = String.valueOf(Uri.fromFile(file));
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri2);
+        intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+        intent.putExtra(MediaStore.EXTRA_SIZE_LIMIT, 1024 * 1024 * 50);
+        intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 60);
+        startActivityForResult(intent, RECORD_VIDEO);
+    }
+    String voicepat;
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent intent) {
@@ -163,18 +180,22 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
                     e.printStackTrace();
                 }
                 video.setImageBitmap(bitmap);
+                realFilePath = URIUtils.getRealFilePath(getApplicationContext(), intent.getData());
                 break;
-            case RESULT_OK:
-
-               voicepat = intent.getExtras().getString("path");//得到新Activity 关闭后返回的数据
-
+//            case RESULT_OK:
+//
+//               voicepat = intent.getExtras().getString("path");//得到新Activity 关闭后返回的数据
+//
+//                break;
+            case 3:
+                voicepat = intent.getStringExtra("path");
                 break;
         }
     }
-
+    String fileName = null;
     // 删除在/sdcard/dcim/Camera/默认生成的文件
     private void deleteDefaultFile(Uri uri) {
-        String fileName = null;
+
         if (uri != null) {
             // content
             Log.d("Scheme", uri.getScheme().toString());
@@ -200,7 +221,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
                 }
             }
         }
-        xmlpath = String.valueOf(this.getClass().getClassLoader().getResource(fileName));
+//        xmlpath = String.valueOf(this.getClass().getClassLoader().getResource(fileName));
         // 删除文件
         File file = new File(fileName);
         if (file.exists()) {
@@ -211,12 +232,12 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
 
     @Override
     public void showLoading() {
-
+        showProgressDialog();
     }
 
     @Override
     public void hideLoading() {
-
+        hideProgressDialog();
     }
 
     @Override
@@ -238,7 +259,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
             case R.id.renzheng_yuyin:
 //                Intent in=new Intent(RenZhengActivity.this, VoiceActivity.class);
 //                startActivity(in);
-                startActivityForResult(new Intent(RenZhengActivity.this, VoiceActivity.class), 1);
+                startActivityForResult(new Intent(RenZhengActivity.this, VoiceActivity.class), 3);
 
                 break;
             case R.id.input:
@@ -252,6 +273,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
     @Override
     public void success(BackTermsBean backTermsBean) {
         random.setText(backTermsBean.getData());
+        showToast("上传成功");
     }
 
     @Override
@@ -260,7 +282,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
 //        RxBus.getInstance().send(Events.EventEnum.CERTIFICATION_PAGE_FINISH, null);
         finish();
     }
-
+    String str;String order_id;
     private void submit() {
         //点击提交审核后弹出dialog提醒用户是否继续
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -272,8 +294,14 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
+//                SharedPreferences sharedPrefe=getSharedPreferences("Parameter", Context.MODE_PRIVATE);
+//                path = sharedPrefe.getString("path", "");
+//                persenter.subitdata(str,order_id);
+                if(realFilePath!=null&&voicepat!=null){
+                    persenter.submit(realFilePath,voicepat,random.getText().toString());
+                }
 
-                persenter.submit(xmlpath,voicepat);
+
             }
         });
         //dialog取消监听
@@ -281,6 +309,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
 
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
+
             }
         });
         builder.create().show();

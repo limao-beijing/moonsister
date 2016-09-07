@@ -1,19 +1,17 @@
 package com.moonsister.tcjy.my.persenter;
 
+import android.net.Uri;
+
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.BackTermsBean;
-import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.model.RenZhengActivityModel;
 import com.moonsister.tcjy.my.model.RenZhengActivityModelImpl;
 import com.moonsister.tcjy.my.view.RenZhengActivityView;
-import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
-
-import java.util.List;
 
 /**
  * Created by x on 2016/9/3.
@@ -30,10 +28,17 @@ public class RenZhengActivityPresenterImpl implements RenZhengAcivityPresenter, 
     }
 
     @Override
-    public void submit(String address1, String address2) {
+    public void submit(String address1, String address2,String text) {
         view.showLoading();
-        model.submit(address1, address2, this);
+        model.submit(address1,address2,text,this);
     }
+
+    @Override
+    public void submitdata(String str, String order_id) {
+        view.showLoading();
+        model.submitdata(str,order_id,this);
+    }
+
 
 //    @Override
 //    public void sendDynamic(EnumConstant.DynamicType dynamicType, String content, List<String> datas, String address) {

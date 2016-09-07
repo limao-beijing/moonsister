@@ -15,6 +15,7 @@ import com.moonsister.tcjy.bean.BackTermsBean;
 import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.DynamicContent;
+import com.moonsister.tcjy.bean.PersonalMessageBean;
 import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
@@ -32,6 +33,10 @@ import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -63,7 +68,8 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
     }
 
     @Override
-    public void submit(String address1, String address2, onLoadDateSingleListener listener) {
+    public void submit(String address1, String address2, String text,onLoadDateSingleListener listener) {
+
         ArrayList<DynamicContent> aliyunPtahs = new ArrayList<DynamicContent>();
         Observable<PayBean> observable = ServerApi.getAppAPI().getCertificationPay(UserInfoManager.getInstance().getAuthcode());
         observable.observeOn(AndroidSchedulers.mainThread())
@@ -87,37 +93,106 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
                         } else if (StringUtis.equals(bean.getCode(), "1000")) {
                             listener.onFailure(UIUtils.getStringRes(R.string.login_code_timeout));
                             RxBus.getInstance().send(Events.EventEnum.LOGIN_CODE_TIMEOUT, null);
-                        } else if (StringUtis.equals("1", bean.getCode())) {
-                            AiBeiPayManager.getInstance().pay(ConfigUtils.getInstance().getActivityContext(), bean.getData().getAbcode(), new AiBeiPayManager.AiBeiResultCallback() {
-                                @Override
-                                public void onPayResult(int resultCode, String resultInfo) {
-                                    if (resultCode == 1) {
-//                                        sumbitData(address1, address2, listener);
-                                        try {
-                                            upLoadVideo(address1,aliyunPtahs, true);
-                                        } catch (ClientException e) {
-                                            e.printStackTrace();
-                                        } catch (ServiceException e) {
-                                            e.printStackTrace();
-                                        }
-                                    } else
-                                        listener.onFailure(resultInfo);
+                        } else {
+                            if (StringUtis.equals("1", bean.getCode())) {
+                                AiBeiPayManager.getInstance().pay(ConfigUtils.getInstance().getActivityContext(), bean.getData().getAbcode(), new AiBeiPayManager.AiBeiResultCallback() {
+                                    @Override
+                                    public void onPayResult(int resultCode, String resultInfo) {
+                                        if (resultCode == 1) {
+//
+                                            listener.onFailure(resultInfo);
+                                        } else {
+                                            String code=bean.getData().getAbcode();
 
-                                }
-                            });
-                        } else if (StringUtis.equals("2", bean.getCode())) {
-                            try {
-                                upLoadVideo(address1,aliyunPtahs, true);
-                            } catch (ClientException e) {
-                                e.printStackTrace();
-                            } catch (ServiceException e) {
-                                e.printStackTrace();
-                            }
-                        } else
-                            listener.onFailure(bean.getMsg());
+                                            submittt(address1, address2,text,code, listener);
+                                        }
+
+                                    }
+                                });
+                            } else
+                                listener.onFailure(bean.getMsg());
+                        }
                     }
+
                 });
     }
+
+    public void submittt(String address1, String address2,String text,String code, onLoadDateSingleListener listener) {
+        ArrayList<String> aliyunPtahs = new ArrayList<String>();
+        Observable.create(new Observable.OnSubscribe<String>() {
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                String s = null;
+                String s1 = null;
+                try {
+                    s = AliyunManager.getInstance().upLoadFile(address1, FilePathUtlis.FileType.MP4);
+                    s1 = AliyunManager.getInstance().upLoadFile(address2, FilePathUtlis.FileType.AMR);
+
+                } catch (ClientException e) {
+                    e.printStackTrace();
+                } catch (ServiceException e) {
+                    e.printStackTrace();
+                }
+                JSONArray jsonarry = new JSONArray();
+                JSONObject jsonObj = new JSONObject();
+                JSONObject jsonObj1 = new JSONObject();
+                JSONObject jsonObj2 = new JSONObject();
+                try {
+                    jsonObj.put("video", s);
+                    jsonObj1.put("voice", s1);
+                    jsonObj2.put("info",text);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                //向json数组里面添加pet对象
+                jsonarry.put(jsonObj);
+                jsonarry.put(jsonObj1);
+                jsonarry.put(jsonObj2);
+//               upLoadVideo(address1,aliyunPtahs, true);
+//              upLoadVoice(address1,aliyunPtahs, true);
+                String s2 = jsonarry.toString();
+                subscriber.onNext(s2);
+            }
+        }).observeOn(Schedulers.io())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Subscriber<String>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogUtils.e(RenZhengActivityModelImpl.this, "onError :　" + e.getMessage());
+                        e.printStackTrace();
+                        listener.onFailure(e.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(String s2) {
+                        submitdata(s2, code, listener);
+                    }
+
+
+                });
+    }
+    @Override
+    public void submitdata(String str,String order_id, onLoadDateSingleListener listener) {
+        Observable<BackTermsBean> observable = ServerApi.getAppAPI().getupto(str,order_id,UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<BackTermsBean>() {
+            @Override
+            public void onSuccess(BackTermsBean bean) {
+                listener.onSuccess(bean, DataType.DATA_ZERO);
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                listener.onFailure(msg);
+            }
+        });
+    }
+
+
 
     public void upLoadVideo(String srcVideoPath, ArrayList<DynamicContent> aliyunPtahs, boolean isCharge) throws ClientException, ServiceException {
 
@@ -130,10 +205,10 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
         Bitmap size = ImageUtils.compressImageWithPathSzie(videoThumbnail, 1280, 720);
         //压缩大小
         Bitmap bitmap = ImageUtils.compressImage(size, 100);
-        String loadFile = AliyunManager.getInstance().upLoadFiletFromByteArray(ImageUtils.getBitmapByte(bitmap), FilePathUtlis.FileType.JPG);
+//        String loadFile = AliyunManager.getInstance().upLoadFiletFromByteArray(ImageUtils.getBitmapByte(bitmap), FilePathUtlis.FileType.JPG);
         DynamicContent content = new DynamicContent();
         content.setV(vidoPath);
-        content.setL(loadFile);
+//        content.setL(loadFile);
         if (isCharge) {
             //压缩质量
 
@@ -158,7 +233,7 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
         }
         aliyunPtahs.add(content);
     }
-}
+
 //    @Override
 //    public void sendDynamicPics(EnumConstant.DynamicType dynamicType, String content, List<String> srcdatas, String address, onLoadDateSingleListener defaultDynamicPresenter) {
 //        LogUtils.e(RenZhengActivityModelImpl.this, "start upload");
@@ -324,15 +399,15 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
 //        aliyunPtahs.add(content);
 //    }
 //
-//    public void upLoadVoice(String videoPath, ArrayList<DynamicContent> aliyunPtahs, boolean isCharge) throws ClientException, ServiceException {
-//        String s = AliyunManager.getInstance().upLoadFile(videoPath, FilePathUtlis.FileType.AMR);
-//        DynamicContent content = new DynamicContent();
-//        content.setV(s);
-//        content.setL("");
-//        content.setS("");
-//        aliyunPtahs.add(content);
-//    }
-//}
+    public void upLoadVoice(String videoPath, ArrayList<DynamicContent> aliyunPtahs, boolean isCharge) throws ClientException, ServiceException {
+        String s = AliyunManager.getInstance().upLoadFile(videoPath, FilePathUtlis.FileType.AMR);
+        DynamicContent content = new DynamicContent();
+        content.setV(s);
+        content.setL("");
+        content.setS("");
+        aliyunPtahs.add(content);
+    }
+}
 
 
 //    @Override

@@ -39,6 +39,15 @@
                     android:textColor="#D6DDE4"
                     android:layout_marginTop="@dimen/x23"
                     />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/baocun"
+                    android:textColor="#D6DDE4"
+                    android:textSize="18sp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/x150"
+                    android:text="保存"/>
             </LinearLayout>
 
             <RelativeLayout

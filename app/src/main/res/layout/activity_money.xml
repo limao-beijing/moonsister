@@ -20,7 +20,7 @@
             android:layout_height="@dimen/y96"
             android:textSize="17sp"
             android:textColor="#778998"
-            android:layout_marginLeft="@dimen/x240"
+            android:layout_marginLeft="@dimen/x230"
             android:gravity="center"
             android:text="财务中心"/>
         <TextView
@@ -30,7 +30,7 @@
             android:textSize="17sp"
             android:textColor="#778998"
             android:gravity="center"
-            android:layout_marginLeft="@dimen/x150"
+            android:layout_marginLeft="@dimen/x180"
             android:text="说明"/>
         </LinearLayout>
     <LinearLayout
@@ -84,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/balance"
-            android:text="5246.65"
+            android:text="0.00"
             android:textSize="16sp"
             android:textColor="@color/white"
             android:layout_gravity="center"
