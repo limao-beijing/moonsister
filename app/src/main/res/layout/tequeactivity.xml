@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y96"
         android:orientation="horizontal"
@@ -13,34 +13,25 @@
             android:layout_height="wrap_content"
             android:id="@+id/image_back"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/x35"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x40"
             android:background="@mipmap/back"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="@dimen/y70"
-            android:id="@+id/my_follow"
             android:textSize="17sp"
             android:textColor="#FFD305"
-            android:background="@mipmap/make_left"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/x105"
             android:gravity="center"
-            android:text="普通动态"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/y70"
-            android:id="@+id/follow_my"
-            android:background="@mipmap/make_black_right"
-            android:layout_gravity="center"
-            android:layout_toRightOf="@+id/my_follow"
-            android:textSize="17sp"
-            android:gravity="center"
-            android:textColor="#D6DDE4"
-            android:text="付费动态"/>
-    </LinearLayout>
-    <FrameLayout
-        android:id="@+id/fragmentlayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
-
+            android:text="特权说明"/>
+        </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/x30"
+        android:textSize="@dimen/x40"
+        android:text="@string/vip_prerogative_explain_late"
+        android:textColor="@color/gray_color" />
 </LinearLayout>

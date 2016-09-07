@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.main.widget;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -25,6 +26,7 @@ import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenter;
 import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenterImpl;
 import com.moonsister.tcjy.main.view.BuyVipFragmentView;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.my.widget.TeQueActivity;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
@@ -56,6 +58,8 @@ public class BuyVipFragment extends BaseFragment implements BuyVipFragmentView {
     @Bind(R.id.iv_select_1)
     ImageView ivSelect1;
     private int select;
+    @Bind(R.id.vip_que)//点此查看特权
+    TextView vip_que;
     private BuyVipFragmentPersenter persenter;
 
     @Override
@@ -89,7 +93,7 @@ public class BuyVipFragment extends BaseFragment implements BuyVipFragmentView {
         ivSelect1.setVisibility(view == ivSelect1 ? View.VISIBLE : View.INVISIBLE);
     }
 
-    @OnClick({R.id.layout_combo_12, R.id.layout_combo_3, R.id.layout_combo_1, R.id.tv_buy})
+    @OnClick({R.id.layout_combo_12, R.id.layout_combo_3, R.id.layout_combo_1, R.id.tv_buy,R.id.vip_que})
     public void onClick(View view) {
         switch (view.getId()) {
 
@@ -108,6 +112,10 @@ public class BuyVipFragment extends BaseFragment implements BuyVipFragmentView {
                 break;
             case R.id.tv_buy:
                 persenter.buyVIP(select);
+                break;
+            case R.id.vip_que:
+                Intent intent=new Intent(getActivity(), TeQueActivity.class);
+                startActivity(intent);
                 break;
         }
     }

@@ -1,6 +1,9 @@
 package com.moonsister.tcjy.center.widget;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
@@ -56,6 +59,8 @@ public class DynamicContentFragment extends BaseFragment {
     private String videoPath;
     private String voicePath;
     private DynamicType dynamicType;
+    SharedPreferences sharedPreferences;
+    String video_path;
 
     public enum DynamicType {
         PIC, VIDEO, VOICE
@@ -131,6 +136,7 @@ public class DynamicContentFragment extends BaseFragment {
                     }
                 })
                 .create();
+
     }
 
     private void doClick(String id) {
@@ -224,7 +230,12 @@ public class DynamicContentFragment extends BaseFragment {
             imageView.setLayoutParams(params);
 
         } else if (requestCode == 3) {
-            String video_path = data.getStringExtra("path");
+            video_path = data.getStringExtra("path");
+//            SharedPreferences sharedPrefe=getActivity().getSharedPreferences("Parameter",Context.MODE_WORLD_READABLE);
+//
+//            SharedPreferences.Editor editor=sharedPrefe.edit(); //<span style="font-family: simsun; background-color: rgb(189, 169, 151);font-size:16px; ">获取编辑器</span>
+//            editor.putString("path", data.getStringExtra("path"));
+//            editor.commit();
 
             voicePath = video_path;
             if (StringUtis.isEmpty(video_path))

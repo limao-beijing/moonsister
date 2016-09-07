@@ -101,7 +101,7 @@ public class FollowActivity extends BaseActivity implements RelationActivityView
 
                 break;
             case R.id.image_back:
-                FollowActivity.this.finish();
+                this.finish();
 
                 break;
         }

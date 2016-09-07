@@ -21,6 +21,7 @@ import com.moonsister.tcjy.adapter.PersonalAdapter;
 import com.moonsister.tcjy.adapter.PersonalReviseAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.PersonalMessageBean;
+import com.moonsister.tcjy.bean.personalBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.login.widget.SelectPicPopupActivity;
@@ -33,6 +34,7 @@ import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 
+import org.apache.http.entity.StringEntity;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -84,6 +86,8 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
             TextView tv_premarital_sex;
     @Bind(R.id.image_back)//返回
     ImageView image_back;
+    @Bind(R.id.baocun)//保存
+    TextView baocun;
     private PersonalActivityPersenter presenter;
     List<PersonalMessageBean.DataBean.RulesBean> data;
     PersonalMessageBean.DataBean.BaseinfoBean data1;
@@ -95,8 +99,8 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
     private JSONArray jsonArray;//JSONObject对象，处理一个一个集合或者数组
     private String jsonString; //保存带集合的json字符串
     private String jsonString2;//不带集合的json字符串
-//    private TextView textView; //显示处理结果的textview
     private String avater;
+    private personalBean mPersonalBean;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -119,7 +123,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
     }
 
     @Override
-    public void success(PersonalMessageBean getPersonalBean) {
+    public void success(PersonalMessageBean getPersonalBean){
         data = getPersonalBean.getData().getRules();
         data1 = getPersonalBean.getData().getBaseinfo();
         data2 = getPersonalBean.getData().getDlist();
@@ -148,6 +152,8 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
         tv_like_sex.setText(data.get(13).getValue());
         tv_premarital_sex.setText(data.get(14).getValue());
 
+        JSONObject json = new JSONObject();
+
     }
 
     @Override
@@ -170,15 +176,15 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
         showToast(msg);
     }
 
-    @OnClick({R.id.image_back,R.id.layout_avater,R.id.layout_like,R.id.layout_nike_name,R.id.layout_signature,R.id.layout_birthday,R.id.layout_star_sign,R.id.layout_birthplace,R.id.layout_address,R.id.layout_job,R.id.layout_hobby,R.id.layout_self_image,R.id.layout_ishouse,R.id.layout_marital_status,R.id.layout_distance_love,R.id.layout_like_sex,R.id.layout_premarital_sex})
+    @OnClick({R.id.image_back,R.id.layout_avater,R.id.layout_like,R.id.layout_nike_name,R.id.layout_signature,R.id.layout_birthday,R.id.layout_star_sign,R.id.layout_birthplace,R.id.layout_address,R.id.layout_job,R.id.layout_hobby,R.id.layout_self_image,R.id.layout_ishouse,R.id.layout_marital_status,R.id.layout_distance_love,R.id.layout_like_sex,R.id.layout_premarital_sex,R.id.baocun})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.image_back:
 //                changeArrayDateToJson();
 
                 this.finish();
-                changeArrayDateToJson();
-                presenter.sendUserJson(jsonString);
+//                changeArrayDateToJson();
+//                presenter.sendUserJson(jsonString);
                 break;
             case R.id.layout_avater://头像
                 ActivityUtils.startActivity(SelectPicPopupActivity.class);
@@ -186,7 +192,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
                         .setEvent(Events.EventEnum.GET_PHOTO)
                         .setEndEvent(ActivityEvent.DESTROY)
                         .onNext((events) -> {
-                            String message = (String) events.message;
+                           String message = (String) events.message;
                             LogUtils.e(RZFirstActivity.class, "pic_path : " + message);
                             avater = message;
                             ImageServerApi.showURLSamllImage(riv_user_image, message);
@@ -331,6 +337,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
                 userJsonBean16.setUserId(16);
                 userJsonBean16.setUserName("premarital_sex");
                 userBeans.add(userJsonBean16);
+                break;
+            case R.id.baocun:
+
                 break;
         }
     }

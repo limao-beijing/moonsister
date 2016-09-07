@@ -139,5 +139,9 @@ public class PayBean {
         public void setSign(String sign) {
             this.sign = sign;
         }
+
+        public String setAbcode() {
+            return null;
+        }
     }
 }
