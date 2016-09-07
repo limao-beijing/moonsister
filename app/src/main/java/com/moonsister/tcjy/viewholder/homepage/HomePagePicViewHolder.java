@@ -84,6 +84,12 @@ public class HomePagePicViewHolder extends BaseRecyclerViewHolder<DynamicItemBea
                 return false; //不终止路由事件让父级控件处理事件
             }
         });
+        tvHomePageControl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
