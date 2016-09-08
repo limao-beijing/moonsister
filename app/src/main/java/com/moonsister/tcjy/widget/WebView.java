@@ -108,15 +108,16 @@ public class WebView extends android.webkit.WebView {
         public boolean shouldOverrideUrlLoading(android.webkit.WebView view, String url) {
             // 使用自己的WebView组件来响应Url加载事件，而不是使用默认浏览器器加载页面
             LogUtils.d(this, "url : " + url);
-            loadUrl(url);
-            // 消耗掉这个事件。Android中返回True的即到此为止吧,事件就会不会冒泡传递了，我们称之为消耗掉
-            return true;
-        }
+        loadUrl(url);
+        // 消耗掉这个事件。Android中返回True的即到此为止吧,事件就会不会冒泡传递了，我们称之为消耗掉
+        return true;
+    }
 
         @Override
         public void onPageStarted(android.webkit.WebView view, String url, Bitmap favicon) {
 
             super.onPageStarted(view, url, favicon);
+            LogUtils.d(this, "url : " + url);
             if (listener != null)
                 listener.onPageStart();
         }
@@ -124,6 +125,7 @@ public class WebView extends android.webkit.WebView {
         @Override
         public void onPageFinished(android.webkit.WebView view, String url) {
             super.onPageFinished(view, url);
+            LogUtils.d(this, "url : " + url);
             if (listener != null)
                 listener.onPageFinished();
         }

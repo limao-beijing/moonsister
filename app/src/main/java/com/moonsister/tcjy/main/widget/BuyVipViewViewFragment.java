@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.webkit.JsResult;
 
 import com.moonsister.tcjy.AppConstant;
+import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
@@ -40,7 +41,7 @@ public class BuyVipViewViewFragment extends BaseFragment implements WebView.onWe
         //设置本地调用对象及其接口
         mWebView.addJavascriptInterface(new JavaScriptObject(this), "obj");
         mWebView.setWebViewListener(this);
-        mWebView.loadUrl("http://2test.yytbzs.cn:88/indextest.php/index/mmvip/info/?authcode=" + UserInfoManager.getInstance().getAuthcode() + "&channel=" + AppConstant.CHANNEL_ID);
+        mWebView.loadUrl(ServerApi.AppAPI.baseUrl+"mmvip/info/?authcode=" + UserInfoManager.getInstance().getAuthcode() + "&channel=" + AppConstant.CHANNEL_ID);
     }
 
     public static Fragment newInstance() {
