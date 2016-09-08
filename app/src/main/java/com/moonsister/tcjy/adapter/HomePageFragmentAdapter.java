@@ -22,7 +22,6 @@ public class HomePageFragmentAdapter extends BaseRecyclerViewAdapter<DynamicItem
      */
     //1 红包图集
     public static final int TYPE_CHARGE_PIC = 1;
-
     //2 普通图片
     public static final int TYPE_FREE_PIC = 2;
     //3 视频

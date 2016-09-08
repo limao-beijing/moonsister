@@ -2,13 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:gravity="center_vertical">
 
     <com.moonsister.tcjy.widget.RoundedImageView
         android:id="@+id/riv_friend_image"
-        android:layout_width="@dimen/x120"
-        android:layout_height="@dimen/x120"
-        android:layout_margin="@dimen/x30"
+        android:layout_width="@dimen/x82"
+        android:layout_height="@dimen/y82"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/y15"
+        android:scaleType="fitXY"
         android:src="@mipmap/load_small"/>
 
     <ImageView
@@ -16,17 +19,18 @@
         android:layout_width="@dimen/x32"
         android:layout_height="@dimen/x32"
         android:layout_alignBottom="@+id/riv_friend_image"
-        android:layout_marginLeft="-25dp"
+        android:layout_marginLeft="-10dp"
         android:layout_toRightOf="@+id/riv_friend_image"
         android:src="@mipmap/add_v_icon"
-        android:visibility="gone"/>
+        />
 
     <TextView
         android:id="@+id/tv_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/riv_friend_image"
-        android:layout_marginTop="@dimen/x10"
+        android:layout_marginLeft="@dimen/x20"
+
         android:layout_toRightOf="@+id/riv_friend_image"
         android:text="@string/loading"
         android:textColor="@color/text_black_color"/>
@@ -35,21 +39,21 @@
         android:id="@+id/textview_work"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_user_name"
         android:layout_marginLeft="@dimen/x22"
-        android:layout_marginTop="@dimen/x38"
         android:layout_toRightOf="@+id/tv_user_name"
         android:background="@drawable/backgroup_red"
-        android:paddingBottom="@dimen/x5"
-        android:paddingLeft="@dimen/x10"
-        android:paddingRight="@dimen/x10"
-        android:paddingTop="@dimen/x5"/>
+        android:paddingBottom="@dimen/x2"
+        android:paddingLeft="@dimen/x5"
+        android:paddingRight="@dimen/x5"
+        android:paddingTop="@dimen/x2"/>
 
     <ImageView
         android:id="@+id/iv_sex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_user_name"
-        android:layout_marginRight="@dimen/x20"
+        android:layout_marginLeft="@dimen/x20"
         android:layout_marginTop="@dimen/x20"
         android:layout_toRightOf="@+id/riv_friend_image"
         android:src="@mipmap/gril"/>
@@ -75,18 +79,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="@dimen/x15"
-        android:layout_marginTop="@dimen/x10"
         android:drawableTop="@mipmap/delete_follow"
-        android:text="取消关注"
-        android:textColor="@color/text_gray_778998"/>
+        android:padding="@dimen/x30"
+        android:textColor="@color/text_gray_778998"
+        android:textSize="@dimen/text_size_11"/>
 
     <TextView
         android:id="@+id/tv_signature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_user_name"
-        android:layout_marginLeft="@dimen/x10"
         android:layout_marginRight="@dimen/x20"
         android:layout_marginTop="@dimen/x15"
         android:layout_toLeftOf="@+id/tv_wacth"

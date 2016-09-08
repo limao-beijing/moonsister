@@ -14,7 +14,16 @@
             android:layout_width="@dimen/x92"
             android:layout_height="@dimen/x92"
             android:layout_centerVertical="true"
-            android:layout_margin="@dimen/x30"/>
+            android:layout_margin="@dimen/x15"/>
+
+        <ImageView
+            android:id="@+id/iv_add_v"
+            android:layout_width="@dimen/x32"
+            android:layout_height="@dimen/x32"
+            android:layout_alignBottom="@+id/riv_user_image"
+            android:layout_marginLeft="-20dp"
+            android:layout_toRightOf="@+id/riv_user_image"
+            android:src="@mipmap/add_v_icon"/>
 
         <TextView
             android:id="@+id/tv_user_name"
@@ -26,6 +35,17 @@
             android:text="@string/loading"
             android:textColor="@color/black_1d262e"
             android:textSize="@dimen/text_size_16"/>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/riv_user_image"
+            android:layout_marginRight="@dimen/x30"
+            android:text="@string/loading"
+            android:textColor="@color/text_gray_778998"
+            android:textSize="@dimen/text_size_12"/>
 
         <ImageView
             android:id="@+id/iv_sex_icon"
@@ -67,14 +87,13 @@
         android:id="@+id/dynamic_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/x15"
         android:layout_marginLeft="@dimen/x15"
         android:layout_marginRight="@dimen/x15"
         android:enabled="true"
-        android:lines="2"
-        android:paddingBottom="@dimen/x10"
-        android:paddingLeft="@dimen/x30"
-        android:paddingRight="@dimen/x30"
-        android:paddingTop="@dimen/x10"
+        android:gravity="bottom"
+        android:maxLines="2"
+        android:paddingLeft="@dimen/x10"
         android:text="@string/loading"
         android:textColor="@color/black_1d262e"
         android:textSize="@dimen/text_size_16"/>
@@ -84,6 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/x15"
         android:layout_marginRight="@dimen/x15">
+
         <ImageView
             android:id="@+id/iv_bg"
             android:layout_width="@dimen/x660"

@@ -1,15 +1,20 @@
 package com.moonsister.tcjy.viewholder;
 
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
+import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
+import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.DynamicItemBean;
+import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
 import butterknife.Bind;
@@ -45,7 +50,8 @@ public class UserViewHolder extends BaseRecyclerViewHolder<DynamicItemBean> {
             return;
         ImageServerApi.showURLSamllImage(rivFriendImage, dynamicItemBean.getFace());
         tvUserName.setText(dynamicItemBean.getNickname());
-//        textviewWork.setText(dynamicItemBean.);
+        textviewWork.setText(dynamicItemBean.getProfession());
+        textviewWork.setVisibility(StringUtis.isEmpty(dynamicItemBean.getProfession()) ? View.GONE : View.VISIBLE);
         tvAge.setText(dynamicItemBean.getAge());
         tv_signature.setText(dynamicItemBean.getSignature());
         String sex = dynamicItemBean.getSex();
@@ -59,6 +65,46 @@ public class UserViewHolder extends BaseRecyclerViewHolder<DynamicItemBean> {
         } else {
             iv_add_v.setVisibility(View.GONE);
         }
+        if (StringUtis.equals(dynamicItemBean.getIsfollow(), "1")) {
+            Drawable drawable = UIUtils.getResources().getDrawable(R.mipmap.delete_follow);
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+            tvWacth.setCompoundDrawables(null, drawable, null, null);
+            tvWacth.setCompoundDrawablePadding(5);
+            tvWacth.setTextColor(UIUtils.getResources().getColor(R.color.text_gray_778998));
+            tvWacth.setText(UIUtils.getStringRes(R.string.cancel) + UIUtils.getStringRes(R.string.wacth));
+        } else {
+            Drawable drawable = UIUtils.getResources().getDrawable(R.mipmap.search_user_add_wacth);
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+            tvWacth.setCompoundDrawables(null, drawable, null, null);
+            tvWacth.setCompoundDrawablePadding(5);
+            tvWacth.setTextColor(UIUtils.getResources().getColor(R.color.yellow_ff8201));
+            tvWacth.setText(UIUtils.getStringRes(R.string.add) + UIUtils.getStringRes(R.string.wacth));
+        }
+        tvWacth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String isfollow = dynamicItemBean.getIsfollow();
+                UserActionModelImpl model = new UserActionModelImpl();
+                isfollow = StringUtis.equals(isfollow, "1") ? "2" : "1";
+                final String finalIsfollow = isfollow;
+                model.wacthAction(dynamicItemBean.getUid(), isfollow, new BaseIModel.onLoadDateSingleListener<BaseBean>() {
+                    @Override
+                    public void onSuccess(BaseBean bean, BaseIModel.DataType dataType) {
+                        if (StringUtis.equals(bean.getCode(), "1")) {
+                            dynamicItemBean.setIsfollow(finalIsfollow);
+                            baseRecyclerViewAdapter.notifyDataSetChanged();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(String msg) {
+
+                    }
+                });
+
+            }
+        });
     }
 
     @Override

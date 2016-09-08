@@ -124,6 +124,7 @@ public class HomePageHeadHolder extends BaseHolder<UserInfoDetailBean> {
             mIvAddV.setVisibility(View.VISIBLE);
         } else mIvAddV.setVisibility(View.GONE);
         selectColor(R.id.rl_all);
+
     }
 
     private void selectColor(@IdRes int id) {
@@ -140,7 +141,7 @@ public class HomePageHeadHolder extends BaseHolder<UserInfoDetailBean> {
 
     }
 
-    @OnClick({R.id.rl_all, R.id.rl_user, R.id.rl_dynamic})
+    @OnClick({R.id.rl_all, R.id.rl_user, R.id.rl_dynamic, R.id.iv_back})
     public void onClick(View view) {
         selectColor(view.getId());
 

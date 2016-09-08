@@ -12,6 +12,7 @@ import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tcjy.utils.TimeUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 import com.moonsister.tcjy.widget.speak.VoicePlay;
 
@@ -45,6 +46,10 @@ public class HomePageVideoViewHolder extends BaseRecyclerViewHolder<DynamicItemB
     ImageView ivBg;
     @Bind(R.id.iv_play)
     ImageView iv_play;
+    @Bind(R.id.tv_time)
+    TextView tv_time;
+    @Bind(R.id.iv_add_v)
+    ImageView iv_add_v;
 
     public HomePageVideoViewHolder(View view) {
         super(view);
@@ -66,6 +71,8 @@ public class HomePageVideoViewHolder extends BaseRecyclerViewHolder<DynamicItemB
         if (!StringUtis.isEmpty(tags)) {
             tags = tags.replace("|||", "  ");
         }
+        iv_add_v.setVisibility(StringUtis.equals(dynamicItemBean.getIsauth(), "1") ? View.VISIBLE : View.GONE);
+        tv_time.setText(TimeUtils.getDynamicTimeString(dynamicItemBean.getCreate_time()));
         tvUserTag.setText(tags);
         dynamicContent.setText(dynamicItemBean.getTitle());
         tvHomePageComment.setText(dynamicItemBean.getLcomn());

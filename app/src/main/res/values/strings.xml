@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">同城交友</string>
+    <string name="app_name">初色</string>
     <!--<string name="app_name">探探寂陌陌生人-求约爱</string>-->
     <string name="app_home_page">首页</string>
     <string name="app_im_page">聊天</string>
@@ -270,4 +270,6 @@
     <string name="comment">评论</string>
     <string name="not_like">踩</string>
     <string name="like">赞</string>
+    <string name="add">加</string>
+    <string name="not_wacth">未关注</string>
 </resources>

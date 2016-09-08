@@ -1,21 +1,26 @@
 package com.moonsister.tcjy.main.widget;
 
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.DynamicAdapter;
 import com.moonsister.tcjy.adapter.DynamicDetailsAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
+import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.CommentDataListBean;
+import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.DynamicDatailsBean;
 import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
+import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.main.presenter.DynamincDatailsPresenter;
 import com.moonsister.tcjy.main.presenter.DynamincDatailsPresenterImpl;
 import com.moonsister.tcjy.main.view.DynamicDatailsView;
@@ -49,6 +54,10 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
     View id_layout_input;
     @Bind(R.id.id_layout_comment)
     View id_layout_comment;
+    @Bind(R.id.tv_not_like)
+    TextView tv_not_like;
+    @Bind(R.id.tv_like)
+    TextView tv_like;
     private DynamicDetailsAdapter mAdapter;
     private DynamincDatailsPresenter presenter;
     private String dynamicId;
@@ -205,7 +214,6 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
         dataBean.setCreate_time(System.currentTimeMillis() / 1000);
         dataBean.setTitle(s);
         if (mAdapter != null) {
-
             mAdapter.addSingeData(0, dataBean);
             mAdapter.onRefresh();
         }
@@ -245,7 +253,7 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
 
     @Override
     public void transfePageMsg(String msg) {
-
+        showToast(msg);
     }
 
     private String s;
@@ -259,8 +267,16 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
                 break;
 
             case R.id.rl_not_like:
+                //type  1顶 2取消顶，3踩，4取消踩
+                if (!StringUtis.equals(likeType, "2"))
+//                if (StringUtis.isEmpty(likeType) || StringUtis.equals(likeType, "3") || StringUtis.equals(likeType, "4") || StringUtis.equals(likeType, "2"))
+                    notLikeAction(StringUtis.isEmpty(likeType) || StringUtis.equals("2", likeType) ? "3" : likeType);
                 break;
             case R.id.rl_like:
+                //type  1顶 2取消顶，3踩，4取消踩
+                if (!StringUtis.equals(likeType, "4"))
+//                if (StringUtis.isEmpty(likeType) || StringUtis.equals(likeType, "1") || StringUtis.equals(likeType, "2") || StringUtis.equals(likeType, "4"))
+                    LikeAction(StringUtis.isEmpty(likeType) || StringUtis.equals("4", likeType) ? "1" : likeType);
                 break;
             case R.id.btn_send:
                 sendComment();
@@ -274,7 +290,63 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
         }
     }
 
+    private String likeType;
 
+    private void notLikeAction(String type) {
+        UserActionModelImpl model = new UserActionModelImpl();
+        final String finalType = type;
+        showLoading();
+        model.likeAction(dynamicId, type, new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+            @Override
+            public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+                if (bean != null || StringUtis.equals(bean.getCode(), "1")) {
+                    Drawable drawable = getResources().getDrawable(StringUtis.equals(finalType, "4") ? R.mipmap.not_like_icon : R.mipmap.not_liked_icon);
+                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                    tv_not_like.setCompoundDrawables(drawable, null, null, null);
+                    showToast(bean.getMsg());
+                }
+
+                likeType = StringUtis.equals(type, "3") ? "4" : "3";
+                hideLoading();
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                showToast(msg);
+                hideLoading();
+            }
+        });
+    }
+
+    private void LikeAction(String type) {
+        UserActionModelImpl model = new UserActionModelImpl();
+        final String finalType = type;
+        showLoading();
+        model.likeAction(dynamicId, type, new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+            @Override
+            public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+                if (bean != null || StringUtis.equals(bean.getCode(), "1")) {
+                    Drawable drawable = getResources().getDrawable(StringUtis.equals(finalType, "2") ? R.mipmap.dynamic_like_icon : R.mipmap.dynamic_liked_icon);
+                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                    tv_like.setCompoundDrawables(drawable, null, null, null);
+                    showToast(bean.getMsg());
+                }
+                likeType = StringUtis.equals(type, "1") ? "2" : "1";
+                hideLoading();
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                showToast(msg);
+                hideLoading();
+            }
+        });
+    }
+
+
+    /**
+     * 发送评论
+     */
     private void sendComment() {
         if (certificationStatus())
             return;

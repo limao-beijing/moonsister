@@ -15,6 +15,7 @@ public class DynamicItemBean extends BaseDataBean {
     private String signature;
     private String fansnum;
     private int dtype;
+    private String profession;
     //动态
     private String tags;
     private String lkpicn;
@@ -298,5 +299,13 @@ public class DynamicItemBean extends BaseDataBean {
 
     public void setLdon(String ldon) {
         this.ldon = ldon;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 }

@@ -673,7 +673,7 @@ public class ServerApi {
 
         /**
          * 点赞
-         *
+         * type 操作类型 1顶 2取消顶，3踩，4取消踩
          * @param authcode
          * @return
          */

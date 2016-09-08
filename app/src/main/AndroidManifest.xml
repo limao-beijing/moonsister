@@ -115,7 +115,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="com.moonsister.tcjy"
+                    android:host="hk.chuse.love"
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>
@@ -133,7 +133,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="com.moonsister.tcjy"
+                    android:host="hk.chuse.love"
                     android:pathPrefix="/subconversationlist"
                     android:scheme="rong" />
             </intent-filter>

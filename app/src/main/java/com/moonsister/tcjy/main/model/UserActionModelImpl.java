@@ -3,14 +3,11 @@ package com.moonsister.tcjy.main.model;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
-
-import java.util.List;
 
 import rx.Observable;
 
@@ -44,7 +41,7 @@ public class UserActionModelImpl implements UserActionModel {
     /**
      * 点赞
      *
-     * @param type      1顶2 取消顶
+     * @param type  1顶 2取消顶，3踩，4取消踩
      * @param dynamicId
      * @param listener
      */

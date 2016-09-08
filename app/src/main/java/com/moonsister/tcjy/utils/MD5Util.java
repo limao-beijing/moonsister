@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.utils;
 
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by jb on 2016/6/17.
@@ -46,6 +47,29 @@ public class MD5Util {
         }
         String s = new String(a);
         return s;
+
+    }
+    public static  String test(String string){
+        byte[] arrby = string.getBytes();
+        String string2 = null;
+        char[] arrc = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+            messageDigest.update(arrby);
+            byte[] arrby2 = messageDigest.digest();
+            char[] arrc2 = new char[32];
+            int n2 = 0;
+            for (int i2 = 0; i2 < 16; ++i2) {
+                byte by = arrby2[i2];
+                arrc2[n2++] = arrc[by >>> 4 & 15];
+                arrc2[n2++] = arrc[by & 15];
+            }
+            string2 = new String(arrc2);
+        }
+        catch (NoSuchAlgorithmException var5_6) {
+//            m.a().f().e("AdUtil.getMD5", "", var5_6);
+        }
+        return string2;
 
     }
 }
