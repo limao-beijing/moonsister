@@ -23,7 +23,6 @@ import com.umeng.analytics.MobclickAgent;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import im.gouyin.com.progressdialog.ProgressDialog;
 
 /**
@@ -97,6 +96,18 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     protected String initTitleName() {
         return "标题";
     }
+
+    /**
+     * 设置title名字
+     *
+     * @return
+     */
+    public void setTitleName(String titleName) {
+        if (titleView == null)
+            return;
+        ((TextView) titleView.findViewById(R.id.tv_title_name)).setText(titleName);
+    }
+
 
     /**
      * 返回titleView

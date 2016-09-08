@@ -21,19 +21,18 @@ import com.moonsister.tcjy.find.widget.RankActivity;
 import com.moonsister.tcjy.home.widget.SearchActivity;
 import com.moonsister.tcjy.home.widget.SearchReasonActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordActivity;
+import com.moonsister.tcjy.login.widget.FindPasswordNextActivity;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
 import com.moonsister.tcjy.main.widget.BuyVipActivity;
-import com.moonsister.tcjy.main.widget.BuyVipFragment;
+import com.moonsister.tcjy.main.widget.DynamicActivity;
 import com.moonsister.tcjy.main.widget.DynamicAtionActivity;
 import com.moonsister.tcjy.main.widget.DynamicDatailsActivity;
-import com.moonsister.tcjy.login.widget.FindPasswordNextActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentOrderActivity;
 import com.moonsister.tcjy.main.widget.PersonInfoChangeActivity;
 import com.moonsister.tcjy.main.widget.PictureSelectorActivity;
 import com.moonsister.tcjy.main.widget.RecommendMemberActivity;
 import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
-import com.moonsister.tcjy.main.widget.DynamicActivity;
 import com.moonsister.tcjy.main.widget.RelationActivity;
 import com.moonsister.tcjy.main.widget.ShowShortVideoActivity;
 import com.moonsister.tcjy.main.widget.SwitchItemActivity;
@@ -58,7 +57,6 @@ import com.moonsister.tcjy.my.widget.SettingActivity;
 import com.moonsister.tcjy.my.widget.SwitchCardActivity;
 import com.moonsister.tcjy.my.widget.TiXianRecordActivity;
 import com.moonsister.tcjy.my.widget.UserInfoChangeActivity;
-import com.moonsister.tcjy.my.widget.VIPMoneyActivity;
 import com.moonsister.tcjy.my.widget.WithdRawDepositActivity;
 import com.moonsister.tcjy.widget.image.CropImageMainActivity;
 import com.moonsister.tcjy.widget.image.PhonePicActivity;
@@ -518,7 +516,7 @@ public class ActivityUtils {
     /**
      * 粉丝点击列表
      *
-     * @param uid
+     * @param uidBuyVipActivity
      */
     public static void startFenRelationActivity(String uid) {
         Intent intent = new Intent(getContext(), RelationActivity.class);
@@ -599,18 +597,20 @@ public class ActivityUtils {
         }
 
     }
-//    //我的页面gridview中跳转关注页面   定义跳转的activity
+
+    //    //我的页面gridview中跳转关注页面   定义跳转的activity
     public static void startFollowActivity() {
         startActivity(FollowActivity.class);
     }
 
     //关注页面中返回键的监听
-    public static void startHreatFragment(){
+    public static void startHreatFragment() {
         startActivity(HreatFragment.class);
     }
+
     //关注页面中返回键的监听
     //跳转动态管理页面
-    public static void startMakeMessageActivity(){
+    public static void startMakeMessageActivity() {
         startActivity(MakeMessageActivity.class);
     }
 //    //我的页面不是会员    定义跳转的activity

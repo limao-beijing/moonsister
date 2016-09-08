@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.baidu.BaiduManager;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.ApplicationConfig;
 import com.moonsister.tcjy.R;
@@ -171,7 +170,7 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void switch2Home() {
-        BaiduManager.getInstance(this).adBanner(this, appx_banner_container);
+//        BaiduManager.getInstance(this).adBanner(this, appx_banner_container);
         if (homeFragment == null)
             homeFragment = new HomeFragment();
 //            homeFragment = new HomeTopFragment();

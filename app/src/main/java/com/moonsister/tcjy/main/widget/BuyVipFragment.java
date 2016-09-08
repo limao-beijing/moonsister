@@ -1,14 +1,8 @@
 package com.moonsister.tcjy.main.widget;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.AbsoluteSizeSpan;
-import android.text.style.ForegroundColorSpan;
-import android.view.KeyCharacterMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,8 +23,6 @@ import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
-
-import java.util.AbstractCollection;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -156,6 +148,11 @@ public class BuyVipFragment extends BaseFragment implements BuyVipFragmentView {
         memoryPersonInfoDetail.setVipStatus(1);
         UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
         getActivity().finish();
+
+    }
+
+    @Override
+    public void typePay(int type, String phone) {
 
     }
 }

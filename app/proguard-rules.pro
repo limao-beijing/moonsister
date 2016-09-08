@@ -83,8 +83,11 @@
 -keep class  com.moonsister.pay.** { *; }
 -dontwarn com.moonsister.pay.**
 -keep public class com.moonsister.tcjy.R$*{
-public static final int *;
+    public static final int *;
 }
+ -keep public class com.moonsister.tcjy.js.JavaScriptObject {
+    public void typePay(int , java.lang.String) ;
+ }
 #自己项目特殊处理代码
 #忽略警告
 -dontwarn com.veidy.mobile.common.**

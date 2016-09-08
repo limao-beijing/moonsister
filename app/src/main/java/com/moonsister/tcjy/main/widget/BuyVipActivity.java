@@ -12,7 +12,7 @@ import com.moonsister.tcjy.utils.UIUtils;
 public class BuyVipActivity  extends BaseFragmentActivity{
     @Override
     protected Fragment initFragment() {
-        return BuyVipFragment.newInstance();
+        return BuyVipViewViewFragment.newInstance();
     }
 
     @Override

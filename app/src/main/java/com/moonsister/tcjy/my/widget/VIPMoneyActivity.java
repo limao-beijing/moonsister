@@ -121,4 +121,9 @@ public class VIPMoneyActivity extends BaseActivity implements BuyVipFragmentView
         this.finish();
 
     }
+
+    @Override
+    public void typePay(int type, String phone) {
+
+    }
 }

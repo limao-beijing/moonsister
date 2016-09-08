@@ -1,17 +1,17 @@
 ext {
     android = [
-            applicationId    : "com.goudayou.sexybelle",
+            applicationId    : "kbxxrqqa.kbxxrqqa.kbxxrqq",
             compileSdkVersion: 23,
             buildToolsVersion: "23.0.1",
             minSdkVersion    : 17,
             targetSdkVersion : 21,
-            versionCode      : 21,
-            versionName      : "2.3.5"
+            versionCode      : 10002,
+            versionName      : "2.4.1"
     ]
     dependencies = [
             "numberprogressbar"     : "com.daimajia.numberprogressbar:library:1.2@aar",
 
-            // v4, v7, RecycleView support
+            // v4, v7, RecycleView suppor
             "recyclerview"          : "com.android.support:recyclerview-v7:23.1.0",
             "support-v4"            : "com.android.support:support-v4:23.4.0",
             "appcompat-v7"          : "com.android.support:appcompat-v7:23.3.0",
