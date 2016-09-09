@@ -8,4 +8,5 @@ import com.moonsister.tcjy.main.view.RelationActivityView;
  */
 public interface RelationActivityPresenter  extends BaseIPresenter<RelationActivityView> {
     void loadData(int type, String uid);
+//    void upup(int type, String to_uid);
 }

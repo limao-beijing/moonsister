@@ -3,6 +3,7 @@ package com.moonsister.tcjy.main.presenter;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.FrientBaen;
 import com.moonsister.tcjy.bean.InsertBaen;
+import com.moonsister.tcjy.bean.PingbiBean;
 import com.moonsister.tcjy.main.model.RelationActivityModel;
 import com.moonsister.tcjy.main.model.RelationActivityModelImpl;
 import com.moonsister.tcjy.main.view.RelationActivityView;
@@ -10,7 +11,7 @@ import com.moonsister.tcjy.main.view.RelationActivityView;
 /**
  * Created by jb on 2016/7/22.
  */
-public class RelationActivityPresenterImpl implements RelationActivityPresenter, BaseIModel.onLoadDateSingleListener<FrientBaen> {
+public class RelationActivityPresenterImpl implements RelationActivityPresenter, BaseIModel.onLoadDateSingleListener<FrientBaen>{
     private RelationActivityView view;
     private RelationActivityModel model;
     private int page = 1;
@@ -31,6 +32,12 @@ public class RelationActivityPresenterImpl implements RelationActivityPresenter,
         view.showLoading();
         model.loadData(type, page, uid, this);
     }
+
+//    @Override
+//    public void upup(int type, String to_uid) {
+//        view.showLoading();
+//        model.toup(type, to_uid, this);
+//    }
 
     @Override
     public void onSuccess(FrientBaen frientBaen, BaseIModel.DataType dataType) {

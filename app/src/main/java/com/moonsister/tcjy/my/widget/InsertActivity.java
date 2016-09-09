@@ -88,7 +88,6 @@ public class InsertActivity extends BaseActivity implements InsertActivityView {
                 adapter.notifyDataSetChanged();
                 break;
             case R.id.button1_text://已选好
-
                     for (int i = 0; i < data.size(); i++) {
                         if (data != null && data.get(i).ischeck()) {//判断为true的选项
 //                        String v = String.valueOf(data.get(i).getTagid());
@@ -98,6 +97,7 @@ public class InsertActivity extends BaseActivity implements InsertActivityView {
                             }
 
                             sbr.append(v );
+
                         }
 
                     }
@@ -105,9 +105,6 @@ public class InsertActivity extends BaseActivity implements InsertActivityView {
                     str=sbr.toString();
 
                     persenter.sendData(str);//发送请求
-
-
-
 
 
                 break;

@@ -24,6 +24,7 @@ import com.moonsister.tcjy.bean.LoginBean;
 import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.PersonalMessageBean;
+import com.moonsister.tcjy.bean.PingbiBean;
 import com.moonsister.tcjy.bean.RankBean;
 import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
 import com.moonsister.tcjy.bean.RegFourBean;
@@ -33,6 +34,7 @@ import com.moonsister.tcjy.bean.RegiterBean;
 import com.moonsister.tcjy.bean.RongyunBean;
 import com.moonsister.tcjy.bean.SearchReasonBaen;
 import com.moonsister.tcjy.bean.TiXinrRecordBean;
+import com.moonsister.tcjy.bean.UserDetailBean;
 import com.moonsister.tcjy.bean.UserFriendListBean;
 import com.moonsister.tcjy.bean.UserInfoChangeBean;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
@@ -937,16 +939,6 @@ public class ServerApi {
                                                    @Query("channel") String channelId,
                                                    @Query("authcode") String authcode);
 
-        /**
-         * 屏蔽
-         *
-         * @param type
-         * @param to_uid
-         */
-
-        @GET("shield/shield_act")
-        Observable<FrientBaen> getPingbiRelation(@Query("type") int type,
-                                                 @Query("to_uid") String to_uid);
 
         /**
          * 兴趣选项
@@ -1156,6 +1148,28 @@ public class ServerApi {
                                             @Field("order_id") String order_id,
                                                         @Field("authcode") String auhcode,
                                                         @Field("channel") String channel);
+
+        /**
+         * 获得用户资料
+         *@param uid
+         * @return
+         */
+        @GET("User/user_detail_addon1_Center")
+        Observable<UserDetailBean> userdetailbean(@Query("uid") String uid,
+                                                @Query("authcode") String authcode,
+                                                 @Query("channel") String channelId);
+        /**
+         * 屏蔽
+         *@param type
+         * @param to_uid
+         * @return
+         */
+        @GET("shield/shield_act")
+        Observable<PingbiBean> pingbibean(@Query("type") int  type,
+                                              @Query("to_uid") String to_uid,
+                                              @Query("authcode") String authcode,
+                                              @Query("channel") String channelId);
+
 
     }
 }

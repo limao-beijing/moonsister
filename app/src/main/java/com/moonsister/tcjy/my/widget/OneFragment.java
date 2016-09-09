@@ -39,7 +39,7 @@ public class OneFragment extends BaseFragment implements BalanceActivityView{
         type=1;
         mPresenter = new MoneyActivityPersenterImpl();
         mPresenter.attachView(this);
-//        mPresenter.moneyba(type,1,10);
+//        mPresenter.moneyba(type,page,pagesize);
         return UIUtils.inflateLayout(R.layout.onefragment);
     }
 

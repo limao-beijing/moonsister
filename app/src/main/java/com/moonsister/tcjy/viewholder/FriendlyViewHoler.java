@@ -24,16 +24,16 @@ import butterknife.OnClick;
 /**
  * Created by x on 2016/8/25.
  */
-public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBean> {
-    @Bind(R.id.riv_user_image)
+public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBean>  {
+    @Bind(R.id.riv_user_image)//头像
     RoundedImageView rivUserImage;
     @Bind(R.id.tv_user_name)
-    TextView tvUserName;
+    TextView tvUserName;//用户名
     @Bind(R.id.tv_content)
     TextView tvContent;
-    @Bind(R.id.delete_textview)
+    @Bind(R.id.delete_textview)//屏蔽
     TextView tvSubmit;
-    @Bind(R.id.xin)
+    @Bind(R.id.xin)//屏蔽图片
     ImageView xin;
     String str;
     //    @Bind(R.id.imageView)
@@ -60,6 +60,7 @@ public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBea
                 @Override
                 public void onClick(View v) {
                     tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.text_huang));
+
                     xin.setImageResource(R.mipmap.zuixin);
                     tvSubmit.setText("取消屏蔽");
                     str= (String) tvSubmit.getText();

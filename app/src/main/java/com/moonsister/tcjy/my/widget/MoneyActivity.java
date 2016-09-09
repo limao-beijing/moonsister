@@ -1,6 +1,8 @@
 package com.moonsister.tcjy.my.widget;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -135,14 +137,17 @@ public class MoneyActivity extends BaseActivity implements WithdRawDepositView {
 
     @Override
     public void setloadEnableMoney(WithdRawDepositBean str) {
-//        String s=str.getData().getWithdraw_money();
-//        if(s==null){
-//            balance.setText("0");
-//        }else{
-//            balance.setText(s);
-//        }
+        int withdraw_money = str.getData().getWithdraw_money();
         balance.setText(str.getData().getLast_money());
+        //实例化SharedPreferences对象（第一步）
+        SharedPreferences mySharedPreferences= getSharedPreferences("test", Activity.MODE_PRIVATE);
+        //实例化SharedPreferences.Editor对象（第二步）
+        SharedPreferences.Editor editor = mySharedPreferences.edit();
+        //用putInt的方法保存数据
 
+        editor.putInt("withdraw_money",withdraw_money);
+        //提交当前数据
+        editor.commit();
     }
 
     @Override

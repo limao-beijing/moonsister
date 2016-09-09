@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/iv_user_icon"
-            android:layout_marginRight="@dimen/x70"
+            android:layout_marginRight="@dimen/x80"
             android:layout_marginTop="@dimen/y138"
             android:text="@string/loading"
             android:textSize="16sp"
@@ -35,14 +35,14 @@
             android:textSize="13sp"
             android:layout_toLeftOf="@+id/iv_user_icon"
             android:layout_marginTop="@dimen/x14"
-            android:layout_marginRight="@dimen/x90"
+            android:layout_marginRight="@dimen/x70"
             android:textColor="#778998"/>
         <TextView
             android:id="@+id/tv_user_day_income"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/iv_user_icon"
-            android:layout_marginLeft="@dimen/x70"
+            android:layout_marginLeft="@dimen/x80"
             android:layout_marginTop="@dimen/y138"
             android:text="@string/loading"
             android:textSize="16sp"
@@ -118,7 +118,6 @@
             android:layout_toLeftOf="@+id/tv_age"
             android:layout_below="@+id/tv_user_name"
             android:layout_marginTop="@dimen/x22"
-            android:background="@mipmap/gril"
             android:layout_marginRight="@dimen/x20"
             />
         <ImageView
@@ -162,9 +161,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/vip_money"
-            android:src="@mipmap/ifvip"
-            android:layout_marginTop="@dimen/x200"
-            android:layout_marginLeft="@dimen/x400"/>
+            android:background="@mipmap/ifvip"
+            android:layout_marginTop="@dimen/x210"
+            android:layout_marginLeft="@dimen/x410"/>
     </RelativeLayout>
 
     <GridView

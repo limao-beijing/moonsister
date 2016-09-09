@@ -81,7 +81,7 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
                 login();
                 break;
             case R.id.reg_new_people://注册新用户
-                Intent intent=new Intent(getActivity(), ManorGrilActivity.class);
+                Intent intent=new Intent(getActivity(), RegActivity.class);
                 startActivity(intent);
                 break;
         }

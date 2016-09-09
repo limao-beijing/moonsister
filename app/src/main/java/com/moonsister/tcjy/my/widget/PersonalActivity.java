@@ -19,6 +19,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.PersonalAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.GoodSelectBaen;
+import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.bean.PersonalMessageBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenter;
@@ -79,6 +80,7 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
     PersonalMessageBean.DataBean.BaseinfoBean data1;
     PersonalMessageBean.DataBean.DlistBean data2;
     PersonalMessageBean.DataBean.VipinfoBean data3;
+    String uid;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -199,6 +201,9 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
                 }
             });
         }
+        PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();//获得对象
+        memoryPersonInfoDetail.setSmobile(smobile);//保存值
+        UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
         String qq = data3.getQq();//用户QQ号
             if(qq==null){
                 qq_number.setText("xxxxxxxxxxx");

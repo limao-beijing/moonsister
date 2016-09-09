@@ -42,7 +42,7 @@ public class TwoFragment extends BaseFragment implements BalanceActivityView {
 
     @Override
     protected void initData() {
-        mPresenter.moneyba(type,1,10);
+        mPresenter.moneyba(type,page,pagesize);
     }
 
     @Override

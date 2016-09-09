@@ -13,6 +13,7 @@ import com.moonsister.tcjy.adapter.FriendlyAdapter;
 import com.moonsister.tcjy.adapter.FrientAdapter;
 import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.bean.FrientBaen;
+import com.moonsister.tcjy.bean.PingbiBean;
 import com.moonsister.tcjy.main.presenter.RelationActivityPresenterImpl;
 import com.moonsister.tcjy.main.view.RelationActivityView;
 import com.moonsister.tcjy.utils.UIUtils;
@@ -91,6 +92,11 @@ public class ContactsFragment extends BaseFragment implements RelationActivityVi
         xListView.loadMoreComplete();
         xListView.refreshComplete();
     }
+
+//    @Override
+//    public void setPingBiData(PingbiBean pingBiBaen) {
+//
+//    }
 
     @Override
     public void showLoading() {

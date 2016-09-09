@@ -1,31 +1,21 @@
 package com.moonsister.tcjy.my.widget;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
+import android.app.DatePickerDialog;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.adapter.PersonalAdapter;
-import com.moonsister.tcjy.adapter.PersonalReviseAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.PersonalMessageBean;
 import com.moonsister.tcjy.bean.personalBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.login.widget.SelectPicPopupActivity;
-import com.moonsister.tcjy.main.widget.PersonInfoChangeActivity;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenter;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.PersonalActivityView;
@@ -34,12 +24,12 @@ import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 
-import org.apache.http.entity.StringEntity;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.Bind;
@@ -49,7 +39,7 @@ import io.rong.imkit.MsgContent;
 /**
  * Created by x on 2016/9/5.
  */
-public class PersonalReviseActivity extends BaseActivity implements PersonalActivityView {
+public class PersonalReviseActivity extends BaseActivity implements PersonalActivityView{
     @Bind(R.id.riv_user_image)//头像
             ImageView riv_user_image;
     @Bind(R.id.riv_like_image)//背景墙
@@ -101,6 +91,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
     private String jsonString2;//不带集合的json字符串
     private String avater;
     private personalBean mPersonalBean;
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -241,7 +232,6 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
                 break;
 
             case R.id.layout_birthday://出生年月
-
                 tv_birthday.requestFocus();
                 String birthday=tv_birthday.getText().toString();
                 PersonalMessageBean userJsonBean5 = new PersonalMessageBean();
@@ -343,6 +333,35 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
                 break;
         }
     }
+//    private void showDialog() {
+//        final CustomDialog.Builder builder = new CustomDialog.Builder(this);
+//        builder.setPositiveButton(new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int which) {
+//                tv_birthday.setText(builder.getStr());
+//                dialog.dismiss();
+//            }
+//        });
+//
+//        builder.setNegativeButton(new android.content.DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.dismiss();
+//            }
+//        });
+//        showDialog(builder);
+//    }
+//
+//    private void showDialog(CustomDialog.Builder builder) {
+//        Dialog dialog = builder.create();
+//        Window dialogWindow = dialog.getWindow();
+//        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+//        dialogWindow.setGravity(Gravity.CENTER);
+//        WindowManager m = getWindowManager();
+//        Display d = m.getDefaultDisplay(); // 鑾峰彇灞忓箷瀹姐€侀珮鐢�
+//        WindowManager.LayoutParams p = dialogWindow.getAttributes(); // 鑾峰彇瀵硅瘽妗嗗綋鍓嶇殑鍙傛暟鍊�
+//        p.width = (int) (d.getWidth() * 0.75); // 瀹藉害璁剧疆涓哄睆骞曠殑0.65
+//        dialogWindow.setAttributes(p);
+//        dialog.show();
+//    }
     private void changeArrayDateToJson() { //把一个集合转换成json格式的字符串
         jsonArray=null;
         object=null;
@@ -370,5 +389,4 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
         Log.i("hck", "转换成json字符串: " + jsonString);
 
     }
-
 }

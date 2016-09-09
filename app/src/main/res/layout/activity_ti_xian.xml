@@ -133,7 +133,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/tv_money"
             android:background="@null"
-            android:hint="本次可转出10001"
+            android:text="本次可转出10001"
             android:inputType="number"
             android:padding="@dimen/x7"
             android:textColor="@color/text_color"

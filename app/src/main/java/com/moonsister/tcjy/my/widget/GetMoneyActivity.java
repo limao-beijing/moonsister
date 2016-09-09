@@ -1,10 +1,15 @@
 package com.moonsister.tcjy.my.widget;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
@@ -19,6 +24,9 @@ import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -62,10 +70,32 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
 
     @Override
     protected void initView() {
-        String s = etInputMoney.getText().toString();
-        if(s!=null){
-            tv_sure.setBackgroundResource(R.mipmap.recharge);//金额输入框不为空时确认按钮变颜色
-        }
+        //同样，在读取SharedPreferences数据前要实例化出一个SharedPreferences对象
+        SharedPreferences sharedPreferences= getSharedPreferences("test", Activity.MODE_PRIVATE);
+        // 使用getInt方法获得value，注意第2个参数是value的默认值
+        int withdraw_money = sharedPreferences.getInt("withdraw_money", 0);
+        etInputMoney.setText("本次可转出"+withdraw_money);
+        etInputMoney.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String s = etInputMoney.getText().toString();
+                Pattern p = Pattern.compile("[0-9]*");
+                Matcher m = p.matcher(s);
+                if(m.matches()){
+                    tv_sure.setBackgroundResource(R.mipmap.recharge);
+                }
+            }
+        });
         persenter.loadbasicInfo();
 
     }
@@ -155,6 +185,7 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
         cardType = data.getType();
         tvBankNumber.setText(number);
         ImageServerApi.showURLSamllImage(ivBankLogo, data.getLogo());
+
 
     }
 

@@ -39,7 +39,7 @@ import butterknife.OnClick;
  * Created by jb on 2016/8/12.
  */
 public class BuyVipFragment extends BaseFragment implements BuyVipFragmentView {
-    @Bind(R.id.riv_avater)
+    @Bind(R.id.riv_avater)//头像
     RoundedImageView rivAvater;
     @Bind(R.id.iv_add_v)
     ImageView ivAddV;

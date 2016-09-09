@@ -10,7 +10,8 @@
     <ProgressBar
             android:layout_width="30.0dip"
             android:layout_height="30.0dip"
-            android:indeterminateDrawable="@drawable/progress_drawable_white" />
+            android:indeterminateDrawable="@drawable/progress_drawable_white"
+        android:indeterminate="false" />
 
     <TextView
             android:id="@+id/id_tv_loadingmsg"

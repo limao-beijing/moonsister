@@ -117,7 +117,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
                 .create();
         ImageServerApi.showURLSamllImage(riv_avater, UserInfoManager.getInstance().getAvater());
         vip_id.setText(UserInfoManager.getInstance().getUid());
-
+        phone.setText(UserInfoManager.getInstance().getSmobile());
     }
     private void pageFinish() {
 
@@ -133,7 +133,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
     public void startrecord(View view) {
 
 
-        Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        Intent intent = new Intent();
         intent.setAction("android.media.action.VIDEO_CAPTURE");
         intent.addCategory("android.intent.category.DEFAULT");
         File file = new File(SDUtils.getRootFile(this) + File.separator + System.currentTimeMillis() + ".mp4");

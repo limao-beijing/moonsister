@@ -102,6 +102,7 @@ public class UserInfoManager {
         return authcode;
     }
 
+
     /**
      * 获取融云的key
      *
@@ -213,5 +214,16 @@ public class UserInfoManager {
     //用户职业
     public String getProfession(){
         return info.getProfession();
+    }
+    /**
+     * 获取用户手机号
+     *
+     * @return
+     */
+    public String getSmobile() {
+        String smobile = info.getSmobile();
+        if (StringUtis.isEmpty(smobile))
+            return "";
+        return smobile;
     }
 }

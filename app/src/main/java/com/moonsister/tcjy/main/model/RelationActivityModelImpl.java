@@ -3,7 +3,10 @@ package com.moonsister.tcjy.main.model;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
+import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.FrientBaen;
+import com.moonsister.tcjy.bean.PingbiBean;
+import com.moonsister.tcjy.main.presenter.RelationActivityPresenterImpl;
 import com.moonsister.tcjy.main.widget.RelationActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
@@ -32,6 +35,22 @@ public class RelationActivityModelImpl implements RelationActivityModel {
             @Override
             public void onSuccess(FrientBaen baseBean) {
                 listener.onSuccess(baseBean, DataType.DATA_FOUR);
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                listener.onFailure(msg);
+            }
+        });
+    }
+
+    @Override
+    public void toup(int type, String to_uid, onLoadDateSingleListener<BaseBean> listener) {
+        Observable<PingbiBean> observable = ServerApi.getAppAPI().pingbibean(type, to_uid,UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<PingbiBean>() {
+            @Override
+            public void onSuccess(PingbiBean bean) {
+                listener.onSuccess(bean, DataType.DATA_ZERO);
             }
 
             @Override

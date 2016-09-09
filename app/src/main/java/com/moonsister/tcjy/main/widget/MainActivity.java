@@ -233,7 +233,7 @@ public class MainActivity extends BaseActivity implements MainView {
             public void onClick(DialogInterface dialog, int which) {
                 RxBus.getInstance().send(Events.EventEnum.LOGIN_CODE_TIMEOUT, null);
                 dialog.dismiss();
-                dialog = null;
+//                dialog = null;
             }
         });
         builder.show();

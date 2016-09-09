@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.FrientBaen;
+import com.moonsister.tcjy.bean.PingbiBean;
 import com.moonsister.tcjy.main.view.RelationActivityView;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.FragmentUtils;
@@ -27,16 +28,16 @@ import butterknife.OnClick;
  * Created by x on 2016/8/24.
  */
 public class FollowActivity extends BaseActivity implements RelationActivityView {
-    @Bind(R.id.my_follow)
+    @Bind(R.id.my_follow)//我关注的
     TextView my_follow;
-    @Bind(R.id.follow_my)
+    @Bind(R.id.follow_my)//关注我的
     TextView follow_my;
-    @Bind(R.id.image_back)
+    @Bind(R.id.image_back)//返回键
     ImageView imageBack;
-    @Bind(R.id.image_pingbi)
+    @Bind(R.id.image_pingbi)//屏蔽
     ImageView image_pingbi;
-    private ChatFollowFragment mChatFg;
-    private ContactsFragment mContactsFg;
+    private ChatFollowFragment mChatFg;//我关注的fragment
+    private ContactsFragment mContactsFg;//关注我的fragment
     Fragment currentFragment;
 
     @Override
@@ -59,6 +60,11 @@ public class FollowActivity extends BaseActivity implements RelationActivityView
     public void setFrientData(FrientBaen frientBaen) {
         setFrientData(frientBaen);
     }
+
+//    @Override
+//    public void setPingBiData(PingbiBean pingBiBaen) {
+//        setPingBiData(pingBiBaen);
+//    }
 
     @Override
     public void showLoading() {

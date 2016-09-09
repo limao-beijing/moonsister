@@ -14,7 +14,12 @@ import android.widget.TextView;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
+import com.moonsister.tcjy.bean.GoodSelectBaen;
+import com.moonsister.tcjy.bean.UserDetailBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.my.persenter.HreatFragmentPersenter;
+import com.moonsister.tcjy.my.persenter.HreatFragmentPresenterImpl;
+import com.moonsister.tcjy.my.view.HreatFragmentView;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.HreatViewholder;
@@ -32,13 +37,12 @@ import butterknife.OnClick;
 /**
  * Created by x on 2016/8/22.
  */
-public class HreatFragment extends BaseFragment implements AdapterView.OnItemClickListener {
+public class HreatFragment extends BaseFragment implements  AdapterView.OnItemClickListener,HreatFragmentView {
     private HreatViewholder hreatViewholder;
     @Bind(R.id.gridView)//我页面中gridview
     GridView gridView;
     //gridview中的item数据与图片
     String uid;
-    int type;
     String my;
     @Bind(R.id.iv_user_icon)//用户头像
     ImageView iv_user_icon;
@@ -62,41 +66,25 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
     TextView tv_look_people;
     @Bind(R.id.vip_money)//是否为VIP
     ImageView vip_money;
-    String userId;
     String[] images_text=new String[]{"我关注的","关注我的","动态管理","VIP充值","申请认证","兴趣修改","悬赏管理","约见管理","修改资料","财务中心","屏蔽手机联系人","设置"};
 //
     int[] images=new int[]{R.mipmap.mysee,R.mipmap.seemy,R.mipmap.makemessage,R.mipmap.vipmoney,R.mipmap.viprenzheng,R.mipmap.insert,R.mipmap.xuanshang,R.mipmap.yousee,R.mipmap.make,R.mipmap.money,R.mipmap.phone,R.mipmap.domake};
 //    ,,
+    HreatFragmentPersenter persenter;
+    UserDetailBean.DataBean.BaseinfoBean data;
+    UserDetailBean.DataBean.AddonsBean addons;
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        persenter=new HreatFragmentPresenterImpl();
+        persenter.attachView(this);
 
         return UIUtils.inflateLayout(R.layout.my_zhuye);//加载主页
     }
 
     @Override
     protected void initData() {
-        ImageServerApi.showURLSamllImage(iv_user_icon, UserInfoManager.getInstance().getAvater());
-        tv_user_name.setText(UserInfoManager.getInstance().getNickeName());
-        String userSex=UserInfoManager.getInstance().getUserSex();
-        if(userSex=="男"){
-            image_gril.setBackgroundResource(R.mipmap.nan);
-        }else{
-            image_gril.setBackgroundResource(R.mipmap.gril);
-        }
-        int m=UserInfoManager.getInstance().getMemoryPersonInfoDetail().getVipStatus();
-        if(m==1){
-            vip_money.setVisibility(View.VISIBLE);
-        }else{
-            vip_money.setVisibility(View.INVISIBLE);
-        }
-        tv_user_all_income.setText(UserInfoManager.getInstance().getAll_Income());
-        tv_user_day_income.setText(UserInfoManager.getInstance().getDay_Income());
-        tv_age.setText(UserInfoManager.getInstance().getAge());
-        tv_time.setText(UserInfoManager.getInstance().getBrith());
-        tv_address.setText(UserInfoManager.getInstance().getAddress());
-        tv_work.setText(UserInfoManager.getInstance().getProfession());
+        persenter.PaySubmit(uid);
 
-        uid= UserInfoManager.getInstance().getUid();
         List<Map<String,Object>> listItems = new ArrayList<Map<String, Object>>();
         //循环加载数据到gridview中
         for (int i=0;i<images_text.length;i++) {
@@ -165,6 +153,64 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
                 String uid = UserInfoManager.getInstance().getUid();
                 ActivityUtils.startHomePageActivity(uid);
                 break;
+        }
+    }
+
+
+
+    @Override
+    public void showLoading() {
+        showProgressDialog();
+    }
+
+    @Override
+    public void hideLoading() {
+        hideProgressDialog();
+    }
+
+    @Override
+    public void transfePageMsg(String msg) {
+        showToast(msg);
+    }
+
+    @Override
+    public void success(UserDetailBean userDetailBean) {
+        data = userDetailBean.getData().getBaseinfo();
+        addons = userDetailBean.getData().getAddons();
+        tv_user_name.setText(data.getNickname());//用户昵称
+        int sex = data.getSex();//用户性别
+        if(sex==1){
+            image_gril.setImageResource(R.mipmap.nan);
+        }else{
+            image_gril.setImageResource(R.mipmap.gril);
+        }
+        ImageServerApi.showURLSamllImage(iv_user_icon, data.getFace());//用户头像
+        String profession = data.getProfession();//用户职业
+        if(profession==""){
+            tv_work.setVisibility(View.INVISIBLE);
+        }else{
+            tv_work.setText(profession);
+        }
+        String birthday = data.getBirthday();//用户出生年月日
+        if(birthday==""){
+            tv_time.setVisibility(View.INVISIBLE);
+        }else{
+            tv_time.setText(birthday);
+        }
+        int age = data.getAge();//年龄
+        tv_age.setText(age+"岁");
+        tv_address.setText(data.getResidence());//用户地址
+        int income_all = addons.getIncome_all();//用户总收入
+        tv_user_all_income.setText(income_all+"");
+
+        int income_today = addons.getIncome_today();//今日收入
+        tv_user_day_income.setText(income_today+"");
+        String vip_level = data.getVip_level();//判断是否为VIP
+        if(vip_level.equals("0")){
+            vip_money.setVisibility(View.GONE);
+        }else{
+            vip_money.setVisibility(View.VISIBLE);
+
         }
     }
 }
