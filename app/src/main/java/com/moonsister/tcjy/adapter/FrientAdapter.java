@@ -79,7 +79,7 @@ public class FrientAdapter extends BaseRecyclerViewAdapter<FrientBaen.DataBean> 
                             } else
                                 datas.remove(dataBean);
                             onRefresh();
-//                            Events<FrientBaen.DataBean> events = new Events<>();
+//                            Events<FrientBaen.DataBean> events = dynamic_new Events<>();
 //                            events.what = Events.EventEnum.FRIEND_CHANGE;
 //                            events.message = dataBean;
                             RxBus.getInstance().send(Events.EventEnum.FRIEND_CHANGE,null);

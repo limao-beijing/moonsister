@@ -249,14 +249,14 @@ public class UpdateManager implements UpdateManagerView, View.OnClickListener {
 //     */
 //    private void downloadApk(final VersionInfo bean) {
 //        if (httpHelp == null) {
-//            httpHelp = new HttpHelp();
+//            httpHelp = dynamic_new HttpHelp();
 //        }
-//        File apkfile = new File(GlobalConstant.SAVE_APK_PATH);
+//        File apkfile = dynamic_new File(GlobalConstant.SAVE_APK_PATH);
 //        if (apkfile.exists()) {
 //            apkfile.delete();
 //        }
 //        httpHelp.downLoad(bean.cont.durl, GlobalConstant.SAVE_APK_PATH,
-//                new LoadRequestCallBack() {
+//                dynamic_new LoadRequestCallBack() {
 //
 //                    @Override
 //                    public void onLoading(long total, long current,
@@ -315,7 +315,7 @@ public class UpdateManager implements UpdateManagerView, View.OnClickListener {
         // 使用notification.xml文件作VIEW
         // 设置进度条，最大值 为100,当前值为0，最后一个参数为true时显示条纹
         // （就是在Android Market下载软件，点击下载但还没获取到目标大小时的状态）
-        // Intent notificationIntent = new Intent(UIUtils.getContext(),
+        // Intent notificationIntent = dynamic_new Intent(UIUtils.getContext(),
         // MainActivity.class);
         // PendingIntent contentIntent =
         // PendingIntent.getActivity(UIUtils.getContext(),0,notificationIntent,PendingIntent.FLAG_UPDATE_CURRENT);

@@ -91,7 +91,7 @@ public final class EventsMessage  implements Parcelable {
     /** If set EventsMessage is in use.
      * This flag is set when the EventsMessage is enqueued and remains set while it
      * is delivered and afterwards when it is recycled.  The flag is only cleared
-     * when a new EventsMessage is created or obtained since that is the only time that
+     * when a dynamic_new EventsMessage is created or obtained since that is the only time that
      * applications are allowed to modify the contents of the EventsMessage.
      *
      * It is an error to attempt to enqueue or recycle a EventsMessage that is already in use.
@@ -126,8 +126,8 @@ public final class EventsMessage  implements Parcelable {
     private static boolean gCheckRecycle = true;
 
     /**
-     * Return a new EventsMessage instance from the global pool. Allows us to
-     * avoid allocating new objects in many cases.
+     * Return a dynamic_new EventsMessage instance from the global pool. Allows us to
+     * avoid allocating dynamic_new objects in many cases.
      */
     public static EventsMessage obtain() {
         synchronized (sPoolSync) {
@@ -145,7 +145,7 @@ public final class EventsMessage  implements Parcelable {
 
     /**
      * Same as {@link #obtain()}, but copies the values of an existing
-     * EventsMessage (including its target) into the new one.
+     * EventsMessage (including its target) into the dynamic_new one.
      * @param orig Original EventsMessage to copy.
      * @return A EventsMessage object from the global pool.
      */

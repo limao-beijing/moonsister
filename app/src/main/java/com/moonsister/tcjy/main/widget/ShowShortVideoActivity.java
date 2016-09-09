@@ -54,12 +54,12 @@ public class ShowShortVideoActivity extends BaseActivity implements
             finish();
             return;
         }
-//        if (!new File(path).exists()) {
+//        if (!dynamic_new File(path).exists()) {
 //            Log.e(TAG, "********文件不存在*******");
 //            finish();
 //            return;
 //        }
-//        vv.setVideoURI(Uri.fromFile(new File(path)));
+//        vv.setVideoURI(Uri.fromFile(dynamic_new File(path)));
         try {
             Uri uri = Uri.parse(path);
             vv.setVideoURI(uri);

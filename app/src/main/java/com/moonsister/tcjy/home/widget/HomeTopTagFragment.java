@@ -212,19 +212,19 @@ public class HomeTopTagFragment extends BaseFragment {
         // fragments.clear();// 清空
         // int count = userChannelList.size();
         // for (int i = 0; i < count; i++) {
-        // Bundle data = new Bundle();
+        // Bundle data = dynamic_new Bundle();
         // // data.putString("text", userChannelList.get(i).getName());
         // // data.putInt("id", userChannelList.get(i).getId());
-        // // TVListFragment newfragment = new TVListFragment();
-        // NewsFragment newfragment = new NewsFragment();
+        // // TVListFragment newfragment = dynamic_new TVListFragment();
+        // NewsFragment newfragment = dynamic_new NewsFragment();
         // newfragment.setArguments(data);
         // fragments.add(newfragment);
         // }
-        // NewsFragmentPagerAdapter mAdapetr = new NewsFragmentPagerAdapter(
+        // NewsFragmentPagerAdapter mAdapetr = dynamic_new NewsFragmentPagerAdapter(
         // activity.getSupportFragmentManager(), fragments);
         LogUtil.e(this, "****************mViewPager初始化***************");
         // if (mainAdapter == null) {
-        mainAdapter = new MainAdapter(getChildFragmentManager());
+        mainAdapter = dynamic_new MainAdapter(getChildFragmentManager());
         selectTab(0);
         mViewPager.setAdapter(mainAdapter);
 //		mViewPager.setOffscreenPageLimit(0);

@@ -95,7 +95,7 @@ public class FrientViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBean>
         /// 这一步必须要做,否则不会显示.
 
 
-//        rivUserImage.setOnClickListener(new View.OnClickListener() {
+//        rivUserImage.setOnClickListener(dynamic_new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //                ActivityUtils.startUserinfoActivity(dataBean.getUid());

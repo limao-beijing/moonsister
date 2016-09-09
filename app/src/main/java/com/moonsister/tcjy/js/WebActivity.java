@@ -1,11 +1,13 @@
 package com.moonsister.tcjy.js;
 
 
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.JsResult;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.WebView;
 
@@ -26,7 +28,13 @@ public class WebActivity extends BaseActivity implements WebView.onWebViewListen
 
     @Override
     protected void initView() {
-
+        String url = getIntent().getStringExtra("url");
+        if (StringUtis.isEmpty(url)) {
+            finish();
+            return;
+        }
+        mWebView.setWebViewListener(this);
+        mWebView.loadUrl(url);
 
     }
 
@@ -37,7 +45,10 @@ public class WebActivity extends BaseActivity implements WebView.onWebViewListen
 
     @Override
     public void onReceivedTitle(String title) {
-        setTitleName(title);
+        if (title == null)
+            return;
+
+        setTitleName(title.length() > 8 ? title.substring(0, 8) + "..." : title);
     }
 
     @Override
@@ -49,4 +60,16 @@ public class WebActivity extends BaseActivity implements WebView.onWebViewListen
     public void onPageFinished() {
         hideProgressDialog();
     }
+
+    @Override
+    // 设置回退
+    // 覆盖Activity类的onKeyDown(int keyCoder,KeyEvent event)方法
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebView.canGoBack()) {
+            mWebView.goBack(); // goBack()表示返回WebView的上一页面
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 }

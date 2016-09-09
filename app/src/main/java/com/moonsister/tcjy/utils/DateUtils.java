@@ -160,7 +160,7 @@ public class DateUtils {
 //        var4.set(14, 999);
 //        Date var5 = var4.getTime();
 //        long var6 = var5.getTime();
-//        TimeInfo var8 = new TimeInfo();
+//        TimeInfo var8 = dynamic_new TimeInfo();
 //        var8.setStartTime(var2);
 //        var8.setEndTime(var6);
 //        return var8;
@@ -178,7 +178,7 @@ public class DateUtils {
 //        Calendar var4 = Calendar.getInstance();
 //        Date var5 = var4.getTime();
 //        long var6 = var5.getTime();
-//        TimeInfo var8 = new TimeInfo();
+//        TimeInfo var8 = dynamic_new TimeInfo();
 //        var8.setStartTime(var2);
 //        var8.setEndTime(var6);
 //        return var8;
@@ -204,7 +204,7 @@ public class DateUtils {
 //        var4.roll(5, -1);
 //        Date var5 = var4.getTime();
 //        long var6 = var5.getTime();
-//        TimeInfo var8 = new TimeInfo();
+//        TimeInfo var8 = dynamic_new TimeInfo();
 //        var8.setStartTime(var2);
 //        var8.setEndTime(var6);
 //        return var8;

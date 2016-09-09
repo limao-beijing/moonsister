@@ -57,7 +57,7 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
             gridView.setAdapter(simpleAdapter);
         gridView.setOnItemClickListener(this);
 
-//            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            gridView.setOnItemClickListener(dynamic_new AdapterView.OnItemClickListener() {
 //                @Override
 //                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 //

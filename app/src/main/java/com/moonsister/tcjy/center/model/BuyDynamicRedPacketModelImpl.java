@@ -100,7 +100,7 @@ public class BuyDynamicRedPacketModelImpl implements BuyDynamicRedPacketModel {
                 });
 
 
-//        ObservableUtils.parser(observable, new ObservableUtils.Callback<PayBean>() {
+//        ObservableUtils.parser(observable, dynamic_new ObservableUtils.Callback<PayBean>() {
 //            @Override
 //            public void onSuccess(PayBean bean) {
 //                if (bean.getData() == null) {

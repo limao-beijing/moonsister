@@ -131,7 +131,7 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
         if (mAdapter == null) {
             mAdapter = new DynamicDetailsAdapter(datas);
             View view = UIUtils.inflateLayout(R.layout.item_home_one_menu);
-//            holder = new DynamicViewHolder(view, userInfo.getType());
+//            holder = dynamic_new DynamicViewHolder(view, userInfo.getType());
             initHeader(userInfo.getType());
             holder.onBindData(userInfo);
             holder.setView(this);

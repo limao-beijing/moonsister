@@ -163,7 +163,7 @@ public class ImageGridFragment extends Fragment implements OnItemClickListener {
 
         if (position == 0) {
 
-//            Intent intent = new Intent();
+//            Intent intent = dynamic_new Intent();
 //            intent.setClass(getActivity(), RecorderVideoActivity.class);
 //            startActivityForResult(intent, 100);
         } else {

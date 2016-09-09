@@ -63,7 +63,7 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
         userId = getIntent().getStringExtra(AppConstant.USER_ID);
         recyclerview.setVerticalLinearLayoutManager();
         recyclerview.addHeaderView(initHeadLayout());
-//        recyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//        recyclerview.addOnScrollListener(dynamic_new RecyclerView.OnScrollListener() {
 //            @Override
 //            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
 //                super.onScrollStateChanged(recyclerView, newState);
@@ -189,6 +189,7 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
         if (mAdapter == null) {
             mAdapter = new DynamicAdapter(list);
             mAdapter.setView(this);
+            mAdapter.setActivty(this);
             recyclerview.setAdapter(mAdapter);
         } else {
             if (isRefresh)

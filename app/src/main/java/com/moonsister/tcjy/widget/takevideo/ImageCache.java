@@ -65,7 +65,7 @@ public class ImageCache {
 	private Set<SoftReference<Bitmap>> mReusableBitmaps;
 
 	/**
-	 * Create a new ImageCache object using the specified parameters. This
+	 * Create a dynamic_new ImageCache object using the specified parameters. This
 	 * should not be called directly by other classes, instead use
 	 * {@link ImageCache#getInstance(FragmentManager, ImageCacheParams)}
 	 * to fetch an ImageCache instance.
@@ -88,7 +88,7 @@ public class ImageCache {
 	 * @param cacheParams
 	 *            The cache parameters to use if the ImageCache needs
 	 *            instantiation.
-	 * @return An existing retained ImageCache object or a new one if one did
+	 * @return An existing retained ImageCache object or a dynamic_new one if one did
 	 *         not exist
 	 */
 	public static ImageCache getInstance(FragmentManager fragmentManager,
@@ -355,7 +355,7 @@ public class ImageCache {
 		}
 
 		// From Android 4.4 (KitKat) onward we can re-use if the byte size of
-		// the new bitmap
+		// the dynamic_new bitmap
 		// is smaller than the reusable bitmap candidate allocation byte count.
 		int width = targetOptions.outWidth / targetOptions.inSampleSize;
 		int height = targetOptions.outHeight / targetOptions.inSampleSize;
@@ -503,7 +503,7 @@ public class ImageCache {
 	 * 
 	 * @param fm
 	 *            The FragmentManager manager to use.
-	 * @return The existing instance of the Fragment or the new instance if just
+	 * @return The existing instance of the Fragment or the dynamic_new instance if just
 	 *         created.
 	 */
 	private static RetainFragment findOrCreateRetainFragment(FragmentManager fm) {

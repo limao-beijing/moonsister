@@ -55,10 +55,10 @@ public class RecyclingImageView extends ImageView {
         // Keep hold of previous Drawable
         final Drawable previousDrawable = getDrawable();
 
-        // Call super to set new Drawable
+        // Call super to set dynamic_new Drawable
         super.setImageDrawable(drawable);
 
-        // Notify new Drawable that it is being displayed
+        // Notify dynamic_new Drawable that it is being displayed
         notifyDrawable(drawable, true);
 
         // Notify old Drawable so it is no longer being displayed

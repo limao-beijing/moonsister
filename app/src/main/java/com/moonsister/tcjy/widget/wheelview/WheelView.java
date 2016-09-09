@@ -80,7 +80,7 @@ public class WheelView extends View {
     /**
      * Top and bottom shadows colors
      */
-    // private static final int[] SHADOWS_COLORS = new int[] { 0x00000000,
+    // private static final int[] SHADOWS_COLORS = dynamic_new int[] { 0x00000000,
     // 0x00000000, 0x00000000 };
     private static final int[] SHADOWS_COLORS = new int[]{0xe95d39,
             0x00000000, 0x00000000};// change
@@ -231,7 +231,7 @@ public class WheelView extends View {
     /**
      * Sets wheel adapter
      *
-     * @param adapter the new wheel adapter
+     * @param adapter the dynamic_new wheel adapter
      */
     public void setAdapter(WheelAdapter adapter) {
         this.adapter = adapter;
@@ -261,7 +261,7 @@ public class WheelView extends View {
     /**
      * Sets count of visible items
      *
-     * @param count the new count
+     * @param count the dynamic_new count
      */
     public void setVisibleItems(int count) {
         visibleItems = count;
@@ -312,7 +312,7 @@ public class WheelView extends View {
      * Notifies changing listeners
      *
      * @param oldValue the old wheel value
-     * @param newValue the new wheel value
+     * @param newValue the dynamic_new wheel value
      */
     protected void notifyChangingListeners(int oldValue, int newValue) {
         for (OnWheelChangedListener listener : changingListeners) {
@@ -470,7 +470,7 @@ public class WheelView extends View {
         }
 
         if (topShadow == null) {
-            // topShadow = new GradientDrawable(Orientation.TOP_BOTTOM,
+            // topShadow = dynamic_new GradientDrawable(Orientation.TOP_BOTTOM,
             // SHADOWS_COLORS);
             topShadow = new GradientDrawable(Orientation.TOP_BOTTOM,
                     SHADOWS_COLORS);

@@ -84,19 +84,19 @@
         <!-- 友盟 start -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="57c4f575e0f55a69b800159a"/>
+            android:value="57be97bee0f55a68b40040c1"/>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="1011"/>
+            android:value="1015"/>
         <!--API  接口-->
         <meta-data
             android:name="API_CHANNEL"
-            android:value="1011"/>
+            android:value="1015"/>
         <!-- 友盟  end -->
         <!-- 高德 start -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="a14e083cc37a1be1d08d3b7801e22653"/>
+            android:value="d96700c0f996fd9bc3cb5e5239ec7b2f"/>
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService"/>
         <!-- 高德 end -->
@@ -113,7 +113,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
 
                 <data
-                    android:host="kbxxrqqa.kbxxrqqa.kbxxrqq"
+                    android:host="com.spbfq.kpjy"
                     android:pathPrefix="/conversation/"
                     android:scheme="rong"/>
             </intent-filter>
@@ -131,7 +131,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
 
                 <data
-                    android:host="kbxxrqqa.kbxxrqqa.kbxxrqq"
+                    android:host="com.spbfq.kpjy"
                     android:pathPrefix="/subconversationlist"
                     android:scheme="rong"/>
             </intent-filter>

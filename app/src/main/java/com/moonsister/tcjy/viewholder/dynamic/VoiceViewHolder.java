@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.DynamicAdapter;
@@ -14,7 +15,6 @@ import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.TimeUtils;
 import com.moonsister.tcjy.utils.UIUtils;
@@ -22,6 +22,7 @@ import com.moonsister.tcjy.widget.RoundedImageView;
 import com.moonsister.tcjy.widget.speak.VoicePlay;
 
 import butterknife.Bind;
+import im.gouyin.com.progressdialog.AlearDialog;
 
 /**
  * Created by jb on 2016/8/11.
@@ -104,7 +105,10 @@ public class VoiceViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.Use
             @Override
             public void onClick(View v) {
                 if (StringUtis.equals(bean.getIspay(), "2")) {
-                    ActivityUtils.startPayDynamicRedPackketActivity(bean.getMoney(), bean.getLatest_id());
+                    if (StringUtis.equals(AppConstant.CHANNEL_ID, "1002")) {
+                        alear();
+                    } else
+                        ActivityUtils.startPayDynamicRedPackketActivity(bean.getMoney(), bean.getLatest_id());
                 } else {
                     VoicePlay voicePlay = new VoicePlay();
                     voicePlay.playVoice(ConfigUtils.getInstance().getApplicationContext(), bean.getVideo());
@@ -112,6 +116,23 @@ public class VoiceViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.Use
 
             }
         });
+    }
+
+    private void alear() {
+        if (mActivity == null)
+            return;
+        AlearDialog dialog = new AlearDialog(AlearDialog.DialogType.Certification_dynamic, mActivity);
+        dialog.setListenter(new AlearDialog.onClickListenter() {
+            @Override
+            public void clickType(AlearDialog.clickType type) {
+                if (type == AlearDialog.clickType.confirm_vip) {
+                    ActivityUtils.startBuyVipActivity();
+                    dialog.dismiss();
+                }
+
+            }
+        });
+
     }
 
     @Override

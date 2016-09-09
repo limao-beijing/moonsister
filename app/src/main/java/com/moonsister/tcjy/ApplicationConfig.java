@@ -25,8 +25,8 @@ public class ApplicationConfig extends MultiDexApplication {
         super.onCreate();
         ConfigUtils.getInstance().setApplicationContext(this);
 //        appComponent = DaggerAppComponent.builder()
-//                .appModule(new AppModule(this))
-//                .serverApiModule(new ServerApiModule(new ServerApi()))
+//                .appModule(dynamic_new AppModule(this))
+//                .serverApiModule(dynamic_new ServerApiModule(dynamic_new ServerApi()))
 //                .build();
 ////
         initRongYun();

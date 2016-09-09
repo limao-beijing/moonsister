@@ -37,7 +37,7 @@ public class DynamicPublishModelImpl implements DynamicPublishModel {
     @Override
     public void sendDynamicPics(EnumConstant.DynamicType dynamicType, String content, List<String> srcdatas, String address, onLoadDateSingleListener listener) {
         LogUtils.e(DynamicPublishModelImpl.this, "start upload");
-//        ArrayList<DynamicContent> aliyunPtahs = new ArrayList<DynamicContent>();
+//        ArrayList<DynamicContent> aliyunPtahs = dynamic_new ArrayList<DynamicContent>();
 
         Observable.create(new Observable.OnSubscribe<ArrayList<DynamicContent>>() {
             @Override
@@ -54,7 +54,7 @@ public class DynamicPublishModelImpl implements DynamicPublishModel {
 //                            //压缩大小
 //                            Bitmap bitmap = ImageUtils.compressImage(size, 100);
 //                            String loadFile = AliyunManager.getInstance().upLoadFiletFromByteArray(ImageUtils.getBitmapByte(bitmap), FilePathUtlis.FileType.JPG);
-//                            DynamicContent image = new DynamicContent();
+//                            DynamicContent image = dynamic_new DynamicContent();
 //                            image.setS(loadFile);
 //                            image.setV(vidoPath);
 //                            image.setL(loadFile);
@@ -72,7 +72,7 @@ public class DynamicPublishModelImpl implements DynamicPublishModel {
 //                boolean isHaveFuzz = dynamicType == DynamicSendActivity.DynamicType.CHARGE_PIC;
 //                try {
 //                    for (int i = 0; i < srcdatas.size(); i++) {
-//                        DynamicContent image = new DynamicContent();
+//                        DynamicContent image = dynamic_new DynamicContent();
 //                        String path = srcdatas.get(i);
 //                        Bitmap size = ImageUtils.compressImageWithPathSzie(path, 800, 600);
 //                        Bitmap bitmap = ImageUtils.compressImage(size, 1000);

@@ -12,9 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
+import com.moonsister.tcjy.banner.BannerManager;
 import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.home.presenetr.HomeFragmentPresenter;
 import com.moonsister.tcjy.home.presenetr.HomeFragmentPresenterImpl;
@@ -39,6 +41,8 @@ public class HomeFragment extends BaseFragment implements HomeView {
     FrameLayout layout_home_content;
     @Bind(R.id.tv_search)
     ImageView tv_search;
+    @Bind(R.id.appx_banner_container)
+    RelativeLayout appx_banner_container;
     private HomeFragmentPresenter mPresenter;
     private FragmentManager mFragmentManager;
     private GoodSelectFragment mCurrentFragment, goodSelectFragment, sameCityFragment;
@@ -55,6 +59,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
     protected void initData() {
         tv_search.setVisibility(View.VISIBLE);
         mPresenter.swicthNavigation(R.id.tv_navigation_good_select);
+        new BannerManager().start(getActivity(), appx_banner_container);
     }
 
 

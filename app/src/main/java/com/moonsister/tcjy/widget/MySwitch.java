@@ -210,7 +210,7 @@ public class MySwitch extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        // Paint paint=new Paint();
+        // Paint paint=dynamic_new Paint();
         // paint.setColor(Color.RED);
         // canvas.drawRect(0, 0, 200, 200, paint);
         // 参数1 bitMap 图片 参数2 和参数3 分别代表 x坐标和y坐标

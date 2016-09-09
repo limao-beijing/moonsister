@@ -576,7 +576,7 @@ public class NetWorkUtil {
     }
 
     // public static CellInfo getNetInfo() {
-    // CellInfo info = new CellInfo();
+    // CellInfo info = dynamic_new CellInfo();
     // try {
     // TelephonyManager mTelephonyManager = (TelephonyManager) ConfigManager
     // .getContext().getSystemService(Context.TELEPHONY_SERVICE);

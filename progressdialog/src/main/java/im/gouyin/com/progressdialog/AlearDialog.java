@@ -19,7 +19,7 @@ public class AlearDialog {
     private Dialog dialog;
 
     public static enum DialogType {
-        Certification_publish, Certification_comment, Certification_im
+        Certification_publish, Certification_comment, Certification_im, Certification_dynamic,Certification_im_1015
     }
 
     public static enum clickType {
@@ -43,6 +43,12 @@ public class AlearDialog {
                 break;
             case Certification_im:
                 resID = R.layout.dialog_certification_im;
+                break;
+            case Certification_dynamic:
+                resID = R.layout.dialog_certification_dynamic;
+                break;
+            case Certification_im_1015:
+                resID=R.layout.certification_im_1015;
                 break;
         }
         initDialog(resID);
@@ -85,6 +91,12 @@ public class AlearDialog {
             case Certification_im:
                 content = "  " + activity.getResources().getString(R.string.certification_im_text);
                 break;
+            case Certification_dynamic:
+                content = activity.getResources().getString(R.string.certification_dynamic_text);
+                break;
+            case Certification_im_1015:
+                content=activity.getResources().getString(R.string.Certification_im_1015);
+                break;
         }
         return content;
     }
@@ -98,6 +110,9 @@ public class AlearDialog {
                     public void onClick(View v) {
                         if (listenter != null)
                             listenter.clickType(clickType.cancel);
+                        if (dialog.isShowing()) {
+                            dismiss();
+                        }
                     }
                 });
             View confirm = dialog.findViewById(R.id.confirm);

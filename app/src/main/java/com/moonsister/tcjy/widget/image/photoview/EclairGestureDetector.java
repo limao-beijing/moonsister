@@ -67,7 +67,7 @@ public class EclairGestureDetector extends CupcakeGestureDetector {
                 final int pointerIndex = Compat.getPointerIndex(ev.getAction());
                 final int pointerId = ev.getPointerId(pointerIndex);
                 if (pointerId == mActivePointerId) {
-                    // This was our active pointer going up. Choose a new
+                    // This was our active pointer going up. Choose a dynamic_new
                     // active pointer and adjust accordingly.
                     final int newPointerIndex = pointerIndex == 0 ? 1 : 0;
                     mActivePointerId = ev.getPointerId(newPointerIndex);

@@ -40,7 +40,7 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
 //        .observeOn(AndroidSchedulers.mainThread())
 //                .subscribeOn(Schedulers.io())
 //
-//                .subscribe(new Subscriber<RegiterBean>() {
+//                .subscribe(dynamic_new Subscriber<RegiterBean>() {
 //                    @Override
 //                    public void onCompleted() {
 //
@@ -82,7 +82,7 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
 
 //        observable.observeOn(AndroidSchedulers.mainThread())
 //                .subscribeOn(Schedulers.io())
-//                .subscribe(new Subscriber<BaseBean>() {
+//                .subscribe(dynamic_new Subscriber<BaseBean>() {
 //                    @Override
 //                    public void onCompleted() {
 //                        LogUtils.e(TAG, "onCompleted");

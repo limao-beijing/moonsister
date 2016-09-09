@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
@@ -65,7 +66,13 @@ public class AppConversationActivity extends BaseActivity {
         if (memoryPersonInfoDetail.getUserFriendList() != null && memoryPersonInfoDetail.getUserFriendList().contains(mTargetId)) {
             return;
         }
-        AlearDialog alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_im, this);
+        AlearDialog alearDialog = null;
+        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1015")) {
+            alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_im_1015, this);
+        } else {
+            alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_im, this);
+        }
+        final AlearDialog finalAlearDialog = alearDialog;
         alearDialog.setListenter(new AlearDialog.onClickListenter() {
             @Override
             public void clickType(AlearDialog.clickType type) {
@@ -81,7 +88,7 @@ public class AppConversationActivity extends BaseActivity {
                         break;
 
                 }
-                alearDialog.dismiss();
+                finalAlearDialog.dismiss();
             }
         });
 

@@ -49,7 +49,7 @@ final class GsonResponseBodyConverter<T> implements Converter<ResponseBody, T> {
 
 
             return adapter.fromJson(s);
-//            new
+//            dynamic_new
 //            return adapter.fromJson(value.charStream());
         } catch (Exception e) {
 

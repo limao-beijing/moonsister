@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.adapter;
 
+import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -40,6 +41,7 @@ public class DynamicAdapter extends BaseRecyclerViewAdapter<UserInfoListBean.Use
 
     private BaseIView baseIView;
     private BaseRecyclerViewHolder holder;
+    private Activity mActivty;
 
     public DynamicAdapter(List list) {
         super(list);
@@ -51,26 +53,21 @@ public class DynamicAdapter extends BaseRecyclerViewAdapter<UserInfoListBean.Use
     protected View initRootView(ViewGroup parent, int viewType) {
         switch (viewType) {
             case TYPE_CHARGE_PIC:
-                holder = new PicViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_pic, parent));
-                break;
             case TYPE_FREE_PIC:
                 holder = new PicViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_pic, parent));
                 break;
             case TYPE_CHARGE_VIDEO:
-                holder = new VideoViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_video, parent));
-                break;
             case TYPE_FREE_VIDEO:
                 holder = new VideoViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_video, parent));
                 break;
             case TYPE_CHARGE_VOICE:
-                holder = new VoiceViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_voice, parent));
-                break;
             case TYPE_FREE_VOICE:
                 holder = new VoiceViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_voice, parent));
                 break;
         }
 //        View view = UIUtils.inflateLayout(R.layout.item_home_one_menu, parent);
-//        holder = new DynamicViewHolder(view, viewType);
+//        holder = dynamic_new DynamicViewHolder(view, viewType);
+        holder.setActivity(mActivty);
         if (baseIView != null)
             holder.setView(baseIView);
         return holder.getRootView();
@@ -178,5 +175,10 @@ public class DynamicAdapter extends BaseRecyclerViewAdapter<UserInfoListBean.Use
             notifyDataSetChanged();
 
         }
+    }
+
+
+    public void setActivty(Activity activty) {
+        mActivty = activty;
     }
 }

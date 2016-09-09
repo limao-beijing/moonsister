@@ -1,6 +1,8 @@
 package com.moonsister.tcjy;
 
 
+import com.moonsister.pay.tencent.PayBean;
+import com.moonsister.tcjy.bean.BannerBean;
 import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.CardInfoBean;
 import com.moonsister.tcjy.bean.CertificationStatusBean;
@@ -12,7 +14,6 @@ import com.moonsister.tcjy.bean.GoodSelectBaen;
 import com.moonsister.tcjy.bean.HomeTopItemBean;
 import com.moonsister.tcjy.bean.LableBean;
 import com.moonsister.tcjy.bean.LoginBean;
-import com.moonsister.pay.tencent.PayBean;
 import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.RankBean;
@@ -28,7 +29,6 @@ import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.bean.UserPermissionBean;
 import com.moonsister.tcjy.bean.VersionInfo;
 import com.moonsister.tcjy.bean.WithdRawDepositBean;
-import com.moonsister.tcjy.main.widget.RecommendMemberFragment;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UnicodeUtils;
 import com.moonsister.tcjy.utils.gson.GsonConverterFactory;
@@ -925,6 +925,20 @@ public class ServerApi {
                                                    @Query("version_type") String apiVersion,
                                                    @Query("channel") String channelId,
                                                    @Query("authcode") String authcode);
+
+        /**
+         * 广告信息
+         *
+         * @param authcode
+         * @param channelId
+         * @param adtype
+         */
+        @GET("ad/get")
+        Observable<BannerBean> getBannerData(@Query("width") String width,
+                                             @Query("height") String height,
+                                             @Query("authcode") String authcode,
+                                             @Query("channel") String channelId,
+                                             @Query("adtype") String adtype);
     }
 }
 

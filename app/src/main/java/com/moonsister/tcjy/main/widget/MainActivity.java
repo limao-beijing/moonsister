@@ -171,9 +171,10 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     public void switch2Home() {
 //        BaiduManager.getInstance(this).adBanner(this, appx_banner_container);
+//        dynamic_new BannerManager().start(this, appx_banner_container);
         if (homeFragment == null)
             homeFragment = new HomeFragment();
-//            homeFragment = new HomeTopFragment();
+//            homeFragment = dynamic_new HomeTopFragment();
         enterPage(homeFragment);
     }
 
@@ -212,7 +213,7 @@ public class MainActivity extends BaseActivity implements MainView {
         }
         if (myFragment == null)
             myFragment = new MyFragment();
-//            myFragment = new HreatFragment();
+//            myFragment = dynamic_new HreatFragment();
 
         enterPage(myFragment);
 

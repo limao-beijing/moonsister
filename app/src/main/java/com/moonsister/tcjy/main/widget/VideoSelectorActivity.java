@@ -154,7 +154,7 @@ public class VideoSelectorActivity extends BaseActivity implements AdapterView.O
                     entty.ID = id;
                     entty.title = title;
                     entty.filePath = url;
-//                    MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+//                    MediaMetadataRetriever retriever = dynamic_new MediaMetadataRetriever();
 //                    retriever.setDataSource(entty.filePath);
 //                    Bitmap bitmap = retriever.getFrameAtTime();
 //                    if (bitmap == null)
@@ -205,7 +205,7 @@ public class VideoSelectorActivity extends BaseActivity implements AdapterView.O
             intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
             intent.putExtra(MediaStore.EXTRA_SIZE_LIMIT, 1024 * 1024 * 50);
             intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 60);
-//            Intent intent = new Intent();
+//            Intent intent = dynamic_new Intent();
 //            intent.setClass(this, TakeVideoActivity.class);
             startActivityForResult(intent, 100);
         } else {

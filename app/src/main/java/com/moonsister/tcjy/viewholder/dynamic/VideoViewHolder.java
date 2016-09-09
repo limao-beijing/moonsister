@@ -1,13 +1,11 @@
 package com.moonsister.tcjy.viewholder.dynamic;
 
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.DynamicAdapter;
@@ -17,13 +15,13 @@ import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.TimeUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
 import butterknife.Bind;
+import im.gouyin.com.progressdialog.AlearDialog;
 
 /**
  * Created by jb on 2016/8/11.
@@ -110,7 +108,10 @@ public class VideoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.Use
             public void onClick(View v) {
 
                 if (StringUtis.equals(bean.getIspay(), "2")) {
-                    ActivityUtils.startPayDynamicRedPackketActivity(bean.getMoney(), bean.getLatest_id());
+                    if (StringUtis.equals(AppConstant.CHANNEL_ID, "1002")) {
+                        alear();
+                    } else
+                        ActivityUtils.startPayDynamicRedPackketActivity(bean.getMoney(), bean.getLatest_id());
                 } else {
                     ActivityUtils.startShowShortVideoActivity(bean.getVideo());
                 }
@@ -118,12 +119,29 @@ public class VideoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.Use
         });
     }
 
+    private void alear() {
+        if (mActivity == null)
+            return;
+        AlearDialog dialog = new AlearDialog(AlearDialog.DialogType.Certification_dynamic, mActivity);
+        dialog.setListenter(new AlearDialog.onClickListenter() {
+            @Override
+            public void clickType(AlearDialog.clickType type) {
+                if (type == AlearDialog.clickType.confirm_vip) {
+                    ActivityUtils.startBuyVipActivity();
+                    dialog.dismiss();
+                }
+
+            }
+        });
+
+    }
+
 //    private void playVideo(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
 //
 //        if (play != null && bean != null && !StringUtis.isEmpty(bean.getVideo())) {
 //            Uri uri = Uri.parse(bean.getVideo());
 //            play.setVideoURI(uri);
-//            play.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//            play.setOnPreparedListener(dynamic_new MediaPlayer.OnPreparedListener() {
 //                @Override
 //                public void onPrepared(MediaPlayer mp) {
 //                    iv_play_background.setVisibility(View.GONE);
@@ -132,7 +150,7 @@ public class VideoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.Use
 //                }
 //            });
 //
-//            play.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//            play.setOnCompletionListener(dynamic_new MediaPlayer.OnCompletionListener() {
 //                @Override
 //                public void onCompletion(MediaPlayer mp) {
 //                    mp.stop();

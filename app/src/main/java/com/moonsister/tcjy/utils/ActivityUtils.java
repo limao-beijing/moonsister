@@ -20,6 +20,7 @@ import com.moonsister.tcjy.find.widget.NearbyActivity;
 import com.moonsister.tcjy.find.widget.RankActivity;
 import com.moonsister.tcjy.home.widget.SearchActivity;
 import com.moonsister.tcjy.home.widget.SearchReasonActivity;
+import com.moonsister.tcjy.js.WebActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordNextActivity;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
@@ -230,7 +231,10 @@ public class ActivityUtils {
      * 认证
      */
     public static void startCertificationActivity() {
-        startActivity(CertificationActivity.class);
+        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1015")) {
+            startBuyVipActivity();
+        } else
+            startActivity(CertificationActivity.class);
     }
 
     /**
@@ -516,7 +520,7 @@ public class ActivityUtils {
     /**
      * 粉丝点击列表
      *
-     * @param uidBuyVipActivity
+     * @param uid
      */
     public static void startFenRelationActivity(String uid) {
         Intent intent = new Intent(getContext(), RelationActivity.class);
@@ -612,6 +616,15 @@ public class ActivityUtils {
     //跳转动态管理页面
     public static void startMakeMessageActivity() {
         startActivity(MakeMessageActivity.class);
+    }
+
+    /**
+     * H5
+     */
+    public static void startH5Activity(String url) {
+        Intent intent = new Intent(getContext(), WebActivity.class);
+        intent.putExtra("url", url);
+        startActivity(intent);
     }
 //    //我的页面不是会员    定义跳转的activity
 //    public static void startNoActivity() {

@@ -19,12 +19,13 @@ import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenter;
 import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenterImpl;
 import com.moonsister.tcjy.main.view.BuyVipFragmentView;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.widget.WebView;
 
 /**
  * Created by jb on 2016/9/8.
  */
-public class BuyVipViewViewFragment extends BaseFragment implements WebView.onWebViewListener, BuyVipFragmentView {
+public class BuyVipWebViewFragment extends BaseFragment implements WebView.onWebViewListener, BuyVipFragmentView {
     private WebView mWebView;
     private BuyVipFragmentPersenter persenter;
 
@@ -45,7 +46,7 @@ public class BuyVipViewViewFragment extends BaseFragment implements WebView.onWe
     }
 
     public static Fragment newInstance() {
-        return new BuyVipViewViewFragment();
+        return new BuyVipWebViewFragment();
     }
 
     @Override
@@ -73,6 +74,9 @@ public class BuyVipViewViewFragment extends BaseFragment implements WebView.onWe
         RxBus.getInstance().send(Events.EventEnum.BUY_VIP_SUCCESS, null);
         PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
         memoryPersonInfoDetail.setVipStatus(1);
+        if (StringUtis.equals(AppConstant.CHANNEL_ID,"1015")){
+            memoryPersonInfoDetail.setAttestation(1);
+        }
         UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
         getActivity().finish();
     }

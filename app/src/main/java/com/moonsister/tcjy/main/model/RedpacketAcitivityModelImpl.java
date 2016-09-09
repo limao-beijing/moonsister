@@ -78,7 +78,7 @@ public class RedpacketAcitivityModelImpl implements RedpacketAcitivityModel {
                     });
 
 
-//            ObservableUtils.parser(pay, new ObservableUtils.Callback<PayBean>() {
+//            ObservableUtils.parser(pay, dynamic_new ObservableUtils.Callback<PayBean>() {
 //                @Override
 //                public void onSuccess(PayBean bean) {
 //                    if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success) && bean.getData() != null) {

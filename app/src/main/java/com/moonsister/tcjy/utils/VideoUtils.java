@@ -33,7 +33,7 @@ public class VideoUtils {
 //					MediaStore.Video.Media.EXTERNAL_CONTENT_URI, null, null,
 //					null, null);
 //			if (cursor != null) {
-//				list = new ArrayList<LocalVideo>();
+//				list = dynamic_new ArrayList<LocalVideo>();
 //				while (cursor.moveToNext()) {
 //					int id = cursor.getInt(cursor
 //							.getColumnIndexOrThrow(MediaStore.Video.Media._ID));
@@ -70,7 +70,7 @@ public class VideoUtils {
 //									.getLong(cursor
 //											.getColumnIndexOrThrow(MediaStore.Video.Media.SIZE));
 //							String imgPath = getVideoData(path);
-//							LocalVideo FREE_VIDEO = new LocalVideo(id, title, album,
+//							LocalVideo FREE_VIDEO = dynamic_new LocalVideo(id, title, album,
 //									artist, displayName, mimeType, path, size,
 //									CaculationUtils.calSecond(duration / 1000));
 //							FREE_VIDEO.imgPath = imgPath;
@@ -168,7 +168,7 @@ public class VideoUtils {
 //        if (path == null || "".equals(path)) {
 //            return resultPath;
 //        }
-//        File file = new File(PathUtil.getInstance().getImagePath()
+//        File file = dynamic_new File(PathUtil.getInstance().getImagePath()
 //                .getAbsolutePath(), "thvideo" + System.currentTimeMillis()
 //                + ".jpg");
 //        Bitmap bitmap = null;
@@ -178,7 +178,7 @@ public class VideoUtils {
 //                file.getParentFile().mkdirs();
 //            }
 //            try {
-//                MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+//                MediaMetadataRetriever retriever = dynamic_new MediaMetadataRetriever();
 //                retriever.setDataSource(path);
 //                bitmap = retriever.getFrameAtTime();
 //            } catch (IllegalArgumentException e) {
@@ -197,7 +197,7 @@ public class VideoUtils {
 //
 //            }
 //            // bitmap = ThumbnailUtils.extractThumbnail(bitmap, 512, 512);
-//            fos = new FileOutputStream(file);
+//            fos = dynamic_new FileOutputStream(file);
 //            bitmap.compress(CompressFormat.JPEG, 100, fos);
 //            LogUtil.e(this, "bitmap：Width=" + NetWorkUtil.formatSize(bitmap.getWidth()));
 //            LogUtil.e(this, "bitmap：Height=" + NetWorkUtil.formatSize(bitmap.getHeight()));
@@ -229,7 +229,7 @@ public class VideoUtils {
 //    public static long getVideoTime(File f) {
 //        long ls = 0;
 //        // 新建编码器对象
-//        Encoder encoder = new Encoder();
+//        Encoder encoder = dynamic_new Encoder();
 //        try {
 //            // 得到多媒体视频的信息
 //            MultimediaInfo m = encoder.getInfo(f);
@@ -249,7 +249,7 @@ public class VideoUtils {
     //
     // public static void main(String[] args) throws IOException {
     // String fileName = "F:\\QQ消息\\2663261303\\FileRecv\\33.mp4";
-    // File f = new File(fileName);
+    // File f = dynamic_new File(fileName);
     // System.out.println(getVideoTime(f));
     // }
 

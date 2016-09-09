@@ -285,7 +285,7 @@ public class SelectPlandWindowActivity extends Activity implements OnClickListen
     }
 
     public void onClick(View v) {
-//        Intent i = new Intent();
+//        Intent i = dynamic_new Intent();
         switch (v.getId()) {
             case R.id.tv_pcd_success:
                 int province = wv_pcd_left.getCurrentItem();

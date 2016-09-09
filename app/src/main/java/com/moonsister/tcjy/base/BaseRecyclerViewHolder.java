@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.base;
 
+import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -15,6 +16,7 @@ public abstract class BaseRecyclerViewHolder<T extends BaseDataBean> extends Rec
     private View mRootView;
     protected BaseRecyclerViewAdapter<T> baseRecyclerViewAdapter;
     protected BaseIView baseIView;
+    protected Activity mActivity;
 
     public BaseRecyclerViewHolder(View view) {
         super(view);
@@ -73,6 +75,10 @@ public abstract class BaseRecyclerViewHolder<T extends BaseDataBean> extends Rec
 
     public void setBaseRecyclerViewAdapter(BaseRecyclerViewAdapter<T> baseRecyclerViewAdapter) {
         this.baseRecyclerViewAdapter = baseRecyclerViewAdapter;
+    }
+
+    public void setActivity(Activity activity) {
+        mActivity = activity;
     }
 
 

@@ -125,7 +125,7 @@ public class SelectPicPopupActivity extends Activity {
         Uri destination = Uri.fromFile(new File(getCacheDir(), "cropped"));
         Crop.of(uri, destination).withAspect(400,400).start(this);
 //        ActivityUtils.startCropImageMainActivity();
-//        Intent intent = new Intent("com.android.camera.action.CROP");
+//        Intent intent = dynamic_new Intent("com.android.camera.action.CROP");
 //        intent.setDataAndType(uri, "image/*");
 //        intent.putExtra("crop", true);
 //        intent.putExtra("aspectX", 1);

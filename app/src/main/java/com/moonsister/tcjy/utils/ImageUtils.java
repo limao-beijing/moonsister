@@ -38,7 +38,7 @@ public class ImageUtils {
 //
 //        int newColor = 0;
 //
-//        int[][] colors = new int[9][3];
+//        int[][] colors = dynamic_new int[9][3];
 //        for (int i = 1, length = width - 1; i < length; i++)
 //        {
 //            for (int k = 1, len = height - 1; k < len; k++)
@@ -208,7 +208,7 @@ public class ImageUtils {
 //
 //        int newColor = 0;
 //
-//        int[][] colors = new int[9][3];
+//        int[][] colors = dynamic_new int[9][3];
 //        for (int i = 1, length = width - 1; i < length; i++)
 //        {
 //            for (int k = 1, len = height - 1; k < len; k++)
@@ -297,7 +297,7 @@ public class ImageUtils {
 //    private Bitmap blurImageAmeliorate(Bitmap bmp) {
 //        long start = System.currentTimeMillis();
 //        // 高斯矩阵
-//        int[] gauss = new int[]{1, 2, 1, 2, 4, 2, 1, 2, 1};
+//        int[] gauss = dynamic_new int[]{1, 2, 1, 2, 4, 2, 1, 2, 1};
 //
 //        int width = bmp.getWidth();
 //        int height = bmp.getHeight();
@@ -316,7 +316,7 @@ public class ImageUtils {
 //        int delta = 16; // 值越小图片会越亮，越大则越暗
 //
 //        int idx = 0;
-//        int[] pixels = new int[width * height];
+//        int[] pixels = dynamic_new int[width * height];
 //        bmp.getPixels(pixels, 0, width, 0, 0, width, height);
 //        for (int i = 1, length = height - 1; i < length; i++) {
 //            for (int k = 1, len = width - 1; k < len; k++) {

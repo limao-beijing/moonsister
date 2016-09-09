@@ -293,11 +293,11 @@ public class ViewPager extends ViewGroup {
                                    int positionOffsetPixels);
 
         /**
-         * This method will be invoked when a new page becomes selected.
+         * This method will be invoked when a dynamic_new page becomes selected.
          * Animation is not necessarily complete.
          *
          * @param position
-         *            Position index of the new selected page.
+         *            Position index of the dynamic_new selected page.
          */
         public void onPageSelected(int position);
 
@@ -307,7 +307,7 @@ public class ViewPager extends ViewGroup {
          * current page, or when it is fully stopped/idle.
          *
          * @param state
-         *            The new scroll state.
+         *            The dynamic_new scroll state.
          * @see ViewPager#SCROLL_STATE_IDLE
          * @see ViewPager#SCROLL_STATE_DRAGGING
          * @see ViewPager#SCROLL_STATE_SETTLING
@@ -539,7 +539,7 @@ public class ViewPager extends ViewGroup {
      * @param item
      *            Item index to select
      * @param smoothScroll
-     *            True to smoothly scroll to the new item, false to transition
+     *            True to smoothly scroll to the dynamic_new item, false to transition
      *            immediately
      */
     public void setCurrentItem(int item, boolean smoothScroll) {
@@ -1058,7 +1058,7 @@ public class ViewPager extends ViewGroup {
 
         // Bail now if we are waiting to populate. This is to hold off
         // on creating views from the time the user releases their finger to
-        // fling to a new position until we have finished the scroll to
+        // fling to a dynamic_new position until we have finished the scroll to
         // that position, avoiding glitches from happening at that point.
         if (mPopulatePending) {
             if (DEBUG)
@@ -2665,7 +2665,7 @@ public class ViewPager extends ViewGroup {
         final int pointerIndex = MotionEventCompat.getActionIndex(ev);
         final int pointerId = MotionEventCompat.getPointerId(ev, pointerIndex);
         if (pointerId == mActivePointerId) {
-            // This was our active pointer going up. Choose a new
+            // This was our active pointer going up. Choose a dynamic_new
             // active pointer and adjust accordingly.
             final int newPointerIndex = pointerIndex == 0 ? 1 : 0;
             mLastMotionX = MotionEventCompat.getX(ev, newPointerIndex);

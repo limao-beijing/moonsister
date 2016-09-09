@@ -34,7 +34,7 @@ public class RecommendMemberFragment extends BaseFragment {
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        presenter = new RecommendMemberFragmentPresenterImpl();
+//        presenter = dynamic_new RecommendMemberFragmentPresenterImpl();
 //        presenter.attachView(this);
         return UIUtils.inflateLayout(R.layout.fragment_recommend_member);
     }

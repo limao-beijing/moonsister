@@ -158,7 +158,7 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
         recorder_send.setOnClickListener(this);
         mVideoView = (VideoView) findViewById(R.id.mVideoView);
         btnStart = (TextView) findViewById(R.id.recorder_start);
-        // btnStart.setOnTouchListener(new RecorderTouchListener());
+        // btnStart.setOnTouchListener(dynamic_new RecorderTouchListener());
         btnStart.setOnClickListener(this);
         mSurfaceHolder = mVideoView.getHolder();
         mSurfaceHolder.addCallback(this);
@@ -438,10 +438,10 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
             case R.id.recorder_send:
                 file = new File(localPath);
                 if (file.exists()) {
-//				Intent intent = new Intent(TakeVideoActivity.this,
+//				Intent intent = dynamic_new Intent(TakeVideoActivity.this,
 //						UploadPhoneVideoActivity.class);
-//				Bundle bundle = new Bundle();
-//				localvideo = new LocalVideo();
+//				Bundle bundle = dynamic_new Bundle();
+//				localvideo = dynamic_new LocalVideo();
 //				localvideo.path = localPath;
 //				localvideo.imgPath = VideoUtils.getInstance().getVideoData(
 //						localPath);
@@ -469,7 +469,7 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
                 if (recorder_play != null && !TextUtils.isEmpty(localPath)) {
                     file = new File(localPath);
                     if (file.exists()) {
-//					startActivity(new Intent(this, ShowShortVideoActivity.class)
+//					startActivity(dynamic_new Intent(this, ShowShortVideoActivity.class)
 //							.putExtra(GlobalConstant.SHOW_SHORT_VIDEO_PATH,
 //									localPath));
                     } else {
@@ -482,7 +482,7 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
                 // mHandler.sendEmptyMessage(2);
                 stopRecording();
                 isStartRecord = false;
-//			startActivity(new Intent(TakeVideoActivity.this,
+//			startActivity(dynamic_new Intent(TakeVideoActivity.this,
 //					LocalVideoActivity.class));
 //			finish();
                 break;
@@ -822,10 +822,10 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
                 return;
             }
             // String st3 = getResources().getString(R.string.Whether_to_send);
-            // new AlertDialog.Builder(this)
+            // dynamic_new AlertDialog.Builder(this)
             // .setMessage(st3)
             // .setPositiveButton(R.string.ok,
-            // new DialogInterface.OnClickListener() {
+            // dynamic_new DialogInterface.OnClickListener() {
             //
             // @Override
             // public void onClick(DialogInterface arg0,

@@ -300,6 +300,7 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
         if (mAdapter == null) {
             mAdapter = new DynamicAdapter(list);
             mAdapter.setView(this);
+            mAdapter.setActivty(getActivity());
             recyclerview.setAdapter(mAdapter);
         } else {
             if (isRefresh)
