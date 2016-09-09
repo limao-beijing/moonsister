@@ -113,26 +113,5 @@ public class FollowActivity extends BaseActivity implements RelationActivityView
         }
     }
 
-
-//  @OnClick({R.id.my_follow,R.id.follow_my})
-//    public void onClick(View v) {
-//        int vId = v.getId();
-//
-//        switch(vId){
-//            case R.id.my_follow:
-//                my_follow.setBackgroundResource(R.mipmap.my_foll);
-//                my_follow.setTextColor(getResources().getColor(R.color.text_follow_color));
-//                follow_my.setBackgroundResource(R.mipmap.my_follow);
-//                follow_my.setTextColor(getResources().getColor(R.color.text_followmy_color));
-//                break;
-//            case R.id.follow_my:
-//                my_follow.setBackgroundResource(R.mipmap.my_foll);
-//                my_follow.setTextColor(getResources().getColor(R.color.text_followmy_color));
-//                follow_my.setTextColor(getResources().getColor(R.color.text_follow_color));
-//                follow_my.setBackgroundResource(R.mipmap.my_follow);
-//                break;
-//        }
-//    }
-
 }
 

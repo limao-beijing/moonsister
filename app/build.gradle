@@ -22,12 +22,12 @@ android {
             keyAlias "same_city"
             keyPassword "limao123456"
         }
-        /* release {
-             storeFile file("../app/key/moonsister.jks")
-             storePassword "limao123456"
-             keyAlias "same_city"
-             keyPassword "limao123456"
-         }*/
+//        release {
+//             storeFile file("../app/key/moonsister.jks")
+//             storePassword "limao123456"
+//             keyAlias "same_city"
+//             keyPassword "limao123456"
+//         }
     }
     buildTypes {
 
@@ -50,12 +50,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    android.applicationVariants.all {
-        variant ->
-            variant.outputs.each {
-                output -> output.outputFile = new File(output.outputFile.parent, rootProject.ext.android.applicationId + defaultConfig.versionCode + "_v" + defaultConfig.versionName + "_" + buildType.name + ".apk");
-            }
-    }
+//    android.applicationVariants.all {
+//        variant ->
+//            variant.outputs.each {
+//                output -> output.outputFile = new File(output.outputFile.parent, rootProject.ext.android.applicationId + defaultConfig.versionCode + "_v" + defaultConfig.versionName + "_" + buildType.name + ".apk");
+//            }
+//    }
 
 
 }

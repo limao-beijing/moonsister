@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/text_tc"
         android:text="还研究考了多少的"
+        android:layout_marginTop="@dimen/y40"
         android:layout_below="@+id/text_time"
         android:layout_toRightOf="@+id/onfragment_im"/>
 </RelativeLayout>

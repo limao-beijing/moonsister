@@ -6,14 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.MoneyAdapter;
+import com.moonsister.tcjy.adapter.MoneyTwoAdapter;
 import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.bean.BalanceBean;
 import com.moonsister.tcjy.my.persenter.MoneyActivityPersenter;
 import com.moonsister.tcjy.my.persenter.MoneyActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.BalanceActivityView;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tcjy.widget.XListView;
 
 import java.util.List;
 
@@ -24,9 +27,9 @@ import butterknife.Bind;
  */
 public class TwoFragment extends BaseFragment implements BalanceActivityView {
     @Bind(R.id.twofragment_listview)
-    ListView onfragment_listview;
+    XListView onfragment_listview;
     private MoneyActivityPersenter mPresenter;
-    private MoneyAdapter mAdapter;
+    private MoneyTwoAdapter mAdapter;
     int type;
     int page;
     int pagesize;
@@ -35,6 +38,7 @@ public class TwoFragment extends BaseFragment implements BalanceActivityView {
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         type=2;
+        page=1;
         mPresenter = new MoneyActivityPersenterImpl();
         mPresenter.attachView(this);
         return UIUtils.inflateLayout(R.layout.twofragment);
@@ -42,27 +46,60 @@ public class TwoFragment extends BaseFragment implements BalanceActivityView {
 
     @Override
     protected void initData() {
-        mPresenter.moneyba(type,page,pagesize);
+        onfragment_listview.setVerticalLinearLayoutManager();
+        onfragment_listview.setPullRefreshEnabled(false);
+        onfragment_listview.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+
+            }
+
+            @Override
+            public void onLoadMore() {
+                mPresenter.moneyba(type,page,10);
+            }
+        });
+        mPresenter.moneyba(type,page,10);
     }
 
     @Override
     public void moneybalance(BalanceBean balanceBean) {
-        data = balanceBean.getData();
-        mAdapter=new MoneyAdapter(getActivity(),data);
-        onfragment_listview.setAdapter(mAdapter);
+        List<BalanceBean.DataBean> data = balanceBean.getData();
+        if (balanceBean == null) {
+//            xlv.setNoMore();
+            onfragment_listview.loadMoreComplete();
+            onfragment_listview.refreshComplete();
+            return;
+        }
+        if (balanceBean.getData() == null || balanceBean.getData().size() == 0) {
+//            xlv.setNoMore();
+            onfragment_listview.loadMoreComplete();
+            onfragment_listview.refreshComplete();
+            return;
+        }
+        if (mAdapter == null) {
+            mAdapter = new MoneyTwoAdapter(balanceBean.getData(), this);
+            mAdapter.setPageType(type);
+            if (onfragment_listview != null)
+                onfragment_listview.setAdapter(mAdapter);
+        } else {
+            mAdapter.addListData(balanceBean.getData());
+            mAdapter.onRefresh();
+        }
+        onfragment_listview.loadMoreComplete();
+        onfragment_listview.refreshComplete();
     }
 
     @Override
     public void showLoading() {
-
+        showProgressDialog();
     }
 
     @Override
     public void hideLoading() {
-
+        hideProgressDialog();
     }
 
-    @Override
     public void transfePageMsg(String msg) {
         showToast(msg);
     }

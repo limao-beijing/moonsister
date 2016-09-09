@@ -1,5 +1,7 @@
 package com.moonsister.tcjy.my.widget;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
@@ -73,7 +75,6 @@ public class BirthdayActivity extends BaseActivity implements OnClickListener {
             } else
                 birthday = "";
         }
-
 
 //        if (edit_birthday.getStringExtra("editdata") == null
 //                || "".equals(edit_birthday.getStringExtra("editdata"))) {
@@ -229,6 +230,19 @@ public class BirthdayActivity extends BaseActivity implements OnClickListener {
                 events.what = Events.EventEnum.PERSON_INFO_CHANGE;
                 events.message = data;
                 RxBus.getInstance().send(events);
+
+                String s = tv_date_birthday.getText().toString();
+                String s1 = tv_birthday_constellation.getText().toString();
+                SharedPreferences mySharedPreferences= getSharedPreferences("my",
+                        Activity.MODE_PRIVATE);
+                //实例化SharedPreferences.Editor对象（第二步）
+                SharedPreferences.Editor editor = mySharedPreferences.edit();
+                //用putString的方法保存数据
+                editor.putString("bir", s);
+                editor.putString("con", s1);
+//                提交当前数据
+                editor.commit();
+
                 finish();
                 break;
         }

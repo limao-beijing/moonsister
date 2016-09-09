@@ -1,17 +1,24 @@
 package com.moonsister.tcjy.my.widget;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.content.SharedPreferences;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.view.View.OnClickListener;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.PersonalMessageBean;
+import com.moonsister.tcjy.bean.UserInfoChangeBean;
 import com.moonsister.tcjy.bean.personalBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
@@ -19,6 +26,10 @@ import com.moonsister.tcjy.login.widget.SelectPicPopupActivity;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenter;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.PersonalActivityView;
+import com.moonsister.tcjy.popwindow.PopWindowDistance;
+import com.moonsister.tcjy.popwindow.PopWindowMarital;
+import com.moonsister.tcjy.popwindow.PopWindowPremarital;
+import com.moonsister.tcjy.popwindow.SelectPicPopupWindow;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
@@ -28,9 +39,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -91,7 +104,14 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
     private String jsonString2;//不带集合的json字符串
     private String avater;
     private personalBean mPersonalBean;
-
+    String habit;
+    //自定义的弹出框类
+    SelectPicPopupWindow menuWindow;
+    PopWindowMarital mMenuViewmarital;
+    PopWindowDistance mMenuViewdistance;
+    PopWindowPremarital mMenuViewpremarital;
+    String message;//头像路径
+    String message2;//背景图路径
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -143,6 +163,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
         tv_like_sex.setText(data.get(13).getValue());
         tv_premarital_sex.setText(data.get(14).getValue());
 
+
         JSONObject json = new JSONObject();
 
     }
@@ -168,11 +189,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
     }
 
     @OnClick({R.id.image_back,R.id.layout_avater,R.id.layout_like,R.id.layout_nike_name,R.id.layout_signature,R.id.layout_birthday,R.id.layout_star_sign,R.id.layout_birthplace,R.id.layout_address,R.id.layout_job,R.id.layout_hobby,R.id.layout_self_image,R.id.layout_ishouse,R.id.layout_marital_status,R.id.layout_distance_love,R.id.layout_like_sex,R.id.layout_premarital_sex,R.id.baocun})
-    public void onClick(View view) {
+    public void onClick(View view) throws JSONException {
         switch (view.getId()){
             case R.id.image_back:
-//                changeArrayDateToJson();
-
                 this.finish();
 //                changeArrayDateToJson();
 //                presenter.sendUserJson(jsonString);
@@ -183,15 +202,18 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
                         .setEvent(Events.EventEnum.GET_PHOTO)
                         .setEndEvent(ActivityEvent.DESTROY)
                         .onNext((events) -> {
-                           String message = (String) events.message;
+                           message = (String) events.message;
                             LogUtils.e(RZFirstActivity.class, "pic_path : " + message);
                             avater = message;
                             ImageServerApi.showURLSamllImage(riv_user_image, message);
                         }).create();
-                PersonalMessageBean userJsonBean = new PersonalMessageBean();
-                userJsonBean.setUserId(1);
-                userJsonBean.setUserName("message");
-                userBeans.add(userJsonBean);
+                JSONObject jsonobj=new JSONObject();
+                jsonobj.put("nickname", data1.getNickname());
+                jsonobj.put("sex",data1.getSex());
+                jsonobj.put("face", data.get(1).getEdit());
+                jsonobj.put("isvip",data.get(1).getIsvip());
+                jsonobj.put("value",message);
+
                 break;
             case R.id.layout_like://背景墙
                 ActivityUtils.startActivity(SelectPicPopupActivity.class);
@@ -199,7 +221,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
                         .setEvent(Events.EventEnum.GET_PHOTO)
                         .setEndEvent(ActivityEvent.DESTROY)
                         .onNext((events) -> {
-                            String message2 = (String) events.message;
+                            message2 = (String) events.message;
                             LogUtils.e(RZFirstActivity.class, "pic_path : " + message2);
                             avater = message2;
                             ImageServerApi.showURLSamllImage(riv_like_image, message2);
@@ -208,9 +230,14 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
                 userJsonBean1.setUserId(2);
                 userJsonBean1.setUserName("message2");
                 userBeans.add(userJsonBean1);
+                JSONObject jsonobj1=new JSONObject();
+                jsonobj1.put("field", data.get(2).getField());
+                jsonobj1.put("name",data.get(2).getName());
+                jsonobj1.put("edit", data.get(2).getEdit());
+                jsonobj1.put("isvip",data.get(2).getIsvip());
+                jsonobj1.put("value",message2);
                 break;
             case R.id.layout_nike_name://昵称
-//                ActivityUtils.startPersonInfoChangeActivity(PersonInfoChangeActivity.ChangeType.NIKE);
 
                tv_nike_name.requestFocus();
                 String str=tv_nike_name.getText().toString();
@@ -218,9 +245,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
                 userJsonBean3.setUserId(3);
                 userJsonBean3.setUserName("str");
                 userBeans.add(userJsonBean3);
-//                Intent intent = new Intent(this, PersonInfoChangeActivity.class);
-//                intent.putExtra("type", PersonInfoChangeActivity.ChangeType.NIKE);
-//                startActivity(intent);
+
                 break;
             case R.id.layout_signature://个性签名
                 tv_signature.requestFocus();
@@ -232,20 +257,38 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
                 break;
 
             case R.id.layout_birthday://出生年月
-                tv_birthday.requestFocus();
-                String birthday=tv_birthday.getText().toString();
-                PersonalMessageBean userJsonBean5 = new PersonalMessageBean();
-                userJsonBean5.setUserId(5);
-                userJsonBean5.setUserName("birthday");
-                userBeans.add(userJsonBean5);
+                ActivityUtils.startBirthdayActivity("s");
+
+
+
+                //同样，在读取SharedPreferences数据前要实例化出一个SharedPreferences对象
+
+//                DatePickerDialog  dateDlg = new DatePickerDialog(PersonalReviseActivity.this,
+//                        d,
+//                        dateAndTime.get(Calendar.YEAR),
+//                        dateAndTime.get(Calendar.MONTH),
+//                        dateAndTime.get(Calendar.DAY_OF_MONTH));
+//
+//                dateDlg.show();
+//
+//                Log.d(TAG,"Date show");
+
                 break;
             case R.id.layout_star_sign://星座
-                tv_star_sign.requestFocus();
-                String star_sign=tv_star_sign.getText().toString();
-                PersonalMessageBean userJsonBean6 = new PersonalMessageBean();
-                userJsonBean6.setUserId(6);
-                userJsonBean6.setUserName("star_sign");
-                userBeans.add(userJsonBean6);
+//                ActivityUtils.startBirthdayActivity("s");
+                SharedPreferences sharedPreferences= getSharedPreferences("my",
+                        Activity.MODE_PRIVATE);
+// 使用getString方法获得value，注意第2个参数是value的默认值
+                String name =sharedPreferences.getString("bir", "");
+                habit =sharedPreferences.getString("con", "");
+                tv_birthday.setText(name);
+                tv_star_sign.setText(habit+"");
+//                tv_star_sign.requestFocus();
+//                String star_sign=tv_star_sign.getText().toString();
+//                PersonalMessageBean userJsonBean6 = new PersonalMessageBean();
+//                userJsonBean6.setUserId(6);
+//                userJsonBean6.setUserName("star_sign");
+//                userBeans.add(userJsonBean6);
                 break;
             case R.id.layout_birthplace://籍贯
                 tv_birthplace.requestFocus();
@@ -288,28 +331,24 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
                 userBeans.add(userJsonBean11);
                 break;
             case R.id.layout_ishouse://是否有房
-                tv_ishouse.requestFocus();
-                String ishouse=tv_ishouse.getText().toString();
-                PersonalMessageBean userJsonBean12 = new PersonalMessageBean();
-                userJsonBean12.setUserId(12);
-                userJsonBean12.setUserName("ishouse");
-                userBeans.add(userJsonBean12);
+                menuWindow = new SelectPicPopupWindow(PersonalReviseActivity.this, itemsOnClick);
+                menuWindow.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.layout_ishouse), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
+
                 break;
             case R.id.layout_marital_status://婚姻状况
-                tv_marital_status.requestFocus();
-                String marital_status=tv_marital_status.getText().toString();
-                PersonalMessageBean userJsonBean13 = new PersonalMessageBean();
-                userJsonBean13.setUserId(13);
-                userJsonBean13.setUserName("marital_status");
-                userBeans.add(userJsonBean13);
+                mMenuViewmarital = new PopWindowMarital(PersonalReviseActivity.this, itemsOnClickMarital);
+                mMenuViewmarital.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_marital_status), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
+//                tv_marital_status.requestFocus();
+//                String marital_status=tv_marital_status.getText().toString();
+//                PersonalMessageBean userJsonBean13 = new PersonalMessageBean();
+//                userJsonBean13.setUserId(13);
+//                userJsonBean13.setUserName("marital_status");
+//                userBeans.add(userJsonBean13);
                 break;
             case R.id.layout_distance_love://接受异地恋
-                tv_distance_love.requestFocus();
-                String distance_love=tv_distance_love.getText().toString();
-                PersonalMessageBean userJsonBean14 = new PersonalMessageBean();
-                userJsonBean14.setUserId(14);
-                userJsonBean14.setUserName("distance_love");
-                userBeans.add(userJsonBean14);
+                mMenuViewdistance = new PopWindowDistance(PersonalReviseActivity.this, itemsOnClickDistance);
+                mMenuViewdistance.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_distance_love), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
+
                 break;
 
             case R.id.layout_like_sex://喜欢的异性
@@ -321,47 +360,126 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
                 userBeans.add(userJsonBean15);
                 break;
             case R.id.layout_premarital_sex://婚前性行为
-                tv_premarital_sex.requestFocus();
-                String premarital_sex=tv_premarital_sex.getText().toString();
-                PersonalMessageBean userJsonBean16 = new PersonalMessageBean();
-                userJsonBean16.setUserId(16);
-                userJsonBean16.setUserName("premarital_sex");
-                userBeans.add(userJsonBean16);
+                mMenuViewpremarital = new PopWindowPremarital(PersonalReviseActivity.this, itemsOnClickPrematital);
+                mMenuViewpremarital.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_premarital_sex), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
+
                 break;
             case R.id.baocun:
 
                 break;
         }
     }
-//    private void showDialog() {
-//        final CustomDialog.Builder builder = new CustomDialog.Builder(this);
-//        builder.setPositiveButton(new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface dialog, int which) {
-//                tv_birthday.setText(builder.getStr());
-//                dialog.dismiss();
-//            }
-//        });
-//
-//        builder.setNegativeButton(new android.content.DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface dialog, int which) {
-//                dialog.dismiss();
-//            }
-//        });
-//        showDialog(builder);
-//    }
-//
-//    private void showDialog(CustomDialog.Builder builder) {
-//        Dialog dialog = builder.create();
-//        Window dialogWindow = dialog.getWindow();
-//        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-//        dialogWindow.setGravity(Gravity.CENTER);
-//        WindowManager m = getWindowManager();
-//        Display d = m.getDefaultDisplay(); // 鑾峰彇灞忓箷瀹姐€侀珮鐢�
-//        WindowManager.LayoutParams p = dialogWindow.getAttributes(); // 鑾峰彇瀵硅瘽妗嗗綋鍓嶇殑鍙傛暟鍊�
-//        p.width = (int) (d.getWidth() * 0.75); // 瀹藉害璁剧疆涓哄睆骞曠殑0.65
-//        dialogWindow.setAttributes(p);
-//        dialog.show();
-//    }
+    DateFormat fmtDate = new java.text.SimpleDateFormat("yyyy-MM-dd");
+    Calendar dateAndTime = Calendar.getInstance(Locale.CHINA);
+    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener()
+    {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            //修改日历控件的年，月，日
+            //这里的year,monthOfYear,dayOfMonth的值与DatePickerDialog控件设置的最新值一致
+            dateAndTime.set(Calendar.YEAR, year);
+            dateAndTime.set(Calendar.MONTH, monthOfYear);
+            dateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            //将页面TextView的显示更新为最新时间
+            upDateDate();
+
+        }
+    };
+    private void upDateDate() {
+        tv_birthday.setText(fmtDate.format(dateAndTime.getTime()));
+
+    }
+    //为婚前性行为弹出窗口实现监听类
+    private OnClickListener  itemsOnClickPrematital = new OnClickListener(){
+
+        public void onClick(View v) {
+            mMenuViewpremarital.dismiss();
+            switch (v.getId()) {
+                case R.id.can_can:
+                    tv_premarital_sex.setText("可以接受");
+                    break;
+                case R.id.nono_no:
+                    tv_premarital_sex.setText("不能接受");
+                    break;
+
+                case R.id.can_no:
+                    tv_premarital_sex.setText("必须得有");
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+    //为接受异地恋弹出窗口实现监听类
+    private OnClickListener  itemsOnClickDistance = new OnClickListener(){
+
+        public void onClick(View v) {
+            mMenuViewdistance.dismiss();
+            switch (v.getId()) {
+                case R.id.can:
+                    tv_distance_love.setText("可以接受");
+                    break;
+                case R.id.nono:
+                    tv_distance_love.setText("不能接受");
+                    break;
+
+                case R.id.look_can:
+                    tv_distance_love.setText("看情况");
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+    //为弹出窗口实现监听类
+    private OnClickListener  itemsOnClick = new OnClickListener(){
+
+        public void onClick(View v) {
+            menuWindow.dismiss();
+            switch (v.getId()) {
+                case R.id.btn_take_photo:
+                    tv_ishouse.setText("租房");
+                    break;
+                case R.id.btn_pick_photo:
+                    tv_ishouse.setText("有房");
+                    break;
+
+                case R.id.btn_pick_photo1:
+                    tv_ishouse.setText("宿舍");
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+    //为婚姻状况弹出窗口实现监听类
+    private OnClickListener  itemsOnClickMarital = new OnClickListener(){
+        public void onClick(View v) {
+            mMenuViewmarital.dismiss();
+            switch (v.getId()) {
+                case R.id.yi_marital:
+                    tv_marital_status.setText("已婚");
+                    break;
+                case R.id.wei_marital:
+                    tv_marital_status.setText("未婚");
+                    break;
+                case R.id.li_marital:
+                    tv_marital_status.setText("离异");
+                    break;
+                case R.id.si_marital:
+                    tv_marital_status.setText("丧偶");
+                    break;
+
+                default:
+                    break;
+            }
+
+
+        }
+
+    };
+
     private void changeArrayDateToJson() { //把一个集合转换成json格式的字符串
         jsonArray=null;
         object=null;

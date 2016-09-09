@@ -194,7 +194,7 @@
                     style="@style/info_change_text"
                     android:text="星座" />
 
-                <EditText
+                <TextView
                     android:id="@+id/tv_star_sign"
                     android:layout_width="match_parent"
                     style="@style/info_change_show_text"
@@ -320,7 +320,7 @@
                     style="@style/info_change_text"
                     android:text="是否有房" />
 
-                <EditText
+                <TextView
                     android:id="@+id/tv_ishouse"
                     style="@style/info_change_show_text"
                     android:layout_alignParentRight="true"
@@ -341,7 +341,7 @@
                     style="@style/info_change_text"
                     android:text="婚姻状况" />
 
-                <EditText
+                <TextView
                     android:id="@+id/tv_marital_status"
                     style="@style/info_change_show_text"
                     android:layout_alignParentRight="true"
@@ -363,7 +363,7 @@
                     style="@style/info_change_text"
                     android:text="接受异地恋" />
 
-                <EditText
+                <TextView
                     android:id="@+id/tv_distance_love"
                     style="@style/info_change_show_text"
                     android:layout_alignParentRight="true"
@@ -411,7 +411,7 @@
                     style="@style/info_change_text"
                     android:text="婚前性行为" />
 
-                <EditText
+                <TextView
                     android:id="@+id/tv_premarital_sex"
                     style="@style/info_change_show_text"
                     android:layout_alignParentRight="true"

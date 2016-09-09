@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.login.widget.RegActivity;
 import com.moonsister.tcjy.main.widget.MainActivity;
 import com.moonsister.tcjy.my.persenter.RechargeActivityPersenter;
 import com.moonsister.tcjy.my.persenter.RechargeActivityPersenterImpl;

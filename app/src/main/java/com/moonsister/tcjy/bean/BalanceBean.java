@@ -25,7 +25,7 @@ public class BalanceBean extends BaseBean{
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean extends BaseDataBean {
         private String desc;
         private int time;
         private String money;

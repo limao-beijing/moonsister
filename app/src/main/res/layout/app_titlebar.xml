@@ -31,7 +31,7 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/x30"
         android:padding="@dimen/x20"
-        android:textColor="@color/text_black_color" />
+        android:textColor="@color/white" />
 
     <ImageView
         android:layout_width="match_parent"

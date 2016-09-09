@@ -16,18 +16,19 @@ import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.BalanceBean;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.MoneyHolder;
+import com.moonsister.tcjy.viewholder.MoneyTwoHolder;
 
 import java.util.List;
 
 /**
  * Created by x on 2016/9/2.
  */
-public class MoneyAdapter extends  BaseRecyclerViewAdapter<BalanceBean.DataBean>{
+public class MoneyTwoAdapter extends  BaseRecyclerViewAdapter<BalanceBean.DataBean>{
     private BaseIView view;
     private int pageType;
-    private MoneyHolder viewHoler;
+    private MoneyTwoHolder viewHoler;
 
-    public MoneyAdapter(List<BalanceBean.DataBean> data, BaseIView view) {
+    public MoneyTwoAdapter(List<BalanceBean.DataBean> data, BaseIView view) {
         super(data);
         this.view = view;
     }
@@ -35,7 +36,7 @@ public class MoneyAdapter extends  BaseRecyclerViewAdapter<BalanceBean.DataBean>
     @Override
     protected View initRootView(ViewGroup parent, int viewType) {
         View view = UIUtils.inflateLayout(R.layout.onefragmentitem);
-        viewHoler = new MoneyHolder(view);
+        viewHoler = new MoneyTwoHolder(view);
         viewHoler.setAdapter(this);
 
         return viewHoler.getRootView();

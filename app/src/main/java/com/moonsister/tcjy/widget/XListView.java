@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import com.moonsister.tcjy.R;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.moonsister.tcjy.adapter.MoneyAdapter;
 
 /**
  * Created by jb on 2016/6/27.

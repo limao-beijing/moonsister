@@ -78,13 +78,13 @@ public class MoneyActivity extends BaseActivity implements WithdRawDepositView {
 
     @Override
     protected void initView() {
-
+        presenter.loadEnableMoney();
+        setRx();
         oneFragment=new OneFragment();
         oneFragment.setUid(getIntent().getStringExtra("uid"));
         twoFragment=new TwoFragment();
         FragmentUtils.switchHideFragment(getSupportFragmentManager(),R.id.fragmentlayout,currentFragment,oneFragment);
-        presenter.loadEnableMoney();
-        setRx();
+
     }
     private void setRx() {
         RxBus.with(this)
