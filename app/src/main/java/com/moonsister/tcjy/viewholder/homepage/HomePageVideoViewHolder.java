@@ -1,7 +1,10 @@
 package com.moonsister.tcjy.viewholder.homepage;
 
+import android.graphics.drawable.BitmapDrawable;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.ImageServerApi;
@@ -9,10 +12,12 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.HomePageFragmentAdapter;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.DynamicItemBean;
+import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.TimeUtils;
+import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 import com.moonsister.tcjy.widget.speak.VoicePlay;
 
@@ -100,13 +105,98 @@ public class HomePageVideoViewHolder extends BaseRecyclerViewHolder<DynamicItemB
                 }
             }
         });
+        tvHomePageControl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopwindow(v, dynamicItemBean.getUid());
+            }
+        });
 
 
     }
 
+    private PopupWindow popupWindow;
+
+
     @Override
     protected void onItemclick(View view, DynamicItemBean dynamicItemBean, int position) {
         ActivityUtils.startDynamicDatailsActivity(dynamicItemBean.getLatest_id(), dynamicItemBean.getType());
+    }
+
+    private void showPopwindow(View parent, String uid) {
+
+        View view = UIUtils.inflateLayout(R.layout.pop_dynamic_control);
+
+
+        View line = view.findViewById(R.id.line);
+        TextView tv_dynam_control_left = (TextView) view.findViewById(R.id.tv_dynam_control_left);
+        TextView tv_dynam_control_right = (TextView) view.findViewById(R.id.tv_dynam_control_right);
+        if (!StringUtis.equals(UserInfoManager.getInstance().getUid(), uid)) {
+            line.setVisibility(View.GONE);
+            tv_dynam_control_right.setVisibility(View.GONE);
+            tv_dynam_control_left.setText(UIUtils.getStringRes(R.string.report));
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (popupWindow != null) {
+                        popupWindow.dismiss();
+                        popupWindow = null;
+                        if (baseIView != null) {
+                            baseIView.transfePageMsg(UIUtils.getStringRes(R.string.report) + UIUtils.getStringRes(R.string.success));
+                        }
+                    }
+
+                }
+            });
+        } else {
+            tv_dynam_control_left.setText(UIUtils.getStringRes(R.string.stick));
+            tv_dynam_control_left.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (popupWindow != null) {
+                        popupWindow.dismiss();
+                        popupWindow = null;
+                        if (baseIView != null) {
+                            baseIView.transfePageMsg(UIUtils.getStringRes(R.string.stick) + UIUtils.getStringRes(R.string.success));
+                        }
+                    }
+                }
+            });
+            tv_dynam_control_right.setText(UIUtils.getStringRes(R.string.delete));
+            tv_dynam_control_right.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (popupWindow != null) {
+                        popupWindow.dismiss();
+                        popupWindow = null;
+                        if (baseIView != null) {
+                            baseIView.transfePageMsg(UIUtils.getStringRes(R.string.delete) + UIUtils.getStringRes(R.string.success));
+                        }
+                    }
+                }
+            });
+        }
+
+
+        int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        view.measure(w, h);
+        int height = view.getMeasuredHeight();
+        int width = view.getMeasuredWidth();
+
+
+        popupWindow = new PopupWindow(view, width, height);
+
+//        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+
+        int[] location = new int[2];
+        parent.getLocationOnScreen(location);
+
+        popupWindow.showAtLocation(parent, Gravity.NO_GRAVITY, location[0] - popupWindow.getWidth(), location[1]);
+
+
     }
 
 

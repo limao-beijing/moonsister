@@ -59,6 +59,13 @@ public abstract class BaseRecyclerViewHolder<T extends BaseDataBean> extends Rec
     }
 
     /**
+     * 初始布局监听事件
+     */
+    public void initViewClik(T t, int position) {
+
+    }
+
+    /**
      * @param view     点击的view
      * @param t        点击的对象数据
      * @param position 点击位置

@@ -199,17 +199,19 @@
             android:layout_marginTop="@dimen/x15"/>
 
         <FrameLayout
+            android:id="@+id/fl_home_page_control"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1">
 
             <TextView
                 android:id="@+id/tv_home_page_control"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:drawableLeft="@mipmap/home_page_control"
                 android:gravity="center"
+                android:padding="@dimen/x40"
                 android:textColor="@color/text_gray_778998"
                 android:textSize="@dimen/text_size_12"/>
         </FrameLayout>

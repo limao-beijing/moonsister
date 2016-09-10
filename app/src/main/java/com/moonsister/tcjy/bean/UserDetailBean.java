@@ -5,12 +5,11 @@ import java.util.List;
 /**
  * Created by x on 2016/9/8.
  */
-public class UserDetailBean extends BaseBean{
-
+public class UserDetailBean extends BaseBean {
 
     /**
-     * baseinfo : {"nickname":"mm1471248477864","sex":1,"face":"http://mimei.oss-cn-beijing.aliyuncs.com/public/face/moren.png","like_image":"http://mimei.oss-cn-beijing.aliyuncs.com/public/default-like-image.png","profession":"","birthday":"","signature":"新人加入，请记得关注我哦。","residence":"","age":23,"tags":"帅哥|||美女|||测试|||心灵鸡汤|||黑暗","latest_total":0,"latest_free":0,"latest_vip":0,"isverify":3,"vip_level":"0"}
-     * addons : {"ufann":16,"ufoln":138,"ulatn":0,"uflon":0,"income_all":0,"income_today":0}
+     * baseinfo : {"nickname":"json","sex":1,"face":"http://mimei.oss-cn-beijing.aliyuncs.com/image/20160804/18/14703055089420276.jpg","like_image":"http://mimei.oss-cn-beijing.aliyuncs.com/image/20160812/13/14709792952357606.jpg","profession":"白领","birthday":"1991-01-31","signature":"Uzbek","residence":"成都","age":19,"tags":"帅哥|||美女|||测试|||心灵鸡汤|||黑暗","latest_total":56,"latest_free":19,"latest_vip":37,"isverify":1,"vip_level":0}
+     * addons : {"ufann":343,"ufoln":182,"ulatn":58,"uflon":0,"income_all":8263.02,"income_today":1.5}
      * guard : []
      * follow : 0
      */
@@ -27,31 +26,31 @@ public class UserDetailBean extends BaseBean{
 
     public static class DataBean {
         /**
-         * nickname : mm1471248477864
+         * nickname : json
          * sex : 1
-         * face : http://mimei.oss-cn-beijing.aliyuncs.com/public/face/moren.png
-         * like_image : http://mimei.oss-cn-beijing.aliyuncs.com/public/default-like-image.png
-         * profession :
-         * birthday :
-         * signature : 新人加入，请记得关注我哦。
-         * residence :
-         * age : 23
+         * face : http://mimei.oss-cn-beijing.aliyuncs.com/image/20160804/18/14703055089420276.jpg
+         * like_image : http://mimei.oss-cn-beijing.aliyuncs.com/image/20160812/13/14709792952357606.jpg
+         * profession : 白领
+         * birthday : 1991-01-31
+         * signature : Uzbek
+         * residence : 成都
+         * age : 19
          * tags : 帅哥|||美女|||测试|||心灵鸡汤|||黑暗
-         * latest_total : 0
-         * latest_free : 0
-         * latest_vip : 0
-         * isverify : 3
+         * latest_total : 56
+         * latest_free : 19
+         * latest_vip : 37
+         * isverify : 1
          * vip_level : 0
          */
 
         private BaseinfoBean baseinfo;
         /**
-         * ufann : 16
-         * ufoln : 138
-         * ulatn : 0
+         * ufann : 343
+         * ufoln : 182
+         * ulatn : 58
          * uflon : 0
-         * income_all : 0
-         * income_today : 0
+         * income_all : 8263.02
+         * income_today : 1.5
          */
 
         private AddonsBean addons;

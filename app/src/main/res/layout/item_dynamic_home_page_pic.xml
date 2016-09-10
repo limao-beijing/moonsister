@@ -84,7 +84,6 @@
     </RelativeLayout>
 
     <TextView
-        android:paddingLeft="@dimen/x10"
         android:id="@+id/dynamic_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -94,6 +93,7 @@
         android:enabled="true"
         android:gravity="bottom"
         android:maxLines="2"
+        android:paddingLeft="@dimen/x10"
         android:text="@string/loading"
         android:textColor="@color/black_1d262e"
         android:textSize="@dimen/text_size_16"/>
@@ -180,11 +180,13 @@
         </FrameLayout>
 
         <View
+            android:id="@+id/home_page_pay_line"
             style="@style/vertical_line"
             android:layout_marginBottom="@dimen/x15"
             android:layout_marginTop="@dimen/x15"/>
 
         <FrameLayout
+            android:id="@+id/fl_home_page_control"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">

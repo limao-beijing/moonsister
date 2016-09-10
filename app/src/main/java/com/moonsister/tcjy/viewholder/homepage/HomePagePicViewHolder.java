@@ -1,20 +1,27 @@
 package com.moonsister.tcjy.viewholder.homepage;
 
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
+import com.moonsister.tcjy.adapter.HomePageFragmentAdapter;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.DynamicItemBean;
+import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.TimeUtils;
+import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.NoScrollGridView;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
@@ -50,6 +57,10 @@ public class HomePagePicViewHolder extends BaseRecyclerViewHolder<DynamicItemBea
     TextView tv_time;
     @Bind(R.id.iv_add_v)
     ImageView iv_add_v;
+    @Bind(R.id.fl_home_page_control)
+    FrameLayout fl_home_page_control;
+    @Bind(R.id.home_page_pay_line)
+    View vertical_line;
 
     public HomePagePicViewHolder(View view) {
         super(view);
@@ -59,6 +70,7 @@ public class HomePagePicViewHolder extends BaseRecyclerViewHolder<DynamicItemBea
     public void onBindData(DynamicItemBean dynamicItemBean) {
         if (dynamicItemBean == null)
             return;
+        String uid = dynamicItemBean.getUid();
         ImageServerApi.showURLSamllImage(rivUserImage, dynamicItemBean.getFace());
         tvUserName.setText(dynamicItemBean.getNickname());
         String sex = dynamicItemBean.getSex();
@@ -94,9 +106,106 @@ public class HomePagePicViewHolder extends BaseRecyclerViewHolder<DynamicItemBea
         tvHomePageControl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                showPopwindow(v, uid);
             }
         });
+        isShowRed(dynamicItemBean.getType());
+
+    }
+
+    private void isShowRed(int type) {
+        switch (type) {
+            case HomePageFragmentAdapter.TYPE_CHARGE_PIC:
+            case HomePageFragmentAdapter.TYPE_CHARGE_VIDEO:
+            case HomePageFragmentAdapter.TYPE_CHARGE_VOICE:
+                vertical_line.setVisibility(View.VISIBLE);
+                tvHomePagePay.setVisibility(View.VISIBLE);
+                break;
+            case HomePageFragmentAdapter.TYPE_FREE_PIC:
+            case HomePageFragmentAdapter.TYPE_FREE_VIDEO:
+            case HomePageFragmentAdapter.TYPE_FREE_VOICE:
+                vertical_line.setVisibility(View.GONE);
+                tvHomePagePay.setVisibility(View.GONE);
+                break;
+        }
+    }
+
+    private PopupWindow popupWindow;
+
+    private void showPopwindow(View parent, String uid) {
+
+        View view = UIUtils.inflateLayout(R.layout.pop_dynamic_control);
+
+
+        View line = view.findViewById(R.id.line);
+        TextView tv_dynam_control_left = (TextView) view.findViewById(R.id.tv_dynam_control_left);
+        TextView tv_dynam_control_right = (TextView) view.findViewById(R.id.tv_dynam_control_right);
+        if (!StringUtis.equals(UserInfoManager.getInstance().getUid(), uid)) {
+            line.setVisibility(View.GONE);
+            tv_dynam_control_right.setVisibility(View.GONE);
+            tv_dynam_control_left.setText(UIUtils.getStringRes(R.string.report));
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (popupWindow != null) {
+                        popupWindow.dismiss();
+                        popupWindow = null;
+                        if (baseIView != null) {
+                            baseIView.transfePageMsg(UIUtils.getStringRes(R.string.report) + UIUtils.getStringRes(R.string.success));
+                        }
+                    }
+
+                }
+            });
+        } else {
+            tv_dynam_control_left.setText(UIUtils.getStringRes(R.string.stick));
+            tv_dynam_control_left.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (popupWindow != null) {
+                        popupWindow.dismiss();
+                        popupWindow = null;
+                        if (baseIView != null) {
+                            baseIView.transfePageMsg(UIUtils.getStringRes(R.string.stick) + UIUtils.getStringRes(R.string.success));
+                        }
+                    }
+                }
+            });
+            tv_dynam_control_right.setText(UIUtils.getStringRes(R.string.delete));
+            tv_dynam_control_right.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (popupWindow != null) {
+                        popupWindow.dismiss();
+                        popupWindow = null;
+                        if (baseIView != null) {
+                            baseIView.transfePageMsg(UIUtils.getStringRes(R.string.delete) + UIUtils.getStringRes(R.string.success));
+                        }
+                    }
+                }
+            });
+        }
+
+
+        int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        view.measure(w, h);
+        int height = view.getMeasuredHeight();
+        int width = view.getMeasuredWidth();
+
+
+        popupWindow = new PopupWindow(view, width, height);
+
+//        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+
+        int[] location = new int[2];
+        parent.getLocationOnScreen(location);
+
+        popupWindow.showAtLocation(parent, Gravity.NO_GRAVITY, location[0] - popupWindow.getWidth(), location[1]);
+
+
     }
 
     @Override
@@ -149,4 +258,6 @@ public class HomePagePicViewHolder extends BaseRecyclerViewHolder<DynamicItemBea
             return imageView;
         }
     }
+
+
 }

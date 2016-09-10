@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
+import com.moonsister.tcjy.adapter.DynamicAdapter;
 import com.moonsister.tcjy.bean.DynamicDatailsBean;
 import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.utils.UIUtils;
@@ -35,8 +36,33 @@ public class CommentDynacmicViewHolder extends BaseHolder<DynamicDatailsBean> {
         DynamicItemBean data = bean.getData();
         mTvCommentNumber.setText(UIUtils.getStringRes(R.string.comment) + "  " + data.getComment_count());
 
-        mTvWacth.setText("浏览 " + data.getView_num());
+        mTvWacth.setText(getWacth(data.getType()) + "  " + data.getView_num());
         mTvNotLike.setText("踩 " + data.getLdon());
         mTvLike.setText("赞 " + data.getLupn());
+    }
+
+    private String getWacth(int type) {
+        String str = "";
+        switch (type) {
+            case DynamicAdapter.TYPE_CHARGE_PIC:
+                str = "偷看";
+                break;
+            case DynamicAdapter.TYPE_FREE_PIC:
+                str = "查看";
+                break;
+            case DynamicAdapter.TYPE_CHARGE_VIDEO:
+                str = "偷窥";
+                break;
+            case DynamicAdapter.TYPE_FREE_VIDEO:
+                str = "观看";
+                break;
+            case DynamicAdapter.TYPE_FREE_VOICE:
+                str = "收听";
+                break;
+            case DynamicAdapter.TYPE_CHARGE_VOICE:
+                str = "偷听";
+                break;
+        }
+        return str;
     }
 }

@@ -14,14 +14,11 @@ import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.login.presenter.LoginFragmentPersenter;
 import com.moonsister.tcjy.login.presenter.LoginFragmentPersenterImpl;
 import com.moonsister.tcjy.login.view.LoginFragmentView;
-import com.moonsister.tcjy.main.widget.MainActivity;
-import com.moonsister.tcjy.main.widget.ManorGrilActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.StringUtis;
@@ -35,17 +32,17 @@ import butterknife.OnClick;
  */
 public class LoginFragment extends BaseFragment implements LoginFragmentView {
     @Bind(R.id.iv_user_icon)//用户头像
-    ImageView iv_user_icon;
+            ImageView iv_user_icon;
     @Bind(R.id.et_phone_number)//登录用的手机号
-    EditText etPhoneNumber;
+            EditText etPhoneNumber;
     @Bind(R.id.et_password)//登录用的密码
-    EditText etPassword;
+            EditText etPassword;
     @Bind(R.id.tv_forget_password)//忘记密码按钮
-    TextView tvForgetPassword;
+            TextView tvForgetPassword;
     @Bind(R.id.submit_login)//登录按钮
-    TextView submitLogin;
+            TextView submitLogin;
     @Bind(R.id.reg_new_people)//注册新用户
-    TextView reg_new_people;
+            TextView reg_new_people;
     private LoginFragmentPersenter persenter;
 
     public static LoginFragment newInstance() {
@@ -71,7 +68,7 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
         return super.onTouch(v, event);
     }
 
-    @OnClick({R.id.tv_forget_password, R.id.submit_login,R.id.reg_new_people})
+    @OnClick({R.id.tv_forget_password, R.id.submit_login, R.id.reg_new_people})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_forget_password://找回密码
@@ -81,7 +78,7 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
                 login();
                 break;
             case R.id.reg_new_people://注册新用户
-                Intent intent=new Intent(getActivity(), RegActivity.class);
+                Intent intent = new Intent(getActivity(), RegActivity.class);
                 startActivity(intent);
                 break;
         }
@@ -99,8 +96,6 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
             return;
         }
         persenter.loginSubmit(phone, password);
-        Intent intent=new Intent(getActivity(), MainActivity.class);
-        startActivity(intent);
     }
 
 

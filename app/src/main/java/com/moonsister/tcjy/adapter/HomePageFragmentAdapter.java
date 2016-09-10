@@ -7,6 +7,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewAdapter;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.DynamicItemBean;
+import com.moonsister.tcjy.main.widget.HomePageFragment;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.homepage.HomePagePicViewHolder;
 import com.moonsister.tcjy.viewholder.homepage.HomePageVideoViewHolder;
@@ -35,6 +36,7 @@ public class HomePageFragmentAdapter extends BaseRecyclerViewAdapter<DynamicItem
 
 
     private BaseRecyclerViewHolder holder;
+    private HomePageFragment mBaseView;
 
     public HomePageFragmentAdapter(List<DynamicItemBean> list) {
         super(list);
@@ -63,11 +65,16 @@ public class HomePageFragmentAdapter extends BaseRecyclerViewAdapter<DynamicItem
 //                holder = new HomePageVideoViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_home_page_video, parent));
 //                break;
         }
+        holder.setView(mBaseView);
         return holder.getRootView();
     }
 
     @Override
     protected BaseRecyclerViewHolder getBaseViewHolder(View v, int viewType) {
         return holder;
+    }
+
+    public void setBaseView(HomePageFragment baseView) {
+        mBaseView = baseView;
     }
 }

@@ -110,6 +110,7 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
     public void setDynamicData(List<DynamicItemBean> list) {
         if (adapter == null) {
             adapter = new HomePageFragmentAdapter(list);
+            adapter.setBaseView(this);
             xlv.setAdapter(adapter);
         } else {
             if (isRefresh)
@@ -135,7 +136,7 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
             return;
         String follow = userInfo.getData().getFollow();
         boolean equals = StringUtis.equals(follow, "1");
-        Drawable drawable = UIUtils.getResources().getDrawable(equals ? R.mipmap.home_page_not_wacth : R.mipmap.home_page_wacth);
+        Drawable drawable = UIUtils.getResources().getDrawable(!equals ? R.mipmap.home_page_not_wacth : R.mipmap.home_page_wacth);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
         tv_wacth.setCompoundDrawables(drawable, null, null, null);
         tv_wacth.setText(UIUtils.getStringRes(equals ? R.string.wacth : R.string.not_wacth));
@@ -192,7 +193,7 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
             public void onSuccess(BaseBean bean, BaseIModel.DataType dataType) {
                 boolean equals = StringUtis.equals(follow, "1");
                 if (bean != null && StringUtis.equals(bean.getCode(), "1")) {
-                    Drawable drawable = UIUtils.getResources().getDrawable(equals ? R.mipmap.home_page_not_wacth : R.mipmap.home_page_wacth);
+                    Drawable drawable = UIUtils.getResources().getDrawable(!equals ? R.mipmap.home_page_not_wacth : R.mipmap.home_page_wacth);
                     drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                     tv_wacth.setCompoundDrawables(drawable, null, null, null);
                     tv_wacth.setText(UIUtils.getStringRes(equals ? R.string.wacth : R.string.not_wacth));
