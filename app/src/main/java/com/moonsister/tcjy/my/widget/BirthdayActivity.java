@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.my.widget;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -233,15 +234,24 @@ public class BirthdayActivity extends BaseActivity implements OnClickListener {
 
                 String s = tv_date_birthday.getText().toString();
                 String s1 = tv_birthday_constellation.getText().toString();
-                SharedPreferences mySharedPreferences= getSharedPreferences("my",
-                        Activity.MODE_PRIVATE);
-                //实例化SharedPreferences.Editor对象（第二步）
-                SharedPreferences.Editor editor = mySharedPreferences.edit();
-                //用putString的方法保存数据
-                editor.putString("bir", s);
-                editor.putString("con", s1);
-//                提交当前数据
-                editor.commit();
+                //数据是使用Intent返回
+                Intent intent = new Intent();
+                //把返回数据存入Intent
+                intent.putExtra("result", s);
+                intent.putExtra("love", s1);
+                //设置返回数据
+                BirthdayActivity.this.setResult(RESULT_OK, intent);
+                //关闭Activity
+                BirthdayActivity.this.finish();
+//                SharedPreferences mySharedPreferences= getSharedPreferences("my",
+//                        Activity.MODE_PRIVATE);
+//                //实例化SharedPreferences.Editor对象（第二步）
+//                SharedPreferences.Editor editor = mySharedPreferences.edit();
+//                //用putString的方法保存数据
+//                editor.putString("bir", s);
+//                editor.putString("con", s1);
+////                提交当前数据
+//                editor.commit();
 
                 finish();
                 break;

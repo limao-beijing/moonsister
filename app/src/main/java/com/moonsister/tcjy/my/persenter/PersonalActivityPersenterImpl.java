@@ -24,6 +24,7 @@ public class PersonalActivityPersenterImpl implements PersonalActivityPersenter,
         model.loadData(uid,this);
     }
 
+
     @Override
     public void sendUserJson(String contents) {
         view.showLoading();

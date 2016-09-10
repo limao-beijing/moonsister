@@ -24,6 +24,7 @@ import com.moonsister.tcjy.bean.LoginBean;
 import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.PersonalMessageBean;
+import com.moonsister.tcjy.bean.PersonalReviseMessageBean;
 import com.moonsister.tcjy.bean.PingbiBean;
 import com.moonsister.tcjy.bean.RankBean;
 import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
@@ -1082,6 +1083,17 @@ public class ServerApi {
                                                            @Query("authcode") String authcode,
                                                            @Query("channel") String channelId,
                                                            @Query("version_type") String apiVersion);
+        /**
+         * 修改用户资料页展示
+         *
+         * @param uid
+         * @return
+         */
+        @GET("user/user_detail_rule_single/")
+        Observable<PersonalReviseMessageBean> setPersonalReviseMessage(@Query("uid") int uid,
+                                                                       @Query("authcode") String authcode,
+                                                                       @Query("channel") String channelId,
+                                                                       @Query("version_type") String apiVersion);
 
         /**
          * 财务中心页，收入和支出明细
@@ -1131,9 +1143,9 @@ public class ServerApi {
         @FormUrlEncoded
         @POST("recharge/pub")
         Observable<PersonalMessageBean> getUserJsonBean(@Field("contents") String contents,
-                                                 @Field("authcode") String authcode,
-                                                 @Field("channel") String channel,
-                                                 @Field("version_type") String apiVersion);
+                                                        @Field("authcode") String authcode,
+                                                        @Field("channel") String channel,
+                                                        @Field("version_type") String apiVersion);
 
         /**
          * 上传视频和语音

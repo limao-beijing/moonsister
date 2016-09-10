@@ -5,6 +5,6 @@
     <com.moonsister.tcjy.widget.XListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="@color/app_gred_background"
         android:id="@+id/twofragment_listview"></com.moonsister.tcjy.widget.XListView>
 </LinearLayout>

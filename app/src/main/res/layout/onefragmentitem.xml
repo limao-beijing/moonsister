@@ -1,33 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ImageView
-        android:layout_width="@dimen/x150"
-        android:layout_height="@dimen/y150"
-        android:id="@+id/onfragment_im"
-        android:background="@mipmap/ic_launcher"
-        />
+    android:layout_height="@dimen/y138">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_time"
+        android:layout_marginLeft="@dimen/x30"
         android:text="5655656"
-        android:textSize="18sp"
-        android:layout_toRightOf="@+id/onfragment_im"/>
+        android:textColor="@color/text_gray_778998"
+        android:layout_marginTop="@dimen/y30"
+        android:textSize="18sp" />
+    <ImageView
+        android:layout_width="@dimen/x120"
+        android:layout_height="@dimen/y120"
+        android:id="@+id/onfragment_im"
+        android:layout_marginLeft="@dimen/x26"
+        android:layout_toRightOf="@+id/text_time"
+        android:background="@mipmap/ic_launcher"
+        />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_money"
         android:textSize="18sp"
-        android:layout_alignParentRight="true"
+        android:textColor="@color/text_gray_778998"
+        android:layout_toRightOf="@+id/onfragment_im"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/y25"
         android:text="5000"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_tc"
         android:text="还研究考了多少的"
-        android:layout_marginTop="@dimen/y40"
-        android:layout_below="@+id/text_time"
+        android:textSize="14sp"
+        android:textColor="@color/text_gray_778998"
+        android:layout_marginTop="@dimen/y20"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_below="@+id/text_money"
         android:layout_toRightOf="@+id/onfragment_im"/>
 </RelativeLayout>

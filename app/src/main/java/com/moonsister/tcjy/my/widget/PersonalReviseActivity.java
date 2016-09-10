@@ -3,7 +3,10 @@ package com.moonsister.tcjy.my.widget;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -13,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
@@ -26,6 +31,7 @@ import com.moonsister.tcjy.login.widget.SelectPicPopupActivity;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenter;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.PersonalActivityView;
+import com.moonsister.tcjy.my.view.UserInfoChangeActivityView;
 import com.moonsister.tcjy.popwindow.PopWindowDistance;
 import com.moonsister.tcjy.popwindow.PopWindowMarital;
 import com.moonsister.tcjy.popwindow.PopWindowPremarital;
@@ -48,6 +54,7 @@ import java.util.Locale;
 import butterknife.Bind;
 import butterknife.OnClick;
 import io.rong.imkit.MsgContent;
+import rx.android.plugins.RxAndroidSchedulersHook;
 
 /**
  * Created by x on 2016/9/5.
@@ -88,9 +95,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
     @Bind(R.id.tv_premarital_sex)//婚前性行为
             TextView tv_premarital_sex;
     @Bind(R.id.image_back)//返回
-    ImageView image_back;
+            ImageView image_back;
     @Bind(R.id.baocun)//保存
-    TextView baocun;
+            TextView baocun;
     private PersonalActivityPersenter presenter;
     List<PersonalMessageBean.DataBean.RulesBean> data;
     PersonalMessageBean.DataBean.BaseinfoBean data1;
@@ -112,11 +119,28 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
     PopWindowPremarital mMenuViewpremarital;
     String message;//头像路径
     String message2;//背景图路径
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+    String result;//年龄
+    String love;//星座
+    JSONObject jsonobj;//头像  背景图
+    JSONObject jsonobjname;//昵称
+    JSONObject jsonobjsignature;//个性签名
+    JSONObject jsonobjsex;//性别
+    JSONObject jsonobjbirthday;//出生日期
+    JSONObject jsonobjstarsign;//星座
+    JSONObject jsonobjbirthplace;//籍贯
+    JSONObject jsonobjaddress;//现居
+    JSONObject jsonobjjob;//职业
+    JSONObject jsonobjhobby;//兴趣爱好
+    JSONObject jsonobjself;//自我印象
+    JSONObject jsonobjishouse;//是否有房
+    JSONObject jsonobjmarital;//婚姻状况
+    JSONObject jsonobjdistance;//接受异地恋
+    JSONObject jsonobjlike;//喜欢的异性
+    JSONObject jsonobjpremarital;//婚前性行为
+    String ishouse;
+    String marital_status;
+    String distance;
+    String premarital_sex;
 
     @Override
     protected View setRootContentView() {
@@ -130,11 +154,12 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
         presenter.attachView(this);
         userBeans = new ArrayList<PersonalMessageBean>();
         presenter.sendPersonalMessage(145655);
+//        presenter.sendPersonalResviceMessage(145655);
 
     }
 
     @Override
-    public void success(PersonalMessageBean getPersonalBean){
+    public void success(PersonalMessageBean getPersonalBean) {
         data = getPersonalBean.getData().getRules();
         data1 = getPersonalBean.getData().getBaseinfo();
         data2 = getPersonalBean.getData().getDlist();
@@ -163,9 +188,6 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
         tv_like_sex.setText(data.get(13).getValue());
         tv_premarital_sex.setText(data.get(14).getValue());
 
-
-        JSONObject json = new JSONObject();
-
     }
 
     @Override
@@ -175,12 +197,12 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
 
     @Override
     public void showLoading() {
-
+        showProgressDialog();
     }
 
     @Override
     public void hideLoading() {
-
+        hideProgressDialog();
     }
 
     @Override
@@ -188,9 +210,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
         showToast(msg);
     }
 
-    @OnClick({R.id.image_back,R.id.layout_avater,R.id.layout_like,R.id.layout_nike_name,R.id.layout_signature,R.id.layout_birthday,R.id.layout_star_sign,R.id.layout_birthplace,R.id.layout_address,R.id.layout_job,R.id.layout_hobby,R.id.layout_self_image,R.id.layout_ishouse,R.id.layout_marital_status,R.id.layout_distance_love,R.id.layout_like_sex,R.id.layout_premarital_sex,R.id.baocun})
-    public void onClick(View view) throws JSONException {
-        switch (view.getId()){
+    @OnClick({R.id.image_back, R.id.layout_avater, R.id.layout_like, R.id.layout_nike_name, R.id.layout_signature, R.id.layout_sex, R.id.layout_birthday, R.id.layout_star_sign, R.id.layout_birthplace, R.id.layout_address, R.id.layout_job, R.id.layout_hobby, R.id.layout_self_image, R.id.layout_ishouse, R.id.layout_marital_status, R.id.layout_distance_love, R.id.layout_like_sex, R.id.layout_premarital_sex, R.id.baocun})
+    public void onClick(View view)  {
+        switch (view.getId()) {
             case R.id.image_back:
                 this.finish();
 //                changeArrayDateToJson();
@@ -202,17 +224,12 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
                         .setEvent(Events.EventEnum.GET_PHOTO)
                         .setEndEvent(ActivityEvent.DESTROY)
                         .onNext((events) -> {
-                           message = (String) events.message;
+                            message = (String) events.message;
                             LogUtils.e(RZFirstActivity.class, "pic_path : " + message);
                             avater = message;
                             ImageServerApi.showURLSamllImage(riv_user_image, message);
                         }).create();
-                JSONObject jsonobj=new JSONObject();
-                jsonobj.put("nickname", data1.getNickname());
-                jsonobj.put("sex",data1.getSex());
-                jsonobj.put("face", data.get(1).getEdit());
-                jsonobj.put("isvip",data.get(1).getIsvip());
-                jsonobj.put("value",message);
+
 
                 break;
             case R.id.layout_like://背景墙
@@ -226,172 +243,281 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
                             avater = message2;
                             ImageServerApi.showURLSamllImage(riv_like_image, message2);
                         }).create();
-                PersonalMessageBean userJsonBean1 = new PersonalMessageBean();
-                userJsonBean1.setUserId(2);
-                userJsonBean1.setUserName("message2");
-                userBeans.add(userJsonBean1);
-                JSONObject jsonobj1=new JSONObject();
-                jsonobj1.put("field", data.get(2).getField());
-                jsonobj1.put("name",data.get(2).getName());
-                jsonobj1.put("edit", data.get(2).getEdit());
-                jsonobj1.put("isvip",data.get(2).getIsvip());
-                jsonobj1.put("value",message2);
+
+                jsonobj = new JSONObject();
+                try {
+                    jsonobj.put("nickname", data1.getNickname());
+                    jsonobj.put("sex", data1.getSex());
+                    jsonobj.put("face", message);
+                    jsonobj.put("like_image", message2);
+                    jsonobj.put("birthday", data1.getBirthday());
+                    jsonobj.put("signature", data1.getSignature());
+                    jsonobj.put("age", data1.getAge());
+                    jsonobj.put("vip_level", data1.getVip_level());
+                    jsonobj.put("isauth", data1.getIsauth());
+                    jsonobj.put("isfollow", data1.getIsfollow());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
                 break;
             case R.id.layout_nike_name://昵称
 
-               tv_nike_name.requestFocus();
-                String str=tv_nike_name.getText().toString();
-                PersonalMessageBean userJsonBean3 = new PersonalMessageBean();
-                userJsonBean3.setUserId(3);
-                userJsonBean3.setUserName("str");
-                userBeans.add(userJsonBean3);
+                tv_nike_name.requestFocus();
+                String str = tv_nike_name.getText().toString();
+
+                jsonobjname = new JSONObject();
+                try {
+                    jsonobjname.put("field", data.get(1).getField());
+                    jsonobjname.put("name", data.get(1).getName());
+                    jsonobjname.put("edit", data.get(1).getEdit());
+                    jsonobjname.put("isvip", data.get(1).getIsvip());
+                    jsonobjname.put("value", str);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
 
                 break;
             case R.id.layout_signature://个性签名
                 tv_signature.requestFocus();
-                String signature=tv_signature.getText().toString();
-                PersonalMessageBean userJsonBean4 = new PersonalMessageBean();
-                userJsonBean4.setUserId(4);
-                userJsonBean4.setUserName("signature");
-                userBeans.add(userJsonBean4);
+                String signature = tv_signature.getText().toString();
+                jsonobjsignature = new JSONObject();
+                try {
+                    jsonobjsignature.put("field", data.get(2).getField());
+                    jsonobjsignature.put("name", data.get(2).getName());
+                    jsonobjsignature.put("edit", data.get(2).getEdit());
+                    jsonobjsignature.put("isvip", data.get(2).getIsvip());
+                    jsonobjsignature.put("value", signature);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
                 break;
-
+            case R.id.layout_sex:
+                jsonobjsex = new JSONObject();
+                try {
+                    jsonobjsex.put("field", data.get(3).getField());
+                    jsonobjsex.put("name", data.get(3).getName());
+                    jsonobjsex.put("edit", data.get(3).getEdit());
+                    jsonobjsex.put("isvip", data.get(3).getIsvip());
+                    jsonobjsex.put("value", data.get(3).getValue());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
             case R.id.layout_birthday://出生年月
-                ActivityUtils.startBirthdayActivity("s");
+                startActivityForResult(new Intent(PersonalReviseActivity.this, BirthdayActivity.class), 1);
 
-
-
-                //同样，在读取SharedPreferences数据前要实例化出一个SharedPreferences对象
-
-//                DatePickerDialog  dateDlg = new DatePickerDialog(PersonalReviseActivity.this,
-//                        d,
-//                        dateAndTime.get(Calendar.YEAR),
-//                        dateAndTime.get(Calendar.MONTH),
-//                        dateAndTime.get(Calendar.DAY_OF_MONTH));
-//
-//                dateDlg.show();
-//
-//                Log.d(TAG,"Date show");
+                jsonobjbirthday = new JSONObject();
+                try {
+                    jsonobjbirthday.put("field", data.get(4).getField());
+                    jsonobjbirthday.put("name", data.get(4).getName());
+                    jsonobjbirthday.put("edit", data.get(4).getEdit());
+                    jsonobjbirthday.put("isvip", data.get(4).getIsvip());
+                    jsonobjbirthday.put("value", result);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
                 break;
             case R.id.layout_star_sign://星座
-//                ActivityUtils.startBirthdayActivity("s");
-                SharedPreferences sharedPreferences= getSharedPreferences("my",
-                        Activity.MODE_PRIVATE);
-// 使用getString方法获得value，注意第2个参数是value的默认值
-                String name =sharedPreferences.getString("bir", "");
-                habit =sharedPreferences.getString("con", "");
-                tv_birthday.setText(name);
-                tv_star_sign.setText(habit+"");
-//                tv_star_sign.requestFocus();
-//                String star_sign=tv_star_sign.getText().toString();
-//                PersonalMessageBean userJsonBean6 = new PersonalMessageBean();
-//                userJsonBean6.setUserId(6);
-//                userJsonBean6.setUserName("star_sign");
-//                userBeans.add(userJsonBean6);
+                jsonobjstarsign = new JSONObject();
+                try {
+                    jsonobjstarsign.put("field", data.get(5).getField());
+                    jsonobjstarsign.put("name", data.get(5).getName());
+                    jsonobjstarsign.put("edit", data.get(5).getEdit());
+                    jsonobjstarsign.put("isvip", data.get(5).getIsvip());
+                    jsonobjstarsign.put("value", love);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.layout_birthplace://籍贯
                 tv_birthplace.requestFocus();
-                String birthplace=tv_birthplace.getText().toString();
-                PersonalMessageBean userJsonBean7 = new PersonalMessageBean();
-                userJsonBean7.setUserId(7);
-                userJsonBean7.setUserName("birthplace");
-                userBeans.add(userJsonBean7);
+                String birthplace = tv_birthplace.getText().toString();
+                jsonobjbirthplace = new JSONObject();
+                try {
+                    jsonobjbirthplace.put("field", data.get(6).getField());
+                    jsonobjbirthplace.put("name", data.get(6).getName());
+                    jsonobjbirthplace.put("edit", data.get(6).getEdit());
+                    jsonobjbirthplace.put("isvip", data.get(6).getIsvip());
+                    jsonobjbirthplace.put("value", birthplace);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.layout_address://现居
                 tv_address.requestFocus();
-                String address=tv_address.getText().toString();
-                PersonalMessageBean userJsonBean8 = new PersonalMessageBean();
-                userJsonBean8.setUserId(8);
-                userJsonBean8.setUserName("address");
-                userBeans.add(userJsonBean8);
+                String address = tv_address.getText().toString();
+                jsonobjaddress = new JSONObject();
+                try {
+                    jsonobjaddress.put("field", data.get(7).getField());
+                    jsonobjaddress.put("name", data.get(7).getName());
+                    jsonobjaddress.put("edit", data.get(7).getEdit());
+                    jsonobjaddress.put("isvip", data.get(7).getIsvip());
+                    jsonobjaddress.put("value", address);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.layout_job://职业
                 tv_job.requestFocus();
-                String job=tv_job.getText().toString();
-                PersonalMessageBean userJsonBean9 = new PersonalMessageBean();
-                userJsonBean9.setUserId(9);
-                userJsonBean9.setUserName("job");
-                userBeans.add(userJsonBean9);
+                String job = tv_job.getText().toString();
+                jsonobjjob = new JSONObject();
+                try {
+                    jsonobjjob.put("field", data.get(8).getField());
+                    jsonobjjob.put("name", data.get(8).getName());
+                    jsonobjjob.put("edit", data.get(8).getEdit());
+                    jsonobjjob.put("isvip", data.get(8).getIsvip());
+                    jsonobjjob.put("value", job);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.layout_hobby://兴趣爱好
                 tv_hobby.requestFocus();
-                String hobby=tv_hobby.getText().toString();
-                PersonalMessageBean userJsonBean10 = new PersonalMessageBean();
-                userJsonBean10.setUserId(10);
-                userJsonBean10.setUserName("hobby");
-                userBeans.add(userJsonBean10);
+                String hobby = tv_hobby.getText().toString();
+                jsonobjhobby = new JSONObject();
+                try {
+                    jsonobjhobby.put("field", data.get(9).getField());
+                    jsonobjhobby.put("name", data.get(9).getName());
+                    jsonobjhobby.put("edit", data.get(9).getEdit());
+                    jsonobjhobby.put("isvip", data.get(9).getIsvip());
+                    jsonobjhobby.put("value", hobby);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.layout_self_image://自我印象
                 tv_self_image.requestFocus();
-                String self_image=tv_self_image.getText().toString();
-                PersonalMessageBean userJsonBean11 = new PersonalMessageBean();
-                userJsonBean11.setUserId(11);
-                userJsonBean11.setUserName("tv_self_image");
-                userBeans.add(userJsonBean11);
+                String self_image = tv_self_image.getText().toString();
+                jsonobjself = new JSONObject();
+                try {
+                    jsonobjself.put("field", data.get(10).getField());
+                    jsonobjself.put("name", data.get(10).getName());
+                    jsonobjself.put("edit", data.get(10).getEdit());
+                    jsonobjself.put("isvip", data.get(10).getIsvip());
+                    jsonobjself.put("value", self_image);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.layout_ishouse://是否有房
                 menuWindow = new SelectPicPopupWindow(PersonalReviseActivity.this, itemsOnClick);
-                menuWindow.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.layout_ishouse), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
+                menuWindow.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.layout_ishouse), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
+                ishouse = tv_ishouse.getText().toString();
+                jsonobjishouse = new JSONObject();
+                try {
+                    jsonobjishouse.put("fileld", data.get(11).getField());
+                    jsonobjishouse.put("name", data.get(11).getName());
+                    jsonobjishouse.put("edit", data.get(11).getEdit());
+                    jsonobjishouse.put("isvip", data.get(11).getIsvip());
+                    jsonobjishouse.put("value", ishouse);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
                 break;
             case R.id.layout_marital_status://婚姻状况
                 mMenuViewmarital = new PopWindowMarital(PersonalReviseActivity.this, itemsOnClickMarital);
-                mMenuViewmarital.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_marital_status), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
-//                tv_marital_status.requestFocus();
-//                String marital_status=tv_marital_status.getText().toString();
-//                PersonalMessageBean userJsonBean13 = new PersonalMessageBean();
-//                userJsonBean13.setUserId(13);
-//                userJsonBean13.setUserName("marital_status");
-//                userBeans.add(userJsonBean13);
+                mMenuViewmarital.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_marital_status), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
+                marital_status = tv_marital_status.getText().toString();
+                jsonobjmarital = new JSONObject();
+                try {
+                    jsonobjmarital.put("field", data.get(12).getField());
+                    jsonobjmarital.put("name", data.get(12).getName());
+                    jsonobjmarital.put("edit", data.get(12).getEdit());
+                    jsonobjmarital.put("isvip", data.get(12).getIsvip());
+                    jsonobjmarital.put("value", marital_status);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.layout_distance_love://接受异地恋
                 mMenuViewdistance = new PopWindowDistance(PersonalReviseActivity.this, itemsOnClickDistance);
-                mMenuViewdistance.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_distance_love), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
-
+                mMenuViewdistance.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_distance_love), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
+                distance = tv_distance_love.getText().toString();
+                jsonobjdistance = new JSONObject();
+                try {
+                    jsonobjdistance.put("field", data.get(13).getField());
+                    jsonobjdistance.put("name", data.get(13).getName());
+                    jsonobjdistance.put("edit", data.get(13).getEdit());
+                    jsonobjdistance.put("isvip", data.get(13).getIsvip());
+                    jsonobjdistance.put("value", distance);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 break;
 
             case R.id.layout_like_sex://喜欢的异性
                 tv_like_sex.requestFocus();
-                String like_sex=tv_like_sex.getText().toString();
-                PersonalMessageBean userJsonBean15 = new PersonalMessageBean();
-                userJsonBean15.setUserId(15);
-                userJsonBean15.setUserName("like_sex");
-                userBeans.add(userJsonBean15);
+                String like_sex = tv_like_sex.getText().toString();
+                jsonobjlike = new JSONObject();
+                try {
+                    jsonobjlike.put("field", data.get(14).getField());
+                    jsonobjlike.put("name", data.get(14).getName());
+                    jsonobjlike.put("edit", data.get(14).getEdit());
+                    jsonobjlike.put("isvip", data.get(14).getIsvip());
+                    jsonobjlike.put("value", like_sex);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.layout_premarital_sex://婚前性行为
                 mMenuViewpremarital = new PopWindowPremarital(PersonalReviseActivity.this, itemsOnClickPrematital);
-                mMenuViewpremarital.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_premarital_sex), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
-
+                mMenuViewpremarital.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_premarital_sex), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
+                premarital_sex = tv_premarital_sex.getText().toString();
+                jsonobjpremarital = new JSONObject();
+                try {
+                    jsonobjpremarital.put("field", data.get(15).getField());
+                    jsonobjpremarital.put("name", data.get(15).getName());
+                    jsonobjpremarital.put("edit", data.get(15).getEdit());
+                    jsonobjpremarital.put("isvip", data.get(15).getIsvip());
+                    jsonobjpremarital.put("value", premarital_sex);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.baocun:
 
+                JSONArray jsonarry = new JSONArray();
+                jsonarry.put(jsonobjname);
+                jsonarry.put(jsonobjsignature);
+                jsonarry.put(jsonobjsex);
+                jsonarry.put(jsonobjbirthday);
+                jsonarry.put(jsonobjstarsign);
+                jsonarry.put(jsonobjbirthplace);
+                jsonarry.put(jsonobjaddress);
+                jsonarry.put(jsonobjjob);
+                jsonarry.put(jsonobjhobby);
+                jsonarry.put(jsonobjself);
+                jsonarry.put(jsonobjishouse);
+                jsonarry.put(jsonobjmarital);
+                jsonarry.put(jsonobjdistance);
+                jsonarry.put(jsonobjlike);
+                jsonarry.put(jsonobjpremarital);
+                JSONArray jsonarry2 = new JSONArray();
+                jsonarry2.put(jsonarry);
+                jsonarry2.put(jsonobj);
+                String ss = jsonarry2.toString();
+                presenter.sendUserJson(ss);
                 break;
         }
     }
-    DateFormat fmtDate = new java.text.SimpleDateFormat("yyyy-MM-dd");
-    Calendar dateAndTime = Calendar.getInstance(Locale.CHINA);
-    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener()
-    {
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear,
-                              int dayOfMonth) {
-            //修改日历控件的年，月，日
-            //这里的year,monthOfYear,dayOfMonth的值与DatePickerDialog控件设置的最新值一致
-            dateAndTime.set(Calendar.YEAR, year);
-            dateAndTime.set(Calendar.MONTH, monthOfYear);
-            dateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            //将页面TextView的显示更新为最新时间
-            upDateDate();
 
-        }
-    };
-    private void upDateDate() {
-        tv_birthday.setText(fmtDate.format(dateAndTime.getTime()));
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        result = data.getExtras().getString("result");//得到新Activity 关闭后返回的数据
+        love = data.getExtras().getString("love");
+        tv_birthday.setText(result);
+        tv_star_sign.setText(love);
+        Log.i(TAG, result);
     }
+
+
     //为婚前性行为弹出窗口实现监听类
-    private OnClickListener  itemsOnClickPrematital = new OnClickListener(){
+    private OnClickListener itemsOnClickPrematital = new OnClickListener() {
 
         public void onClick(View v) {
             mMenuViewpremarital.dismiss();
@@ -412,7 +538,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
         }
     };
     //为接受异地恋弹出窗口实现监听类
-    private OnClickListener  itemsOnClickDistance = new OnClickListener(){
+    private OnClickListener itemsOnClickDistance = new OnClickListener() {
 
         public void onClick(View v) {
             mMenuViewdistance.dismiss();
@@ -433,16 +559,18 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
         }
     };
     //为弹出窗口实现监听类
-    private OnClickListener  itemsOnClick = new OnClickListener(){
+    private OnClickListener itemsOnClick = new OnClickListener() {
 
         public void onClick(View v) {
             menuWindow.dismiss();
             switch (v.getId()) {
                 case R.id.btn_take_photo:
                     tv_ishouse.setText("租房");
+
                     break;
                 case R.id.btn_pick_photo:
                     tv_ishouse.setText("有房");
+
                     break;
 
                 case R.id.btn_pick_photo1:
@@ -454,7 +582,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
         }
     };
     //为婚姻状况弹出窗口实现监听类
-    private OnClickListener  itemsOnClickMarital = new OnClickListener(){
+    private OnClickListener itemsOnClickMarital = new OnClickListener() {
         public void onClick(View v) {
             mMenuViewmarital.dismiss();
             switch (v.getId()) {
@@ -480,31 +608,4 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
 
     };
 
-    private void changeArrayDateToJson() { //把一个集合转换成json格式的字符串
-        jsonArray=null;
-        object=null;
-        jsonArray = new JSONArray();
-        object=new JSONObject();
-        for (int i = 0; i < userBeans.size(); i++) { //遍历上面初始化的集合数据，把数据加入JSONObject里面
-            object2 = new JSONObject();//一个user对象，使用一个JSONObject对象来装
-            try {
-                object2.put("userId", userBeans.get(i).getUserId()); //从集合取出数据，放入JSONObject里面 JSONObject对象和map差不多用法,以键和值形式存储数据
-                object2.put("userName", userBeans.get(i).getUserName());
-                jsonArray.put(object2); //把JSONObject对象装入jsonArray数组里面
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        try {
-            object.put("userDate", jsonArray); //再把JSONArray数据加入JSONObject对象里面(数组也是对象)
-//object.put("time", "2013-11-14"); //这里还可以加入数据，这样json型字符串，就既有集合，又有普通数据
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        jsonString=null;
-        jsonString = object.toString(); //把JSONObject转换成json格式的字符串
-//        textView.setText(jsonString);
-        Log.i("hck", "转换成json字符串: " + jsonString);
-
-    }
 }

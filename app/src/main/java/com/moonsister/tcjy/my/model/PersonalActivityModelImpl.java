@@ -19,11 +19,9 @@ import com.moonsister.tcjy.utils.ObservableUtils;
  * Created by x on 2016/9/2.
  */
 public class PersonalActivityModelImpl implements PersonalActivityModel {
-
-
     @Override
     public void loadData(int uid, onLoadDateSingleListener<PersonalMessageBean> listener) {
-        Observable<PersonalMessageBean> observable = ServerApi.getAppAPI().setPersonalMessage(uid, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID,AppConstant.API_VERSION);
+        Observable<PersonalMessageBean> observable = ServerApi.getAppAPI().setPersonalMessage(uid,UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID,AppConstant.API_VERSION);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<PersonalMessageBean>() {
             @Override
             public void onSuccess(PersonalMessageBean bean) {
@@ -36,6 +34,8 @@ public class PersonalActivityModelImpl implements PersonalActivityModel {
             }
         });
     }
+
+
 
     @Override
     public void userJson(String contents, onLoadDateSingleListener<PersonalMessageBean> listener) {
