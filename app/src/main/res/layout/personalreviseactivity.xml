@@ -51,6 +51,69 @@
             </LinearLayout>
 
             <RelativeLayout
+                android:id="@+id/layout_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+            <TextView
+                style="@style/info_change_text"
+                android:text="手机" />
+
+            <EditText
+                android:id="@+id/tv_mobile"
+                style="@style/info_change_show_text"
+                android:layout_width="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:text="@string/not_available" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_qq"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+            <TextView
+                style="@style/info_change_text"
+                android:text="QQ" />
+
+            <EditText
+                android:id="@+id/tv_qq"
+                style="@style/info_change_show_text"
+                android:layout_width="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:text="@string/not_available" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_weixin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+            <TextView
+                style="@style/info_change_text"
+                android:text="微信" />
+
+            <EditText
+                android:id="@+id/tv_weixin"
+                style="@style/info_change_show_text"
+                android:layout_width="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:text="@string/not_available" />
+            </RelativeLayout>
+
+            <RelativeLayout
 
                 android:id="@+id/layout_avater"
                 android:layout_width="match_parent"
@@ -74,29 +137,29 @@
                     android:src="@mipmap/load_small" />
             </RelativeLayout>
 
-            <RelativeLayout
+            <!--<RelativeLayout-->
 
-                android:id="@+id/layout_like"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/x2"
-                android:background="@color/background_white_color"
-                android:gravity="center_vertical">
+                <!--android:id="@+id/layout_like"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="@dimen/x2"-->
+                <!--android:background="@color/background_white_color"-->
+                <!--android:gravity="center_vertical">-->
 
-                <TextView
-                    style="@style/info_change_text"
-                    android:layout_centerVertical="true"
-                    android:text="背景墙" />
+                <!--<TextView-->
+                    <!--style="@style/info_change_text"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:text="背景墙" />-->
 
-                <com.moonsister.tcjy.widget.RoundedImageView
-                    android:id="@+id/riv_like_image"
-                    android:layout_width="@dimen/x120"
-                    android:layout_height="@dimen/x120"
-                    android:layout_alignParentRight="true"
-                    android:layout_margin="@dimen/x30"
-                    android:layout_marginRight="@dimen/x30"
-                    android:src="@mipmap/load_small" />
-            </RelativeLayout>
+                <!--<com.moonsister.tcjy.widget.RoundedImageView-->
+                    <!--android:id="@+id/riv_like_image"-->
+                    <!--android:layout_width="@dimen/x120"-->
+                    <!--android:layout_height="@dimen/x120"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_margin="@dimen/x30"-->
+                    <!--android:layout_marginRight="@dimen/x30"-->
+                    <!--android:src="@mipmap/load_small" />-->
+            <!--</RelativeLayout>-->
 
             <RelativeLayout
                 android:id="@+id/layout_nike_name"
@@ -371,11 +434,6 @@
                     android:background="@null"
                     android:text="@string/not_available" />
             </RelativeLayout>
-
-
-
-
-
 
 
             <RelativeLayout

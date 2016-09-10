@@ -14,6 +14,7 @@ import com.moonsister.tcjy.login.view.RegThridActivityView;
 import com.moonsister.tcjy.main.view.ManorGrilActivityView;
 import com.moonsister.tcjy.main.widget.FillOutMessageActivity;
 import com.moonsister.tcjy.main.widget.MainActivity;
+import com.moonsister.tcjy.main.widget.ManorGrilActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.FragmentUtils;
@@ -76,7 +77,7 @@ public class RegActivity extends BaseActivity implements RegThridActivityView {
             mobile = etPhoneNumber.getText().toString().trim();
             birthday = reg_edit_brith.getText().toString().trim();
             pwd=reg_edit_password.getText().toString().trim();
-            if (mobile == null || mobile.isEmpty()|| pwd == null || pwd.isEmpty()|| birthday == null || birthday.isEmpty() || code == null || code.isEmpty()) {
+            if (mobile == null || mobile.isEmpty()|| pwd == null || pwd.isEmpty()||  code == null || code.isEmpty()) {
 //                showToast(resources.getString(R.string.input_Security_code) + resources.getString(R.string.input_phone_number) + resources.getString(R.string.not_empty));
 
             } else {
@@ -85,7 +86,7 @@ public class RegActivity extends BaseActivity implements RegThridActivityView {
 //            Intent intent=new Intent(RegActivity.this, FillOutMessageActivity.class);
 //            startActivity(intent);
         }else if(view.getId() == R.id.let_go){
-            Intent intent=new Intent(RegActivity.this,MainActivity.class);
+            Intent intent=new Intent(RegActivity.this,ManorGrilActivity.class);
             startActivity(intent);
         }
     }

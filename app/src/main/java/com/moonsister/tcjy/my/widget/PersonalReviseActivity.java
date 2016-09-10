@@ -1,37 +1,30 @@
 package com.moonsister.tcjy.my.widget;
 
-import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.Uri;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.PersonalMessageBean;
+import com.moonsister.tcjy.bean.PersonalReviseMessageBean;
 import com.moonsister.tcjy.bean.UserInfoChangeBean;
 import com.moonsister.tcjy.bean.personalBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.login.widget.SelectPicPopupActivity;
-import com.moonsister.tcjy.my.persenter.PersonalActivityPersenter;
-import com.moonsister.tcjy.my.persenter.PersonalActivityPersenterImpl;
+import com.moonsister.tcjy.my.persenter.PersonalReviseActivityPersenter;
+import com.moonsister.tcjy.my.persenter.PersonalReviseActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.PersonalActivityView;
-import com.moonsister.tcjy.my.view.UserInfoChangeActivityView;
+import com.moonsister.tcjy.my.view.PersonalReviseActivityView;
 import com.moonsister.tcjy.popwindow.PopWindowDistance;
 import com.moonsister.tcjy.popwindow.PopWindowMarital;
 import com.moonsister.tcjy.popwindow.PopWindowPremarital;
@@ -53,17 +46,15 @@ import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import io.rong.imkit.MsgContent;
-import rx.android.plugins.RxAndroidSchedulersHook;
 
 /**
  * Created by x on 2016/9/5.
  */
-public class PersonalReviseActivity extends BaseActivity implements PersonalActivityView{
+public class PersonalReviseActivity extends BaseActivity implements PersonalReviseActivityView{
     @Bind(R.id.riv_user_image)//头像
             ImageView riv_user_image;
-    @Bind(R.id.riv_like_image)//背景墙
-            ImageView riv_like_image;
+//    @Bind(R.id.riv_like_image)//背景墙
+//            ImageView riv_like_image;
     @Bind(R.id.tv_nike_name)//昵称
             EditText tv_nike_name;
     @Bind(R.id.tv_signature)//个性签名
@@ -98,11 +89,11 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
             ImageView image_back;
     @Bind(R.id.baocun)//保存
             TextView baocun;
-    private PersonalActivityPersenter presenter;
-    List<PersonalMessageBean.DataBean.RulesBean> data;
-    PersonalMessageBean.DataBean.BaseinfoBean data1;
-    PersonalMessageBean.DataBean.DlistBean data2;
-    PersonalMessageBean.DataBean.VipinfoBean data3;
+    PersonalReviseActivityPersenter presenter;
+//    List<PersonalMessageBean.DataBean.RulesBean> data;
+//    PersonalMessageBean.DataBean.BaseinfoBean data1;
+//    PersonalMessageBean.DataBean.DlistBean data2;
+//    PersonalMessageBean.DataBean.VipinfoBean data3;
     private List<PersonalMessageBean> userBeans; //保存数据的集合
     private JSONObject object; //JSONObject对象，处理一个一个的对象
     private JSONObject object2;
@@ -141,6 +132,51 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
     String marital_status;
     String distance;
     String premarital_sex;
+    @Bind(R.id.tv_mobile)//手机
+    EditText tv_mobile;
+    @Bind(R.id.tv_qq)//手机
+            EditText tv_qq;
+    @Bind(R.id.tv_weixin)//手机
+            EditText tv_weixin;
+    List<PersonalReviseMessageBean.DataBean.RulesBean> rules;
+    @Bind(R.id.layout_mobile)//手机layout
+    RelativeLayout layout_mobile;// ,,R.id.layout_weight,R.id.layout_avater, R.id.layout_nike_name, R.id.layout_signature, R.id.layout_sex, R.id.layout_birthday, R.id.layout_star_sign, R.id.layout_birthplace, R.id.layout_address, R.id.layout_job, R.id.layout_hobby, R.id.layout_self_image, R.id.layout_ishouse, R.id.layout_marital_status, R.id.layout_distance_love, R.id.layout_like_sex, R.id.layout_premarital_sex, R.id.baocun
+    @Bind(R.id.layout_qq)//QQlayout
+    RelativeLayout layout_qq;
+    @Bind(R.id.layout_weixin)//微信layout
+    RelativeLayout layout_weixin;
+    @Bind(R.id.layout_avater)//头像layout
+            RelativeLayout layout_avater;
+    @Bind(R.id.layout_nike_name)//昵称layout
+            RelativeLayout layout_nike_name;
+    @Bind(R.id.layout_signature)//个性签名layout
+            RelativeLayout layout_signature;
+    @Bind(R.id.layout_sex)//性别layout
+            RelativeLayout layout_sex;
+    @Bind(R.id.layout_birthday)//出生年月layout
+            RelativeLayout layout_birthday;
+    @Bind(R.id.layout_star_sign)//星座layout
+            RelativeLayout layout_star_sign;
+    @Bind(R.id.layout_birthplace)//籍贯layout
+            RelativeLayout layout_birthplace;
+    @Bind(R.id.layout_address)//现居layout
+            RelativeLayout layout_address;
+    @Bind(R.id.layout_job)//职业layout
+            RelativeLayout layout_job;
+    @Bind(R.id.layout_hobby)//兴趣爱好layout
+            RelativeLayout layout_hobby;
+    @Bind(R.id.layout_self_image)//自我印象layout
+            RelativeLayout layout_self_image;
+    @Bind(R.id.layout_ishouse)//是否有房layout
+            RelativeLayout layout_ishouse;
+    @Bind(R.id.layout_marital_status)//婚姻状况layout
+            RelativeLayout layout_marital_status;
+    @Bind(R.id.layout_distance_love)//接受异地恋layout
+            RelativeLayout layout_distance_love;
+    @Bind(R.id.layout_like_sex)//喜欢的异性layout
+            RelativeLayout layout_like_sex;
+    @Bind(R.id.layout_premarital_sex)//婚前性行为layout
+            RelativeLayout layout_premarital_sex;
 
     @Override
     protected View setRootContentView() {
@@ -150,48 +186,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
 
     @Override
     protected void initView() {
-        presenter = new PersonalActivityPersenterImpl();
+        presenter = new PersonalReviseActivityPersenterImpl();
         presenter.attachView(this);
-        userBeans = new ArrayList<PersonalMessageBean>();
-        presenter.sendPersonalMessage(145655);
-//        presenter.sendPersonalResviceMessage(145655);
-
-    }
-
-    @Override
-    public void success(PersonalMessageBean getPersonalBean) {
-        data = getPersonalBean.getData().getRules();
-        data1 = getPersonalBean.getData().getBaseinfo();
-        data2 = getPersonalBean.getData().getDlist();
-        data3 = getPersonalBean.getData().getVipinfo();
-
-        ImageServerApi.showURLBigImage(riv_user_image, data1.getFace());//用户头像
-        ImageServerApi.showURLBigImage(riv_like_image, data1.getLike_image());//用户头像
-        tv_nike_name.setText(data1.getNickname());//用户昵称
-        tv_signature.setText(data.get(1).getValue());
-        String value = data.get(2).getValue();
-        if (value == "1") {
-            tv_sex.setText("男");
-        } else {
-            tv_sex.setText("女");
-        }
-        tv_birthday.setText(data.get(3).getValue());
-        tv_star_sign.setText(data.get(4).getValue());
-        tv_birthplace.setText(data.get(5).getValue());
-        tv_address.setText(data.get(6).getValue());
-        tv_job.setText(data.get(7).getValue());
-        tv_hobby.setText(data.get(8).getValue());
-        tv_self_image.setText(data.get(9).getValue());
-        tv_ishouse.setText(data.get(10).getValue());
-        tv_marital_status.setText(data.get(11).getValue());
-        tv_distance_love.setText(data.get(12).getValue());
-        tv_like_sex.setText(data.get(13).getValue());
-        tv_premarital_sex.setText(data.get(14).getValue());
-
-    }
-
-    @Override
-    public void person() {
+        presenter.sendPersonalReviseMessage(145655);
 
     }
 
@@ -209,14 +206,17 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
     public void transfePageMsg(String msg) {
         showToast(msg);
     }
-
-    @OnClick({R.id.image_back, R.id.layout_avater, R.id.layout_like, R.id.layout_nike_name, R.id.layout_signature, R.id.layout_sex, R.id.layout_birthday, R.id.layout_star_sign, R.id.layout_birthplace, R.id.layout_address, R.id.layout_job, R.id.layout_hobby, R.id.layout_self_image, R.id.layout_ishouse, R.id.layout_marital_status, R.id.layout_distance_love, R.id.layout_like_sex, R.id.layout_premarital_sex, R.id.baocun})
+/**
+    @OnClick({R.id.image_back, R.id.layout_mobile,R.id.layout_qq,R.id.layout_weight,R.id.layout_avater, R.id.layout_nike_name, R.id.layout_signature, R.id.layout_sex, R.id.layout_birthday, R.id.layout_star_sign, R.id.layout_birthplace, R.id.layout_address, R.id.layout_job, R.id.layout_hobby, R.id.layout_self_image, R.id.layout_ishouse, R.id.layout_marital_status, R.id.layout_distance_love, R.id.layout_like_sex, R.id.layout_premarital_sex, R.id.baocun})
     public void onClick(View view)  {
         switch (view.getId()) {
             case R.id.image_back:
                 this.finish();
 //                changeArrayDateToJson();
 //                presenter.sendUserJson(jsonString);
+                break;
+            case R.id.layout_mobile:
+
                 break;
             case R.id.layout_avater://头像
                 ActivityUtils.startActivity(SelectPicPopupActivity.class);
@@ -501,7 +501,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
                 jsonarry2.put(jsonarry);
                 jsonarry2.put(jsonobj);
                 String ss = jsonarry2.toString();
-                presenter.sendUserJson(ss);
+//                presenter.sendUserJson(ss);
                 break;
         }
     }
@@ -607,5 +607,157 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalActi
         }
 
     };
+*/
+    @Override
+    public void success(PersonalReviseMessageBean personalReviseMessageBean) {
+        rules = personalReviseMessageBean.getData().getRules();
+//        tv_mobile.setText(rules.get(0).getValue());//手机  QQ 微信
+//        tv_qq.setText(rules.get(1).getValue());
+//        tv_weixin.setText(rules.get(2).getValue());
+//        ImageServerApi.showURLBigImage(riv_user_image, rules.get(3).getValue());//用户头像
+//        tv_nike_name.setText(rules.get(4).getValue());//用户昵称
+//        tv_signature.setText(rules.get(5).getValue());//个性签名
+//        String value = rules.get(6).getValue();//性别
+//            if (value == "1") {
+//                tv_sex.setText("男");
+//            } else {
+//                tv_sex.setText("女");
+//            }
+//        tv_birthday.setText(rules.get(7).getValue());//出生年月
+//        tv_star_sign.setText(rules.get(8).getValue());//星座
+//        tv_birthplace.setText(rules.get(9).getValue());//籍贯
+//        tv_address.setText(rules.get(10).getValue());//现居
+//        tv_job.setText(rules.get(11).getValue());//职业
+//        tv_hobby.setText(rules.get(12).getValue());//兴趣爱好
+//        tv_self_image.setText(rules.get(13).getValue());//自我印象
+//        tv_ishouse.setText(rules.get(14).getValue());//是否有房
+//        tv_marital_status.setText(rules.get(15).getValue());//婚姻状况
+//        tv_distance_love.setText(rules.get(16).getValue());//接受异地恋
+//        tv_like_sex.setText(rules.get(17).getValue());//喜欢的异性
+//        tv_premarital_sex.setText(rules.get(18).getValue());//婚前性行为
+        String isshow = rules.get(0).getIsshow().toString();
+        if(isshow=="1"){
+            tv_mobile.setText(rules.get(0).getValue()+"");//手机  QQ 微信
+        }else{
+            layout_mobile.setVisibility(View.GONE);
+        }
 
+        String isshowqq = rules.get(1).getIsshow();
+        if(isshowqq=="1"){
+            tv_qq.setText(rules.get(1).getValue()+"");
+        }else{
+            layout_qq.setVisibility(View.GONE);
+        }
+        String isshowweixin = rules.get(2).getIsshow();
+        if(isshowweixin=="1"){
+            tv_weixin.setText(rules.get(2).getValue()+"");
+        }else{
+            layout_weixin.setVisibility(View.GONE);
+        }
+        String isshowimage = rules.get(3).getIsshow();
+        if(isshowimage=="1"){
+            ImageServerApi.showURLBigImage(riv_user_image, rules.get(3).getValue());//用户头像
+        }else{
+            layout_avater.setVisibility(View.GONE);
+        }
+        String isshowname = rules.get(4).getIsshow();
+        if(isshowname=="1"){
+            tv_nike_name.setText(rules.get(4).getValue());//用户昵称
+        }else{
+            layout_nike_name.setVisibility(View.GONE);
+        }
+        String isshowsignature = rules.get(5).getIsshow();
+        if(isshowsignature=="1"){
+            tv_signature.setText(rules.get(5).getValue());//个性签名
+        }else{
+            layout_signature.setVisibility(View.GONE);
+        }
+
+        String isshowsex = rules.get(6).getIsshow();
+        String value = rules.get(6).getValue();//性别
+        if(isshowsex=="1"){
+            if (value == "1") {
+                tv_sex.setText("男");
+            } else {
+                tv_sex.setText("女");
+            }
+        }else{
+            layout_sex.setVisibility(View.GONE);
+        }
+        String isshowbirthday = rules.get(7).getIsshow();
+        if(isshowbirthday=="1"){
+            tv_birthday.setText(rules.get(7).getValue());//出生年月
+        }else{
+            layout_birthday.setVisibility(View.GONE);
+        }
+        String isshowstar = rules.get(8).getIsshow();
+        if(isshowstar=="1"){
+            tv_star_sign.setText(rules.get(8).getValue());//星座
+        }else{
+            layout_star_sign.setVisibility(View.GONE);
+        }
+        String isshowbirthpace = rules.get(9).getIsshow();
+        if(isshowbirthpace=="1"){
+            tv_birthplace.setText(rules.get(9).getValue());//籍贯
+        }else{
+            layout_birthplace.setVisibility(View.GONE);
+        }
+        String isshowaddress = rules.get(10).getIsshow();
+        if(isshowaddress=="1"){
+            tv_address.setText(rules.get(10).getValue());//现居
+        }else{
+            layout_address.setVisibility(View.GONE);
+        }
+        String isshowjob = rules.get(11).getIsshow();
+        if(isshowjob=="1"){
+            tv_job.setText(rules.get(11).getValue());//职业
+        }else{
+            layout_job.setVisibility(View.GONE);
+        }
+        String isshowhobby = rules.get(12).getIsshow();
+        if(isshowhobby=="1"){
+            tv_hobby.setText(rules.get(12).getValue());//兴趣爱好
+        }else{
+            layout_hobby.setVisibility(View.GONE);
+        }
+        String isshowself = rules.get(13).getIsshow();
+        if(isshowself=="1"){
+            tv_self_image.setText(rules.get(13).getValue());//自我印象
+        }else{
+            layout_self_image.setVisibility(View.GONE);
+        }
+        String isshowhouse = rules.get(14).getIsshow();
+        if(isshowhouse=="1"){
+            tv_ishouse.setText(rules.get(14).getValue());//是否有房
+        }else{
+            layout_ishouse.setVisibility(View.GONE);
+        }
+        String isshowmarital = rules.get(15).getIsshow();
+        if(isshowmarital=="1"){
+            tv_marital_status.setText(rules.get(15).getValue());//婚姻状况
+        }else{
+            layout_marital_status.setVisibility(View.GONE);
+        }
+        String isshowdistance = rules.get(16).getIsshow();
+        if(isshowdistance=="1"){
+            tv_distance_love.setText(rules.get(16).getValue());//接受异地恋
+        }else{
+            layout_distance_love.setVisibility(View.GONE);
+        }
+        String isshowlike = rules.get(17).getIsshow();
+        if(isshowlike=="1"){
+            tv_like_sex.setText(rules.get(17).getValue());//喜欢的异性
+        }else{
+            layout_like_sex.setVisibility(View.GONE);
+        }
+        String isshowpremar = rules.get(18).getIsshow();
+        if(isshowpremar=="1"){
+            tv_premarital_sex.setText(rules.get(18).getValue());//婚前性行为
+        }else{
+            layout_premarital_sex.setVisibility(View.GONE);
+        }
+//        ImageServerApi.showURLBigImage(riv_like_image, data1.getLike_image());//用户头像
+
+
+    }
 }
