@@ -51,6 +51,7 @@ import com.moonsister.tcjy.my.widget.InsertActivity;
 import com.moonsister.tcjy.my.widget.MakeMessageActivity;
 import com.moonsister.tcjy.my.widget.MoneyActivity;
 import com.moonsister.tcjy.my.widget.MyOrderActivity;
+import com.moonsister.tcjy.my.widget.PersonalActivity;
 import com.moonsister.tcjy.my.widget.PersonalReviseActivity;
 import com.moonsister.tcjy.my.widget.RZFirstActivity;
 import com.moonsister.tcjy.my.widget.RZSecondActivity;
@@ -647,6 +648,10 @@ public class ActivityUtils {
     //跳转VIP认证页面
     public static void startRenZhengActivity() {
         startActivity(RenZhengActivity.class);
+    }
+    //跳转资料展示页面
+    public static void startPersonalActivity() {
+        startActivity(PersonalActivity.class);
     }
 
     //跳转修改资料页面

@@ -10,6 +10,7 @@ import com.moonsister.tcjy.adapter.MoneyAdapter;
 import com.moonsister.tcjy.adapter.MoneyTwoAdapter;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.BalanceBean;
+import com.moonsister.tcjy.utils.ActivityUtils;
 
 import butterknife.Bind;
 
@@ -43,7 +44,8 @@ public class MoneyTwoHolder extends BaseRecyclerViewHolder<BalanceBean.DataBean>
     }
     @Override
     protected void onItemclick(View view, BalanceBean.DataBean dataBean, int position) {
-
+        String uid = String.valueOf(dataBean.getAct_uid());
+        ActivityUtils.startHomePageActivity(uid);
     }
 
     public void setAdapter(MoneyTwoAdapter adapter) {

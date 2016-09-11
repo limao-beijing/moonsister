@@ -60,6 +60,7 @@ public class TwoFragment extends BaseFragment implements BalanceActivityView {
             }
         });
         mPresenter.moneyba(type,page,10);
+
     }
 
     @Override
