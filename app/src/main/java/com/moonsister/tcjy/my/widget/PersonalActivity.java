@@ -97,21 +97,7 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
         persenter = new PersonalActivityPersenterImpl();
         persenter.attachView(this);
         persenter.sendPersonalMessage(145655);
-//        iv_user_icon.setImageResource(Integer.parseInt(data2.getFace()));
-//        iv_user_name.setText(data1.getNickname());
-//        List<Map<String,Object>> listItems = new ArrayList<Map<String, Object>>();
-//        for(int i=0;i<personal.length;i++){
-//            Map<String, Object> listItem = new HashMap<String, Object>();
-//            listItem.put("t", personal[i]);
-//            listItems.add(listItem);
-//        }
-//        SimpleAdapter simpleAdapter = new SimpleAdapter(this, listItems,
-//                R.layout.personallistviewitem, new String[] { "t" }, new int[] {
-//                R.id.text_name, });
-//        personal_list.setAdapter(simpleAdapter);
-//
-////        gridView.setAdapter(simpleAdapter);
-////        peradapter=new
+
 
     }
 

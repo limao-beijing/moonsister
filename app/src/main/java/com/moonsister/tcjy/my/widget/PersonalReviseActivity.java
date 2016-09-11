@@ -213,6 +213,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
 
     @OnClick({R.id.image_back, R.id.layout_mobile,R.id.layout_qq,R.id.layout_weixin,R.id.layout_avater, R.id.layout_nike_name, R.id.layout_signature, R.id.layout_sex, R.id.layout_birthday, R.id.layout_star_sign, R.id.layout_birthplace, R.id.layout_address, R.id.layout_job, R.id.layout_hobby, R.id.layout_self_image, R.id.layout_ishouse, R.id.layout_marital_status, R.id.layout_distance_love, R.id.layout_like_sex, R.id.layout_premarital_sex, R.id.baocun})
     public void onClick(View view) {
+        if(rules==null){
+            return;
+        }
         switch (view.getId()) {
             case R.id.image_back:
                 this.finish();
@@ -222,21 +225,28 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             case R.id.layout_mobile:
                 String mobile = tv_mobile.getText().toString();
                 jsonmobile=new JSONObject();
-                try {
-                    jsonmobile.put("field",rules.get(0).getField());
-                    jsonmobile.put("name",rules.get(0).getName());
-                    jsonmobile.put("edit",rules.get(0).getEdit());
-                    jsonmobile.put("isvip",rules.get(0).getIsvip());
-                    jsonmobile.put("isshow",rules.get(0).getIsshow());
-                    jsonmobile.put("value",mobile);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                PersonalReviseMessageBean.DataBean.RulesBean rulesBean = rules.get(0);
+                if(rulesBean==null){
                 }
+                    try {
+                        jsonmobile.put("field",rules.get(0).getField());
+                        jsonmobile.put("name",rules.get(0).getName());
+                        jsonmobile.put("edit",rules.get(0).getEdit());
+                        jsonmobile.put("isvip",rules.get(0).getIsvip());
+                        jsonmobile.put("isshow",rules.get(0).getIsshow());
+                        jsonmobile.put("value",mobile);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                 break;
             case R.id.layout_qq:
                 String qq = tv_mobile.getText().toString();
                 jsonqq=new JSONObject();
+                PersonalReviseMessageBean.DataBean.RulesBean rulesQQ = rules.get(1);
+                if(rulesQQ==null){
+                }
                 try {
                     jsonqq.put("field",rules.get(1).getField());
                     jsonqq.put("name",rules.get(1).getName());
@@ -252,6 +262,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             case R.id.layout_weixin:
                 String weixin = tv_mobile.getText().toString();
                 jsonweixin=new JSONObject();
+                PersonalReviseMessageBean.DataBean.RulesBean rulesweixin = rules.get(2);
+                if(rulesweixin==null){
+                }
                 try {
                     jsonweixin.put("field",rules.get(2).getField());
                     jsonweixin.put("name",rules.get(2).getName());
@@ -275,6 +288,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                             avater = message;
                             ImageServerApi.showURLSamllImage(riv_user_image, message);
                         }).create();
+                PersonalReviseMessageBean.DataBean.RulesBean rulesavater = rules.get(3);
+                if(rulesavater==null){
+                }
                 jsonavater=new JSONObject();
                 try {
                     jsonavater.put("field",rules.get(3).getField());
@@ -294,7 +310,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
 
                 tv_nike_name.requestFocus();
                 String str = tv_nike_name.getText().toString();
-
+                PersonalReviseMessageBean.DataBean.RulesBean rulesnike = rules.get(4);
+                if(rulesnike==null){
+                }
                 jsonobjname = new JSONObject();
                 try {
                     jsonobjname.put("field", rules.get(4).getField());
@@ -310,6 +328,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             case R.id.layout_signature://个性签名
                 tv_signature.requestFocus();
                 String signature = tv_signature.getText().toString();
+                PersonalReviseMessageBean.DataBean.RulesBean rulessignature = rules.get(5);
+                if(rulessignature==null){
+                }
                 jsonobjsignature = new JSONObject();
                 try {
                     jsonobjsignature.put("field", rules.get(5).getField());
@@ -325,6 +346,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 break;
             case R.id.layout_sex:
                 String sex = tv_sex.getText().toString();
+                PersonalReviseMessageBean.DataBean.RulesBean rulessex = rules.get(6);
+                if(rulessex==null){
+                }
                 jsonobjsex = new JSONObject();
                 try {
                     jsonobjsex.put("field", rules.get(6).getField());
@@ -339,7 +363,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 break;
             case R.id.layout_birthday://出生年月
                 startActivityForResult(new Intent(PersonalReviseActivity.this, BirthdayActivity.class), 1);
-
+                PersonalReviseMessageBean.DataBean.RulesBean rulesbir = rules.get(7);
+                if(rulesbir==null){
+                }
                 jsonobjbirthday = new JSONObject();
                 try {
                     jsonobjbirthday.put("field", rules.get(7).getField());
@@ -354,6 +380,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
 
                 break;
             case R.id.layout_star_sign://星座
+                PersonalReviseMessageBean.DataBean.RulesBean rulesstar = rules.get(8);
+                if(rulesstar==null){
+                }
                 jsonobjstarsign = new JSONObject();
                 try {
                     jsonobjstarsign.put("field", rules.get(8).getField());
@@ -369,6 +398,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             case R.id.layout_birthplace://籍贯
                 tv_birthplace.requestFocus();
                 String birthplace = tv_birthplace.getText().toString();
+                PersonalReviseMessageBean.DataBean.RulesBean rulesbirthplace = rules.get(9);
+                if(rulesbirthplace==null){
+                }
                 jsonobjbirthplace = new JSONObject();
                 try {
                     jsonobjbirthplace.put("field", rules.get(9).getField());
@@ -384,6 +416,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             case R.id.layout_address://现居
                 tv_address.requestFocus();
                 String address = tv_address.getText().toString();
+                PersonalReviseMessageBean.DataBean.RulesBean rulesaddress = rules.get(10);
+                if(rulesaddress==null){
+                }
                 jsonobjaddress = new JSONObject();
                 try {
                     jsonobjaddress.put("field", rules.get(10).getField());
@@ -399,6 +434,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             case R.id.layout_job://职业
                 tv_job.requestFocus();
                 String job = tv_job.getText().toString();
+                PersonalReviseMessageBean.DataBean.RulesBean rulesjob = rules.get(11);
+                if(rulesjob==null){
+                }
                 jsonobjjob = new JSONObject();
                 try {
                     jsonobjjob.put("field", rules.get(11).getField());
@@ -414,6 +452,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             case R.id.layout_hobby://兴趣爱好
                 tv_hobby.requestFocus();
                 String hobby = tv_hobby.getText().toString();
+                PersonalReviseMessageBean.DataBean.RulesBean ruleshobby = rules.get(12);
+                if(ruleshobby==null){
+                }
                 jsonobjhobby = new JSONObject();
                 try {
                     jsonobjhobby.put("field", rules.get(12).getField());
@@ -429,6 +470,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             case R.id.layout_self_image://自我印象
                 tv_self_image.requestFocus();
                 String self_image = tv_self_image.getText().toString();
+                PersonalReviseMessageBean.DataBean.RulesBean rulesself = rules.get(13);
+                if(rulesself==null){
+                }
                 jsonobjself = new JSONObject();
                 try {
                     jsonobjself.put("field", rules.get(13).getField());
@@ -445,6 +489,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 menuWindow = new SelectPicPopupWindow(PersonalReviseActivity.this, itemsOnClick);
                 menuWindow.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.layout_ishouse), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
                 ishouse = tv_ishouse.getText().toString();
+                PersonalReviseMessageBean.DataBean.RulesBean rulesishouse = rules.get(14);
+                if(rulesishouse==null){
+                }
                 jsonobjishouse = new JSONObject();
                 try {
                     jsonobjishouse.put("fileld", rules.get(14).getField());
@@ -462,6 +509,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 mMenuViewmarital = new PopWindowMarital(PersonalReviseActivity.this, itemsOnClickMarital);
                 mMenuViewmarital.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_marital_status), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
                 marital_status = tv_marital_status.getText().toString();
+                PersonalReviseMessageBean.DataBean.RulesBean rulesmarital = rules.get(15);
+                if(rulesmarital==null){
+                }
                 jsonobjmarital = new JSONObject();
                 try {
                     jsonobjmarital.put("field", rules.get(15).getField());
@@ -478,6 +528,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 mMenuViewdistance = new PopWindowDistance(PersonalReviseActivity.this, itemsOnClickDistance);
                 mMenuViewdistance.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_distance_love), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
                 distance = tv_distance_love.getText().toString();
+                PersonalReviseMessageBean.DataBean.RulesBean rulesdistance = rules.get(16);
+                if(rulesdistance==null){
+                }
                 jsonobjdistance = new JSONObject();
                 try {
                     jsonobjdistance.put("field", rules.get(16).getField());
@@ -494,6 +547,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             case R.id.layout_like_sex://喜欢的异性
                 tv_like_sex.requestFocus();
                 String like_sex = tv_like_sex.getText().toString();
+                PersonalReviseMessageBean.DataBean.RulesBean ruleslike = rules.get(17);
+                if(ruleslike==null){
+                }
                 jsonobjlike = new JSONObject();
                 try {
                     jsonobjlike.put("field", rules.get(17).getField());
@@ -510,6 +566,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 mMenuViewpremarital = new PopWindowPremarital(PersonalReviseActivity.this, itemsOnClickPrematital);
                 mMenuViewpremarital.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_premarital_sex), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
                 premarital_sex = tv_premarital_sex.getText().toString();
+                PersonalReviseMessageBean.DataBean.RulesBean rulespremarital = rules.get(18);
+                if(rulespremarital==null){
+                }
                 jsonobjpremarital = new JSONObject();
                 try {
                     jsonobjpremarital.put("field", rules.get(18).getField());

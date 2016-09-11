@@ -150,10 +150,10 @@ public class HreatFragment extends BaseFragment implements  AdapterView.OnItemCl
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tv_look_people://个人资料
-                String uid = UserInfoManager.getInstance().getUid();
-                ActivityUtils.startHomePageActivity(uid);
-//                Intent intent=new Intent(getActivity(),PersonalActivity.class);
-//                startActivity(intent);
+//                String uid = UserInfoManager.getInstance().getUid();
+//                ActivityUtils.startHomePageActivity(uid);
+                Intent intent=new Intent(getActivity(),PersonalActivity.class);
+                startActivity(intent);
                 break;
         }
     }
