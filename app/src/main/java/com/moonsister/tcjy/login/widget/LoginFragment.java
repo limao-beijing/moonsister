@@ -21,6 +21,7 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.login.presenter.LoginFragmentPersenter;
 import com.moonsister.tcjy.login.presenter.LoginFragmentPersenterImpl;
 import com.moonsister.tcjy.login.view.LoginFragmentView;
+import com.moonsister.tcjy.main.widget.ManorGrilActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.StringUtis;
@@ -82,7 +83,7 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
                 login();
                 break;
             case R.id.reg_new_people://注册新用户
-                Intent intent = new Intent(getActivity(), RegActivity.class);
+                Intent intent = new Intent(getActivity(), ManorGrilActivity.class);
                 startActivity(intent);
                 break;
             case R.id.login_page_yellow:

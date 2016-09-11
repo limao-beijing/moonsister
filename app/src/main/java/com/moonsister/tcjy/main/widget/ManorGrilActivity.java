@@ -1,6 +1,9 @@
 package com.moonsister.tcjy.main.widget;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +17,7 @@ import com.moonsister.tcjy.main.presenter.ManorFrilActivityPresenterImpl;
 import com.moonsister.tcjy.main.view.ManorGrilActivityView;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.widget.InsertActivity;
+import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;
@@ -34,6 +38,17 @@ public class ManorGrilActivity extends BaseActivity implements ManorGrilActivity
     String apiVersion;
     @Override
     protected View setRootContentView() {
+        SharedPreferences sp = getSharedPreferences("data", MODE_PRIVATE);
+        boolean isFirst = sp.getBoolean("isFirst", true);
+        if (isFirst == true) {
+            SharedPreferences.Editor edit = sp.edit();
+            edit.putBoolean("isFirst", false);
+            //应用首次启动
+            LayoutInflater.from(this).inflate(R.layout.manorgril,null);
+        } else {
+            //应用非首次启动
+            ActivityUtils.startLoginMainActivity();
+        }
         return UIUtils.inflateLayout(R.layout.manorgril);
     }
 
@@ -41,6 +56,7 @@ public class ManorGrilActivity extends BaseActivity implements ManorGrilActivity
     protected void initView() {
         persenter=new ManorFrilActivityPresenterImpl();//绑定
         persenter.attachView(this);
+
 //        persenter.regOne(1);
     }
 

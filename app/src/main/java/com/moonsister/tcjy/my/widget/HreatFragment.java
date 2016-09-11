@@ -77,13 +77,12 @@ public class HreatFragment extends BaseFragment implements  AdapterView.OnItemCl
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         persenter=new HreatFragmentPresenterImpl();
         persenter.attachView(this);
-
+        persenter.PaySubmit(uid);
         return UIUtils.inflateLayout(R.layout.my_zhuye);//加载主页
     }
 
     @Override
     protected void initData() {
-        persenter.PaySubmit(uid);
 
         List<Map<String,Object>> listItems = new ArrayList<Map<String, Object>>();
         //循环加载数据到gridview中
