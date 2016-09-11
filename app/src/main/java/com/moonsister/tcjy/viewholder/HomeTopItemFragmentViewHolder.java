@@ -1,7 +1,6 @@
 package com.moonsister.tcjy.viewholder;
 
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -11,12 +10,9 @@ import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.HomeTopItemBean;
-import com.moonsister.tcjy.center.widget.DynamicContentFragment;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.StringUtis;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
 import java.util.List;
@@ -59,6 +55,12 @@ public class HomeTopItemFragmentViewHolder extends BaseRecyclerViewHolder<HomeTo
     LinearLayout llTagContent;
     @Bind(R.id.tv_tags)
     TextView tvTags;
+    @Bind(R.id.tv_add_v)
+    ImageView tv_add_v;
+    @Bind(R.id.tv_fen_number)
+    TextView tv_fen_number;
+    @Bind(R.id.tv_dynamic_number)
+    TextView tv_dynamic_number;
 
     public HomeTopItemFragmentViewHolder(View view) {
         super(view);
@@ -68,6 +70,14 @@ public class HomeTopItemFragmentViewHolder extends BaseRecyclerViewHolder<HomeTo
     public void onBindData(HomeTopItemBean.DataBean dataBean) {
         if (dataBean == null)
             return;
+        HomeTopItemBean.DataBean.UinfoBean uinfo1 = dataBean.getUinfo();
+        if (uinfo1.getIsauth() == 1) {
+            tv_add_v.setVisibility(View.VISIBLE);
+        } else {
+            tv_add_v.setVisibility(View.GONE);
+        }
+        tv_fen_number.setText(uinfo1.getFansnum());
+        tv_dynamic_number.setText(uinfo1.getLatest_total());
         List<HomeTopItemBean.DataBean.ListBean> list = dataBean.getList();
         if (list != null && list.size() >= 2) {
             //left
@@ -76,13 +86,13 @@ public class HomeTopItemFragmentViewHolder extends BaseRecyclerViewHolder<HomeTo
             ImageServerApi.showURLBigImage(ivDynamicBgLeft, listletfBean.getPic());
             tvContentLeft.setText(listletfBean.getTitle());
             tvWacthNumberLeft.setText(listletfBean.getViews());
-            setClickTODymic(ivDynamicBgLeft, listletfBean.getLid(), listletfBean.getType());
+//            setClickTODymic(ivDynamicBgLeft, listletfBean.getLid(), listletfBean.getType());
             showDynamicType(iv_dynamic_type_left, listletfBean.getType());
             //right
             ImageServerApi.showURLBigImage(ivDynamicBgRight, listrightBean.getPic());
             tvContentRight.setText(listrightBean.getTitle());
             tvWacthNumberRight.setText(listrightBean.getViews());
-            setClickTODymic(ivDynamicBgRight, listrightBean.getLid(), listrightBean.getType());
+//            setClickTODymic(ivDynamicBgRight, listrightBean.getLid(), listrightBean.getType());
             showDynamicType(iv_dynamic_type_right, listrightBean.getType());
         }
 
@@ -99,11 +109,9 @@ public class HomeTopItemFragmentViewHolder extends BaseRecyclerViewHolder<HomeTo
             tvAge.setText(uinfo.getAge());
             String usertags = uinfo.getUsertags();
             if (!StringUtis.isEmpty(usertags) && usertags.contains("|||")) {
-                String tag = "  ";
-                String replace = usertags.replace("|||", tag);
-                tvTags.setText(replace);
-
+                usertags = usertags.replace("|||", "   ");
             }
+            tvTags.setText(usertags);
         }
 
 

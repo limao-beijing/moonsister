@@ -1,12 +1,14 @@
 package com.moonsister.tcjy.my.widget;
 
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
+import com.moonsister.tcjy.main.widget.HomePageFragment;
+import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.FragmentUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 
@@ -16,7 +18,7 @@ import butterknife.OnClick;
 /**
  * Created by x on 2016/8/24.
  */
-public class MakeMessageActivity extends BaseActivity{
+public class MakeMessageActivity extends BaseActivity {
     @Bind(R.id.my_follow)
     TextView my_follow;
     @Bind(R.id.follow_my)
@@ -24,7 +26,7 @@ public class MakeMessageActivity extends BaseActivity{
     @Bind(R.id.image_back)
     ImageView imageBack;
 
-//    Fragment currentFragment;
+    //    Fragment currentFragment;
 //    private MakeFragment makefragment;
 //    private MoneyFragment moneyfragment;
     @Override
@@ -37,20 +39,39 @@ public class MakeMessageActivity extends BaseActivity{
 //        makefragment=new MakeFragment();
 //        moneyfragment=new MoneyFragment();
 //        FragmentUtils.switchHideFragment(getSupportFragmentManager(),R.id.fragmentlayout,currentFragment,makefragment);
+        onClick(my_follow);
     }
-    @OnClick({R.id.my_follow, R.id.follow_my,R.id.image_back})
+
+    @OnClick({R.id.my_follow, R.id.follow_my, R.id.image_back})
 
     public void onClick(View view) {
+        getIntent().putExtra("id", UserInfoManager.getInstance().getUid());
         switch (view.getId()) {
             case R.id.my_follow:
-//                FragmentUtils.switchHideFragment(getSupportFragmentManager(),R.id.fragmentlayout,mContactsFg,mChatFg);
+                HomePageFragment fragment = new HomePageFragment() {
+                    @Override
+                    public boolean isAddHeaderView() {
+                        return false;
+                    }
+                };
+
+                fragment.setSearchType(EnumConstant.SearchType.user);
+                FragmentUtils.swichReplaceFramgent(getSupportFragmentManager(), R.id.fragmentlayout, fragment);
                 my_follow.setBackgroundResource(R.mipmap.my_foll);
                 my_follow.setTextColor(getResources().getColor(R.color.text_follow_color));
                 follow_my.setBackgroundResource(R.mipmap.my_follow);
                 follow_my.setTextColor(getResources().getColor(R.color.text_followmy_color));
                 break;
             case R.id.follow_my:
-//                FragmentUtils.switchHideFragment(getSupportFragmentManager(),R.id.fragmentlayout,mChatFg,mContactsFg);
+                HomePageFragment dynamicfragment = new HomePageFragment() {
+                    @Override
+                    public boolean isAddHeaderView() {
+                        return false;
+                    }
+                };
+
+                dynamicfragment.setSearchType(EnumConstant.SearchType.dynamic);
+                FragmentUtils.swichReplaceFramgent(getSupportFragmentManager(), R.id.fragmentlayout, dynamicfragment);
                 my_follow.setBackgroundResource(R.mipmap.make_black);
                 my_follow.setTextColor(getResources().getColor(R.color.text_followmy_color));
                 follow_my.setTextColor(getResources().getColor(R.color.text_follow_color));

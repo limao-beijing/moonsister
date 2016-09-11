@@ -677,6 +677,7 @@ public class ServerApi {
         /**
          * 点赞
          * type 操作类型 1顶 2取消顶，3踩，4取消踩
+         *
          * @param authcode
          * @return
          */
@@ -1079,10 +1080,11 @@ public class ServerApi {
          * @return
          */
         @GET("user/user_detail_rule")
-        Observable<PersonalMessageBean> setPersonalMessage(@Query("uid") int uid,
+        Observable<PersonalMessageBean> setPersonalMessage(@Query("uid") String uid,
                                                            @Query("authcode") String authcode,
                                                            @Query("channel") String channelId,
                                                            @Query("version_type") String apiVersion);
+
         /**
          * 修改用户资料页展示
          *
@@ -1090,7 +1092,7 @@ public class ServerApi {
          * @return
          */
         @GET("user/user_detail_rule_single/")
-        Observable<PersonalReviseMessageBean> setPersonalReviseMessage(@Query("uid") int uid,
+        Observable<PersonalReviseMessageBean> setPersonalReviseMessage(@Query("uid") String uid,
                                                                        @Query("authcode") String authcode,
                                                                        @Query("channel") String channelId,
                                                                        @Query("version_type") String apiVersion);
@@ -1143,9 +1145,9 @@ public class ServerApi {
         @FormUrlEncoded
         @POST("recharge/pub")
         Observable<PersonalReviseMessageBean> getUserJsonBean(@Field("contents") String contents,
-                                                        @Field("authcode") String authcode,
-                                                        @Field("channel") String channel,
-                                                        @Field("version_type") String apiVersion);
+                                                              @Field("authcode") String authcode,
+                                                              @Field("channel") String channel,
+                                                              @Field("version_type") String apiVersion);
 
         /**
          * 上传视频和语音
@@ -1157,30 +1159,33 @@ public class ServerApi {
         @FormUrlEncoded
         @POST("apply/goadd_info_v")
         Observable<BackTermsBean> getupto(@Field("apply_image") String apply_image,
-                                            @Field("order_id") String order_id,
-                                                        @Field("authcode") String auhcode,
-                                                        @Field("channel") String channel);
+                                          @Field("order_id") String order_id,
+                                          @Field("authcode") String auhcode,
+                                          @Field("channel") String channel);
 
         /**
          * 获得用户资料
-         *@param uid
+         *
+         * @param uid
          * @return
          */
         @GET("User/user_detail_addon1_Center")
         Observable<UserDetailBean> userdetailbean(@Query("uid") String uid,
-                                                @Query("authcode") String authcode,
-                                                 @Query("channel") String channelId);
+                                                  @Query("authcode") String authcode,
+                                                  @Query("channel") String channelId);
+
         /**
          * 屏蔽
-         *@param type
+         *
+         * @param type
          * @param to_uid
          * @return
          */
         @GET("shield/shield_act")
-        Observable<PingbiBean> pingbibean(@Query("type") int  type,
-                                              @Query("to_uid") String to_uid,
-                                              @Query("authcode") String authcode,
-                                              @Query("channel") String channelId);
+        Observable<PingbiBean> pingbibean(@Query("type") int type,
+                                          @Query("to_uid") String to_uid,
+                                          @Query("authcode") String authcode,
+                                          @Query("channel") String channelId);
 
 
     }

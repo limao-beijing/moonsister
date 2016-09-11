@@ -62,7 +62,6 @@ import com.moonsister.tcjy.my.widget.RuleActivity;
 import com.moonsister.tcjy.my.widget.SettingActivity;
 import com.moonsister.tcjy.my.widget.SwitchCardActivity;
 import com.moonsister.tcjy.my.widget.TiXianRecordActivity;
-import com.moonsister.tcjy.my.widget.UserInfoChangeActivity;
 import com.moonsister.tcjy.my.widget.WithdRawDepositActivity;
 import com.moonsister.tcjy.my.widget.WithdrawActivity;
 import com.moonsister.tcjy.widget.RenZhengActivity;
@@ -454,7 +453,8 @@ public class ActivityUtils {
      * 修改资料
      */
     public static void startUserInfoChangeActivity() {
-        startActivity(UserInfoChangeActivity.class);
+//        startActivity(UserInfoChangeActivity.class);
+        startPersonalReviseActivity();
     }
 
     /**
@@ -650,8 +650,10 @@ public class ActivityUtils {
         startActivity(RenZhengActivity.class);
     }
     //跳转资料展示页面
-    public static void startPersonalActivity() {
-        startActivity(PersonalActivity.class);
+    public static void startPersonalActivity(String uid) {
+        Intent intent = new Intent(getContext(), PersonalActivity.class);
+        intent.putExtra("uid",uid);
+        startActivity(intent);
     }
 
     //跳转修改资料页面

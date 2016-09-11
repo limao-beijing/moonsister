@@ -7,6 +7,6 @@ import com.moonsister.tcjy.my.view.PersonalReviseActivityView;
  * Created by x on 2016/9/10.
  */
 public interface PersonalReviseActivityPersenter extends BaseIPresenter<PersonalReviseActivityView> {
-    void sendPersonalReviseMessage(int uid);
+    void sendPersonalReviseMessage(String uid);
     void sendUserJson(String contents);
 }

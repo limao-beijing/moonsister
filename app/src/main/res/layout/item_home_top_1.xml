@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/rl_dynamic"
@@ -13,7 +13,7 @@
             android:id="@+id/vw_cener_line"
             android:layout_width="@dimen/x10"
             android:layout_height="match_parent"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"/>
 
 
         <RelativeLayout
@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"/>
 
             <TextView
                 android:id="@+id/tv_wacth_number_left"
@@ -36,7 +36,7 @@
                 android:layout_marginTop="@dimen/x15"
                 android:drawableLeft="@mipmap/wacth_number"
                 android:drawablePadding="@dimen/x5"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/tv_content_left"
@@ -51,14 +51,14 @@
                 android:lines="2"
                 android:text="@string/loading"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_12" />
+                android:textSize="@dimen/text_size_12"/>
 
             <ImageView
                 android:id="@+id/iv_dynamic_type_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -70,7 +70,7 @@
                 android:id="@+id/iv_dynamic_bg_right"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"/>
 
             <TextView
                 android:id="@+id/tv_wacth_number_right"
@@ -79,14 +79,14 @@
                 android:layout_marginLeft="@dimen/x15"
                 android:layout_marginTop="@dimen/x15"
                 android:drawableLeft="@mipmap/wacth_number"
-                android:drawablePadding="@dimen/x5" />
+                android:drawablePadding="@dimen/x5"/>
 
             <ImageView
                 android:id="@+id/iv_dynamic_type_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"/>
 
             <TextView
                 android:id="@+id/tv_content_right"
@@ -101,7 +101,7 @@
                 android:lines="2"
                 android:text="@string/loading"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_12" />
+                android:textSize="@dimen/text_size_12"/>
         </RelativeLayout>
 
     </RelativeLayout>
@@ -118,8 +118,18 @@
 
         <com.moonsister.tcjy.widget.RoundedImageView
             android:id="@+id/riv_user_image"
-            android:layout_width="@dimen/x50"
-            android:layout_height="@dimen/x50" />
+            android:layout_width="@dimen/x62"
+            android:layout_height="@dimen/x63"
+            android:src="@mipmap/ic_launcher"/>
+
+        <ImageView
+            android:id="@+id/tv_add_v"
+            android:layout_width="@dimen/x32"
+            android:layout_height="@dimen/x32"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="-8dp"
+            android:src="@mipmap/add_v_samll"/>
+
 
         <TextView
             android:id="@+id/tv_user_name"
@@ -128,7 +138,7 @@
             android:layout_marginLeft="@dimen/x10"
             android:text="@string/loading"
             android:textColor="@color/black_1d262e"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/text_size_16"/>
 
         <TextView
             android:id="@+id/tv_job"
@@ -141,14 +151,14 @@
             android:paddingRight="@dimen/x10"
 
             android:text="@string/loading"
-            android:textSize="@dimen/text_size_12" />
+            android:textSize="@dimen/text_size_12"/>
 
         <ImageView
             android:id="@+id/iv_sex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x10"
-            android:src="@mipmap/gril" />
+            android:src="@mipmap/gril"/>
 
         <TextView
             android:id="@+id/tv_age"
@@ -157,7 +167,23 @@
             android:layout_marginLeft="@dimen/x15"
             android:text="@string/loading"
             android:textColor="@color/text_gray_778998"
-            android:textSize="@dimen/text_size_12" />
+            android:textSize="@dimen/text_size_12"/>
+        <TextView
+            android:id="@+id/tv_fen_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x15"
+            android:text="@string/loading"
+            android:textColor="@color/text_gray_778998"
+            android:textSize="@dimen/text_size_12"/>
+        <TextView
+            android:id="@+id/tv_dynamic_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x15"
+            android:text="@string/loading"
+            android:textColor="@color/text_gray_778998"
+            android:textSize="@dimen/text_size_12"/>
 
         <TextView
             android:id="@+id/tv_tags"
@@ -169,7 +195,7 @@
             android:singleLine="true"
             android:text="@string/loading"
             android:textColor="@color/text_gray_778998"
-            android:textSize="@dimen/text_size_12" />
+            android:textSize="@dimen/text_size_12"/>
     </LinearLayout>
 
 </RelativeLayout>

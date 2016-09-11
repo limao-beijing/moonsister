@@ -247,7 +247,6 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
             UserInfoDetailBean.UserInfoDetailDataBean.Baseinfo baseinfo = bean.getData().getBaseinfo();
             avater = baseinfo.getFace();
             nikeName = baseinfo.getNickname();
-            bean.getData().setUid(userId);
             if (StringUtis.equals(userId, UserInfoManager.getInstance().getUid())) {
                 layout_usee_action.setVisibility(View.GONE);
                 single_send_msg.setVisibility(View.GONE);

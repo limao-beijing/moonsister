@@ -2,7 +2,6 @@ package com.moonsister.tcjy.main.widget;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +19,7 @@ import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.main.presenter.HomePageFragmentPresenter;
 import com.moonsister.tcjy.main.presenter.HomePageFragmentPresenterImpl;
 import com.moonsister.tcjy.main.view.HomePageFragmentView;
+import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.StringUtis;
@@ -41,6 +41,8 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
 
     @Bind(R.id.tv_wacth)
     TextView tv_wacth;
+    @Bind(R.id.layout_home_content)
+    View layout_home_content;
     private HomePageFragmentPresenter presenter;
     private HomePageFragmentAdapter adapter;
     private String userId;
@@ -56,12 +58,14 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
         return inflater.inflate(R.layout.fragment_home_page, container, false);
     }
 
-    public static Fragment newInstance() {
+    public static HomePageFragment newInstance() {
         return new HomePageFragment();
     }
 
     @Override
     protected void initData() {
+        if (StringUtis.equals(userId, UserInfoManager.getInstance().getUid()))
+            layout_home_content.setVisibility(View.GONE);
         headHolder = new HomePageHeadHolder();
         headHolder.setOnClickListener(new HomePageHeadHolder.OnClickListener() {
             @Override
@@ -102,8 +106,17 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
                 presenter.loadMore(userId, type);
             }
         });
-        xlv.addHeaderView(headHolder.getContentView());
+        if (isAddHeaderView())
+            xlv.addHeaderView(headHolder.getContentView());
         xlv.setRefreshing(true);
+    }
+
+    public void setSearchType(EnumConstant.SearchType type) {
+        this.type = type;
+    }
+
+    public boolean isAddHeaderView() {
+        return true;
     }
 
     @Override

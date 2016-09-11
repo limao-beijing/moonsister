@@ -1,6 +1,5 @@
 package com.moonsister.tcjy.my.widget;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.bean.GoodSelectBaen;
 import com.moonsister.tcjy.bean.UserDetailBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.persenter.HreatFragmentPersenter;
@@ -23,8 +21,6 @@ import com.moonsister.tcjy.my.view.HreatFragmentView;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.HreatViewholder;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,45 +33,47 @@ import butterknife.OnClick;
 /**
  * Created by x on 2016/8/22.
  */
-public class HreatFragment extends BaseFragment implements  AdapterView.OnItemClickListener,HreatFragmentView {
+public class HreatFragment extends BaseFragment implements AdapterView.OnItemClickListener, HreatFragmentView {
     private HreatViewholder hreatViewholder;
     @Bind(R.id.gridView)//我页面中gridview
-    GridView gridView;
+            GridView gridView;
     //gridview中的item数据与图片
     String uid;
     String my;
     @Bind(R.id.iv_user_icon)//用户头像
-    ImageView iv_user_icon;
+            ImageView iv_user_icon;
     @Bind(R.id.tv_user_all_income)//总收入
-    TextView tv_user_all_income;
+            TextView tv_user_all_income;
     @Bind(R.id.tv_user_day_income)//今日收入
-    TextView tv_user_day_income;
+            TextView tv_user_day_income;
     @Bind(R.id.tv_user_name)//用户名
-    TextView tv_user_name;
+            TextView tv_user_name;
     @Bind(R.id.tv_work)//用户职业
-    TextView tv_work;
+            TextView tv_work;
     @Bind(R.id.tv_time)//时间
-    TextView tv_time;
+            TextView tv_time;
     @Bind(R.id.tv_age)//年龄
-    TextView tv_age;
+            TextView tv_age;
     @Bind(R.id.image_gril)//性别
-    ImageView image_gril;
+            ImageView image_gril;
     @Bind(R.id.tv_address)//地址
-    TextView tv_address;
+            TextView tv_address;
     @Bind(R.id.tv_look_people)//预览个人主页
-    TextView tv_look_people;
+            TextView tv_look_people;
     @Bind(R.id.vip_money)//是否为VIP
-    ImageView vip_money;
-    String[] images_text=new String[]{"我关注的","关注我的","动态管理","VIP充值","申请认证","兴趣修改","悬赏管理","约见管理","修改资料","财务中心","屏蔽手机联系人","设置"};
-//
-    int[] images=new int[]{R.mipmap.mysee,R.mipmap.seemy,R.mipmap.makemessage,R.mipmap.vipmoney,R.mipmap.viprenzheng,R.mipmap.insert,R.mipmap.xuanshang,R.mipmap.yousee,R.mipmap.make,R.mipmap.money,R.mipmap.phone,R.mipmap.domake};
-//    ,,
+            ImageView vip_money;
+    String[] images_text = new String[]{"我关注的", "关注我的", "动态管理", "VIP充值", "申请认证", "兴趣修改", "悬赏管理", "约见管理", "修改资料", "财务中心", "屏蔽手机联系人", "设置"};
+    //
+    int[] images = new int[]{R.mipmap.mysee, R.mipmap.seemy, R.mipmap.makemessage, R.mipmap.vipmoney, R.mipmap.viprenzheng, R.mipmap.insert, R.mipmap.xuanshang, R.mipmap.yousee, R.mipmap.make, R.mipmap.money, R.mipmap.phone, R.mipmap.domake};
+    //    ,,
     HreatFragmentPersenter persenter;
     UserDetailBean.DataBean.BaseinfoBean data;
     UserDetailBean.DataBean.AddonsBean addons;
+
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        persenter=new HreatFragmentPresenterImpl();
+        uid = UserInfoManager.getInstance().getUid();
+        persenter = new HreatFragmentPresenterImpl();
         persenter.attachView(this);
         persenter.PaySubmit(uid);
         return UIUtils.inflateLayout(R.layout.my_zhuye);//加载主页
@@ -84,21 +82,21 @@ public class HreatFragment extends BaseFragment implements  AdapterView.OnItemCl
     @Override
     protected void initData() {
 
-        List<Map<String,Object>> listItems = new ArrayList<Map<String, Object>>();
+        List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
         //循环加载数据到gridview中
-        for (int i=0;i<images_text.length;i++) {
+        for (int i = 0; i < images_text.length; i++) {
             Map<String, Object> listItem = new HashMap<String, Object>();
             listItem.put("t", images[i]);
             //添加到List数组中
-            listItem.put("m",images_text[i]);
+            listItem.put("m", images_text[i]);
             listItems.add(listItem);
             //设置SimpleAdapter属性
         }
         //利用simpleAdapter适配器适配数据
         SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(), listItems,
-                R.layout.gridviewitem, new String[] { "t", "m" }, new int[] {
+                R.layout.gridviewitem, new String[]{"t", "m"}, new int[]{
                 R.id.im, R.id.textview});
-            gridView.setAdapter(simpleAdapter);
+        gridView.setAdapter(simpleAdapter);
         gridView.setOnItemClickListener(this);
 
 //            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -112,12 +110,12 @@ public class HreatFragment extends BaseFragment implements  AdapterView.OnItemCl
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        switch (images[i]){
+        switch (images[i]) {
             case R.mipmap.mysee://我关注的
-
-                ActivityUtils.startFollowActivity(uid,1);
+                ActivityUtils.startFollowActivity(UserInfoManager.getInstance().getUid(), 1);
+                break;
             case R.mipmap.seemy://关注我的
-                ActivityUtils.startFollowActivity(uid,2);
+                ActivityUtils.startFollowActivity(UserInfoManager.getInstance().getUid(), 2);
                 break;
             case R.mipmap.makemessage://动态管理
                 ActivityUtils.startMakeMessageActivity();
@@ -147,7 +145,7 @@ public class HreatFragment extends BaseFragment implements  AdapterView.OnItemCl
 
     @OnClick(R.id.tv_look_people)
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.tv_look_people://个人资料
                 String uid = UserInfoManager.getInstance().getUid();
                 ActivityUtils.startHomePageActivity(uid);
@@ -156,7 +154,6 @@ public class HreatFragment extends BaseFragment implements  AdapterView.OnItemCl
                 break;
         }
     }
-
 
 
     @Override
@@ -180,36 +177,36 @@ public class HreatFragment extends BaseFragment implements  AdapterView.OnItemCl
         addons = userDetailBean.getData().getAddons();
         tv_user_name.setText(data.getNickname());//用户昵称
         int sex = data.getSex();//用户性别
-        if(sex==1){
+        if (sex == 1) {
             image_gril.setImageResource(R.mipmap.nan);
-        }else{
+        } else {
             image_gril.setImageResource(R.mipmap.gril);
         }
         ImageServerApi.showURLSamllImage(iv_user_icon, data.getFace());//用户头像
         String profession = data.getProfession();//用户职业
-        if(profession==""){
+        if (profession == "") {
             tv_work.setVisibility(View.INVISIBLE);
-        }else{
+        } else {
             tv_work.setText(profession);
         }
         String birthday = data.getBirthday();//用户出生年月日
-        if(birthday==""){
+        if (birthday == "") {
             tv_time.setVisibility(View.INVISIBLE);
-        }else{
+        } else {
             tv_time.setText(birthday);
         }
         int age = data.getAge();//年龄
-        tv_age.setText(age+"岁");
+        tv_age.setText(age + "岁");
         tv_address.setText(data.getResidence());//用户地址
         int income_all = addons.getIncome_all();//用户总收入
-        tv_user_all_income.setText(income_all+"");
+        tv_user_all_income.setText(income_all + "");
 
         int income_today = addons.getIncome_today();//今日收入
-        tv_user_day_income.setText(income_today+"");
+        tv_user_day_income.setText(income_today + "");
         String vip_level = data.getVip_level();//判断是否为VIP
-        if(vip_level.equals("0")){
+        if (vip_level.equals("0")) {
             vip_money.setVisibility(View.GONE);
-        }else{
+        } else {
             vip_money.setVisibility(View.VISIBLE);
 
         }

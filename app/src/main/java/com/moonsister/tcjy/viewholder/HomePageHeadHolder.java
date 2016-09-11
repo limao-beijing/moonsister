@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
+import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
@@ -105,25 +106,41 @@ public class HomePageHeadHolder extends BaseHolder<UserInfoDetailBean> {
         mRivUserImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityUtils.startUserinfoActivity(data.getUid());
+                ActivityUtils.startUserinfoActivity(baseinfo.getUid());
             }
         });
         mTvWacthNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityUtils.startWacthRelationActivity(data.getUid());
+                ActivityUtils.startWacthRelationActivity(baseinfo.getUid());
             }
         });
         mTvFenNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityUtils.startFenRelationActivity(data.getUid());
+                ActivityUtils.startFenRelationActivity(baseinfo.getUid());
             }
         });
         if (StringUtis.equals(data.getBaseinfo().getIsverify(), "1")) {
             mIvAddV.setVisibility(View.VISIBLE);
         } else mIvAddV.setVisibility(View.GONE);
         selectColor(R.id.rl_all);
+        if (StringUtis.equals(UserInfoManager.getInstance().getUid(), baseinfo.getUid())) {
+            mTvMore.setText(UIUtils.getStringRes(R.string.setting));
+        } else {
+            mTvMore.setText(UIUtils.getStringRes(R.string.more));
+        }
+        mTvMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (StringUtis.equals(UserInfoManager.getInstance().getUid(), baseinfo.getUid())) {
+                    ActivityUtils.startPersonalReviseActivity();
+                } else {
+                    ActivityUtils.startPersonalActivity(baseinfo.getUid());
+
+                }
+            }
+        });
 
     }
 

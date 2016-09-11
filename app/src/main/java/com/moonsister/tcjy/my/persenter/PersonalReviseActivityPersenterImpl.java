@@ -18,7 +18,7 @@ public class PersonalReviseActivityPersenterImpl implements PersonalReviseActivi
     private PersonalReviseActivityView view;
     private PersonalReviseActivityModel model;
     @Override
-    public void sendPersonalReviseMessage(int uid) {
+    public void sendPersonalReviseMessage(String uid) {
         view.showLoading();
         model.loadpersonalData(uid,this);
     }

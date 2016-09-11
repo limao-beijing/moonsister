@@ -1,24 +1,15 @@
 package com.moonsister.tcjy.my.widget;
 
-import android.content.Intent;
-import android.media.Image;
-import android.net.Uri;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.PersonalAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.bean.GoodSelectBaen;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.bean.PersonalMessageBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
@@ -27,10 +18,7 @@ import com.moonsister.tcjy.my.persenter.PersonalActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.PersonalActivityView;
 import com.moonsister.tcjy.utils.UIUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -71,7 +59,7 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
     @Bind(R.id.follow_ta)//关注他
             TextView follow_ta;
     @Bind(R.id.look)//手机号查看
-    ImageView look;
+            ImageView look;
     @Bind(R.id.qq_look)//QQ查看
             ImageView qq_look;
     @Bind(R.id.weixin_look)//微信号查看
@@ -94,9 +82,10 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
 
     @Override
     protected void initView() {
+        String id = getIntent().getStringExtra("id");
         persenter = new PersonalActivityPersenterImpl();
         persenter.attachView(this);
-        persenter.sendPersonalMessage(145655);
+        persenter.sendPersonalMessage(id);
 
 
     }
@@ -130,47 +119,47 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
     public void success(PersonalMessageBean getPersonalBean) {
         data = getPersonalBean.getData().getRules();
         data1 = getPersonalBean.getData().getBaseinfo();
-        data2=getPersonalBean.getData().getDlist();
-        data3=getPersonalBean.getData().getVipinfo();
+        data2 = getPersonalBean.getData().getDlist();
+        data3 = getPersonalBean.getData().getVipinfo();
 
-        adapter=new PersonalAdapter(this,data);
+        adapter = new PersonalAdapter(this, data);
         personal_list.setAdapter(adapter);
 
         iv_user_name.setText(data1.getNickname());//用户昵称
 
-        int i=data1.getSex();//用户性别
-        if(i==1){
+        int i = data1.getSex();//用户性别
+        if (i == 1) {
             im_user_sex.setImageResource(R.mipmap.nan);
-        }else{
+        } else {
             im_user_sex.setImageResource(R.mipmap.gril);
         }
         ImageServerApi.showURLBigImage(iv_user_icon, data1.getFace());//用户头像
-        iv_user_age.setText(data1.getAge()+"");//用户年龄
+        iv_user_age.setText(data1.getAge() + "");//用户年龄
         String profess = data1.getProfession();//用户职业
 //        String profess=profession.toString();
-        if(profess==null){
+        if (profess == null) {
             iv_user_work.setVisibility(View.INVISIBLE);
-        }else{
+        } else {
             iv_user_work.setText(profess);
         }
 
         iv_user_most.setText(data1.getSignature());//用户签名
         String isvip = data.get(0).getIsvip();
-        if(isvip=="0"){
+        if (isvip == "0") {
             if_user_vip.setVisibility(View.INVISIBLE);
-        }else{
+        } else {
             if_user_vip.setVisibility(View.VISIBLE);
         }
-        String Vip_level=data1.getVip_level();//VIP等级
-        if(Vip_level=="0"){
+        String Vip_level = data1.getVip_level();//VIP等级
+        if (Vip_level == "0") {
 
             im_user_vip.setVisibility(View.INVISIBLE);
             if_user_vip.setVisibility(View.INVISIBLE);
-        }else{
+        } else {
 
         }
         String smobile = data3.getSmobile();//用户手机号
-        if(smobile==null){
+        if (smobile == null) {
             phone_number.setText("xxxxxxxxxxx");
             look.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -178,7 +167,7 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
                     phone_number.setText("");
                 }
             });
-        }else{
+        } else {
             phone_number.setText("xxxxxxxxxxx");
             look.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -191,25 +180,25 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
         memoryPersonInfoDetail.setSmobile(smobile);//保存值
         UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
         String qq = data3.getQq();//用户QQ号
-            if(qq==null){
-                qq_number.setText("xxxxxxxxxxx");
-                qq_look.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        qq_number.setText("");
-                    }
-                });
-            }else{
-                qq_number.setText("xxxxxxxxxxx");
-                qq_look.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        qq_number.setText(qq);
-                    }
-                });
+        if (qq == null) {
+            qq_number.setText("xxxxxxxxxxx");
+            qq_look.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    qq_number.setText("");
+                }
+            });
+        } else {
+            qq_number.setText("xxxxxxxxxxx");
+            qq_look.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    qq_number.setText(qq);
+                }
+            });
         }
         String weixin = data3.getWeixin();//用户微信号
-        if(weixin==null){
+        if (weixin == null) {
             weixin_number.setText("xxxxxxxxxxx");
             weixin_look.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -218,7 +207,7 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
                 }
             });
 
-        }else{
+        } else {
             weixin_number.setText("xxxxxxxxxxx");
             weixin_look.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -227,7 +216,6 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
                 }
             });
         }
-
 
 
     }

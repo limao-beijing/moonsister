@@ -7,7 +7,6 @@ import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.model.PersonalActivityModel;
 import com.moonsister.tcjy.my.model.PersonalActivityModelImpl;
-import com.moonsister.tcjy.my.view.InsertActivityView;
 import com.moonsister.tcjy.my.view.PersonalActivityView;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
@@ -19,7 +18,7 @@ public class PersonalActivityPersenterImpl implements PersonalActivityPersenter,
     private PersonalActivityView view;
     private PersonalActivityModel model;
     @Override
-    public void sendPersonalMessage(int uid) {
+    public void sendPersonalMessage(String uid) {
         view.showLoading();
         model.loadData(uid,this);
     }

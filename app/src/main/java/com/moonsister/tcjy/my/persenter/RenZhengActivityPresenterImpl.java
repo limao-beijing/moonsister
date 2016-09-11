@@ -1,7 +1,5 @@
 package com.moonsister.tcjy.my.persenter;
 
-import android.net.Uri;
-
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.BackTermsBean;
@@ -28,15 +26,15 @@ public class RenZhengActivityPresenterImpl implements RenZhengAcivityPresenter, 
     }
 
     @Override
-    public void submit(String address1, String address2,String text) {
+    public void submit(String address1, String address2, String text) {
         view.showLoading();
-        model.submit(address1,address2,text,this);
+        model.submit(address1, address2, text, this);
     }
 
     @Override
     public void submitdata(String str, String order_id) {
         view.showLoading();
-        model.submitdata(str,order_id,this);
+        model.submitdata(str, order_id, this);
     }
 
 
@@ -60,7 +58,7 @@ public class RenZhengActivityPresenterImpl implements RenZhengAcivityPresenter, 
     @Override
     public void attachView(RenZhengActivityView renZhengActivityView) {
         view = renZhengActivityView;
-        model=new RenZhengActivityModelImpl();
+        model = new RenZhengActivityModelImpl();
     }
 
     @Override
@@ -92,6 +90,7 @@ public class RenZhengActivityPresenterImpl implements RenZhengAcivityPresenter, 
 
     @Override
     public void onFailure(String msg) {
+        view.transfePageMsg(msg);
         view.hideLoading();
     }
 }

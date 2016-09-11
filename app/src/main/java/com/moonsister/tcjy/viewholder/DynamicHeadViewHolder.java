@@ -10,7 +10,6 @@ import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
@@ -73,23 +72,23 @@ public class DynamicHeadViewHolder {
         tvDynamicNumber.setText(addons.getUlatn());
         tvFlowerNumber.setText(addons.getUflon());
         tvWacthNumber.setText(addons.getUfoln());
-        getwacthStatus(data.getFollow(), data.getUid());
+        getwacthStatus(data.getFollow(), baseinfo.getUid());
         ivUserIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityUtils.startUserinfoActivity(userInfodetail.getData().getUid());
+                ActivityUtils.startUserinfoActivity(baseinfo.getUid());
             }
         });
         layout_wacth_number.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityUtils.startWacthRelationActivity(data.getUid());
+                ActivityUtils.startWacthRelationActivity(baseinfo.getUid());
             }
         });
         layot_fen_number.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityUtils.startFenRelationActivity(data.getUid());
+                ActivityUtils.startFenRelationActivity(baseinfo.getUid());
             }
         });
         if (StringUtis.equals(data.getBaseinfo().getIsverify(), "1")) {

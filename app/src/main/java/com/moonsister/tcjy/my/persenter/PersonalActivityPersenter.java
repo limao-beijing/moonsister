@@ -7,7 +7,7 @@ import com.moonsister.tcjy.my.view.PersonalActivityView;
  * Created by x on 2016/9/2.
  */
 public interface PersonalActivityPersenter extends BaseIPresenter<PersonalActivityView> {
-    void sendPersonalMessage(int uid);
+    void sendPersonalMessage(String uid);
 //    void sendPersonalResviceMessage(int uid);
 
 }

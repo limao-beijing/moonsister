@@ -22,7 +22,7 @@ public class UserInfoDetailBean extends BaseBean {
         private Object guard;
         private String follow;
         private Baseinfo baseinfo;
-        private String uid;
+
         private int dynamicType = 1;
 
         public int getDynamicType() {
@@ -33,13 +33,7 @@ public class UserInfoDetailBean extends BaseBean {
             this.dynamicType = dynamicType;
         }
 
-        public String getUid() {
-            return uid;
-        }
 
-        public void setUid(String uid) {
-            this.uid = uid;
-        }
 
         public void setGuard(Object guard) {
             this.guard = guard;
@@ -67,9 +61,17 @@ public class UserInfoDetailBean extends BaseBean {
             private String latest_vip;
             private String signature;
             private String tags;
-
+            private String uid;
             public String getSignature() {
                 return signature;
+            }
+
+            public String getUid() {
+                return uid;
+            }
+
+            public void setUid(String uid) {
+                this.uid = uid;
             }
 
             public void setSignature(String signature) {

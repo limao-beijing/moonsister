@@ -4,26 +4,24 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.DatePicker;
+import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.view.View.OnClickListener;
 
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.PersonalMessageBean;
 import com.moonsister.tcjy.bean.PersonalReviseMessageBean;
-import com.moonsister.tcjy.bean.UserInfoChangeBean;
 import com.moonsister.tcjy.bean.personalBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.login.widget.SelectPicPopupActivity;
+import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.persenter.PersonalReviseActivityPersenter;
 import com.moonsister.tcjy.my.persenter.PersonalReviseActivityPersenterImpl;
-import com.moonsister.tcjy.my.view.PersonalActivityView;
 import com.moonsister.tcjy.my.view.PersonalReviseActivityView;
 import com.moonsister.tcjy.popwindow.PopWindowDistance;
 import com.moonsister.tcjy.popwindow.PopWindowMarital;
@@ -38,11 +36,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -190,9 +184,10 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
 
     @Override
     protected void initView() {
+
         presenter = new PersonalReviseActivityPersenterImpl();
         presenter.attachView(this);
-        presenter.sendPersonalReviseMessage(145655);
+        presenter.sendPersonalReviseMessage(UserInfoManager.getInstance().getUid());
 
     }
 

@@ -79,6 +79,24 @@ public class HomeTopItemBean extends BaseBean {
             private String age;
             private String profession;
             private String uid;
+            private String fansnum;
+            private String latest_total;
+
+            public String getFansnum() {
+                return fansnum;
+            }
+
+            public void setFansnum(String fansnum) {
+                this.fansnum = fansnum;
+            }
+
+            public String getLatest_total() {
+                return latest_total;
+            }
+
+            public void setLatest_total(String latest_total) {
+                this.latest_total = latest_total;
+            }
 
             public String getUid() {
                 return uid;
