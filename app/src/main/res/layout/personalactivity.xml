@@ -100,17 +100,17 @@
             android:layout_toRightOf="@+id/iv_user_icon"
             android:text="合合合合合合合合"/>
     </RelativeLayout>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linear1"
         android:layout_marginTop="@dimen/y20"
-        android:orientation="horizontal"
         android:background="@color/white">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="手机:"
+            android:id="@+id/text_mobile"
             android:layout_gravity="center"
             android:textColor="@color/colorAccent"
             android:layout_marginLeft="@dimen/x20"/>
@@ -120,29 +120,31 @@
             android:id="@+id/phone_number"
             android:layout_marginLeft="@dimen/x10"
             android:layout_gravity="center"
+            android:layout_toRightOf="@+id/text_mobile"
             android:textColor="@color/home_navigation_text_gred"
             android:text="XXXXXXXXXXX"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/look"
-            android:layout_marginLeft="@dimen/x350"
+            android:layout_toRightOf="@+id/text_mobile"
+            android:layout_marginLeft="@dimen/x500"
             android:background="@mipmap/look"/>
-    </LinearLayout>
+    </RelativeLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/app_gred_background"/>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linear2"
-        android:orientation="horizontal"
         android:background="@color/white">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Q Q:"
+            android:id="@+id/text_qq"
             android:layout_gravity="center"
             android:textColor="@color/colorAccent"
             android:layout_marginLeft="@dimen/x20"/>
@@ -150,6 +152,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/qq_number"
+            android:layout_toRightOf="@+id/text_qq"
             android:layout_marginLeft="@dimen/x10"
             android:textColor="@color/home_navigation_text_gred"
             android:layout_gravity="center"
@@ -158,23 +161,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/qq_look"
-            android:layout_marginLeft="@dimen/x350"
+            android:layout_toRightOf="@+id/text_qq"
+            android:layout_marginLeft="@dimen/x502"
             android:background="@mipmap/look"/>
-    </LinearLayout>
+    </RelativeLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/app_gred_background"/>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linear3"
-        android:orientation="horizontal"
         android:background="@color/white">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="微信:"
+            android:id="@+id/text_weixin"
             android:layout_gravity="center"
             android:textColor="@color/colorAccent"
             android:layout_marginLeft="@dimen/x20"/>
@@ -183,6 +187,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/weixin_number"
             android:layout_marginLeft="@dimen/x10"
+            android:layout_toRightOf="@+id/text_weixin"
             android:layout_gravity="center"
             android:textColor="@color/home_navigation_text_gred"
             android:text="XXXXXXXXXXX"/>
@@ -190,10 +195,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/weixin_look"
-
-            android:layout_marginLeft="@dimen/x350"
+            android:layout_toRightOf="@+id/text_weixin"
+            android:layout_marginLeft="@dimen/x500"
             android:background="@mipmap/look"/>
-    </LinearLayout>
+    </RelativeLayout>
 
     <ListView
         android:layout_width="wrap_content"
