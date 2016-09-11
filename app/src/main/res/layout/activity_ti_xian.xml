@@ -137,7 +137,8 @@
             android:inputType="number"
             android:padding="@dimen/x7"
             android:textColor="@color/text_color"
-            android:textSize="@dimen/order_text_small4" />
+            android:textSize="@dimen/order_text_small4"
+            />
 
     </RelativeLayout>
 

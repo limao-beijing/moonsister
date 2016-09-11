@@ -8,4 +8,5 @@ import com.moonsister.tcjy.bean.PersonalReviseMessageBean;
  */
 public interface PersonalReviseActivityModel extends BaseIModel {
     void loadpersonalData(int uid,onLoadDateSingleListener<PersonalReviseMessageBean> listener);
+    void userJson(String contents, onLoadDateSingleListener<PersonalReviseMessageBean> listener);
 }

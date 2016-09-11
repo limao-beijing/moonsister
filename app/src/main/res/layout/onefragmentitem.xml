@@ -3,10 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/y138">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_time"
+        android:text="5655656"
+        android:layout_marginLeft="@dimen/x50"
+        android:textColor="@color/text_gray_778998"
+        android:layout_toRightOf="@+id/text_money"
+        android:layout_marginTop="@dimen/y10"
+        android:textSize="18sp" />
+
     <ImageView
         android:layout_width="@dimen/x100"
         android:layout_height="@dimen/y100"
         android:id="@+id/onfragment_im"
+        android:layout_marginTop="@dimen/x10"
         android:layout_marginLeft="@dimen/x26"
         android:background="@mipmap/ic_launcher"
         />
@@ -32,14 +44,5 @@
         android:layout_marginLeft="@dimen/x30"
         android:layout_below="@+id/text_money"
         android:layout_toRightOf="@+id/onfragment_im"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/text_time"
-        android:layout_marginLeft="@dimen/x150"
-        android:text="5655656"
-        android:layout_toRightOf="@+id/text_money"
-        android:textColor="@color/text_gray_778998"
-        android:layout_marginTop="@dimen/y10"
-        android:textSize="18sp" />
+
 </RelativeLayout>

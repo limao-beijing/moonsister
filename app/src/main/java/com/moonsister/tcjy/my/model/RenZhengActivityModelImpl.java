@@ -2,6 +2,7 @@ package com.moonsister.tcjy.my.model;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import com.alibaba.sdk.android.oss.ClientException;
 import com.alibaba.sdk.android.oss.ServiceException;
@@ -183,6 +184,7 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
             @Override
             public void onSuccess(BackTermsBean bean) {
                 listener.onSuccess(bean, DataType.DATA_ZERO);
+
             }
 
             @Override

@@ -30,4 +30,21 @@ public class PersonalReviseActivityModelImpl implements PersonalReviseActivityMo
             }
         });
     }
+
+    @Override
+    public void userJson(String contents, onLoadDateSingleListener<PersonalReviseMessageBean> listener) {
+        Observable<PersonalReviseMessageBean> observable = ServerApi.getAppAPI().getUserJsonBean(contents,UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID,AppConstant.API_VERSION);
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<PersonalReviseMessageBean>() {
+            @Override
+            public void onSuccess(PersonalReviseMessageBean bean) {
+                listener.onSuccess(bean, DataType.DATA_ZERO);
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                listener.onFailure(msg);
+            }
+        });
+
+    }
 }

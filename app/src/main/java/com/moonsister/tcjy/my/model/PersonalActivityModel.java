@@ -10,6 +10,4 @@ import com.moonsister.tcjy.my.persenter.PersonalActivityPersenterImpl;
 public interface PersonalActivityModel extends BaseIModel {
     void loadData(int uid, onLoadDateSingleListener<PersonalMessageBean> listener);
 
-    void userJson(String contents, onLoadDateSingleListener<PersonalMessageBean> listener);
-
 }

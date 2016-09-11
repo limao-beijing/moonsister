@@ -40,6 +40,7 @@
             android:layout_toRightOf="@+id/tv_username"
             android:textSize="18sp"
             android:paddingLeft="@dimen/x50"
+            android:numeric="integer"
             android:hint="@string/input_phone_number" />
 
     </LinearLayout>
@@ -70,6 +71,7 @@
             android:layout_toRightOf="@+id/tv_username"
             android:textSize="18sp"
             android:paddingLeft="@dimen/x50"
+            android:password="true"
             android:hint="请输入密码" />
         <ImageView
             android:layout_width="wrap_content"

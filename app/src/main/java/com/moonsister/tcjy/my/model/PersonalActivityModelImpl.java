@@ -34,23 +34,4 @@ public class PersonalActivityModelImpl implements PersonalActivityModel {
             }
         });
     }
-
-
-
-    @Override
-    public void userJson(String contents, onLoadDateSingleListener<PersonalMessageBean> listener) {
-        Observable<PersonalMessageBean> observable = ServerApi.getAppAPI().getUserJsonBean(contents,UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID,AppConstant.API_VERSION);
-        ObservableUtils.parser(observable, new ObservableUtils.Callback<PersonalMessageBean>() {
-            @Override
-            public void onSuccess(PersonalMessageBean bean) {
-                listener.onSuccess(bean, DataType.DATA_ZERO);
-            }
-
-            @Override
-            public void onFailure(String msg) {
-                listener.onFailure(msg);
-            }
-        });
-
-    }
 }

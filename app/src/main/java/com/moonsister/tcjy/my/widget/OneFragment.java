@@ -37,6 +37,7 @@ public class OneFragment extends BaseFragment implements BalanceActivityView{
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         type=1;
+        page=1;
         mPresenter = new MoneyActivityPersenterImpl();
         mPresenter.attachView(this);
         return UIUtils.inflateLayout(R.layout.onefragment);
@@ -58,7 +59,7 @@ public class OneFragment extends BaseFragment implements BalanceActivityView{
                 mPresenter.moneyba(type,page,10);
             }
         });
-        mPresenter.moneyba(type,1,10);
+        mPresenter.moneyba(type,page,10);
     }
 
     @Override

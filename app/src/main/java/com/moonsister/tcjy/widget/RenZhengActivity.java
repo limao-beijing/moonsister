@@ -257,8 +257,6 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
 
                 break;
             case R.id.renzheng_yuyin:
-//                Intent in=new Intent(RenZhengActivity.this, VoiceActivity.class);
-//                startActivity(in);
                 startActivityForResult(new Intent(RenZhengActivity.this, VoiceActivity.class), 3);
 
                 break;
@@ -273,7 +271,6 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
     @Override
     public void success(BackTermsBean backTermsBean) {
         random.setText(backTermsBean.getData());
-        showToast("上传成功");
     }
 
     @Override
@@ -294,9 +291,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-//                SharedPreferences sharedPrefe=getSharedPreferences("Parameter", Context.MODE_PRIVATE);
-//                path = sharedPrefe.getString("path", "");
-//                persenter.subitdata(str,order_id);
+
                 if(realFilePath!=null&&voicepat!=null){
                     persenter.submit(realFilePath,voicepat,random.getText().toString());
                 }
@@ -314,8 +309,5 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
         });
         builder.create().show();
     }
-//    @Override
-//    public void uploadSuccess(String path) {
-//        this.facePath = path;
-//    }
+
 }

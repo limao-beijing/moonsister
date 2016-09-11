@@ -75,7 +75,7 @@ public class InsertActivity extends BaseActivity implements InsertActivityView {
     }
 
 
-    @OnClick({R.id.button_text,R.id.button1_text})
+    @OnClick({R.id.button_text,R.id.button1_text,R.id.image_back})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.button_text://重置
@@ -147,10 +147,10 @@ public class InsertActivity extends BaseActivity implements InsertActivityView {
     public void success() {
         uu=getIntent().getStringExtra("my");
         if(uu==null){
+
             Intent intent=new Intent(InsertActivity.this,RegActivity.class);
             startActivity(intent);
             this.finish();
-
         }else{
             this.finish();
         }

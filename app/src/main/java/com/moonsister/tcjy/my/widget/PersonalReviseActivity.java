@@ -112,7 +112,10 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
     String message2;//背景图路径
     String result;//年龄
     String love;//星座
-    JSONObject jsonobj;//头像  背景图
+    JSONObject jsonmobile;//手机
+    JSONObject jsonqq;//qq
+    JSONObject jsonweixin;//微信
+    JSONObject  jsonavater;//头像  背景图
     JSONObject jsonobjname;//昵称
     JSONObject jsonobjsignature;//个性签名
     JSONObject jsonobjsex;//性别
@@ -128,6 +131,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
     JSONObject jsonobjdistance;//接受异地恋
     JSONObject jsonobjlike;//喜欢的异性
     JSONObject jsonobjpremarital;//婚前性行为
+
     String ishouse;
     String marital_status;
     String distance;
@@ -206,9 +210,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
     public void transfePageMsg(String msg) {
         showToast(msg);
     }
-/**
-    @OnClick({R.id.image_back, R.id.layout_mobile,R.id.layout_qq,R.id.layout_weight,R.id.layout_avater, R.id.layout_nike_name, R.id.layout_signature, R.id.layout_sex, R.id.layout_birthday, R.id.layout_star_sign, R.id.layout_birthplace, R.id.layout_address, R.id.layout_job, R.id.layout_hobby, R.id.layout_self_image, R.id.layout_ishouse, R.id.layout_marital_status, R.id.layout_distance_love, R.id.layout_like_sex, R.id.layout_premarital_sex, R.id.baocun})
-    public void onClick(View view)  {
+
+    @OnClick({R.id.image_back, R.id.layout_mobile,R.id.layout_qq,R.id.layout_weixin,R.id.layout_avater, R.id.layout_nike_name, R.id.layout_signature, R.id.layout_sex, R.id.layout_birthday, R.id.layout_star_sign, R.id.layout_birthplace, R.id.layout_address, R.id.layout_job, R.id.layout_hobby, R.id.layout_self_image, R.id.layout_ishouse, R.id.layout_marital_status, R.id.layout_distance_love, R.id.layout_like_sex, R.id.layout_premarital_sex, R.id.baocun})
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.image_back:
                 this.finish();
@@ -216,7 +220,49 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
 //                presenter.sendUserJson(jsonString);
                 break;
             case R.id.layout_mobile:
+                String mobile = tv_mobile.getText().toString();
+                jsonmobile=new JSONObject();
+                try {
+                    jsonmobile.put("field",rules.get(0).getField());
+                    jsonmobile.put("name",rules.get(0).getName());
+                    jsonmobile.put("edit",rules.get(0).getEdit());
+                    jsonmobile.put("isvip",rules.get(0).getIsvip());
+                    jsonmobile.put("isshow",rules.get(0).getIsshow());
+                    jsonmobile.put("value",mobile);
 
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.layout_qq:
+                String qq = tv_mobile.getText().toString();
+                jsonqq=new JSONObject();
+                try {
+                    jsonqq.put("field",rules.get(1).getField());
+                    jsonqq.put("name",rules.get(1).getName());
+                    jsonqq.put("edit",rules.get(1).getEdit());
+                    jsonqq.put("isvip",rules.get(1).getIsvip());
+                    jsonqq.put("isshow",rules.get(1).getIsshow());
+                    jsonqq.put("value",qq);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.layout_weixin:
+                String weixin = tv_mobile.getText().toString();
+                jsonweixin=new JSONObject();
+                try {
+                    jsonweixin.put("field",rules.get(2).getField());
+                    jsonweixin.put("name",rules.get(2).getName());
+                    jsonweixin.put("edit",rules.get(2).getEdit());
+                    jsonweixin.put("isvip",rules.get(2).getIsvip());
+                    jsonweixin.put("isshow",rules.get(2).getIsshow());
+                    jsonweixin.put("value",weixin);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.layout_avater://头像
                 ActivityUtils.startActivity(SelectPicPopupActivity.class);
@@ -229,38 +275,21 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                             avater = message;
                             ImageServerApi.showURLSamllImage(riv_user_image, message);
                         }).create();
-
-
-                break;
-            case R.id.layout_like://背景墙
-                ActivityUtils.startActivity(SelectPicPopupActivity.class);
-                RxBus.with(this)
-                        .setEvent(Events.EventEnum.GET_PHOTO)
-                        .setEndEvent(ActivityEvent.DESTROY)
-                        .onNext((events) -> {
-                            message2 = (String) events.message;
-                            LogUtils.e(RZFirstActivity.class, "pic_path : " + message2);
-                            avater = message2;
-                            ImageServerApi.showURLSamllImage(riv_like_image, message2);
-                        }).create();
-
-                jsonobj = new JSONObject();
+                jsonavater=new JSONObject();
                 try {
-                    jsonobj.put("nickname", data1.getNickname());
-                    jsonobj.put("sex", data1.getSex());
-                    jsonobj.put("face", message);
-                    jsonobj.put("like_image", message2);
-                    jsonobj.put("birthday", data1.getBirthday());
-                    jsonobj.put("signature", data1.getSignature());
-                    jsonobj.put("age", data1.getAge());
-                    jsonobj.put("vip_level", data1.getVip_level());
-                    jsonobj.put("isauth", data1.getIsauth());
-                    jsonobj.put("isfollow", data1.getIsfollow());
+                    jsonavater.put("field",rules.get(3).getField());
+                    jsonavater.put("name",rules.get(3).getName());
+                    jsonavater.put("edit",rules.get(3).getEdit());
+                    jsonavater.put("isvip",rules.get(3).getIsvip());
+                    jsonavater.put("isshow",rules.get(3).getIsshow());
+                    jsonavater.put("value",message);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
                 break;
+
             case R.id.layout_nike_name://昵称
 
                 tv_nike_name.requestFocus();
@@ -268,26 +297,26 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
 
                 jsonobjname = new JSONObject();
                 try {
-                    jsonobjname.put("field", data.get(1).getField());
-                    jsonobjname.put("name", data.get(1).getName());
-                    jsonobjname.put("edit", data.get(1).getEdit());
-                    jsonobjname.put("isvip", data.get(1).getIsvip());
+                    jsonobjname.put("field", rules.get(4).getField());
+                    jsonobjname.put("name", rules.get(4).getName());
+                    jsonobjname.put("edit", rules.get(4).getEdit());
+                    jsonobjname.put("isvip", rules.get(4).getIsvip());
+                    jsonobjname.put("isshow",rules.get(4).getIsshow());
                     jsonobjname.put("value", str);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
                 break;
             case R.id.layout_signature://个性签名
                 tv_signature.requestFocus();
                 String signature = tv_signature.getText().toString();
                 jsonobjsignature = new JSONObject();
                 try {
-                    jsonobjsignature.put("field", data.get(2).getField());
-                    jsonobjsignature.put("name", data.get(2).getName());
-                    jsonobjsignature.put("edit", data.get(2).getEdit());
-                    jsonobjsignature.put("isvip", data.get(2).getIsvip());
+                    jsonobjsignature.put("field", rules.get(5).getField());
+                    jsonobjsignature.put("name", rules.get(5).getName());
+                    jsonobjsignature.put("edit",rules.get(5).getEdit());
+                    jsonobjsignature.put("isvip", rules.get(5).getIsvip());
+                    jsonobjsignature.put("isshow",rules.get(5).getIsshow());
                     jsonobjsignature.put("value", signature);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -295,13 +324,15 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
 
                 break;
             case R.id.layout_sex:
+                String sex = tv_sex.getText().toString();
                 jsonobjsex = new JSONObject();
                 try {
-                    jsonobjsex.put("field", data.get(3).getField());
-                    jsonobjsex.put("name", data.get(3).getName());
-                    jsonobjsex.put("edit", data.get(3).getEdit());
-                    jsonobjsex.put("isvip", data.get(3).getIsvip());
-                    jsonobjsex.put("value", data.get(3).getValue());
+                    jsonobjsex.put("field", rules.get(6).getField());
+                    jsonobjsex.put("name", rules.get(6).getName());
+                    jsonobjsex.put("edit", rules.get(6).getEdit());
+                    jsonobjsex.put("isvip", rules.get(6).getIsvip());
+                    jsonobjsex.put("isshow",rules.get(6).getIsshow());
+                    jsonobjsex.put("value", sex);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -311,10 +342,11 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
 
                 jsonobjbirthday = new JSONObject();
                 try {
-                    jsonobjbirthday.put("field", data.get(4).getField());
-                    jsonobjbirthday.put("name", data.get(4).getName());
-                    jsonobjbirthday.put("edit", data.get(4).getEdit());
-                    jsonobjbirthday.put("isvip", data.get(4).getIsvip());
+                    jsonobjbirthday.put("field", rules.get(7).getField());
+                    jsonobjbirthday.put("name", rules.get(7).getName());
+                    jsonobjbirthday.put("edit", rules.get(7).getEdit());
+                    jsonobjbirthday.put("isvip", rules.get(7).getIsvip());
+                    jsonobjbirthday.put("isshow",rules.get(7).getIsshow());
                     jsonobjbirthday.put("value", result);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -324,10 +356,11 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             case R.id.layout_star_sign://星座
                 jsonobjstarsign = new JSONObject();
                 try {
-                    jsonobjstarsign.put("field", data.get(5).getField());
-                    jsonobjstarsign.put("name", data.get(5).getName());
-                    jsonobjstarsign.put("edit", data.get(5).getEdit());
-                    jsonobjstarsign.put("isvip", data.get(5).getIsvip());
+                    jsonobjstarsign.put("field", rules.get(8).getField());
+                    jsonobjstarsign.put("name", rules.get(8).getName());
+                    jsonobjstarsign.put("edit", rules.get(8).getEdit());
+                    jsonobjstarsign.put("isvip", rules.get(8).getIsvip());
+                    jsonobjstarsign.put("isshow",rules.get(8).getIsshow());
                     jsonobjstarsign.put("value", love);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -338,10 +371,11 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 String birthplace = tv_birthplace.getText().toString();
                 jsonobjbirthplace = new JSONObject();
                 try {
-                    jsonobjbirthplace.put("field", data.get(6).getField());
-                    jsonobjbirthplace.put("name", data.get(6).getName());
-                    jsonobjbirthplace.put("edit", data.get(6).getEdit());
-                    jsonobjbirthplace.put("isvip", data.get(6).getIsvip());
+                    jsonobjbirthplace.put("field", rules.get(9).getField());
+                    jsonobjbirthplace.put("name", rules.get(9).getName());
+                    jsonobjbirthplace.put("edit", rules.get(9).getEdit());
+                    jsonobjbirthplace.put("isvip", rules.get(9).getIsvip());
+                    jsonobjbirthplace.put("isshow",rules.get(9).getIsshow());
                     jsonobjbirthplace.put("value", birthplace);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -352,10 +386,11 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 String address = tv_address.getText().toString();
                 jsonobjaddress = new JSONObject();
                 try {
-                    jsonobjaddress.put("field", data.get(7).getField());
-                    jsonobjaddress.put("name", data.get(7).getName());
-                    jsonobjaddress.put("edit", data.get(7).getEdit());
-                    jsonobjaddress.put("isvip", data.get(7).getIsvip());
+                    jsonobjaddress.put("field", rules.get(10).getField());
+                    jsonobjaddress.put("name", rules.get(10).getName());
+                    jsonobjaddress.put("edit", rules.get(10).getEdit());
+                    jsonobjaddress.put("isvip", rules.get(10).getIsvip());
+                    jsonobjaddress.put("isshow",rules.get(10).getIsshow());
                     jsonobjaddress.put("value", address);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -366,10 +401,11 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 String job = tv_job.getText().toString();
                 jsonobjjob = new JSONObject();
                 try {
-                    jsonobjjob.put("field", data.get(8).getField());
-                    jsonobjjob.put("name", data.get(8).getName());
-                    jsonobjjob.put("edit", data.get(8).getEdit());
-                    jsonobjjob.put("isvip", data.get(8).getIsvip());
+                    jsonobjjob.put("field", rules.get(11).getField());
+                    jsonobjjob.put("name", rules.get(11).getName());
+                    jsonobjjob.put("edit", rules.get(11).getEdit());
+                    jsonobjjob.put("isvip", rules.get(11).getIsvip());
+                    jsonobjjob.put("isshow",rules.get(11).getIsshow());
                     jsonobjjob.put("value", job);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -380,10 +416,11 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 String hobby = tv_hobby.getText().toString();
                 jsonobjhobby = new JSONObject();
                 try {
-                    jsonobjhobby.put("field", data.get(9).getField());
-                    jsonobjhobby.put("name", data.get(9).getName());
-                    jsonobjhobby.put("edit", data.get(9).getEdit());
-                    jsonobjhobby.put("isvip", data.get(9).getIsvip());
+                    jsonobjhobby.put("field", rules.get(12).getField());
+                    jsonobjhobby.put("name", rules.get(12).getName());
+                    jsonobjhobby.put("edit", rules.get(12).getEdit());
+                    jsonobjhobby.put("isvip", rules.get(12).getIsvip());
+                    jsonobjhobby.put("isshow",rules.get(12).getIsshow());
                     jsonobjhobby.put("value", hobby);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -394,10 +431,11 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 String self_image = tv_self_image.getText().toString();
                 jsonobjself = new JSONObject();
                 try {
-                    jsonobjself.put("field", data.get(10).getField());
-                    jsonobjself.put("name", data.get(10).getName());
-                    jsonobjself.put("edit", data.get(10).getEdit());
-                    jsonobjself.put("isvip", data.get(10).getIsvip());
+                    jsonobjself.put("field", rules.get(13).getField());
+                    jsonobjself.put("name", rules.get(13).getName());
+                    jsonobjself.put("edit", rules.get(13).getEdit());
+                    jsonobjself.put("isvip", rules.get(13).getIsvip());
+                    jsonobjself.put("isshow",rules.get(13).getIsshow());
                     jsonobjself.put("value", self_image);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -409,10 +447,11 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 ishouse = tv_ishouse.getText().toString();
                 jsonobjishouse = new JSONObject();
                 try {
-                    jsonobjishouse.put("fileld", data.get(11).getField());
-                    jsonobjishouse.put("name", data.get(11).getName());
-                    jsonobjishouse.put("edit", data.get(11).getEdit());
-                    jsonobjishouse.put("isvip", data.get(11).getIsvip());
+                    jsonobjishouse.put("fileld", rules.get(14).getField());
+                    jsonobjishouse.put("name", rules.get(14).getName());
+                    jsonobjishouse.put("edit", rules.get(14).getEdit());
+                    jsonobjishouse.put("isvip", rules.get(14).getIsvip());
+                    jsonobjishouse.put("isshow",rules.get(14).getIsshow());
                     jsonobjishouse.put("value", ishouse);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -425,10 +464,11 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 marital_status = tv_marital_status.getText().toString();
                 jsonobjmarital = new JSONObject();
                 try {
-                    jsonobjmarital.put("field", data.get(12).getField());
-                    jsonobjmarital.put("name", data.get(12).getName());
-                    jsonobjmarital.put("edit", data.get(12).getEdit());
-                    jsonobjmarital.put("isvip", data.get(12).getIsvip());
+                    jsonobjmarital.put("field", rules.get(15).getField());
+                    jsonobjmarital.put("name", rules.get(15).getName());
+                    jsonobjmarital.put("edit", rules.get(15).getEdit());
+                    jsonobjmarital.put("isvip", rules.get(15).getIsvip());
+                    jsonobjmarital.put("isshow",rules.get(15).getIsshow());
                     jsonobjmarital.put("value", marital_status);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -440,10 +480,11 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 distance = tv_distance_love.getText().toString();
                 jsonobjdistance = new JSONObject();
                 try {
-                    jsonobjdistance.put("field", data.get(13).getField());
-                    jsonobjdistance.put("name", data.get(13).getName());
-                    jsonobjdistance.put("edit", data.get(13).getEdit());
-                    jsonobjdistance.put("isvip", data.get(13).getIsvip());
+                    jsonobjdistance.put("field", rules.get(16).getField());
+                    jsonobjdistance.put("name", rules.get(16).getName());
+                    jsonobjdistance.put("edit", rules.get(16).getEdit());
+                    jsonobjdistance.put("isvip", rules.get(16).getIsvip());
+                    jsonobjdistance.put("isshow",rules.get(16).getIsshow());
                     jsonobjdistance.put("value", distance);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -455,10 +496,11 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 String like_sex = tv_like_sex.getText().toString();
                 jsonobjlike = new JSONObject();
                 try {
-                    jsonobjlike.put("field", data.get(14).getField());
-                    jsonobjlike.put("name", data.get(14).getName());
-                    jsonobjlike.put("edit", data.get(14).getEdit());
-                    jsonobjlike.put("isvip", data.get(14).getIsvip());
+                    jsonobjlike.put("field", rules.get(17).getField());
+                    jsonobjlike.put("name", rules.get(17).getName());
+                    jsonobjlike.put("edit", rules.get(17).getEdit());
+                    jsonobjlike.put("isvip", rules.get(17).getIsvip());
+                    jsonobjlike.put("isshow",rules.get(17).getIsshow());
                     jsonobjlike.put("value", like_sex);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -470,10 +512,11 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 premarital_sex = tv_premarital_sex.getText().toString();
                 jsonobjpremarital = new JSONObject();
                 try {
-                    jsonobjpremarital.put("field", data.get(15).getField());
-                    jsonobjpremarital.put("name", data.get(15).getName());
-                    jsonobjpremarital.put("edit", data.get(15).getEdit());
-                    jsonobjpremarital.put("isvip", data.get(15).getIsvip());
+                    jsonobjpremarital.put("field", rules.get(18).getField());
+                    jsonobjpremarital.put("name", rules.get(18).getName());
+                    jsonobjpremarital.put("edit", rules.get(18).getEdit());
+                    jsonobjpremarital.put("isvip", rules.get(18).getIsvip());
+                    jsonobjpremarital.put("isshow",rules.get(18).getIsshow());
                     jsonobjpremarital.put("value", premarital_sex);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -482,6 +525,10 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             case R.id.baocun:
 
                 JSONArray jsonarry = new JSONArray();
+                jsonarry.put(jsonmobile);
+                jsonarry.put(jsonqq);
+                jsonarry.put(jsonweixin);
+                jsonarry.put(jsonavater);
                 jsonarry.put(jsonobjname);
                 jsonarry.put(jsonobjsignature);
                 jsonarry.put(jsonobjsex);
@@ -497,11 +544,8 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 jsonarry.put(jsonobjdistance);
                 jsonarry.put(jsonobjlike);
                 jsonarry.put(jsonobjpremarital);
-                JSONArray jsonarry2 = new JSONArray();
-                jsonarry2.put(jsonarry);
-                jsonarry2.put(jsonobj);
-                String ss = jsonarry2.toString();
-//                presenter.sendUserJson(ss);
+                String ss = jsonarry.toString();
+                presenter.sendUserJson(ss);
                 break;
         }
     }
@@ -607,7 +651,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
         }
 
     };
-*/
+
     @Override
     public void success(PersonalReviseMessageBean personalReviseMessageBean) {
         rules = personalReviseMessageBean.getData().getRules();
@@ -636,38 +680,38 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
 //        tv_like_sex.setText(rules.get(17).getValue());//喜欢的异性
 //        tv_premarital_sex.setText(rules.get(18).getValue());//婚前性行为
         String isshow = rules.get(0).getIsshow().toString();
-        if(isshow=="1"){
+        if(isshow.equals("1")){
             tv_mobile.setText(rules.get(0).getValue()+"");//手机  QQ 微信
         }else{
             layout_mobile.setVisibility(View.GONE);
         }
 
         String isshowqq = rules.get(1).getIsshow();
-        if(isshowqq=="1"){
+        if(isshowqq.equals("1")){
             tv_qq.setText(rules.get(1).getValue()+"");
         }else{
             layout_qq.setVisibility(View.GONE);
         }
         String isshowweixin = rules.get(2).getIsshow();
-        if(isshowweixin=="1"){
+        if(isshowweixin.equals("1")){
             tv_weixin.setText(rules.get(2).getValue()+"");
         }else{
             layout_weixin.setVisibility(View.GONE);
         }
         String isshowimage = rules.get(3).getIsshow();
-        if(isshowimage=="1"){
+        if(isshowimage.equals("1")){
             ImageServerApi.showURLBigImage(riv_user_image, rules.get(3).getValue());//用户头像
         }else{
             layout_avater.setVisibility(View.GONE);
         }
         String isshowname = rules.get(4).getIsshow();
-        if(isshowname=="1"){
+        if(isshowname.equals("1")){
             tv_nike_name.setText(rules.get(4).getValue());//用户昵称
         }else{
             layout_nike_name.setVisibility(View.GONE);
         }
         String isshowsignature = rules.get(5).getIsshow();
-        if(isshowsignature=="1"){
+        if(isshowsignature.equals("1")){
             tv_signature.setText(rules.get(5).getValue());//个性签名
         }else{
             layout_signature.setVisibility(View.GONE);
@@ -675,7 +719,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
 
         String isshowsex = rules.get(6).getIsshow();
         String value = rules.get(6).getValue();//性别
-        if(isshowsex=="1"){
+        if(isshowsex.equals("1")){
             if (value == "1") {
                 tv_sex.setText("男");
             } else {
@@ -685,73 +729,73 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             layout_sex.setVisibility(View.GONE);
         }
         String isshowbirthday = rules.get(7).getIsshow();
-        if(isshowbirthday=="1"){
+        if(isshowbirthday.equals("1")){
             tv_birthday.setText(rules.get(7).getValue());//出生年月
         }else{
             layout_birthday.setVisibility(View.GONE);
         }
         String isshowstar = rules.get(8).getIsshow();
-        if(isshowstar=="1"){
+        if(isshowstar.equals("1")){
             tv_star_sign.setText(rules.get(8).getValue());//星座
         }else{
             layout_star_sign.setVisibility(View.GONE);
         }
         String isshowbirthpace = rules.get(9).getIsshow();
-        if(isshowbirthpace=="1"){
+        if(isshowbirthpace.equals("1")){
             tv_birthplace.setText(rules.get(9).getValue());//籍贯
         }else{
             layout_birthplace.setVisibility(View.GONE);
         }
         String isshowaddress = rules.get(10).getIsshow();
-        if(isshowaddress=="1"){
+        if(isshowaddress.equals("1")){
             tv_address.setText(rules.get(10).getValue());//现居
         }else{
             layout_address.setVisibility(View.GONE);
         }
         String isshowjob = rules.get(11).getIsshow();
-        if(isshowjob=="1"){
+        if(isshowjob.equals("1")){
             tv_job.setText(rules.get(11).getValue());//职业
         }else{
             layout_job.setVisibility(View.GONE);
         }
         String isshowhobby = rules.get(12).getIsshow();
-        if(isshowhobby=="1"){
+        if(isshowhobby.equals("1")){
             tv_hobby.setText(rules.get(12).getValue());//兴趣爱好
         }else{
             layout_hobby.setVisibility(View.GONE);
         }
         String isshowself = rules.get(13).getIsshow();
-        if(isshowself=="1"){
+        if(isshowself.equals("1")){
             tv_self_image.setText(rules.get(13).getValue());//自我印象
         }else{
             layout_self_image.setVisibility(View.GONE);
         }
         String isshowhouse = rules.get(14).getIsshow();
-        if(isshowhouse=="1"){
+        if(isshowhouse.equals("1")){
             tv_ishouse.setText(rules.get(14).getValue());//是否有房
         }else{
             layout_ishouse.setVisibility(View.GONE);
         }
         String isshowmarital = rules.get(15).getIsshow();
-        if(isshowmarital=="1"){
+        if(isshowmarital.equals("1")){
             tv_marital_status.setText(rules.get(15).getValue());//婚姻状况
         }else{
             layout_marital_status.setVisibility(View.GONE);
         }
         String isshowdistance = rules.get(16).getIsshow();
-        if(isshowdistance=="1"){
+        if(isshowdistance.equals("1")){
             tv_distance_love.setText(rules.get(16).getValue());//接受异地恋
         }else{
             layout_distance_love.setVisibility(View.GONE);
         }
         String isshowlike = rules.get(17).getIsshow();
-        if(isshowlike=="1"){
+        if(isshowlike.equals("1")){
             tv_like_sex.setText(rules.get(17).getValue());//喜欢的异性
         }else{
             layout_like_sex.setVisibility(View.GONE);
         }
         String isshowpremar = rules.get(18).getIsshow();
-        if(isshowpremar=="1"){
+        if(isshowpremar.equals("1")){
             tv_premarital_sex.setText(rules.get(18).getValue());//婚前性行为
         }else{
             layout_premarital_sex.setVisibility(View.GONE);

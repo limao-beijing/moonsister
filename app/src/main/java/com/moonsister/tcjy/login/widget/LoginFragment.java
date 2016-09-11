@@ -2,6 +2,8 @@ package com.moonsister.tcjy.login.widget;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.Selection;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -43,6 +45,8 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
             TextView submitLogin;
     @Bind(R.id.reg_new_people)//注册新用户
             TextView reg_new_people;
+    @Bind(R.id.login_page_yellow)//删除按钮
+    ImageView login_page_yellow;
     private LoginFragmentPersenter persenter;
 
     public static LoginFragment newInstance() {
@@ -68,7 +72,7 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
         return super.onTouch(v, event);
     }
 
-    @OnClick({R.id.tv_forget_password, R.id.submit_login, R.id.reg_new_people})
+    @OnClick({R.id.tv_forget_password, R.id.submit_login, R.id.reg_new_people,R.id.login_page_yellow})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_forget_password://找回密码
@@ -80,6 +84,14 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
             case R.id.reg_new_people://注册新用户
                 Intent intent = new Intent(getActivity(), RegActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.login_page_yellow:
+                String s = etPassword.getText().toString();
+                if(s.length()==0){
+
+                }else{
+                    etPassword.setText(s.substring(0,s.length()-1));//将字符取的地方减一位需要减2.“sss”.len
+                }
                 break;
         }
     }

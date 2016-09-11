@@ -3,6 +3,7 @@ package com.moonsister.tcjy.my.widget;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
@@ -75,6 +76,8 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
         // 使用getInt方法获得value，注意第2个参数是value的默认值
         int withdraw_money = sharedPreferences.getInt("withdraw_money", 0);
         etInputMoney.setText("本次可转出"+withdraw_money);
+        InputFilter[] filters = {new InputFilter.LengthFilter(5)};//设置提现输入框的最大值
+        etInputMoney.setFilters(filters);
         etInputMoney.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

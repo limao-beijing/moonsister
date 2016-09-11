@@ -1142,7 +1142,7 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("recharge/pub")
-        Observable<PersonalMessageBean> getUserJsonBean(@Field("contents") String contents,
+        Observable<PersonalReviseMessageBean> getUserJsonBean(@Field("contents") String contents,
                                                         @Field("authcode") String authcode,
                                                         @Field("channel") String channel,
                                                         @Field("version_type") String apiVersion);

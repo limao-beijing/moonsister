@@ -25,11 +25,7 @@ public class PersonalActivityPersenterImpl implements PersonalActivityPersenter,
     }
 
 
-    @Override
-    public void sendUserJson(String contents) {
-        view.showLoading();
-        model.userJson(contents,this);
-    }
+
 
     @Override
     public void onCreate() {

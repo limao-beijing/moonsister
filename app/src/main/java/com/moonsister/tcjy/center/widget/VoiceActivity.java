@@ -48,6 +48,7 @@ public class VoiceActivity extends Activity {
                 });
             }
         });
+
     }
 
     private int time;

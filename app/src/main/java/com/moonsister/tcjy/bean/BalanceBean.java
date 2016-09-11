@@ -7,12 +7,14 @@ import java.util.List;
  */
 public class BalanceBean extends BaseBean{
 
+
     /**
-     * desc : 秋斯偷看了我的私密照片。
-     * time : 1472750053
+     * desc : 对无忧进行打赏。
+     * time : 2016-08-28|||21:27
      * money : 1.00
-     * pic : http://mimei.oss-cn-beijing.aliyuncs.com/a/image/05/2016-08-18/57b57a2025622.jpg
-     * balance_id : 626
+     * pic : http://mimei.oss-cn-beijing.aliyuncs.com/a/image/03/2016-08-20/57b806ae4564b.jpg
+     * balance_id : 14
+     * act_uid : 104076
      */
 
     private List<DataBean> data;
@@ -27,10 +29,11 @@ public class BalanceBean extends BaseBean{
 
     public static class DataBean extends BaseDataBean {
         private String desc;
-        private int time;
+        private String time;
         private String money;
         private String pic;
-        private int balance_id;
+        private String balance_id;
+        private int act_uid;
 
         public String getDesc() {
             return desc;
@@ -40,11 +43,11 @@ public class BalanceBean extends BaseBean{
             this.desc = desc;
         }
 
-        public int getTime() {
+        public String getTime() {
             return time;
         }
 
-        public void setTime(int time) {
+        public void setTime(String time) {
             this.time = time;
         }
 
@@ -64,12 +67,20 @@ public class BalanceBean extends BaseBean{
             this.pic = pic;
         }
 
-        public int getBalance_id() {
+        public String getBalance_id() {
             return balance_id;
         }
 
-        public void setBalance_id(int balance_id) {
+        public void setBalance_id(String balance_id) {
             this.balance_id = balance_id;
+        }
+
+        public int getAct_uid() {
+            return act_uid;
+        }
+
+        public void setAct_uid(int act_uid) {
+            this.act_uid = act_uid;
         }
     }
 }
