@@ -20,8 +20,8 @@ public class MoneyHolder extends BaseRecyclerViewHolder<BalanceBean.DataBean> {
     ImageView onfragment_imge;
     @Bind(R.id.text_time)//时间
         TextView text_time;
-    @Bind(R.id.tv_time)
-    TextView tv_time;
+    @Bind(R.id.text_time1)
+    TextView text_time1;
     @Bind(R.id.text_money)//钱
         TextView text_money;
     @Bind(R.id.text_tc)
@@ -38,10 +38,11 @@ public class MoneyHolder extends BaseRecyclerViewHolder<BalanceBean.DataBean> {
     @Override
     public void onBindData(BalanceBean.DataBean dataBean,int position) {
         String time = dataBean.getTime().toString();
-        String[] splitAddress=time.split("|||");
+        String[] splitAddress=time.split("\\|||");
         text_time.setText(splitAddress[0]);
-        tv_time.setText(splitAddress[1]);
+        text_time1.setText(splitAddress[1]);
         ImageServerApi.showURLSamllImage(onfragment_imge, dataBean.getPic());
+        text_time.setText(dataBean.getTime());
         text_money.setText(dataBean.getMoney());
         text_tc.setText(dataBean.getDesc());
     }
