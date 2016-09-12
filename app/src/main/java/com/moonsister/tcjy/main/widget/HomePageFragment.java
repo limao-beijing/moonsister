@@ -155,6 +155,14 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
         tv_wacth.setText(UIUtils.getStringRes(equals ? R.string.wacth : R.string.not_wacth));
     }
 
+    @Override
+    public void refreshData() {
+        if (presenter != null) {
+            isRefresh = true;
+            presenter.loadRefresh(userId, type);
+        }
+    }
+
 
     @Override
     public void showLoading() {

@@ -113,7 +113,7 @@ public abstract class PressToSpeakListenr implements View.OnTouchListener {
                         recordingHint.setBackgroundColor(Color.TRANSPARENT);
                     }
                     voiceRecorder.startRecording(null, mContext);
-                    start();
+                    voiceStart();
                 } catch (Exception e) {
                     e.printStackTrace();
                     v.setPressed(false);
@@ -173,14 +173,18 @@ public abstract class PressToSpeakListenr implements View.OnTouchListener {
                         } else if (length == -1011) {
                             Toast.makeText(mContext, st1,
                                     Toast.LENGTH_SHORT).show();
+
                         } else {
                             Toast.makeText(mContext, st2,
                                     Toast.LENGTH_SHORT).show();
+
                         }
+                        voiceFinish();
                     } catch (Exception e) {
                         e.printStackTrace();
                         Toast.makeText(mContext, st3,
                                 Toast.LENGTH_SHORT).show();
+                        voiceFinish();
                     }
 
                 }
@@ -208,7 +212,11 @@ public abstract class PressToSpeakListenr implements View.OnTouchListener {
     /**
      * 开始
      */
-    public void start() {
+    public void voiceStart() {
+
+    }
+
+    public void voiceFinish() {
 
     }
 

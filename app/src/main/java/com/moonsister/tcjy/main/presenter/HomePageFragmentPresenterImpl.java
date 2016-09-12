@@ -7,6 +7,7 @@ import com.moonsister.tcjy.main.model.HomePageFragmentModel;
 import com.moonsister.tcjy.main.model.HomePageFragmentModelImpl;
 import com.moonsister.tcjy.main.view.HomePageFragmentView;
 import com.moonsister.tcjy.utils.EnumConstant;
+import com.moonsister.tcjy.utils.StringUtis;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class HomePageFragmentPresenterImpl implements HomePageFragmentPresenter,
     private HomePageFragmentView view;
     private HomePageFragmentModel model;
     private int page;
+    private String upID;
 
     @Override
     public void onCreate() {
@@ -30,10 +32,10 @@ public class HomePageFragmentPresenterImpl implements HomePageFragmentPresenter,
     }
 
     @Override
-    public void loadRefresh(String userId,EnumConstant.SearchType type) {
+    public void loadRefresh(String userId, EnumConstant.SearchType type) {
         view.showLoading();
         page = 1;
-        model.loadDynamicData(userId, page,type, this);
+        model.loadDynamicData(userId, page, type, this);
 
     }
 
@@ -43,9 +45,9 @@ public class HomePageFragmentPresenterImpl implements HomePageFragmentPresenter,
     }
 
     @Override
-    public void loadMore(String userId,EnumConstant.SearchType type) {
+    public void loadMore(String userId, EnumConstant.SearchType type) {
         view.showLoading();
-        model.loadDynamicData(userId, page,type, this);
+        model.loadDynamicData(userId, page, type, this);
     }
 
     @Override
@@ -58,8 +60,7 @@ public class HomePageFragmentPresenterImpl implements HomePageFragmentPresenter,
             case DATA_ZERO:
                 if (object instanceof List) {
                     List<DynamicItemBean> list = (List<DynamicItemBean>) object;
-                    if (list != null && list.size() > 0)
-                        page++;
+                    dynamicSort(list);
                     view.setDynamicData(list);
                 }
                 break;
@@ -74,8 +75,51 @@ public class HomePageFragmentPresenterImpl implements HomePageFragmentPresenter,
         view.hideLoading();
     }
 
+    private void dynamicSort(List<DynamicItemBean> t) {
+        if (t != null) {
+            if (t.size() != 0) {
+                if (page == 1) {
+
+                    DynamicItemBean beanDataList = t.get(t.size() - 1);
+                    if (StringUtis.equals(beanDataList.getIstop(), "1")) {
+                        upID = beanDataList.getLatest_id();
+                        t.remove(beanDataList);
+                        DynamicItemBean beanDataList1 = null;
+                        for (DynamicItemBean bean : t) {
+                            if (StringUtis.equals(bean.getLatest_id(), upID)) {
+                                beanDataList1 = bean;
+                                break;
+                            }
+                        }
+                        if (beanDataList1 != null)
+                            t.remove(beanDataList1);
+                        t.add(0, beanDataList);
+                    }
+
+
+                } else {
+                    if (!StringUtis.isEmpty(upID)) {
+                        DynamicItemBean beanDataList1 = null;
+                        for (DynamicItemBean bean : t) {
+                            if (StringUtis.equals(bean.getLatest_id(), upID)) {
+                                beanDataList1 = bean;
+                                break;
+                            }
+                        }
+                        if (beanDataList1 != null)
+                            t.remove(beanDataList1);
+                    }
+                }
+
+
+            }
+            page++;
+        }
+    }
+
     @Override
     public void onFailure(String msg) {
-
+        view.transfePageMsg(msg);
+        view.hideLoading();
     }
 }

@@ -13,4 +13,7 @@ public interface HomePageFragmentView  extends BaseIView{
     void setDynamicData(List<DynamicItemBean> list);
 
     void setHeaderData(UserInfoDetailBean bean);
+
+    void refreshData();
+
 }

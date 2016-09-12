@@ -10,7 +10,6 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RenZhengActivity;
 import com.moonsister.tcjy.widget.speak.PressToSpeakListenr;
-import com.moonsister.tcjy.widget.speak.VoicePlay;
 
 /**
  * Created by jb on 2016/8/10.
@@ -27,7 +26,7 @@ public class VoiceActivity extends Activity {
         iv_voice.setOnTouchListener(new PressToSpeakListenr(this, null) {
             @Override
             public void sendListener(String filePath, String fileName, String length, boolean isResend) {
-                isStop = false;
+
                 setData(filePath, fileName, length, isResend);
 //                Intent intent=new Intent(VoiceActivity.this, RenZhengActivity.class);
 //                intent.putExtra("path",filePath);
@@ -36,7 +35,7 @@ public class VoiceActivity extends Activity {
             }
 
             @Override
-            public void start() {
+            public void voiceStart() {
                 tv_time.setText("开始了");
                 time = 1;
                 isStop = true;
@@ -46,6 +45,12 @@ public class VoiceActivity extends Activity {
                         startTime();
                     }
                 });
+            }
+
+            @Override
+            public void voiceFinish() {
+                super.voiceFinish();
+                isStop = false;
             }
         });
 

@@ -41,7 +41,7 @@ public class UserActionModelImpl implements UserActionModel {
     /**
      * 点赞
      *
-     * @param type  1顶 2取消顶，3踩，4取消踩
+     * @param type      1顶 2取消顶，3踩，4取消踩
      * @param dynamicId
      * @param listener
      */
@@ -71,13 +71,19 @@ public class UserActionModelImpl implements UserActionModel {
 
     /**
      * 删除动态
+     *
+     * @param id       动态id
+     * @param listener
      */
     public void deleteDynamic(String id, onLoadDateSingleListener<DefaultDataBean> listener) {
         Observable<DefaultDataBean> observable = ServerApi.getAppAPI().getDelectDynamic(id, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<DefaultDataBean>() {
             @Override
             public void onSuccess(DefaultDataBean bean) {
-                listener.onSuccess(bean, DataType.DATA_ZERO);
+                if (bean == null) {
+                    listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
+                } else
+                    listener.onSuccess(bean, DataType.DATA_ZERO);
             }
 
             @Override
@@ -90,13 +96,13 @@ public class UserActionModelImpl implements UserActionModel {
     /**
      * 置顶
      *
-     * @param s
-     * @param id
+     * @param type                     1 置顶  其他为取消
+     * @param id                       动态id
      * @param onLoadDateSingleListener
      */
-    public void upDynamic(String s, String id, onLoadDateSingleListener<DefaultDataBean> onLoadDateSingleListener) {
+    public void upDynamic(String type, String id, onLoadDateSingleListener<DefaultDataBean> onLoadDateSingleListener) {
         Observable<DefaultDataBean> observable = null;
-        if (StringUtis.equals(s, "1")) {
+        if (StringUtis.equals(type, "1")) {
             observable = ServerApi.getAppAPI().getupDynamic(id, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         } else {
             observable = ServerApi.getAppAPI().getdelUpDynamic(id, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);

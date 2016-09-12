@@ -117,6 +117,11 @@ public class HomePageItemFragment extends BaseFragment implements HomePageFragme
     }
 
     @Override
+    public void refreshData() {
+
+    }
+
+    @Override
     public void showLoading() {
         showProgressDialog();
     }

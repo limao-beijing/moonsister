@@ -49,6 +49,7 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends Re
                     bvh.setBaseRecyclerViewAdapter(this);
                     bvh.onBindData(t);
                     bvh.onBindData(t, position);
+                    bvh.initViewClik(t, position);
                     bvh.setOnClick(t, position);
                 }
             }
@@ -86,6 +87,20 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends Re
             datas.clear();
     }
 
+    /**
+     * 置顶条目
+     *
+     * @param position
+     */
+    public void stickItme(int position) {
+        if (datas != null && datas.size() >= position) {
+            T t = datas.get(position);
+            datas.remove(t);
+            datas.add(0, t);
+            notifyDataSetChanged();
+        }
+    }
+
     public interface onItemClickListener {
         void onItemclick(View view, int position);
     }
@@ -116,6 +131,14 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends Re
         if (datas == null)
             datas = new ArrayList<T>();
         datas.add(t);
+    }
+
+    public void delectSingleItme(int position) {
+        if (datas != null && datas.size() - 1 >= position) {
+            datas.remove(datas.get(position));
+            notifyDataSetChanged();
+        }
+
     }
 
     /**

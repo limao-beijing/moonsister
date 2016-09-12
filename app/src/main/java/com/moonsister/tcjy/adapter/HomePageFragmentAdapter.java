@@ -7,7 +7,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewAdapter;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.DynamicItemBean;
-import com.moonsister.tcjy.main.widget.HomePageFragment;
+import com.moonsister.tcjy.main.view.HomePageFragmentView;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.homepage.HomePagePicViewHolder;
 import com.moonsister.tcjy.viewholder.homepage.HomePageVideoViewHolder;
@@ -36,7 +36,7 @@ public class HomePageFragmentAdapter extends BaseRecyclerViewAdapter<DynamicItem
 
 
     private BaseRecyclerViewHolder holder;
-    private HomePageFragment mBaseView;
+    private HomePageFragmentView mBaseView;
 
     public HomePageFragmentAdapter(List<DynamicItemBean> list) {
         super(list);
@@ -74,7 +74,28 @@ public class HomePageFragmentAdapter extends BaseRecyclerViewAdapter<DynamicItem
         return holder;
     }
 
-    public void setBaseView(HomePageFragment baseView) {
+    public void setBaseView(HomePageFragmentView baseView) {
         mBaseView = baseView;
+    }
+
+    /**
+     * 置顶
+     *
+     * @param position
+     */
+    public void stickDynamicItme(int position) {
+        if (datas != null && datas.size() >= position) {
+            for (DynamicItemBean bean : datas) {
+                bean.setIstop("2");
+            }
+            DynamicItemBean itemBean = datas.get(position);
+            itemBean.setIstop("1");
+            stickItme(position);
+        }
+    }
+
+    public void onDynamicItmeRefresh() {
+        if (mBaseView!=null)
+            mBaseView.refreshData();
     }
 }

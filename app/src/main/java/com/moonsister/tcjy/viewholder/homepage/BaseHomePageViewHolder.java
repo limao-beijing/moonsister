@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.viewholder.homepage;
 
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,8 +11,11 @@ import android.widget.TextView;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.HomePageFragmentAdapter;
+import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
+import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.DynamicItemBean;
+import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.StringUtis;
@@ -74,26 +78,37 @@ public class BaseHomePageViewHolder extends BaseRecyclerViewHolder<DynamicItemBe
             tags = tags.replace("|||", "  ");
         }
         iv_add_v.setVisibility(StringUtis.equals(dynamicItemBean.getIsauth(), "1") ? View.VISIBLE : View.GONE);
-        tv_time.setText(TimeUtils.getDynamicTimeString(dynamicItemBean.getCreate_time()));
+        boolean isTop = StringUtis.equals(dynamicItemBean.getIstop(), "1");
+        tv_time.setText(isTop ? UIUtils.getStringRes(R.string.stick) : TimeUtils.getDynamicTimeString(dynamicItemBean.getCreate_time()));
+        tv_time.setTextColor(UIUtils.getResources().getColor(isTop ? R.color.yellow_ff8201 : R.color.text_gray_778998));
+        if (isTop) {
+            Drawable drawable = UIUtils.getResources().getDrawable(R.mipmap.dymiac_stcrk);
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+            tv_time.setCompoundDrawables(drawable, null, null, null);
+            tv_time.setCompoundDrawablePadding(10);
+        } else {
+            tv_time.setCompoundDrawables(null, null, null, null);
+
+        }
         tvUserTag.setText(tags);
         dynamicContent.setText(dynamicItemBean.getTitle());
         tvHomePageComment.setText(dynamicItemBean.getLcomn());
         tvHomePagePay.setText(dynamicItemBean.getMoney());
         tvUserLike.setText(dynamicItemBean.getLupn());
 
-        tvHomePageControl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopwindow(v, uid);
-            }
-        });
+
         isShowRed(dynamicItemBean.getType());
     }
 
 
     @Override
     public void initViewClik(DynamicItemBean bean, int position) {
-
+        tvHomePageControl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopwindow(v, bean, position);
+            }
+        });
     }
 
     @Override
@@ -121,7 +136,8 @@ public class BaseHomePageViewHolder extends BaseRecyclerViewHolder<DynamicItemBe
 
     private PopupWindow popupWindow;
 
-    private void showPopwindow(View parent, String uid) {
+    private void showPopwindow(View parent, DynamicItemBean bean, int position) {
+        String uid = bean.getUid();
 
         View view = UIUtils.inflateLayout(R.layout.pop_dynamic_control);
 
@@ -147,16 +163,14 @@ public class BaseHomePageViewHolder extends BaseRecyclerViewHolder<DynamicItemBe
                 }
             });
         } else {
-            tv_dynam_control_left.setText(UIUtils.getStringRes(R.string.stick));
+            tv_dynam_control_left.setText(StringUtis.equals(bean.getIstop(), "1") ? UIUtils.getStringRes(R.string.cancel) + UIUtils.getStringRes(R.string.stick) : UIUtils.getStringRes(R.string.stick));
             tv_dynam_control_left.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (popupWindow != null) {
+                        upDynamic(StringUtis.equals(bean.getIstop(), "1") ? "1" : "2", bean, position);
                         popupWindow.dismiss();
                         popupWindow = null;
-                        if (baseIView != null) {
-                            baseIView.transfePageMsg(UIUtils.getStringRes(R.string.stick) + UIUtils.getStringRes(R.string.success));
-                        }
                     }
                 }
             });
@@ -165,11 +179,9 @@ public class BaseHomePageViewHolder extends BaseRecyclerViewHolder<DynamicItemBe
                 @Override
                 public void onClick(View v) {
                     if (popupWindow != null) {
+                        delectDyanmic(bean.getLatest_id(), position);
                         popupWindow.dismiss();
                         popupWindow = null;
-                        if (baseIView != null) {
-                            baseIView.transfePageMsg(UIUtils.getStringRes(R.string.delete) + UIUtils.getStringRes(R.string.success));
-                        }
                     }
                 }
             });
@@ -195,6 +207,72 @@ public class BaseHomePageViewHolder extends BaseRecyclerViewHolder<DynamicItemBe
         popupWindow.showAtLocation(parent, Gravity.NO_GRAVITY, location[0] - popupWindow.getWidth(), location[1]);
 
 
+    }
+
+    private void delectDyanmic(String dynamicId, int position) {
+        UserActionModelImpl model = new UserActionModelImpl();
+        if (baseIView != null)
+            baseIView.showLoading();
+        model.deleteDynamic(dynamicId, new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+            @Override
+            public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+                if (baseIView != null) {
+                    baseIView.hideLoading();
+                }
+                if (StringUtis.equals(bean.getCode(), "1")) {
+                    if (baseRecyclerViewAdapter != null) {
+                        baseRecyclerViewAdapter.delectSingleItme(position);
+                    }
+                }
+                if (baseIView != null) {
+                    baseIView.transfePageMsg(bean.getMsg());
+                }
+
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                if (baseIView != null) {
+                    baseIView.transfePageMsg(msg);
+                }
+            }
+        });
+    }
+
+    private void upDynamic(String type, DynamicItemBean itemBean, int position) {
+        UserActionModelImpl model = new UserActionModelImpl();
+        if (baseIView != null)
+            baseIView.showLoading();
+        model.upDynamic(StringUtis.equals("1", type) ? "2" : "1", itemBean.getLatest_id(), new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+            @Override
+            public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+                if (baseIView != null) {
+                    baseIView.hideLoading();
+                }
+                if (StringUtis.equals(bean.getCode(), "1")) {
+                    if (baseIView != null) {
+                        if (StringUtis.equals(itemBean.getIstop(), "1")) {
+                            itemBean.setIstop("2");
+                            if (baseRecyclerViewAdapter != null)
+                                ((HomePageFragmentAdapter) baseRecyclerViewAdapter).onDynamicItmeRefresh();
+                        } else
+                            ((HomePageFragmentAdapter) baseRecyclerViewAdapter).stickDynamicItme(position);
+
+                    }
+                }
+                if (baseIView != null) {
+                    baseIView.transfePageMsg(bean.getMsg());
+
+                }
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                if (baseIView != null) {
+                    baseIView.transfePageMsg(msg);
+                }
+            }
+        });
     }
 
 }
