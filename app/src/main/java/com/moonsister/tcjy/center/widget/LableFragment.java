@@ -3,7 +3,6 @@ package com.moonsister.tcjy.center.widget;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import retrofit2.http.FormUrlEncoded;
 
 /**
  * Created by jb on 2016/8/8.
@@ -66,7 +63,7 @@ public class LableFragment extends BaseFragment implements View.OnClickListener,
             List<String> data = lableBean.getData();
             if (data.size() > 0) {
                 flLableSelect.removeAllViews();
-                flLableSelected.removeAllViews();
+//                flLableSelected.removeAllViews();
             }
             for (String s : data) {
                 TextView tv = (TextView) UIUtils.inflateLayout(
@@ -97,6 +94,10 @@ public class LableFragment extends BaseFragment implements View.OnClickListener,
         if (!selects.contains(v)) {
             moveView(flLableSelect, flLableSelected, v);
         } else {
+            if (flLableSelected.getChildCount()>=6){
+                showToast(UIUtils.getStringRes(R.string.lable_number_more_sex));
+                return;
+            }
             moveView(flLableSelected, flLableSelect, v);
         }
     }

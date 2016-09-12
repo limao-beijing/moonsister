@@ -12,8 +12,12 @@
             android:id="@+id/iv_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@mipmap/login_bg"
             android:scaleType="centerCrop"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#44000000"/>
 
         <ImageView
             android:id="@+id/iv_back"
@@ -71,10 +75,10 @@
             android:layout_marginTop="@dimen/x10"
             android:layout_toRightOf="@+id/riv_user_image"
             android:background="@drawable/backgroup_red"
-            android:paddingBottom="@dimen/x5"
-            android:paddingLeft="@dimen/x10"
-            android:paddingRight="@dimen/x10"
-            android:paddingTop="@dimen/x5"
+            android:paddingBottom="@dimen/x2"
+            android:paddingLeft="@dimen/x8"
+            android:paddingRight="@dimen/x8"
+            android:paddingTop="@dimen/x2"
             android:text="@string/loading"
             android:textColor="@color/white"/>
 
@@ -85,6 +89,7 @@
             android:layout_alignBottom="@+id/tv_job"
             android:layout_marginLeft="@dimen/x16"
             android:layout_toRightOf="@+id/tv_job"
+            android:padding="@dimen/x5"
             android:scaleType="center"
             android:src="@mipmap/boy"/>
 

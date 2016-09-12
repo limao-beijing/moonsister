@@ -17,7 +17,7 @@ public class DynamicSendActivity extends BaseActivity {
 
     @Override
     protected View setRootContentView() {
-        View view = UIUtils.inflateLayout(R.layout.activity_dynamic_send);
+        View view = UIUtils.inflateLayout(R.layout.activity_dynamic_publish);
         return view;
     }
 
@@ -26,27 +26,16 @@ public class DynamicSendActivity extends BaseActivity {
 
     }
 
-
-    @OnClick({R.id.send_red_packet_list, R.id.send_video, R.id.send_dynamic, R.id.iv_action_back})
+    @OnClick({R.id.iv_cancel, R.id.iv_dynamic})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.send_red_packet_list:
-                ActivityUtils.startRedpacketDynaimcActivity();
+            case R.id.iv_cancel:
                 finish();
                 break;
-            case R.id.send_video:
-                ActivityUtils.startTakeVideoActivity();
+            case R.id.iv_dynamic:
+                ActivityUtils.startDynamicPublishActivity();
                 finish();
                 break;
-            case R.id.send_dynamic:
-//                ActivityUtils.startDefaultDynamicSendActivity(null, DynamicType.FREE_PIC);
-                ActivityUtils.startActivity(DynamicPublishActivity.class);
-                finish();
-                break;
-            case R.id.iv_action_back:
-                finish();
-                break;
-
         }
     }
 }

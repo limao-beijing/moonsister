@@ -1,7 +1,6 @@
 package com.moonsister.tcjy.center.widget;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 import com.amap.api.location.AMapLocation;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.main.widget.DynamicActivity;
 import com.moonsister.tcjy.manager.GaodeManager;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.MySwitch;
@@ -20,7 +18,6 @@ import com.moonsister.tcjy.widget.MySwitch;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Created by jb on 2016/8/8.
@@ -53,6 +50,7 @@ public class DynamicPublishFragment extends BaseFragment {
     @Override
     protected void initData() {
         initLableLayout();
+        String adress = GaodeManager.getInstance().getStringAdress();
         tvShowAdress.setText(UIUtils.getStringRes(R.string.locationing));
         GaodeManager.getInstance().getLocLocation();
         GaodeManager.getInstance().setLocationFinishListenter(new GaodeManager.onLocationFinishListenter() {

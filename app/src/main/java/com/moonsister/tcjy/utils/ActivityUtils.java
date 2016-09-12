@@ -499,7 +499,7 @@ public class ActivityUtils {
      * @param uid
      * @param id
      * @param type
-     * @param istop
+     * @param istopy
      */
     public static void startDynamicAtionActivity(String uid, String id, int type, String istop) {
         Intent intent = new Intent(getContext(), DynamicAtionActivity.class);
@@ -600,6 +600,7 @@ public class ActivityUtils {
         startActivity(DynamicPublishActivity.class);
     }
 
+
     //规则说明    定义跳转的activity
     public static void startRuleActivity() {
         startActivity(RuleActivity.class);
@@ -649,10 +650,11 @@ public class ActivityUtils {
     public static void startRenZhengActivity() {
         startActivity(RenZhengActivity.class);
     }
+
     //跳转资料展示页面
     public static void startPersonalActivity(String uid) {
         Intent intent = new Intent(getContext(), PersonalActivity.class);
-        intent.putExtra("uid",uid);
+        intent.putExtra("id", uid);
         startActivity(intent);
     }
 

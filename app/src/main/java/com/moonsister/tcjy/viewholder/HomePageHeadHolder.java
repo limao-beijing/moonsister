@@ -90,7 +90,12 @@ public class HomePageHeadHolder extends BaseHolder<UserInfoDetailBean> {
         mTvAll.setText("全部 （" + baseinfo.getLatest_total() + " )");
         mTvTypeUser.setText("开放 （" + baseinfo.getLatest_free() + " )");
         mTvTypeDynamic.setText("私密 （" + baseinfo.getLatest_vip() + " )");
-        mTvJob.setText(baseinfo.getProfession());
+        if (StringUtis.isEmpty(baseinfo.getProfession())) {
+            mTvJob.setVisibility(View.GONE);
+        } else {
+            mTvJob.setVisibility(View.VISIBLE);
+            mTvJob.setText(baseinfo.getProfession());
+        }
         if (baseinfo.getSex() == 1) {
             mIvSex.setImageResource(R.mipmap.boy);
         } else {

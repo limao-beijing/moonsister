@@ -273,4 +273,5 @@
     <string name="add">加</string>
     <string name="not_wacth">未关注</string>
     <string name="stick">置顶</string>
+    <string name="lable_number_more_sex">最多选择六个标签</string>
 </resources>

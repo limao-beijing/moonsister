@@ -61,6 +61,8 @@ public class HomeTopItemFragmentViewHolder extends BaseRecyclerViewHolder<HomeTo
     TextView tv_fen_number;
     @Bind(R.id.tv_dynamic_number)
     TextView tv_dynamic_number;
+    @Bind(R.id.iv_vip)
+    ImageView iv_vip;
 
     public HomeTopItemFragmentViewHolder(View view) {
         super(view);
@@ -71,11 +73,20 @@ public class HomeTopItemFragmentViewHolder extends BaseRecyclerViewHolder<HomeTo
         if (dataBean == null)
             return;
         HomeTopItemBean.DataBean.UinfoBean uinfo1 = dataBean.getUinfo();
-        if (uinfo1.getIsauth() == 1) {
-            tv_add_v.setVisibility(View.VISIBLE);
-        } else {
-            tv_add_v.setVisibility(View.GONE);
-        }
+//        if (uinfo1.getIsauth() == 1) {
+//            tv_add_v.setVisibility(View.VISIBLE);
+//        } else {
+//            tv_add_v.setVisibility(View.GONE);
+//        }
+        String level = uinfo1.getVip_level();
+        if (StringUtis.equals("1", level)) {
+            iv_vip.setImageResource(R.mipmap.vipone);
+        } else if (StringUtis.equals("3", level)) {
+            iv_vip.setImageResource(R.mipmap.vipnext);
+        } else if (StringUtis.equals("12", level)) {
+            iv_vip.setImageResource(R.mipmap.vipmost);
+        } else iv_vip.setImageBitmap(null);
+
         tv_fen_number.setText(uinfo1.getFansnum());
         tv_dynamic_number.setText(uinfo1.getLatest_total());
         List<HomeTopItemBean.DataBean.ListBean> list = dataBean.getList();

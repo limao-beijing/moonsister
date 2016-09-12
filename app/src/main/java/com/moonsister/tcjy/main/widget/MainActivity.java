@@ -22,7 +22,6 @@ import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.find.widget.FindFragment;
-import com.moonsister.tcjy.home.widget.HomeFragment;
 import com.moonsister.tcjy.home.widget.HomeTopFragment;
 import com.moonsister.tcjy.im.widget.IMHomeFragment;
 import com.moonsister.tcjy.main.presenter.MainPresenter;
@@ -197,7 +196,8 @@ public class MainActivity extends BaseActivity implements MainView {
             RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
             return;
         }
-        ActivityUtils.startDynamicPublishActivity();
+        ActivityUtils.startDynamicSendActivity();
+//        ActivityUtils.startDynamicPublishActivity();
     }
 
     @Override
