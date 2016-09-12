@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/image_back"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginLeft="@dimen/x40"
             android:background="@mipmap/back"/>
         <TextView
             android:layout_width="wrap_content"
