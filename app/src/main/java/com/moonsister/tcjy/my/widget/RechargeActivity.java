@@ -71,6 +71,9 @@ public class RechargeActivity extends BaseActivity implements RechargeActivityVi
         switch (view.getId()){
             case R.id.kending:
                 recharge=recharge_edit.getText().toString();
+                if(recharge.equals("")){
+                    return;
+                }
                 persenter.LoadData(recharge, EnumConstant.PayType.IAPP_PAY.getType());
                 break;
         }

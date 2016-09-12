@@ -8,33 +8,43 @@
         android:id="@+id/layou_navigation_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y90"
-        android:background="@color/app_inflate_color"
+        android:background="@color/black"
         android:gravity="center_vertical">
 
-        <ImageView
-            android:id="@+id/view_line"
-            style="@style/app_line_horizontal"
-            android:layout_above="@+id/layou_navigation"
-            android:layout_alignParentBottom="true" />
+        <!--<ImageView-->
+            <!--android:id="@+id/view_line"-->
+            <!--style="@style/app_line_horizontal"-->
+            <!--android:layout_above="@+id/layou_navigation"-->
+            <!--android:layout_alignParentBottom="true" />-->
 
-        <ImageView
-            android:id="@+id/view_center_line"
-            android:layout_width="1dp"
-            android:layout_height="1dp"
-            android:layout_centerInParent="true" />
+        <!--<ImageView-->
+            <!--android:id="@+id/view_center_line"-->
+            <!--android:layout_width="1dp"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_centerInParent="true" />-->
 
         <TextView
             android:id="@+id/tv_navigation_good_select"
-            style="@style/text_color_home_one_menu"
-            android:layout_marginRight="@dimen/x20"
-            android:layout_toLeftOf="@+id/view_center_line"
+            android:layout_width="wrap_content"
+            android:textColor="#FFD305"
+            android:layout_height="@dimen/y70"
+            android:textSize="17sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/x160"
+            android:background="@mipmap/make_left"
             android:text="@string/home_one_menu_good_select" />
 
         <TextView
             android:id="@+id/tv_navigation_same_city"
-            style="@style/text_color_home_one_menu"
-            android:layout_marginLeft="@dimen/x20"
-            android:layout_toRightOf="@+id/view_center_line"
+            android:layout_height="@dimen/y70"
+            android:layout_width="wrap_content"
+            android:textSize="17sp"
+            android:gravity="center"
+            android:textColor="#D6DDE4"
+            android:layout_gravity="center"
+            android:layout_toRightOf="@+id/tv_navigation_good_select"
+            android:background="@mipmap/make_black_right"
             android:text="@string/home_one_menu_same_city" />
 
         <ImageView

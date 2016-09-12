@@ -37,6 +37,8 @@ public class FriendViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBean>
     TextView tvContent;
     @Bind(R.id.tv_submit)
     TextView tvSubmit;
+    @Bind(R.id.if_vip)
+    ImageView if_vip;
 //    @Bind(R.id.imageView)
 //    ImageView mImageView;//提示用户是否为网红的图标
     private FriendAdapter adapter;
@@ -55,7 +57,12 @@ public class FriendViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBean>
         ImageServerApi.showURLSamllImage(rivUserImage, dataBean.getFace());
         tvContent.setText(dataBean.getSignature());
         tvUserName.setText(dataBean.getNickname());
+        String vip_level = dataBean.getVip_level();
+        if(vip_level.equals("0")){
+            if_vip.setVisibility(View.INVISIBLE);
+        }
         tvSubmit.setTag(position);
+
 
         //判断是否是新好友，1为新好友，2则不是
 //        if(StringUtis.equals(dataBean.getIsnew(),"1")){

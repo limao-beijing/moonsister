@@ -115,9 +115,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
                 .setEvent(Events.EventEnum.CERTIFICATION_PAGE_FINISH)
                 .onNext(events -> pageFinish())
                 .create();
-        ImageServerApi.showURLSamllImage(riv_avater, UserInfoManager.getInstance().getAvater());
-        vip_id.setText(UserInfoManager.getInstance().getUid());
-        phone.setText(UserInfoManager.getInstance().getSmobile());
+
     }
     private void pageFinish() {
 
@@ -270,7 +268,10 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
 
     @Override
     public void success(BackTermsBean backTermsBean) {
-        random.setText(backTermsBean.getData());
+        random.setText(backTermsBean.getData().getVoice_info());
+        ImageServerApi.showURLSamllImage(riv_avater, backTermsBean.getData().getFace());
+        vip_id.setText(backTermsBean.getData().getUid()+"");
+        phone.setText(backTermsBean.getData().getMobile()+"");
     }
 
     @Override

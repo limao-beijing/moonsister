@@ -243,6 +243,8 @@ public class BirthdayActivity extends BaseActivity implements OnClickListener {
                 BirthdayActivity.this.setResult(RESULT_OK, intent);
                 //关闭Activity
                 BirthdayActivity.this.finish();
+
+
 //                SharedPreferences mySharedPreferences= getSharedPreferences("my",
 //                        Activity.MODE_PRIVATE);
 //                //实例化SharedPreferences.Editor对象（第二步）
@@ -253,7 +255,6 @@ public class BirthdayActivity extends BaseActivity implements OnClickListener {
 ////                提交当前数据
 //                editor.commit();
 
-                finish();
                 break;
         }
 

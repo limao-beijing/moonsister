@@ -1143,7 +1143,7 @@ public class ServerApi {
          * @return
          */
         @FormUrlEncoded
-        @POST("recharge/pub")
+        @POST("user/edit_uinfo_byversion")
         Observable<PersonalReviseMessageBean> getUserJsonBean(@Field("contents") String contents,
                                                               @Field("authcode") String authcode,
                                                               @Field("channel") String channel,

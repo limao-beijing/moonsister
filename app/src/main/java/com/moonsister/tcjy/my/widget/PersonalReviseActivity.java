@@ -13,9 +13,7 @@ import android.widget.TextView;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.bean.PersonalMessageBean;
 import com.moonsister.tcjy.bean.PersonalReviseMessageBean;
-import com.moonsister.tcjy.bean.personalBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.login.widget.SelectPicPopupActivity;
@@ -54,11 +52,19 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
     @Bind(R.id.tv_signature)//个性签名
             EditText tv_signature;
     @Bind(R.id.tv_sex)//性别
-            EditText tv_sex;
+            TextView tv_sex;
     @Bind(R.id.tv_birthday)//出生年月
             TextView tv_birthday;
     @Bind(R.id.tv_star_sign)//星座
             TextView tv_star_sign;
+    @Bind(R.id.tv_hight)//身高
+    TextView tv_hight;
+    @Bind(R.id.tv_weight)//体重
+    TextView tv_weight;
+    @Bind(R.id.tv_money_pay)//月薪
+    TextView tv_money_pay;
+    @Bind(R.id.tv_educational_background)//学历
+    TextView tv_educational_background;
     @Bind(R.id.tv_birthplace)//籍贯
             TextView tv_birthplace;
     @Bind(R.id.tv_address)//现居
@@ -79,31 +85,22 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             TextView tv_like_sex;
     @Bind(R.id.tv_premarital_sex)//婚前性行为
             TextView tv_premarital_sex;
+    @Bind(R.id.tv_take_delivery)//收货地址
+    TextView tv_take_delivery;
+    @Bind(R.id.tv_zip_code)//邮编
+    TextView tv_zip_code;
     @Bind(R.id.image_back)//返回
             ImageView image_back;
     @Bind(R.id.baocun)//保存
             TextView baocun;
     PersonalReviseActivityPersenter presenter;
-//    List<PersonalMessageBean.DataBean.RulesBean> data;
-//    PersonalMessageBean.DataBean.BaseinfoBean data1;
-//    PersonalMessageBean.DataBean.DlistBean data2;
-//    PersonalMessageBean.DataBean.VipinfoBean data3;
-    private List<PersonalMessageBean> userBeans; //保存数据的集合
-    private JSONObject object; //JSONObject对象，处理一个一个的对象
-    private JSONObject object2;
-    private JSONArray jsonArray;//JSONObject对象，处理一个一个集合或者数组
-    private String jsonString; //保存带集合的json字符串
-    private String jsonString2;//不带集合的json字符串
-    private String avater;
-    private personalBean mPersonalBean;
-    String habit;
     //自定义的弹出框类
     SelectPicPopupWindow menuWindow;
     PopWindowMarital mMenuViewmarital;
     PopWindowDistance mMenuViewdistance;
     PopWindowPremarital mMenuViewpremarital;
     String message;//头像路径
-    String message2;//背景图路径
+    String like_backgroud;//背景图路径
     String result;//年龄
     String love;//星座
     JSONObject jsonmobile;//手机
@@ -155,6 +152,14 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             RelativeLayout layout_birthday;
     @Bind(R.id.layout_star_sign)//星座layout
             RelativeLayout layout_star_sign;
+    @Bind(R.id.layout_hight)//身高layout
+    RelativeLayout layout_hight;
+    @Bind(R.id.layout_weight)//体重layout
+    RelativeLayout layout_weight;
+    @Bind(R.id.layout_money_pay)//月薪layout
+    RelativeLayout layout_money_pay;
+    @Bind(R.id.layout_educational_background)//学历layout
+    RelativeLayout layout_educational_background;
     @Bind(R.id.layout_birthplace)//籍贯layout
             RelativeLayout layout_birthplace;
     @Bind(R.id.layout_address)//现居layout
@@ -175,16 +180,21 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             RelativeLayout layout_like_sex;
     @Bind(R.id.layout_premarital_sex)//婚前性行为layout
             RelativeLayout layout_premarital_sex;
+    @Bind(R.id.layout_take_delivery)//收货地址layout
+    RelativeLayout layout_take_delivery;
+    @Bind(R.id.layout_zip_code)//邮编
+    RelativeLayout layout_zip_code;
+    String isshow;String isshowqq;String isshowweixin;String isshowimage; String isshowname;String isshowsignature;String isshowsex;String isshowbirthday;
+    String isshowstar;String isshowbirthpace;String isshowaddress;String isshowjob;String isshowhobby;String isshowself;
+    String isshowhouse;String isshowmarital;String isshowdistance;String isshowlike;String isshowpremar;
 
     @Override
     protected View setRootContentView() {
-
         return UIUtils.inflateLayout(R.layout.personalreviseactivity);
     }
 
     @Override
     protected void initView() {
-
         presenter = new PersonalReviseActivityPersenterImpl();
         presenter.attachView(this);
         presenter.sendPersonalReviseMessage(UserInfoManager.getInstance().getUid());
@@ -206,7 +216,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
         showToast(msg);
     }
 
-    @OnClick({R.id.image_back, R.id.layout_mobile,R.id.layout_qq,R.id.layout_weixin,R.id.layout_avater, R.id.layout_nike_name, R.id.layout_signature, R.id.layout_sex, R.id.layout_birthday, R.id.layout_star_sign, R.id.layout_birthplace, R.id.layout_address, R.id.layout_job, R.id.layout_hobby, R.id.layout_self_image, R.id.layout_ishouse, R.id.layout_marital_status, R.id.layout_distance_love, R.id.layout_like_sex, R.id.layout_premarital_sex, R.id.baocun})
+    @OnClick({R.id.image_back, R.id.layout_like,R.id.layout_mobile,R.id.layout_qq,R.id.layout_weixin,R.id.layout_avater, R.id.layout_nike_name, R.id.layout_signature, R.id.layout_sex, R.id.layout_birthday, R.id.layout_star_sign,
+            R.id.layout_birthplace, R.id.layout_address, R.id.layout_job, R.id.layout_hobby, R.id.layout_self_image, R.id.layout_ishouse, R.id.layout_marital_status, R.id.layout_distance_love, R.id.layout_like_sex, R.id.layout_premarital_sex,
+            R.id.layout_hight,R.id.layout_weight,R.id.layout_money_pay,R.id.layout_educational_background,R.id.layout_take_delivery,R.id.layout_zip_code,R.id.baocun})
     public void onClick(View view) {
         if(rules==null){
             return;
@@ -214,63 +226,15 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
         switch (view.getId()) {
             case R.id.image_back:
                 this.finish();
-//                changeArrayDateToJson();
-//                presenter.sendUserJson(jsonString);
                 break;
             case R.id.layout_mobile:
-                String mobile = tv_mobile.getText().toString();
-                jsonmobile=new JSONObject();
-                PersonalReviseMessageBean.DataBean.RulesBean rulesBean = rules.get(0);
-                if(rulesBean==null){
-                }
-                    try {
-                        jsonmobile.put("field",rules.get(0).getField());
-                        jsonmobile.put("name",rules.get(0).getName());
-                        jsonmobile.put("edit",rules.get(0).getEdit());
-                        jsonmobile.put("isvip",rules.get(0).getIsvip());
-                        jsonmobile.put("isshow",rules.get(0).getIsshow());
-                        jsonmobile.put("value",mobile);
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
 
                 break;
             case R.id.layout_qq:
-                String qq = tv_mobile.getText().toString();
-                jsonqq=new JSONObject();
-                PersonalReviseMessageBean.DataBean.RulesBean rulesQQ = rules.get(1);
-                if(rulesQQ==null){
-                }
-                try {
-                    jsonqq.put("field",rules.get(1).getField());
-                    jsonqq.put("name",rules.get(1).getName());
-                    jsonqq.put("edit",rules.get(1).getEdit());
-                    jsonqq.put("isvip",rules.get(1).getIsvip());
-                    jsonqq.put("isshow",rules.get(1).getIsshow());
-                    jsonqq.put("value",qq);
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
                 break;
             case R.id.layout_weixin:
-                String weixin = tv_mobile.getText().toString();
-                jsonweixin=new JSONObject();
-                PersonalReviseMessageBean.DataBean.RulesBean rulesweixin = rules.get(2);
-                if(rulesweixin==null){
-                }
-                try {
-                    jsonweixin.put("field",rules.get(2).getField());
-                    jsonweixin.put("name",rules.get(2).getName());
-                    jsonweixin.put("edit",rules.get(2).getEdit());
-                    jsonweixin.put("isvip",rules.get(2).getIsvip());
-                    jsonweixin.put("isshow",rules.get(2).getIsshow());
-                    jsonweixin.put("value",weixin);
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
                 break;
             case R.id.layout_avater://头像
                 ActivityUtils.startActivity(SelectPicPopupActivity.class);
@@ -280,324 +244,323 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                         .onNext((events) -> {
                             message = (String) events.message;
                             LogUtils.e(RZFirstActivity.class, "pic_path : " + message);
-                            avater = message;
                             ImageServerApi.showURLSamllImage(riv_user_image, message);
                         }).create();
+
+                break;
+            case R.id.layout_like://背景
+                ActivityUtils.startActivity(SelectPicPopupActivity.class);
+                RxBus.with(this)
+                        .setEvent(Events.EventEnum.GET_PHOTO)
+                        .setEndEvent(ActivityEvent.DESTROY)
+                        .onNext((events) -> {
+                            like_backgroud = (String) events.message;
+                            LogUtils.e(RZFirstActivity.class, "pic_path : " + message);
+                            ImageServerApi.showURLSamllImage(riv_user_image, message);
+                        }).create();
+                break;
+            case R.id.layout_nike_name://昵称
+                tv_nike_name.requestFocus();
+
+                break;
+            case R.id.layout_signature://个性签名
+                tv_signature.requestFocus();
+
+                break;
+            case R.id.layout_sex:
+
+                break;
+            case R.id.layout_birthday://出生年月
+                startActivityForResult(new Intent(PersonalReviseActivity.this, BirthdayActivity.class), 1);
+
+                break;
+            case R.id.layout_star_sign://星座
+
+                break;
+            case R.id.layout_hight://身高
+
+                break;
+            case R.id.layout_weight://体重
+
+                break;
+            case R.id.layout_money_pay://月薪
+
+                break;
+            case R.id.layout_educational_background://学历
+
+                break;
+            case R.id.layout_birthplace://籍贯
+                tv_birthplace.requestFocus();
+
+                break;
+            case R.id.layout_address://现居
+                tv_address.requestFocus();
+
+                break;
+            case R.id.layout_job://职业
+                tv_job.requestFocus();
+
+                break;
+            case R.id.layout_hobby://兴趣爱好
+                tv_hobby.requestFocus();
+
+                break;
+            case R.id.layout_self_image://自我印象
+                tv_self_image.requestFocus();
+
+                break;
+            case R.id.layout_ishouse://是否有房
+                menuWindow = new SelectPicPopupWindow(PersonalReviseActivity.this, itemsOnClick);
+                menuWindow.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.layout_ishouse), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
+
+                break;
+            case R.id.layout_marital_status://婚姻状况
+                mMenuViewmarital = new PopWindowMarital(PersonalReviseActivity.this, itemsOnClickMarital);
+                mMenuViewmarital.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_marital_status), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
+
+                break;
+            case R.id.layout_distance_love://接受异地恋
+                mMenuViewdistance = new PopWindowDistance(PersonalReviseActivity.this, itemsOnClickDistance);
+                mMenuViewdistance.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_distance_love), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
+
+                break;
+            case R.id.layout_like_sex://喜欢的异性
+                tv_like_sex.requestFocus();
+
+                break;
+            case R.id.layout_premarital_sex://婚前性行为
+                mMenuViewpremarital = new PopWindowPremarital(PersonalReviseActivity.this, itemsOnClickPrematital);
+                mMenuViewpremarital.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_premarital_sex), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
+
+                break;
+            case R.id.baocun:
+                String mobile = tv_mobile.getText().toString();
+                jsonmobile=new JSONObject();
+                PersonalReviseMessageBean.DataBean.RulesBean rulesBean = rules.get(0);
+                if(rulesBean==null){
+                }
+                try {
+                    jsonmobile.put(rules.get(0).getField(),mobile);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                String qq = tv_qq.getText().toString();
+                jsonqq=new JSONObject();
+                PersonalReviseMessageBean.DataBean.RulesBean rulesQQ = rules.get(1);
+                if(rulesQQ==null){
+                }
+                try {
+                    jsonqq.put(rules.get(1).getField(),qq);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                String weixin = tv_weixin.getText().toString();
+                jsonweixin=new JSONObject();
+                PersonalReviseMessageBean.DataBean.RulesBean rulesweixin = rules.get(2);
+                if(rulesweixin==null){
+                }
+                try {
+                    jsonweixin.put(rules.get(2).getField(),weixin);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 PersonalReviseMessageBean.DataBean.RulesBean rulesavater = rules.get(3);
                 if(rulesavater==null){
                 }
                 jsonavater=new JSONObject();
                 try {
-                    jsonavater.put("field",rules.get(3).getField());
-                    jsonavater.put("name",rules.get(3).getName());
-                    jsonavater.put("edit",rules.get(3).getEdit());
-                    jsonavater.put("isvip",rules.get(3).getIsvip());
-                    jsonavater.put("isshow",rules.get(3).getIsshow());
-                    jsonavater.put("value",message);
+                    jsonavater.put("face",message);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-                break;
-
-            case R.id.layout_nike_name://昵称
-
-                tv_nike_name.requestFocus();
                 String str = tv_nike_name.getText().toString();
                 PersonalReviseMessageBean.DataBean.RulesBean rulesnike = rules.get(4);
                 if(rulesnike==null){
                 }
                 jsonobjname = new JSONObject();
                 try {
-                    jsonobjname.put("field", rules.get(4).getField());
-                    jsonobjname.put("name", rules.get(4).getName());
-                    jsonobjname.put("edit", rules.get(4).getEdit());
-                    jsonobjname.put("isvip", rules.get(4).getIsvip());
-                    jsonobjname.put("isshow",rules.get(4).getIsshow());
-                    jsonobjname.put("value", str);
+                    jsonobjname.put(rules.get(4).getField(),str);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                break;
-            case R.id.layout_signature://个性签名
-                tv_signature.requestFocus();
                 String signature = tv_signature.getText().toString();
                 PersonalReviseMessageBean.DataBean.RulesBean rulessignature = rules.get(5);
                 if(rulessignature==null){
                 }
                 jsonobjsignature = new JSONObject();
                 try {
-                    jsonobjsignature.put("field", rules.get(5).getField());
-                    jsonobjsignature.put("name", rules.get(5).getName());
-                    jsonobjsignature.put("edit",rules.get(5).getEdit());
-                    jsonobjsignature.put("isvip", rules.get(5).getIsvip());
-                    jsonobjsignature.put("isshow",rules.get(5).getIsshow());
-                    jsonobjsignature.put("value", signature);
+                    jsonobjsignature.put(rules.get(5).getField(),signature);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-                break;
-            case R.id.layout_sex:
                 String sex = tv_sex.getText().toString();
                 PersonalReviseMessageBean.DataBean.RulesBean rulessex = rules.get(6);
                 if(rulessex==null){
                 }
                 jsonobjsex = new JSONObject();
                 try {
-                    jsonobjsex.put("field", rules.get(6).getField());
-                    jsonobjsex.put("name", rules.get(6).getName());
-                    jsonobjsex.put("edit", rules.get(6).getEdit());
-                    jsonobjsex.put("isvip", rules.get(6).getIsvip());
-                    jsonobjsex.put("isshow",rules.get(6).getIsshow());
-                    jsonobjsex.put("value", sex);
+                    jsonobjsex.put(rules.get(6).getField(),sex);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                break;
-            case R.id.layout_birthday://出生年月
-                startActivityForResult(new Intent(PersonalReviseActivity.this, BirthdayActivity.class), 1);
                 PersonalReviseMessageBean.DataBean.RulesBean rulesbir = rules.get(7);
                 if(rulesbir==null){
                 }
                 jsonobjbirthday = new JSONObject();
                 try {
-                    jsonobjbirthday.put("field", rules.get(7).getField());
-                    jsonobjbirthday.put("name", rules.get(7).getName());
-                    jsonobjbirthday.put("edit", rules.get(7).getEdit());
-                    jsonobjbirthday.put("isvip", rules.get(7).getIsvip());
-                    jsonobjbirthday.put("isshow",rules.get(7).getIsshow());
-                    jsonobjbirthday.put("value", result);
+                    jsonobjbirthday.put(rules.get(7).getField(),result);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-                break;
-            case R.id.layout_star_sign://星座
                 PersonalReviseMessageBean.DataBean.RulesBean rulesstar = rules.get(8);
                 if(rulesstar==null){
                 }
                 jsonobjstarsign = new JSONObject();
                 try {
-                    jsonobjstarsign.put("field", rules.get(8).getField());
-                    jsonobjstarsign.put("name", rules.get(8).getName());
-                    jsonobjstarsign.put("edit", rules.get(8).getEdit());
-                    jsonobjstarsign.put("isvip", rules.get(8).getIsvip());
-                    jsonobjstarsign.put("isshow",rules.get(8).getIsshow());
-                    jsonobjstarsign.put("value", love);
+                    jsonobjstarsign.put(rules.get(8).getField(),love);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                break;
-            case R.id.layout_birthplace://籍贯
-                tv_birthplace.requestFocus();
                 String birthplace = tv_birthplace.getText().toString();
                 PersonalReviseMessageBean.DataBean.RulesBean rulesbirthplace = rules.get(9);
                 if(rulesbirthplace==null){
                 }
                 jsonobjbirthplace = new JSONObject();
                 try {
-                    jsonobjbirthplace.put("field", rules.get(9).getField());
-                    jsonobjbirthplace.put("name", rules.get(9).getName());
-                    jsonobjbirthplace.put("edit", rules.get(9).getEdit());
-                    jsonobjbirthplace.put("isvip", rules.get(9).getIsvip());
-                    jsonobjbirthplace.put("isshow",rules.get(9).getIsshow());
-                    jsonobjbirthplace.put("value", birthplace);
+                    jsonobjbirthplace.put(rules.get(9).getField(),birthplace);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                break;
-            case R.id.layout_address://现居
-                tv_address.requestFocus();
                 String address = tv_address.getText().toString();
                 PersonalReviseMessageBean.DataBean.RulesBean rulesaddress = rules.get(10);
                 if(rulesaddress==null){
                 }
                 jsonobjaddress = new JSONObject();
                 try {
-                    jsonobjaddress.put("field", rules.get(10).getField());
-                    jsonobjaddress.put("name", rules.get(10).getName());
-                    jsonobjaddress.put("edit", rules.get(10).getEdit());
-                    jsonobjaddress.put("isvip", rules.get(10).getIsvip());
-                    jsonobjaddress.put("isshow",rules.get(10).getIsshow());
-                    jsonobjaddress.put("value", address);
+                    jsonobjaddress.put(rules.get(10).getField(),address);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                break;
-            case R.id.layout_job://职业
-                tv_job.requestFocus();
                 String job = tv_job.getText().toString();
                 PersonalReviseMessageBean.DataBean.RulesBean rulesjob = rules.get(11);
                 if(rulesjob==null){
                 }
                 jsonobjjob = new JSONObject();
                 try {
-                    jsonobjjob.put("field", rules.get(11).getField());
-                    jsonobjjob.put("name", rules.get(11).getName());
-                    jsonobjjob.put("edit", rules.get(11).getEdit());
-                    jsonobjjob.put("isvip", rules.get(11).getIsvip());
-                    jsonobjjob.put("isshow",rules.get(11).getIsshow());
-                    jsonobjjob.put("value", job);
+                    jsonobjjob.put(rules.get(11).getField(),job);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                break;
-            case R.id.layout_hobby://兴趣爱好
-                tv_hobby.requestFocus();
                 String hobby = tv_hobby.getText().toString();
                 PersonalReviseMessageBean.DataBean.RulesBean ruleshobby = rules.get(12);
                 if(ruleshobby==null){
                 }
                 jsonobjhobby = new JSONObject();
                 try {
-                    jsonobjhobby.put("field", rules.get(12).getField());
-                    jsonobjhobby.put("name", rules.get(12).getName());
-                    jsonobjhobby.put("edit", rules.get(12).getEdit());
-                    jsonobjhobby.put("isvip", rules.get(12).getIsvip());
-                    jsonobjhobby.put("isshow",rules.get(12).getIsshow());
-                    jsonobjhobby.put("value", hobby);
+                    jsonobjhobby.put(rules.get(12).getField(),hobby);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                break;
-            case R.id.layout_self_image://自我印象
-                tv_self_image.requestFocus();
                 String self_image = tv_self_image.getText().toString();
                 PersonalReviseMessageBean.DataBean.RulesBean rulesself = rules.get(13);
                 if(rulesself==null){
                 }
                 jsonobjself = new JSONObject();
                 try {
-                    jsonobjself.put("field", rules.get(13).getField());
-                    jsonobjself.put("name", rules.get(13).getName());
-                    jsonobjself.put("edit", rules.get(13).getEdit());
-                    jsonobjself.put("isvip", rules.get(13).getIsvip());
-                    jsonobjself.put("isshow",rules.get(13).getIsshow());
-                    jsonobjself.put("value", self_image);
+                    jsonobjself.put(rules.get(13).getField(),self_image);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                break;
-            case R.id.layout_ishouse://是否有房
-                menuWindow = new SelectPicPopupWindow(PersonalReviseActivity.this, itemsOnClick);
-                menuWindow.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.layout_ishouse), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
                 ishouse = tv_ishouse.getText().toString();
                 PersonalReviseMessageBean.DataBean.RulesBean rulesishouse = rules.get(14);
                 if(rulesishouse==null){
                 }
                 jsonobjishouse = new JSONObject();
                 try {
-                    jsonobjishouse.put("fileld", rules.get(14).getField());
-                    jsonobjishouse.put("name", rules.get(14).getName());
-                    jsonobjishouse.put("edit", rules.get(14).getEdit());
-                    jsonobjishouse.put("isvip", rules.get(14).getIsvip());
-                    jsonobjishouse.put("isshow",rules.get(14).getIsshow());
-                    jsonobjishouse.put("value", ishouse);
+                    jsonobjishouse.put(rules.get(14).getField(),ishouse);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-                break;
-            case R.id.layout_marital_status://婚姻状况
-                mMenuViewmarital = new PopWindowMarital(PersonalReviseActivity.this, itemsOnClickMarital);
-                mMenuViewmarital.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_marital_status), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
                 marital_status = tv_marital_status.getText().toString();
                 PersonalReviseMessageBean.DataBean.RulesBean rulesmarital = rules.get(15);
                 if(rulesmarital==null){
                 }
                 jsonobjmarital = new JSONObject();
                 try {
-                    jsonobjmarital.put("field", rules.get(15).getField());
-                    jsonobjmarital.put("name", rules.get(15).getName());
-                    jsonobjmarital.put("edit", rules.get(15).getEdit());
-                    jsonobjmarital.put("isvip", rules.get(15).getIsvip());
-                    jsonobjmarital.put("isshow",rules.get(15).getIsshow());
-                    jsonobjmarital.put("value", marital_status);
+                    jsonobjmarital.put(rules.get(15).getField(),marital_status);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                break;
-            case R.id.layout_distance_love://接受异地恋
-                mMenuViewdistance = new PopWindowDistance(PersonalReviseActivity.this, itemsOnClickDistance);
-                mMenuViewdistance.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_distance_love), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
                 distance = tv_distance_love.getText().toString();
                 PersonalReviseMessageBean.DataBean.RulesBean rulesdistance = rules.get(16);
                 if(rulesdistance==null){
                 }
                 jsonobjdistance = new JSONObject();
                 try {
-                    jsonobjdistance.put("field", rules.get(16).getField());
-                    jsonobjdistance.put("name", rules.get(16).getName());
-                    jsonobjdistance.put("edit", rules.get(16).getEdit());
-                    jsonobjdistance.put("isvip", rules.get(16).getIsvip());
-                    jsonobjdistance.put("isshow",rules.get(16).getIsshow());
-                    jsonobjdistance.put("value", distance);
+                    jsonobjdistance.put(rules.get(16).getField(),distance);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                break;
-
-            case R.id.layout_like_sex://喜欢的异性
-                tv_like_sex.requestFocus();
                 String like_sex = tv_like_sex.getText().toString();
                 PersonalReviseMessageBean.DataBean.RulesBean ruleslike = rules.get(17);
                 if(ruleslike==null){
                 }
                 jsonobjlike = new JSONObject();
                 try {
-                    jsonobjlike.put("field", rules.get(17).getField());
-                    jsonobjlike.put("name", rules.get(17).getName());
-                    jsonobjlike.put("edit", rules.get(17).getEdit());
-                    jsonobjlike.put("isvip", rules.get(17).getIsvip());
-                    jsonobjlike.put("isshow",rules.get(17).getIsshow());
-                    jsonobjlike.put("value", like_sex);
+                    jsonobjlike.put(rules.get(17).getField(),like_sex);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                break;
-            case R.id.layout_premarital_sex://婚前性行为
-                mMenuViewpremarital = new PopWindowPremarital(PersonalReviseActivity.this, itemsOnClickPrematital);
-                mMenuViewpremarital.showAtLocation(PersonalReviseActivity.this.findViewById(R.id.tv_premarital_sex), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
                 premarital_sex = tv_premarital_sex.getText().toString();
                 PersonalReviseMessageBean.DataBean.RulesBean rulespremarital = rules.get(18);
                 if(rulespremarital==null){
                 }
                 jsonobjpremarital = new JSONObject();
                 try {
-                    jsonobjpremarital.put("field", rules.get(18).getField());
-                    jsonobjpremarital.put("name", rules.get(18).getName());
-                    jsonobjpremarital.put("edit", rules.get(18).getEdit());
-                    jsonobjpremarital.put("isvip", rules.get(18).getIsvip());
-                    jsonobjpremarital.put("isshow",rules.get(18).getIsshow());
-                    jsonobjpremarital.put("value", premarital_sex);
+                    jsonobjpremarital.put(rules.get(18).getField(),premarital_sex);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                break;
-            case R.id.baocun:
-
                 JSONArray jsonarry = new JSONArray();
-                jsonarry.put(jsonmobile);
-                jsonarry.put(jsonqq);
-                jsonarry.put(jsonweixin);
-                jsonarry.put(jsonavater);
-                jsonarry.put(jsonobjname);
-                jsonarry.put(jsonobjsignature);
-                jsonarry.put(jsonobjsex);
-                jsonarry.put(jsonobjbirthday);
-                jsonarry.put(jsonobjstarsign);
-                jsonarry.put(jsonobjbirthplace);
-                jsonarry.put(jsonobjaddress);
-                jsonarry.put(jsonobjjob);
-                jsonarry.put(jsonobjhobby);
-                jsonarry.put(jsonobjself);
-                jsonarry.put(jsonobjishouse);
-                jsonarry.put(jsonobjmarital);
-                jsonarry.put(jsonobjdistance);
-                jsonarry.put(jsonobjlike);
-                jsonarry.put(jsonobjpremarital);
+                    jsonarry.put(jsonmobile);
+                    jsonarry.put(jsonqq);
+                    jsonarry.put(jsonweixin);
+                    jsonarry.put(jsonavater);
+                    jsonarry.put(jsonobjname);
+                    jsonarry.put(jsonobjsignature);
+                    jsonarry.put(jsonobjsex);
+                    jsonarry.put(jsonobjbirthday);
+                    jsonarry.put(jsonobjstarsign);
+                    jsonarry.put(jsonobjbirthplace);
+                    jsonarry.put(jsonobjaddress);
+                    jsonarry.put(jsonobjjob);
+                    jsonarry.put(jsonobjhobby);
+                    jsonarry.put(jsonobjself);
+                    jsonarry.put(jsonobjishouse);
+                    jsonarry.put(jsonobjmarital);
+                    jsonarry.put(jsonobjdistance);
+                    jsonarry.put(jsonobjlike);
+                    jsonarry.put(jsonobjpremarital);
+                    jsonarry.put(jsonobjpremarital);
+
                 String ss = jsonarry.toString();
                 presenter.sendUserJson(ss);
                 break;
@@ -701,7 +664,6 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                     break;
             }
 
-
         }
 
     };
@@ -709,69 +671,45 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
     @Override
     public void success(PersonalReviseMessageBean personalReviseMessageBean) {
         rules = personalReviseMessageBean.getData().getRules();
-//        tv_mobile.setText(rules.get(0).getValue());//手机  QQ 微信
-//        tv_qq.setText(rules.get(1).getValue());
-//        tv_weixin.setText(rules.get(2).getValue());
-//        ImageServerApi.showURLBigImage(riv_user_image, rules.get(3).getValue());//用户头像
-//        tv_nike_name.setText(rules.get(4).getValue());//用户昵称
-//        tv_signature.setText(rules.get(5).getValue());//个性签名
-//        String value = rules.get(6).getValue();//性别
-//            if (value == "1") {
-//                tv_sex.setText("男");
-//            } else {
-//                tv_sex.setText("女");
-//            }
-//        tv_birthday.setText(rules.get(7).getValue());//出生年月
-//        tv_star_sign.setText(rules.get(8).getValue());//星座
-//        tv_birthplace.setText(rules.get(9).getValue());//籍贯
-//        tv_address.setText(rules.get(10).getValue());//现居
-//        tv_job.setText(rules.get(11).getValue());//职业
-//        tv_hobby.setText(rules.get(12).getValue());//兴趣爱好
-//        tv_self_image.setText(rules.get(13).getValue());//自我印象
-//        tv_ishouse.setText(rules.get(14).getValue());//是否有房
-//        tv_marital_status.setText(rules.get(15).getValue());//婚姻状况
-//        tv_distance_love.setText(rules.get(16).getValue());//接受异地恋
-//        tv_like_sex.setText(rules.get(17).getValue());//喜欢的异性
-//        tv_premarital_sex.setText(rules.get(18).getValue());//婚前性行为
-        String isshow = rules.get(0).getIsshow().toString();
+        isshow = rules.get(0).getIsshow().toString();
         if(isshow.equals("1")){
             tv_mobile.setText(rules.get(0).getValue()+"");//手机  QQ 微信
         }else{
             layout_mobile.setVisibility(View.GONE);
         }
 
-        String isshowqq = rules.get(1).getIsshow();
+        isshowqq = rules.get(1).getIsshow();
         if(isshowqq.equals("1")){
             tv_qq.setText(rules.get(1).getValue()+"");
         }else{
             layout_qq.setVisibility(View.GONE);
         }
-        String isshowweixin = rules.get(2).getIsshow();
+        isshowweixin = rules.get(2).getIsshow();
         if(isshowweixin.equals("1")){
             tv_weixin.setText(rules.get(2).getValue()+"");
         }else{
             layout_weixin.setVisibility(View.GONE);
         }
-        String isshowimage = rules.get(3).getIsshow();
+        isshowimage = rules.get(3).getIsshow();
         if(isshowimage.equals("1")){
             ImageServerApi.showURLBigImage(riv_user_image, rules.get(3).getValue());//用户头像
         }else{
             layout_avater.setVisibility(View.GONE);
         }
-        String isshowname = rules.get(4).getIsshow();
+        isshowname = rules.get(4).getIsshow();
         if(isshowname.equals("1")){
             tv_nike_name.setText(rules.get(4).getValue());//用户昵称
         }else{
             layout_nike_name.setVisibility(View.GONE);
         }
-        String isshowsignature = rules.get(5).getIsshow();
+        isshowsignature = rules.get(5).getIsshow();
         if(isshowsignature.equals("1")){
             tv_signature.setText(rules.get(5).getValue());//个性签名
         }else{
             layout_signature.setVisibility(View.GONE);
         }
 
-        String isshowsex = rules.get(6).getIsshow();
+        isshowsex = rules.get(6).getIsshow();
         String value = rules.get(6).getValue();//性别
         if(isshowsex.equals("1")){
             if (value == "1") {
@@ -782,79 +720,80 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
         }else{
             layout_sex.setVisibility(View.GONE);
         }
-        String isshowbirthday = rules.get(7).getIsshow();
+        isshowbirthday = rules.get(7).getIsshow();
         if(isshowbirthday.equals("1")){
             tv_birthday.setText(rules.get(7).getValue());//出生年月
         }else{
             layout_birthday.setVisibility(View.GONE);
         }
-        String isshowstar = rules.get(8).getIsshow();
+
+        isshowstar = rules.get(8).getIsshow();
         if(isshowstar.equals("1")){
             tv_star_sign.setText(rules.get(8).getValue());//星座
         }else{
             layout_star_sign.setVisibility(View.GONE);
         }
-        String isshowbirthpace = rules.get(9).getIsshow();
+        isshowbirthpace = rules.get(9).getIsshow();
         if(isshowbirthpace.equals("1")){
             tv_birthplace.setText(rules.get(9).getValue());//籍贯
         }else{
             layout_birthplace.setVisibility(View.GONE);
         }
-        String isshowaddress = rules.get(10).getIsshow();
+        isshowaddress = rules.get(10).getIsshow();
         if(isshowaddress.equals("1")){
             tv_address.setText(rules.get(10).getValue());//现居
         }else{
             layout_address.setVisibility(View.GONE);
         }
-        String isshowjob = rules.get(11).getIsshow();
+        isshowjob = rules.get(11).getIsshow();
         if(isshowjob.equals("1")){
             tv_job.setText(rules.get(11).getValue());//职业
         }else{
             layout_job.setVisibility(View.GONE);
         }
-        String isshowhobby = rules.get(12).getIsshow();
+        isshowhobby = rules.get(12).getIsshow();
         if(isshowhobby.equals("1")){
             tv_hobby.setText(rules.get(12).getValue());//兴趣爱好
         }else{
             layout_hobby.setVisibility(View.GONE);
         }
-        String isshowself = rules.get(13).getIsshow();
+        isshowself = rules.get(13).getIsshow();
         if(isshowself.equals("1")){
             tv_self_image.setText(rules.get(13).getValue());//自我印象
         }else{
             layout_self_image.setVisibility(View.GONE);
         }
-        String isshowhouse = rules.get(14).getIsshow();
+
+        isshowhouse = rules.get(14).getIsshow();
         if(isshowhouse.equals("1")){
             tv_ishouse.setText(rules.get(14).getValue());//是否有房
         }else{
             layout_ishouse.setVisibility(View.GONE);
         }
-        String isshowmarital = rules.get(15).getIsshow();
+        isshowmarital = rules.get(15).getIsshow();
         if(isshowmarital.equals("1")){
             tv_marital_status.setText(rules.get(15).getValue());//婚姻状况
         }else{
             layout_marital_status.setVisibility(View.GONE);
         }
-        String isshowdistance = rules.get(16).getIsshow();
+        isshowdistance = rules.get(16).getIsshow();
         if(isshowdistance.equals("1")){
             tv_distance_love.setText(rules.get(16).getValue());//接受异地恋
         }else{
             layout_distance_love.setVisibility(View.GONE);
         }
-        String isshowlike = rules.get(17).getIsshow();
+        isshowlike = rules.get(17).getIsshow();
         if(isshowlike.equals("1")){
             tv_like_sex.setText(rules.get(17).getValue());//喜欢的异性
         }else{
             layout_like_sex.setVisibility(View.GONE);
         }
-        String isshowpremar = rules.get(18).getIsshow();
+        isshowpremar = rules.get(18).getIsshow();
         if(isshowpremar.equals("1")){
             tv_premarital_sex.setText(rules.get(18).getValue());//婚前性行为
         }else{
             layout_premarital_sex.setVisibility(View.GONE);
         }
-//        ImageServerApi.showURLBigImage(riv_like_image, data1.getLike_image());//用户头像
 
 
     }

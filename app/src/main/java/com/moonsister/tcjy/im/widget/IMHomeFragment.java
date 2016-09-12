@@ -74,6 +74,20 @@ public class IMHomeFragment extends BaseFragment implements BaseIView, IMHomeVie
 
     @OnClick({R.id.tv_navigation_good_select, R.id.tv_navigation_same_city})
     public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.tv_navigation_good_select:
+                tvNavigationGoodSelect.setBackgroundResource(R.mipmap.my_foll);
+                tvNavigationGoodSelect.setTextColor(getResources().getColor(R.color.text_follow_color));
+                tvNavigationSameCity.setBackgroundResource(R.mipmap.my_follow);
+                tvNavigationSameCity.setTextColor(getResources().getColor(R.color.text_followmy_color));
+                break;
+            case R.id.tv_navigation_same_city:
+                tvNavigationGoodSelect.setBackgroundResource(R.mipmap.follow_my);
+                tvNavigationGoodSelect.setTextColor(getResources().getColor(R.color.text_followmy_color));
+                tvNavigationSameCity.setTextColor(getResources().getColor(R.color.text_follow_color));
+                tvNavigationSameCity.setBackgroundResource(R.mipmap.foll_my);
+                break;
+        }
         ConversationListFragment instance = ConversationListFragment.getInstance();
         presenter.switchNavigation(view.getId());
     }

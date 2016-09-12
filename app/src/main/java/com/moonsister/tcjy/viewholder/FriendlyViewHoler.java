@@ -33,6 +33,8 @@ public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBea
     TextView tvContent;
     @Bind(R.id.delete_textview)//屏蔽
     TextView tvSubmit;
+    @Bind(R.id.if_vip)
+    ImageView if_vip;
     @Bind(R.id.xin)//屏蔽图片
     ImageView xin;
     String str;
@@ -54,6 +56,10 @@ public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBea
         ImageServerApi.showURLSamllImage(rivUserImage, dataBean.getFace());
         tvContent.setText(dataBean.getSignature());
         tvUserName.setText(dataBean.getNickname());
+        String vip_level = dataBean.getVip_level();
+        if(vip_level.equals("0")){
+            if_vip.setVisibility(View.INVISIBLE);
+        }
         tvSubmit.setTag(position);
 
             tvSubmit.setOnClickListener(new View.OnClickListener() {

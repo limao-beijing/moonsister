@@ -44,7 +44,7 @@
     <string name="upload_failure">上传失败</string>
     <string name="upload">上传</string>
     <string name="success">成功</string>
-    <string name="private_hat">私聊</string>
+    <string name="private_hat">消息</string>
     <string name="friend">通讯录</string>
     <string name="loading">加载中....</string>
     <string name="already">已经</string>
