@@ -3,6 +3,8 @@ package com.moonsister.tcjy.my.widget;
 import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
@@ -28,6 +30,8 @@ public class RechargeActivity extends BaseActivity implements RechargeActivityVi
     String pay_type;
     RechargeActivityPersenter persenter;
     String recharge;
+    @Bind(R.id.image_back)//返回
+    ImageView image_back;
     @Override
     protected View setRootContentView() {
 
@@ -66,7 +70,7 @@ public class RechargeActivity extends BaseActivity implements RechargeActivityVi
         showToast(msg);
     }
 
-    @OnClick(R.id.kending)
+    @OnClick({R.id.kending,R.id.image_back})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.kending:
@@ -75,6 +79,9 @@ public class RechargeActivity extends BaseActivity implements RechargeActivityVi
                     return;
                 }
                 persenter.LoadData(recharge, EnumConstant.PayType.IAPP_PAY.getType());
+                break;
+            case R.id.image_back:
+                RechargeActivity.this.finish();
                 break;
         }
     }
