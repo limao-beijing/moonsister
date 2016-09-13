@@ -3,9 +3,35 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <ListView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/pingbilist"></ListView>
+        android:id="@+id/linear"
+        android:background="@color/black"
+        android:orientation="horizontal">
+        <ImageView
+            android:padding="@dimen/x30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_back"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/back"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x96"
+            android:text="屏蔽列表"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="@color/grid_line"/>
+    </LinearLayout>
+
+    <com.moonsister.tcjy.widget.XListView
+
+        android:id="@+id/pingbilist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
 </LinearLayout>

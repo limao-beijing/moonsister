@@ -8,4 +8,5 @@ import com.moonsister.tcjy.bean.RegFourBean;
  */
 public interface FillOutActivityModel extends BaseIModel {
     void fillout(String face,String nickname ,onLoadDateSingleListener<RegFourBean> listener);
+    void submit(String address1,onLoadDateSingleListener listener);
 }

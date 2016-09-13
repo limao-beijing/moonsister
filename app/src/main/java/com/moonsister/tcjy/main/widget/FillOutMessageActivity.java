@@ -12,14 +12,25 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.sdk.android.oss.ClientException;
+import com.alibaba.sdk.android.oss.ServiceException;
+import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
+import com.moonsister.tcjy.event.Events;
+import com.moonsister.tcjy.event.RxBus;
+import com.moonsister.tcjy.login.widget.SelectPicPopupActivity;
 import com.moonsister.tcjy.main.presenter.FillOutActivityPresenter;
 import com.moonsister.tcjy.main.presenter.FillOutActivityPresenterImpl;
 import com.moonsister.tcjy.main.view.FilloutActivityView;
+import com.moonsister.tcjy.manager.aliyun.AliyunManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.ConfigUtils;
+import com.moonsister.tcjy.utils.FilePathUtlis;
+import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.image.PhonePicActivity;
+import com.trello.rxlifecycle.FragmentEvent;
 
 import java.util.ArrayList;
 
@@ -89,6 +100,36 @@ public class FillOutMessageActivity extends BaseActivity implements FilloutActiv
             imagePath = c.getString(columnIndex);
             showImage(imagePath);
             c.close();
+            showLoading();
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+//                    RxBus.with(this)
+//                            .setEvent(Events.EventEnum.GET_PHOTO)
+//                            .setEndEvent(FragmentEvent.DESTROY)
+//                            .onNext((events) -> {
+//                                String message = (String) events.message;
+////                        LogUtils.e(RegiterDataFragment.class, "pic_path : " + message);
+//
+//                                ImageServerApi.showURLImage(fillout_imageview, imagePath);
+//                                presenter.submit(imagePath);
+//                            }).create();
+                    try {
+                        imagePath = AliyunManager.getInstance().upLoadFile(imagePath, FilePathUtlis.FileType.JPG);
+                        UIUtils.onRunMainThred(new Runnable() {
+                            @Override
+                            public void run() {
+                                hideLoading();
+                            }
+                        });
+                    } catch (ClientException e) {
+                        e.printStackTrace();
+                    } catch (ServiceException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
         }
     }
 
@@ -101,7 +142,8 @@ public class FillOutMessageActivity extends BaseActivity implements FilloutActiv
 
     @Override
     public void filloutactivity() {
-
+        String message_name = fillout_message_name.getText().toString();
+        presenter.fillout(imagePath,message_name);
     }
 
     @Override

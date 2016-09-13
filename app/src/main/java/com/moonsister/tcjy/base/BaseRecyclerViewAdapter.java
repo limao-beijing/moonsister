@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.moonsister.tcjy.bean.BaseDataBean;
+import com.moonsister.tcjy.bean.PingbiBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,8 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends Re
         this.datas = list;
 //        this.layoutID = layoutID;
     }
+
+
 
     @Override
     public int getItemViewType(int position) {

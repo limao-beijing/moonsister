@@ -172,6 +172,12 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        persenter.PaySubmit(uid);
+    }
+
+    @Override
     public void success(UserDetailBean userDetailBean) {
         data = userDetailBean.getData().getBaseinfo();
         addons = userDetailBean.getData().getAddons();
@@ -211,4 +217,5 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
 
         }
     }
+
 }

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.moonsister.tcjy.widget.RoundedImageView
+        android:id="@+id/riv_user_image"
+        android:layout_width="@dimen/x90"
+        android:layout_height="@dimen/x90"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="@dimen/x20"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/x20"
+        android:src="@mipmap/load_small" />
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/riv_user_image"
+        android:layout_toRightOf="@+id/riv_user_image"
+        android:text="@string/loading"
+        android:textColor="@color/text_black_color"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/x70"
+        android:layout_height="@dimen/x30"
+        android:layout_marginTop="@dimen/x25"
+        android:layout_toRightOf="@+id/tv_user_name"
+        android:background="@drawable/backgroup_red"
+        android:visibility="invisible"
+        android:text="网红"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/xin"
+        android:background="@mipmap/zuixin"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/x38"
+        android:layout_marginTop="@dimen/x20"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/delete_textview"
+        android:text="@string/quxiaopingbi"
+        android:textColor="@color/text_huang"
+        android:layout_below="@+id/xin"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/x10"
+        android:layout_marginRight="@dimen/x10"/>
+
+
+    <TextView
+
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/riv_user_image"
+        android:layout_toRightOf="@+id/riv_user_image"
+        android:enabled="true"
+        android:singleLine="true"
+        android:text="@string/loading"
+        android:maxEms="13"
+        android:ellipsize="end"
+        android:textColor="@color/home_navigation_text_gred"
+        android:textSize="12sp" />
+</RelativeLayout>

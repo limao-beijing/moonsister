@@ -23,6 +23,12 @@ public class FillOutActivityPresenterImpl implements FillOutActivityPresenter,Ba
     }
 
     @Override
+    public void submit(String address1) {
+        view.showLoading();
+        model.submit(address1,this);
+    }
+
+    @Override
     public void onCreate() {
 
     }
