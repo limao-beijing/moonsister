@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
+import com.moonsister.tcjy.bean.PingbiBean;
 import com.moonsister.tcjy.my.persenter.PingbiActivityPersenter;
 import com.moonsister.tcjy.my.persenter.PingbiActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.PingbiView;
@@ -16,19 +17,15 @@ public class PingbiActivity extends BaseActivity implements PingbiView{
     PingbiActivityPersenter persenter;
     @Override
     protected View setRootContentView() {
-        return UIUtils.inflateLayout(R.layout.contacs);
+        return UIUtils.inflateLayout(R.layout.pingbiactivity);
     }
 
     @Override
     protected void initView() {
+        String page="1";
         persenter=new PingbiActivityPersenterImpl();
         persenter.attachView(this);
-
-    }
-
-    @Override
-    public void success() {
-
+        persenter.submit(page);
     }
 
     @Override
@@ -43,6 +40,11 @@ public class PingbiActivity extends BaseActivity implements PingbiView{
 
     @Override
     public void transfePageMsg(String msg) {
+
+    }
+
+    @Override
+    public void success(PingbiBean pingbiBean) {
 
     }
 }

@@ -44,7 +44,7 @@ public class PingbiActivityPersenterImpl implements PingbiActivityPersenter,Base
 
         switch (dataType) {
             case DATA_ZERO:
-                view.success();
+                view.success((PingbiBean)pingbiBean);
                 break;
             case DATA_ONE:
                 if (StringUtis.equals(pingbiBean.getCode(), AppConstant.code_request_success)) {
@@ -52,7 +52,7 @@ public class PingbiActivityPersenterImpl implements PingbiActivityPersenter,Base
                     UIUtils.sendDelayedOneMillis(new Runnable() {
                         @Override
                         public void run() {
-                            view.success();
+                            view.success((PingbiBean)pingbiBean);
                         }
                     });
                 } else {
