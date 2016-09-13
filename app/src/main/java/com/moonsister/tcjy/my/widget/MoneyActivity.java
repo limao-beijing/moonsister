@@ -67,6 +67,8 @@ public class MoneyActivity extends BaseActivity implements WithdRawDepositView {
     TwoFragment twoFragment;
     Fragment currentFragment;
     WithdRawDepositPresenter presenter;
+    @Bind(R.id.titile_money)//认证费
+    TextView titile_money;
 
     @Override
     protected View setRootContentView() {
@@ -139,6 +141,7 @@ public class MoneyActivity extends BaseActivity implements WithdRawDepositView {
     public void setloadEnableMoney(WithdRawDepositBean str) {
         int withdraw_money = str.getData().getWithdraw_money();
         balance.setText(str.getData().getLast_money());
+        titile_money.setText(str.getData().getFrozen_money());
         //实例化SharedPreferences对象（第一步）
         SharedPreferences mySharedPreferences= getSharedPreferences("test", Activity.MODE_PRIVATE);
         //实例化SharedPreferences.Editor对象（第二步）

@@ -53,13 +53,7 @@ public class FriendlyAdapter extends BaseRecyclerViewAdapter<FrientBaen.DataBean
     }
     @Override
     public void onItemclick(View view, int position) {
-//        if (datas != null && datas.get(position) != null) {
-//            FrientBaen.DataBean dataBean = datas.get(position);
-//            if (!StringUtis.isEmpty(dataBean.getUid())) {
-//                ActivityUtils.startDynamicActivity(dataBean.getUid());
-//            }
-//
-//        }
+
     }
     public void setClick(Integer position) {
         if (datas.size() - 1 >= position) {

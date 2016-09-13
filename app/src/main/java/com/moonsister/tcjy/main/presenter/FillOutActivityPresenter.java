@@ -8,4 +8,5 @@ import com.moonsister.tcjy.main.view.FilloutActivityView;
  */
 public interface FillOutActivityPresenter extends BaseIPresenter<FilloutActivityView> {
     void fillout(String face,String nickname );
+    void submit(String address1);
 }

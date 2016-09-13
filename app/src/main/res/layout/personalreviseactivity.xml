@@ -189,7 +189,7 @@
                     android:layout_width="match_parent"
                     android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:maxLength="16"
+                    android:maxLength="8"
                     android:text="@string/not_available" />
             </RelativeLayout>
 
@@ -213,6 +213,7 @@
                     android:layout_width="match_parent"
                     android:textColor="@color/gray_color"
                     android:background="@null"
+                    android:maxLength="25"
                     android:text="@string/not_available" />
             </RelativeLayout>
 
@@ -461,6 +462,7 @@
                     android:textColor="@color/gray_color"
                     android:background="@null"
                     android:textSize="18sp"
+                    android:maxLength="5"
                     android:text="@string/not_available" />
             </RelativeLayout>
 
@@ -651,6 +653,29 @@
                     android:id="@+id/tv_take_delivery"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/take_delivery"
+                    android:layout_width="match_parent"
+                    android:textColor="@color/gray_color"
+                    android:background="@null"
+                    android:text="@string/not_available" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_take_people"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x92"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/background_white_color"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/info_change_text"
+                    android:id="@+id/take_people"
+                    android:text="收货人：" />
+
+                <EditText
+                    android:id="@+id/tv_take_people"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/take_people"
                     android:layout_width="match_parent"
                     android:textColor="@color/gray_color"
                     android:background="@null"

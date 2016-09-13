@@ -31,8 +31,8 @@ public class RegActivity extends BaseActivity implements RegThridActivityView {
     EditText etPhoneNumber;
     @Bind(R.id.reg_edit_password)//密码
             EditText reg_edit_password;
-    @Bind(R.id.reg_edit_brith)//出生年月日
-            EditText reg_edit_brith;
+//    @Bind(R.id.reg_edit_brith)//出生年月日
+//            EditText reg_edit_brith;
     @Bind(R.id.et_security_code)//输入验证码
     EditText etCode;
     @Bind(R.id.tv_submit)//完成注册
@@ -75,7 +75,7 @@ public class RegActivity extends BaseActivity implements RegThridActivityView {
 
             code = etCode.getText().toString().trim();
             mobile = etPhoneNumber.getText().toString().trim();
-            birthday = reg_edit_brith.getText().toString().trim();
+//            birthday = reg_edit_brith.getText().toString().trim();
             pwd=reg_edit_password.getText().toString().trim();
             if (mobile == null || mobile.isEmpty()|| pwd == null || pwd.isEmpty()||  code == null || code.isEmpty()) {
 //                showToast(resources.getString(R.string.input_Security_code) + resources.getString(R.string.input_phone_number) + resources.getString(R.string.not_empty));
@@ -86,7 +86,8 @@ public class RegActivity extends BaseActivity implements RegThridActivityView {
 //            Intent intent=new Intent(RegActivity.this, FillOutMessageActivity.class);
 //            startActivity(intent);
         }else if(view.getId() == R.id.let_go){
-            Intent intent=new Intent(RegActivity.this,MainActivity.class);
+//            Intent intent=new Intent(RegActivity.this,MainActivity.class);
+            Intent intent=new Intent(RegActivity.this,FillOutMessageActivity.class);
             startActivity(intent);
         }
     }

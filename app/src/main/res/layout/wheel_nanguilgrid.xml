@@ -8,34 +8,18 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_nan"
-                android:textSize="18sp"
-                android:layout_marginLeft="@dimen/x10"
-                android:text="男选项"/>
+
             <GridView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/x300"
                 android:id="@+id/grid_nan"
-                android:layout_below="@+id/text_nan"
-                android:layout_toRightOf="@+id/text_nan"
                 android:numColumns="4"></GridView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_gril"
-                android:textSize="18sp"
-                android:layout_below="@+id/grid_nan"
-                android:layout_marginLeft="@dimen/x10"
-                android:text="女选项"/>
+
             <GridView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/x300"
                 android:id="@+id/grid_gril"
-                android:layout_below="@+id/text_gril"
-                android:layout_toRightOf="@+id/text_gril"
+                android:layout_below="@+id/grid_nan"
                 android:numColumns="4"></GridView>
         </RelativeLayout>
     </ScrollView>

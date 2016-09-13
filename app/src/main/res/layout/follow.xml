@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/image_back"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/x40"
+            android:layout_marginLeft="@dimen/x30"
             android:src="@mipmap/back"/>
         <TextView
             android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
             android:textColor="#FFD305"
             android:background="@mipmap/make_left"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/x105"
+            android:layout_marginLeft="@dimen/x95"
             android:gravity="center"
             android:text="我关注的"/>
         <TextView

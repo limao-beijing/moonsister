@@ -1209,7 +1209,7 @@ public class ServerApi {
          * 屏蔽列表
          * @param page
          * */
-        @GET("index/shield/tlist")
+        @GET("shield/tlist")
         Observable<PingbiBean> pingbiliebiao(@Query("page") String page,
                                                   @Query("authcode") String authcode,
                                                   @Query("channel") String channelId,

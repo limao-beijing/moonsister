@@ -102,6 +102,8 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             TextView tv_premarital_sex;
     @Bind(R.id.tv_take_delivery)//收货地址
             TextView tv_take_delivery;
+    @Bind(R.id.tv_take_people)
+    TextView tv_take_people;
     @Bind(R.id.tv_zip_code)//邮编
             TextView tv_zip_code;
     @Bind(R.id.image_back)//返回
@@ -144,6 +146,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
     JSONObject jsonobjlike;//喜欢的异性
     JSONObject jsonobjpremarital;//婚前性行为
     JSONObject jsonobjtake_delivery;//收货地址
+    JSONObject jsonobjtake_people;
     JSONObject jsonobjZip;//邮编
     String ishouse;String marital_status;String distance;String premarital_sex;String hight;String value;
     @Bind(R.id.tv_mobile)//手机
@@ -203,6 +206,8 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             RelativeLayout layout_premarital_sex;
     @Bind(R.id.layout_take_delivery)//收货地址layout
             RelativeLayout layout_take_delivery;
+    @Bind(R.id.layout_take_people)
+    RelativeLayout layout_take_people;
     @Bind(R.id.layout_zip_code)//邮编
             RelativeLayout layout_zip_code;
     @Bind(R.id.layout_yuliu)//预留项1
@@ -292,7 +297,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                         .onNext((events) -> {
                             like_backgroud = (String) events.message;
                             LogUtils.e(RZFirstActivity.class, "pic_path : " + message);
-                            ImageServerApi.showURLSamllImage(riv_user_image, message);
+                            ImageServerApi.showURLSamllImage(riv_like_image, message);
                         }).create();
                 break;
             case R.id.layout_nike_name://昵称
@@ -336,10 +341,10 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             case R.id.layout_hight://身高
                 View outerView = LayoutInflater.from(this).inflate(R.layout.wheel_view, null);
                 ListView wheel_list = (ListView) outerView.findViewById(R.id.wheel_list);
-                ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
+                ArrayList<HashMap<String, Integer>> mylist = new ArrayList<HashMap<String, Integer>>();
                 for (int i = 150; i < 195; i++) {
-                    HashMap<String, String> map = new HashMap<String, String>();
-                    map.put("wheel_viewnumber", i + "CM");
+                    HashMap<String, Integer> map = new HashMap<String, Integer>();
+                    map.put("wheel_viewnumber", i);
                     mylist.add(map);
                 }
                 SimpleAdapter adapter = new SimpleAdapter(this, mylist, R.layout.wheel_viewitem,
@@ -354,7 +359,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         view.setBackgroundResource(R.color.red_eb2616);
-                        HashMap<String, String> map = (HashMap<String, String>) adapterView.getItemAtPosition(i);
+                        HashMap<String, Integer> map = (HashMap<String, Integer>) adapterView.getItemAtPosition(i);
                         tv_hight.setText(map.get("wheel_viewnumber"));
                     }
                 });
@@ -362,10 +367,10 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             case R.id.layout_weight://体重
                 View outerViewweight = LayoutInflater.from(this).inflate(R.layout.wheel_view, null);
                 ListView wheel_listweight = (ListView) outerViewweight.findViewById(R.id.wheel_list);
-                ArrayList<HashMap<String, String>> wheel_weight = new ArrayList<HashMap<String, String>>();
+                ArrayList<HashMap<String, Integer>> wheel_weight = new ArrayList<HashMap<String, Integer>>();
                 for (int i = 30; i < 100; i++) {
-                    HashMap<String, String> map = new HashMap<String, String>();
-                    map.put("wheel_viewnumber", i + "KG");
+                    HashMap<String, Integer> map = new HashMap<String, Integer>();
+                    map.put("wheel_viewnumber", i );
                     wheel_weight.add(map);
                 }
                 SimpleAdapter adapterweight = new SimpleAdapter(this, wheel_weight, R.layout.wheel_viewitem,
@@ -380,7 +385,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         view.setBackgroundResource(R.color.red_eb2616);
-                        HashMap<String, String> map = (HashMap<String, String>) adapterView.getItemAtPosition(i);
+                        HashMap<String, Integer> map = (HashMap<String, Integer>) adapterView.getItemAtPosition(i);
                         tv_weight.setText(map.get("wheel_viewnumber"));
                     }
                 });
@@ -496,8 +501,6 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 View outerViewself = LayoutInflater.from(this).inflate(R.layout.wheel_nanguilgrid, null);
                 GridView wheel_listnan = (GridView) outerViewself.findViewById(R.id.grid_nan);
                 GridView wheel_listgril = (GridView) outerViewself.findViewById(R.id.grid_gril);
-                TextView text_n= (TextView) outerViewself.findViewById(R.id.text_nan);
-                TextView text_g= (TextView) outerViewself.findViewById(R.id.text_gril);
                 if(value=="1"){
                     ArrayList<HashMap<String, String>> mylistnan = new ArrayList<HashMap<String, String>>();
                     for (int i = 0; i < selfnan.length; i++) {
@@ -512,7 +515,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                     wheel_listnan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            stringb.append(selfnan[i]+" ");
+                            stringb.append(selfnan[i]+",");
                             if(stringb.length()<16){
                                 tv_self_image.setText(stringb.toString());
                                 view.setBackgroundResource(R.color.red_eb2616);
@@ -523,7 +526,6 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                         }
                     });
                     wheel_listgril.setVisibility(View.GONE);
-                    text_g.setVisibility(View.GONE);
                 }else{
                     ArrayList<HashMap<String, String>> mylistgril = new ArrayList<HashMap<String, String>>();
                     for (int i = 0; i < selfgril.length; i++) {
@@ -544,7 +546,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                     wheel_listgril.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            stringBuffer.append(selfgril[i]+" ");
+                            stringBuffer.append(selfgril[i]+",");
                             if(stringBuffer.length()<16){
                                 tv_self_image.setText(stringBuffer.toString());
                                 view.setBackgroundResource(R.color.red_eb2616);
@@ -555,7 +557,6 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                         }
                     });
                     wheel_listnan.setVisibility(View.GONE);
-                    text_n.setVisibility(View.GONE);
                 }
                 break;
             case R.id.layout_ishouse://是否有房
@@ -609,8 +610,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 View outerViewlikesex = LayoutInflater.from(this).inflate(R.layout.wheel_likesex, null);
                 GridView wheel_listlikenan = (GridView) outerViewlikesex.findViewById(R.id.grid_nan);
                 GridView wheel_listlikegril = (GridView) outerViewlikesex.findViewById(R.id.grid_gril);
-                TextView text_gril= (TextView) outerViewlikesex.findViewById(R.id.text_gril);
-                TextView text_nan= (TextView) outerViewlikesex.findViewById(R.id.text_nan);
+
                 if(value=="1"){
                     ArrayList<HashMap<String, String>> mylistlikenan = new ArrayList<HashMap<String, String>>();
                     for (int i = 0; i < like_sexnan.length; i++) {
@@ -625,7 +625,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                     wheel_listlikenan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            stringbuff.append(like_sexnan[i]+" ");
+                            stringbuff.append(like_sexnan[i]+",");
                             if(stringbuff.length()<28){
                                 tv_like_sex.setText(stringbuff.toString());
                                 view.setBackgroundResource(R.color.red_eb2616);
@@ -636,7 +636,6 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                         }
                     });
                     wheel_listlikegril.setVisibility(View.GONE);
-                    text_gril.setVisibility(View.GONE);
                 }else{
                     ArrayList<HashMap<String, String>> mylistlikegril = new ArrayList<HashMap<String, String>>();
                     for (int i = 0; i < like_sexgril.length; i++) {
@@ -657,7 +656,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                     wheel_listlikegril.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            stringbu.append(like_sexgril[i]+" ");
+                            stringbu.append(like_sexgril[i]+",");
                             if(stringbu.length()<28){
                                 tv_like_sex.setText(stringbu.toString());
                                 view.setBackgroundResource(R.color.red_eb2616);
@@ -667,7 +666,6 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                         }
                     });
                     wheel_listlikenan.setVisibility(View.GONE);
-                    text_nan.setVisibility(View.GONE);
                 }
                 break;
             case R.id.layout_premarital_sex://婚前性行为
@@ -958,13 +956,25 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                String take_people = tv_take_people.getText().toString();
+                PersonalReviseMessageBean.DataBean.RulesBean rulestake_people = rules.get(25);
+                if (rulestake_people == null) {
+                }
+                jsonobjtake_people = new JSONObject();
+                try {
+                    jsonobjtake_people.put(rules.get(25).getField(), take_people);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
                 String zip_code = tv_zip_code.getText().toString();
-                PersonalReviseMessageBean.DataBean.RulesBean ruleszip_code = rules.get(25);
+                PersonalReviseMessageBean.DataBean.RulesBean ruleszip_code = rules.get(26);
                 if (ruleszip_code == null) {
                 }
                 jsonobjZip = new JSONObject();
                 try {
-                    jsonobjZip.put(rules.get(25).getField(), zip_code);
+                    jsonobjZip.put(rules.get(26).getField(), zip_code);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -996,6 +1006,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 jsonarry.put(jsonobjpremarital);
                 jsonarry.put(jsonobjpremarital);
                 jsonarry.put(jsonobjtake_delivery);
+                jsonarry.put(jsonobjtake_people);
                 jsonarry.put(jsonobjZip);
 
                 String ss = jsonarry.toString();
@@ -1168,27 +1179,34 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
         } else {
             layout_take_delivery.setVisibility(View.GONE);
         }
-        isshowzipcode = rules.get(25).getIsshow();//邮编
+        String isshowpeople = rules.get(25).getIsshow();
+        if(isshowpeople.equals("1")){
+            tv_take_people.setText(rules.get(25).getValue());
+        }else{
+            layout_take_people.setVisibility(View.GONE);
+        }
+
+        isshowzipcode = rules.get(26).getIsshow();//邮编
         if (isshowzipcode.equals("1")) {
-            tv_zip_code.setText(rules.get(25).getValue());
+            tv_zip_code.setText(rules.get(26).getValue());
         } else {
             layout_zip_code.setVisibility(View.GONE);
         }
-        isshowyuliu = rules.get(26).getIsshow();//预留项1
+        isshowyuliu = rules.get(27).getIsshow();//预留项1
         if (isshowyuliu.equals("1")) {
-            yu_liu.setText(rules.get(26).getValue());
+            yu_liu.setText(rules.get(27).getValue());
         } else {
             layout_yuliu.setVisibility(View.GONE);
         }
-        isshowyuliu1 = rules.get(27).getIsshow();//预留项1
+        isshowyuliu1 = rules.get(28).getIsshow();//预留项1
         if (isshowyuliu1.equals("1")) {
-            yu_liu1.setText(rules.get(27).getValue());
+            yu_liu1.setText(rules.get(28).getValue());
         } else {
             layout_yuliu1.setVisibility(View.GONE);
         }
-        isshowyuliu2 = rules.get(28).getIsshow();//预留项1
+        isshowyuliu2 = rules.get(29).getIsshow();//预留项1
         if (isshowyuliu2.equals("1")) {
-            yu_liu2.setText(rules.get(28).getValue());
+            yu_liu2.setText(rules.get(29).getValue());
         } else {
             layout_yuliu2.setVisibility(View.GONE);
         }

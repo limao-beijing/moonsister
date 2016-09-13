@@ -17,6 +17,7 @@
     <string name="str_fen">粉丝</string>
     <string name="wacth">关注</string>
     <string name="pingbi">屏蔽TA</string>
+    <string name="quxiaopingbi">取消屏蔽</string>
     <string name="dynamic">动态</string>
     <string name="flower">花束</string>
     <string name="activity_name_dynamic_datails">动态详情</string>

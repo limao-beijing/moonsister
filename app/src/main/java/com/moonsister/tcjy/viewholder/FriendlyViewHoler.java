@@ -66,7 +66,7 @@ public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBea
         if(vip_level.equals("0")){
             if_vip.setVisibility(View.INVISIBLE);
         }
-        tvSubmit.setTag(position);
+
         String isshield = dataBean.getIsshield();
         if(isshield.equals("1")){
             tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.text_huang));
@@ -76,9 +76,11 @@ public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBea
             tvSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    model.uppingbi(isshield,uid, new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+                    String type="2";
+                    model.uppingbi(type,uid, new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
                         @Override
                         public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+
                             if (baseIView != null) {
                                 baseIView.hideLoading();
                             }
@@ -91,6 +93,7 @@ public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBea
                                 baseIView.transfePageMsg(bean.getMsg());
                             }
 
+
                         }
 
                         @Override
@@ -99,6 +102,7 @@ public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBea
                                 baseIView.transfePageMsg(msg);
                             }
                         }
+
                     });
                 }
             });
@@ -106,12 +110,17 @@ public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBea
             tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.home_navigation_text_gred));
             xin.setImageResource(R.mipmap.onexin);
             tvSubmit.setText("屏蔽TA");
+            String type="1";
             tvSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    model.uppingbi(isshield,uid, new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+                    model.uppingbi(type,uid, new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
                         @Override
                         public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+                            tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.text_huang));
+
+                            xin.setImageResource(R.mipmap.zuixin);
+                            tvSubmit.setText("取消屏蔽");
                             if (baseIView != null) {
                                 baseIView.hideLoading();
                             }
@@ -137,6 +146,8 @@ public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBea
                 }
             });
         }
+        tvSubmit.setTag(position);
+    }
 
 //        tvSubmit.setOnClickListener(new View.OnClickListener() {
 //                @Override
@@ -170,7 +181,7 @@ public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBea
 //                ActivityUtils.startUserinfoActivity(dataBean.getUid());
 //            }
 //        });
-    }
+
 
     @Override
     protected void onItemclick(View view, FrientBaen.DataBean dataBean, int position) {
