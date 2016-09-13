@@ -100,12 +100,12 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
                                     @Override
                                     public void onPayResult(int resultCode, String resultInfo) {
                                         if (resultCode == 1) {
-//
-                                            listener.onFailure(resultInfo);
-                                        } else {
                                             String code=bean.getData().getAbcode();
 
                                             submittt(address1, address2,text,code, listener);
+
+                                        } else {
+                                            listener.onFailure(resultInfo);
                                         }
 
                                     }

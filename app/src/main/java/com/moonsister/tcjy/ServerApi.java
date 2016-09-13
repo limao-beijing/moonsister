@@ -43,7 +43,6 @@ import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.bean.UserPermissionBean;
 import com.moonsister.tcjy.bean.VersionInfo;
 import com.moonsister.tcjy.bean.WithdRawDepositBean;
-import com.moonsister.tcjy.manager.UserInfoBannerManager;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UnicodeUtils;
 import com.moonsister.tcjy.utils.gson.GsonConverterFactory;
@@ -197,8 +196,8 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("User/register_send_mobile_code")
-        Observable<BaseBean> sendSecurityCode(@Field("mobile") String mobile,
-                                              @Field("channel") String channel);
+        Observable<RegThridBean> sendSecurityCode(@Field("mobile") String mobile,
+                                                  @Field("channel") String channel);
 
         /**
          * 验证验证码
@@ -750,9 +749,7 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("Location/update_data")
-        Observable<RegThridBean> getuploadPhoneInfo(@Field("channel") String channel,
-                                                    @Field("authcode") String authcode,
-                                                    @Field("address") String serialize);
+        Observable<RegThridBean> getuploadPhoneInfo(@Field("address") String serialize);
 
         /**
          * 获取关注列表
@@ -1045,7 +1042,6 @@ public class ServerApi {
         /**
          * 填写用户基本信息
          *
-         * @param s
          * @param mobile
          * @param pwd
          * @param birthday
@@ -1058,7 +1054,6 @@ public class ServerApi {
                                                  @Field("pwd") String pwd,
                                                  @Field("birthday") String birthday,
                                                  @Field("code") String code,
-                                                 @Field("phoneinfo") String phoneinfo,
                                                  @Field("authcode") String authcode,
                                                  @Field("version_type") String apiVersion,
                                                  @Field("channel") String channel);
@@ -1190,11 +1185,34 @@ public class ServerApi {
          * @return
          */
         @GET("shield/shield_act")
-        Observable<PingbiBean> pingbibean(@Query("type") int type,
+        Observable<DefaultDataBean> pingbibean(@Query("type") String type,
+                                                        @Query("to_uid") String to_uid,
+                                                        @Query("authcode") String authcode,
+                                                        @Query("channel") String channelId,
+                                                        @Query("version_type") String apiVersion);
+        /**
+         * 未屏蔽
+         *
+         * @param type
+         * @param to_uid
+         * @return
+         */
+        @GET("shield/shield_act")
+        Observable<DefaultDataBean> weipingbibean(@Query("type") String type,
                                           @Query("to_uid") String to_uid,
                                           @Query("authcode") String authcode,
-                                          @Query("channel") String channelId);
+                                          @Query("channel") String channelId,
+                                          @Query("version_type") String apiVersion);
 
+        /**
+         * 屏蔽列表
+         * @param page
+         * */
+        @GET("index/shield/tlist")
+        Observable<PingbiBean> pingbiliebiao(@Query("page") String page,
+                                                  @Query("authcode") String authcode,
+                                                  @Query("channel") String channelId,
+                                                  @Query("version_type") String apiVersion);
         /**
          * 获取用户信息是否全
          *

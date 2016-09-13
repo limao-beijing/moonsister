@@ -34,4 +34,13 @@
         <item>1314</item>
         <item>9420</item>
     </string-array>
+    <string-array name="Province"><item>广东</item><item>广西</item><item>湖南</item><item>湖北</item><item>河南</item><item>河北</item><item>浙江</item><item>江苏</item></string-array><string-array name="City"><item>广州市</item><item>深圳市</item><item>珠海市</item><item>汕头市</item><item>韶关市</item><item>云浮市</item><item>河源市</item><item>惠州市</item><item>东莞市</item><item>中山市</item><item>江门市</item><item>佛山市</item><item>阳江市</item><item>湛江市</item><item>茂名市</item><item>清远市</item><item>肇庆市</item><item>梅州市</item><item>汕尾市</item><item>茂名市</item><item>潮州市</item><item>揭阳市</item><item>南宁市</item><item>江门市</item><item>桂林市</item><item>柳州市</item><item>梧州市</item><item>钦州市</item><item>北海市</item><item>玉林市</item><item>贵港市</item><item>防城港市</item><item>百色市</item><item>崇左市</item><item>来宾市</item><item>贺州市</item><item>河池市</item>
+    35  <item>长沙市</item><item>浏阳市</item><item>株洲市</item><item>醴陵市</item><item>湘潭市</item><item>韶山市</item><item>衡阳市</item><item>武冈市</item><item>岳阳市</item><item>常德市</item><item>津市市</item><item>张家界市</item><item>益阳市</item><item>沅江市</item><item>郴州市</item><item>资兴市</item><item>永州市</item><item>怀化市</item><item>洪江市</item><item>娄底市</item><item>冷水江市</item><item>吉首市</item>
+
+
+    //湖北省57
+    <item>武汉市</item><item>黄石市</item><item>大冶市</item><item>十堰市</item><item>荆州市</item><item>洪湖市</item><item>宜昌市</item><item>宜都市</item><item>襄樊市</item><item>鄂州市</item><item>孝感市</item><item>老河口市</item><item>荆门市</item><item>钟祥市</item><item>应城市</item>
+    71
+    <item>黄冈市</item><item>麻城市</item><item>咸宁市</item><item>赤壁市</item><item>随州市</item><item>广水市</item><item>仙桃市</item><item>恩施市</item>78
+</string-array>
 </resources>

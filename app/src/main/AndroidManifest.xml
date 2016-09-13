@@ -327,6 +327,7 @@
         <activity android:name=".my.widget.PersonalReviseActivity"></activity>
         <activity android:name=".my.widget.TeQueActivity"></activity>
         <activity android:name=".my.widget.TalkActivity"></activity>
+        <activity android:name=".my.widget.PingbiActivity"></activity>
 
     </application>
 

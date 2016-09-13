@@ -10,8 +10,11 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.adapter.FriendAdapter;
 import com.moonsister.tcjy.adapter.FriendlyAdapter;
+import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
+import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.FrientBaen;
+import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.StringUtis;
@@ -52,7 +55,10 @@ public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBea
 
     @Override
     public void onBindData(FrientBaen.DataBean dataBean,int position) {
-
+        String uid = dataBean.getUid();
+        UserActionModelImpl model = new UserActionModelImpl();
+        if (baseIView != null)
+            baseIView.showLoading();
         ImageServerApi.showURLSamllImage(rivUserImage, dataBean.getFace());
         tvContent.setText(dataBean.getSignature());
         tvUserName.setText(dataBean.getNickname());
@@ -61,29 +67,99 @@ public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBea
             if_vip.setVisibility(View.INVISIBLE);
         }
         tvSubmit.setTag(position);
+        String isshield = dataBean.getIsshield();
+        if(isshield.equals("1")){
+            tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.text_huang));
 
+            xin.setImageResource(R.mipmap.zuixin);
+            tvSubmit.setText("取消屏蔽");
             tvSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.text_huang));
-
-                    xin.setImageResource(R.mipmap.zuixin);
-                    tvSubmit.setText("取消屏蔽");
-                    str= (String) tvSubmit.getText();
-                    if(str=="取消屏蔽"){
-                        tvSubmit.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.home_navigation_text_gred));
-                                xin.setImageResource(R.mipmap.onexin);
-                                tvSubmit.setText("屏蔽TA");
+                public void onClick(View view) {
+                    model.uppingbi(isshield,uid, new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+                        @Override
+                        public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+                            if (baseIView != null) {
+                                baseIView.hideLoading();
                             }
-                        });
-                    }
-//                    adapter.setClick(position);
+                            if (StringUtis.equals(bean.getCode(), "1")) {
+                                if (baseRecyclerViewAdapter != null) {
+                                    baseRecyclerViewAdapter.delectSingleItme(position);
+                                }
+                            }
+                            if (baseIView != null) {
+                                baseIView.transfePageMsg(bean.getMsg());
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(String msg) {
+                            if (baseIView != null) {
+                                baseIView.transfePageMsg(msg);
+                            }
+                        }
+                    });
                 }
             });
+        }else{
+            tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.home_navigation_text_gred));
+            xin.setImageResource(R.mipmap.onexin);
+            tvSubmit.setText("屏蔽TA");
+            tvSubmit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    model.uppingbi(isshield,uid, new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+                        @Override
+                        public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+                            if (baseIView != null) {
+                                baseIView.hideLoading();
+                            }
+                            if (StringUtis.equals(bean.getCode(), "1")) {
+                                if (baseRecyclerViewAdapter != null) {
+                                    baseRecyclerViewAdapter.delectSingleItme(position);
+                                }
+                            }
+                            if (baseIView != null) {
+                                baseIView.transfePageMsg(bean.getMsg());
+                            }
 
+                        }
+
+                        @Override
+                        public void onFailure(String msg) {
+                            if (baseIView != null) {
+                                baseIView.transfePageMsg(msg);
+                            }
+                        }
+                    });
+
+                }
+            });
+        }
+
+//        tvSubmit.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.text_huang));
+//
+//                    xin.setImageResource(R.mipmap.zuixin);
+//                    tvSubmit.setText("取消屏蔽");
+//                    str= (String) tvSubmit.getText();
+//
+////                    adapter.setClick(position);
+//                }
+//            });
+//        if(str=="取消屏蔽"){
+//            tvSubmit.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.home_navigation_text_gred));
+//                    xin.setImageResource(R.mipmap.onexin);
+//                    tvSubmit.setText("屏蔽TA");
+//                }
+//            });
+//        }
 
         /// 这一步必须要做,否则不会显示.
 

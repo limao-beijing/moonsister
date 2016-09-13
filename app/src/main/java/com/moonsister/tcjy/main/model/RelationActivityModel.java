@@ -11,5 +11,5 @@ import com.moonsister.tcjy.main.presenter.RelationActivityPresenterImpl;
  */
 public interface RelationActivityModel extends BaseIModel {
     void loadData(int type, int page, String uid, onLoadDateSingleListener<FrientBaen> listener);
-    void toup(int type, String to_uid, onLoadDateSingleListener<BaseBean> listener);
+//    void toup(int type, String to_uid, onLoadDateSingleListener<BaseBean> listener);
 }

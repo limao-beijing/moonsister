@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
@@ -20,6 +21,7 @@ import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.XListView;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * Created by x on 2016/8/24.
@@ -27,7 +29,8 @@ import butterknife.Bind;
 public class ContactsFragment extends BaseFragment implements RelationActivityView {
     @Bind(R.id.xlistview)
     XListView xListView;
-
+//    @Bind(R.id.image_pingbi)
+//    ImageView image_pingbi;
     private RelationActivityPresenterImpl presenter;
     private boolean isLoadMord;
     private int type;
@@ -47,7 +50,6 @@ public class ContactsFragment extends BaseFragment implements RelationActivityVi
 
     @Override
     protected void initData() {
-
         xListView.setVerticalLinearLayoutManager();
         xListView.setPullRefreshEnabled(false);
         xListView.setLoadingListener(new XRecyclerView.LoadingListener() {
@@ -63,6 +65,8 @@ public class ContactsFragment extends BaseFragment implements RelationActivityVi
         });
         presenter.loadData(type,uid);
     }
+
+
 
     @Override
     public void setFrientData(FrientBaen frientBaen) {
@@ -112,4 +116,10 @@ public class ContactsFragment extends BaseFragment implements RelationActivityVi
     public void transfePageMsg(String msg) {
         showToast(msg);
     }
+
+//    @OnClick(R.id.image_pingbi)
+//    public void onClick(View view) {
+//        Intent intent=new Intent(getActivity(),PingbiActivity.class);
+//        startActivity(intent);
+//    }
 }
