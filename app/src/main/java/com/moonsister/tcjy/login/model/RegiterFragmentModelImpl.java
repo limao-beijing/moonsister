@@ -3,18 +3,15 @@ package com.moonsister.tcjy.login.model;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.bean.BaseBean;
-import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.RegThridBean;
 import com.moonsister.tcjy.bean.RegiterBean;
+import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.JsonUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.PhoneInfoUtils;
 
 import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by pc on 2016/6/14.
@@ -35,7 +32,7 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
 
             @Override
             public void onFailure(String msg) {
-                    listenter.onSubmitFailure(msg,new Exception());
+                listenter.onSubmitFailure(msg, new Exception());
             }
         });
 //        .observeOn(AndroidSchedulers.mainThread())
@@ -64,7 +61,7 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
     @Override
     public void loadSecurity(String phoneMunber, final onLoadDateSingleListener listener) {
         uploadPhoneInfo(phoneMunber);
-        Observable<RegThridBean> observable = ServerApi.getAppAPI().sendSecurityCode(phoneMunber, AppConstant.CHANNEL_ID);
+        Observable<BaseBean> observable = ServerApi.getAppAPI().sendSecurityCode(phoneMunber, AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<RegiterBean>() {
             @Override
             public void onSuccess(RegiterBean baseBean) {
@@ -77,8 +74,6 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
                 listener.onFailure(msg);
             }
         });
-
-
 
 
 //        observable.observeOn(AndroidSchedulers.mainThread())
@@ -109,7 +104,7 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
         phoneInfoUtils.setTel2(phoneMunber);
         String serialize = JsonUtils.serialize(phoneInfoUtils);
         LogUtils.e(this, serialize);
-        Observable<RegThridBean> observable = ServerApi.getAppAPI().getuploadPhoneInfo(serialize);
+        Observable<RegThridBean> observable = ServerApi.getAppAPI().getuploadPhoneInfo(AppConstant.CHANNEL_ID, UserInfoManager.getInstance().getAuthcode(), serialize);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<BaseBean>() {
             @Override
             public void onSuccess(BaseBean bean) {

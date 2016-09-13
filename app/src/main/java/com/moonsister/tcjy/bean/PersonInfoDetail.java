@@ -20,7 +20,7 @@ public class PersonInfoDetail extends BaseDataBean {
     private String brith;//用户生日
     private String address;//用户住址
     private String profession;//用户职业
-    private String smobile;//手机号
+    private String mobile;//手机号
 
     /**
      * 认证状态 1 已认证  2 认证中  3 未认证
@@ -37,11 +37,11 @@ public class PersonInfoDetail extends BaseDataBean {
     private List<String> userFriendList;
 
     public String getSmobile() {
-        return smobile;
+        return mobile;
     }
 
     public void setSmobile(String smobile) {
-        this.smobile = smobile;
+        this.mobile = smobile;
     }
 
     /**

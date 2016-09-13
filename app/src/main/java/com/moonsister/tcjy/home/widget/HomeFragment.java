@@ -19,6 +19,7 @@ import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.home.presenetr.HomeFragmentPresenter;
 import com.moonsister.tcjy.home.presenetr.HomeFragmentPresenterImpl;
 import com.moonsister.tcjy.home.view.HomeView;
+import com.moonsister.tcjy.manager.UserInfoBannerManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.FragmentUtils;
 
@@ -39,6 +40,8 @@ public class HomeFragment extends BaseFragment implements HomeView {
     FrameLayout layout_home_content;
     @Bind(R.id.tv_search)
     ImageView tv_search;
+    @Bind(R.id.fl_banner)
+    ViewGroup flBanner;
     private HomeFragmentPresenter mPresenter;
     private FragmentManager mFragmentManager;
     private GoodSelectFragment mCurrentFragment, goodSelectFragment, sameCityFragment;
@@ -55,6 +58,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
     protected void initData() {
         tv_search.setVisibility(View.VISIBLE);
         mPresenter.swicthNavigation(R.id.tv_navigation_good_select);
+        UserInfoBannerManager.getInstance().show(getActivity(),flBanner);
     }
 
 

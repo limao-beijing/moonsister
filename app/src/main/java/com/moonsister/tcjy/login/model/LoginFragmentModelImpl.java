@@ -18,6 +18,7 @@ public class LoginFragmentModelImpl implements LoginFragmentModel {
         ObservableUtils.parser(observable, new ObservableUtils.Callback<LoginBean>() {
             @Override
             public void onSuccess(LoginBean bean) {
+
                 Listener.onSuccess(bean, DataType.DATA_ZERO);
             }
 

@@ -1,29 +1,31 @@
 package com.moonsister.tcjy.login.presenter;
 
+import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.InsertBaen;
-import com.moonsister.tcjy.bean.RegThridBean;
+import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.login.model.RegActivityModel;
 import com.moonsister.tcjy.login.model.RegActivityModelImpl;
 import com.moonsister.tcjy.login.view.RegThridActivityView;
+import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tcjy.utils.UIUtils;
 
 /**
  * Created by x on 2016/8/31.
  */
-public class RegActivityPresenterImpl implements RegActivityPresenter,BaseIModel.onLoadDateSingleListener<RegThridBean>{
+public class RegActivityPresenterImpl implements RegActivityPresenter, BaseIModel.onLoadDateSingleListener<BaseBean> {
     private RegThridActivityView view;
     private RegActivityModel model;
 
     @Override
     public void getThrid(String mobile, String pwd, String birthday, String code) {
         view.showLoading();
-        model.getThridReg(mobile,pwd,birthday,code,this);
+        model.getThridReg(mobile, pwd, birthday, code, this);
     }
 
     @Override
     public void getSecurityCode(String mobile) {
         view.showLoading();
-        model.getThridReg(mobile,this);
+        model.getSecurityCode(mobile, this);
     }
 
 
@@ -39,13 +41,27 @@ public class RegActivityPresenterImpl implements RegActivityPresenter,BaseIModel
     }
 
     @Override
-    public void onSuccess(RegThridBean regThridBean, BaseIModel.DataType dataType) {
-        view.hideLoading();
-        if (regThridBean != null) {
-            if ("1".equals(regThridBean.getCode()))
-//                view.LoopMsg(regThridBean.getData().g);
-            view.requestFailed(regThridBean.getMsg());
+    public void onSuccess(BaseBean bean, BaseIModel.DataType dataType) {
+        if (bean == null) {
+            view.hideLoading();
+            view.transfePageMsg(UIUtils.getStringRes(R.string.request_failed));
+            return;
         }
+        switch (dataType) {
+            case DATA_ZERO:
+                if (StringUtis.equals(bean.getCode(), "1")) {
+                    view.LoopMsg();
+                }
+
+                break;
+            case DATA_ONE:
+                if (StringUtis.equals("1", bean.getCode())) {
+                    view.finishPage();
+                }
+                break;
+        }
+        view.transfePageMsg(bean.getMsg());
+        view.hideLoading();
     }
 
     @Override

@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
+import com.moonsister.tcjy.manager.UserInfoBannerManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
 
@@ -24,6 +25,8 @@ public class HomeTopFragment extends BaseFragment {
     TextView tvHomeNearby;
     @Bind(R.id.tv_home_new)
     TextView tvHomeNew;
+    @Bind(R.id.fl_banner)
+    ViewGroup flBanner;
     private HomeTopItemFragment homeHotFragment, homeNearbyFragment, honeNewFragment;
 
     @Override
@@ -34,6 +37,7 @@ public class HomeTopFragment extends BaseFragment {
     @Override
     protected void initData() {
         onClick(tvHomeHot);
+        UserInfoBannerManager.getInstance().show(getActivity(), flBanner);
     }
 
     @OnClick({R.id.iv_search, R.id.tv_home_hot, R.id.tv_home_nearby, R.id.tv_home_new})
@@ -72,7 +76,7 @@ public class HomeTopFragment extends BaseFragment {
 
         if (fragment == null)
             return;
-        hideFragment( fragment, R.id.fl_content);
+        hideFragment(fragment, R.id.fl_content);
         tvHomeHot.setSelected(fragment == homeHotFragment);
         tvHomeNearby.setSelected(fragment == homeNearbyFragment);
         tvHomeNew.setSelected(fragment == honeNewFragment);

@@ -22,6 +22,7 @@ import com.moonsister.tcjy.home.widget.SearchReasonActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordNextActivity;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
+import com.moonsister.tcjy.login.widget.RegActivity;
 import com.moonsister.tcjy.main.widget.BuyVipActivity;
 import com.moonsister.tcjy.main.widget.DynamicAtionActivity;
 import com.moonsister.tcjy.main.widget.DynamicDatailsActivity;
@@ -703,11 +704,13 @@ public class ActivityUtils {
         startActivity(ManorGrilActivity.class);
     }
 
-    //兴趣选择页跳注册页
-//    public static void startRegActivity() {
-//        Intent intent=new Intent(InsertActivity.this,RegActivity.class);
-//        startActivity(intent);
-//    }
+    /**
+     * 绑定手机
+     */
+    public static void startRegActivity() {
+        Intent intent = new Intent(getContext(), RegActivity.class);
+        startActivity(intent);
+    }
 //    //我的页面不是会员    定义跳转的activity
 //    public static void startNoActivity() {
 //        startActivity(RZFirstActivity.class);

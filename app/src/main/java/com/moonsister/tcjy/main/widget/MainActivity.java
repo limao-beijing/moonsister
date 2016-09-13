@@ -113,7 +113,7 @@ public class MainActivity extends BaseActivity implements MainView {
             public void onSuccess(int number) {
                 if (tvMsgNumber == null)
                     return;
-                if (number < 1) {
+                if (number <= 0) {
                     number = 0;
                     tvMsgNumber.setText(number + "");
                     tvMsgNumber.setVisibility(View.GONE);
@@ -153,6 +153,9 @@ public class MainActivity extends BaseActivity implements MainView {
          * 开启推送会员机制
          */
         mMainPresenter.getUserFriendList();
+        /**
+         * 轮询消息
+         */
         IMManager.getInstance().start(UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
 
     }

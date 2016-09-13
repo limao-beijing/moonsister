@@ -274,4 +274,5 @@
     <string name="not_wacth">未关注</string>
     <string name="stick">置顶</string>
     <string name="lable_number_more_sex">最多选择六个标签</string>
+    <string name="phone_binding">手机绑定</string>
 </resources>

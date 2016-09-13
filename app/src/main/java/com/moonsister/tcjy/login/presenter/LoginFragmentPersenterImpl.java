@@ -3,7 +3,6 @@ package com.moonsister.tcjy.login.presenter;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.LoginBean;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.login.model.LoginFragmentModel;
@@ -42,7 +41,6 @@ public class LoginFragmentPersenterImpl implements LoginFragmentPersenter, BaseI
 
     @Override
     public void onSuccess(LoginBean loginBean, BaseIModel.DataType dataType) {
-        loginView.hideLoading();
         if (loginBean != null) {
             if (StringUtis.equals(loginBean.getCode(), AppConstant.code_request_success)) {
                 PersonInfoDetail data = loginBean.getData();
