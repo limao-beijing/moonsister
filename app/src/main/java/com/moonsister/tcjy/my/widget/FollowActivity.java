@@ -83,7 +83,7 @@ public class FollowActivity extends BaseActivity implements RelationActivityView
 
 
 
-    @OnClick({R.id.my_follow, R.id.follow_my,R.id.image_back})
+    @OnClick({R.id.my_follow, R.id.follow_my,R.id.image_back,R.id.image_pingbi})
 
     public void onClick(View view) {
         switch (view.getId()) {
@@ -104,7 +104,8 @@ public class FollowActivity extends BaseActivity implements RelationActivityView
                 image_pingbi.setVisibility(View.VISIBLE);
                 break;
             case R.id.image_pingbi:
-
+                Intent intent=new Intent(FollowActivity.this,PingbiActivity.class);
+                startActivity(intent);
                 break;
             case R.id.image_back:
                 this.finish();

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_nan"
+                android:layout_marginLeft="@dimen/x10"
+                android:textSize="18sp"
+                android:text="男选项"/>
+            <GridView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/x300"
+                android:id="@+id/grid_nan"
+                android:layout_below="@+id/text_nan"
+                android:layout_toRightOf="@+id/text_nan"
+                android:numColumns="3"></GridView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_gril"
+                android:layout_below="@+id/grid_nan"
+                android:textSize="18sp"
+                android:layout_marginLeft="@dimen/x10"
+                android:text="女选项"/>
+            <GridView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/x250"
+                android:id="@+id/grid_gril"
+                android:layout_below="@+id/text_gril"
+                android:layout_toRightOf="@+id/text_gril"
+                android:numColumns="3"></GridView>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

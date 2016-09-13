@@ -775,7 +775,8 @@ public class ServerApi {
         Observable<FrientBaen> getFenRelation(@Query("page") int page,
                                               @Query("ouid") String uid,
                                               @Query("authcode") String authcode,
-                                              @Query("channel") String channel);
+                                              @Query("channel") String channel,
+                                              @Query("version_type") String apiVersion);
 
         /**
          * 更新位置信息
@@ -1185,12 +1186,34 @@ public class ServerApi {
          * @return
          */
         @GET("shield/shield_act")
-        Observable<PingbiBean> pingbibean(@Query("type") int type,
+        Observable<DefaultDataBean> pingbibean(@Query("type") String type,
+                                                        @Query("to_uid") String to_uid,
+                                                        @Query("authcode") String authcode,
+                                                        @Query("channel") String channelId,
+                                                        @Query("version_type") String apiVersion);
+        /**
+         * 未屏蔽
+         *
+         * @param type
+         * @param to_uid
+         * @return
+         */
+        @GET("shield/shield_act")
+        Observable<DefaultDataBean> weipingbibean(@Query("type") String type,
                                           @Query("to_uid") String to_uid,
                                           @Query("authcode") String authcode,
-                                          @Query("channel") String channelId);
+                                          @Query("channel") String channelId,
+                                          @Query("version_type") String apiVersion);
 
-
+        /**
+         * 屏蔽列表
+         * @param page
+         * */
+        @GET("index/shield/tlist")
+        Observable<PingbiBean> pingbiliebiao(@Query("page") String page,
+                                                  @Query("authcode") String authcode,
+                                                  @Query("channel") String channelId,
+                                                  @Query("version_type") String apiVersion);
     }
 }
 

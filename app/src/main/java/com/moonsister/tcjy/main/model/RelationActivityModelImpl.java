@@ -25,7 +25,7 @@ public class RelationActivityModelImpl implements RelationActivityModel {
             observable = ServerApi.getAppAPI().getWacthRelation(page, uid,UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
 
         } else if (type == RelationActivity.FANS_PAGE) {
-            observable = ServerApi.getAppAPI().getFenRelation(page, uid,UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+            observable = ServerApi.getAppAPI().getFenRelation(page, uid,UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID,AppConstant.API_VERSION);
         }
         if (observable == null) {
             listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
@@ -44,19 +44,19 @@ public class RelationActivityModelImpl implements RelationActivityModel {
         });
     }
 
-    @Override
-    public void toup(int type, String to_uid, onLoadDateSingleListener<BaseBean> listener) {
-        Observable<PingbiBean> observable = ServerApi.getAppAPI().pingbibean(type, to_uid,UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
-        ObservableUtils.parser(observable, new ObservableUtils.Callback<PingbiBean>() {
-            @Override
-            public void onSuccess(PingbiBean bean) {
-                listener.onSuccess(bean, DataType.DATA_ZERO);
-            }
-
-            @Override
-            public void onFailure(String msg) {
-                listener.onFailure(msg);
-            }
-        });
-    }
+//    @Override
+//    public void toup(String type, String to_uid, onLoadDateSingleListener<BaseBean> listener) {
+//        Observable<PingbiBean> observable = ServerApi.getAppAPI().pingbibean(type, to_uid,UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID,AppConstant.API_VERSION);
+//        ObservableUtils.parser(observable, new ObservableUtils.Callback<PingbiBean>() {
+//            @Override
+//            public void onSuccess(PingbiBean bean) {
+//                listener.onSuccess(bean, DataType.DATA_ZERO);
+//            }
+//
+//            @Override
+//            public void onFailure(String msg) {
+//                listener.onFailure(msg);
+//            }
+//        });
+//    }
 }
