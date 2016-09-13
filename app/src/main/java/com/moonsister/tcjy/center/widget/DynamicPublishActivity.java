@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.TextView;
 
+import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.bean.model.BaseFragmentActivity;
 import com.moonsister.tcjy.center.presenter.DynamicPublishPresenter;
@@ -48,7 +49,30 @@ public class DynamicPublishActivity extends BaseFragmentActivity implements View
     @Override
     protected void onStart() {
         super.onStart();
-        certificationStatus();
+        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1002")) {
+            certificationVIPStatu();
+        } else {
+            certificationStatus();
+        }
+    }
+
+    private void certificationVIPStatu() {
+        int status = UserInfoManager.getInstance().getMemoryPersonInfoDetail().getVipStatus();
+        if (status != 1) {
+            AlearDialog alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_publish_1002, this);
+            alearDialog.setListenter(new AlearDialog.onClickListenter() {
+                @Override
+                public void clickType(AlearDialog.clickType type) {
+                    if (type == AlearDialog.clickType.confirm) {
+                        ActivityUtils.startBuyVipActivity();
+                    } else if (type == AlearDialog.clickType.cancel) {
+                        finish();
+                    }
+                    alearDialog.dismiss();
+                }
+            });
+        }
+
     }
 
     public void certificationStatus() {

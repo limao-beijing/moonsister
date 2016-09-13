@@ -23,6 +23,9 @@ import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.NoScrollGridView;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
+import java.util.Arrays;
+import java.util.List;
+
 import butterknife.Bind;
 import im.gouyin.com.progressdialog.AlearDialog;
 
@@ -206,8 +209,10 @@ public class PicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.UserI
             pic.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    String[] array = UIUtils.getResources().getStringArray(R.array.dynamic_channel_1002);
+                    List<String> strings = Arrays.asList(array);
                     if (StringUtis.equals(bean.getIspay(), "2")) {
-                        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1002")) {
+                        if (strings.contains(AppConstant.CHANNEL_ID)) {
                             alear();
                         } else
                             ActivityUtils.startPayDynamicRedPackketActivity(bean.getMoney(), bean.getLatest_id());

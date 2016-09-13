@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.DynamicAdapter;
 import com.moonsister.tcjy.base.BaseFragment;
@@ -23,11 +25,9 @@ import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.PersonDynamicViewholder;
 import com.moonsister.tcjy.widget.XListView;
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.trello.rxlifecycle.FragmentEvent;
 
 import java.util.List;
-import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -73,7 +73,9 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
             tv_certification.setText(UIUtils.getStringRes(R.string.Certificationing));
         } else
             tv_certification.setText(UIUtils.getStringRes(R.string.not_Certificationing));
-
+        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1002")) {
+            tv_certification.setVisibility(View.GONE);
+        }
         recyclerview.setVerticalLinearLayoutManager();
         recyclerview.addHeaderView(initHeadLayout());
         recyclerview.setLoadingListener(new XRecyclerView.LoadingListener() {

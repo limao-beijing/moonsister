@@ -87,11 +87,11 @@
             android:value="57be97bee0f55a68b40040c1"/>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="1015"/>
+            android:value="1009"/>
         <!--API  接口-->
         <meta-data
             android:name="API_CHANNEL"
-            android:value="1015"/>
+            android:value="1009"/>
         <!-- 友盟  end -->
         <!-- 高德 start -->
         <meta-data

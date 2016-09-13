@@ -34,4 +34,9 @@
         <item>1314</item>
         <item>9420</item>
     </string-array>
+    <!--弹框-1002类型-->
+    <string-array name="dynamic_channel_1002">
+        <item>1002</item>
+        <item>1016</item>
+    </string-array>
 </resources>

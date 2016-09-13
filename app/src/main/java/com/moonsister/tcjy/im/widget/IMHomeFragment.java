@@ -42,7 +42,6 @@ public class IMHomeFragment extends BaseFragment implements BaseIView, IMHomeVie
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         presenter = new IMHomeFragmentPresenterImpl();
         presenter.attachView(this);
         View view = inflater.inflate(R.layout.home_one_menu, container, false);

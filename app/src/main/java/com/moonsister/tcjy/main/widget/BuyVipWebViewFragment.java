@@ -19,6 +19,7 @@ import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenter;
 import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenterImpl;
 import com.moonsister.tcjy.main.view.BuyVipFragmentView;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.widget.WebView;
 
@@ -42,7 +43,9 @@ public class BuyVipWebViewFragment extends BaseFragment implements WebView.onWeb
         //设置本地调用对象及其接口
         mWebView.addJavascriptInterface(new JavaScriptObject(this), "obj");
         mWebView.setWebViewListener(this);
-        mWebView.loadUrl(ServerApi.AppAPI.baseUrl+"mmvip/info/?authcode=" + UserInfoManager.getInstance().getAuthcode() + "&channel=" + AppConstant.CHANNEL_ID);
+        String url = ServerApi.AppAPI.baseUrl + "mmvip/info/?authcode=" + UserInfoManager.getInstance().getAuthcode() + "&channel=" + AppConstant.CHANNEL_ID;
+        LogUtils.e(this, "url : " + url);
+        mWebView.loadUrl(url);
     }
 
     public static Fragment newInstance() {
@@ -74,7 +77,7 @@ public class BuyVipWebViewFragment extends BaseFragment implements WebView.onWeb
         RxBus.getInstance().send(Events.EventEnum.BUY_VIP_SUCCESS, null);
         PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
         memoryPersonInfoDetail.setVipStatus(1);
-        if (StringUtis.equals(AppConstant.CHANNEL_ID,"1015")){
+        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1015") || StringUtis.equals(AppConstant.CHANNEL_ID, "1009")) {
             memoryPersonInfoDetail.setAttestation(1);
         }
         UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);

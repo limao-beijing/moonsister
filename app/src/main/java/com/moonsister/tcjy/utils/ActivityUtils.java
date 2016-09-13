@@ -231,7 +231,11 @@ public class ActivityUtils {
      * 认证
      */
     public static void startCertificationActivity() {
-        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1015")) {
+        if (!UserInfoManager.getInstance().isLogin()) {
+            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+            return;
+        }
+        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1015") || StringUtis.equals(AppConstant.CHANNEL_ID, "1009")) {
             startBuyVipActivity();
         } else
             startActivity(CertificationActivity.class);
@@ -563,6 +567,10 @@ public class ActivityUtils {
      * 开启购买vip
      */
     public static void startBuyVipActivity() {
+        if (!UserInfoManager.getInstance().isLogin()) {
+            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+            return;
+        }
         Intent intent = new Intent(getContext(), BuyVipActivity.class);
         startActivity(intent);
     }

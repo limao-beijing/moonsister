@@ -19,7 +19,7 @@ public class AlearDialog {
     private Dialog dialog;
 
     public static enum DialogType {
-        Certification_publish, Certification_comment, Certification_im, Certification_dynamic,Certification_im_1015
+        Certification_publish, Certification_publish_1002, Certification_comment, Certification_im, Certification_dynamic, Certification_im_1015, Certification_im_1002
     }
 
     public static enum clickType {
@@ -38,6 +38,9 @@ public class AlearDialog {
             case Certification_publish:
                 resID = R.layout.dialog_certification;
                 break;
+            case Certification_publish_1002:
+                resID=R.layout.dialog_certification_10002;
+                break;
             case Certification_comment:
                 resID = R.layout.dialog_certification;
                 break;
@@ -48,7 +51,10 @@ public class AlearDialog {
                 resID = R.layout.dialog_certification_dynamic;
                 break;
             case Certification_im_1015:
-                resID=R.layout.certification_im_1015;
+                resID = R.layout.certification_im_1015;
+                break;
+            case Certification_im_1002:
+                resID = R.layout.certification_im_1002;
                 break;
         }
         initDialog(resID);
@@ -85,6 +91,9 @@ public class AlearDialog {
             case Certification_publish:
                 content = activity.getResources().getString(R.string.certification_publish_text);
                 break;
+            case Certification_publish_1002:
+                content=activity.getString(R.string.certification_publish_1002_text);
+                break;
             case Certification_comment:
                 content = activity.getResources().getString(R.string.certification_comment_text);
                 break;
@@ -95,7 +104,10 @@ public class AlearDialog {
                 content = activity.getResources().getString(R.string.certification_dynamic_text);
                 break;
             case Certification_im_1015:
-                content=activity.getResources().getString(R.string.Certification_im_1015);
+                content = activity.getResources().getString(R.string.Certification_im_1015);
+                break;
+            case Certification_im_1002:
+                content = activity.getResources().getString(R.string.Certification_im_1015);
                 break;
         }
         return content;
