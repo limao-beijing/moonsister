@@ -36,6 +36,32 @@
             android:textColor="@color/black_1d262e"
             android:textSize="@dimen/text_size_16"/>
 
+        <ImageView
+            android:id="@+id/iv_vip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_user_name"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_toRightOf="@+id/tv_user_name"
+            android:src="@mipmap/vipmost"/>
+
+        <TextView
+            android:id="@+id/tv_job"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_user_name"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_toRightOf="@+id/iv_vip"
+            android:background="@drawable/backgroup_red"
+            android:paddingBottom="@dimen/x2"
+            android:paddingLeft="@dimen/x8"
+            android:paddingRight="@dimen/x8"
+            android:paddingTop="@dimen/x2"
+            android:text="@string/loading"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_13"/>
+
+
         <TextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
@@ -101,7 +127,7 @@
     <com.moonsister.tcjy.widget.NoScrollGridView
         android:id="@+id/no_gv"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="@dimen/x15"
         android:layout_marginRight="@dimen/x15"

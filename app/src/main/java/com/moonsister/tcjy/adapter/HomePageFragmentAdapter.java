@@ -7,7 +7,9 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewAdapter;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.DynamicItemBean;
+import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.main.view.HomePageFragmentView;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.homepage.HomePagePicViewHolder;
 import com.moonsister.tcjy.viewholder.homepage.HomePageVideoViewHolder;
@@ -98,4 +100,79 @@ public class HomePageFragmentAdapter extends BaseRecyclerViewAdapter<DynamicItem
         if (mBaseView!=null)
             mBaseView.refreshData();
     }
+
+    public void updataPayData(PayRedPacketPicsBean bean) {
+        if (bean == null || bean.getData() == null)
+            return;
+        if (datas != null) {
+            for (int i = 0; i < datas.size(); i++) {
+                DynamicItemBean ls = datas.get(i);
+                if (ls != null && StringUtis.equals(ls.getLatest_id(), bean.getData().getLatest_id())) {
+                    switch (ls.getType()) {
+                        case TYPE_CHARGE_PIC:
+                            ls.setIspay("1");
+                            ls.getSimg();
+                            ls.getSimg().clear();
+                            ls.getSimg().addAll(bean.getData().getSimg());
+                            ls.getImg().clear();
+                            ls.getImg().addAll(bean.getData().getImg());
+                            break;
+                        case TYPE_FREE_PIC:
+                            ls.setIspay("1");
+                            ls.getSimg();
+                            ls.getSimg().clear();
+                            ls.getSimg().addAll(bean.getData().getSimg());
+                            ls.getImg().clear();
+                            ls.getImg().addAll(bean.getData().getImg());
+                            break;
+                        case TYPE_CHARGE_VIDEO:
+                            List<String> simg = bean.getData().getSimg();
+                            if (simg.size() > 0) {
+                                ls.setIspay("1");
+                                String s = simg.get(0);
+                                ls.setVimg(s);
+                                ls.setVideo(bean.getData().getV().get(0));
+                            }
+
+                            break;
+                        case TYPE_FREE_VIDEO:
+                            List<String> freeimg = bean.getData().getSimg();
+                            if (freeimg.size() > 0) {
+                                ls.setIspay("1");
+                                String s = freeimg.get(0);
+                                ls.setVimg(s);
+                                ls.setVideo(bean.getData().getV().get(0));
+                            }
+
+                            break;
+                        case TYPE_CHARGE_VOICE:
+                            List<String> voive = bean.getData().getSimg();
+                            if (voive.size() > 0) {
+                                ls.setIspay("1");
+                                String s = voive.get(0);
+                                ls.setVimg(s);
+                                ls.setVideo(bean.getData().getV().get(0));
+                            }
+
+                            break;
+                        case TYPE_FREE_VOICE:
+                            List<String> freevoice = bean.getData().getSimg();
+                            if (freevoice.size() > 0) {
+                                ls.setIspay("1");
+                                String s = freevoice.get(0);
+                                ls.setVimg(s);
+                                ls.setVideo(bean.getData().getV().get(0));
+                            }
+
+                            break;
+                    }
+
+
+                    notifyDataSetChanged();
+                    break;
+                }
+            }
+        }
+    }
+
 }

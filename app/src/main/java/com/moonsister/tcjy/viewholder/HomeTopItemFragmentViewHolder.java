@@ -80,7 +80,7 @@ public class HomeTopItemFragmentViewHolder extends BaseRecyclerViewHolder<HomeTo
 //        }
         String level = uinfo1.getVip_level();
         if (StringUtis.equals("1", level)) {
-            iv_vip.setImageResource(R.mipmap.vipone);
+            iv_vip.setImageResource(R.mipmap.vipxiao);
         } else if (StringUtis.equals("3", level)) {
             iv_vip.setImageResource(R.mipmap.vipnext);
         } else if (StringUtis.equals("12", level)) {

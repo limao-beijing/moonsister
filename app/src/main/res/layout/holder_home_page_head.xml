@@ -65,6 +65,13 @@
             android:text="@string/loading"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_16"/>
+        <ImageView
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_alignBottom="@+id/tv_user_name"
+            android:layout_toRightOf="@+id/tv_user_name"
+            android:id="@+id/iv_vip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/tv_job"
@@ -145,6 +152,7 @@
             android:layout_alignTop="@+id/center_line"
             android:layout_toLeftOf="@+id/center_line"
             android:gravity="center_horizontal"
+            android:paddingBottom="@dimen/x30"
             android:text="@string/loading"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_16"/>
@@ -153,7 +161,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_wacth_number"
-            android:layout_marginTop="@dimen/x10"
+            android:layout_marginTop="-10dp"
             android:layout_toLeftOf="@+id/center_line"
             android:gravity="center_horizontal"
             android:text="@string/wacth"
@@ -167,6 +175,7 @@
             android:layout_alignTop="@+id/center_line"
             android:layout_toRightOf="@+id/center_line"
             android:gravity="center_horizontal"
+            android:paddingBottom="@dimen/x30"
             android:text="@string/loading"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_16"/>
@@ -175,7 +184,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_wacth_number"
-            android:layout_marginTop="@dimen/x10"
+            android:layout_marginTop="-10dp"
             android:layout_toRightOf="@+id/center_line"
             android:gravity="center_horizontal"
             android:text="@string/str_fen"

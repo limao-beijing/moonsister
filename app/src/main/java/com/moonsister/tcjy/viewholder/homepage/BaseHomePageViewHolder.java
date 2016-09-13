@@ -55,6 +55,10 @@ public class BaseHomePageViewHolder extends BaseRecyclerViewHolder<DynamicItemBe
     TextView tv_time;
     @Bind(R.id.iv_add_v)
     ImageView iv_add_v;
+    @Bind(R.id.iv_vip)
+    ImageView iv_vip;
+    @Bind(R.id.tv_job)
+    TextView tv_job;
 
     public BaseHomePageViewHolder(View view) {
         super(view);
@@ -77,6 +81,22 @@ public class BaseHomePageViewHolder extends BaseRecyclerViewHolder<DynamicItemBe
         if (!StringUtis.isEmpty(tags)) {
             tags = tags.replace("|||", "  ");
         }
+        String profession = dynamicItemBean.getProfession();
+        if (StringUtis.isEmpty(profession)) {
+            tv_job.setVisibility(View.GONE);
+        } else {
+            tv_job.setVisibility(View.VISIBLE);
+            tv_job.setText(profession);
+        }
+        String level = dynamicItemBean.getVip_level();
+        if (StringUtis.equals("1", level)) {
+            iv_vip.setImageResource(R.mipmap.vipxiao);
+        } else if (StringUtis.equals("3", level)) {
+            iv_vip.setImageResource(R.mipmap.vipnext);
+        } else if (StringUtis.equals("12", level)) {
+            iv_vip.setImageResource(R.mipmap.vipmost);
+        } else iv_vip.setImageBitmap(null);
+
         iv_add_v.setVisibility(StringUtis.equals(dynamicItemBean.getIsauth(), "1") ? View.VISIBLE : View.GONE);
         boolean isTop = StringUtis.equals(dynamicItemBean.getIstop(), "1");
         tv_time.setText(isTop ? UIUtils.getStringRes(R.string.stick) : TimeUtils.getDynamicTimeString(dynamicItemBean.getCreate_time()));
@@ -93,7 +113,7 @@ public class BaseHomePageViewHolder extends BaseRecyclerViewHolder<DynamicItemBe
         tvUserTag.setText(tags);
         dynamicContent.setText(dynamicItemBean.getTitle());
         tvHomePageComment.setText(dynamicItemBean.getLcomn());
-        tvHomePagePay.setText(dynamicItemBean.getMoney());
+        tvHomePagePay.setText(dynamicItemBean.getView_num());
         tvUserLike.setText(dynamicItemBean.getLupn());
 
 

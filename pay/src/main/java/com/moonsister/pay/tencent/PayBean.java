@@ -45,6 +45,7 @@ public class PayBean {
     }
 
     public static class DataBean {
+        private String type;
         //支付宝
         private String alicode;
         private String appid;
@@ -59,6 +60,14 @@ public class PayBean {
         private String abcode;
         //order_id
         private  String order_id;
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
 
         public String getOrder_id() {
             return order_id;

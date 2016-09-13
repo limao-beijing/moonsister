@@ -42,7 +42,6 @@ import com.moonsister.tcjy.my.widget.AddActivity;
 import com.moonsister.tcjy.my.widget.AddCardActivity;
 import com.moonsister.tcjy.my.widget.AppointmentActivity;
 import com.moonsister.tcjy.my.widget.BirthdayActivity;
-import com.moonsister.tcjy.my.widget.CertificationActivity;
 import com.moonsister.tcjy.my.widget.ChangepwdActivity;
 import com.moonsister.tcjy.my.widget.FollowActivity;
 import com.moonsister.tcjy.my.widget.GetMoneyActivity;
@@ -250,7 +249,8 @@ public class ActivityUtils {
      * 认证
      */
     public static void startCertificationActivity() {
-        startActivity(CertificationActivity.class);
+//        startActivity(CertificationActivity.class);
+        startRenZhengActivity();
     }
 
     /**
@@ -499,7 +499,7 @@ public class ActivityUtils {
      * @param uid
      * @param id
      * @param type
-     * @param istopy
+     * @param
      */
     public static void startDynamicAtionActivity(String uid, String id, int type, String istop) {
         Intent intent = new Intent(getContext(), DynamicAtionActivity.class);

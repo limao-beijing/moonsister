@@ -144,13 +144,28 @@ public class DynamicPublishActivity extends BaseFragmentActivity implements View
         String adress = "";
         if (dyf.isShowAdress())
             adress = GaodeManager.getInstance().getStringAdress();
-        presenter.sendDynamic(type, txtContent, dynamicContent, adress);
+        presenter.sendDynamic(type, txtContent, dynamicContent, splice(lables, "|||"), adress);
     }
 
     @Override
     public void finishPage() {
         ActivityUtils.startDynamicActivity(UserInfoManager.getInstance().getUid());
         finish();
+    }
+
+    private String splice(List<String> arrays, String tag) {
+        if (arrays == null || StringUtis.isEmpty(tag))
+            return "";
+
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < arrays.size(); i++) {
+            sb.append(arrays.get(i));
+            if (i != arrays.size() - 1) {
+                sb.append(tag);
+            }
+        }
+        return sb.toString();
+
     }
 
     @Override

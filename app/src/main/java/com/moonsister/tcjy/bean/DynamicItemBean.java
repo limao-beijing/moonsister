@@ -16,6 +16,7 @@ public class DynamicItemBean extends BaseDataBean {
     private String fansnum;
     private int dtype;
     private String profession;
+    private String vip_level;
     //动态
     private String tags;
     private String lkpicn;
@@ -38,8 +39,8 @@ public class DynamicItemBean extends BaseDataBean {
     private String video;
     private String tmoney;
     private String comment_count;
-    private String view_num;
     private String ldon;
+    private String view_num ;
     //1认证  0 未认证
     private String isauth;
     //置顶
@@ -51,6 +52,13 @@ public class DynamicItemBean extends BaseDataBean {
 
     private String ispay;
 
+    public String getVip_level() {
+        return vip_level;
+    }
+
+    public void setVip_level(String vip_level) {
+        this.vip_level = vip_level;
+    }
 
     public int getDtype() {
         return dtype;

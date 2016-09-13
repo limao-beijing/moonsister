@@ -83,7 +83,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                 break;
             case "2":
 
-                dynamicType =EnumConstant.DynamicType.FREE_PIC;
+                dynamicType = EnumConstant.DynamicType.FREE_PIC;
                 if (datas == null)
                     datas = new ArrayList();
                 datas.add(R.mipmap.add_dynamic_pic);
@@ -195,7 +195,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                 if (ivSwitch.isOpen()) {
                     location = PrefUtils.getString(ConfigUtils.getInstance().getApplicationContext(), GaodeManager.class.getName(), "");
                 }
-                presenter.sendDynamic(dynamicType, content, datas, location);
+                presenter.sendDynamic(dynamicType, content, datas, "", location);
                 break;
             case R.id.tv_address:
                 break;

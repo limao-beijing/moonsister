@@ -9,12 +9,13 @@
         android:orientation="horizontal"
         android:background="@color/black">
         <ImageView
+            android:padding="@dimen/x30"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/image_back"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/x40"
-            android:background="@mipmap/back"/>
+            android:src="@mipmap/back"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="@dimen/y70"

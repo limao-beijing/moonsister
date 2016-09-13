@@ -224,7 +224,7 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
                     }
                 }
                 break;
-            case DATA_THREE:
+            case DATA_THREE://
                 if (object instanceof UserFriendListBean) {
                     UserFriendListBean bean = (UserFriendListBean) object;
                     List<String> datas = bean.getData();

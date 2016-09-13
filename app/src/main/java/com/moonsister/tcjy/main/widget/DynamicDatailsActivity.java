@@ -208,7 +208,6 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
     @Override
     public void CommentSuccess() {
         CommentDataListBean.DataBean dataBean = new CommentDataListBean.DataBean();
-
         dataBean.setFace(UserInfoManager.getInstance().getAvater());
         dataBean.setNickname(UserInfoManager.getInstance().getNickeName());
         dataBean.setCreate_time(System.currentTimeMillis() / 1000);
@@ -216,6 +215,12 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
         if (mAdapter != null) {
             mAdapter.addSingeData(0, dataBean);
             mAdapter.onRefresh();
+        }
+        if (mDatailsBean != null && mDatailsBean.getData() != null) {
+            String lupn = mDatailsBean.getData().getComment_count();
+            int i = StringUtis.string2Int(lupn) + 1;
+            mDatailsBean.getData().setComment_count(i + "");
+            setDynamicDatails(mDatailsBean);
         }
     }
 
@@ -257,6 +262,7 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
     }
 
     private String s;
+    private boolean isLikeAction = false;
 
     @OnClick({R.id.rl_comment_content, R.id.rl_reward, R.id.rl_not_like, R.id.rl_like, R.id.btn_send})
     public void onClick(View view) {
@@ -268,12 +274,18 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
 
             case R.id.rl_not_like:
                 //type  1顶 2取消顶，3踩，4取消踩
+                if (isLikeAction)
+                    return;
+                isLikeAction = true;
                 if (!StringUtis.equals(likeType, "2"))
 //                if (StringUtis.isEmpty(likeType) || StringUtis.equals(likeType, "3") || StringUtis.equals(likeType, "4") || StringUtis.equals(likeType, "2"))
                     notLikeAction(StringUtis.isEmpty(likeType) || StringUtis.equals("2", likeType) ? "3" : likeType);
                 break;
             case R.id.rl_like:
                 //type  1顶 2取消顶，3踩，4取消踩
+                if (isLikeAction)
+                    return;
+                isLikeAction = true;
                 if (!StringUtis.equals(likeType, "4"))
 //                if (StringUtis.isEmpty(likeType) || StringUtis.equals(likeType, "1") || StringUtis.equals(likeType, "2") || StringUtis.equals(likeType, "4"))
                     LikeAction(StringUtis.isEmpty(likeType) || StringUtis.equals("4", likeType) ? "1" : likeType);
@@ -297,25 +309,39 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
         final String finalType = type;
         showLoading();
         model.likeAction(dynamicId, type, new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
-            @Override
-            public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
-                if (bean != null || StringUtis.equals(bean.getCode(), "1")) {
-                    Drawable drawable = getResources().getDrawable(StringUtis.equals(finalType, "4") ? R.mipmap.not_like_icon : R.mipmap.not_liked_icon);
-                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                    tv_not_like.setCompoundDrawables(drawable, null, null, null);
-                    showToast(bean.getMsg());
+                    @Override
+                    public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+                        if (bean != null || StringUtis.equals(bean.getCode(), "1")) {
+                            Drawable drawable = getResources().getDrawable(StringUtis.equals(finalType, "4") ? R.mipmap.not_like_icon : R.mipmap.not_liked_icon);
+                            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                            tv_not_like.setCompoundDrawables(drawable, null, null, null);
+                            if (mDatailsBean != null && mDatailsBean.getData() != null) {
+                                String lupn = mDatailsBean.getData().getLdon();
+                                int i = StringUtis.string2Int(lupn);
+                                if (StringUtis.equals(type, "4")) {
+                                    i = i > 0 ? (i - 1) : 0;
+                                } else {
+                                    i = i + 1;
+                                }
+                                mDatailsBean.getData().setLdon(i + "");
+                                setDynamicDatails(mDatailsBean);
+                            }
+                            showToast(bean.getMsg());
+
+                        }
+
+                        likeType = StringUtis.equals(type, "3") ? "4" : "3";
+                        hideLoading();
+                    }
+
+                    @Override
+                    public void onFailure(String msg) {
+                        showToast(msg);
+                        hideLoading();
+                    }
                 }
 
-                likeType = StringUtis.equals(type, "3") ? "4" : "3";
-                hideLoading();
-            }
-
-            @Override
-            public void onFailure(String msg) {
-                showToast(msg);
-                hideLoading();
-            }
-        });
+        );
     }
 
     private void LikeAction(String type) {
@@ -329,7 +355,18 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
                     Drawable drawable = getResources().getDrawable(StringUtis.equals(finalType, "2") ? R.mipmap.dynamic_like_icon : R.mipmap.dynamic_liked_icon);
                     drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                     tv_like.setCompoundDrawables(drawable, null, null, null);
-                    showToast(bean.getMsg());
+                    if (mDatailsBean != null && mDatailsBean.getData() != null) {
+                        String lupn = mDatailsBean.getData().getLupn();
+                        int i = StringUtis.string2Int(lupn);
+                        if (StringUtis.equals(type, "2")) {
+                            i = i > 0 ? (i - 1) : 0;
+                        } else {
+                            i = i + 1;
+                        }
+                        mDatailsBean.getData().setLupn(i + "");
+                        setDynamicDatails(mDatailsBean);
+                        showToast(bean.getMsg());
+                    }
                 }
                 likeType = StringUtis.equals(type, "1") ? "2" : "1";
                 hideLoading();

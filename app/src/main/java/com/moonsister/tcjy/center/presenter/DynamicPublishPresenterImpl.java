@@ -33,12 +33,11 @@ public class DynamicPublishPresenterImpl implements DynamicPublishPresenter, Bas
     }
 
     @Override
-    public void sendDynamic(EnumConstant.DynamicType dynamicType, String content, List<String> datas, String address) {
+    public void sendDynamic(EnumConstant.DynamicType dynamicType, String content, List<String> datas, String tags, String address) {
         view.showLoading();
-        model.sendDynamicPics(dynamicType, content, datas, address, this);
+        model.sendDynamicPics(dynamicType, content, datas, tags, address, this);
 
     }
-
 
 
 //    @Override

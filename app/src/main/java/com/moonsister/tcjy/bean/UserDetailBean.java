@@ -98,12 +98,12 @@ public class UserDetailBean extends BaseBean {
             private String birthday;
             private String signature;
             private String residence;
-            private int age;
+            private String age;
             private String tags;
-            private int latest_total;
-            private int latest_free;
-            private int latest_vip;
-            private int isverify;
+            private String latest_total;
+            private String latest_free;
+            private String latest_vip;
+            private String isverify;
             private String vip_level;
 
             public String getNickname() {
@@ -162,20 +162,20 @@ public class UserDetailBean extends BaseBean {
                 this.signature = signature;
             }
 
+            public String getAge() {
+                return age;
+            }
+
+            public void setAge(String age) {
+                this.age = age;
+            }
+
             public String getResidence() {
                 return residence;
             }
 
             public void setResidence(String residence) {
                 this.residence = residence;
-            }
-
-            public int getAge() {
-                return age;
-            }
-
-            public void setAge(int age) {
-                this.age = age;
             }
 
             public String getTags() {
@@ -186,35 +186,35 @@ public class UserDetailBean extends BaseBean {
                 this.tags = tags;
             }
 
-            public int getLatest_total() {
+            public String getLatest_total() {
                 return latest_total;
             }
 
-            public void setLatest_total(int latest_total) {
+            public void setLatest_total(String latest_total) {
                 this.latest_total = latest_total;
             }
 
-            public int getLatest_free() {
+            public String getLatest_free() {
                 return latest_free;
             }
 
-            public void setLatest_free(int latest_free) {
+            public void setLatest_free(String latest_free) {
                 this.latest_free = latest_free;
             }
 
-            public int getLatest_vip() {
+            public String getLatest_vip() {
                 return latest_vip;
             }
 
-            public void setLatest_vip(int latest_vip) {
+            public void setLatest_vip(String latest_vip) {
                 this.latest_vip = latest_vip;
             }
 
-            public int getIsverify() {
+            public String getIsverify() {
                 return isverify;
             }
 
-            public void setIsverify(int isverify) {
+            public void setIsverify(String isverify) {
                 this.isverify = isverify;
             }
 
@@ -228,58 +228,58 @@ public class UserDetailBean extends BaseBean {
         }
 
         public static class AddonsBean {
-            private int ufann;
-            private int ufoln;
-            private int ulatn;
-            private int uflon;
-            private int income_all;
-            private int income_today;
+            private String ufann;
+            private String ufoln;
+            private String ulatn;
+            private String uflon;
+            private String income_all;
+            private String income_today;
 
-            public int getUfann() {
+            public String getUfann() {
                 return ufann;
             }
 
-            public void setUfann(int ufann) {
+            public void setUfann(String ufann) {
                 this.ufann = ufann;
             }
 
-            public int getUfoln() {
+            public String getUfoln() {
                 return ufoln;
             }
 
-            public void setUfoln(int ufoln) {
+            public void setUfoln(String ufoln) {
                 this.ufoln = ufoln;
             }
 
-            public int getUlatn() {
+            public String getUlatn() {
                 return ulatn;
             }
 
-            public void setUlatn(int ulatn) {
+            public void setUlatn(String ulatn) {
                 this.ulatn = ulatn;
             }
 
-            public int getUflon() {
+            public String getUflon() {
                 return uflon;
             }
 
-            public void setUflon(int uflon) {
+            public void setUflon(String uflon) {
                 this.uflon = uflon;
             }
 
-            public int getIncome_all() {
+            public String getIncome_all() {
                 return income_all;
             }
 
-            public void setIncome_all(int income_all) {
+            public void setIncome_all(String income_all) {
                 this.income_all = income_all;
             }
 
-            public int getIncome_today() {
+            public String getIncome_today() {
                 return income_today;
             }
 
-            public void setIncome_today(int income_today) {
+            public void setIncome_today(String income_today) {
                 this.income_today = income_today;
             }
         }

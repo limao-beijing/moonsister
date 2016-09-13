@@ -195,14 +195,14 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
         } else {
             tv_time.setText(birthday);
         }
-        int age = data.getAge();//年龄
-        tv_age.setText(age + "岁");
+       //年龄
+        tv_age.setText(data.getAge() );
         tv_address.setText(data.getResidence());//用户地址
-        int income_all = addons.getIncome_all();//用户总收入
-        tv_user_all_income.setText(income_all + "");
+        //用户总收入
+        tv_user_all_income.setText(addons.getIncome_all());
 
-        int income_today = addons.getIncome_today();//今日收入
-        tv_user_day_income.setText(income_today + "");
+       //今日收入
+        tv_user_day_income.setText(addons.getIncome_today());
         String vip_level = data.getVip_level();//判断是否为VIP
         if (vip_level.equals("0")) {
             vip_money.setVisibility(View.GONE);

@@ -70,6 +70,8 @@ public class HomePageHeadHolder extends BaseHolder<UserInfoDetailBean> {
     View mCenterLine;
     @Bind(R.id.rl_top)
     RelativeLayout mRlTop;
+    @Bind(R.id.iv_vip)
+    ImageView iv_vip;
 
     @Override
     protected View initView() {
@@ -101,6 +103,14 @@ public class HomePageHeadHolder extends BaseHolder<UserInfoDetailBean> {
         } else {
             mIvSex.setImageResource(R.mipmap.gril);
         }
+        String level = baseinfo.getVip_level();
+        if (StringUtis.equals("1", level)) {
+            iv_vip.setImageResource(R.mipmap.vipxiao);
+        } else if (StringUtis.equals("3", level)) {
+            iv_vip.setImageResource(R.mipmap.vipnext);
+        } else if (StringUtis.equals("12", level)) {
+            iv_vip.setImageResource(R.mipmap.vipmost);
+        } else iv_vip.setImageBitmap(null);
 
         mTvAge.setText(baseinfo.getAge());
         mTvTags.setText(baseinfo.getTags().replace("|||", "   "));
@@ -108,12 +118,12 @@ public class HomePageHeadHolder extends BaseHolder<UserInfoDetailBean> {
 //        tvFlowerNumber.setText(addons.getUflon());
         mTvWacthNumber.setText(addons.getUfoln());
 //        getwacthStatus(data.getFollow(), data.getUid());
-        mRivUserImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ActivityUtils.startUserinfoActivity(baseinfo.getUid());
-            }
-        });
+//        mRivUserImage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ActivityUtils.startUserinfoActivity(baseinfo.getUid());
+//            }
+//        });
         mTvWacthNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

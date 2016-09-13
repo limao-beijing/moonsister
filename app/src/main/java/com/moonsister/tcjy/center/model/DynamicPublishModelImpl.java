@@ -1,18 +1,16 @@
 package com.moonsister.tcjy.center.model;
 
 import android.graphics.Bitmap;
-import android.media.ThumbnailUtils;
-import android.provider.MediaStore;
 
 import com.alibaba.sdk.android.oss.ClientException;
 import com.alibaba.sdk.android.oss.ServiceException;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.manager.aliyun.AliyunManager;
-import com.moonsister.tcjy.bean.DynamicContent;
 import com.moonsister.tcjy.bean.BaseBean;
+import com.moonsister.tcjy.bean.DynamicContent;
 import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.manager.aliyun.AliyunManager;
 import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.FastBlur;
 import com.moonsister.tcjy.utils.FilePathUtlis;
@@ -35,7 +33,7 @@ import rx.schedulers.Schedulers;
  */
 public class DynamicPublishModelImpl implements DynamicPublishModel {
     @Override
-    public void sendDynamicPics(EnumConstant.DynamicType dynamicType, String content, List<String> srcdatas, String address, onLoadDateSingleListener listener) {
+    public void sendDynamicPics(EnumConstant.DynamicType dynamicType, String content, List<String> srcdatas, String tags, String address, onLoadDateSingleListener listener) {
         LogUtils.e(DynamicPublishModelImpl.this, "start upload");
 //        ArrayList<DynamicContent> aliyunPtahs = new ArrayList<DynamicContent>();
 
@@ -125,14 +123,14 @@ public class DynamicPublishModelImpl implements DynamicPublishModel {
                         LogUtils.e(DynamicPublishPresenterImpl.class, "  onNext :　" + s.toString());
                         String serialize = JsonUtils.serialize(s);
                         LogUtils.e(DynamicPublishModelImpl.this, "JsonUtils : " + serialize);
-                        sendAllDynamic(dynamicType, content, serialize, address, listener);
+                        sendAllDynamic(dynamicType, content, serialize, tags, address, listener);
                     }
                 });
     }
 
-    private void sendAllDynamic(EnumConstant.DynamicType dynamicType, String content, String json, String address, onLoadDateSingleListener listener) {
+    private void sendAllDynamic(EnumConstant.DynamicType dynamicType, String content, String json, String tags, String address, onLoadDateSingleListener listener) {
         String authcode = UserInfoManager.getInstance().getAuthcode();
-        Observable<BaseBean> baseBeanObservable = ServerApi.getAppAPI().sendAllDefaultDynamic(dynamicType.getValue(), content, json, address, authcode, AppConstant.CHANNEL_ID);
+        Observable<BaseBean> baseBeanObservable = ServerApi.getAppAPI().sendAllDefaultDynamic(dynamicType.getValue(), content, json, tags, address, authcode, AppConstant.CHANNEL_ID);
 
         ObservableUtils.parser(baseBeanObservable, new ObservableUtils.Callback<BaseBean>() {
             @Override

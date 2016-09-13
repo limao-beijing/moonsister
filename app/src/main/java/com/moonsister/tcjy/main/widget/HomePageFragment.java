@@ -14,7 +14,10 @@ import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.DynamicItemBean;
+import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
+import com.moonsister.tcjy.event.Events;
+import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.main.presenter.HomePageFragmentPresenter;
 import com.moonsister.tcjy.main.presenter.HomePageFragmentPresenterImpl;
@@ -22,10 +25,12 @@ import com.moonsister.tcjy.main.view.HomePageFragmentView;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
+import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.HomePageHeadHolder;
 import com.moonsister.tcjy.widget.XListView;
+import com.trello.rxlifecycle.FragmentEvent;
 
 import java.util.List;
 
@@ -88,6 +93,7 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
                         break;
                 }
                 isRefresh = true;
+
                 presenter.loadRefresh(userId, type);
             }
         });
@@ -108,7 +114,39 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
         });
         if (isAddHeaderView())
             xlv.addHeaderView(headHolder.getContentView());
-        xlv.setRefreshing(true);
+//        xlv.setRefreshing(true);
+        presenter.loadHeader(userId);
+        headHolder.onClick(headHolder.getContentView().findViewById(R.id.rl_all));
+        setRx();
+    }
+
+    private void setRx() {
+        RxBus.with(this)
+                .setEndEvent(FragmentEvent.DESTROY)
+                .setEvent(Events.EventEnum.PAY_SUCCESS_GET_DATA)
+                .onNext(events -> {
+                    LogUtils.e("MyFragment", "PAY_SUCCESS_GET_DATA 数据");
+                    if (events != null && adapter != null) {
+                        Object message = events.message;
+                        if (message instanceof PayRedPacketPicsBean) {
+                            PayRedPacketPicsBean bean = (PayRedPacketPicsBean) message;
+                            adapter.updataPayData(bean);
+
+                        }
+                    }
+                })
+                .create();
+        //购买vip
+        RxBus.with(this)
+                .setEndEvent(FragmentEvent.DESTROY)
+                .setEvent(Events.EventEnum.BUY_VIP_SUCCESS)
+                .onNext(events -> {
+                    if (headHolder != null) {
+                        headHolder.onClick(headHolder.getContentView().findViewById(R.id.rl_all));
+                    }
+                })
+                .create();
+
     }
 
     public void setSearchType(EnumConstant.SearchType type) {

@@ -310,6 +310,7 @@ public class ServerApi {
         Observable<BaseBean> sendAllDefaultDynamic(@Field("type") int type,
                                                    @Field("title") String title,
                                                    @Field("contents") String content,
+                                                   @Field("tags") String tags,
                                                    @Field("address") String address,
                                                    @Field("authcode") String authcode,
                                                    @Field("channel") String channel
@@ -392,6 +393,8 @@ public class ServerApi {
         @POST("Latestbuy/latest_buy")
         Observable<PayBean> redPacketPay(@Field("latest_id") String id,
                                          @Field("pay_type") String type,
+                                         @Field("pay_cash_type") String payType,
+                                         @Field("version_type") String version_type,
                                          @Field("authcode") String authcode,
                                          @Field("channel") String channel);
 

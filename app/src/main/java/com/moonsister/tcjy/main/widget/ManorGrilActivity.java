@@ -1,6 +1,5 @@
 package com.moonsister.tcjy.main.widget;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
@@ -26,16 +25,17 @@ import butterknife.OnClick;
 /**
  * Created by x on 2016/8/30.
  */
-public class ManorGrilActivity extends BaseActivity implements ManorGrilActivityView{
+public class ManorGrilActivity extends BaseActivity implements ManorGrilActivityView {
     @Bind(R.id.imageview_man)//选择男图片
-    ImageView imageview_man;
+            ImageView imageview_man;
     @Bind(R.id.imageview_gril)//选择女图片
-    ImageView imageview_gril;
+            ImageView imageview_gril;
     @Bind(R.id.textview_login)//直接登录
-    TextView textview_login;
+            TextView textview_login;
     ManorFrilActivityPresenter persenter;
     int sex;
     String apiVersion;
+
     @Override
     protected View setRootContentView() {
         SharedPreferences sp = getSharedPreferences("data", MODE_PRIVATE);
@@ -44,7 +44,7 @@ public class ManorGrilActivity extends BaseActivity implements ManorGrilActivity
             SharedPreferences.Editor edit = sp.edit();
             edit.putBoolean("isFirst", false);
             //应用首次启动
-            LayoutInflater.from(this).inflate(R.layout.manorgril,null);
+            LayoutInflater.from(this).inflate(R.layout.manorgril, null);
         } else {
             //应用非首次启动
             ActivityUtils.startLoginMainActivity();
@@ -54,15 +54,15 @@ public class ManorGrilActivity extends BaseActivity implements ManorGrilActivity
 
     @Override
     protected void initView() {
-        persenter=new ManorFrilActivityPresenterImpl();//绑定
+        persenter = new ManorFrilActivityPresenterImpl();//绑定
         persenter.attachView(this);
 
 //        persenter.regOne(1);
     }
 
-   @OnClick({R.id.imageview_man,R.id.imageview_gril,R.id.textview_login})
+    @OnClick({R.id.imageview_man, R.id.imageview_gril, R.id.textview_login})
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.imageview_man:
 
                 persenter.regOne(1);
@@ -74,7 +74,7 @@ public class ManorGrilActivity extends BaseActivity implements ManorGrilActivity
 
                 break;
             case R.id.textview_login:
-                Intent i=new Intent(ManorGrilActivity.this, LoginMainActivity.class);
+                Intent i = new Intent(ManorGrilActivity.this, LoginMainActivity.class);
                 startActivity(i);
                 break;
         }
@@ -85,9 +85,10 @@ public class ManorGrilActivity extends BaseActivity implements ManorGrilActivity
 //        RxBus.getInstance().send(Events.EventEnum.BUY_VIP_SUCCESS, null);
         PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();//获得对象
         memoryPersonInfoDetail.setAuthcode(authcode);//保存值
+        memoryPersonInfoDetail.setLogin(true);
         UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
 
-        Intent intent=new Intent(ManorGrilActivity.this, InsertActivity.class);
+        Intent intent = new Intent(ManorGrilActivity.this, InsertActivity.class);
         startActivity(intent);
         this.finish();
     }

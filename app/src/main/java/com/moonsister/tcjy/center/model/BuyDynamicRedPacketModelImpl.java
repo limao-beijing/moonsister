@@ -29,75 +29,83 @@ import rx.schedulers.Schedulers;
 public class BuyDynamicRedPacketModelImpl implements BuyDynamicRedPacketModel {
     @Override
     public void pay(String id, EnumConstant.PayType type, onLoadDateSingleListener listener) {
-        Observable<PayBean> observable = ServerApi.getAppAPI().redPacketPay(id, type.getType(), UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        Observable<PayBean> observable = ServerApi.getAppAPI().redPacketPay(id, type.getType(), "1", "1", UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
 
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<PayBean>() {
-                    @Override
-                    public void onCompleted() {
+                               @Override
+                               public void onCompleted() {
 
-                    }
+                               }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        listener.onFailure(UIUtils.getStringRes(R.string.network_error));
-                    }
+                               @Override
+                               public void onError(Throwable e) {
+                                   listener.onFailure(UIUtils.getStringRes(R.string.network_error));
+                               }
 
-                    @Override
-                    public void onNext(PayBean payBean) {
+                               @Override
+                               public void onNext(PayBean payBean) {
 
-                        if (payBean == null) {
-                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
-                            return;
-                        }
-                        if (StringUtis.equals("1000", payBean.getCode())) {
-                            listener.onFailure(UIUtils.getStringRes(R.string.code_timeout));
-                            RxBus.getInstance().send(Events.EventEnum.LOGIN_CODE_TIMEOUT, null);
-                            return;
-                        }
-                        if (!StringUtis.equals(AppConstant.code_request_success, payBean.getCode())) {
-                            listener.onFailure(payBean.getMsg());
-                            return;
-                        }
+                                   if (payBean == null) {
+                                       listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
+                                       return;
+                                   }
+                                   if (StringUtis.equals("1000", payBean.getCode())) {
+                                       listener.onFailure(UIUtils.getStringRes(R.string.code_timeout));
+                                       RxBus.getInstance().send(Events.EventEnum.LOGIN_CODE_TIMEOUT, null);
+                                       return;
+                                   }
+                                   if (!StringUtis.equals(AppConstant.code_request_success, payBean.getCode())) {
+                                       listener.onFailure(payBean.getMsg());
+                                       return;
+                                   }
 
 
-                        if (payBean.getData() == null) {
-                            listener.onFailure(payBean.getMsg());
-                            return;
-                        }
-                        if (StringUtis.equals(payBean.getCode(), AppConstant.code_request_success)) {
-                            if (type == EnumConstant.PayType.ALI_PAY) {
-                                startPlayApp(id, payBean.getData().getAlicode(), listener);
-                            } else if (type == EnumConstant.PayType.WX_PAY) {
-                                WeixinManager.getInstance(ConfigUtils.getInstance().getApplicationContext(), WXPayEntryActivity.APP_ID).pay(payBean.getData());
-                                listener.onSuccess(null, DataType.DATA_ONE);
-                            } else if (type == EnumConstant.PayType.IAPP_PAY) {
-
-                                AiBeiPayManager.getInstance().pay(ConfigUtils.getInstance().getActivityContext(),  payBean.getData().getAbcode(), new AiBeiPayManager.AiBeiResultCallback() {
-                                    @Override
-                                    public void onPayResult(int resultCode, String resultInfo) {
-                                        if (resultCode == 1) {
+                                   if (payBean.getData() == null) {
+                                       listener.onFailure(payBean.getMsg());
+                                       return;
+                                   }
+                                   if (StringUtis.equals(payBean.getCode(), AppConstant.code_request_success)) {
+                                       if (type == EnumConstant.PayType.ALI_PAY) {
+                                           startPlayApp(id, payBean.getData().getAlicode(), listener);
+                                       } else if (type == EnumConstant.PayType.WX_PAY) {
+                                           WeixinManager.getInstance(ConfigUtils.getInstance().getApplicationContext(), WXPayEntryActivity.APP_ID).pay(payBean.getData());
+                                           listener.onSuccess(null, DataType.DATA_ONE);
+                                       } else if (type == EnumConstant.PayType.IAPP_PAY) {
+                                           // type 2 爱贝的code 1 余额成功 其他失败
+                                           if (StringUtis.equals(payBean.getData().getType(), "1")) {
+                                               getPayDynamicPic(id, listener, DataType.DATA_ZERO);
+                                           } else if (StringUtis.equals(payBean.getData().getType(), "2")) {
+                                               AiBeiPayManager.getInstance().pay(ConfigUtils.getInstance().getActivityContext(), payBean.getData().getAbcode(), new AiBeiPayManager.AiBeiResultCallback() {
+                                                   @Override
+                                                   public void onPayResult(int resultCode, String resultInfo) {
+                                                       if (resultCode == 1) {
 //                                            listener.onSuccess(resultCode + "", DataType.DATA_TWO);
-                                            getPayDynamicPic(id, listener, DataType.DATA_ZERO);
-                                        } else if (resultCode == 4) {
-                                            listener.onFailure(resultInfo);
-                                        } else {
-                                            listener.onFailure(UIUtils.getStringRes(R.string.pay_failure));
-                                        }
-                                    }
-                                });
+                                                           getPayDynamicPic(id, listener, DataType.DATA_ZERO);
+                                                       } else if (resultCode == 4) {
+                                                           listener.onFailure(resultInfo);
+                                                       } else {
+                                                           listener.onFailure(UIUtils.getStringRes(R.string.pay_failure));
+                                                       }
+                                                   }
+                                               });
+                                           } else {
+                                               listener.onFailure(payBean.getMsg());
+                                           }
 
-                            } else {
-                                listener.onFailure(payBean.getMsg());
-                            }
-                        } else {
-                            listener.onFailure(payBean.getMsg());
-                        }
+                                       } else {
+                                           listener.onFailure(payBean.getMsg());
+                                       }
+                                   } else {
+                                       listener.onFailure(payBean.getMsg());
+                                   }
 
 
-                    }
-                });
+                               }
+                           }
+
+                );
 
 
 //        ObservableUtils.parser(observable, new ObservableUtils.Callback<PayBean>() {

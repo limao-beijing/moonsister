@@ -10,6 +10,6 @@ import java.util.List;
  * Created by jb on 2016/6/23.
  */
 public interface DynamicPublishPresenter extends BaseIPresenter<DefaultDynamicView> {
-    void sendDynamic(EnumConstant.DynamicType dynamicType, String content, List<String> datas, String address);
+    void sendDynamic(EnumConstant.DynamicType dynamicType, String content, List<String> datas, String tags, String address);
 
 }

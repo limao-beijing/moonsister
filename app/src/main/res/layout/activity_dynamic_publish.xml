@@ -12,16 +12,22 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/x30"
+        android:padding="@dimen/x30"
         android:src="@mipmap/publish_cancel"/>
 
-    <ImageView
+    <TextView
         android:id="@+id/iv_dynamic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/x400"
-        android:src="@mipmap/publish_dynamic"/>
+        android:drawablePadding="@dimen/x25"
+        android:drawableTop="@mipmap/publish_dynamic"
+        android:gravity="center_horizontal"
+        android:text="@string/dynamic"
+        android:textColor="@color/white"
+        android:textSize="@dimen/ipay_text_size_16"/>
 
     <ImageView
         android:layout_width="wrap_content"

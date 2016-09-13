@@ -62,6 +62,16 @@ public class UserInfoDetailBean extends BaseBean {
             private String signature;
             private String tags;
             private String uid;
+            private String vip_level;
+
+            public String getVip_level() {
+                return vip_level;
+            }
+
+            public void setVip_level(String vip_level) {
+                this.vip_level = vip_level;
+            }
+
             public String getSignature() {
                 return signature;
             }
