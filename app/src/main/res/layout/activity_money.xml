@@ -43,12 +43,14 @@
             android:textColor="@color/titile_text_color"
             android:textSize="16sp"
             android:layout_margin="@dimen/x20"
-            android:text="认证费："/>
+            android:text="冻结余额："/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/titile_money"
             android:textColor="@color/titile_text_color"
+            android:layout_marginTop="@dimen/x20"
+            android:text="0"
             android:textSize="16sp"/>
         <TextView
             android:layout_width="wrap_content"
