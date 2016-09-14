@@ -84,6 +84,17 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
 
     @Override
     protected void initView() {
+        TextView tv_title_right = (TextView) titleView.findViewById(R.id.tv_title_right);
+        tv_title_right.setText(getString(R.string.home_page));
+        tv_title_right.setPadding(10, 10, 10, 10);
+        tv_title_right.setTextColor(getResources().getColor(R.color.white_778998));
+        tv_title_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mDatailsBean != null)
+                    ActivityUtils.startDynamicActivity(mDatailsBean.getData().getUid());
+            }
+        });
         setRx();
         recyclerView.setVerticalLinearLayoutManager();
         recyclerView.setPullRefreshEnabled(false);

@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.moonsister.tcjy">
+          package="com.moonsister.tcjy">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
-    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
-    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
-    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
-    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
 
     <!-- 不是SDK需要的权限，是示例中的后台唤醒定位需要的权限 -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <!-- 需要运行时注册的权限 -->
     <!-- 用于进行网络定位 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <!-- 用于访问GPS定位 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <!-- 写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <!-- 读取缓存数据 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <!-- 用于读取手机当前的状态 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <!-- 更改设置 -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <!-- GCM 配置开始 < -->
     <permission
         android:name="io.rong.app.permission.C2D_MESSAGE"
-        android:protectionLevel="signature" />
+        android:protectionLevel="signature"/>
 
-    <uses-permission android:name="io.rong.app.permission.C2D_MESSAGE" />
+    <uses-permission android:name="io.rong.app.permission.C2D_MESSAGE"/>
     <!-- GCM 配置结束 < -->
 
 
     <!-- 小米 配置开始 < -->
     <permission
         android:name="io.rong.app.permission.MIPUSH_RECEIVE"
-        android:protectionLevel="signature" />
+        android:protectionLevel="signature"/>
 
-    <uses-permission android:name="io.rong.app.permission.MIPUSH_RECEIVE" />
+    <uses-permission android:name="io.rong.app.permission.MIPUSH_RECEIVE"/>
 
     <!-- 小米 配置结束 < -->
     <application
@@ -71,12 +71,12 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".main.widget.SplashActivity"
-            android:theme="@style/Theme.AppStartLoad"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppStartLoad">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity android:name=".main.widget.ManorGrilActivity"/>
@@ -87,38 +87,38 @@
         <!-- 友盟 start -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="57d7f07267e58e8277002747" />
+            android:value="57d7f07267e58e8277002747"/>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="2000" />
+            android:value="2000"/>
         <!--API  接口-->
         <meta-data
             android:name="API_CHANNEL"
-            android:value="2000" />
+            android:value="2000"/>
         <!-- 友盟  end -->
         <!-- 高德 start -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="daf938b6fc71ecb94b4cbc7eb773fa64" />
+            android:value="daf938b6fc71ecb94b4cbc7eb773fa64"/>
         <!-- 定位需要的服务 -->
-        <service android:name="com.amap.api.location.APSService" />
+        <service android:name="com.amap.api.location.APSService"/>
         <!-- 高德 end -->
 
         <!-- 会话页面 -->
-        <activity android:name=".main.widget.RelationActivity" />
+        <activity android:name=".main.widget.RelationActivity"/>
         <activity
             android:name=".im.widget.AppConversationActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.VIEW"/>
 
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT"/>
 
                 <data
                     android:host="hk.chuse.love"
                     android:pathPrefix="/conversation/"
-                    android:scheme="rong" />
+                    android:scheme="rong"/>
             </intent-filter>
         </activity>
 
@@ -129,184 +129,185 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.VIEW"/>
 
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT"/>
 
                 <data
                     android:host="hk.chuse.love"
                     android:pathPrefix="/subconversationlist"
-                    android:scheme="rong" />
+                    android:scheme="rong"/>
             </intent-filter>
         </activity>
 
         <activity
             android:name=".main.widget.DynamicActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".main.widget.DynamicDatailsActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".login.widget.LoginMainActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity android:name=".login.widget.RegActivity"></activity>
 
         <activity
             android:name=".center.widget.DynamicSendActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".widget.image.PhonePicActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".widget.image.ShowImageActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".center.widget.DefaultDynamicSendActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".login.widget.SelectPicPopupActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MyDialogStyleBottom" />
+            android:theme="@style/MyDialogStyleBottom"/>
         <activity
             android:name=".main.widget.RedpacketAcitivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".my.widget.MyOrderActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".my.widget.CertificationActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".main.widget.ShowShortVideoActivity" />
-        <activity android:name=".main.widget.FillOutMessageActivity" />
+            android:screenOrientation="portrait"/>
+        <activity android:name=".main.widget.ShowShortVideoActivity"/>
+        <activity android:name=".main.widget.FillOutMessageActivity"/>
+        <activity android:name=".find.widget.VideoDynamicActivity"/>
         <activity
             android:name=".my.widget.RZFirstActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".my.widget.RZSecondActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".my.widget.RZThidActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".my.widget.AppointmentActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".my.widget.RefundActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".my.widget.ChangepwdActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".main.widget.HomePageActivity" />
+            android:screenOrientation="portrait"/>
+        <activity android:name=".main.widget.HomePageActivity"/>
         <activity
             android:name=".my.widget.SettingActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".my.widget.FollowActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".my.widget.WithdRawDepositActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".my.widget.GetMoneyActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".center.widget.RedpacketDynaimcActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".center.widget.BuyDynamicRedPackketActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity
             android:name=".widget.image.photoview.ImagePagerActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".widget.takevideo.TakeVideoActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".main.widget.PersonInfoChangeActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".my.widget.info.SelectPlandWindowActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MyDialogStyleBottom" />
+            android:theme="@style/MyDialogStyleBottom"/>
         <activity
             android:name=".my.widget.info.SelectSexActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MyDialogStyleBottom" />
+            android:theme="@style/MyDialogStyleBottom"/>
         <activity
             android:name=".main.widget.PayAppointmentActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".main.widget.PayAppointmentOrderActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".my.widget.TiXianRecordActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".my.widget.AddCardActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".my.widget.InsertActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".main.widget.BuyVipActivity" />
+            android:screenOrientation="portrait"/>
+        <activity android:name=".main.widget.BuyVipActivity"/>
         <activity
             android:name=".main.widget.VideoSelectorActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".main.widget.RecommendMemberActivity" />
+            android:screenOrientation="portrait"/>
+        <activity android:name=".main.widget.RecommendMemberActivity"/>
         <activity
             android:name=".my.widget.SwitchCardActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".my.widget.BirthdayActivity" />
-        <activity android:name=".center.widget.DynamicPublishActivity" />
+            android:screenOrientation="portrait"/>
+        <activity android:name=".my.widget.BirthdayActivity"/>
+        <activity android:name=".center.widget.DynamicPublishActivity"/>
         <activity
             android:name=".main.widget.PictureSelectorActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".main.widget.PicturePreviewActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".center.widget.VoiceActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MyDialogStyleBottom" />
+            android:theme="@style/MyDialogStyleBottom"/>
         <activity
             android:name=".main.widget.SwitchItemActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MyDialogStyleBottom" />
-        <activity android:name=".home.widget.SearchFragmentActivity" />
+            android:theme="@style/MyDialogStyleBottom"/>
+        <activity android:name=".home.widget.SearchFragmentActivity"/>
         <!-- 微信支付  start -->
         <activity
             android:name=".wxapi.WXPayEntryActivity"
             android:exported="true"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
 
         <receiver android:name=".wxapi.AppRegister">
             <intent-filter>
-                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP"/>
             </intent-filter>
         </receiver>
         <!-- 微信支付  end -->
 
         <activity
             android:name=".home.widget.SearchActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".home.widget.SearchReasonActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".find.widget.NearbyActivity" />
+            android:screenOrientation="portrait"/>
+        <activity android:name=".find.widget.NearbyActivity"/>
         <activity
             android:name=".my.widget.UserInfoChangeActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".find.widget.RankActivity" />
-        <activity android:name=".main.widget.UserinfoActivity" />
-        <activity android:name=".login.widget.FindPasswordActivity" />
-        <activity android:name=".login.widget.FindPasswordNextActivity" />
+            android:screenOrientation="portrait"/>
+        <activity android:name=".find.widget.RankActivity"/>
+        <activity android:name=".main.widget.UserinfoActivity"/>
+        <activity android:name=".login.widget.FindPasswordActivity"/>
+        <activity android:name=".login.widget.FindPasswordNextActivity"/>
         <!-- 图片裁剪 -->
-        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
-        <activity android:name=".widget.image.CropImageMainActivity" />
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity"/>
+        <activity android:name=".widget.image.CropImageMainActivity"/>
         <activity
             android:name=".main.widget.DynamicAtionActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
 
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
@@ -314,7 +315,7 @@
         -->
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:value="@integer/google_play_services_version"/>
 
         <activity android:name=".my.widget.RuleActivity"></activity>
         <activity android:name=".my.widget.MakeMessageActivity"></activity>
