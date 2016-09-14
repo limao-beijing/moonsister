@@ -3,10 +3,15 @@ package com.moonsister.tcjy.my.widget;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.event.Events;
@@ -39,7 +44,12 @@ public class BirthdayActivity extends BaseActivity implements OnClickListener {
     private TextView tv_date_birthday;// 显示生日
     private TextView tv_title_right;
     private TextView tv_birthday_constellation;// 显示星座
-    String brigth;
+    String bright;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     @Override
     protected View setRootContentView() {
@@ -171,11 +181,13 @@ public class BirthdayActivity extends BaseActivity implements OnClickListener {
                             + (day.getCurrentItem() + 1) : (day
                             .getCurrentItem() + 1)).toString();
             String year = CaculationUtils.calculateDatePoor(birthday);
+            bright = birthday.toString();
             tv_birthday_constellation.setText(""
                     + getConstellation(n_month, day.getCurrentItem()));
             tv_date_birthday.setText(year + "");
-
-
+//            StringBuffer sb=new StringBuffer();
+//            sb.append(n_year+"/"+n_month+"/"+day.getCurrentItem());
+//             bright = sb.toString();
         }
     };
 
@@ -234,12 +246,12 @@ public class BirthdayActivity extends BaseActivity implements OnClickListener {
                 events.message = data;
                 RxBus.getInstance().send(events);
 
-//                String s = tv_date_birthday.getText().toString();
+                String s = tv_date_birthday.getText().toString();
                 String s1 = tv_birthday_constellation.getText().toString();
                 //数据是使用Intent返回
                 Intent intent = new Intent();
                 //把返回数据存入Intent
-                intent.putExtra("result", brigth);
+                intent.putExtra("result", bright);
                 intent.putExtra("love", s1);
                 //设置返回数据
                 BirthdayActivity.this.setResult(RESULT_OK, intent);
@@ -261,4 +273,5 @@ public class BirthdayActivity extends BaseActivity implements OnClickListener {
         }
 
     }
+
 }
