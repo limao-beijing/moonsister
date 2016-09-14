@@ -1,79 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/x96"
-        android:text="填写资料"
         android:background="@color/black"
-        android:textSize="18sp"
         android:gravity="center"
-        android:textColor="@color/grid_line"/>
+        android:text="填写资料"
+        android:textColor="@color/grid_line"
+        android:textSize="18sp"/>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/y54">
+        android:layout_marginTop="@dimen/y54"
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@mipmap/fillout_message"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/x20"
-            android:textSize="16sp"
+            android:text="@string/fillout_message"
             android:textColor="@color/text_followmy_color"
-            android:text="@string/fillout_message"/>
+            android:textSize="16sp"/>
     </LinearLayout>
+
     <ImageView
+        android:id="@+id/fillout_imageview"
         android:layout_width="@dimen/x350"
         android:layout_height="@dimen/y350"
-        android:id="@+id/fillout_imageview"
-        android:background="@mipmap/filloutmessage_upload"
+        android:layout_gravity="center"
         android:layout_marginTop="@dimen/y60"
-        android:layout_gravity="center"/>
+        android:background="@mipmap/filloutmessage_upload"
+        android:scaleType="centerCrop"/>
+
     <EditText
+        android:id="@+id/fillout_message_name"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y96"
-        android:id="@+id/fillout_message_name"
-        android:layout_marginTop="@dimen/y66"
         android:layout_marginLeft="@dimen/x30"
         android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/y66"
         android:background="@drawable/shape_edit"
-        android:textSize="16sp"
-        android:paddingLeft="@dimen/x15"
+        android:hint="为自己取个万众瞩目的江湖绰号吧～"
         android:maxLength="8"
+        android:paddingLeft="@dimen/x15"
         android:textColor="@color/black"
         android:textColorHint="@color/white_d6dde4"
-        android:hint="为自己取个万众瞩目的江湖绰号吧～"/>
+        android:textSize="16sp"/>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_gravity="center"
         android:layout_marginTop="@dimen/y150"
-        android:layout_gravity="center">
+        android:orientation="horizontal">
+
         <TextView
+            android:id="@+id/fillout_ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/fillout_ok"
             android:background="@mipmap/reg_ok"
-            android:text="完成"
             android:gravity="center"
+            android:text="完成"
             android:textColor="@color/white"
             />
+
         <TextView
+            android:id="@+id/fillout_go"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/fillout_go"
-            android:background="@mipmap/let_go"
-            android:text="跳过"
-            android:gravity="center"
             android:layout_marginLeft="@dimen/x20"
-            android:textColor="@color/white" />
+            android:background="@mipmap/let_go"
+            android:gravity="center"
+            android:text="跳过"
+            android:textColor="@color/white"/>
     </LinearLayout>
 </LinearLayout>

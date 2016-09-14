@@ -1,8 +1,6 @@
 package com.moonsister.tcjy.my.widget;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +9,6 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
@@ -22,7 +19,6 @@ import com.moonsister.tcjy.my.persenter.HreatFragmentPersenter;
 import com.moonsister.tcjy.my.persenter.HreatFragmentPresenterImpl;
 import com.moonsister.tcjy.my.view.HreatFragmentView;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.HreatViewholder;
 
@@ -33,7 +29,6 @@ import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import im.gouyin.com.progressdialog.AlearDialog;
 
 /**
  * Created by x on 2016/8/22.
@@ -138,18 +133,18 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
                 ActivityUtils.startPersonalReviseActivity();
                 break;
             case R.mipmap.money://财务中心
-                String smobile = UserInfoManager.getInstance().getMemoryPersonInfoDetail().getSmobile();
-                if (StringUtis.isEmpty(smobile)) {
-                    AlearDialog dialog = new AlearDialog(AlearDialog.DialogType.bind_phone, getActivity());
-                    dialog.setListenter(new AlearDialog.onClickListenter() {
-                        @Override
-                        public void clickType(AlearDialog.clickType type) {
-                            if (type == AlearDialog.clickType.confirm_vip)
-                                ActivityUtils.startRegActivity();
-                            dialog.dismiss();
-                        }
-                    });
-                } else
+//                String smobile = UserInfoManager.getInstance().getMemoryPersonInfoDetail().getSmobile();
+//                if (StringUtis.isEmpty(smobile)) {
+//                    AlearDialog dialog = new AlearDialog(AlearDialog.DialogType.bind_phone, getActivity());
+//                    dialog.setListenter(new AlearDialog.onClickListenter() {
+//                        @Override
+//                        public void clickType(AlearDialog.clickType type) {
+//                            if (type == AlearDialog.clickType.confirm_vip)
+//                                ActivityUtils.startRegActivity();
+//                            dialog.dismiss();
+//                        }
+//                    });
+//                } else
                     ActivityUtils.startMoneyActivity(uid);
                 break;
             case R.mipmap.domake://设置

@@ -8,4 +8,6 @@ import com.moonsister.tcjy.bean.PersonalReviseMessageBean;
  */
 public interface PersonalReviseActivityView extends BaseIView {
     void success(PersonalReviseMessageBean personalReviseMessageBean);
+
+    void submitSuccess();
 }

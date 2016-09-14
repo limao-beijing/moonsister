@@ -1,45 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <!--<LinearLayout
+        android:id="@+id/linearlayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y96"
-        android:id="@+id/linearlayout"
-        android:orientation="horizontal"
-        android:background="@color/black">
+        android:background="@color/black"
+        android:orientation="horizontal">
+
         <ImageView
-            android:layout_width="@dimen/x30"
-            android:layout_height="@dimen/y40"
             android:id="@+id/image_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/x30"
-            android:background="@mipmap/back"/>
+            android:padding="@dimen/x20"
+            android:src="@mipmap/back"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="资料修改"
-            android:gravity="center"
             android:layout_marginLeft="@dimen/x250"
-            android:textSize="18sp"
-            android:textColor="#D6DDE4"
             android:layout_marginTop="@dimen/x23"
+            android:gravity="center"
+            android:text="资料修改"
+            android:textColor="#D6DDE4"
+            android:textSize="18sp"
             />
+
         <TextView
+            android:id="@+id/baocun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/baocun"
-            android:textColor="#D6DDE4"
-            android:textSize="18sp"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/x150"
-            android:text="保存"/>
-    </LinearLayout>
+            android:text="保存"
+            android:textColor="#D6DDE4"
+            android:textSize="18sp"/>
+    </LinearLayout>-->
+    <include layout="@layout/app_titlebar"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/linearlayout">
+        android:layout_below="@+id/app_title_bar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,20 +62,20 @@
                 android:background="@color/background_white_color"
                 android:gravity="center_vertical">
 
-            <TextView
-                style="@style/info_change_text"
-                android:id="@+id/mobile"
-                android:textColor="@color/text_huang"
-                android:text="手机：" />
+                <TextView
+                    android:id="@+id/mobile"
+                    style="@style/info_change_text"
+                    android:text="手机："
+                    android:textColor="@color/text_huang"/>
 
-            <EditText
-                android:id="@+id/tv_mobile"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/mobile"
-                android:layout_width="match_parent"
-                android:textColor="@color/gray_color"
-                android:background="@null"
-                android:text="@string/not_available" />
+                <EditText
+                    android:id="@+id/tv_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/mobile"
+                    android:background="@null"
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -79,20 +86,20 @@
                 android:background="@color/background_white_color"
                 android:gravity="center_vertical">
 
-            <TextView
-                style="@style/info_change_text"
-                android:textColor="@color/text_huang"
-                android:id="@+id/qq"
-                android:text="Q Q：" />
+                <TextView
+                    android:id="@+id/qq"
+                    style="@style/info_change_text"
+                    android:text="Q Q："
+                    android:textColor="@color/text_huang"/>
 
-            <EditText
-                android:id="@+id/tv_qq"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/qq"
-                android:layout_width="match_parent"
-                android:textColor="@color/gray_color"
-                android:background="@null"
-                android:text="@string/not_available" />
+                <EditText
+                    android:id="@+id/tv_qq"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/qq"
+                    android:background="@null"
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -103,20 +110,20 @@
                 android:background="@color/background_white_color"
                 android:gravity="center_vertical">
 
-            <TextView
-                style="@style/info_change_text"
-                android:textColor="@color/text_huang"
-                android:id="@+id/weixin"
-                android:text="微信：" />
+                <TextView
+                    android:id="@+id/weixin"
+                    style="@style/info_change_text"
+                    android:text="微信："
+                    android:textColor="@color/text_huang"/>
 
-            <EditText
-                android:id="@+id/tv_weixin"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/weixin"
-                android:layout_width="match_parent"
-                android:textColor="@color/gray_color"
-                android:background="@null"
-                android:text="@string/not_available" />
+                <EditText
+                    android:id="@+id/tv_weixin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/weixin"
+                    android:background="@null"
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -129,19 +136,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
+                    android:id="@+id/avater"
                     style="@style/info_change_text"
                     android:layout_centerVertical="true"
-                    android:id="@+id/avater"
-                    android:text="@string/avater_change" />
+                    android:text="@string/avater_change"/>
 
                 <com.moonsister.tcjy.widget.RoundedImageView
                     android:id="@+id/riv_user_image"
                     android:layout_width="@dimen/x120"
                     android:layout_height="@dimen/x120"
-                    android:layout_toRightOf="@+id/avater"
                     android:layout_margin="@dimen/x30"
                     android:layout_marginRight="@dimen/x30"
-                    android:src="@mipmap/load_small" />
+                    android:layout_toRightOf="@+id/avater"
+                    android:src="@mipmap/load_small"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -154,19 +161,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
+                    android:id="@+id/like_image"
                     style="@style/info_change_text"
                     android:layout_centerVertical="true"
-                    android:id="@+id/like_image"
-                    android:text="背景墙：" />
+                    android:text="背景墙："/>
 
                 <com.moonsister.tcjy.widget.RoundedImageView
                     android:id="@+id/riv_like_image"
                     android:layout_width="@dimen/x120"
                     android:layout_height="@dimen/x120"
                     android:layout_margin="@dimen/x30"
-                    android:layout_toRightOf="@+id/like_image"
                     android:layout_marginRight="@dimen/x30"
-                    android:src="@mipmap/load_small" />
+                    android:layout_toRightOf="@+id/like_image"
+                    android:src="@mipmap/load_small"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -178,19 +185,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/nike_name"
-                    android:text="@string/nike_name_change" />
+                    style="@style/info_change_text"
+                    android:text="@string/nike_name_change"/>
 
                 <EditText
                     android:id="@+id/tv_nike_name"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/nike_name"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
                     android:maxLength="8"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -202,19 +209,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/signature"
-                    android:text="@string/personalized_signature_change" />
+                    style="@style/info_change_text"
+                    android:text="@string/personalized_signature_change"/>
 
                 <EditText
                     android:id="@+id/tv_signature"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/signature"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
                     android:maxLength="25"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -226,19 +233,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/info_change"
-                    android:text="@string/sex_change" />
+                    style="@style/info_change_text"
+                    android:text="@string/sex_change"/>
 
                 <TextView
                     android:id="@+id/tv_sex"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/info_change"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:textSize="18sp"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -250,19 +257,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/birthaday"
-                    android:text="出生年月：" />
+                    style="@style/info_change_text"
+                    android:text="出生年月："/>
 
                 <TextView
                     android:id="@+id/tv_birthday"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/birthaday"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:textSize="18sp"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -274,19 +281,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/star"
-                    android:text="星座：" />
+                    style="@style/info_change_text"
+                    android:text="星座："/>
 
                 <TextView
                     android:id="@+id/tv_star_sign"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/star"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:textSize="18sp"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -298,19 +305,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/hight"
-                    android:text="身高：" />
+                    style="@style/info_change_text"
+                    android:text="身高："/>
 
                 <TextView
                     android:id="@+id/tv_hight"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/hight"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:textSize="18sp"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -322,19 +329,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/weight"
-                    android:text="体重：" />
+                    style="@style/info_change_text"
+                    android:text="体重："/>
 
                 <TextView
                     android:id="@+id/tv_weight"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/weight"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:textSize="18sp"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -346,19 +353,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/money_pay"
-                    android:text="月薪：" />
+                    style="@style/info_change_text"
+                    android:text="月薪："/>
 
                 <TextView
                     android:id="@+id/tv_money_pay"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/money_pay"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:textSize="18sp"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -370,19 +377,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/educational_background"
-                    android:text="学历：" />
+                    style="@style/info_change_text"
+                    android:text="学历："/>
 
                 <TextView
                     android:id="@+id/tv_educational_background"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/educational_background"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:textSize="18sp"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -394,19 +401,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/birthplace"
-                    android:text="籍贯：" />
+                    style="@style/info_change_text"
+                    android:text="籍贯："/>
 
                 <TextView
                     android:id="@+id/tv_birthplace"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/birthplace"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:textSize="18sp"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"
+                    android:textSize="18sp"/>
 
             </RelativeLayout>
 
@@ -419,19 +426,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/address"
-                    android:text="现居：" />
+                    style="@style/info_change_text"
+                    android:text="现居："/>
 
                 <TextView
                     android:id="@+id/tv_address"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/address"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:textSize="18sp"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -443,20 +450,20 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/job"
-                    android:text="@string/job_change" />
+                    style="@style/info_change_text"
+                    android:text="@string/job_change"/>
 
                 <EditText
                     android:id="@+id/tv_job"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/job"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:textSize="18sp"
                     android:maxLength="5"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -468,19 +475,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/hobby"
-                    android:text="兴趣爱好：" />
+                    style="@style/info_change_text"
+                    android:text="兴趣爱好："/>
 
                 <TextView
                     android:id="@+id/tv_hobby"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/hobby"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:textSize="18sp"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -492,19 +499,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/self"
-                    android:text="自我印象：" />
+                    style="@style/info_change_text"
+                    android:text="自我印象："/>
 
                 <TextView
                     android:id="@+id/tv_self_image"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/self"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:textSize="18sp"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -516,19 +523,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/house"
-                    android:text="是否有房：" />
+                    style="@style/info_change_text"
+                    android:text="是否有房："/>
 
                 <TextView
                     android:id="@+id/tv_ishouse"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/house"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:textSize="18sp"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -540,19 +547,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/marital"
-                    android:text="婚姻状况：" />
+                    style="@style/info_change_text"
+                    android:text="婚姻状况："/>
 
                 <TextView
                     android:id="@+id/tv_marital_status"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/marital"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:textSize="18sp"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
 
@@ -565,19 +572,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/distance"
-                    android:text="接受异地恋：" />
+                    style="@style/info_change_text"
+                    android:text="接受异地恋："/>
 
                 <TextView
                     android:id="@+id/tv_distance_love"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/distance"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:textSize="18sp"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
 
@@ -590,19 +597,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/like"
-                    android:text="喜欢的异性：" />
+                    style="@style/info_change_text"
+                    android:text="喜欢的异性："/>
 
                 <TextView
                     android:id="@+id/tv_like_sex"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/like"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:textSize="18sp"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -614,19 +621,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/premarital"
-                    android:text="婚前性行为：" />
+                    style="@style/info_change_text"
+                    android:text="婚前性行为："/>
 
                 <TextView
                     android:id="@+id/tv_premarital_sex"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/premarital"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:textSize="18sp"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -638,18 +645,18 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/take_delivery"
-                    android:text="收货地址：" />
+                    style="@style/info_change_text"
+                    android:text="收货地址："/>
 
                 <EditText
                     android:id="@+id/tv_take_delivery"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/take_delivery"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -661,18 +668,18 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/take_people"
-                    android:text="收货人：" />
+                    style="@style/info_change_text"
+                    android:text="收货人："/>
 
                 <EditText
                     android:id="@+id/tv_take_people"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/take_people"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -684,18 +691,18 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/zip_code"
-                    android:text="邮编：" />
+                    style="@style/info_change_text"
+                    android:text="邮编："/>
 
                 <EditText
                     android:id="@+id/tv_zip_code"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/zip_code"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -704,21 +711,22 @@
                 android:layout_height="@dimen/x92"
                 android:layout_marginTop="@dimen/x2"
                 android:background="@color/background_white_color"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:visibility="gone">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/yu_liu"
-                    android:text="预留项：" />
+                    style="@style/info_change_text"
+                    android:text="预留项："/>
 
                 <TextView
                     android:id="@+id/tv_yu_liu"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/yu_liu"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -727,21 +735,22 @@
                 android:layout_height="@dimen/x92"
                 android:layout_marginTop="@dimen/x2"
                 android:background="@color/background_white_color"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:visibility="gone">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/yu_liu1"
-                    android:text="预留项：" />
+                    style="@style/info_change_text"
+                    android:text="预留项："/>
 
                 <TextView
                     android:id="@+id/tv_yu_liu1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/yu_liu1"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -750,21 +759,22 @@
                 android:layout_height="@dimen/x92"
                 android:layout_marginTop="@dimen/x2"
                 android:background="@color/background_white_color"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:visibility="gone">
 
                 <TextView
-                    style="@style/info_change_text"
                     android:id="@+id/yu_liu2"
-                    android:text="预留项：" />
+                    style="@style/info_change_text"
+                    android:text="预留项："/>
 
                 <TextView
                     android:id="@+id/tv_yu_liu2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/yu_liu2"
-                    android:layout_width="match_parent"
-                    android:textColor="@color/gray_color"
                     android:background="@null"
-                    android:text="@string/not_available" />
+                    android:text="@string/not_available"
+                    android:textColor="@color/gray_color"/>
             </RelativeLayout>
 
 

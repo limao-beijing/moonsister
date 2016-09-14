@@ -85,9 +85,12 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
     @Override
     protected void initView() {
         TextView tv_title_right = (TextView) titleView.findViewById(R.id.tv_title_right);
-        tv_title_right.setText(getString(R.string.home_page));
-        tv_title_right.setPadding(10, 10, 10, 10);
-        tv_title_right.setTextColor(getResources().getColor(R.color.white_778998));
+        Drawable drawable = getResources().getDrawable(R.mipmap.im_userinfo);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        tv_title_right.setCompoundDrawables(drawable, null, null, null);
+//        tv_title_right.setText(getString(R.string.home_page));
+        tv_title_right.setPadding(20, 20, 20, 20);
+//        tv_title_right.setTextColor(getResources().getColor(R.color.white_778998));
         tv_title_right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,16 +1,11 @@
 package com.moonsister.tcjy.my.widget;
 
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -22,9 +17,6 @@ import android.widget.Toast;
 
 import com.alibaba.sdk.android.oss.ClientException;
 import com.alibaba.sdk.android.oss.ServiceException;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
@@ -38,17 +30,12 @@ import com.moonsister.tcjy.my.persenter.PersonalReviseActivityPersenter;
 import com.moonsister.tcjy.my.persenter.PersonalReviseActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.PersonalReviseActivityView;
 import com.moonsister.tcjy.my.widget.info.SelectPlandWindowActivity;
-import com.moonsister.tcjy.popwindow.PopWindowDistance;
-import com.moonsister.tcjy.popwindow.PopWindowMarital;
-import com.moonsister.tcjy.popwindow.PopWindowPremarital;
-import com.moonsister.tcjy.popwindow.SelectPicPopupWindow;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.FilePathUtlis;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.PersonDynamicViewholder;
 import com.trello.rxlifecycle.ActivityEvent;
-import com.trello.rxlifecycle.FragmentEvent;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,12 +43,8 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -118,10 +101,6 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
     TextView tv_take_people;
     @Bind(R.id.tv_zip_code)//邮编
             TextView tv_zip_code;
-    @Bind(R.id.image_back)//返回
-            ImageView image_back;
-    @Bind(R.id.baocun)//保存
-            TextView baocun;
     @Bind(R.id.yu_liu)//预留项1
             TextView yu_liu;
     @Bind(R.id.yu_liu1)//预留项2
@@ -281,7 +260,13 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
     }
 
     @Override
+    protected String initTitleName() {
+        return getString(R.string.change_user_info);
+    }
+
+    @Override
     protected void initView() {
+        ((TextView) titleView.findViewById(R.id.tv_title_right)).setText(getString(R.string.save));
         presenter = new PersonalReviseActivityPersenterImpl();
         presenter.attachView(this);
         presenter.sendPersonalReviseMessage(UserInfoManager.getInstance().getUid());
@@ -292,6 +277,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                     String usermessage = (String) events.message;
                     LogUtils.e(RZFirstActivity.class, "pic_path : " + message);
                     ImageServerApi.showURLSamllImage(riv_user_image, usermessage);
+                    showLoading();
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
@@ -304,6 +290,13 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                                 e.printStackTrace();
                             } catch (ServiceException e) {
                                 e.printStackTrace();
+                            } finally {
+                                UIUtils.onRunMainThred(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        hideLoading();
+                                    }
+                                });
                             }
                         }
                     }).start();
@@ -317,7 +310,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                     if (events != null) {
                         String likepath = (String) events.message;
                         ImageServerApi.showURLSamllImage(riv_like_image, likepath);
-
+                        showLoading();
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
@@ -326,10 +319,18 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                                     File file = new File(likepath);
                                     if (file.exists())
                                         file.delete();
+
                                 } catch (ClientException e) {
                                     e.printStackTrace();
                                 } catch (ServiceException e) {
                                     e.printStackTrace();
+                                } finally {
+                                    UIUtils.onRunMainThred(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            hideLoading();
+                                        }
+                                    });
                                 }
                             }
                         }).start();
@@ -345,16 +346,16 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
-        if(data==null){
+        if (data == null) {
             return;
         }
         if (requestCode == 1) {
             my = data.getStringExtra("my");
             tv_birthplace.setText(my);
-        } else if(requestCode==2){
+        } else if (requestCode == 2) {
             my = data.getStringExtra("my");
             tv_address.setText(my);
-        }else if(requestCode==3){
+        } else if (requestCode == 3) {
             result = data.getStringExtra("result");
             love = data.getStringExtra("love");
             tv_birthday.setText(result);
@@ -379,17 +380,14 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
         showToast(msg);
     }
 
-    @OnClick({R.id.image_back, R.id.layout_like, R.id.layout_mobile, R.id.layout_qq, R.id.layout_weixin, R.id.layout_avater, R.id.layout_nike_name, R.id.layout_signature, R.id.layout_sex, R.id.layout_birthday, R.id.layout_star_sign,
+    @OnClick({R.id.layout_like, R.id.layout_mobile, R.id.layout_qq, R.id.layout_weixin, R.id.layout_avater, R.id.layout_nike_name, R.id.layout_signature, R.id.layout_sex, R.id.layout_birthday, R.id.layout_star_sign,
             R.id.layout_birthplace, R.id.layout_address, R.id.layout_job, R.id.layout_hobby, R.id.layout_self_image, R.id.layout_ishouse, R.id.layout_marital_status, R.id.layout_distance_love, R.id.layout_like_sex, R.id.layout_premarital_sex,
-            R.id.layout_hight, R.id.layout_weight, R.id.layout_money_pay, R.id.layout_educational_background, R.id.layout_take_delivery, R.id.layout_zip_code, R.id.baocun})
+            R.id.layout_hight, R.id.layout_weight, R.id.layout_money_pay, R.id.layout_educational_background, R.id.layout_take_delivery, R.id.layout_zip_code, R.id.tv_title_right})
     public void onClick(View view) {
         if (rules == null) {
             return;
         }
         switch (view.getId()) {
-            case R.id.image_back:
-                this.finish();
-                break;
             case R.id.layout_mobile:
 
                 break;
@@ -756,7 +754,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 });
                 builderpremarital.create().show();
                 break;
-            case R.id.baocun:
+            case R.id.tv_title_right:
                 showToast("正在保存");
                 String mobile = tv_mobile.getText().toString();
                 jsonmobile = new JSONObject();
@@ -1289,6 +1287,11 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             layout_yuliu2.setVisibility(View.GONE);
         }
 
+    }
+
+    @Override
+    public void submitSuccess() {
+        finish();
     }
 
 

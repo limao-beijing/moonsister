@@ -65,6 +65,5 @@
         android:textColor="@color/color_ffd305"
         android:layout_marginTop="@dimen/y250"
         android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/y110"
         android:text="已有账号？点此直接登录"/>
 </LinearLayout>

@@ -1076,8 +1076,8 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("usernew/reg_step4")
-        Observable<RegFourBean> getRegFourBean(@Field("face ") String face,
-                                               @Field("nickname ") String nickname,
+        Observable<RegFourBean> getRegFourBean(@Field("face") String face,
+                                               @Field("nickname") String nickname,
                                                @Field("authcode") String authcode,
                                                @Field("channel") String channel);
 
