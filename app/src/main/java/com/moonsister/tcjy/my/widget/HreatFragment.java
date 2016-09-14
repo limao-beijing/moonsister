@@ -19,6 +19,7 @@ import com.moonsister.tcjy.my.persenter.HreatFragmentPersenter;
 import com.moonsister.tcjy.my.persenter.HreatFragmentPresenterImpl;
 import com.moonsister.tcjy.my.view.HreatFragmentView;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.HreatViewholder;
 
@@ -29,6 +30,7 @@ import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import im.gouyin.com.progressdialog.AlearDialog;
 
 /**
  * Created by x on 2016/8/22.
@@ -133,7 +135,19 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
                 ActivityUtils.startPersonalReviseActivity();
                 break;
             case R.mipmap.money://财务中心
-                ActivityUtils.startMoneyActivity(uid);
+                String smobile = UserInfoManager.getInstance().getMemoryPersonInfoDetail().getSmobile();
+                if (StringUtis.isEmpty(smobile)) {
+                    AlearDialog dialog = new AlearDialog(AlearDialog.DialogType.bind_phone, getActivity());
+                    dialog.setListenter(new AlearDialog.onClickListenter() {
+                        @Override
+                        public void clickType(AlearDialog.clickType type) {
+                            if (type == AlearDialog.clickType.confirm_vip)
+                                ActivityUtils.startRegActivity();
+                            dialog.dismiss();
+                        }
+                    });
+                } else
+                    ActivityUtils.startMoneyActivity(uid);
                 break;
             case R.mipmap.domake://设置
                 ActivityUtils.startSettingActivity();
@@ -201,13 +215,13 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
         } else {
             tv_time.setText(birthday);
         }
-       //年龄
-        tv_age.setText(data.getAge() );
+        //年龄
+        tv_age.setText(data.getAge());
         tv_address.setText(data.getResidence());//用户地址
         //用户总收入
         tv_user_all_income.setText(addons.getIncome_all());
 
-       //今日收入
+        //今日收入
         tv_user_day_income.setText(addons.getIncome_today());
         String vip_level = data.getVip_level();//判断是否为VIP
         if (vip_level.equals("0")) {

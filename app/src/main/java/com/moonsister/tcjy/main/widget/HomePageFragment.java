@@ -48,12 +48,18 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
     TextView tv_wacth;
     @Bind(R.id.layout_home_content)
     View layout_home_content;
+
+    @Bind(R.id.rl_pay)
+    View rl_pay;
+    @Bind(R.id.rl_flower)
+    View rl_flower;
     private HomePageFragmentPresenter presenter;
     private HomePageFragmentAdapter adapter;
     private String userId;
     private boolean isRefresh;
     private HomePageHeadHolder headHolder;
     private EnumConstant.SearchType type = EnumConstant.SearchType.all;
+    private boolean isAddHead = true;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -154,7 +160,11 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
     }
 
     public boolean isAddHeaderView() {
-        return true;
+        return isAddHead;
+    }
+
+    public void setAddHeadFlage(boolean isAddHead) {
+        this.isAddHead = isAddHead;
     }
 
     @Override
@@ -183,8 +193,14 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
         if (headHolder != null) {
             headHolder.refreshView(bean);
         }
+
         if (userInfo == null || userInfo.getData() == null)
             return;
+        String isverify = userInfo.getData().getBaseinfo().getIsverify();
+        if (!StringUtis.equals(isverify, "1")) {
+            rl_pay.setVisibility(View.GONE);
+            rl_flower.setVisibility(View.GONE);
+        }
         String follow = userInfo.getData().getFollow();
         boolean equals = StringUtis.equals(follow, "1");
         Drawable drawable = UIUtils.getResources().getDrawable(!equals ? R.mipmap.home_page_not_wacth : R.mipmap.home_page_wacth);

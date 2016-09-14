@@ -75,6 +75,7 @@ public class BuyDynamicRedPacketModelImpl implements BuyDynamicRedPacketModel {
                                        } else if (type == EnumConstant.PayType.IAPP_PAY) {
                                            // type 2 爱贝的code 1 余额成功 其他失败
                                            if (StringUtis.equals(payBean.getData().getType(), "1")) {
+                                               listener.onFailure(payBean.getMsg());
                                                getPayDynamicPic(id, listener, DataType.DATA_ZERO);
                                            } else if (StringUtis.equals(payBean.getData().getType(), "2")) {
                                                AiBeiPayManager.getInstance().pay(ConfigUtils.getInstance().getActivityContext(), payBean.getData().getAbcode(), new AiBeiPayManager.AiBeiResultCallback() {

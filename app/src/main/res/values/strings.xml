@@ -246,6 +246,7 @@
     <string name="certification_money">认证费 ： %1$s 元( 冻结 )</string>
     <string name="earnings_money">收     益 ： %1$s 元</string>
     <string name="pay_is_go">继续需要支付10元，是否继续？</string>
+    <string name="pay_is_go_59">继续需要支付59元，是否继续？</string>
     <string name="home_hot">热门</string>
     <string name="home_nearby">附近</string>
     <string name="failed">失败</string>

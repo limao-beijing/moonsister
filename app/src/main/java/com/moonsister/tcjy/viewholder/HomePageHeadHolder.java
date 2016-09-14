@@ -89,9 +89,9 @@ public class HomePageHeadHolder extends BaseHolder<UserInfoDetailBean> {
         ImageServerApi.showURLSamllImage(mRivUserImage, baseinfo.getFace());
         mTvUserName.setText(baseinfo.getNickname());
         mTvFenNumber.setText(addons.getUfann());
-        mTvAll.setText("全部 （" + baseinfo.getLatest_total() + " )");
-        mTvTypeUser.setText("开放 （" + baseinfo.getLatest_free() + " )");
-        mTvTypeDynamic.setText("私密 （" + baseinfo.getLatest_vip() + " )");
+        mTvAll.setText("全部 ( " + baseinfo.getLatest_total() + " )");
+        mTvTypeUser.setText("开放 ( " + baseinfo.getLatest_free() + " )");
+        mTvTypeDynamic.setText("私密 ( " + baseinfo.getLatest_vip() + " )");
         if (StringUtis.isEmpty(baseinfo.getProfession())) {
             mTvJob.setVisibility(View.GONE);
         } else {

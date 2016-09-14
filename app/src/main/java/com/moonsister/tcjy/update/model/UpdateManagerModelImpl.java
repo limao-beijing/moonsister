@@ -3,6 +3,7 @@ package com.moonsister.tcjy.update.model;
 import android.os.Looper;
 import android.util.Log;
 
+import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.bean.VersionInfo;
 import com.moonsister.tcjy.update.down.DownloadProgressHandler;
@@ -28,7 +29,7 @@ import rx.schedulers.Schedulers;
 public class UpdateManagerModelImpl implements UpdateManagerModel {
     @Override
     public void loadVersionInfo(onLoadDateSingleListener listener) {
-        ServerApi.getAppAPI().getLoadVersonInfo("1000")
+        ServerApi.getAppAPI().getLoadVersonInfo(AppConstant.CHANNEL_ID)
                 .observeOn(Schedulers.io())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<VersionInfo>() {

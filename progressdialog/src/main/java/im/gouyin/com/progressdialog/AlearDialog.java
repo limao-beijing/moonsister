@@ -19,7 +19,7 @@ public class AlearDialog {
     private Dialog dialog;
 
     public static enum DialogType {
-        Certification_publish, Certification_comment, Certification_im
+        Certification_publish, Certification_comment, Certification_im, app_logout, bind_phone
     }
 
     public static enum clickType {
@@ -43,6 +43,12 @@ public class AlearDialog {
                 break;
             case Certification_im:
                 resID = R.layout.dialog_certification_im;
+                break;
+            case bind_phone:
+                resID = R.layout.dialog_bind_phone;
+                break;
+            case app_logout:
+                resID = R.layout.dialog_app_logout;
                 break;
         }
         initDialog(resID);
@@ -85,6 +91,12 @@ public class AlearDialog {
             case Certification_im:
                 content = activity.getResources().getString(R.string.certification_im_text);
                 break;
+            case bind_phone:
+                content = activity.getResources().getString(R.string.bind_phone_text);
+                break;
+            case app_logout:
+                content=activity.getString(R.string.app_logout_text);
+                break;
         }
         return content;
     }
@@ -96,6 +108,7 @@ public class AlearDialog {
                 cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        dismiss();
                         if (listenter != null)
                             listenter.clickType(clickType.cancel);
                     }

@@ -52,7 +52,8 @@ public class UserInfoBannerManager {
                             addBanner(viewGroup, bean.getData().getMsg(), status);
                         } else if (StringUtis.equals(status, "200")) {
                             addBanner(viewGroup, bean.getData().getMsg(), status);
-                        }
+                        } else
+                            viewGroup.setVisibility(View.GONE);
 
                     } else {
 

@@ -1,8 +1,6 @@
 package com.moonsister.tcjy.my.model;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Log;
 
 import com.alibaba.sdk.android.oss.ClientException;
 import com.alibaba.sdk.android.oss.ServiceException;
@@ -11,24 +9,17 @@ import com.moonsister.pay.tencent.PayBean;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.BackTermsBean;
 import com.moonsister.tcjy.bean.BaseBean;
-import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.DynamicContent;
-import com.moonsister.tcjy.bean.PersonalMessageBean;
-import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.manager.aliyun.AliyunManager;
-import com.moonsister.tcjy.my.persenter.RenZhengActivityPresenterImpl;
 import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.FastBlur;
 import com.moonsister.tcjy.utils.FilePathUtlis;
 import com.moonsister.tcjy.utils.ImageUtils;
-import com.moonsister.tcjy.utils.JsonUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.StringUtis;
@@ -41,7 +32,6 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -53,7 +43,7 @@ import rx.schedulers.Schedulers;
  */
 public class RenZhengActivityModelImpl implements RenZhengActivityModel {
     @Override
-    public void loadData(onLoadDateSingleListener<BackTermsBean> listener) {
+    public void loadData(onLoadDateSingleListener<BaseBean> listener) {
         Observable<BackTermsBean> observable = ServerApi.getAppAPI().backTermsBean(UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<BackTermsBean>() {
             @Override
@@ -69,7 +59,7 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
     }
 
     @Override
-    public void submit(String address1, String address2, String text,onLoadDateSingleListener listener) {
+    public void submit(String address1, String address2, String text, onLoadDateSingleListener listener) {
 
         ArrayList<DynamicContent> aliyunPtahs = new ArrayList<DynamicContent>();
         Observable<PayBean> observable = ServerApi.getAppAPI().getCertificationPay(UserInfoManager.getInstance().getAuthcode());
@@ -100,9 +90,9 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
                                     @Override
                                     public void onPayResult(int resultCode, String resultInfo) {
                                         if (resultCode == 1) {
-                                            String code=bean.getData().getAbcode();
+                                            String code = bean.getData().getAbcode();
 
-                                            submittt(address1, address2,text,code, listener);
+                                            submittt(address1, address2, text, code, listener);
 
                                         } else {
                                             listener.onFailure(resultInfo);
@@ -118,7 +108,7 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
                 });
     }
 
-    public void submittt(String address1, String address2,String text,String code, onLoadDateSingleListener listener) {
+    public void submittt(String address1, String address2, String text, String code, onLoadDateSingleListener listener) {
         ArrayList<String> aliyunPtahs = new ArrayList<String>();
         Observable.create(new Observable.OnSubscribe<String>() {
             @Override
@@ -141,7 +131,7 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
                 try {
                     jsonObj.put("video", s);
                     jsonObj1.put("voice", s1);
-                    jsonObj2.put("info",text);
+                    jsonObj2.put("info", text);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -177,13 +167,14 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
 
                 });
     }
+
     @Override
-    public void submitdata(String str,String order_id, onLoadDateSingleListener listener) {
-        Observable<BackTermsBean> observable = ServerApi.getAppAPI().getupto(str,order_id,UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
-        ObservableUtils.parser(observable, new ObservableUtils.Callback<BackTermsBean>() {
+    public void submitdata(String str, String order_id, onLoadDateSingleListener listener) {
+        Observable<BaseBean> observable = ServerApi.getAppAPI().getupto(str, order_id, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<BaseBean>() {
             @Override
-            public void onSuccess(BackTermsBean bean) {
-                listener.onSuccess(bean, DataType.DATA_ZERO);
+            public void onSuccess(BaseBean bean) {
+                listener.onSuccess(bean, DataType.DATA_ONE);
 
             }
 
@@ -193,7 +184,6 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
             }
         });
     }
-
 
 
     public void upLoadVideo(String srcVideoPath, ArrayList<DynamicContent> aliyunPtahs, boolean isCharge) throws ClientException, ServiceException {
@@ -236,7 +226,7 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
         aliyunPtahs.add(content);
     }
 
-//    @Override
+    //    @Override
 //    public void sendDynamicPics(EnumConstant.DynamicType dynamicType, String content, List<String> srcdatas, String address, onLoadDateSingleListener defaultDynamicPresenter) {
 //        LogUtils.e(RenZhengActivityModelImpl.this, "start upload");
 ////        ArrayList<DynamicContent> aliyunPtahs = new ArrayList<DynamicContent>();

@@ -37,6 +37,12 @@ public class HomeTopFragment extends BaseFragment {
     @Override
     protected void initData() {
         onClick(tvHomeHot);
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         UserInfoBannerManager.getInstance().show(getActivity(), flBanner);
     }
 

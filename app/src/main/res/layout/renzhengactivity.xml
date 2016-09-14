@@ -1,153 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y96"
-        android:orientation="horizontal"
-        android:background="@color/black">
+        android:background="@color/black"
+        android:orientation="horizontal">
+
         <ImageView
+            android:id="@+id/image_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/image_back"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/x35"
             android:background="@mipmap/back"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="@dimen/y96"
+            android:layout_marginLeft="@dimen/x250"
+            android:gravity="center"
             android:text="申请认证"
             android:textColor="#D6DDE4"
             android:textSize="17sp"
-            android:gravity="center"
-            android:layout_marginLeft="@dimen/x250"
-           />
-        </LinearLayout>
+            />
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <com.moonsister.tcjy.widget.RoundedImageView
             android:id="@+id/riv_avater"
             android:layout_width="@dimen/x120"
             android:layout_height="@dimen/x120"
             android:layout_centerVertical="true"
             android:layout_margin="@dimen/x30"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_launcher"/>
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/x25"
             android:id="@+id/text"
-            android:textColor="@color/black"
-            android:layout_toRightOf="@+id/riv_avater"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x20"
-            android:textSize="18sp"
-            android:text="会员ID:"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/vip_id"
             android:layout_marginTop="@dimen/x25"
-            android:textColor="@color/black"
-            android:layout_toRightOf="@+id/text"
-            android:layout_marginLeft="@dimen/x10"
-            android:textSize="18sp"
-            android:text="000000"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/text1"
-            android:layout_below="@+id/text"
-            android:textSize="14sp"
-            android:text="已绑定手机号:"
-            android:layout_marginLeft="@dimen/x10"
-            android:textColor="#CDCDB4"
             android:layout_toRightOf="@+id/riv_avater"
-            android:layout_marginTop="@dimen/x20"/>
+            android:text="会员ID:"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+
         <TextView
+            android:id="@+id/vip_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/phone"
-            android:text="158xxxx9985"
             android:layout_marginLeft="@dimen/x10"
-            android:layout_toRightOf="@+id/text1"
-            android:layout_below="@+id/vip_id"
+            android:layout_marginTop="@dimen/x25"
+            android:layout_toRightOf="@+id/text"
+            android:text="000000"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginTop="@dimen/x20"
+            android:layout_toRightOf="@+id/riv_avater"
+            android:text="已绑定手机号:"
             android:textColor="#CDCDB4"
-            android:layout_marginTop="@dimen/x20"/>
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/vip_id"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginTop="@dimen/x20"
+            android:layout_toRightOf="@+id/text1"
+            android:text="158xxxx9985"
+            android:textColor="#CDCDB4"/>
     </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#CDC9C9"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/renzheng_condition"
         android:layout_margin="@dimen/x20"
+        android:text="@string/renzheng_condition"
         android:textColor="#CDCDB4"
         />
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x280"
+        android:layout_margin="@dimen/x30">
+
+        <View
+            android:id="@+id/view_center_line"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/x10"/>
+
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
             android:id="@+id/video"
-            android:background="@mipmap/renzheng_video"
-            android:layout_margin="@dimen/x20"/>
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x280"
+
+            android:layout_toLeftOf="@+id/view_center_line"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/renzheng_video"/>
+
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/renzheng_yuyin"
-            android:background="@mipmap/renzheng_yuyin"
-            android:layout_margin="@dimen/x20"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x280"
+
+            android:layout_toRightOf="@+id/view_center_line"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/renzheng_yuyin"
             />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_time"/>
-    </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text"
-        android:layout_gravity="center"
-        android:textSize="18sp"
-        android:textColor="@color/text_yellow_color"/>
 
         <TextView
+            android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/yuna"
-            android:id="@+id/random"
-            android:text="隋唐英雄传"
-            android:gravity="center"
-            android:textSize="18sp"
-            android:textColor="@color/text_yellow_color"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/y20"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/input"
-            android:text="提交申请"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textColor="@color/white"
-            android:background="@mipmap/referring"
-            android:layout_marginTop="@dimen/x80"
-            />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x150"
+            android:gravity="center"/>
+    </RelativeLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/text"
+        android:textColor="@color/text_yellow_color"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/random"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y20"
+        android:background="@mipmap/yuna"
+        android:gravity="center"
+        android:text="隋唐英雄传"
+        android:textColor="@color/text_yellow_color"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/x80"
+        android:background="@mipmap/referring"
+        android:gravity="center"
+        android:text="提交申请"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/x20"
         android:text="@string/refrering"
         android:textColor="#FFC125"
         android:textSize="16sp"
-        android:layout_margin="@dimen/x20"
         />
 </LinearLayout>

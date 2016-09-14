@@ -1,18 +1,13 @@
 package com.moonsister.tcjy.my.model;
 
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.BackTermsBean;
-import com.moonsister.tcjy.my.persenter.RenZhengActivityPresenterImpl;
-import com.moonsister.tcjy.utils.EnumConstant;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.moonsister.tcjy.bean.BaseBean;
 
 /**
  * Created by x on 2016/9/3.
  */
 public interface RenZhengActivityModel extends BaseIModel {
-    void loadData(onLoadDateSingleListener<BackTermsBean> listener);
+    void loadData(onLoadDateSingleListener<BaseBean> listener);
 //    void sendDynamicPics(EnumConstant.DynamicType dynamicType, String content, List<String> srcdatas, String address, onLoadDateSingleListener defaultDynamicPresenter);
     void submit(String address1, String address2, String text,onLoadDateSingleListener listener);
 

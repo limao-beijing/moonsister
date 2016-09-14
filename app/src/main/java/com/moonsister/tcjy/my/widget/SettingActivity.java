@@ -8,13 +8,16 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
+import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.DataCleanUtils;
 import com.moonsister.tcjy.utils.PackageUtils;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import im.gouyin.com.progressdialog.AlearDialog;
 
 /**
  * Created by jb on 2016/6/27.
@@ -39,7 +42,7 @@ public class SettingActivity extends BaseActivity {
     @Override
     protected void initView() {
         getCache();
-        tvVersonName.setText(UIUtils.getStringRes(R.string.show_verson_name)+PackageUtils.getVersionName(getApplicationContext()));
+        tvVersonName.setText(UIUtils.getStringRes(R.string.show_verson_name) + PackageUtils.getVersionName(getApplicationContext()));
     }
 
     @Override
@@ -51,10 +54,21 @@ public class SettingActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.timeout:
-
-                RxBus.getInstance().send(Events.EventEnum.LOGIN_CODE_TIMEOUT, null);
-                finish();
-
+                String smobile = UserInfoManager.getInstance().getMemoryPersonInfoDetail().getSmobile();
+                if (StringUtis.isEmpty(smobile)) {
+                    AlearDialog dialog = new AlearDialog(AlearDialog.DialogType.app_logout, this);
+                    dialog.setListenter(new AlearDialog.onClickListenter() {
+                        @Override
+                        public void clickType(AlearDialog.clickType type) {
+                            if (type == AlearDialog.clickType.confirm)
+                                ActivityUtils.startRegActivity();
+                            dialog.dismiss();
+                        }
+                    });
+                } else {
+                    RxBus.getInstance().send(Events.EventEnum.LOGIN_CODE_TIMEOUT, null);
+                    finish();
+                }
                 break;
             case R.id.tv_changepwd:
                 ActivityUtils.startChangepwdActivity();

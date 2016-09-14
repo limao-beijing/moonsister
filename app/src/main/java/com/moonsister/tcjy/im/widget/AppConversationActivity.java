@@ -1,9 +1,11 @@
 package com.moonsister.tcjy.im.widget;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.moonsister.tcjy.R;
@@ -35,12 +37,27 @@ public class AppConversationActivity extends BaseActivity {
 
     @Override
     protected View setRootContentView() {
+
+
         return UIUtils.inflateLayout(R.layout.appconversation);
     }
 
     @Override
     protected void initView() {
+        TextView tv_title_right = (TextView) titleView.findViewById(R.id.tv_title_right);
+        Drawable drawable = UIUtils.getResources().getDrawable(R.mipmap.im_userinfo);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        tv_title_right.setCompoundDrawables(drawable, null, null, null);
+        tv_title_right.setPadding(10, 10, 10, 10);
+        tv_title_right.setVisibility(View.VISIBLE);
+        tv_title_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startPersonalActivity(mTargetId);
+            }
+        });
         Intent intent = getIntent();
+
         mTargetId = getIntent().getData().getQueryParameter("targetId");
         getIntentDate(intent);
     }

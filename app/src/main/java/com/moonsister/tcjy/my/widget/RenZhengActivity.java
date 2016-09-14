@@ -1,4 +1,4 @@
-package com.moonsister.tcjy.widget;
+package com.moonsister.tcjy.my.widget;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -262,7 +262,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
         random.setText(backTermsBean.getData().getVoice_info());
         ImageServerApi.showURLSamllImage(riv_avater, backTermsBean.getData().getFace());
         vip_id.setText(backTermsBean.getData().getUid() + "");
-        phone.setText(backTermsBean.getData().getMobile() + "");
+        phone.setText(backTermsBean.getData().getMobile() == null ? "" : backTermsBean.getData().getMobile() + "");
     }
 
     @Override
@@ -278,7 +278,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
     private void submit() {
         //点击提交审核后弹出dialog提醒用户是否继续
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        String s = getResources().getString(R.string.tv_ren) + getString(R.string.pay_is_go);
+        String s = getResources().getString(R.string.tv_ren) + getString(R.string.pay_is_go_59);
         builder.setMessage(s);
         builder.setTitle("提示");
         //dialog确认监听，用户点击确认则提交审核，得到并且判断之前的数据，跳转页面及带参数

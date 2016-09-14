@@ -3,7 +3,6 @@ package com.moonsister.tcjy.center.presenter;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.center.model.BuyDynamicRedPacketModel;
 import com.moonsister.tcjy.center.model.BuyDynamicRedPacketModelImpl;
@@ -43,7 +42,7 @@ public class BuyDynamicRedPackketPersenterImpl implements BuyDynamicRedPackketPe
     @Override
     public void weixinPay(String id) {
         view.showLoading();
-        model.pay(id,  EnumConstant.PayType.IAPP_PAY, this);
+        model.pay(id, EnumConstant.PayType.IAPP_PAY, this);
     }
 
     @Override
@@ -55,7 +54,7 @@ public class BuyDynamicRedPackketPersenterImpl implements BuyDynamicRedPackketPe
     @Override
     public void singBuy(String id) {
         view.showLoading();
-        model.pay(id,  EnumConstant.PayType.IAPP_PAY, this);
+        model.pay(id, EnumConstant.PayType.IAPP_PAY, this);
     }
 
     @Override
@@ -71,9 +70,15 @@ public class BuyDynamicRedPackketPersenterImpl implements BuyDynamicRedPackketPe
                         events.what = Events.EventEnum.PAY_SUCCESS_GET_DATA;
                         events.message = bean;
                         RxBus.getInstance().send(events);
-                        view.finishPage();
-                    }
-                    view.transfePageMsg(bean.getMsg());
+                        UIUtils.sendDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                view.finishPage();
+                            }
+                        }, 2000);
+
+                    } else
+                        view.transfePageMsg(bean.getMsg());
 
                 }
                 view.hideLoading();

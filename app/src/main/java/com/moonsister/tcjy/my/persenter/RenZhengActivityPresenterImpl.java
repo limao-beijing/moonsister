@@ -3,8 +3,7 @@ package com.moonsister.tcjy.my.persenter;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.BackTermsBean;
-import com.moonsister.tcjy.event.Events;
-import com.moonsister.tcjy.event.RxBus;
+import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.my.model.RenZhengActivityModel;
 import com.moonsister.tcjy.my.model.RenZhengActivityModelImpl;
 import com.moonsister.tcjy.my.view.RenZhengActivityView;
@@ -14,7 +13,7 @@ import com.moonsister.tcjy.utils.UIUtils;
 /**
  * Created by x on 2016/9/3.
  */
-public class RenZhengActivityPresenterImpl implements RenZhengAcivityPresenter, BaseIModel.onLoadDateSingleListener<BackTermsBean> {
+public class RenZhengActivityPresenterImpl implements RenZhengAcivityPresenter, BaseIModel.onLoadDateSingleListener<BaseBean> {
 
     private RenZhengActivityView view;
     private RenZhengActivityModel model;
@@ -62,30 +61,31 @@ public class RenZhengActivityPresenterImpl implements RenZhengAcivityPresenter, 
     }
 
     @Override
-    public void onSuccess(BackTermsBean backTermsBean, BaseIModel.DataType dataType) {
-        view.hideLoading();
-        if (backTermsBean == null) {
+    public void onSuccess(BaseBean bean, BaseIModel.DataType dataType) {
+
+        if (bean == null) {
+            view.hideLoading();
             return;
         }
 
         switch (dataType) {
             case DATA_ZERO:
-                view.success((BackTermsBean) backTermsBean);
+                view.success((BackTermsBean) bean);
                 break;
             case DATA_ONE:
-                if (StringUtis.equals(backTermsBean.getCode(), AppConstant.code_request_success)) {
-                    RxBus.getInstance().send(Events.EventEnum.MONEY_CHANGE, null);
+                if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success)) {
                     UIUtils.sendDelayedOneMillis(new Runnable() {
                         @Override
                         public void run() {
-                            view.success((BackTermsBean) backTermsBean);
+                            view.finishPage();
                         }
                     });
-                } else {
-                    view.transfePageMsg(backTermsBean.getMsg());
                 }
+                view.transfePageMsg(bean.getMsg());
+
                 break;
         }
+        view.hideLoading();
     }
 
     @Override

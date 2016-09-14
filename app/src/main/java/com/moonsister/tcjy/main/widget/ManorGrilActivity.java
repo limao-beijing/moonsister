@@ -76,6 +76,7 @@ public class ManorGrilActivity extends BaseActivity implements ManorGrilActivity
             case R.id.textview_login:
                 Intent i = new Intent(ManorGrilActivity.this, LoginMainActivity.class);
                 startActivity(i);
+                finish();
                 break;
         }
     }

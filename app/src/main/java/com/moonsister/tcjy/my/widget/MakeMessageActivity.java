@@ -48,12 +48,14 @@ public class MakeMessageActivity extends BaseActivity {
         getIntent().putExtra("id", UserInfoManager.getInstance().getUid());
         switch (view.getId()) {
             case R.id.my_follow:
-                HomePageFragment fragment = new HomePageFragment() {
-                    @Override
-                    public boolean isAddHeaderView() {
-                        return false;
-                    }
-                };
+                HomePageFragment fragment = new HomePageFragment();
+                fragment.setAddHeadFlage(false);
+//                {
+//                    @Override
+//                    public boolean isAddHeaderView() {
+//                        return false;
+//                    }
+//                };
 
                 fragment.setSearchType(EnumConstant.SearchType.user);
                 FragmentUtils.swichReplaceFramgent(getSupportFragmentManager(), R.id.fragmentlayout, fragment);
@@ -63,12 +65,14 @@ public class MakeMessageActivity extends BaseActivity {
                 follow_my.setTextColor(getResources().getColor(R.color.text_followmy_color));
                 break;
             case R.id.follow_my:
-                HomePageFragment dynamicfragment = new HomePageFragment() {
-                    @Override
-                    public boolean isAddHeaderView() {
-                        return false;
-                    }
-                };
+                HomePageFragment dynamicfragment = new HomePageFragment() ;
+                dynamicfragment.setAddHeadFlage(false);
+//                {
+//                    @Override
+//                    public boolean isAddHeaderView() {
+//                        return false;
+//                    }
+//                };
 
                 dynamicfragment.setSearchType(EnumConstant.SearchType.dynamic);
                 FragmentUtils.swichReplaceFramgent(getSupportFragmentManager(), R.id.fragmentlayout, dynamicfragment);
