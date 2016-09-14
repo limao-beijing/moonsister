@@ -19,6 +19,7 @@ import com.moonsister.tcjy.my.persenter.HreatFragmentPersenter;
 import com.moonsister.tcjy.my.persenter.HreatFragmentPresenterImpl;
 import com.moonsister.tcjy.my.view.HreatFragmentView;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.HreatViewholder;
 
@@ -29,6 +30,7 @@ import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import im.gouyin.com.progressdialog.AlearDialog;
 
 /**
  * Created by x on 2016/8/22.
@@ -127,24 +129,30 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
                 ActivityUtils.startInsertActivity(my);
                 break;
             case R.mipmap.viprenzheng://申请认证
+                int status = UserInfoManager.getInstance().getCertificationStatus();
+
+                if (status != 3) {
+                    showToast("您已认证");
+                    return;
+                }
                 ActivityUtils.startRenZhengActivity();
                 break;
             case R.mipmap.make://修改资料
                 ActivityUtils.startPersonalReviseActivity();
                 break;
             case R.mipmap.money://财务中心
-//                String smobile = UserInfoManager.getInstance().getMemoryPersonInfoDetail().getSmobile();
-//                if (StringUtis.isEmpty(smobile)) {
-//                    AlearDialog dialog = new AlearDialog(AlearDialog.DialogType.bind_phone, getActivity());
-//                    dialog.setListenter(new AlearDialog.onClickListenter() {
-//                        @Override
-//                        public void clickType(AlearDialog.clickType type) {
-//                            if (type == AlearDialog.clickType.confirm_vip)
-//                                ActivityUtils.startRegActivity();
-//                            dialog.dismiss();
-//                        }
-//                    });
-//                } else
+                String smobile = UserInfoManager.getInstance().getMemoryPersonInfoDetail().getSmobile();
+                if (StringUtis.isEmpty(smobile)) {
+                    AlearDialog dialog = new AlearDialog(AlearDialog.DialogType.bind_phone, getActivity());
+                    dialog.setListenter(new AlearDialog.onClickListenter() {
+                        @Override
+                        public void clickType(AlearDialog.clickType type) {
+                            if (type == AlearDialog.clickType.confirm_vip)
+                                ActivityUtils.startRegActivity();
+                            dialog.dismiss();
+                        }
+                    });
+                } else
                     ActivityUtils.startMoneyActivity(uid);
                 break;
             case R.mipmap.domake://设置
@@ -211,11 +219,11 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
         String isverify = data.getVip_level();
         if (isverify.equals("0")) {
             tv_work.setVisibility(View.GONE);
-        } else if(isverify.equals("1")){
+        } else if (isverify.equals("1")) {
             tv_work.setImageResource(R.mipmap.vipxiao);
-        }else if(isverify.equals("3")){
+        } else if (isverify.equals("3")) {
             tv_work.setImageResource(R.mipmap.vipnext);
-        }else if(isverify.equals("12")){
+        } else if (isverify.equals("12")) {
             tv_work.setImageResource(R.mipmap.vipmost);
         }
         String birthday = data.getBirthday();//用户出生年月日

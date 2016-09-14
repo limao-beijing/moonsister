@@ -150,8 +150,10 @@
             android:name=".login.widget.LoginMainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
-        <activity android:name=".login.widget.RegActivity"></activity>
-
+        <activity
+            android:name=".login.widget.RegActivity"
+            android:launchMode="singleInstance"></activity>
+        <activity android:name=".my.widget.RenZhengActivity"/>
         <activity
             android:name=".center.widget.DynamicSendActivity"
             android:screenOrientation="portrait"/>
@@ -319,7 +321,6 @@
 
         <activity android:name=".my.widget.RuleActivity"></activity>
         <activity android:name=".my.widget.MakeMessageActivity"></activity>
-        <activity android:name=".widget.RenZhengActivity"></activity>
         <activity android:name=".my.widget.PersonalActivity"></activity>
         <activity android:name=".my.widget.MoneyActivity"></activity>
         <activity android:name=".my.widget.WithdrawActivity"></activity>

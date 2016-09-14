@@ -11,6 +11,7 @@ import com.moonsister.tcjy.bean.CertificationStatusBean;
 import com.moonsister.tcjy.bean.ChooseKeyBean;
 import com.moonsister.tcjy.bean.CommentDataListBean;
 import com.moonsister.tcjy.bean.DefaultDataBean;
+import com.moonsister.tcjy.bean.DownApkBean;
 import com.moonsister.tcjy.bean.DynamicBean;
 import com.moonsister.tcjy.bean.DynamicDatailsBean;
 import com.moonsister.tcjy.bean.FrientBaen;
@@ -37,14 +38,13 @@ import com.moonsister.tcjy.bean.SearchReasonBaen;
 import com.moonsister.tcjy.bean.TiXinrRecordBean;
 import com.moonsister.tcjy.bean.UserDetailBean;
 import com.moonsister.tcjy.bean.UserFriendListBean;
+import com.moonsister.tcjy.bean.UserInfoBannerBean;
 import com.moonsister.tcjy.bean.UserInfoChangeBean;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.bean.UserPermissionBean;
 import com.moonsister.tcjy.bean.VersionInfo;
 import com.moonsister.tcjy.bean.WithdRawDepositBean;
-import com.moonsister.tcjy.find.widget.FindFragment;
-import com.moonsister.tcjy.manager.UserInfoBannerManager;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UnicodeUtils;
 import com.moonsister.tcjy.utils.gson.GsonConverterFactory;
@@ -1227,8 +1227,8 @@ public class ServerApi {
          * @return
          */
         @GET("user/get_ustatus")
-        Observable<UserInfoBannerManager.UserInfoBannerBean> getUserInfoStatus(@Query("authcode") String authcode,
-                                                                               @Query("channel") String channelId);
+        Observable<UserInfoBannerBean> getUserInfoStatus(@Query("authcode") String authcode,
+                                                         @Query("channel") String channelId);
 
         /**
          * @param authcode
@@ -1246,8 +1246,8 @@ public class ServerApi {
          * @return
          */
         @GET("download/get")
-        Observable<FindFragment.DownApkBean> getDownApk(@Query("authcode") String authcode,
-                                                        @Query("channel") String channel);
+        Observable<DownApkBean> getDownApk(@Query("authcode") String authcode,
+                                           @Query("channel") String channel);
 
     }
 }

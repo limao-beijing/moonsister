@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
+import com.moonsister.tcjy.my.widget.RenZhengActivity;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tcjy.widget.RenZhengActivity;
 import com.moonsister.tcjy.widget.speak.PressToSpeakListenr;
 
 /**

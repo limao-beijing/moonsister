@@ -25,7 +25,6 @@ import com.moonsister.tcjy.my.persenter.RenZhengAcivityPresenter;
 import com.moonsister.tcjy.my.persenter.RenZhengActivityPresenterImpl;
 import com.moonsister.tcjy.my.view.RenZhengActivityView;
 import com.moonsister.tcjy.utils.SDUtils;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.utils.URIUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
@@ -54,8 +53,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
             ImageView renzheng_yuyin;
     @Bind(R.id.random)//录制语音视频需要念的文字
             TextView random;
-    @Bind(R.id.tv_time)//录制时间
-            TextView tv_time;
+
     @Bind(R.id.input)
     TextView input;
     private RenZhengAcivityPresenter persenter;
@@ -77,7 +75,6 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
     protected View setRootContentView() {
         persenter = new RenZhengActivityPresenterImpl();
         persenter.attachView(this);
-        persenter.LoadData();
         return UIUtils.inflateLayout(R.layout.renzhengactivity);
     }
 
@@ -85,6 +82,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
 
     @Override
     protected void initView() {
+        persenter.LoadData();
         RxBus.with(this)
                 .setEndEvent(ActivityEvent.DESTROY)
                 .setEvent(Events.EventEnum.CERTIFICATION_PAGE_FINISH)
@@ -137,28 +135,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
         }
         switch (requestCode) {
             case RECORD_VIDEO:
-//                // 录制视频完成
-//                try {
-//                    AssetFileDescriptor videoAsset = getContentResolver()
-//                            .openAssetFileDescriptor(intent.getData(), "r");
-//                    FileInputStream fis = videoAsset.createInputStream();
-//                    File tmpFile = new File(
-//                            Environment.getExternalStorageDirectory(),
-//                            "recordvideo.mp4");
-//                    FileOutputStream fos = new FileOutputStream(tmpFile);
-//
-//                    byte[] buf = new byte[1024];
-//                    int len;
-//                    while ((len = fis.read(buf)) > 0) {
-//                        fos.write(buf, 0, len);
-//                    }
-//                    fis.close();
-//                    fos.close();
-//                    // 文件写完之后删除/sdcard/dcim/CAMERA/XXX.MP4
-//                    deleteDefaultFile(intent.getData());
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
+
                 realFilePath = URIUtils.getRealFilePath(getApplicationContext(), intent.getData());
                 String videoThumbnail = VideoUtils.getInstance().getVideoThumbnail(realFilePath);
                 ImageServerApi.showURLBigImage(video, videoThumbnail);
@@ -172,6 +149,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
 //                break;
             case 3:
                 voicepat = intent.getStringExtra("path");
+                renzheng_yuyin.setImageResource(R.mipmap.a);
                 break;
         }
     }
@@ -247,11 +225,12 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
                 break;
             case R.id.input:
 //                presenter1.sendDynamic(type1, txtContent1, dynamicContent1, voicepat);
-                if (StringUtis.isEmpty(realFilePath) || StringUtis.isEmpty(voicepat)) {
-                    showToast("请先录制视频/语音");
-                } else {
+//                if (StringUtis.isEmpty(realFilePath) || StringUtis.isEmpty(voicepat)) {
+//                    showToast("请先录制视频/语音");
+//                } else {
                     submit();
-                }
+//                }
+
 //
                 break;
         }
@@ -262,7 +241,12 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
         random.setText(backTermsBean.getData().getVoice_info());
         ImageServerApi.showURLSamllImage(riv_avater, backTermsBean.getData().getFace());
         vip_id.setText(backTermsBean.getData().getUid() + "");
-        phone.setText(backTermsBean.getData().getMobile() == null ? "" : backTermsBean.getData().getMobile() + "");
+        String mobile = backTermsBean.getData().getMobile();
+        if(mobile.equals("null")){
+            phone.setVisibility(View.INVISIBLE);
+        }else{
+            phone.setText(mobile+"");
+        }
     }
 
     @Override
@@ -278,7 +262,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
     private void submit() {
         //点击提交审核后弹出dialog提醒用户是否继续
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        String s = getResources().getString(R.string.tv_ren) + getString(R.string.pay_is_go_59);
+        String s = getResources().getString(R.string.tv_ren) + getString(R.string.pay_is_go);
         builder.setMessage(s);
         builder.setTitle("提示");
         //dialog确认监听，用户点击确认则提交审核，得到并且判断之前的数据，跳转页面及带参数
@@ -287,7 +271,9 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
 
-                if (realFilePath != null && voicepat != null) {
+                if (realFilePath != null ) {
+                    persenter.submit(realFilePath, voicepat, random.getText().toString());
+                }else if(voicepat != null){
                     persenter.submit(realFilePath, voicepat, random.getText().toString());
                 }
 

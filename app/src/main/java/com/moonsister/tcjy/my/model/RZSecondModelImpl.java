@@ -8,19 +8,19 @@ import com.moonsister.pay.tencent.PayBean;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
+import com.moonsister.tcjy.bean.DefaultDataBean;
+import com.moonsister.tcjy.bean.DynamicContent;
+import com.moonsister.tcjy.bean.PersonInfoDetail;
+import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
-import com.moonsister.tcjy.manager.aliyun.AliyunManager;
-import com.moonsister.tcjy.bean.DynamicContent;
-import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.manager.aliyun.AliyunManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.FilePathUtlis;
 import com.moonsister.tcjy.utils.ImageUtils;
 import com.moonsister.tcjy.utils.JsonUtils;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
@@ -64,6 +64,9 @@ public class RZSecondModelImpl implements RZSecondModel {
                                 @Override
                                 public void onPayResult(int resultCode, String resultInfo) {
                                     if (resultCode == 1) {
+                                        PersonInfoDetail detail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
+                                        detail.setAttestation(2);
+                                        UserInfoManager.getInstance().saveMemoryInstance(detail);
                                         sumbitData(address1, address2, height, sexid, nike, avaterpath, pics, bean.getData().getOrder_id(), listener);
                                     } else
                                         listener.onFailure(resultInfo);
