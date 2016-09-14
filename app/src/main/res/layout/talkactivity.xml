@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y96"
+        android:orientation="horizontal"
+        android:background="@color/black">
+        <ImageView
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/x40"
+            android:id="@+id/image_back"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/x30"
+            android:background="@mipmap/back"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y96"
+            android:textSize="17sp"
+            android:textColor="#778998"
+            android:layout_marginLeft="@dimen/x230"
+            android:gravity="center"
+            android:text="说明"/>
+        </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/text_talk"
+        android:textSize="18sp"
+        android:layout_margin="@dimen/x20"
+        android:textColor="@color/text_gray_color"
+        android:text="@string/text_talk"/>
 </LinearLayout>

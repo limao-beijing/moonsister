@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.my.widget;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -27,6 +28,8 @@ public class PingbiActivity extends BaseActivity implements PingbiView{
     @Bind(R.id.pingbilist)
     XListView pingbilist;
     PingbiAdapter adapter;
+    @Bind(R.id.image_back)
+    ImageView image_back;
     @Override
     protected View setRootContentView() {
         return UIUtils.inflateLayout(R.layout.pingbiactivity);
@@ -38,6 +41,12 @@ public class PingbiActivity extends BaseActivity implements PingbiView{
         persenter=new PingbiActivityPersenterImpl();
         persenter.attachView(this);
         pingbilist.setVerticalLinearLayoutManager();
+        image_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PingbiActivity.this.finish();
+            }
+        });
         pingbilist.setPullRefreshEnabled(false);
         pingbilist.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override

@@ -56,6 +56,36 @@
             android:textColor="@color/white" />
     </RelativeLayout>
 
+    <RelativeLayout
+            android:id="@+id/relative_activi"
+            android:layout_width="@dimen/x300"
+            android:layout_height="@dimen/x300"
+            android:layout_alignTop="@+id/relative_video"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_toRightOf="@+id/center_line"
+            android:background="@mipmap/video_small">
+
+
+            <ImageView
+                android:id="@+id/iv_activit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@mipmap/icon_move_about" />
+
+                <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_activit"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/x10"
+                android:background="@mipmap/ornament"
+                android:gravity="center"
+                android:text="现金红包抢不停"
+                android:textColor="@color/white" />
+            </RelativeLayout>
     <!--<RelativeLayout-->
         <!--android:id="@+id/relative_activi"-->
         <!--android:layout_width="@dimen/x300"-->
@@ -124,7 +154,8 @@
         android:layout_width="@dimen/x300"
         android:layout_height="@dimen/x300"
         android:layout_below="@+id/relative_video"
-        android:layout_marginLeft="@dimen/x15"
+        android:layout_marginRight="@dimen/x15"
+        android:layout_marginTop="@dimen/y30"
         android:layout_toLeftOf="@+id/center_line"
         android:background="@mipmap/video_small">
 

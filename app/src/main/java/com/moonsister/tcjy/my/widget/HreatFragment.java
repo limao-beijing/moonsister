@@ -1,6 +1,8 @@
 package com.moonsister.tcjy.my.widget;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
@@ -151,6 +154,13 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
                 break;
             case R.mipmap.domake://设置
                 ActivityUtils.startSettingActivity();
+                break;
+            case R.mipmap.xuanshang:
+                showToast("敬请期待");
+
+                break;
+            case R.mipmap.yousee:
+                showToast("敬请期待");
                 break;
 
         }

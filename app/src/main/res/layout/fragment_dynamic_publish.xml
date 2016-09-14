@@ -88,5 +88,13 @@
             android:id="@+id/fl_label_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x20"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="#b6baba"
+            android:text="禁止发布诈骗，诱骗，虚假广告等信息，否则永久封停！"/>
     </LinearLayout>
 </ScrollView>

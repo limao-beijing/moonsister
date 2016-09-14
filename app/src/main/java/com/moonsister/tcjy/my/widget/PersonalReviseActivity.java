@@ -131,8 +131,6 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
     PersonalReviseActivityPersenter presenter;
     String message;//头像路径
     String like_backgroud;//背景图路径
-    String result;//年龄
-    String love;//星座
     JSONObject jsonmobile;//手机
     JSONObject jsonqq;//qq
     JSONObject jsonweixin;//微信
@@ -268,6 +266,8 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
     //	个省份开始的第一个城市的位置
     private String provinceName, cityName;
     AlertDialog dlg;
+    String result;
+    String love;
     AlertDialog d;
     StringBuilder sb;
     String path;
@@ -355,8 +355,8 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             my = data.getStringExtra("my");
             tv_address.setText(my);
         }else if(requestCode==3){
-            String result = data.getStringExtra("result");
-            String love = data.getStringExtra("love");
+            result = data.getStringExtra("result");
+            love = data.getStringExtra("love");
             tv_birthday.setText(result);
             tv_star_sign.setText(love);
         }

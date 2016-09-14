@@ -55,12 +55,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
 
-        android:layout_marginRight="@dimen/x12"
+        android:layout_marginRight="@dimen/x15"
         android:layout_below="@+id/xin"
         android:layout_marginTop="@dimen/x10"
         android:text="@string/cancel"
         android:textColor="@color/home_navigation_text_gred"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
 
 
 

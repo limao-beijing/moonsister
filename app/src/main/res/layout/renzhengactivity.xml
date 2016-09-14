@@ -12,8 +12,8 @@
 
         <ImageView
             android:id="@+id/image_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/x40"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/x35"
             android:background="@mipmap/back"/>
@@ -97,7 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/x20"
-        android:text="@string/renzheng_condition"
+        android:text="@string/renz"
         android:textColor="#CDCDB4"
         />
 
@@ -127,20 +127,20 @@
             android:id="@+id/renzheng_yuyin"
             android:layout_width="match_parent"
             android:layout_height="@dimen/x280"
-
             android:layout_toRightOf="@+id/view_center_line"
             android:scaleType="centerCrop"
             android:src="@mipmap/renzheng_yuyin"
             />
 
-        <TextView
-            android:id="@+id/tv_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/x150"
-            android:gravity="center"/>
+        <!--<TextView-->
+            <!--android:id="@+id/tv_time"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="@dimen/x150"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:text="ss5sdsddfsdsdsd"-->
+            <!--android:layout_toRightOf="@+id/video"-->
+            <!--android:gravity="center"/>-->
     </RelativeLayout>
 
     <TextView
@@ -176,12 +176,12 @@
         android:textSize="20sp"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/x20"
-        android:text="@string/refrering"
-        android:textColor="#FFC125"
-        android:textSize="16sp"
-        />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="@dimen/x20"-->
+        <!--android:text="@string/refrering"-->
+        <!--android:textColor="#FFC125"-->
+        <!--android:textSize="16sp"-->
+        <!--/>-->
 </LinearLayout>

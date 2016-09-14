@@ -54,8 +54,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
             ImageView renzheng_yuyin;
     @Bind(R.id.random)//录制语音视频需要念的文字
             TextView random;
-    @Bind(R.id.tv_time)//录制时间
-            TextView tv_time;
+
     @Bind(R.id.input)
     TextView input;
     private RenZhengAcivityPresenter persenter;
@@ -137,28 +136,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
         }
         switch (requestCode) {
             case RECORD_VIDEO:
-//                // 录制视频完成
-//                try {
-//                    AssetFileDescriptor videoAsset = getContentResolver()
-//                            .openAssetFileDescriptor(intent.getData(), "r");
-//                    FileInputStream fis = videoAsset.createInputStream();
-//                    File tmpFile = new File(
-//                            Environment.getExternalStorageDirectory(),
-//                            "recordvideo.mp4");
-//                    FileOutputStream fos = new FileOutputStream(tmpFile);
-//
-//                    byte[] buf = new byte[1024];
-//                    int len;
-//                    while ((len = fis.read(buf)) > 0) {
-//                        fos.write(buf, 0, len);
-//                    }
-//                    fis.close();
-//                    fos.close();
-//                    // 文件写完之后删除/sdcard/dcim/CAMERA/XXX.MP4
-//                    deleteDefaultFile(intent.getData());
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
+
                 realFilePath = URIUtils.getRealFilePath(getApplicationContext(), intent.getData());
                 String videoThumbnail = VideoUtils.getInstance().getVideoThumbnail(realFilePath);
                 ImageServerApi.showURLBigImage(video, videoThumbnail);
@@ -172,6 +150,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
 //                break;
             case 3:
                 voicepat = intent.getStringExtra("path");
+                renzheng_yuyin.setImageResource(R.mipmap.a);
                 break;
         }
     }
@@ -262,7 +241,12 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
         random.setText(backTermsBean.getData().getVoice_info());
         ImageServerApi.showURLSamllImage(riv_avater, backTermsBean.getData().getFace());
         vip_id.setText(backTermsBean.getData().getUid() + "");
-        phone.setText(backTermsBean.getData().getMobile() + "");
+        String mobile = backTermsBean.getData().getMobile();
+        if(mobile.equals("null")){
+            phone.setVisibility(View.INVISIBLE);
+        }else{
+            phone.setText(mobile+"");
+        }
     }
 
     @Override

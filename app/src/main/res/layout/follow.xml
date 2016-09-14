@@ -9,12 +9,11 @@
         android:orientation="horizontal"
         android:background="@color/black">
         <ImageView
-            android:padding="@dimen/x30"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/x40"
             android:id="@+id/image_back"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginLeft="@dimen/x40"
             android:src="@mipmap/back"/>
         <TextView
             android:layout_width="wrap_content"
@@ -40,8 +39,8 @@
             android:text="关注我的"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/y40"
             android:id="@+id/image_pingbi"
             android:background="@mipmap/nosee"
             android:layout_gravity="center"
