@@ -46,12 +46,15 @@ import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.FilePathUtlis;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tcjy.viewholder.PersonDynamicViewholder;
 import com.trello.rxlifecycle.ActivityEvent;
+import com.trello.rxlifecycle.FragmentEvent;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -267,18 +270,10 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
     AlertDialog dlg;
     AlertDialog d;
     StringBuilder sb;
+    String path;
     public static final int REQUSET = 1;
     String my;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client2;
+    private PersonDynamicViewholder personDynamicViewholder;
 
     @Override
     protected View setRootContentView() {
@@ -290,6 +285,59 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
         presenter = new PersonalReviseActivityPersenterImpl();
         presenter.attachView(this);
         presenter.sendPersonalReviseMessage(UserInfoManager.getInstance().getUid());
+        RxBus.with(this)
+                .setEvent(Events.EventEnum.GET_PHOTO)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .onNext((events) -> {
+                    String usermessage = (String) events.message;
+                    LogUtils.e(RZFirstActivity.class, "pic_path : " + message);
+                    ImageServerApi.showURLSamllImage(riv_user_image, usermessage);
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                message = AliyunManager.getInstance().upLoadFile(usermessage, FilePathUtlis.FileType.JPG);
+                                File file = new File(usermessage);
+                                if (file.exists())
+                                    file.delete();
+                            } catch (ClientException e) {
+                                e.printStackTrace();
+                            } catch (ServiceException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }).start();
+
+                }).create();
+        //背景图
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.CROP_IMAGE_PATH)
+                .onNext(events -> {
+                    if (events != null) {
+                        String likepath = (String) events.message;
+                        ImageServerApi.showURLSamllImage(riv_like_image, likepath);
+
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    path = AliyunManager.getInstance().upLoadFile(likepath, FilePathUtlis.FileType.JPG);
+                                    File file = new File(likepath);
+                                    if (file.exists())
+                                        file.delete();
+                                } catch (ClientException e) {
+                                    e.printStackTrace();
+                                } catch (ServiceException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }).start();
+
+
+                    }
+                })
+                .create();
 
     }
 
@@ -298,10 +346,10 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
         // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==1){
+        if (requestCode == 1) {
             my = data.getStringExtra("my");
             tv_birthplace.setText(my);
-        }else{
+        } else {
             my = data.getStringExtra("my");
             tv_address.setText(my);
         }
@@ -346,40 +394,12 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 break;
             case R.id.layout_avater://头像
                 ActivityUtils.startActivity(SelectPicPopupActivity.class);
-                RxBus.with(this)
-                        .setEvent(Events.EventEnum.GET_PHOTO)
-                        .setEndEvent(ActivityEvent.DESTROY)
-                        .onNext((events) -> {
-                            message = (String) events.message;
-                            LogUtils.e(RZFirstActivity.class, "pic_path : " + message);
-                            ImageServerApi.showURLSamllImage(riv_user_image, message);
-                            try {
-                                message = AliyunManager.getInstance().upLoadFile(message, FilePathUtlis.FileType.JPG);
-                            } catch (ClientException e) {
-                                e.printStackTrace();
-                            } catch (ServiceException e) {
-                                e.printStackTrace();
-                            }
-                        }).create();
+
 
                 break;
             case R.id.layout_like://背景
-                ActivityUtils.startActivity(SelectPicPopupActivity.class);
-                RxBus.with(this)
-                        .setEvent(Events.EventEnum.GET_PHOTO)
-                        .setEndEvent(ActivityEvent.DESTROY)
-                        .onNext((events) -> {
-                            like_backgroud = (String) events.message;
-                            LogUtils.e(RZFirstActivity.class, "pic_path : " + message);
-                            ImageServerApi.showURLSamllImage(riv_like_image, message);
-                            try {
-                                like_backgroud = AliyunManager.getInstance().upLoadFile(like_backgroud, FilePathUtlis.FileType.JPG);
-                            } catch (ClientException e) {
-                                e.printStackTrace();
-                            } catch (ServiceException e) {
-                                e.printStackTrace();
-                            }
-                        }).create();
+                ActivityUtils.startCropImageMainActivity();
+
                 break;
             case R.id.layout_nike_name://昵称
                 tv_nike_name.requestFocus();
@@ -508,30 +528,13 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                         SelectPlandWindowActivity.class);
                 //发送意图标示为REQUSET=1
                 startActivityForResult(intent, REQUSET);
-//                ActivityUtils.startActivity(SelectPlandWindowActivity.class);
-//                tv_birthplace.setText(my);
+
                 break;
             case R.id.layout_address://现居
                 Intent intent1 = new Intent(PersonalReviseActivity.this,
                         SelectPlandWindowActivity.class);
                 //发送意图标示为REQUSET=1
                 startActivityForResult(intent1, 2);
-//                if (tv_birthplace.getText().toString().equals("选择省份")) {
-//                    city1 = city;
-//                }
-//            /*创建城市对话框*/
-//                dlg = new AlertDialog.Builder(this)
-//                        .setTitle("选择城市").setItems(city1, new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                // TODO Auto-generated method stub
-//                    /*返回选择城市*/
-//                                cityName = city1[which];
-//                                tv_address.setText(cityName);
-//                                dlg.dismiss();
-//                            }
-//
-//                        }).create();
-//                dlg.show();
                 break;
             case R.id.layout_job://职业
                 tv_job.requestFocus();
@@ -1335,12 +1338,5 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
         return starSeat;
     }
 
-    public String[] getCity(int start, int end) {
-        String[] City = new String[end - start + 1];
-        for (int i = start; i <= end; i++) {
-            City[i - start] = city[i];
-        }
-        return City;
-    }
 
 }

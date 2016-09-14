@@ -1,5 +1,7 @@
 package com.moonsister.tcjy.my.model;
 
+import android.widget.Toast;
+
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.bean.PersonalReviseMessageBean;
@@ -36,6 +38,7 @@ public class PersonalReviseActivityModelImpl implements PersonalReviseActivityMo
             @Override
             public void onSuccess(PersonalReviseMessageBean bean) {
                 listener.onSuccess(bean, DataType.DATA_ZERO);
+
             }
 
             @Override

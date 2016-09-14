@@ -131,8 +131,8 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
 
         iv_user_name.setText(data1.getNickname());//用户昵称
 
-        int i = data1.getSex();//用户性别
-        if (i == 1) {
+        String i = data1.getSex();//用户性别tring
+        if (i.equals("1")) {
             im_user_sex.setImageResource(R.mipmap.nan);
         } else {
             im_user_sex.setImageResource(R.mipmap.gril);
