@@ -241,10 +241,10 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
         //今日收入
         tv_user_day_income.setText(addons.getIncome_today());
         String vip_level = data.getVip_level();//判断是否为VIP
-        if (vip_level.equals("0")) {
-            vip_money.setVisibility(View.GONE);
-        } else {
+        if (vip_level.equals("1")) {
             vip_money.setVisibility(View.VISIBLE);
+        } else {
+            vip_money.setVisibility(View.GONE);
 
         }
     }

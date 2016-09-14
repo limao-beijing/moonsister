@@ -156,10 +156,11 @@
             android:textSize="16sp"
             android:text="预览个人主页"/>
         <ImageView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/vip_money"
-            android:background="@mipmap/ifvip"
+            android:src="@mipmap/ifvip"
             android:layout_marginTop="@dimen/x210"
             android:layout_marginLeft="@dimen/x410"/>
     </RelativeLayout>

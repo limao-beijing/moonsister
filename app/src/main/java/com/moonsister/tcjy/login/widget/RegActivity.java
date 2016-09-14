@@ -15,6 +15,7 @@ import com.moonsister.tcjy.main.widget.FillOutMessageActivity;
 import com.moonsister.tcjy.main.widget.MainActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;
@@ -28,7 +29,7 @@ public class RegActivity extends BaseActivity implements RegThridActivityView {
             EditText etPhoneNumber;
     @Bind(R.id.reg_edit_password)//密码
             EditText reg_edit_password;
-//    @Bind(R.id.reg_edit_brith)//出生年月日
+    //    @Bind(R.id.reg_edit_brith)//出生年月日
 //            EditText reg_edit_brith;
     @Bind(R.id.et_security_code)//输入验证码
             EditText etCode;
@@ -63,7 +64,7 @@ public class RegActivity extends BaseActivity implements RegThridActivityView {
         persenter.attachView(this);
     }
 
-    @OnClick({R.id.tv_submit, R.id.tv_security_code, R.id.let_go,R.id.old_code})
+    @OnClick({R.id.tv_submit, R.id.tv_security_code, R.id.let_go, R.id.old_code})
     public void onClick(View view) {
 
         if (view.getId() == R.id.tv_security_code) {//获取验证码
@@ -81,17 +82,25 @@ public class RegActivity extends BaseActivity implements RegThridActivityView {
             mobile = etPhoneNumber.getText().toString().trim();
 //            birthday = reg_edit_brith.getText().toString().trim();
             pwd = reg_edit_password.getText().toString().trim();
-            if (mobile == null || mobile.isEmpty() || pwd == null || pwd.isEmpty() || code == null || code.isEmpty()) {
-//                showToast(resources.getString(R.string.input_Security_code) + resources.getString(R.string.input_phone_number) + resources.getString(R.string.not_empty));
-
-            } else {
-                persenter.getThrid(mobile, pwd, birthday, code);
+            if (StringUtis.isEmpty(pwd)) {
+                showToast(getString(R.string.input_password) + getString(R.string.not_empty));
+                return;
             }
+            if (StringUtis.isEmpty(mobile)) {
+                showToast(getString(R.string.input_phone_number) + getString(R.string.not_empty));
+                return;
+            }
+            if (StringUtis.isEmpty(code)) {
+                showToast(getString(R.string.input_Security_code) + getString(R.string.not_empty));
+                return;
+            }
+            persenter.getThrid(mobile, pwd, birthday, code);
+
 
         } else if (view.getId() == R.id.let_go) {
             Intent intent = new Intent(RegActivity.this, MainActivity.class);
             startActivity(intent);
-        }else if(view.getId() == R.id.old_code){
+        } else if (view.getId() == R.id.old_code) {
             Intent intent = new Intent(RegActivity.this, LoginMainActivity.class);
             startActivity(intent);
         }
@@ -123,12 +132,13 @@ public class RegActivity extends BaseActivity implements RegThridActivityView {
     @Override
     public void finishPage() {
         PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();//获得对象
-        memoryPersonInfoDetail.setSmobile(mobile);//保存值
+        memoryPersonInfoDetail.setSmobile(etPhoneNumber.getText().toString().trim());//保存值
         UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
         Intent intent = new Intent(RegActivity.this, FillOutMessageActivity.class);
         startActivity(intent);
         this.finish();
     }
+
     @Override
     public void showLoading() {
         showProgressDialog();
