@@ -39,7 +39,7 @@ public class BirthdayActivity extends BaseActivity implements OnClickListener {
     private TextView tv_date_birthday;// 显示生日
     private TextView tv_title_right;
     private TextView tv_birthday_constellation;// 显示星座
-
+    String brigth;
 
     @Override
     protected View setRootContentView() {
@@ -175,6 +175,7 @@ public class BirthdayActivity extends BaseActivity implements OnClickListener {
                     + getConstellation(n_month, day.getCurrentItem()));
             tv_date_birthday.setText(year + "");
 
+
         }
     };
 
@@ -208,6 +209,7 @@ public class BirthdayActivity extends BaseActivity implements OnClickListener {
             year.setCurrentItem(Integer.parseInt(date[0]) - 1950);
             month.setCurrentItem(Integer.parseInt(date[1]) - 1);
             day.setCurrentItem(Integer.parseInt(date[2]) - 1);
+
         } else {
             year.setCurrentItem(40);
             month.setCurrentItem(0);
@@ -232,12 +234,12 @@ public class BirthdayActivity extends BaseActivity implements OnClickListener {
                 events.message = data;
                 RxBus.getInstance().send(events);
 
-                String s = tv_date_birthday.getText().toString();
+//                String s = tv_date_birthday.getText().toString();
                 String s1 = tv_birthday_constellation.getText().toString();
                 //数据是使用Intent返回
                 Intent intent = new Intent();
                 //把返回数据存入Intent
-                intent.putExtra("result", s);
+                intent.putExtra("result", brigth);
                 intent.putExtra("love", s1);
                 //设置返回数据
                 BirthdayActivity.this.setResult(RESULT_OK, intent);

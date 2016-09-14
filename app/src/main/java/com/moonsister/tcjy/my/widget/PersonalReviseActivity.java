@@ -349,9 +349,14 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
         if (requestCode == 1) {
             my = data.getStringExtra("my");
             tv_birthplace.setText(my);
-        } else {
+        } else if(requestCode==2){
             my = data.getStringExtra("my");
             tv_address.setText(my);
+        }else if(requestCode==3){
+            String result = data.getStringExtra("result");
+            String love = data.getStringExtra("love");
+            tv_birthday.setText(result);
+            tv_star_sign.setText(love);
         }
 
     }
@@ -413,27 +418,32 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
 
                 break;
             case R.id.layout_birthday://出生年月
-                Calendar c = Calendar.getInstance();
-                c.setTimeInMillis(System.currentTimeMillis());
-                final int nowYear = c.get(Calendar.YEAR);
-                DatePickerDialog dialog = new DatePickerDialog(PersonalReviseActivity.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        c.set(year, monthOfYear, dayOfMonth);
-                        tv_birthday.setText(DateFormat.format("yyy-MM-dd", c));
-                        if (year > nowYear) {
-                            tv_star_sign
-                                    .setText("你还未出生,星座:"
-                                            + getStarSeat(monthOfYear + 1,
-                                            dayOfMonth));
+                Intent intent2 = new Intent(PersonalReviseActivity.this,
+                        BirthdayActivity.class);
+                //发送意图标示为REQUSET=1
+                startActivityForResult(intent2, 3);
 
-                        } else {
-                            tv_star_sign.setText(getStarSeat(monthOfYear + 1, dayOfMonth));
-                        }
-                    }
-                }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
-                dialog.setCanceledOnTouchOutside(false);
-                dialog.show();
+//                Calendar c = Calendar.getInstance();
+//                c.setTimeInMillis(System.currentTimeMillis());
+//                final int nowYear = c.get(Calendar.YEAR);
+//                DatePickerDialog dialog = new DatePickerDialog(PersonalReviseActivity.this, new DatePickerDialog.OnDateSetListener() {
+//                    @Override
+//                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//                        c.set(year, monthOfYear, dayOfMonth);
+//                        tv_birthday.setText(DateFormat.format("yyy-MM-dd", c));
+//                        if (year > nowYear) {
+//                            tv_star_sign
+//                                    .setText("你还未出生,星座:"
+//                                            + getStarSeat(monthOfYear + 1,
+//                                            dayOfMonth));
+//
+//                        } else {
+//                            tv_star_sign.setText(getStarSeat(monthOfYear + 1, dayOfMonth));
+//                        }
+//                    }
+//                }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+//                dialog.setCanceledOnTouchOutside(false);
+//                dialog.show();
 
                 break;
             case R.id.layout_star_sign://星座
