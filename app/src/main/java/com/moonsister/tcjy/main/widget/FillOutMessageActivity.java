@@ -55,6 +55,7 @@ public class FillOutMessageActivity extends BaseActivity implements FilloutActiv
     FillOutActivityPresenter presenter;
     String imagePath;//条用系统相册后返回的图片路径
     String str;//得到用户输入的昵称
+    String message_name;
     @Override
     protected View setRootContentView() {
         presenter=new FillOutActivityPresenterImpl();
@@ -64,14 +65,14 @@ public class FillOutMessageActivity extends BaseActivity implements FilloutActiv
 
     @Override
     protected void initView() {
-        str=fillout_message_name.getText().toString().trim();
+
     }
 
     @OnClick({R.id.fillout_ok,R.id.fillout_go,R.id.fillout_imageview})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.fillout_ok:
-                presenter.fillout(imagePath,str);
+
                 Intent intent=new Intent(FillOutMessageActivity.this,MainActivity.class);
                 startActivity(intent);
                 break;
@@ -108,6 +109,7 @@ public class FillOutMessageActivity extends BaseActivity implements FilloutActiv
 
                     try {
                         imagePath = AliyunManager.getInstance().upLoadFile(imagePath, FilePathUtlis.FileType.JPG);
+                        presenter.fillout(imagePath,message_name);
                         UIUtils.onRunMainThred(new Runnable() {
                             @Override
                             public void run() {
@@ -128,13 +130,14 @@ public class FillOutMessageActivity extends BaseActivity implements FilloutActiv
     private void showImage(String imaePath){
         Bitmap bm = BitmapFactory.decodeFile(imaePath);
         ((ImageView)findViewById(R.id.fillout_imageview)).setImageBitmap(bm);
+        message_name = fillout_message_name.getText().toString();
+
     }
 
 
     @Override
     public void filloutactivity() {
-        String message_name = fillout_message_name.getText().toString();
-        presenter.fillout(imagePath,message_name);
+
     }
 
     @Override

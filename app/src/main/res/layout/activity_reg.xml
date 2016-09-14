@@ -129,4 +129,12 @@
             android:textColor="@color/white"
             android:layout_marginTop="@dimen/y100"/>
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/old_code"
+        android:textColor="@color/text_yellow_color"
+        android:layout_marginTop="@dimen/y100"
+        android:layout_marginLeft="@dimen/x150"
+        android:text="已有账号？点此直接登录"/>
 </LinearLayout>

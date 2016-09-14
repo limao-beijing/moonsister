@@ -54,7 +54,7 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
     @Bind(R.id.tv_user_name)//用户名
             TextView tv_user_name;
     @Bind(R.id.tv_work)//用户职业
-            TextView tv_work;
+            ImageView tv_work;
     @Bind(R.id.tv_time)//时间
             TextView tv_time;
     @Bind(R.id.tv_age)//年龄
@@ -213,11 +213,15 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
             image_gril.setImageResource(R.mipmap.gril);
         }
         ImageServerApi.showURLSamllImage(iv_user_icon, data.getFace());//用户头像
-        String profession = data.getProfession();//用户职业
-        if (profession == "") {
-            tv_work.setVisibility(View.INVISIBLE);
-        } else {
-            tv_work.setText(profession);
+        String isverify = data.getVip_level();
+        if (isverify.equals("0")) {
+            tv_work.setVisibility(View.GONE);
+        } else if(isverify.equals("1")){
+            tv_work.setImageResource(R.mipmap.vipxiao);
+        }else if(isverify.equals("3")){
+            tv_work.setImageResource(R.mipmap.vipnext);
+        }else if(isverify.equals("12")){
+            tv_work.setImageResource(R.mipmap.vipmost);
         }
         String birthday = data.getBirthday();//用户出生年月日
         if (birthday == "") {

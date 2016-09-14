@@ -757,6 +757,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 builderpremarital.create().show();
                 break;
             case R.id.baocun:
+                showToast("正在保存");
                 String mobile = tv_mobile.getText().toString();
                 jsonmobile = new JSONObject();
                 PersonalReviseMessageBean.DataBean.RulesBean rulesBean = rules.get(0);

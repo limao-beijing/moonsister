@@ -69,7 +69,7 @@
             android:textSize="16sp"
             android:textColor="#778998" />
 
-        <TextView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_work"
@@ -77,8 +77,7 @@
             android:layout_marginTop="@dimen/x34"
             android:layout_marginLeft="@dimen/x20"
             android:layout_below="@+id/iv_user_icon"
-            android:layout_toRightOf="@+id/tv_user_name"
-            android:background="@drawable/backgroup_red"/>
+            android:layout_toRightOf="@+id/tv_user_name" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

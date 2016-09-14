@@ -38,6 +38,8 @@ public class RegActivity extends BaseActivity implements RegThridActivityView {
             TextView let_go;
     @Bind(R.id.tv_security_code)//获取验证码
             TextView tvSecurityCode;
+    @Bind(R.id.old_code)
+    TextView old_code;
     RegActivityPresenter persenter;
     String pwd;
     String birthday;
@@ -61,7 +63,7 @@ public class RegActivity extends BaseActivity implements RegThridActivityView {
         persenter.attachView(this);
     }
 
-    @OnClick({R.id.tv_submit, R.id.tv_security_code, R.id.let_go})
+    @OnClick({R.id.tv_submit, R.id.tv_security_code, R.id.let_go,R.id.old_code})
     public void onClick(View view) {
 
         if (view.getId() == R.id.tv_security_code) {//获取验证码
@@ -88,6 +90,9 @@ public class RegActivity extends BaseActivity implements RegThridActivityView {
 
         } else if (view.getId() == R.id.let_go) {
             Intent intent = new Intent(RegActivity.this, MainActivity.class);
+            startActivity(intent);
+        }else if(view.getId() == R.id.old_code){
+            Intent intent = new Intent(RegActivity.this, LoginMainActivity.class);
             startActivity(intent);
         }
     }

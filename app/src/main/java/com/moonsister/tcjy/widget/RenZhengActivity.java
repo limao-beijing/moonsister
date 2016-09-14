@@ -76,7 +76,6 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
     protected View setRootContentView() {
         persenter = new RenZhengActivityPresenterImpl();
         persenter.attachView(this);
-        persenter.LoadData();
         return UIUtils.inflateLayout(R.layout.renzhengactivity);
     }
 
@@ -84,6 +83,7 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
 
     @Override
     protected void initView() {
+        persenter.LoadData();
         RxBus.with(this)
                 .setEndEvent(ActivityEvent.DESTROY)
                 .setEvent(Events.EventEnum.CERTIFICATION_PAGE_FINISH)
