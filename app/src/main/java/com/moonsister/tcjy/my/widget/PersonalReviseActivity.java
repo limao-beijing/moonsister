@@ -345,7 +345,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
-
+        if(data==null){
+            return;
+        }
         if (requestCode == 1) {
             my = data.getStringExtra("my");
             tv_birthplace.setText(my);
@@ -422,28 +424,6 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                         BirthdayActivity.class);
                 //发送意图标示为REQUSET=1
                 startActivityForResult(intent2, 3);
-
-//                Calendar c = Calendar.getInstance();
-//                c.setTimeInMillis(System.currentTimeMillis());
-//                final int nowYear = c.get(Calendar.YEAR);
-//                DatePickerDialog dialog = new DatePickerDialog(PersonalReviseActivity.this, new DatePickerDialog.OnDateSetListener() {
-//                    @Override
-//                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-//                        c.set(year, monthOfYear, dayOfMonth);
-//                        tv_birthday.setText(DateFormat.format("yyy-MM-dd", c));
-//                        if (year > nowYear) {
-//                            tv_star_sign
-//                                    .setText("你还未出生,星座:"
-//                                            + getStarSeat(monthOfYear + 1,
-//                                            dayOfMonth));
-//
-//                        } else {
-//                            tv_star_sign.setText(getStarSeat(monthOfYear + 1, dayOfMonth));
-//                        }
-//                    }
-//                }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
-//                dialog.setCanceledOnTouchOutside(false);
-//                dialog.show();
 
                 break;
             case R.id.layout_star_sign://星座
@@ -1308,44 +1288,6 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             layout_yuliu2.setVisibility(View.GONE);
         }
 
-    }
-
-    /**
-     * 通过日期来确定星座
-     *
-     * @param mouth
-     * @param day
-     * @return
-     */
-    public static String getStarSeat(int mouth, int day) {
-        String starSeat = null;
-
-        if ((mouth == 3 && day >= 21) || (mouth == 4 && day <= 19)) {
-            starSeat = "白羊座";
-        } else if ((mouth == 4 && day >= 20) || (mouth == 5 && day <= 20)) {
-            starSeat = "金牛座";
-        } else if ((mouth == 5 && day >= 21) || (mouth == 6 && day <= 21)) {
-            starSeat = "双子座";
-        } else if ((mouth == 6 && day >= 22) || (mouth == 7 && day <= 22)) {
-            starSeat = "巨蟹座";
-        } else if ((mouth == 7 && day >= 23) || (mouth == 8 && day <= 22)) {
-            starSeat = "狮子座";
-        } else if ((mouth == 8 && day >= 23) || (mouth == 9 && day <= 22)) {
-            starSeat = "处女座";
-        } else if ((mouth == 9 && day >= 23) || (mouth == 10 && day <= 23)) {
-            starSeat = "天秤座";
-        } else if ((mouth == 10 && day >= 24) || (mouth == 11 && day <= 22)) {
-            starSeat = "天蝎座";
-        } else if ((mouth == 11 && day >= 23) || (mouth == 12 && day <= 21)) {
-            starSeat = "射手座";
-        } else if ((mouth == 12 && day >= 22) || (mouth == 1 && day <= 19)) {
-            starSeat = "摩羯座";
-        } else if ((mouth == 1 && day >= 20) || (mouth == 2 && day <= 18)) {
-            starSeat = "水瓶座";
-        } else {
-            starSeat = "双鱼座";
-        }
-        return starSeat;
     }
 
 
