@@ -226,11 +226,12 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
                 break;
             case R.id.input:
 //                presenter1.sendDynamic(type1, txtContent1, dynamicContent1, voicepat);
-                if (StringUtis.isEmpty(realFilePath) || StringUtis.isEmpty(voicepat)) {
-                    showToast("请先录制视频/语音");
-                } else {
+//                if (StringUtis.isEmpty(realFilePath) || StringUtis.isEmpty(voicepat)) {
+//                    showToast("请先录制视频/语音");
+//                } else {
                     submit();
-                }
+//                }
+
 //
                 break;
         }
@@ -271,7 +272,9 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
 
-                if (realFilePath != null && voicepat != null) {
+                if (realFilePath != null ) {
+                    persenter.submit(realFilePath, voicepat, random.getText().toString());
+                }else if(voicepat != null){
                     persenter.submit(realFilePath, voicepat, random.getText().toString());
                 }
 

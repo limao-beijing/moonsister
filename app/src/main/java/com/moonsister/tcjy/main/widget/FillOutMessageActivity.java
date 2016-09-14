@@ -65,7 +65,7 @@ public class FillOutMessageActivity extends BaseActivity implements FilloutActiv
 
     @Override
     protected void initView() {
-
+        presenter.fillout(imagePath,message_name);
     }
 
     @OnClick({R.id.fillout_ok,R.id.fillout_go,R.id.fillout_imageview})
@@ -109,7 +109,7 @@ public class FillOutMessageActivity extends BaseActivity implements FilloutActiv
 
                     try {
                         imagePath = AliyunManager.getInstance().upLoadFile(imagePath, FilePathUtlis.FileType.JPG);
-                        presenter.fillout(imagePath,message_name);
+
                         UIUtils.onRunMainThred(new Runnable() {
                             @Override
                             public void run() {

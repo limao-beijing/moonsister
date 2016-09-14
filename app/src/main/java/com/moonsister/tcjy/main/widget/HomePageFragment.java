@@ -271,7 +271,7 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
                     Drawable drawable = UIUtils.getResources().getDrawable(!equals ? R.mipmap.home_page_not_wacth : R.mipmap.home_page_wacth);
                     drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                     tv_wacth.setCompoundDrawables(drawable, null, null, null);
-                    tv_wacth.setText(UIUtils.getStringRes(equals ? R.string.not_wacth : R.string.wacth));
+                    tv_wacth.setText(UIUtils.getStringRes(equals ? R.string.wacth : R.string.not_wacth));
                     showToast(bean.getMsg());
                     data.setFollow(follow);
                 }

@@ -807,7 +807,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 }
                 jsonlike = new JSONObject();
                 try {
-                    jsonlike.put(rules.get(4).getField(), like_backgroud);
+                    jsonlike.put(rules.get(4).getField(), path);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
