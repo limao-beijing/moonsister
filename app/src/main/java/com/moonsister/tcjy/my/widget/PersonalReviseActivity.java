@@ -743,7 +743,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 }
                 jsonavater = new JSONObject();
                 try {
-                    jsonavater.put("face", message);
+                    jsonavater.put(rules.get(3).getField(), message);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -754,7 +754,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 }
                 jsonlike = new JSONObject();
                 try {
-                    jsonlike.put("face",like_backgroud);
+                    jsonlike.put(rules.get(4).getField(),like_backgroud);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -780,13 +780,19 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                int m;
                 String sex = tv_sex.getText().toString();
+                if(sex.equals("男")){
+                    m=1;
+                }else{
+                    m=2;
+                }
                 PersonalReviseMessageBean.DataBean.RulesBean rulessex = rules.get(7);
                 if (rulessex == null) {
                 }
                 jsonobjsex = new JSONObject();
                 try {
-                    jsonobjsex.put(rules.get(7).getField(), sex);
+                    jsonobjsex.put(rules.get(7).getField(), m);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

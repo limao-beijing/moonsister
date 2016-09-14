@@ -7,30 +7,13 @@ import java.util.List;
  */
 public class PersonalMessageBean extends BaseBean{
 
+
     /**
-     * rules : [{"field":"nickname","name":"昵称","edit":"1","isvip":"0","value":"mm1471248477864"},{"field":"signature","name":"个性签名","edit":"1","isvip":"0","value":"新人加入，请记得关注我哦。"},{"field":"sex","name":"性别","edit":"2","isvip":"0","value":1},{"field":"birthday","name":"出生年月","edit":"1","isvip":"0","value":""},{"field":"star_sign","name":"星座","edit":"1","isvip":"0","value":""},{"field":"birthplace","name":"籍贯","edit":"1","isvip":"0","value":""},{"field":"residence","name":"现居","edit":"1","isvip":"0","value":""},{"field":"profession","name":"职业","edit":"1","isvip":"0","value":""},{"field":"hobby","name":"兴趣爱好","edit":"1","isvip":"0","value":null},{"field":"self_image","name":"自我印象","edit":"1","isvip":"0","value":null},{"field":"ishouse","name":"是否有房","edit":"1","isvip":"0","value":null},{"field":"marital_status","name":"婚姻状况","edit":"1","isvip":"0","value":null},{"field":"distance_love","name":"接受异地恋","edit":"1","isvip":"0","value":null},{"field":"like_sex","name":"喜欢的异性","edit":"1","isvip":"0","value":null},{"field":"premarital_sex","name":"婚前性行为","edit":"1","isvip":"0","value":null}]
-     * dlist : {"face":"http://mimei.oss-cn-beijing.aliyuncs.com/public/face/moren.png","nickname":"mm1471248477864","signature":"新人加入，请记得关注我哦。","sex":1,"birthday":"","star_sign":"","birthplace":"","residence":"","profession":"","hobby":null,"self_image":null,"ishouse":null,"marital_status":null,"distance_love":null,"like_sex":null,"premarital_sex":null}
-     * baseinfo : {"nickname":"mm1471248477864","sex":1,"face":"http://mimei.oss-cn-beijing.aliyuncs.com/public/face/moren.png","like_image":"http://mimei.oss-cn-beijing.aliyuncs.com/public/default-like-image.png","profession":"","birthday":"","signature":"新人加入，请记得关注我哦。","age":23,"vip_level":"0","isauth":"1","isfollow":"2"}
+     * rules : [{"field":"like_image","name":"背景","edit":"1","isvip":"0","isshow":"1","value":"http://mimei.oss-cn-beijing.aliyuncs.com/a/image/04/2016-07-28/5799c429c9a84.jpg"},{"field":"nickname","name":"昵称","edit":"1","isvip":"0","isshow":"1","value":"瑶瑶"},{"field":"signature","name":"个性签名","edit":"1","isvip":"0","isshow":"1","value":"不解风情的男人太多\u2026\u2026"},{"field":"sex","name":"性别","edit":"2","isvip":"0","isshow":"1","value":2},{"field":"birthday","name":"出生年月","edit":"1","isvip":"0","isshow":"1","value":"1991-11-12"},{"field":"star_sign","name":"星座","edit":"1","isvip":"0","isshow":"1","value":""},{"field":"height","name":"身高","edit":"1","isvip":"0","isshow":"1","value":"165"},{"field":"weight","name":"体重","edit":"1","isvip":"0","isshow":"1","value":"60"},{"field":"salary","name":"月薪","edit":"1","isvip":"0","isshow":"1","value":"20000以上"},{"field":"degree","name":"学历","edit":"1","isvip":"0","isshow":"1","value":"专科以下"},{"field":"birthplace","name":"籍贯","edit":"1","isvip":"0","isshow":"1","value":""},{"field":"residence","name":"现居","edit":"1","isvip":"0","isshow":"1","value":"北京"},{"field":"profession","name":"职业","edit":"1","isvip":"0","isshow":"1","value":"媒体人"},{"field":"hobby","name":"兴趣爱好","edit":"1","isvip":"0","isshow":"1","value":"萌宠"},{"field":"self_image","name":"自我印象","edit":"1","isvip":"0","isshow":"1","value":null},{"field":"ishouse","name":"是否有房","edit":"1","isvip":"0","isshow":"1","value":"有房"},{"field":"marital_status","name":"情感状态","edit":"1","isvip":"0","isshow":"1","value":"恋爱中"},{"field":"distance_love","name":"接受异地恋","edit":"1","isvip":"0","isshow":"1","value":"可以接受"},{"field":"like_sex","name":"喜欢的异性","edit":"1","isvip":"0","isshow":"1","value":"落落大方"},{"field":"premarital_sex","name":"婚前性行为","edit":"1","isvip":"0","isshow":"1","value":"不能接受"},{"field":"raddress","name":"收货地址","edit":"1","isvip":"0","isshow":"1","value":null},{"field":"rcode","name":"邮编","edit":"1","isvip":"0","isshow":"1","value":null},{"field":"rname","name":"收货人","edit":"1","isvip":"0","isshow":"1","value":null},{"field":"t1","name":"预留项1","edit":"1","isvip":"0","isshow":"1","value":null},{"field":"t2","name":"预留项2","edit":"1","isvip":"0","isshow":"2","value":null},{"field":"t3","name":"预留项3","edit":"1","isvip":"0","isshow":"2","value":null}]
+     * dlist : {"face":"http://mimei.oss-cn-beijing.aliyuncs.com/a/image/11/2016-07-07/577e710161490.jpg","like_image":"http://mimei.oss-cn-beijing.aliyuncs.com/a/image/04/2016-07-28/5799c429c9a84.jpg","nickname":"瑶瑶","signature":"不解风情的男人太多\u2026\u2026","sex":2,"birthday":"1991-11-12","star_sign":"","height":"165","weight":"60","salary":"20000以上","degree":"专科以下","birthplace":"","residence":"北京","profession":"媒体人","hobby":"萌宠","self_image":null,"ishouse":"有房","marital_status":"恋爱中","distance_love":"可以接受","like_sex":"落落大方","premarital_sex":"不能接受","raddress":null,"rcode":null,"rname":null,"t1":null,"t2":null,"t3":null}
+     * baseinfo : {"nickname":"瑶瑶","sex":2,"face":"http://mimei.oss-cn-beijing.aliyuncs.com/a/image/11/2016-07-07/577e710161490.jpg","like_image":"http://mimei.oss-cn-beijing.aliyuncs.com/a/image/04/2016-07-28/5799c429c9a84.jpg","profession":"媒体人","birthday":"1991-11-12","signature":"不解风情的男人太多\u2026\u2026","age":"25岁","vip_level":12,"isauth":"1","isfollow":"2"}
      * vipinfo : {"smobile":null,"qq":null,"weixin":null}
      */
-    int userId;
-    String userName;
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
 
     private DataBean data;
 
@@ -44,35 +27,46 @@ public class PersonalMessageBean extends BaseBean{
 
     public static class DataBean {
         /**
-         * face : http://mimei.oss-cn-beijing.aliyuncs.com/public/face/moren.png
-         * nickname : mm1471248477864
-         * signature : 新人加入，请记得关注我哦。
-         * sex : 1
-         * birthday :
+         * face : http://mimei.oss-cn-beijing.aliyuncs.com/a/image/11/2016-07-07/577e710161490.jpg
+         * like_image : http://mimei.oss-cn-beijing.aliyuncs.com/a/image/04/2016-07-28/5799c429c9a84.jpg
+         * nickname : 瑶瑶
+         * signature : 不解风情的男人太多……
+         * sex : 2
+         * birthday : 1991-11-12
          * star_sign :
+         * height : 165
+         * weight : 60
+         * salary : 20000以上
+         * degree : 专科以下
          * birthplace :
-         * residence :
-         * profession :
-         * hobby : null
+         * residence : 北京
+         * profession : 媒体人
+         * hobby : 萌宠
          * self_image : null
-         * ishouse : null
-         * marital_status : null
-         * distance_love : null
-         * like_sex : null
-         * premarital_sex : null
+         * ishouse : 有房
+         * marital_status : 恋爱中
+         * distance_love : 可以接受
+         * like_sex : 落落大方
+         * premarital_sex : 不能接受
+         * raddress : null
+         * rcode : null
+         * rname : null
+         * t1 : null
+         * t2 : null
+         * t3 : null
          */
 
         private DlistBean dlist;
         /**
-         * nickname : mm1471248477864
-         * sex : 1
-         * face : http://mimei.oss-cn-beijing.aliyuncs.com/public/face/moren.png
-         * like_image : http://mimei.oss-cn-beijing.aliyuncs.com/public/default-like-image.png
-         * profession :
-         * birthday :
-         * signature : 新人加入，请记得关注我哦。
-         * age : 23
-         * vip_level : 0
+         * nickname : 瑶瑶
+         * sex : 2
+         * face : http://mimei.oss-cn-beijing.aliyuncs.com/a/image/11/2016-07-07/577e710161490.jpg
+         * like_image : http://mimei.oss-cn-beijing.aliyuncs.com/a/image/04/2016-07-28/5799c429c9a84.jpg
+         * profession : 媒体人
+         * birthday : 1991-11-12
+         * signature : 不解风情的男人太多……
+         * age : 25岁
+         * vip_level : 12
          * isauth : 1
          * isfollow : 2
          */
@@ -86,11 +80,12 @@ public class PersonalMessageBean extends BaseBean{
 
         private VipinfoBean vipinfo;
         /**
-         * field : nickname
-         * name : 昵称
+         * field : like_image
+         * name : 背景
          * edit : 1
          * isvip : 0
-         * value : mm1471248477864
+         * isshow : 1
+         * value : http://mimei.oss-cn-beijing.aliyuncs.com/a/image/04/2016-07-28/5799c429c9a84.jpg
          */
 
         private List<RulesBean> rules;
@@ -129,11 +124,16 @@ public class PersonalMessageBean extends BaseBean{
 
         public static class DlistBean {
             private String face;
+            private String like_image;
             private String nickname;
             private String signature;
             private int sex;
             private String birthday;
             private String star_sign;
+            private String height;
+            private String weight;
+            private String salary;
+            private String degree;
             private String birthplace;
             private String residence;
             private String profession;
@@ -144,6 +144,12 @@ public class PersonalMessageBean extends BaseBean{
             private String distance_love;
             private String like_sex;
             private String premarital_sex;
+            private String raddress;
+            private String rcode;
+            private String rname;
+            private String t1;
+            private String t2;
+            private String t3;
 
             public String getFace() {
                 return face;
@@ -151,6 +157,14 @@ public class PersonalMessageBean extends BaseBean{
 
             public void setFace(String face) {
                 this.face = face;
+            }
+
+            public String getLike_image() {
+                return like_image;
+            }
+
+            public void setLike_image(String like_image) {
+                this.like_image = like_image;
             }
 
             public String getNickname() {
@@ -191,6 +205,38 @@ public class PersonalMessageBean extends BaseBean{
 
             public void setStar_sign(String star_sign) {
                 this.star_sign = star_sign;
+            }
+
+            public String getHeight() {
+                return height;
+            }
+
+            public void setHeight(String height) {
+                this.height = height;
+            }
+
+            public String getWeight() {
+                return weight;
+            }
+
+            public void setWeight(String weight) {
+                this.weight = weight;
+            }
+
+            public String getSalary() {
+                return salary;
+            }
+
+            public void setSalary(String salary) {
+                this.salary = salary;
+            }
+
+            public String getDegree() {
+                return degree;
+            }
+
+            public void setDegree(String degree) {
+                this.degree = degree;
             }
 
             public String getBirthplace() {
@@ -272,6 +318,54 @@ public class PersonalMessageBean extends BaseBean{
             public void setPremarital_sex(String premarital_sex) {
                 this.premarital_sex = premarital_sex;
             }
+
+            public String getRaddress() {
+                return raddress;
+            }
+
+            public void setRaddress(String raddress) {
+                this.raddress = raddress;
+            }
+
+            public String getRcode() {
+                return rcode;
+            }
+
+            public void setRcode(String rcode) {
+                this.rcode = rcode;
+            }
+
+            public String getRname() {
+                return rname;
+            }
+
+            public void setRname(String rname) {
+                this.rname = rname;
+            }
+
+            public String getT1() {
+                return t1;
+            }
+
+            public void setT1(String t1) {
+                this.t1 = t1;
+            }
+
+            public String getT2() {
+                return t2;
+            }
+
+            public void setT2(String t2) {
+                this.t2 = t2;
+            }
+
+            public String getT3() {
+                return t3;
+            }
+
+            public void setT3(String t3) {
+                this.t3 = t3;
+            }
         }
 
         public static class BaseinfoBean {
@@ -282,7 +376,7 @@ public class PersonalMessageBean extends BaseBean{
             private String profession;
             private String birthday;
             private String signature;
-            private int age;
+            private String age;
             private String vip_level;
             private String isauth;
             private String isfollow;
@@ -343,11 +437,11 @@ public class PersonalMessageBean extends BaseBean{
                 this.signature = signature;
             }
 
-            public int getAge() {
+            public String getAge() {
                 return age;
             }
 
-            public void setAge(int age) {
+            public void setAge(String age) {
                 this.age = age;
             }
 
@@ -411,6 +505,7 @@ public class PersonalMessageBean extends BaseBean{
             private String name;
             private String edit;
             private String isvip;
+            private String isshow;
             private String value;
 
             public String getField() {
@@ -443,6 +538,14 @@ public class PersonalMessageBean extends BaseBean{
 
             public void setIsvip(String isvip) {
                 this.isvip = isvip;
+            }
+
+            public String getIsshow() {
+                return isshow;
+            }
+
+            public void setIsshow(String isshow) {
+                this.isshow = isshow;
             }
 
             public String getValue() {

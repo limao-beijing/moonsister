@@ -220,7 +220,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/follow_ta"
-            android:text="关注TA"
+            android:text="去TA主页"
             android:textSize="18sp"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/x280"

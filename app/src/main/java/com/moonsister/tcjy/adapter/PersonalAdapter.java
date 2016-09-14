@@ -54,7 +54,6 @@ public class PersonalAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.text_name = (TextView) convertView.findViewById(R.id.text_name);
             holder.text_number = (EditText) convertView.findViewById(R.id.text_number);
-            ;
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();

@@ -16,6 +16,7 @@ import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenter;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.PersonalActivityView;
+import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.List;
@@ -56,7 +57,7 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
             TextView qq_number;
     @Bind(R.id.weixin_number)//用户的微信号
             TextView weixin_number;
-    @Bind(R.id.follow_ta)//关注他
+    @Bind(R.id.follow_ta)//去TA主页
             TextView follow_ta;
     @Bind(R.id.look)//手机号查看
             ImageView look;
@@ -69,6 +70,7 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
     PersonalMessageBean.DataBean.DlistBean data2;
     PersonalMessageBean.DataBean.VipinfoBean data3;
     String uid;
+    String id;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -82,7 +84,7 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
 
     @Override
     protected void initView() {
-        String id = getIntent().getStringExtra("id");
+        id = getIntent().getStringExtra("id");
         persenter = new PersonalActivityPersenterImpl();
         persenter.attachView(this);
         persenter.sendPersonalMessage(id);
@@ -91,30 +93,32 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
     }
 
 
-    @OnClick(R.id.image_back)
+    @OnClick({R.id.image_back,R.id.follow_ta})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.image_back:
                 PersonalActivity.this.finish();
+                break;
+            case R.id.follow_ta:
+                ActivityUtils.startHomePageActivity(id);
                 break;
         }
     }
 
     @Override
     public void showLoading() {
-
+        showProgressDialog();
     }
 
     @Override
     public void hideLoading() {
-
+        hideProgressDialog();
     }
 
     @Override
     public void transfePageMsg(String msg) {
         showToast(msg);
     }
-
     @Override
     public void success(PersonalMessageBean getPersonalBean) {
         data = getPersonalBean.getData().getRules();
@@ -151,12 +155,18 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
             if_user_vip.setVisibility(View.VISIBLE);
         }
         String Vip_level = data1.getVip_level();//VIP等级
-        if (Vip_level == "0") {
-
+        if (Vip_level.equals("0")) {
             im_user_vip.setVisibility(View.INVISIBLE);
             if_user_vip.setVisibility(View.INVISIBLE);
-        } else {
-
+        }else if(Vip_level.equals("1")) {
+            if_user_vip.setVisibility(View.VISIBLE);
+            im_user_vip.setImageResource(R.mipmap.vipxiao);
+        }else if(Vip_level.equals("3")){
+            if_user_vip.setVisibility(View.VISIBLE);
+            im_user_vip.setImageResource(R.mipmap.vipnext);
+        }else if(Vip_level.equals("12")){
+            if_user_vip.setVisibility(View.VISIBLE);
+            im_user_vip.setImageResource(R.mipmap.vipmost);
         }
         String smobile = data3.getSmobile();//用户手机号
         if (smobile == null) {
