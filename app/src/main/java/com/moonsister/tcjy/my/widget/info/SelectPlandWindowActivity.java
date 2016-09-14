@@ -285,7 +285,7 @@ public class SelectPlandWindowActivity extends Activity implements OnClickListen
     }
 
     public void onClick(View v) {
-//        Intent i = new Intent();
+        Intent i = new Intent();
         switch (v.getId()) {
             case R.id.tv_pcd_success:
                 int province = wv_pcd_left.getCurrentItem();
@@ -294,11 +294,13 @@ public class SelectPlandWindowActivity extends Activity implements OnClickListen
                 mCurrentCityName = mCitisDatasMap.get(mCurrentProviceName)[city];
                 int area = wv_pcd_right.getCurrentItem();
                 mCurrentDistrictName = mDistrictDatasMap.get(mCurrentCityName)[area];
-//                i.putExtra("editdata", mCurrentProviceName + "/" + mCurrentCityName
-//                        + "/" + mCurrentDistrictName);
+                i.putExtra("my", mCurrentProviceName + "," + mCurrentCityName
+                        + "," + mCurrentDistrictName);
 //                setResult(6, i);
-//                finish();
-                sendRx(mCurrentProviceName, mCurrentCityName, mCurrentDistrictName);
+
+                setResult(12, i);
+                finish();
+//                sendRx(mCurrentProviceName, mCurrentCityName, mCurrentDistrictName);
                 break;
             default:
                 break;

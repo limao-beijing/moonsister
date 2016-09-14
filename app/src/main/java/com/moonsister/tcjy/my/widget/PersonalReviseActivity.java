@@ -3,6 +3,9 @@ package com.moonsister.tcjy.my.widget;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +22,9 @@ import android.widget.Toast;
 
 import com.alibaba.sdk.android.oss.ClientException;
 import com.alibaba.sdk.android.oss.ServiceException;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
@@ -31,6 +37,7 @@ import com.moonsister.tcjy.manager.aliyun.AliyunManager;
 import com.moonsister.tcjy.my.persenter.PersonalReviseActivityPersenter;
 import com.moonsister.tcjy.my.persenter.PersonalReviseActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.PersonalReviseActivityView;
+import com.moonsister.tcjy.my.widget.info.SelectPlandWindowActivity;
 import com.moonsister.tcjy.popwindow.PopWindowDistance;
 import com.moonsister.tcjy.popwindow.PopWindowMarital;
 import com.moonsister.tcjy.popwindow.PopWindowPremarital;
@@ -150,7 +157,13 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
     JSONObject jsonobjtake_delivery;//收货地址
     JSONObject jsonobjtake_people;
     JSONObject jsonobjZip;//邮编
-    String ishouse;String marital_status;String distance;String premarital_sex;String hight;String value;String isshowhouse;
+    String ishouse;
+    String marital_status;
+    String distance;
+    String premarital_sex;
+    String hight;
+    String value;
+    String isshowhouse;
     @Bind(R.id.tv_mobile)//手机
             EditText tv_mobile;
     @Bind(R.id.tv_qq)//手机
@@ -218,10 +231,34 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             RelativeLayout layout_yuliu1;
     @Bind(R.id.layout_yuliu2)//预留项3
             RelativeLayout layout_yuliu2;
-    String isshow;String isshowqq;String isshowweixin;String isshowimage;String isshowlikeimage;String isshowname;String isshowsignature;String isshowsex;
-    String isshowbirthday;String isshowstar;String isshowbirthpace;String isshowaddress;String isshowjob;String isshowhobby;String isshowself;
-    String isshowmarital;String isshowdistance;String isshowlike;String isshowpremar;String isshowhight;String isshowwight;String isshowmoneypay;
-    String isshoweducationalbackground;String isshowttakedelivery;String isshowzipcode;String isshowyuliu;String isshowyuliu1;String isshowyuliu2;
+    String isshow;
+    String isshowqq;
+    String isshowweixin;
+    String isshowimage;
+    String isshowlikeimage;
+    String isshowname;
+    String isshowsignature;
+    String isshowsex;
+    String isshowbirthday;
+    String isshowstar;
+    String isshowbirthpace;
+    String isshowaddress;
+    String isshowjob;
+    String isshowhobby;
+    String isshowself;
+    String isshowmarital;
+    String isshowdistance;
+    String isshowlike;
+    String isshowpremar;
+    String isshowhight;
+    String isshowwight;
+    String isshowmoneypay;
+    String isshoweducationalbackground;
+    String isshowttakedelivery;
+    String isshowzipcode;
+    String isshowyuliu;
+    String isshowyuliu1;
+    String isshowyuliu2;
     private String[] province;
     private String[] city, city1;
     private final int[] Tag = {0, 22, 35, 57, 71, 78, 78, 78, 78};//每次记录在arrays.xml中一
@@ -230,6 +267,18 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
     AlertDialog dlg;
     AlertDialog d;
     StringBuilder sb;
+    public static final int REQUSET = 1;
+    String my;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client2;
 
     @Override
     protected View setRootContentView() {
@@ -245,6 +294,21 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==1){
+            my = data.getStringExtra("my");
+            tv_birthplace.setText(my);
+        }else{
+            my = data.getStringExtra("my");
+            tv_address.setText(my);
+        }
+
+    }
+
+    @Override
     public void showLoading() {
         showProgressDialog();
     }
@@ -253,6 +317,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
     public void hideLoading() {
         hideProgressDialog();
     }
+
 
     @Override
     public void transfePageMsg(String msg) {
@@ -289,7 +354,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                             LogUtils.e(RZFirstActivity.class, "pic_path : " + message);
                             ImageServerApi.showURLSamllImage(riv_user_image, message);
                             try {
-                                message=AliyunManager.getInstance().upLoadFile(message, FilePathUtlis.FileType.JPG);
+                                message = AliyunManager.getInstance().upLoadFile(message, FilePathUtlis.FileType.JPG);
                             } catch (ClientException e) {
                                 e.printStackTrace();
                             } catch (ServiceException e) {
@@ -308,7 +373,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                             LogUtils.e(RZFirstActivity.class, "pic_path : " + message);
                             ImageServerApi.showURLSamllImage(riv_like_image, message);
                             try {
-                                like_backgroud=AliyunManager.getInstance().upLoadFile(like_backgroud, FilePathUtlis.FileType.JPG);
+                                like_backgroud = AliyunManager.getInstance().upLoadFile(like_backgroud, FilePathUtlis.FileType.JPG);
                             } catch (ClientException e) {
                                 e.printStackTrace();
                             } catch (ServiceException e) {
@@ -360,7 +425,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
                 for (int i = 150; i < 195; i++) {
                     HashMap<String, String> map = new HashMap<String, String>();
-                    map.put("wheel_viewnumber", i+"");
+                    map.put("wheel_viewnumber", i + "");
                     mylist.add(map);
                 }
                 SimpleAdapter adapter = new SimpleAdapter(this, mylist, R.layout.wheel_viewitem,
@@ -375,7 +440,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         view.setBackgroundResource(R.color.red_eb2616);
-                        HashMap<String,String> map = (HashMap<String, String>) adapterView.getItemAtPosition(i);
+                        HashMap<String, String> map = (HashMap<String, String>) adapterView.getItemAtPosition(i);
                         tv_hight.setText(map.get("wheel_viewnumber"));
                     }
                 });
@@ -386,7 +451,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 ArrayList<HashMap<String, String>> wheel_weight = new ArrayList<HashMap<String, String>>();
                 for (int i = 30; i < 100; i++) {
                     HashMap<String, String> map = new HashMap<String, String>();
-                    map.put("wheel_viewnumber", i+"" );
+                    map.put("wheel_viewnumber", i + "");
                     wheel_weight.add(map);
                 }
                 SimpleAdapter adapterweight = new SimpleAdapter(this, wheel_weight, R.layout.wheel_viewitem,
@@ -439,40 +504,34 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 buildeder.create().show();
                 break;
             case R.id.layout_birthplace://籍贯
-                province = getResources().getStringArray(R.array.Province);
-                city = getResources().getStringArray(R.array.City);
-                dlg = new AlertDialog.Builder(this)
-                        .setTitle("选择省份").setItems(R.array.Province,new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // TODO Auto-generated method stub
-                    /*返回选择城市*/
-                                provinceName = province[which];
-                                tv_birthplace.setText(provinceName);
-                                city1 = getCity(Tag[which], Tag[which + 1]);
-                                dlg.dismiss();
-                            }
-                        }).create();
-
-                dlg.show();
-
+                Intent intent = new Intent(PersonalReviseActivity.this,
+                        SelectPlandWindowActivity.class);
+                //发送意图标示为REQUSET=1
+                startActivityForResult(intent, REQUSET);
+//                ActivityUtils.startActivity(SelectPlandWindowActivity.class);
+//                tv_birthplace.setText(my);
                 break;
             case R.id.layout_address://现居
-                if (tv_birthplace.getText().toString().equals("选择省份")) {
-                    city1 = city;
-                }
-            /*创建城市对话框*/
-                dlg = new AlertDialog.Builder(this)
-                        .setTitle("选择城市").setItems(city1, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // TODO Auto-generated method stub
-                    /*返回选择城市*/
-                                cityName = city1[which];
-                                tv_address.setText(cityName);
-                                dlg.dismiss();
-                            }
-
-                        }).create();
-                dlg.show();
+                Intent intent1 = new Intent(PersonalReviseActivity.this,
+                        SelectPlandWindowActivity.class);
+                //发送意图标示为REQUSET=1
+                startActivityForResult(intent1, 2);
+//                if (tv_birthplace.getText().toString().equals("选择省份")) {
+//                    city1 = city;
+//                }
+//            /*创建城市对话框*/
+//                dlg = new AlertDialog.Builder(this)
+//                        .setTitle("选择城市").setItems(city1, new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                // TODO Auto-generated method stub
+//                    /*返回选择城市*/
+//                                cityName = city1[which];
+//                                tv_address.setText(cityName);
+//                                dlg.dismiss();
+//                            }
+//
+//                        }).create();
+//                dlg.show();
                 break;
             case R.id.layout_job://职业
                 tv_job.requestFocus();
@@ -500,11 +559,11 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 wheel_listhobby.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            sb.append(hobbyimge[i]+",");
-                        if(sb.length()<16){
+                        sb.append(hobbyimge[i] + ",");
+                        if (sb.length() < 16) {
                             tv_hobby.setText(sb.toString());
                             view.setBackgroundResource(R.color.red_eb2616);
-                        }else{
+                        } else {
                             return;
                         }
                     }
@@ -516,7 +575,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 View outerViewself = LayoutInflater.from(this).inflate(R.layout.wheel_nanguilgrid, null);
                 GridView wheel_listnan = (GridView) outerViewself.findViewById(R.id.grid_nan);
                 GridView wheel_listgril = (GridView) outerViewself.findViewById(R.id.grid_gril);
-                if(value.equals("1")){
+                if (value.equals("1")) {
                     ArrayList<HashMap<String, String>> mylistnan = new ArrayList<HashMap<String, String>>();
                     for (int i = 0; i < selfnan.length; i++) {
                         HashMap<String, String> map = new HashMap<String, String>();
@@ -531,19 +590,19 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                             .setView(outerViewself)
                             .setPositiveButton("OK", null)
                             .show();
-                    final StringBuffer stringb=new StringBuffer();
+                    final StringBuffer stringb = new StringBuffer();
                     wheel_listnan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            stringb.append(selfnan[i]+",");
-                            if(stringb.length()<19){
+                            stringb.append(selfnan[i] + ",");
+                            if (stringb.length() < 19) {
                                 tv_self_image.setText(stringb.toString());
                                 view.setBackgroundResource(R.color.red_eb2616);
                             }
                         }
                     });
                     wheel_listgril.setVisibility(View.GONE);
-                }else{
+                } else {
                     ArrayList<HashMap<String, String>> mylistgril = new ArrayList<HashMap<String, String>>();
                     for (int i = 0; i < selfgril.length; i++) {
                         HashMap<String, String> p = new HashMap<String, String>();
@@ -559,12 +618,12 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                             .setPositiveButton("OK", null)
                             .show();
 
-                    final StringBuffer stringBuffer=new StringBuffer();
+                    final StringBuffer stringBuffer = new StringBuffer();
                     wheel_listgril.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            stringBuffer.append(selfgril[i]+",");
-                            if(stringBuffer.length()<16){
+                            stringBuffer.append(selfgril[i] + ",");
+                            if (stringBuffer.length() < 16) {
                                 tv_self_image.setText(stringBuffer.toString());
                                 view.setBackgroundResource(R.color.red_eb2616);
                             }
@@ -625,7 +684,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 GridView wheel_listlikenan = (GridView) outerViewlikesex.findViewById(R.id.grid_nan);
                 GridView wheel_listlikegril = (GridView) outerViewlikesex.findViewById(R.id.grid_gril);
 
-                if(value=="1"){
+                if (value == "1") {
                     ArrayList<HashMap<String, String>> mylistlikenan = new ArrayList<HashMap<String, String>>();
                     for (int i = 0; i < like_sexnan.length; i++) {
                         HashMap<String, String> map = new HashMap<String, String>();
@@ -640,22 +699,22 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                             .setView(outerViewlikesex)
                             .setPositiveButton("OK", null)
                             .show();
-                    final StringBuffer stringbuff=new StringBuffer();
+                    final StringBuffer stringbuff = new StringBuffer();
                     wheel_listlikenan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            stringbuff.append(like_sexnan[i]+",");
-                            if(stringbuff.length()<28){
+                            stringbuff.append(like_sexnan[i] + ",");
+                            if (stringbuff.length() < 28) {
                                 tv_like_sex.setText(stringbuff.toString());
                                 view.setBackgroundResource(R.color.red_eb2616);
-                            }else{
+                            } else {
                                 return;
                             }
 
                         }
                     });
                     wheel_listlikegril.setVisibility(View.GONE);
-                }else{
+                } else {
                     ArrayList<HashMap<String, String>> mylistlikegril = new ArrayList<HashMap<String, String>>();
                     for (int i = 0; i < like_sexgril.length; i++) {
                         HashMap<String, String> p = new HashMap<String, String>();
@@ -671,15 +730,15 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                             .setPositiveButton("OK", null)
                             .show();
 
-                    final StringBuffer stringbu=new StringBuffer();
+                    final StringBuffer stringbu = new StringBuffer();
                     wheel_listlikegril.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            stringbu.append(like_sexgril[i]+",");
-                            if(stringbu.length()<28){
+                            stringbu.append(like_sexgril[i] + ",");
+                            if (stringbu.length() < 28) {
                                 tv_like_sex.setText(stringbu.toString());
                                 view.setBackgroundResource(R.color.red_eb2616);
-                            }else{
+                            } else {
                                 return;
                             }
                         }
@@ -754,7 +813,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 }
                 jsonlike = new JSONObject();
                 try {
-                    jsonlike.put(rules.get(4).getField(),like_backgroud);
+                    jsonlike.put(rules.get(4).getField(), like_backgroud);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -782,10 +841,10 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                 }
                 int m;
                 String sex = tv_sex.getText().toString();
-                if(sex.equals("男")){
-                    m=1;
-                }else{
-                    m=2;
+                if (sex.equals("男")) {
+                    m = 1;
+                } else {
+                    m = 2;
                 }
                 PersonalReviseMessageBean.DataBean.RulesBean rulessex = rules.get(7);
                 if (rulessex == null) {
@@ -1138,15 +1197,15 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
         }
 
         isshowbirthpace = rules.get(14).getIsshow();
-        if(isshowbirthpace.equals("1")){
-        tv_birthplace.setText(rules.get(14).getValue());//籍贯
-        }else{
+        if (isshowbirthpace.equals("1")) {
+            tv_birthplace.setText(rules.get(14).getValue());//籍贯
+        } else {
             layout_birthplace.setVisibility(View.GONE);
         }
         isshowaddress = rules.get(15).getIsshow();
-        if(isshowaddress.equals("1")){
-        tv_address.setText(rules.get(15).getValue());//现居
-        }else{
+        if (isshowaddress.equals("1")) {
+            tv_address.setText(rules.get(15).getValue());//现居
+        } else {
             layout_address.setVisibility(View.GONE);
         }
         isshowjob = rules.get(16).getIsshow();
@@ -1169,9 +1228,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
         }
 
         isshowhouse = rules.get(19).getIsshow();
-        if(isshowhouse.equals("1")){
-        tv_ishouse.setText(rules.get(19).getValue());//是否有房
-        }else{
+        if (isshowhouse.equals("1")) {
+            tv_ishouse.setText(rules.get(19).getValue());//是否有房
+        } else {
             layout_ishouse.setVisibility(View.GONE);
         }
         isshowmarital = rules.get(20).getIsshow();
@@ -1205,9 +1264,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             layout_take_delivery.setVisibility(View.GONE);
         }
         String isshowpeople = rules.get(25).getIsshow();
-        if(isshowpeople.equals("1")){
+        if (isshowpeople.equals("1")) {
             tv_take_people.setText(rules.get(25).getValue());
-        }else{
+        } else {
             layout_take_people.setVisibility(View.GONE);
         }
 
@@ -1283,4 +1342,5 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
         }
         return City;
     }
+
 }
