@@ -136,5 +136,6 @@
         android:textColor="@color/text_yellow_color"
         android:layout_marginTop="@dimen/y100"
         android:layout_marginLeft="@dimen/x150"
+        android:textSize="18sp"
         android:text="已有账号？点此直接登录"/>
 </LinearLayout>

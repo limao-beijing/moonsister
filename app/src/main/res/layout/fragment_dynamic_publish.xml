@@ -94,7 +94,7 @@
             android:layout_marginTop="@dimen/x20"
             android:gravity="center"
             android:layout_gravity="center"
-            android:textColor="#b6baba"
+            android:textColor="#798186"
             android:text="禁止发布诈骗，诱骗，虚假广告等信息，否则永久封停！"/>
     </LinearLayout>
 </ScrollView>
