@@ -56,77 +56,76 @@
             android:textColor="@color/white" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/relative_activi"
-        android:layout_width="@dimen/x300"
-        android:layout_height="@dimen/x300"
-        android:layout_alignTop="@+id/relative_video"
-        android:layout_marginLeft="@dimen/x15"
-        android:layout_toRightOf="@+id/center_line"
-        android:background="@mipmap/video_small">
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/relative_activi"-->
+        <!--android:layout_width="@dimen/x300"-->
+        <!--android:layout_height="@dimen/x300"-->
+        <!--android:layout_alignTop="@+id/relative_video"-->
+        <!--android:layout_marginLeft="@dimen/x15"-->
+        <!--android:layout_toRightOf="@+id/center_line"-->
+        <!--android:background="@mipmap/video_small">-->
 
 
-        <ImageView
-            android:id="@+id/iv_activit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:background="@mipmap/icon_move_about" />
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_activit"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:background="@mipmap/icon_move_about" />-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/iv_activit"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="@dimen/x10"
-            android:background="@mipmap/ornament"
-            android:gravity="center"
-            android:text="活动"
-            android:textColor="@color/white" />
-    </RelativeLayout>
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/iv_activit"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginTop="@dimen/x10"-->
+            <!--android:background="@mipmap/ornament"-->
+            <!--android:gravity="center"-->
+            <!--android:text="活动"-->
+            <!--android:textColor="@color/white" />-->
+    <!--</RelativeLayout>-->
 
-    <RelativeLayout
-        android:id="@+id/relative_nearby"
-        android:layout_width="@dimen/x300"
-        android:layout_height="@dimen/x300"
-        android:layout_below="@+id/relative_video"
-        android:layout_marginRight="@dimen/x15"
-        android:layout_marginTop="@dimen/x50"
-        android:layout_toLeftOf="@+id/center_line"
-        android:background="@mipmap/video_small">
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/relative_nearby"-->
+        <!--android:layout_width="@dimen/x300"-->
+        <!--android:layout_height="@dimen/x300"-->
+        <!--android:layout_below="@+id/relative_video"-->
+        <!--android:layout_marginRight="@dimen/x15"-->
+        <!--android:layout_marginTop="@dimen/x50"-->
+        <!--android:layout_toLeftOf="@+id/center_line"-->
+        <!--android:background="@mipmap/video_small">-->
 
 
-        <ImageView
-            android:id="@+id/iv_nearby"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:background="@mipmap/icon_nearby" />
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_nearby"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:background="@mipmap/icon_nearby" />-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/iv_nearby"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="@dimen/x10"
-            android:background="@mipmap/ornament"
-            android:gravity="center"
-            android:text="附近"
-            android:textColor="@color/white" />
-    </RelativeLayout>
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/iv_nearby"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginTop="@dimen/x10"-->
+            <!--android:background="@mipmap/ornament"-->
+            <!--android:gravity="center"-->
+            <!--android:text="附近"-->
+            <!--android:textColor="@color/white" />-->
+    <!--</RelativeLayout>-->
 
     <RelativeLayout
         android:id="@+id/relative_rank"
         android:layout_width="@dimen/x300"
         android:layout_height="@dimen/x300"
-        android:layout_alignTop="@+id/relative_nearby"
-        android:layout_below="@+id/relative_activi"
+        android:layout_below="@+id/relative_video"
         android:layout_marginLeft="@dimen/x15"
-        android:layout_toRightOf="@+id/center_line"
+        android:layout_toLeftOf="@+id/center_line"
         android:background="@mipmap/video_small">
 
 
