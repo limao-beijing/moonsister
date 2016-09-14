@@ -16,6 +16,7 @@ import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.find.widget.NearbyActivity;
 import com.moonsister.tcjy.find.widget.RankActivity;
+import com.moonsister.tcjy.find.widget.VideoDynamicActivity;
 import com.moonsister.tcjy.home.widget.SearchActivity;
 import com.moonsister.tcjy.home.widget.SearchFragmentActivity;
 import com.moonsister.tcjy.home.widget.SearchReasonActivity;
@@ -710,6 +711,10 @@ public class ActivityUtils {
     public static void startRegActivity() {
         Intent intent = new Intent(getContext(), RegActivity.class);
         startActivity(intent);
+    }
+
+    public static void starVideoDynamicActivity() {
+        startActivity(VideoDynamicActivity.class);
     }
 //    //我的页面不是会员    定义跳转的activity
 //    public static void startNoActivity() {

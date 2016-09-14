@@ -115,6 +115,7 @@ public class HomePageFragmentPresenterImpl implements HomePageFragmentPresenter,
             }
             page++;
         }
+        view.hideLoading();
     }
 
     @Override

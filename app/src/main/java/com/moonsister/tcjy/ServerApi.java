@@ -43,6 +43,7 @@ import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.bean.UserPermissionBean;
 import com.moonsister.tcjy.bean.VersionInfo;
 import com.moonsister.tcjy.bean.WithdRawDepositBean;
+import com.moonsister.tcjy.find.widget.FindFragment;
 import com.moonsister.tcjy.manager.UserInfoBannerManager;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UnicodeUtils;
@@ -1229,6 +1230,24 @@ public class ServerApi {
         Observable<UserInfoBannerManager.UserInfoBannerBean> getUserInfoStatus(@Query("authcode") String authcode,
                                                                                @Query("channel") String channelId);
 
+        /**
+         * @param authcode
+         * @param channel
+         * @return
+         */
+        @GET("Latest/get_latest_list_faxian")
+        Observable<UserInfoListBean> getVideoList(@Query("page") int page,
+                                                  @Query("authcode") String authcode,
+                                                  @Query("channel") String channel);
+
+        /**
+         * 夺宝apk
+         *
+         * @return
+         */
+        @GET("download/get")
+        Observable<FindFragment.DownApkBean> getDownApk(@Query("authcode") String authcode,
+                                                        @Query("channel") String channel);
 
     }
 }

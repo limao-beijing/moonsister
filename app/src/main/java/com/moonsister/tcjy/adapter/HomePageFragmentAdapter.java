@@ -8,7 +8,7 @@ import com.moonsister.tcjy.base.BaseRecyclerViewAdapter;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
-import com.moonsister.tcjy.main.view.HomePageFragmentView;
+import com.moonsister.tcjy.main.view.BasePageFragmentView;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.homepage.HomePagePicViewHolder;
@@ -38,7 +38,7 @@ public class HomePageFragmentAdapter extends BaseRecyclerViewAdapter<DynamicItem
 
 
     private BaseRecyclerViewHolder holder;
-    private HomePageFragmentView mBaseView;
+    private BasePageFragmentView mBaseView;
 
     public HomePageFragmentAdapter(List<DynamicItemBean> list) {
         super(list);
@@ -76,7 +76,7 @@ public class HomePageFragmentAdapter extends BaseRecyclerViewAdapter<DynamicItem
         return holder;
     }
 
-    public void setBaseView(HomePageFragmentView baseView) {
+    public void setBaseView(BasePageFragmentView baseView) {
         mBaseView = baseView;
     }
 
