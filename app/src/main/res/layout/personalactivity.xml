@@ -78,7 +78,6 @@
             android:id="@+id/im_user_sex"
             android:layout_toRightOf="@+id/iv_user_work"
             android:layout_below="@+id/im_user_vip"
-            android:background="@mipmap/nan"
             android:layout_marginTop="@dimen/y18"
             android:layout_marginLeft="@dimen/x10"/>
         <TextView
@@ -205,6 +204,8 @@
         android:layout_height="@dimen/y680"
         android:layout_marginTop="@dimen/y20"
         android:id="@+id/personal_list"
+        android:divider="@color/app_background"
+        android:dividerHeight="1px"
         android:background="@color/white"></ListView>
     <TextView
         android:layout_width="match_parent"
@@ -223,9 +224,9 @@
             android:text="去TA主页"
             android:textSize="18sp"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/x280"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/x300"
             android:textColor="@color/home_navigation_text_gred"
-            android:drawableLeft="@mipmap/follow_ta"
             />
     </LinearLayout>
 </LinearLayout>

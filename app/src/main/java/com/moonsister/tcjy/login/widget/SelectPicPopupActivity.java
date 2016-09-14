@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Toast;
@@ -122,8 +123,8 @@ public class SelectPicPopupActivity extends Activity {
     private static final int REQUESTCODE_CUTTING = 3;
 
     public void startPhotoZoom(Uri uri) {
-        Uri destination = Uri.fromFile(new File(getCacheDir(), "cropped"));
-        Crop.of(uri, destination).withAspect(400,400).start(this);
+        Uri destination = Uri.fromFile(new File(getCacheDir(), "cropped" + System.currentTimeMillis() + ".jpg"));
+        Crop.of(uri, destination).withAspect(400, 400).start(this);
 //        ActivityUtils.startCropImageMainActivity();
 //        Intent intent = new Intent("com.android.camera.action.CROP");
 //        intent.setDataAndType(uri, "image/*");

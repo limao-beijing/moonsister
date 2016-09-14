@@ -79,7 +79,7 @@ public class CropImageMainActivity extends BaseActivity {
     }
 
     private void beginCrop(Uri source) {
-        Uri destination = Uri.fromFile(new File(getCacheDir(), "cropped"));
+        Uri destination = Uri.fromFile(new File(getCacheDir(), "cropped" + System.currentTimeMillis() + ".jpg"));
         Crop.of(source, destination).withAspect(720, 460).start(this);
     }
 

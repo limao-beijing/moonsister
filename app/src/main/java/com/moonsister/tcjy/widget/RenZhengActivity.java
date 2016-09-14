@@ -14,9 +14,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -50,6 +52,7 @@ import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.utils.URIUtils;
 import com.moonsister.tcjy.widget.speak.PressToSpeakListenr;
+import com.soundcloud.android.crop.Crop;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import java.io.File;
@@ -260,7 +263,12 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
                 break;
             case R.id.input:
 //                presenter1.sendDynamic(type1, txtContent1, dynamicContent1, voicepat);
-                submit();
+                if(realFilePath!=null&&voicepat!=null){
+                    submit();
+                }
+                Toast toast=Toast.makeText(this, "请先录制视频/语音", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.BOTTOM, 0, 20);
+                toast.show();
 //
                 break;
         }

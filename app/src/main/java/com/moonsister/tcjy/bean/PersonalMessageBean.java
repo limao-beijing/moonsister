@@ -127,7 +127,7 @@ public class PersonalMessageBean extends BaseBean{
             private String like_image;
             private String nickname;
             private String signature;
-            private int sex;
+            private String sex;
             private String birthday;
             private String star_sign;
             private String height;
@@ -183,11 +183,11 @@ public class PersonalMessageBean extends BaseBean{
                 this.signature = signature;
             }
 
-            public int getSex() {
+            public String getSex() {
                 return sex;
             }
 
-            public void setSex(int sex) {
+            public void setSex(String sex) {
                 this.sex = sex;
             }
 
@@ -370,7 +370,7 @@ public class PersonalMessageBean extends BaseBean{
 
         public static class BaseinfoBean {
             private String nickname;
-            private int sex;
+            private String sex;
             private String face;
             private String like_image;
             private String profession;
@@ -389,11 +389,11 @@ public class PersonalMessageBean extends BaseBean{
                 this.nickname = nickname;
             }
 
-            public int getSex() {
+            public String getSex() {
                 return sex;
             }
 
-            public void setSex(int sex) {
+            public void setSex(String sex) {
                 this.sex = sex;
             }
 
