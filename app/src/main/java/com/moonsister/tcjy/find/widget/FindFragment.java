@@ -29,18 +29,18 @@ public class FindFragment extends BaseFragment {
     protected void initData() {
     }
 
-
-    @OnClick({R.id.relative_video, R.id.relative_activi, R.id.relative_nearby, R.id.relative_rank})
+//R.id.relative_activi, R.id.relative_nearby,
+    @OnClick({R.id.relative_video, R.id.relative_rank})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.relative_video:
 
                 break;
-            case R.id.relative_activi:
-                break;
-            case R.id.relative_nearby:
-                ActivityUtils.startNearbyActivity();
-                break;
+//            case R.id.relative_activi:
+//                break;
+//            case R.id.relative_nearby:
+//                ActivityUtils.startNearbyActivity();
+//                break;
             case R.id.relative_rank://排行榜
                 ActivityUtils.startRankActivity();
                 break;
