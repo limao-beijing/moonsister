@@ -62,7 +62,7 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
     public void submit(String address1, String address2, String text, onLoadDateSingleListener listener) {
 
         ArrayList<DynamicContent> aliyunPtahs = new ArrayList<DynamicContent>();
-        Observable<PayBean> observable = ServerApi.getAppAPI().getCertificationPay(UserInfoManager.getInstance().getAuthcode());
+        Observable<PayBean> observable = ServerApi.getAppAPI().getCertificationPay(UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<PayBean>() {

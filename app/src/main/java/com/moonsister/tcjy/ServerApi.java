@@ -873,7 +873,8 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("apply/gobuy")
-        Observable<PayBean> getCertificationPay(@Field("authcode") String authcode);
+        Observable<PayBean> getCertificationPay(@Field("authcode") String authcode,
+                                                @Field("channel") String channel);
 
         /**
          * 推送用户信息

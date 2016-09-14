@@ -25,10 +25,10 @@ import rx.schedulers.Schedulers;
 /**
  * Created by x on 2016/9/1.
  */
-public class FillOutActivityModelImpl implements FillOutActivityModel  {
+public class FillOutActivityModelImpl implements FillOutActivityModel {
     @Override
     public void fillout(String face, String nickname, onLoadDateSingleListener<RegFourBean> listener) {
-        Observable<RegFourBean> observable = ServerApi.getAppAPI().getRegFourBean(face,nickname, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        Observable<RegFourBean> observable = ServerApi.getAppAPI().getRegFourBean(face, nickname, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<RegFourBean>() {
             @Override
             public void onSuccess(RegFourBean bean) {
@@ -45,7 +45,7 @@ public class FillOutActivityModelImpl implements FillOutActivityModel  {
     @Override
     public void submit(String address1, onLoadDateSingleListener listener) {
         ArrayList<DynamicContent> aliyunPtahs = new ArrayList<DynamicContent>();
-        Observable<PayBean> observable = ServerApi.getAppAPI().getCertificationPay(UserInfoManager.getInstance().getAuthcode());
+        Observable<PayBean> observable = ServerApi.getAppAPI().getCertificationPay(UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<PayBean>() {
