@@ -86,8 +86,8 @@ public class RegActivity extends BaseActivity implements RegThridActivityView {
 //            Intent intent=new Intent(RegActivity.this, FillOutMessageActivity.class);
 //            startActivity(intent);
         }else if(view.getId() == R.id.let_go){
-//            Intent intent=new Intent(RegActivity.this,MainActivity.class);
-            Intent intent=new Intent(RegActivity.this,FillOutMessageActivity.class);
+            Intent intent=new Intent(RegActivity.this,MainActivity.class);
+//            Intent intent=new Intent(RegActivity.this,FillOutMessageActivity.class);
             startActivity(intent);
         }
     }

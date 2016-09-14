@@ -105,16 +105,7 @@ public class FillOutMessageActivity extends BaseActivity implements FilloutActiv
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-//                    RxBus.with(this)
-//                            .setEvent(Events.EventEnum.GET_PHOTO)
-//                            .setEndEvent(FragmentEvent.DESTROY)
-//                            .onNext((events) -> {
-//                                String message = (String) events.message;
-////                        LogUtils.e(RegiterDataFragment.class, "pic_path : " + message);
-//
-//                                ImageServerApi.showURLImage(fillout_imageview, imagePath);
-//                                presenter.submit(imagePath);
-//                            }).create();
+
                     try {
                         imagePath = AliyunManager.getInstance().upLoadFile(imagePath, FilePathUtlis.FileType.JPG);
                         UIUtils.onRunMainThred(new Runnable() {
