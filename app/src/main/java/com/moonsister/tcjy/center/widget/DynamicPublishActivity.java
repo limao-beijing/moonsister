@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.bean.model.BaseFragmentActivity;
+import com.moonsister.tcjy.base.BaseFragmentActivity;
 import com.moonsister.tcjy.center.presenter.DynamicPublishPresenter;
 import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
 import com.moonsister.tcjy.center.view.DefaultDynamicView;
@@ -49,7 +49,7 @@ public class DynamicPublishActivity extends BaseFragmentActivity implements View
     @Override
     protected void onStart() {
         super.onStart();
-        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1002")) {
+        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1002")||StringUtis.equals(AppConstant.CHANNEL_ID, "1014")||StringUtis.equals(AppConstant.CHANNEL_ID, "1016")) {
             certificationVIPStatu();
         } else {
             certificationStatus();

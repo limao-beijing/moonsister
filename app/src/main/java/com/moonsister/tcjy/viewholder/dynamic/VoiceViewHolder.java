@@ -14,12 +14,13 @@ import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.TimeUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
-import com.moonsister.tcjy.widget.speak.VoicePlay;
+
+import java.util.Arrays;
+import java.util.List;
 
 import butterknife.Bind;
 import im.gouyin.com.progressdialog.AlearDialog;
@@ -104,16 +105,16 @@ public class VoiceViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.Use
         iv_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String[] array = UIUtils.getResources().getStringArray(R.array.dynamic_channel_1002);
+                List<String> strings = Arrays.asList(array);
                 if (StringUtis.equals(bean.getIspay(), "2")) {
-                    if (StringUtis.equals(AppConstant.CHANNEL_ID, "1002")) {
+                    if (strings.contains(AppConstant.CHANNEL_ID)) {
                         alear();
                     } else
                         ActivityUtils.startPayDynamicRedPackketActivity(bean.getMoney(), bean.getLatest_id());
                 } else {
-                    VoicePlay voicePlay = new VoicePlay();
-                    voicePlay.playVoice(ConfigUtils.getInstance().getApplicationContext(), bean.getVideo());
+                    ActivityUtils.startShowShortVideoActivity(bean.getVideo());
                 }
-
             }
         });
     }

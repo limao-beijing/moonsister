@@ -38,5 +38,6 @@
     <string-array name="dynamic_channel_1002">
         <item>1002</item>
         <item>1016</item>
+        <item>1014</item>
     </string-array>
 </resources>

@@ -27,6 +27,7 @@ import com.moonsister.tcjy.viewholder.PersonDynamicViewholder;
 import com.moonsister.tcjy.widget.XListView;
 import com.trello.rxlifecycle.FragmentEvent;
 
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
@@ -73,7 +74,9 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
             tv_certification.setText(UIUtils.getStringRes(R.string.Certificationing));
         } else
             tv_certification.setText(UIUtils.getStringRes(R.string.not_Certificationing));
-        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1002")) {
+        String[] array = getResources().getStringArray(R.array.dynamic_channel_1002);
+        List<String> strings = Arrays.asList(array);
+        if (strings != null && strings.contains(AppConstant.CHANNEL_ID)) {
             tv_certification.setVisibility(View.GONE);
         }
         recyclerview.setVerticalLinearLayoutManager();

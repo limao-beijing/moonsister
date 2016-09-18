@@ -1,13 +1,11 @@
-package com.moonsister.tcjy.bean.model;
+package com.moonsister.tcjy.base;
 
 import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.FrameLayout;
 
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.utils.FragmentUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 

@@ -2,7 +2,7 @@ package com.moonsister.tcjy.main.widget;
 
 import android.support.v4.app.Fragment;
 
-import com.moonsister.tcjy.bean.model.BaseFragmentActivity;
+import com.moonsister.tcjy.base.BaseFragmentActivity;
 
 /**
  * Created by jb on 2016/8/12.

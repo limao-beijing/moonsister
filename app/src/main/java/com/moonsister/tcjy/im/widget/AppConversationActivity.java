@@ -67,9 +67,9 @@ public class AppConversationActivity extends BaseActivity {
             return;
         }
         AlearDialog alearDialog = null;
-        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1015")||StringUtis.equals(AppConstant.CHANNEL_ID, "1009")) {
+        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1015") || StringUtis.equals(AppConstant.CHANNEL_ID, "1009")) {
             alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_im_1015, this);
-        } else if (StringUtis.equals(AppConstant.CHANNEL_ID, "1002")){
+        } else if (StringUtis.equals(AppConstant.CHANNEL_ID, "1002") || StringUtis.equals(AppConstant.CHANNEL_ID, "1014")|| StringUtis.equals(AppConstant.CHANNEL_ID, "1016")) {
             alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_im_1002, this);
         } else {
             alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_im, this);
