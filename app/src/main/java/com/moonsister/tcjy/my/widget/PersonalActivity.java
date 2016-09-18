@@ -12,17 +12,22 @@ import com.moonsister.tcjy.adapter.PersonalAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.bean.PersonalMessageBean;
+import com.moonsister.tcjy.event.Events;
+import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenter;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.PersonalActivityView;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.trello.rxlifecycle.ActivityEvent;
 
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import im.gouyin.com.progressdialog.AlearDialog;
 
 /**
  * Created by x on 2016/8/25.
@@ -69,6 +74,7 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
     PersonalMessageBean.DataBean.BaseinfoBean data1;
     PersonalMessageBean.DataBean.DlistBean data2;
     PersonalMessageBean.DataBean.VipinfoBean data3;
+    PersonalMessageBean.DataBean.Ainfo ainfo;
     String uid;
     String id;
     /**
@@ -88,12 +94,19 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
         persenter = new PersonalActivityPersenterImpl();
         persenter.attachView(this);
         persenter.sendPersonalMessage(id);
-
+        RxBus.with(this)
+                .setEvent(Events.EventEnum.BUY_VIP_SUCCESS)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .onNext(events -> {
+                    if (persenter != null)
+                        persenter.sendPersonalMessage(id);
+                })
+                .create();
 
     }
 
 
-    @OnClick({R.id.image_back,R.id.follow_ta})
+    @OnClick({R.id.image_back, R.id.follow_ta})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.image_back:
@@ -119,12 +132,14 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
     public void transfePageMsg(String msg) {
         showToast(msg);
     }
+
     @Override
     public void success(PersonalMessageBean getPersonalBean) {
         data = getPersonalBean.getData().getRules();
         data1 = getPersonalBean.getData().getBaseinfo();
         data2 = getPersonalBean.getData().getDlist();
         data3 = getPersonalBean.getData().getVipinfo();
+        ainfo = getPersonalBean.getData().getAinfo();
 
         adapter = new PersonalAdapter(this, data);
         personal_list.setAdapter(adapter);
@@ -158,76 +173,101 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
         if (Vip_level.equals("0")) {
             im_user_vip.setVisibility(View.INVISIBLE);
             if_user_vip.setVisibility(View.INVISIBLE);
-        }else if(Vip_level.equals("1")) {
+        } else if (Vip_level.equals("1")) {
             if_user_vip.setVisibility(View.VISIBLE);
             im_user_vip.setImageResource(R.mipmap.vipxiao);
-        }else if(Vip_level.equals("3")){
+        } else if (Vip_level.equals("3")) {
             if_user_vip.setVisibility(View.VISIBLE);
             im_user_vip.setImageResource(R.mipmap.vipnext);
-        }else if(Vip_level.equals("12")){
+        } else if (Vip_level.equals("12")) {
             if_user_vip.setVisibility(View.VISIBLE);
             im_user_vip.setImageResource(R.mipmap.vipmost);
         }
         String smobile = data3.getSmobile();//用户手机号
-        if (smobile == null) {
-            phone_number.setText("xxxxxxxxxxx");
-            look.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    phone_number.setText("");
-                }
-            });
-        } else {
-            phone_number.setText("xxxxxxxxxxx");
-            look.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+//        if (smobile == null) {
+        phone_number.setText("xxxxxxxxxxx");
+        look.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isVip_level())
                     phone_number.setText(smobile);
-                }
-            });
-        }
+            }
+        });
+//        } else {
+//            phone_number.setText("xxxxxxxxxxx");
+//            look.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    phone_number.setText(smobile);
+//                }
+//            });
+//        }
         PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();//获得对象
         memoryPersonInfoDetail.setSmobile(smobile);//保存值
         UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
         String qq = data3.getQq();//用户QQ号
-        if (qq == null) {
-            qq_number.setText("xxxxxxxxxxx");
-            qq_look.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    qq_number.setText("");
-                }
-            });
-        } else {
-            qq_number.setText("xxxxxxxxxxx");
-            qq_look.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+//        if (qq == null) {
+        qq_number.setText("xxxxxxxxxxx");
+        qq_look.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isVip_level())
                     qq_number.setText(qq);
-                }
-            });
-        }
+            }
+        });
+//        }
+//        else {
+//            qq_number.setText("xxxxxxxxxxx");
+//            qq_look.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    qq_number.setText(qq);
+//                }
+//            });
+//        }
         String weixin = data3.getWeixin();//用户微信号
-        if (weixin == null) {
-            weixin_number.setText("xxxxxxxxxxx");
-            weixin_look.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    weixin_number.setText("");
-                }
-            });
 
-        } else {
-            weixin_number.setText("xxxxxxxxxxx");
-            weixin_look.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+
+//        if (weixin == null) {
+        weixin_number.setText("xxxxxxxxxxx");
+        weixin_look.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isVip_level())
                     weixin_number.setText(weixin);
+            }
+        });
+
+    }
+//    else {
+//            weixin_number.setText("xxxxxxxxxxx");
+//            weixin_look.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    weixin_number.setText(weixin);
+//                }
+//            });
+//        }
+
+
+//}
+
+    /**
+     * @return
+     */
+    private boolean isVip_level() {
+        if (ainfo == null || !StringUtis.equals(ainfo.getVip_level(), "1")) {
+            AlearDialog dialog = new AlearDialog(AlearDialog.DialogType.Certification_vip, this);
+            dialog.setListenter(new AlearDialog.onClickListenter() {
+                @Override
+                public void clickType(AlearDialog.clickType type) {
+                    ActivityUtils.startBuyVipActivity();
+                    dialog.dismiss();
                 }
             });
+            return false;
         }
-
-
+        return true;
     }
 
     @Override

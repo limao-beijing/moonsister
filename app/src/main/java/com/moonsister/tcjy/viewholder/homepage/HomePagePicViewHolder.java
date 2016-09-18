@@ -3,6 +3,7 @@ package com.moonsister.tcjy.viewholder.homepage;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
@@ -82,7 +83,7 @@ public class HomePagePicViewHolder extends BaseHomePageViewHolder {
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             int heigjt = (int) context.getResources().getDimension(R.dimen.x160);
             int width = (int) context.getResources().getDimension(R.dimen.x218);
-            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(width, heigjt);
+            AbsListView.LayoutParams params = new AbsListView.LayoutParams(width, heigjt);
             imageView.setLayoutParams(params);
             ImageServerApi.showURLImage(imageView, bean.getSimg().get(position));
             imageView.setOnClickListener(new View.OnClickListener() {

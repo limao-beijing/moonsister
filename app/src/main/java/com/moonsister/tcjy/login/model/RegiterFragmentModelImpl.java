@@ -10,6 +10,7 @@ import com.moonsister.tcjy.utils.JsonUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.PhoneInfoUtils;
+import com.moonsister.tcjy.utils.StringUtis;
 
 import rx.Observable;
 
@@ -27,6 +28,9 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
         ObservableUtils.parser(observable, new ObservableUtils.Callback<RegiterBean>() {
             @Override
             public void onSuccess(RegiterBean baseBean) {
+                if (StringUtis.equals(baseBean.getCode(), "1")) {
+                    uploadPhoneInfo(phoneNumber);
+                }
                 listenter.onSubmitSuccess(baseBean);
             }
 
@@ -60,7 +64,6 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
 
     @Override
     public void loadSecurity(String phoneMunber, final onLoadDateSingleListener listener) {
-        uploadPhoneInfo(phoneMunber);
         Observable<BaseBean> observable = ServerApi.getAppAPI().sendSecurityCode(phoneMunber, AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<RegiterBean>() {
             @Override

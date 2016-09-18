@@ -6,12 +6,22 @@
     <string name="go_to_certification">去认证</string>
     <string name="certification_comment_text">为保证会员发布内容的真实性与合法性，您必须成为认证会员才可以进行评论</string>
     <string name="upgrad_vip">升级VIP</string>
-    <string name="certification_im_text">为避免骚扰，诈骗，酒托，饭托等违法行为，您必须认证或者成为VIP会员，才能与TA聊天
-</string>
+    <string name="certification_im_text">为避免黄色，诈骗，酒托，饭托，婚托等违法行为，非好友关系的男女会员都必须认证或者成为VIP会员，才能发布交友动态，发起聊天。\n【活动】10月31日前，升级VIP，最低返话费100元。</string>
+    <string name="none_certification_vip">对不起，您不是VIP会员</string>
+    <string name="certification_dynamic_text">1.只有成为VIP会员，才可以免费查看其他VIP会员发布的私密视频，图片，语音动态信息；\n2.只有成为VIP会员，才可以发布公开和私密视频，图片，语音语音动态信息；</string>
+    <string name="dynamic_action">充值送话费啦</string>
+    <string name="Certification_im_1015">为避免诈骗，酒托，婚托，虚假交友等违法行为，男女会员都必须认证后，才可以发起交友动态，与非好友会员聊天。</string>
+    <string name="Certification_im_1002">为避免诈骗，酒托，婚托，虚假交友等违法行为，男女会员都必须升级VIP后，才可以发起交友动态，与非好友会员聊天。</string>
+    <string name="upgrad_vip_1015">立即认证，开启约爱之旅</string>
+    <string name="upgrad_vip_1002">立即升级VIP，开启约爱之旅</string>
+    <string name="certification_publish_1002_text">为保证会员发布内容真实性与合法性，您必须成为VIP会员才可发布动态信息</string>
+
     <string name="go_to_bind_phone">绑定手机</string>
     <string name="bind_phone_text">为保障您的账户安全，需要先绑定手机后才能使用财务中心</string>
     <string name="none_bind_phone">未绑定手机</string>
     <string name="bind_phone">马上绑定</string>
     <string name="not_bind_phone">下次再说</string>
     <string name="app_logout_text">您需要先绑定手机才能退出登录，以避免您退出后无法再次使用该账户登录</string>
+    <string name="certification_vip">为避免骚扰，诈骗，酒托、婚托、虚假交友等违法行为，您必须经过诚信认证才能查看TA的私密资料。</string>
+    <string name="go_to_certification_vip">开通诚信认证</string>
 </resources>

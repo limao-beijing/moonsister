@@ -59,7 +59,6 @@ import com.moonsister.tcjy.my.widget.RZSecondActivity;
 import com.moonsister.tcjy.my.widget.RZThidActivity;
 import com.moonsister.tcjy.my.widget.RechargeActivity;
 import com.moonsister.tcjy.my.widget.RefundActivity;
-import com.moonsister.tcjy.my.widget.RenZhengActivity;
 import com.moonsister.tcjy.my.widget.RuleActivity;
 import com.moonsister.tcjy.my.widget.SettingActivity;
 import com.moonsister.tcjy.my.widget.SwitchCardActivity;
@@ -650,7 +649,8 @@ public class ActivityUtils {
 
     //跳转VIP认证页面
     public static void startRenZhengActivity() {
-        startActivity(RenZhengActivity.class);
+//        startActivity(RenZhengActivity.class);
+        startBuyVipActivity();
     }
 
     //跳转资料展示页面

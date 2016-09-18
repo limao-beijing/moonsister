@@ -46,7 +46,10 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         mRootView = setRootContentView();
         titleView = mRootView.findViewById(R.id.app_title_bar);
         if (titleView != null)
-            initTitieBar(titleView);
+            if (isShowTitleView()) {
+                initTitieBar(titleView);
+            } else
+                titleView.setVisibility(View.GONE);
 
 
         if (mRootView == null) {
@@ -61,6 +64,10 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         initView();
         // 方向锁定
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
+
+    public boolean isShowTitleView() {
+        return true;
     }
 
     protected void showToast(String msg) {
@@ -108,6 +115,17 @@ public abstract class BaseActivity extends RxAppCompatActivity {
      */
     protected String initTitleName() {
         return "标题";
+    }
+
+    /**
+     * 设置title名字
+     *
+     * @return
+     */
+    public void setTitleName(String titleName) {
+        if (titleView == null)
+            return;
+        ((TextView) titleView.findViewById(R.id.tv_title_name)).setText(titleName);
     }
 
     /**

@@ -283,4 +283,6 @@
     <string name="phone_binding">手机绑定</string>
     <string name="home_page">主 页</string>
     <string name="save">保存</string>
+    <string name="vip_rule_type"><![CDATA[ <font color="#ff8201" ><big>%1$s</big></font> %2$s]]></string>
+    <string name="vip_rule">充值成功后，注意信息保密，避免他人冒领。请按照系统提示，领取手机话费返还。</string>
 </resources>

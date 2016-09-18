@@ -68,7 +68,6 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
         presenter.attachView(this);
         return inflater.inflate(R.layout.fragment_home_page, container, false);
     }
-
     public static HomePageFragment newInstance() {
         return new HomePageFragment();
     }

@@ -15,11 +15,8 @@ import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenter;
 import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenterImpl;
 import com.moonsister.tcjy.main.view.BuyVipFragmentView;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
-
-import org.w3c.dom.Text;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -95,7 +92,7 @@ public class VIPMoneyActivity extends BaseActivity implements BuyVipFragmentView
                 selectBuy(ivSelect1);
                 break;
             case R.id.tv_buy:
-                persenter.buyVIP(select);
+                persenter.buyVIP(select,"");
                 break;
         }
     }
@@ -122,6 +119,11 @@ public class VIPMoneyActivity extends BaseActivity implements BuyVipFragmentView
         memoryPersonInfoDetail.setVipStatus(1);
         UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
         this.finish();
+
+    }
+
+    @Override
+    public void typePay(int type, String phone) {
 
     }
 }

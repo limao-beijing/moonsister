@@ -22,6 +22,7 @@ import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tcjy.utils.URIUtils;
 
 import butterknife.OnClick;
 import rx.Observable;
@@ -52,6 +53,8 @@ public class FindFragment extends BaseFragment {
             case R.id.relative_activi:
                 if (!isDownAp)
                     getAPK();
+                else
+                    showToast("刚已经下载过啦");
                 break;
             case R.id.relative_nearby:
                 ActivityUtils.startRankActivity();
@@ -127,9 +130,33 @@ public class FindFragment extends BaseFragment {
     private void installFile(long id) {
         Intent install = new Intent(Intent.ACTION_VIEW);
         Uri downloadFileUri = dm.getUriForDownloadedFile(id);
-        install.setDataAndType(downloadFileUri, "application/vnd.android.package-archive");
-        install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        getContext().startActivity(install);
+        String path = URIUtils.getRealFilePath(getContext(), downloadFileUri);
+        if (!StringUtis.isEmpty(path))
+            installApk(path);
+//        install.setData(downloadFileUri);
+//        install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        startActivity(install);
+
+//        Intent i = new Intent();
+//        i.setAction(Intent.ACTION_VIEW);
+//        Uri uri= Uri.fromFile(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS));
+//        i.setData(uri);
+//        startActivity(i);
+    }
+
+    /**
+     * 安装APK文件
+     */
+    private void installApk(String path) {
+
+        // 通过Intent安装APK文件
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        i.setDataAndType(Uri.parse("file://" + path),
+                "application/vnd.android.package-archive");
+        getContext().startActivity(i);
+
+
     }
 
 

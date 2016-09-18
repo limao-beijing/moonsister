@@ -99,28 +99,13 @@
         <!-- 高德 start -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="daf938b6fc71ecb94b4cbc7eb773fa64"/>
+            android:value="977627d8788489b55e786de34b0c46a4"/>
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService"/>
         <!-- 高德 end -->
 
         <!-- 会话页面 -->
         <activity android:name=".main.widget.RelationActivity"/>
-        <activity
-            android:name=".im.widget.AppConversationActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-
-                <data
-                    android:host="hk.chuse.love"
-                    android:pathPrefix="/conversation/"
-                    android:scheme="rong"/>
-            </intent-filter>
-        </activity>
 
         <!-- 聚合会话列表 -->
 
@@ -136,6 +121,21 @@
                 <data
                     android:host="hk.chuse.love"
                     android:pathPrefix="/subconversationlist"
+                    android:scheme="rong"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".im.widget.AppConversationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data
+                    android:host="hk.chuse.love"
+                    android:pathPrefix="/conversation/"
                     android:scheme="rong"/>
             </intent-filter>
         </activity>

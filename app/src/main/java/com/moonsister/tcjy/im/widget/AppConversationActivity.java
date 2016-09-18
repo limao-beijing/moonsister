@@ -26,6 +26,7 @@ import io.rong.imkit.fragment.MessageListFragment;
 import io.rong.imkit.fragment.UriFragment;
 import io.rong.imlib.model.Conversation;
 
+
 /**
  * Created by jb on 2016/6/18.
  */
@@ -70,6 +71,7 @@ public class AppConversationActivity extends BaseActivity {
     }
 
     public void certificationStatus() {
+
         PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
         if (memoryPersonInfoDetail.getVipStatus() == 1) {
             return;
@@ -80,7 +82,7 @@ public class AppConversationActivity extends BaseActivity {
         if (memoryPersonInfoDetail.getUserFriendList() != null && memoryPersonInfoDetail.getUserFriendList().contains(mTargetId)) {
             return;
         }
-        AlearDialog alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_im, this);
+        AlearDialog alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_im_1015, this);
         alearDialog.setListenter(new AlearDialog.onClickListenter() {
             @Override
             public void clickType(AlearDialog.clickType type) {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/app_gred_background"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_gred_background"
+              android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -47,26 +47,14 @@
             android:text="@string/vip_enjoy_prerogative"
             android:textColor="@color/color_ff8201"
             android:textSize="@dimen/text_size_18" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/vip_que"
-            android:text="点此查看特权"
-            android:textColor="#A4D3EE"
-            android:layout_alignParentRight="true"
-            android:textSize="@dimen/text_size_14"
-            android:layout_marginTop="@dimen/x40"
-            android:layout_marginBottom="@dimen/x40"
-            android:layout_marginRight="@dimen/x20"
-            android:layout_alignParentBottom="true"
-            />
+
     </RelativeLayout>
 
     <TextView
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/x30"
-        android:text="@string/vip_combo"
+        android:layout_margin="@dimen/x5"
         android:textColor="@color/gray_color" />'
 
     <RelativeLayout
@@ -74,21 +62,24 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/x92"
         android:background="@color/white">
+
         <ImageView
+            android:id="@+id/iv_year_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/vipmost"
             android:layout_centerVertical="true"
-            android:id="@+id/vipmost"/>
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/vip_year_icon" />
+
         <TextView
             android:id="@+id/vip_combo_12_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_toRightOf="@+id/iv_year_icon"
             android:textColor="@color/black"
-            android:layout_toRightOf="@+id/vipmost"
-            android:textSize="@dimen/text_size_18" />
+            android:textSize="@dimen/text_size_17" />
 
         <RelativeLayout
             android:id="@+id/layout_vip_12_low_money"
@@ -106,8 +97,8 @@
                 android:text="@string/vip_12_low_money"
                 android:textColor="@color/gray_color" />
 
-            <View
 
+            <View
                 style="@style/horizontal_line_style"
                 android:layout_width="@dimen/x120"
                 android:layout_alignLeft="@+id/vip_12_low_money"
@@ -136,35 +127,52 @@
             android:layout_marginRight="@dimen/x30"
             android:src="@mipmap/vip_selected" />
 
-        <View
-            style="@style/horizontal_line_style"
-            android:layout_width="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/x30"
-            android:layout_marginRight="@dimen/x30" />
+
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/vip_12_low_money_rule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/x15"
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x100"
+        android:paddingTop="@dimen/x15"
+        android:text="@string/loading"
+        android:textColor="@color/gray_color" />
+
+    <View
+        style="@style/horizontal_line_style"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30" />
 
     <RelativeLayout
         android:id="@+id/layout_combo_3"
         android:layout_width="match_parent"
         android:layout_height="@dimen/x92"
         android:background="@color/white">
+
         <ImageView
+            android:id="@+id/iv_quarter_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/vipnext"
             android:layout_centerVertical="true"
-            android:id="@+id/vipnext"/>
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/vip_quarter_icon" />
+
         <TextView
             android:id="@+id/vip_combo_3_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_toRightOf="@+id/iv_quarter_icon"
             android:textColor="@color/black"
-            android:layout_toRightOf="@+id/vipnext"
-            android:textSize="@dimen/text_size_18" />
+            android:textSize="@dimen/text_size_17" />
 
         <RelativeLayout
             android:id="@+id/layout_vip_3_low_money"
@@ -201,34 +209,44 @@
             android:layout_marginRight="@dimen/x30"
             android:src="@mipmap/vip_selected" />
 
-        <View
-            style="@style/horizontal_line_style"
-            android:layout_width="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/x30"
-            android:layout_marginRight="@dimen/x30" />
+
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/vip_3_low_money_rule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/x15"
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x100"
+        android:paddingTop="@dimen/x15"
+        android:text="@string/loading"
+        android:textColor="@color/gray_color" />
+
+    <View
+        style="@style/horizontal_line_style"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30" />
 
     <RelativeLayout
         android:id="@+id/layout_combo_1"
         android:layout_width="match_parent"
         android:layout_height="@dimen/x92"
-        android:background="@color/white">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/vipxiao"
-            android:layout_centerVertical="true"
-            android:id="@+id/vipxiao"/>
+        android:background="@color/white"
+        android:visibility="gone">
+
         <TextView
+
             android:id="@+id/vip_combo_1_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/x30"
             android:textColor="@color/black"
-            android:layout_toRightOf="@+id/vipxiao"
             android:textSize="@dimen/text_size_18" />
 
 
@@ -243,35 +261,73 @@
 
     </RelativeLayout>
 
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginLeft="@dimen/x30"-->
-        <!--android:layout_marginTop="@dimen/x50"-->
-        <!--android:text="@string/vip_prerogative_explain"-->
-        <!--android:textColor="@color/gray_color"-->
-        <!--android:textSize="@dimen/text_size_16" />-->
+    <LinearLayout
+        android:id="@+id/ll_input_phone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y96"
+        android:layout_marginTop="@dimen/y50"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal">
 
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_margin="@dimen/x30"-->
-        <!--android:text="@string/vip_prerogative_explain_late"-->
-        <!--android:textColor="@color/gray_color" />-->
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/x20"
+            android:text="手机号码"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_input_phone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/x60"
+            android:background="@drawable/shape_vip_backgroud"
+            android:hint="请填写您要返话费的手机号"
+            android:inputType="phone"
+            android:paddingLeft="@dimen/x20" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginTop="@dimen/y50"
+        android:text="@string/vip_rule"
+        android:textColor="@color/gray_color" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/x50"
+        android:text="@string/vip_prerogative_explain"
+        android:textColor="@color/gray_color"
+        android:textSize="@dimen/text_size_16"
+        android:visibility="gone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/x30"
+        android:text="@string/vip_prerogative_explain_late"
+        android:textColor="@color/gray_color"
+        android:visibility="gone" />
 
     <TextView
 
         android:id="@+id/tv_buy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/y200"
-        android:layout_marginRight="@dimen/x30"
-        android:layout_marginLeft="@dimen/x30"
+        android:layout_margin="@dimen/x30"
+        android:layout_marginTop="@dimen/x50"
         android:background="@drawable/shape_text_full_ffd"
         android:gravity="center"
         android:padding="@dimen/x30"
         android:text="@string/immediately_dredge"
-
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_17" />
 </LinearLayout>

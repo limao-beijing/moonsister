@@ -855,16 +855,15 @@ public class ServerApi {
          *
          * @param payType
          * @param opentype
-         * @param authcode
-         * @return
+         * @param phone
+         * @param authcode @return
          */
         @FormUrlEncoded
         @POST("mmvip/openvip")
         Observable<PayBean> getBuyVIP(@Field("pay_type") String payType,
                                       @Field("opentype") int opentype,
-                                      @Field("authcode") String authcode,
+                                      @Field("fee_mobile") String phone, @Field("authcode") String authcode,
                                       @Field("channel") String channel);
-
         /**
          * 认证押金
          *

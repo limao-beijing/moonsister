@@ -1,13 +1,11 @@
 package com.moonsister.tcjy.base;
 
 import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.FrameLayout;
 
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.utils.FragmentUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 
@@ -24,21 +22,16 @@ public abstract class BaseFragmentActivity extends BaseActivity {
 
     @Override
     protected View setRootContentView() {
+
         return UIUtils.inflateLayout(R.layout.activity_base_fragment);
     }
 
     @Override
     protected void initView() {
-
         FragmentUtils.swichReplaceFramgent(getSupportFragmentManager(), flBaseContent.getId(), initFragment());
         initData();
-        if (!isShowTitleView())
-            titleView.setVisibility(View.GONE);
     }
 
-    /**
-     * 初始化数据
-     */
     protected void initData() {
     }
 
@@ -92,12 +85,5 @@ public abstract class BaseFragmentActivity extends BaseActivity {
         currentFragment = f;
     }
 
-    /**
-     * 显示标图
-     *
-     * @return
-     */
-    public boolean isShowTitleView() {
-        return true;
-    }
+
 }

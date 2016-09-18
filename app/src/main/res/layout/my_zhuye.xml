@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/j_wheel_timebtn_pre">
+    >
     <RelativeLayout
         android:id="@+id/relative"
         android:layout_width="match_parent"
@@ -166,10 +166,11 @@
     </RelativeLayout>
 
     <GridView
+
         android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"
+        android:background="#ededed"
         android:verticalSpacing="2.0px"
         android:horizontalSpacing="5.0px"
         android:layout_below="@+id/relative"

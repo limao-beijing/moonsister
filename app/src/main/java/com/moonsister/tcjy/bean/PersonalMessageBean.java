@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by x on 2016/9/2.
  */
-public class PersonalMessageBean extends BaseBean{
+public class PersonalMessageBean extends BaseBean {
 
 
     /**
@@ -89,6 +89,27 @@ public class PersonalMessageBean extends BaseBean{
          */
 
         private List<RulesBean> rules;
+        private Ainfo ainfo;
+
+        public static class Ainfo {
+            private String vip_level;
+
+            public String getVip_level() {
+                return vip_level;
+            }
+
+            public void setVip_level(String vip_level) {
+                this.vip_level = vip_level;
+            }
+        }
+
+        public Ainfo getAinfo() {
+            return ainfo;
+        }
+
+        public void setAinfo(Ainfo ainfo) {
+            this.ainfo = ainfo;
+        }
 
         public DlistBean getDlist() {
             return dlist;

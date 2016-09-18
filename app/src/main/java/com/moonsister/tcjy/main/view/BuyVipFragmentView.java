@@ -8,4 +8,6 @@ import com.moonsister.tcjy.base.BaseIView;
 public interface BuyVipFragmentView extends BaseIView {
     void buySuccess();
 
+    void typePay(int type, String phone);
+
 }

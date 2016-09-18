@@ -2,15 +2,12 @@ package com.moonsister.tcjy.main.presenter;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.main.model.BuyVipFragmentModel;
 import com.moonsister.tcjy.main.model.BuyVipFragmentModelImpl;
 import com.moonsister.tcjy.main.view.BuyVipFragmentView;
 import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
-
-import java.util.Objects;
 
 /**
  * Created by jb on 2016/8/13.
@@ -31,9 +28,9 @@ public class BuyVipFragmentPersenterImpl implements BuyVipFragmentPersenter, Bas
     }
 
     @Override
-    public void buyVIP(int number) {
+    public void buyVIP(int number, String phone) {
         view.showLoading();
-        model.buyVIP(EnumConstant.PayType.IAPP_PAY, number, this);
+        model.buyVIP(EnumConstant.PayType.IAPP_PAY, number,phone, this);
     }
 
     @Override
