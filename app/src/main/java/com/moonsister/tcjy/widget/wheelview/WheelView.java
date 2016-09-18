@@ -213,8 +213,8 @@ public class WheelView extends View {
         visibleItems = attrs.getAttributeIntValue(namespace, "visibleItems", 5);
         // itemHeight = attrs.getAttributeIntValue(namespace, "itemHeight", 0);
         ADDITIONAL_ITEM_HEIGHT = attrs.getAttributeIntValue(namespace,
-                "lineHeight", 35);
-        TEXT_SIZE = attrs.getAttributeIntValue(namespace, "ctextsize", 38);
+                "lineHeight", 80);//设置行间距
+        TEXT_SIZE = attrs.getAttributeIntValue(namespace, "ctextsize", 40);//设置字体大小
         ITEM_OFFSET = TEXT_SIZE / 5;
         initResourcesIfNecessary();
     }

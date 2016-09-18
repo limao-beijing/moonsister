@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 import android.widget.VideoView;
 
 import com.moonsister.tcjy.R;
@@ -17,11 +18,15 @@ import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.umeng.analytics.MobclickAgent;
 
+import butterknife.Bind;
+
 public class ShowShortVideoActivity extends BaseActivity implements
         OnTouchListener {
     private String TAG = "ShowShortVideoActivity";
     private VideoView vv;
     private String path;
+    @Bind(R.id.image_stop)//播放暂停按钮
+    ImageView image_stop;
 
     @Override
     protected void onResume() {
