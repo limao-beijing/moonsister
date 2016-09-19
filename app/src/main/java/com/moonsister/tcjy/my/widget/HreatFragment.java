@@ -201,7 +201,8 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
     @Override
     public void onStart() {
         super.onStart();
-        persenter.PaySubmit(uid);
+        if (!StringUtis.isEmpty(UserInfoManager.getInstance().getAuthcode()))
+            persenter.PaySubmit(uid);
     }
 
     @Override

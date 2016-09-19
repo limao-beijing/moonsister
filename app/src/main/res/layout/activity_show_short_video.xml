@@ -11,22 +11,23 @@
         android:layout_height="@dimen/y600"
         android:layout_centerInParent="true"/>
 
-    <!--<TextView-->
-        <!--android:id="@+id/tv_back"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_above="@+id/vv"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginBottom="@dimen/y30"-->
-        <!--android:padding="@dimen/y30"-->
-        <!--android:text="轻点退出"/>-->
-    <ImageView
+    <TextView
+        android:id="@+id/tv_back"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/image_stop"
-        android:src="@mipmap/image_stop"
-        android:layout_below="@+id/vv"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/vv"
         android:layout_centerHorizontal="true"
-        />
+        android:layout_marginBottom="@dimen/y30"
+        android:padding="@dimen/y30"
+        android:text="轻点退出"
+        android:textColor="@color/white"/>
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:id="@+id/image_stop"-->
+    <!--android:src="@mipmap/image_stop"-->
+    <!--android:layout_below="@+id/vv"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--/>-->
 
 </RelativeLayout>
