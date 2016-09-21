@@ -32,6 +32,11 @@ public class FindPasswordNextActivity extends BaseActivity implements FindPasswo
     }
 
     @Override
+    protected String initTitleName() {
+        return UIUtils.getStringRes(R.string.find);
+    }
+
+    @Override
     protected void initView() {
         presenter = new FindPasswordNextActivityPresenterImpl();
         presenter.attachView(this);
