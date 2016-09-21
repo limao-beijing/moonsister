@@ -25,6 +25,7 @@ import com.moonsister.tcjy.bean.LoginBean;
 import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.PersonalMessageBean;
+import com.moonsister.tcjy.bean.PersonalMessageFenBean;
 import com.moonsister.tcjy.bean.PersonalReviseMessageBean;
 import com.moonsister.tcjy.bean.PingbiBean;
 import com.moonsister.tcjy.bean.RankBean;
@@ -171,7 +172,7 @@ public class ServerApi {
 
 
     public interface AppAPI {
-        String baseUrl = "http://2test.yytbzs.cn:88/index.php/index/";
+        String baseUrl = "http://3test.yytbzs.cn:88/index.php/index/";
 //        String baseUrl = "http://2.yytbzs.cn:88/index.php/index/";
 //        String baseUrl = "http://mimei.cntttt.com:88/public/index.php/index/";
 
@@ -1082,16 +1083,17 @@ public class ServerApi {
                                                @Field("channel") String channel);
 
         /**
-         * 查看用户资料页
-         *
+         * 查看用户资料   版本3
          * @param uid
-         * @return
-         */
+         * @param get_source
+         *@return
+         * */
         @GET("user/user_detail_rule")
-        Observable<PersonalMessageBean> setPersonalMessage(@Query("uid") String uid,
-                                                           @Query("authcode") String authcode,
-                                                           @Query("channel") String channelId,
-                                                           @Query("version_type") String apiVersion);
+        Observable<PersonalMessageFenBean> setPersonalFenMessage(@Query("uid") String uid,
+                                                              @Query("get_source") String get_source,
+                                                              @Query("authcode") String authcode,
+                                                              @Query("channel") String channel,
+                                                              @Query("version_type") String apiVersion);
 
         /**
          * 修改用户资料页展示
@@ -1248,6 +1250,7 @@ public class ServerApi {
         @GET("download/get")
         Observable<DownApkBean> getDownApk(@Query("authcode") String authcode,
                                            @Query("channel") String channel);
+
 
     }
 }

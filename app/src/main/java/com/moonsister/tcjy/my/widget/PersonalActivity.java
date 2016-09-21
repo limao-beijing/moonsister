@@ -1,87 +1,69 @@
 package com.moonsister.tcjy.my.widget;
 
+import android.net.Uri;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.adapter.PersonalAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.bean.PersonalMessageBean;
-import com.moonsister.tcjy.event.Events;
-import com.moonsister.tcjy.event.RxBus;
-import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.bean.PersonalMessageFenBean;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenter;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenterImpl;
-import com.moonsister.tcjy.my.view.PersonalActivityView;
-import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tcjy.my.view.PersonalActivityFenView;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.trello.rxlifecycle.ActivityEvent;
 
+import org.w3c.dom.Text;
+
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.OnClick;
-import im.gouyin.com.progressdialog.AlearDialog;
 
 /**
  * Created by x on 2016/8/25.
  */
-public class PersonalActivity extends BaseActivity implements PersonalActivityView {
-    //    String[] personal=new String[]{"头像","昵称","个性签名","性别","年龄","身高","体重","现居","职业","兴趣爱好"};
-    @Bind(R.id.personal_list)//展示用户信息的listview
-            ListView personal_list;
-    PersonalAdapter adapter;
-    @Bind(R.id.image_back)//返回键
-            ImageView image_back;
+public class PersonalActivity extends BaseActivity implements PersonalActivityFenView {
+
+    //    @Bind(R.id.image_back)//返回键
+//            ImageView image_back;
+    PersonalMessageFenBean.DataBean.BaseinfoBean baseinfo;
+    List<PersonalMessageFenBean.DataBean.RulesBean> rules;
+    PersonalMessageFenBean.DataBean.VipinfoBean vipinfo;
+    PersonalMessageFenBean.DataBean.DlistBean dlist;
     PersonalActivityPersenter persenter;
-    @Bind(R.id.iv_user_icon)//用户头像
+    @Bind(R.id.iv_user_icon)//头像
             ImageView iv_user_icon;
-    @Bind(R.id.if_user_vip)//是否为vip会员
-            ImageView if_user_vip;
-    @Bind(R.id.iv_user_name)//用户名
-            TextView iv_user_name;
-    @Bind(R.id.im_user_vip)//vip类型，年会员，月会员
-            ImageView im_user_vip;
-    @Bind(R.id.iv_user_work)//用户职业
-            TextView iv_user_work;
-    @Bind(R.id.im_user_sex)//用户性别
-            ImageView im_user_sex;
-    @Bind(R.id.iv_user_age)//用户年龄
-            TextView iv_user_age;
-    @Bind(R.id.iv_user_most)//用户的签名
-            TextView iv_user_most;
-    @Bind(R.id.phone_number)//用户的手机号
-            TextView phone_number;
-    @Bind(R.id.qq_number)//用户的QQ号
-            TextView qq_number;
-    @Bind(R.id.weixin_number)//用户的微信号
-            TextView weixin_number;
-    @Bind(R.id.follow_ta)//去TA主页
-            TextView follow_ta;
-    @Bind(R.id.look)//手机号查看
-            ImageView look;
-    @Bind(R.id.qq_look)//QQ查看
-            ImageView qq_look;
-    @Bind(R.id.weixin_look)//微信号查看
-            ImageView weixin_look;
-    List<PersonalMessageBean.DataBean.RulesBean> data;
-    PersonalMessageBean.DataBean.BaseinfoBean data1;
-    PersonalMessageBean.DataBean.DlistBean data2;
-    PersonalMessageBean.DataBean.VipinfoBean data3;
-    PersonalMessageBean.DataBean.Ainfo ainfo;
-    String uid;
+    @Bind(R.id.image_if_vip)//是否为VIP
+            ImageView image_if_vip;
+    @Bind(R.id.tv_name_three)//用户名
+            TextView tv_name_three;
+    @Bind(R.id.tv_age_three)//年龄
+            TextView tv_age_three;
+    @Bind(R.id.tv_hight_three)//身高
+    TextView tv_hight_three;
+    @Bind(R.id.tv_wight_three)//体重
+    TextView tv_wight_three;
+    @Bind(R.id.tv_position)//地址
+    TextView tv_position;
+    @Bind(R.id.tv_native_place)//籍贯
+    TextView tv_native_place;
+    @Bind(R.id.tv_hight)//公开资料身高
+    TextView tv_hight;
+    @Bind(R.id.tv_wight)//公开资料体重
+    TextView tv_wight;
+    @Bind(R.id.tv_long_distance)//是否接受异地恋
+    TextView tv_long_distance;
+    @Bind(R.id.tv_love_talk)//爱情宣言
+    TextView tv_love_talk;
     String id;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+    String get_source;
 
     @Override
     protected View setRootContentView() {
@@ -91,32 +73,13 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
     @Override
     protected void initView() {
         id = getIntent().getStringExtra("id");
+        get_source = "1";
         persenter = new PersonalActivityPersenterImpl();
         persenter.attachView(this);
-        persenter.sendPersonalMessage(id);
-        RxBus.with(this)
-                .setEvent(Events.EventEnum.BUY_VIP_SUCCESS)
-                .setEndEvent(ActivityEvent.DESTROY)
-                .onNext(events -> {
-                    if (persenter != null)
-                        persenter.sendPersonalMessage(id);
-                })
-                .create();
+        persenter.sendPersonalMessageFen(id, get_source);
 
     }
 
-
-    @OnClick({R.id.image_back, R.id.follow_ta})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.image_back:
-                PersonalActivity.this.finish();
-                break;
-            case R.id.follow_ta:
-                ActivityUtils.startHomePageActivity(id);
-                break;
-        }
-    }
 
     @Override
     public void showLoading() {
@@ -134,145 +97,45 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
     }
 
     @Override
-    public void success(PersonalMessageBean getPersonalBean) {
-        data = getPersonalBean.getData().getRules();
-        data1 = getPersonalBean.getData().getBaseinfo();
-        data2 = getPersonalBean.getData().getDlist();
-        data3 = getPersonalBean.getData().getVipinfo();
-        ainfo = getPersonalBean.getData().getAinfo();
-
-        adapter = new PersonalAdapter(this, data);
-        personal_list.setAdapter(adapter);
-
-        iv_user_name.setText(data1.getNickname());//用户昵称
-
-        String i = data1.getSex();//用户性别tring
-        if (i.equals("1")) {
-            im_user_sex.setImageResource(R.mipmap.nan);
+    public void success(PersonalMessageFenBean getPersonalBean) {
+        baseinfo = getPersonalBean.getData().getBaseinfo();
+        rules = getPersonalBean.getData().getRules();
+        vipinfo = getPersonalBean.getData().getVipinfo();
+        dlist = getPersonalBean.getData().getDlist();
+        ImageServerApi.showURLSamllImage(iv_user_icon, baseinfo.getFace());//展示头像
+        String isvip = rules.get(1).getIsvip();//vip的显示与否
+        if (isvip.equals("0")) {
+            image_if_vip.setVisibility(View.INVISIBLE);
         } else {
-            im_user_sex.setImageResource(R.mipmap.gril);
+            image_if_vip.setVisibility(View.VISIBLE);
         }
-        ImageServerApi.showURLBigImage(iv_user_icon, data1.getFace());//用户头像
-        iv_user_age.setText(data1.getAge() + "");//用户年龄
-        String profess = data1.getProfession();//用户职业
-//        String profess=profession.toString();
-        if (profess == null) {
-            iv_user_work.setVisibility(View.INVISIBLE);
-        } else {
-            iv_user_work.setText(profess);
+        tv_name_three.setText(baseinfo.getNickname());//用户名显示
+        Calendar c = Calendar.getInstance();//获得系统当前日期
+        String birthday = baseinfo.getBirthday();//得到生日
+        String spStr[] = birthday.split("-");//截取字符串
+        int s = Integer.parseInt(spStr[0]);//将得到的年份转为int类型
+        int year =c.get(Calendar.YEAR);//得到系统年份
+        int i = year-s;//系统年份减去得到的年分
+        tv_age_three.setText(i + "岁");//年龄展示
+        tv_hight_three.setText(dlist.getHeight()+"cm");//身高显示
+        tv_wight_three.setText(dlist.getWeight()+"kg");//体重展示
+        tv_position.setText(dlist.getBirthplace());//地址
+        tv_native_place.setText(dlist.getResidence());//籍贯
+        tv_hight.setText(dlist.getHeight()+"cm");//公开资料身高
+        tv_wight.setText(dlist.getWeight()+"kg");//公开资料体重
+        String value = dlist.getPremarital_sex();//是否接受异地恋
+        if(value.equals("可以接受")){
+            tv_long_distance.setText("是");
+        }else if(value.equals("不能接受")){
+            tv_long_distance.setText("否");
+        }else if(value.equals("看情况")){
+            tv_long_distance.setText("是");
         }
-
-        iv_user_most.setText(data1.getSignature());//用户签名
-        String isvip = data.get(0).getIsvip();
-        if (isvip == "0") {
-            if_user_vip.setVisibility(View.INVISIBLE);
-        } else {
-            if_user_vip.setVisibility(View.VISIBLE);
-        }
-        String Vip_level = data1.getVip_level();//VIP等级
-        if (Vip_level.equals("0")) {
-            im_user_vip.setVisibility(View.INVISIBLE);
-            if_user_vip.setVisibility(View.INVISIBLE);
-        } else if (Vip_level.equals("1")) {
-            if_user_vip.setVisibility(View.VISIBLE);
-            im_user_vip.setImageResource(R.mipmap.vipxiao);
-        } else if (Vip_level.equals("3")) {
-            if_user_vip.setVisibility(View.VISIBLE);
-            im_user_vip.setImageResource(R.mipmap.vipnext);
-        } else if (Vip_level.equals("12")) {
-            if_user_vip.setVisibility(View.VISIBLE);
-            im_user_vip.setImageResource(R.mipmap.vipmost);
-        }
-        String smobile = data3.getSmobile();//用户手机号
-//        if (smobile == null) {
-        phone_number.setText("xxxxxxxxxxx");
-        look.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (isVip_level())
-                    phone_number.setText(smobile);
-            }
-        });
-//        } else {
-//            phone_number.setText("xxxxxxxxxxx");
-//            look.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    phone_number.setText(smobile);
-//                }
-//            });
-//        }
-        PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();//获得对象
-        memoryPersonInfoDetail.setSmobile(smobile);//保存值
-        UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
-        String qq = data3.getQq();//用户QQ号
-//        if (qq == null) {
-        qq_number.setText("xxxxxxxxxxx");
-        qq_look.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (isVip_level())
-                    qq_number.setText(qq);
-            }
-        });
-//        }
-//        else {
-//            qq_number.setText("xxxxxxxxxxx");
-//            qq_look.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    qq_number.setText(qq);
-//                }
-//            });
-//        }
-        String weixin = data3.getWeixin();//用户微信号
-
-
-//        if (weixin == null) {
-        weixin_number.setText("xxxxxxxxxxx");
-        weixin_look.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (isVip_level())
-                    weixin_number.setText(weixin);
-            }
-        });
-
-    }
-//    else {
-//            weixin_number.setText("xxxxxxxxxxx");
-//            weixin_look.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    weixin_number.setText(weixin);
-//                }
-//            });
-//        }
-
-
-//}
-
-    /**
-     * @return
-     */
-    private boolean isVip_level() {
-        if (ainfo == null || !StringUtis.equals(ainfo.getVip_level(), "1")) {
-            AlearDialog dialog = new AlearDialog(AlearDialog.DialogType.Certification_vip, this);
-            dialog.setListenter(new AlearDialog.onClickListenter() {
-                @Override
-                public void clickType(AlearDialog.clickType type) {
-                    ActivityUtils.startBuyVipActivity();
-                    dialog.dismiss();
-                }
-            });
-            return false;
-        }
-        return true;
+        tv_love_talk.setText(baseinfo.getSignature());
     }
 
     @Override
     public void person() {
 
     }
-
 }
