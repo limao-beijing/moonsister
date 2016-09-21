@@ -29,8 +29,8 @@ public class RegActivity extends BaseActivity implements RegThridActivityView {
             EditText etPhoneNumber;
     @Bind(R.id.reg_edit_password)//密码
             EditText reg_edit_password;
-    //    @Bind(R.id.reg_edit_brith)//出生年月日
-//            EditText reg_edit_brith;
+        @Bind(R.id.reg_edit_brith)//出生年月日
+            EditText reg_edit_brith;
     @Bind(R.id.et_security_code)//输入验证码
             EditText etCode;
     @Bind(R.id.tv_submit)//完成注册
@@ -39,8 +39,8 @@ public class RegActivity extends BaseActivity implements RegThridActivityView {
             TextView let_go;
     @Bind(R.id.tv_security_code)//获取验证码
             TextView tvSecurityCode;
-    @Bind(R.id.old_code)
-    TextView old_code;
+//    @Bind(R.id.old_code)
+//    TextView old_code;
     RegActivityPresenter persenter;
     String pwd;
     String birthday;
@@ -64,7 +64,7 @@ public class RegActivity extends BaseActivity implements RegThridActivityView {
         persenter.attachView(this);
     }
 
-    @OnClick({R.id.tv_submit, R.id.tv_security_code, R.id.let_go, R.id.old_code})
+    @OnClick({R.id.tv_submit, R.id.tv_security_code, R.id.let_go,})
     public void onClick(View view) {
 
         if (view.getId() == R.id.tv_security_code) {//获取验证码
@@ -99,9 +99,6 @@ public class RegActivity extends BaseActivity implements RegThridActivityView {
 
         } else if (view.getId() == R.id.let_go) {
             Intent intent = new Intent(RegActivity.this, MainActivity.class);
-            startActivity(intent);
-        } else if (view.getId() == R.id.old_code) {
-            Intent intent = new Intent(RegActivity.this, LoginMainActivity.class);
             startActivity(intent);
         }
     }

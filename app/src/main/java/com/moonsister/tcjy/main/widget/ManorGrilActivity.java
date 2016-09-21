@@ -11,6 +11,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
+import com.moonsister.tcjy.login.widget.RegActivity;
 import com.moonsister.tcjy.main.presenter.ManorFrilActivityPresenter;
 import com.moonsister.tcjy.main.presenter.ManorFrilActivityPresenterImpl;
 import com.moonsister.tcjy.main.view.ManorGrilActivityView;
@@ -44,12 +45,12 @@ public class ManorGrilActivity extends BaseActivity implements ManorGrilActivity
             SharedPreferences.Editor edit = sp.edit();
             edit.putBoolean("isFirst", false);
             //应用首次启动
-            LayoutInflater.from(this).inflate(R.layout.manorgril, null);
+            LayoutInflater.from(this).inflate(R.layout.manorgril_fen, null);
         } else {
             //应用非首次启动
             ActivityUtils.startLoginMainActivity();
         }
-        return UIUtils.inflateLayout(R.layout.manorgril);
+        return UIUtils.inflateLayout(R.layout.manorgril_fen);
     }
 
     @Override
@@ -89,7 +90,7 @@ public class ManorGrilActivity extends BaseActivity implements ManorGrilActivity
         memoryPersonInfoDetail.setLogin(true);
         UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
 
-        Intent intent = new Intent(ManorGrilActivity.this, InsertActivity.class);
+        Intent intent = new Intent(ManorGrilActivity.this, RegActivity.class);
         startActivity(intent);
         this.finish();
     }
