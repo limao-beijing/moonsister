@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/iv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/loading"/>
+
+
+    <com.moonsister.tcjy.widget.NoScrollGridView
+        android:id="@+id/no_gv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x86"
+        android:layout_below="@+id/iv_time"
+        android:horizontalSpacing="@dimen/x10"
+        android:verticalSpacing="@dimen/x10"></com.moonsister.tcjy.widget.NoScrollGridView>
+
+</RelativeLayout>

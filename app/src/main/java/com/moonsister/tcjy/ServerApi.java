@@ -14,6 +14,9 @@ import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.DownApkBean;
 import com.moonsister.tcjy.bean.DynamicBean;
 import com.moonsister.tcjy.bean.DynamicDatailsBean;
+import com.moonsister.tcjy.bean.FeelingSquareFilterBean;
+import com.moonsister.tcjy.bean.FeelingSquarePMDBean;
+import com.moonsister.tcjy.bean.FeelingSquareSearchBean;
 import com.moonsister.tcjy.bean.FrientBaen;
 import com.moonsister.tcjy.bean.GetMoneyBean;
 import com.moonsister.tcjy.bean.GoodSelectBaen;
@@ -24,7 +27,6 @@ import com.moonsister.tcjy.bean.LableBean;
 import com.moonsister.tcjy.bean.LoginBean;
 import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
-import com.moonsister.tcjy.bean.PersonalMessageBean;
 import com.moonsister.tcjy.bean.PersonalMessageFenBean;
 import com.moonsister.tcjy.bean.PersonalReviseMessageBean;
 import com.moonsister.tcjy.bean.PingbiBean;
@@ -865,6 +867,7 @@ public class ServerApi {
                                       @Field("opentype") int opentype,
                                       @Field("fee_mobile") String phone, @Field("authcode") String authcode,
                                       @Field("channel") String channel);
+
         /**
          * 认证押金
          *
@@ -1084,16 +1087,17 @@ public class ServerApi {
 
         /**
          * 查看用户资料   版本3
+         *
          * @param uid
          * @param get_source
-         *@return
-         * */
+         * @return
+         */
         @GET("user/user_detail_rule")
         Observable<PersonalMessageFenBean> setPersonalFenMessage(@Query("uid") String uid,
-                                                              @Query("get_source") String get_source,
-                                                              @Query("authcode") String authcode,
-                                                              @Query("channel") String channel,
-                                                              @Query("version_type") String apiVersion);
+                                                                 @Query("get_source") String get_source,
+                                                                 @Query("authcode") String authcode,
+                                                                 @Query("channel") String channel,
+                                                                 @Query("version_type") String apiVersion);
 
         /**
          * 修改用户资料页展示
@@ -1252,6 +1256,30 @@ public class ServerApi {
                                            @Query("channel") String channel);
 
 
+        //搜索人
+        @POST("home/search")
+        Observable<FeelingSquareSearchBean> getSquareSearchList(@Query("username") String username);
+
+        //跑马灯
+        @GET("home/horn")
+        Observable<FeelingSquarePMDBean> getPMDContent(
+                @Field("laba") String laba,
+                @Field("authcode") String authcode,
+                @Field("channel") String channel);
+
+
+        //筛选
+        @POST("home/scrccen")
+        Observable<FeelingSquareFilterBean> getSquareFilterList(
+                @Query("username") String username,
+                @Query("sex") String sex,
+                @Query("birthday") String birthday,
+                @Query("mobile") String smoblie,
+                @Query("height") String height,
+                @Query("weixin") String weixin,
+                @Query("weight") String weight,
+                @Query("distance_love") String distance_love,
+                @Query("qq") String qq);
     }
 }
 

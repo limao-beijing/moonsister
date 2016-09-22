@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x180"
+                android:background="@color/white"
+                android:padding="@dimen/x30">
+
+    <com.moonsister.tcjy.widget.CircularImageView
+
+        android:id="@+id/civ_user_avater"
+        android:layout_width="@dimen/x128"
+        android:layout_height="@dimen/x128"
+        android:layout_centerVertical="true"
+
+        android:src="@mipmap/ic_launcher"/>
+
+    <ImageView
+        android:id="@+id/iv_add_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/civ_user_avater"
+        android:layout_marginLeft="-15dp"
+        android:layout_toRightOf="@+id/civ_user_avater"
+        android:src="@mipmap/add_vip_icon"/>
+
+    <ImageView
+        android:id="@+id/iv_engegament"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/engegament_icon"/>
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/civ_user_avater"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_toLeftOf="@+id/iv_engegament"
+        android:layout_toRightOf="@+id/civ_user_avater"
+        android:enabled="true"
+        android:singleLine="true"
+        android:text="@string/loading"
+        android:textColor="@color/black_1a2729"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_user_name"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/iv_engegament"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/x10"
+            android:background="@color/color_ebf9fb"
+            android:padding="@dimen/x10"
+            android:text="@string/loading"
+            android:textColor="@color/color_3e838a"
+            android:textSize="@dimen/text_size_10"/>
+
+        <TextView
+            android:id="@+id/tv_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/x10"
+            android:background="@color/color_ebf9fb"
+            android:padding="@dimen/x10"
+            android:text="@string/loading"
+            android:textColor="@color/color_3e838a"
+            android:textSize="@dimen/text_size_10"/>
+
+        <TextView
+            android:id="@+id/tv_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/x10"
+            android:background="@color/color_ebf9fb"
+            android:padding="@dimen/x10"
+            android:text="@string/loading"
+            android:textColor="@color/color_3e838a"
+            android:textSize="@dimen/text_size_10"/>
+
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/address_icon"
+            android:drawablePadding="@dimen/x10"
+            android:singleLine="true"
+            android:text="@string/loading"
+            android:textColor="@color/color_3e838a"
+            android:textSize="@dimen/text_size_13"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/civ_user_avater"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_toLeftOf="@+id/iv_engegament"
+        android:layout_toRightOf="@+id/civ_user_avater"
+        android:enabled="true"
+        android:singleLine="true"
+        android:text="@string/loading"
+        android:textColor="@color/text_gray_737c7d"
+        android:textSize="@dimen/text_size_13"/>
+
+</RelativeLayout>

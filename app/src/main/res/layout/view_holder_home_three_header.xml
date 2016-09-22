@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/red_f790ae">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/x30"
+        android:text="@string/home_square"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_20"/>
+
+    <ImageView
+        android:id="@+id/iv_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:padding="@dimen/x35"
+        android:src="@mipmap/home_three_search"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_transparent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x64"
+        android:layout_below="@+id/iv_search"
+        android:layout_margin="@dimen/x30"
+        android:background="@drawable/shape_background_half_transparent">
+
+        <ImageView
+            android:id="@+id/home_three_banner_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/home_three_banner_icon"/>
+
+        <TextView
+            android:id="@+id/iv_banner_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_toRightOf="@+id/home_three_banner_icon"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_16"/>
+
+    </RelativeLayout>
+
+
+    <com.baiiu.filter.DropDownMenu
+        android:id="@+id/dropDownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_transparent">
+
+        <TextView
+            android:id="@id/mFilterContentView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="22sp"/>
+    </com.baiiu.filter.DropDownMenu>
+
+</RelativeLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_fadai"
+        style="@style/text_engament_main"
+        android:layout_centerHorizontal="true"
+        android:drawableTop="@mipmap/engagment_main_fadai"
+        android:text="@string/asleep"/>
+
+    <TextView
+        android:id="@+id/tv_meal"
+        style="@style/text_engament_main"
+        android:layout_alignTop="@+id/tv_fadai"
+        android:layout_marginRight="@dimen/x72"
+        android:layout_toLeftOf="@+id/tv_fadai"
+        android:drawableTop="@mipmap/engagment_main_meal"
+        android:text="@string/engagment_meal"/>
+
+    <TextView
+        android:id="@+id/tv_movie"
+        style="@style/text_engament_main"
+        android:layout_alignTop="@+id/tv_fadai"
+        android:layout_marginLeft="@dimen/x72"
+        android:layout_toRightOf="@+id/tv_fadai"
+        android:drawableTop="@mipmap/engagment_main_movie"
+        android:text="@string/movie"/>
+
+    <TextView
+        android:id="@+id/tv_shop"
+        style="@style/text_engament_main"
+        android:layout_below="@+id/tv_fadai"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/x40"
+        android:drawableTop="@mipmap/engagment_main_shop"
+        android:text="@string/shop"/>
+
+    <TextView
+        android:id="@+id/tv_coffee"
+        style="@style/text_engament_main"
+        android:layout_alignLeft="@+id/tv_meal"
+        android:layout_alignTop="@+id/tv_shop"
+        android:drawableTop="@mipmap/engagment_main_coffee"
+        android:text="@string/coffee"/>
+
+    <TextView
+        android:id="@+id/tv_travel"
+        style="@style/text_engament_main"
+        android:layout_alignRight="@+id/tv_movie"
+        android:layout_alignTop="@+id/tv_shop"
+        android:drawableTop="@mipmap/engagment_main_travel"
+        android:text="@string/coffee"/>
+
+    <TextView
+        android:id="@+id/tv_more"
+        style="@style/text_engament_main"
+        android:layout_alignLeft="@+id/tv_coffee"
+        android:layout_below="@+id/tv_coffee"
+        android:layout_marginTop="@dimen/x40"
+        android:drawableTop="@mipmap/engagment_main_coffee"
+        android:text="@string/coffee"/>
+
+    <ImageView
+        android:id="@+id/iv_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/x30"
+        android:src="@mipmap/engagment_main_cancel"/>
+
+</RelativeLayout>

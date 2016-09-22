@@ -139,4 +139,5 @@ public abstract class BaseFragment extends BaseRxFragment implements View.OnTouc
         curFragment = show;
     }
 
+
 }

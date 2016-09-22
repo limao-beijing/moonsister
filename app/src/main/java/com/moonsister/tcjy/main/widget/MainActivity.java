@@ -22,7 +22,7 @@ import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.find.widget.FindFragment;
-import com.moonsister.tcjy.home.widget.HomeTopFragment;
+import com.moonsister.tcjy.home.widget.HomeThreeFragment;
 import com.moonsister.tcjy.im.widget.IMHomeFragment;
 import com.moonsister.tcjy.main.presenter.MainPresenter;
 import com.moonsister.tcjy.main.presenter.MainPresenterImpl;
@@ -30,8 +30,8 @@ import com.moonsister.tcjy.main.view.MainView;
 import com.moonsister.tcjy.manager.GaodeManager;
 import com.moonsister.tcjy.manager.RecommendMananger;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.my.widget.HreatFragment;
 import com.moonsister.tcjy.my.widget.MyFragment;
+import com.moonsister.tcjy.my.widget.MyThreeFragment;
 import com.moonsister.tcjy.update.UpdateManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ConfigUtils;
@@ -178,8 +178,11 @@ public class MainActivity extends BaseActivity implements MainView {
 //        BaiduManager.getInstance(this).show(this, appx_banner_container);
         if (homeFragment == null)
 //            homeFragment = new HomeFragment();
-            homeFragment = new HomeTopFragment();
+//            homeFragment = new HomeTopFragment();
+//            homeFragment = new FeelingSquareFragment();
+            homeFragment = new HomeThreeFragment();
         enterPage(homeFragment);
+
     }
 
     @Override
@@ -199,7 +202,9 @@ public class MainActivity extends BaseActivity implements MainView {
             RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
             return;
         }
-        ActivityUtils.startDynamicSendActivity();
+//        ActivityUtils.startDynamicSendActivity();
+//        ActivityUtils.startEngagementTypeActivity();
+        ActivityUtils.startEengegamentPublishActivity();
 //        ActivityUtils.startDynamicPublishActivity();
     }
 
@@ -218,8 +223,8 @@ public class MainActivity extends BaseActivity implements MainView {
         }
         if (myFragment == null)
 //            myFragment = new MyFragment();
-            myFragment = new HreatFragment();
-
+//            myFragment = new HreatFragment();
+            myFragment = new MyThreeFragment();
         enterPage(myFragment);
 
     }

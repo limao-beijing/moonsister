@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/title8"
+    >
+    <TextView
+        android:id="@+id/title_felingsquare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/feelingsquare_title"
+        android:textColor="#fff"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/a1_1"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_above="@+id/l1"
+        android:layout_alignEnd="@+id/l1" />
+
+    <LinearLayout
+        android:id="@+id/l1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y64"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginRight="@dimen/x20"
+        android:layout_marginBottom="@dimen/x20"
+        android:orientation="horizontal"
+        android:background="@drawable/shape_ellipsize"
+        android:layout_below="@+id/title_felingsquare">
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:background="@mipmap/a1_2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:focusableInTouchMode="true"
+            android:scrollHorizontally="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:textColor="#fff"
+            android:textSize="32sp"
+            android:singleLine="true"
+            android:text="aaaaaaaaaaaaaaaaaaaaa"
+            />
+
+    </LinearLayout>
+
+    <ListView
+        android:layout_below="@+id/l1"
+        android:id="@+id/lv_feelingsquare_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+   ></ListView>
+
+    </RelativeLayout>

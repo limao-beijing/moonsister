@@ -1,9 +1,12 @@
 <resources>
-    <string name="app_name">初色</string><!--<string name="app_name">探探寂陌陌生人-求约爱</string>-->
+    <string name="app_name">初色</string>
+    <!--<string name="app_name">探探寂陌陌生人-求约爱</string>-->
     <string name="app_home_page">首页</string>
     <string name="app_im_page">聊天</string>
     <string name="find">发现</string>
-    <string name="app__my_page">我的</string><!-- TODO: Remove or change this placeholder text -->
+    <string name="app__my_page">我的</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home_one_menu_good_select">精选</string>
     <string name="home_one_menu_same_city">同城</string>
@@ -20,7 +23,6 @@
     <string name="activity_name_dynamic_datails">动态详情</string>
     <string name="str_login">登录</string>
     <string name="str_register">注册</string>
-    <string name="next_bu">下一步</string>
     <string name="username">用户名 : </string>
     <string name="input_phone_number">输入手机号</string>
     <string name="password">密  码 : </string>
@@ -53,7 +55,6 @@
     <string name="send_dynamic">发布动态</string>
     <string name="finish">完成</string>
     <string name="photo">图片</string>
-    <string name="add_card_fen">确定</string>
     <string name="xml_send_red_packet">发个红包，拉近距离</string>
     <string name="input_money">输入金额</string>
     <string name="weixin_play">微信支付</string>
@@ -152,7 +153,8 @@
     <string name="report">举报</string>
     <string name="apply_renzheng">申请认证</string>
     <string name="renzheng_condition">为了避免不良会员发布无意义，不良信息，以及利用第三方机器人进行会员多开（如微信陌陌等），行坑蒙拐骗、色情等不合法的会员行为，我们启用严格认证机制。请花费1分钟时间，按照提示完成认证，开启认证会员特权。</string>
-    <string name="renz">为避免诈骗，诱骗，虚假信息，虚假广告信息，婚托，酒托等不合法行为，我们启用严格认证机制，无论男女会员，都必须通过认证后，才可以正常使用发布公开和私密动态信息，与非好友会员聊天（好友之间不认证也不会限制聊天）等权利。</string><string name="text_talk">1.您在本平台通过用户打赏、送花、以及私密收费动态所产生的收益，平台会从中抽取50％的平台运营费用后，将剩余50％存入您的账户余额；\n
+    <string name="renz">为避免诈骗，诱骗，虚假信息，虚假广告信息，婚托，酒托等不合法行为，我们启用严格认证机制，无论男女会员，都必须通过认证后，才可以正常使用发布公开和私密动态信息，与非好友会员聊天（好友之间不认证也不会限制聊天）等权利。</string>
+    <string name="text_talk">1.您在本平台通过用户打赏、送花、以及私密收费动态所产生的收益，平台会从中抽取50％的平台运营费用后，将剩余50％存入您的账户余额；\n
     2.当您的账户收益超过10元时即可进行提现，您每提现一笔平台都会扣除由第三方平台收取的6％渠道费；目前提现仅支持支付宝和微信账号。\n
     3.请您严格遵守国家相关法律法规及平台相关规则，切勿徇私舞弊，否则一经发现，平台有权对您进行冻结账户资金及封号处理。</string>
     <string name="red_person_renzheng">会员诚信度认证</string>
@@ -200,7 +202,8 @@
     <string name="add_lable">添加标签</string>
     <string name="pic">图片</string>
     <string name="video">视频</string>
-    <string name="voice">语音</string><!-- PictureSelectorActivity -->
+    <string name="voice">语音</string>
+    <!-- PictureSelectorActivity -->
     <string name="picsel_toolbar">图片</string>
     <string name="picsel_toolbar_send">发送</string>
     <string name="picsel_toolbar_send_num">发送(%d/</string>
@@ -231,10 +234,11 @@
     <string name="buy_dynamic_vip">该条为私密收费内容，\n需要付费购买才能观看，\nVIP会员可以全站免费观看。</string>
     <string name="upgrade_vip">升级 VIP</string>
     <string name="single_buy">单独购买</string>
-    <string name="combo_type"> %1$s个月，<font color="#ff8201">%2$s</font> 元   </string>
+    <string name="combo_type"><![CDATA[ %1$s个月，<font color="#ff8201">%2$s</font> 元 ]]>  </string>
     <string name="refresh_page">刷新页面</string>
     <string name="not_certification">你还没认证，请认证</string>
-    <string name="select">* 确认信息，申请认证后信息不可更改</string><string name="rule_talk">1）严格的认证的机制为了避免不良会员无意义信息和不良信息，以及利用第三方机器人进行会员多开（如微信陌陌多开）进行坑蒙拐骗、色情等不合法的会员行为，给平台用户一个纯净、健康的社交环境；
+    <string name="select">* 确认信息，申请认证后信息不可更改</string>
+    <string name="rule_talk">1）严格的认证的机制为了避免不良会员无意义信息和不良信息，以及利用第三方机器人进行会员多开（如微信陌陌多开）进行坑蒙拐骗、色情等不合法的会员行为，给平台用户一个纯净、健康的社交环境；
   \n2）申请认证需支付59元（人民币）保证金，保证金冻结周期为一个月，一个月内无违规行为（行骗、酒托、饭托、虚假信息、诈骗、赌博、色情等国家法律法规不允许的行为，以及纯广告信息等） ，保证金会直接解冻、您可以在财务中心查看，提现，也可用来消费；
   \n3）若您在一个月内发布上述所说的违规内容，每发现一次，保证金冻结周期延期一个月，被发现超过三次者，保证金不予退还，同时将会对您进行降低会员级别或封号处理。</string>
     <string name="tv_ren">您需要支付59元人民币完成诚信认证，认证费将作为保证金返还到您的财务中心，一个月后可直接提现、消费。\n  请确认是否支付诚信保证金？</string>
@@ -263,7 +267,6 @@
     <string name="tv_search_type_user">只看会员</string>
     <string name="tv_search_type_dynamic">只看动态</string>
     <string name="reg_text">为了您的账户安全\n请及时绑定手机</string>
-    <string name="regiter_text">为了您的账户安全\n请本人输入密码</string>
     <string name="fillout_message">19860万会员求真相，\n98万同兴趣者等你撩！</string>
     <string name="activity_vip">充值成功后，注意信息保密，避免他人冒领。\n请按照系统提示，领取手机费返还。</string>
     <string name="more">更多</string>
@@ -280,6 +283,26 @@
     <string name="phone_binding">手机绑定</string>
     <string name="home_page">主 页</string>
     <string name="save">保存</string>
-    <string name="vip_rule_type"> <font color="#ff8201"><big>%1$s</big></font> %2$s</string>
+    <string name="vip_rule_type"><![CDATA[ <font color="#ff8201" ><big>%1$s</big></font> %2$s]]></string>
     <string name="vip_rule">充值成功后，注意信息保密，避免他人冒领。请按照系统提示，领取手机话费返还。</string>
+    <string name="asleep">发呆</string>
+    <string name="engagment_meal">约饭</string>
+    <string name="movie">电影</string>
+    <string name="shop">逛街</string>
+    <string name="coffee">咖啡</string>
+    <string name="engagement_pay">约见担保费:</string>
+    <string name="input_engagement_pay_number">请输入打赏金额</string>
+    <string name="date">日期:</string>
+    <string name="input_engagement_pay_date">请选择约见时间</string>
+    <string name="input_engagement_pay_address">请输入约见地址</string>
+    <string name="once_ensure">立即担保</string>
+    <string name="engagement_pay_text">《约见担保费》</string>
+    <string name="next_bu">下步</string>
+    <string name="regiter_text">注册</string>
+    <string name="feelingsquare_title">传情广场</string>
+    <string name="open_vip">开通VIP</string>
+    <string name="dynamic_manager">动态管理</string>
+    <string name="engagement_manager">约会管理</string>
+    <string name="finance_manager">财务管理</string>
+    <string name="home_square">传情广场</string>
 </resources>

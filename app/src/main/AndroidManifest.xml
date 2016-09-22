@@ -182,6 +182,7 @@
         <activity android:name=".main.widget.ShowShortVideoActivity"/>
         <activity android:name=".main.widget.FillOutMessageActivity"/>
         <activity android:name=".find.widget.VideoDynamicActivity"/>
+        <activity android:name=".engagement.EengegamentPublishActivity"/>
         <activity
             android:name=".my.widget.RZFirstActivity"
             android:screenOrientation="portrait"/>
@@ -223,6 +224,9 @@
         <activity
             android:name=".widget.image.photoview.ImagePagerActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".engagement.EngagemengOrderActivity"/>
+        <activity android:name=".engagement.EngagementTypeActivity"/>
+        <activity android:name=".engagement.EengegamentRecommendActivity"/>
         <activity
             android:name=".widget.takevideo.TakeVideoActivity"
             android:screenOrientation="portrait"/>

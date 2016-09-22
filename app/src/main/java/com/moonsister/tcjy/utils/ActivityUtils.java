@@ -12,6 +12,9 @@ import com.moonsister.tcjy.center.widget.DefaultDynamicSendActivity;
 import com.moonsister.tcjy.center.widget.DynamicPublishActivity;
 import com.moonsister.tcjy.center.widget.DynamicSendActivity;
 import com.moonsister.tcjy.center.widget.RedpacketDynaimcActivity;
+import com.moonsister.tcjy.engagement.EengegamentPublishActivity;
+import com.moonsister.tcjy.engagement.EngagemengOrderActivity;
+import com.moonsister.tcjy.engagement.EngagementTypeActivity;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.find.widget.NearbyActivity;
@@ -653,7 +656,11 @@ public class ActivityUtils {
         startBuyVipActivity();
     }
 
-    //跳转资料展示页面
+    /**
+     * 跳转资料展示页面
+     *
+     * @param uid
+     */
     public static void startPersonalActivity(String uid) {
         Intent intent = new Intent(getContext(), PersonalActivity.class);
         intent.putExtra("id", uid);
@@ -715,6 +722,27 @@ public class ActivityUtils {
 
     public static void starVideoDynamicActivity() {
         startActivity(VideoDynamicActivity.class);
+    }
+
+    /**
+     * 约会主页
+     */
+    public static void startEngagementTypeActivity() {
+        startActivity(EngagementTypeActivity.class);
+    }
+
+    /**
+     * 发布约会
+     */
+    public static void startEengegamentPublishActivity() {
+        startActivity(EengegamentPublishActivity.class);
+    }
+
+    /**
+     * 约会下单
+     */
+    public static void startEngagemengOrderActivity() {
+        startActivity(EngagemengOrderActivity.class);
     }
 //    //我的页面不是会员    定义跳转的activity
 //    public static void startNoActivity() {

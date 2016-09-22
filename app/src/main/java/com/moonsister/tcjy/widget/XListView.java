@@ -5,10 +5,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.AttributeSet;
 
-import com.moonsister.tcjy.R;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
-import com.moonsister.tcjy.adapter.MoneyAdapter;
+import com.moonsister.tcjy.R;
 
 /**
  * Created by jb on 2016/6/27.
@@ -58,11 +57,29 @@ public class XListView extends XRecyclerView {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         this.setLayoutManager(layoutManager);
+
 //        this.addItemDecoration(new SpacesItemDecoration(2));
         this.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         this.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
         this.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
         this.setArrowImageView(R.mipmap.iconfont_downgrey);
+    }
+
+    /**
+     * 横向listView
+     */
+    public void setHorizontalLinearLayoutManager() {
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        this.setPullRefreshEnabled(false);
+        this.setLoadingMoreEnabled(false);
+        this.setLayoutManager(layoutManager);
+//        this.addItemDecoration(new SpacesItemDecoration(2));
+//        this.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
+//        this.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
+//        this.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
+//        this.setArrowImageView(R.mipmap.iconfont_downgrey);
     }
 
     public void setNoMore() {
