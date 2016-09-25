@@ -1,31 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/red_f790ae">
+                android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/x30"
-        android:text="@string/home_square"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_20"/>
+        android:background="@color/red_f790ae">
 
-    <ImageView
-        android:id="@+id/iv_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:padding="@dimen/x35"
-        android:src="@mipmap/home_three_search"/>
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/x30"
+            android:text="@string/home_square"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_20"/>
+
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/x35"
+            android:src="@mipmap/home_three_search"/>
+
+    </RelativeLayout>
+
 
     <RelativeLayout
         android:id="@+id/rl_transparent"
         android:layout_width="match_parent"
         android:layout_height="@dimen/x64"
-        android:layout_below="@+id/iv_search"
+        android:layout_below="@+id/rl_title"
         android:layout_margin="@dimen/x30"
         android:background="@drawable/shape_background_half_transparent">
 
@@ -52,25 +61,74 @@
             android:marqueeRepeatLimit="marquee_forever"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_16"/>
 
     </RelativeLayout>
 
-
-    <com.baiiu.filter.DropDownMenu
-        android:id="@+id/dropDownMenu"
+    <RelativeLayout
+        android:id="@+id/rl_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/rl_transparent">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:visibility="gone">
 
-        <TextView
-            android:id="@id/mFilterContentView"
+        <RelativeLayout
+            android:id="@+id/rl_search_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:textSize="22sp"/>
-    </com.baiiu.filter.DropDownMenu>
+            android:layout_height="wrap_content"
+            android:background="@color/red_f790ae">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@color/red_f790ae"
+                android:padding="@dimen/x30"
+                android:src="@mipmap/home_v3_back"/>
+
+            <TextView
+                android:id="@+id/tv_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@color/red_f790ae"
+                android:padding="@dimen/x30"
+                android:text="@string/search"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_18"/>
+
+            <EditText
+                android:id="@+id/ed_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/x20"
+                android:layout_toLeftOf="@+id/tv_search"
+                android:layout_toRightOf="@+id/iv_back"
+                android:background="@drawable/shape_background_half_round_transparent"
+                android:gravity="center_vertical"
+                android:hint="@string/search"
+                android:paddingBottom="@dimen/x10"
+                android:paddingLeft="@dimen/x30"
+                android:paddingTop="@dimen/x10"
+                android:textColorHint="@color/gray_d6dde4"
+                android:textSize="@dimen/text_size_13"
+                />
+        </RelativeLayout>
+
+
+        <com.baiiu.filter.DropDownMenu
+            android:id="@+id/dropDownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_search_view"/>
+
+    </RelativeLayout>
+
 
 </RelativeLayout>

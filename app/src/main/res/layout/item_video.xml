@@ -9,11 +9,23 @@
         android:layout_height="wrap_content"
         android:text="@string/loading" />
 
+    <TextView
+        android:id="@+id/tv_show_redpacket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fl_content"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_marginTop="@dimen/x10"
+        android:textColor="@color/background_red_color"
+        android:textSize="12sp" />
+
     <FrameLayout
         android:id="@+id/fl_content"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y400"
-        android:background="@color/text_black_color">
+        android:background="@color/text_black_color"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <VideoView
             android:id="@+id/play"
@@ -35,15 +47,5 @@
             android:layout_gravity="center"
             android:src="@mipmap/bofang" />
     </FrameLayout>
-
-    <TextView
-        android:id="@+id/tv_show_redpacket"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/fl_content"
-        android:layout_marginLeft="@dimen/x10"
-        android:layout_marginTop="@dimen/x10"
-        android:textColor="@color/background_red_color"
-        android:textSize="12sp" />
 
 </RelativeLayout>

@@ -301,8 +301,10 @@
     <string name="regiter_text">注册</string>
     <string name="feelingsquare_title">传情广场</string>
     <string name="open_vip">开通VIP</string>
-    <string name="dynamic_manager">动态管理</string>
+    <string name="dynamic_manager">资料管理</string>
     <string name="engagement_manager">约会管理</string>
     <string name="finance_manager">财务管理</string>
     <string name="home_square">传情广场</string>
+    <string name="already_binding">已绑定 : </string>
+    <string name="online_user">实时在线会员</string>
 </resources>

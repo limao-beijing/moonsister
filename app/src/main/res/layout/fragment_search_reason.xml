@@ -41,18 +41,19 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <TextView
-                android:id="@+id/tv_type_user"
-                style="@style/style_search_result_navigtion"
-                android:layout_centerInParent="true"
-                android:text="@string/tv_search_type_user" />
-
             <View
                 android:id="@+id/view_user_line"
                 style="@style/style_search_result_navigtion_line"
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="@dimen/x15"
                 android:layout_marginRight="@dimen/x15" />
+
+            <TextView
+                android:id="@+id/tv_type_user"
+                style="@style/style_search_result_navigtion"
+                android:text="@string/tv_search_type_user"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"/>
         </RelativeLayout>
 
         <RelativeLayout

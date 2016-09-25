@@ -21,7 +21,7 @@ import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
-import com.moonsister.tcjy.find.widget.FindFragment;
+import com.moonsister.tcjy.find.widget.OnlineFragment;
 import com.moonsister.tcjy.home.widget.HomeThreeFragment;
 import com.moonsister.tcjy.im.widget.IMHomeFragment;
 import com.moonsister.tcjy.main.presenter.MainPresenter;
@@ -211,7 +211,8 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     public void switchFind() {
         if (findFragment == null)
-            findFragment = new FindFragment();
+//            findFragment = new FindFragment();
+            findFragment = new OnlineFragment();
         enterPage(findFragment);
     }
 

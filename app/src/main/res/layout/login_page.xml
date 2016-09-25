@@ -4,7 +4,7 @@
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.moonsister.tcjy.my.view.RoundImageView
+    <com.moonsister.tcjy.widget.RoundImageView
         android:background="@drawable/custom_imageview"
         android:id="@+id/iv_user_icon"
         android:layout_centerHorizontal="true"

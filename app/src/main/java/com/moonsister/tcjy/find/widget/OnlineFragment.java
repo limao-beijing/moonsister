@@ -1,11 +1,10 @@
-package com.moonsister.tcjy.home.widget;
+package com.moonsister.tcjy.find.widget;
 
 import android.view.View;
 
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.adapter.HomeThreeFragmentAdapter;
+import com.moonsister.tcjy.adapter.OnlineFragmentAdapter;
 import com.moonsister.tcjy.base.BaseListFragment;
-import com.moonsister.tcjy.bean.HomeParams;
 import com.moonsister.tcjy.bean.HomeThreeFragmentBean;
 import com.moonsister.tcjy.home.presenetr.HomeThreeFragmentPresenter;
 import com.moonsister.tcjy.home.presenetr.HomeThreeFragmentPresenterImpl;
@@ -17,30 +16,33 @@ import java.util.List;
 /**
  * Created by jb on 2016/9/22.
  */
-public class HomeThreeFragment extends BaseListFragment<HomeThreeFragmentAdapter, HomeThreeFragmentBean.DataBean> implements HomeThreeFragmentView {
-    private HomeThreeHeaderViewHolder threeHeaderViewHolder;
+public class OnlineFragment extends BaseListFragment<OnlineFragmentAdapter, HomeThreeFragmentBean.DataBean> implements HomeThreeFragmentView {
+    HomeThreeHeaderViewHolder threeHeaderViewHolder;
+    //    private OnlineFragmentPresenter presenter;
     private HomeThreeFragmentPresenter presenter;
-    private String type;
-    private HomeParams mParams;
+    private String type = "2";
 
     @Override
-    public HomeThreeFragmentAdapter setAdapter() {
-        return new HomeThreeFragmentAdapter(null);
+    public OnlineFragmentAdapter setAdapter() {
+        return new OnlineFragmentAdapter(null);
     }
 
     @Override
     protected View addListViewHead() {
         threeHeaderViewHolder = new HomeThreeHeaderViewHolder();
+        threeHeaderViewHolder.setTvTitle(getString(R.string.online_user));
+        threeHeaderViewHolder.showBanner(false);
+        threeHeaderViewHolder.setActivity(getActivity());
+        threeHeaderViewHolder.refreshView("");
         return threeHeaderViewHolder.getContentView();
     }
 
     @Override
     protected void initChildData() {
-
-        threeHeaderViewHolder.setActivity(getActivity());
-        threeHeaderViewHolder.refreshView("");
         presenter = new HomeThreeFragmentPresenterImpl();
         presenter.attachView(this);
+//        presenter = new OnlineFragmentPresenterImpl();
+//        presenter.attachView(this);
     }
 
     @Override
@@ -50,12 +52,13 @@ public class HomeThreeFragment extends BaseListFragment<HomeThreeFragmentAdapter
 
     @Override
     protected void onRefresh() {
-        presenter.laodRefresh(page,type, mParams);
+//        presenter.loadData(page);
+        presenter.laodRefresh(page, type, null);
     }
 
     @Override
     protected void onLoadMore() {
-        presenter.loadMore(page,type, mParams);
+        presenter.laodRefresh(page, type, null);
     }
 
     @Override

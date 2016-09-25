@@ -12,11 +12,15 @@ import com.moonsister.tcjy.viewholder.MyThreeFragmentViewHoder;
 
 import java.util.List;
 
+
+
 /**
  * Created by jb on 2016/9/22.
  */
-public class MyThreeFragmentAdapter extends BaseRecyclerViewAdapter<MyThreeFragmentBean> {
-    public MyThreeFragmentAdapter(List<MyThreeFragmentBean> list) {
+public class MyThreeFragmentAdapter extends BaseRecyclerViewAdapter<MyThreeFragmentBean.DataBean> {
+
+
+    public MyThreeFragmentAdapter(List<MyThreeFragmentBean.DataBean> list) {
         super(list);
     }
 

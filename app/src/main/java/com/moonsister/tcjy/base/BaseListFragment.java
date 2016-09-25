@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.moonsister.tcjy.R;
+import com.moonsister.tcjy.bean.BaseDataBean;
 import com.moonsister.tcjy.widget.XListView;
 
 import java.util.List;
@@ -15,15 +17,17 @@ import java.util.List;
 /**
  * Created by jb on 2016/9/22.
  */
-public abstract class BaseListFragment<T extends BaseRecyclerViewAdapter> extends BaseFragment {
+public abstract class BaseListFragment<T extends BaseRecyclerViewAdapter, M extends BaseDataBean> extends BaseFragment {
     protected XListView mXListView;
     protected T t;
     private boolean isRefresh;
+    protected int page = 1;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         mXListView = new XListView(container.getContext());
+        mXListView.setDecorationSize(getDecorationSize());
         mXListView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
         if (isVerticalLinearLayoutManager())
@@ -43,6 +47,7 @@ public abstract class BaseListFragment<T extends BaseRecyclerViewAdapter> extend
             rootView = linearLayout;
 
         }
+
         return rootView;
     }
 
@@ -61,6 +66,7 @@ public abstract class BaseListFragment<T extends BaseRecyclerViewAdapter> extend
             mXListView.setLoadingListener(new XRecyclerView.LoadingListener() {
                 @Override
                 public void onRefresh() {
+                    page = 1;
                     isRefresh = true;
                     BaseListFragment.this.onRefresh();
                 }
@@ -85,8 +91,11 @@ public abstract class BaseListFragment<T extends BaseRecyclerViewAdapter> extend
             mXListView.addHeaderView(headerView);
         }
         mXListView.setAdapter(t);
+        initChildData();
         mXListView.setRefreshing(true);
     }
+
+    protected abstract void initChildData();
 
     /**
      * 添加头布局
@@ -110,10 +119,14 @@ public abstract class BaseListFragment<T extends BaseRecyclerViewAdapter> extend
     protected abstract void onLoadMore();
 
 
-    protected void addData(List datas) {
+    protected void addData(List<M> datas) {
+        if (datas == null || datas.size() == 0)
+            return;
+
         if (isRefresh) {
             t.clean();
         }
+        page++;
         t.addListData(datas);
         t.onRefresh();
         mXListView.loadMoreComplete();
@@ -136,5 +149,14 @@ public abstract class BaseListFragment<T extends BaseRecyclerViewAdapter> extend
      */
     public boolean isRefreshStatus() {
         return true;
+    }
+
+    /**
+     * 分割线
+     *
+     * @return
+     */
+    public int getDecorationSize() {
+        return (int) getResources().getDimension(R.dimen.y1);
     }
 }

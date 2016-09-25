@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/iv_time"
+    <ImageView
+        android:id="@+id/iv_show_bg"
+        android:layout_width="@dimen/x236"
+        android:layout_height="@dimen/x236"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher"/>
+
+    <ImageView
+        android:id="@+id/iv_show"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/loading"/>
-
-
-    <com.moonsister.tcjy.widget.NoScrollGridView
-        android:id="@+id/no_gv"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/x86"
-        android:layout_below="@+id/iv_time"
-        android:horizontalSpacing="@dimen/x10"
-        android:verticalSpacing="@dimen/x10"></com.moonsister.tcjy.widget.NoScrollGridView>
-
+        android:layout_centerInParent="true"
+        android:src="@mipmap/my_three_video"/>
 </RelativeLayout>

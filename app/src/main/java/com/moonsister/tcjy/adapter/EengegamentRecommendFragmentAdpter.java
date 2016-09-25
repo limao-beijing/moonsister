@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewAdapter;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
-import com.moonsister.tcjy.bean.EengegamentRecommendBean;
+import com.moonsister.tcjy.bean.BaseDataBean;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.EengegamentRecommendFragmentViewHolder;
 
@@ -15,11 +15,11 @@ import java.util.List;
 /**
  * Created by jb on 2016/9/22.
  */
-public class EengegamentRecommendFragmentAdpter extends BaseRecyclerViewAdapter<EengegamentRecommendBean> {
+public class EengegamentRecommendFragmentAdpter extends BaseRecyclerViewAdapter<BaseDataBean> {
 
     private EengegamentRecommendFragmentViewHolder holder;
 
-    public EengegamentRecommendFragmentAdpter(List<EengegamentRecommendBean> list) {
+    public EengegamentRecommendFragmentAdpter(List<BaseDataBean> list) {
         super(list);
     }
 

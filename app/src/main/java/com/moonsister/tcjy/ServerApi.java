@@ -20,11 +20,13 @@ import com.moonsister.tcjy.bean.FeelingSquareSearchBean;
 import com.moonsister.tcjy.bean.FrientBaen;
 import com.moonsister.tcjy.bean.GetMoneyBean;
 import com.moonsister.tcjy.bean.GoodSelectBaen;
+import com.moonsister.tcjy.bean.HomeThreeFragmentBean;
 import com.moonsister.tcjy.bean.HomeTopItemBean;
 import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.KeyMateBean;
 import com.moonsister.tcjy.bean.LableBean;
 import com.moonsister.tcjy.bean.LoginBean;
+import com.moonsister.tcjy.bean.MyThreeFragmentBean;
 import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.PersonalMessageFenBean;
@@ -1280,6 +1282,39 @@ public class ServerApi {
                 @Query("weight") String weight,
                 @Query("distance_love") String distance_love,
                 @Query("qq") String qq);
+
+        /**
+         * 广场：数据列表综合
+         *
+         * @param type
+         * @param serialize
+         * @param page
+         * @param authcode
+         * @param id
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("index/v3")
+        Observable<HomeThreeFragmentBean> getHomeThree(@Field("type") String type,
+                                                       @Field("params") String serialize,
+                                                       @Field("page") int page,
+                                                       @Field("authcode") String authcode,
+                                                       @Field("channel") String id);
+
+        /**
+         * 用户资源信息
+         *
+         * @param page
+         * @param type
+         * @param authcode
+         * @param id
+         * @return
+         */
+        @GET("source/get_source_list")
+        Observable<MyThreeFragmentBean> getMyThreeFragment(@Query("page") int page,
+                                                           @Query("source_type") String type,
+                                                           @Query("authcode") String authcode,
+                                                           @Query("channel") String id);
     }
 }
 

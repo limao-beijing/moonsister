@@ -6,8 +6,7 @@ import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
-import com.moonsister.tcjy.bean.EengegamentRecommendBean;
-import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.bean.BaseDataBean;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.widget.CircularImageView;
 
@@ -16,7 +15,7 @@ import butterknife.Bind;
 /**
  * Created by jb on 2016/9/22.
  */
-public class EengegamentRecommendFragmentViewHolder extends BaseRecyclerViewHolder<EengegamentRecommendBean> {
+public class EengegamentRecommendFragmentViewHolder extends BaseRecyclerViewHolder<BaseDataBean> {
     @Bind(R.id.civ_user_avater)
     CircularImageView mCivUserAvater;
     @Bind(R.id.iv_add_v)
@@ -39,7 +38,7 @@ public class EengegamentRecommendFragmentViewHolder extends BaseRecyclerViewHold
     }
 
     @Override
-    public void onBindData(EengegamentRecommendBean bean) {
+    public void onBindData(BaseDataBean bean) {
         mIvEngegament.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +48,7 @@ public class EengegamentRecommendFragmentViewHolder extends BaseRecyclerViewHold
     }
 
     @Override
-    protected void onItemclick(View view, EengegamentRecommendBean bean, int position) {
-        ActivityUtils.startPersonalActivity(UserInfoManager.getInstance().getUid());
+    protected void onItemclick(View view, BaseDataBean bean, int position) {
+
     }
 }

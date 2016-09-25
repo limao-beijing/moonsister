@@ -2,16 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-
-    <com.moonsister.tcjy.widget.CircularImageView
-        android:id="@+id/civ_user_avater"
-        android:layout_width="@dimen/x176"
-        android:layout_height="@dimen/x176"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/x30"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher"/>
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/x20">
 
     <LinearLayout
         android:id="@+id/ll_user_info"
@@ -135,9 +127,20 @@
         android:background="@color/gray_color"/>
 
     <include
+
         layout="@layout/include_select"
         android:layout_width="match_parent"
         android:layout_height="@dimen/x92"
         android:layout_below="@+id/view_line"/>
+
+    <com.moonsister.tcjy.widget.CircularImageView
+        android:id="@+id/civ_user_avater"
+        android:layout_width="@dimen/x176"
+        android:layout_height="@dimen/x176"
+        android:layout_marginTop="12dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

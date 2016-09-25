@@ -73,7 +73,8 @@ public class DropDownMenu extends RelativeLayout implements View.OnClickListener
         /*
          * 2.添加contentView,内容界面
          */
-        addView(contentView, params);
+        if (contentView != null)
+            addView(contentView, params);
 
         /*
          * 3.添加展开页面,装载筛选器list
