@@ -23,14 +23,6 @@
         android:layout_toRightOf="@+id/civ_user_avater"
         android:src="@mipmap/add_vip_icon"/>
 
-    <ImageView
-        android:id="@+id/iv_engegament"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:src="@mipmap/engegament_icon"/>
-
     <TextView
         android:id="@+id/tv_user_name"
         android:layout_width="wrap_content"
@@ -101,6 +93,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tv_signature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/civ_user_avater"
@@ -112,5 +105,13 @@
         android:text="@string/loading"
         android:textColor="@color/text_gray_737c7d"
         android:textSize="@dimen/text_size_13"/>
+
+    <ImageView
+        android:id="@+id/iv_engegament"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/engegament_icon"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>

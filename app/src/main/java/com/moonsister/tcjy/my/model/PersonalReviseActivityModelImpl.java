@@ -16,7 +16,7 @@ public class PersonalReviseActivityModelImpl implements PersonalReviseActivityMo
 
     @Override
     public void loadpersonalData(String uid, onLoadDateSingleListener<BaseBean> listener) {
-        Observable<PersonalReviseMessageBean> observable = ServerApi.getAppAPI().setPersonalReviseMessage(uid, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID, AppConstant.API_VERSION);
+        Observable<PersonalReviseMessageBean> observable = ServerApi.getAppAPI().setPersonalReviseMessage(uid, "1", UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID, AppConstant.API_VERSION);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<PersonalReviseMessageBean>() {
             @Override
             public void onSuccess(PersonalReviseMessageBean bean) {

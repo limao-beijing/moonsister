@@ -105,6 +105,42 @@ public class UserDetailBean extends BaseBean {
             private String latest_vip;
             private String isverify;
             private String vip_level;
+            private String image_count;
+            private String video_count;
+            private String voice_count;
+            private String height;
+            private String uid;
+            public String getHeight() {
+                return height;
+            }
+
+            public void setHeight(String height) {
+                this.height = height;
+            }
+
+            public String getImage_count() {
+                return image_count;
+            }
+
+            public void setImage_count(String image_count) {
+                this.image_count = image_count;
+            }
+
+            public String getVideo_count() {
+                return video_count;
+            }
+
+            public void setVideo_count(String video_count) {
+                this.video_count = video_count;
+            }
+
+            public String getVoice_count() {
+                return voice_count;
+            }
+
+            public void setVoice_count(String voice_count) {
+                this.voice_count = voice_count;
+            }
 
             public String getNickname() {
                 return nickname;
@@ -224,6 +260,14 @@ public class UserDetailBean extends BaseBean {
 
             public void setVip_level(String vip_level) {
                 this.vip_level = vip_level;
+            }
+
+            public void setUid(String uid) {
+                this.uid = uid;
+            }
+
+            public String getUid() {
+                return uid;
             }
         }
 

@@ -7,7 +7,7 @@ import com.moonsister.tcjy.my.view.MyThreeFragmentView;
  * Created by jb on 2016/9/25.
  */
 public interface MyThreeFragmentPresenter  extends BaseIPresenter<MyThreeFragmentView>{
-    void loadData(int page, String type);
+    void loadData(String uid, int page, String type);
 
-    void loadHeaderData();
+    void loadHeaderData(String uid);
 }

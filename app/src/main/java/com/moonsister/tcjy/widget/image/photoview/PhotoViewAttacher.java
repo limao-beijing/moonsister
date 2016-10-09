@@ -125,7 +125,7 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
     private GestureDetector mGestureDetector;
     private com.moonsister.tcjy.widget.image.photoview.GestureDetector mScaleDragDetector;
 
-    // These are set so we don't keep allocating them on the heap
+    // These are set so we don'mAdapter keep allocating them on the heap
     private final Matrix mBaseMatrix = new Matrix();
     private final Matrix mDrawMatrix = new Matrix();
     private final Matrix mSuppMatrix = new Matrix();
@@ -220,7 +220,7 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
             // Remove the ImageView's reference to this
             imageView.setOnTouchListener(null);
 
-            // make sure a pending fling runnable won't be run
+            // make sure a pending fling runnable won'mAdapter be run
             cancelFling();
         }
 
@@ -290,7 +290,7 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
             imageView = mImageView.get();
         }
 
-        // If we don't have an ImageView, call cleanup()
+        // If we don'mAdapter have an ImageView, call cleanup()
         if (null == imageView) {
             cleanup();
             Log.i(LOG_TAG,
@@ -989,7 +989,7 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
             mSuppMatrix.postScale(deltaScale, deltaScale, mFocalX, mFocalY);
             checkAndDisplayMatrix();
 
-            // We haven't hit our target scale yet, so post ourselves again
+            // We haven'mAdapter hit our target scale yet, so post ourselves again
             if (t < 1f) {
                 Compat.postOnAnimation(imageView, this);
             }

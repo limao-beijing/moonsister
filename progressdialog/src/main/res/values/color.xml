@@ -2,4 +2,13 @@
 <resources>
     <color name="red_eb2616">#eb2616</color>
     <color name="yellow_ff8201">#ff8201</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="stroke">#cac7c7</color>
+    <color name="blue_text">#0c91f7</color>
+    <color name="gray_text">#909497</color>
+    <color name="lable_blue">#3DB0FD</color>
 </resources>

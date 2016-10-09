@@ -19,7 +19,7 @@ import java.util.List;
  */
 public abstract class BaseListFragment<T extends BaseRecyclerViewAdapter, M extends BaseDataBean> extends BaseFragment {
     protected XListView mXListView;
-    protected T t;
+    protected T mAdapter;
     private boolean isRefresh;
     protected int page = 1;
 
@@ -82,15 +82,15 @@ public abstract class BaseListFragment<T extends BaseRecyclerViewAdapter, M exte
             mXListView.setLoadingMoreEnabled(false);
         }
 
-        t = setAdapter();
-        if (t == null) {
+        mAdapter = setAdapter();
+        if (mAdapter == null) {
             throw new RuntimeException("Adapter not is null ");
         }
         View headerView = addHeaderView();
         if (headerView != null) {
             mXListView.addHeaderView(headerView);
         }
-        mXListView.setAdapter(t);
+        mXListView.setAdapter(mAdapter);
         initChildData();
         mXListView.setRefreshing(true);
     }
@@ -120,17 +120,29 @@ public abstract class BaseListFragment<T extends BaseRecyclerViewAdapter, M exte
 
 
     protected void addData(List<M> datas) {
-        if (datas == null || datas.size() == 0)
-            return;
-
         if (isRefresh) {
-            t.clean();
+            mAdapter.clean();
+        }
+        if (datas == null || datas.size() == 0) {
+            mXListView.loadMoreComplete();
+            mXListView.refreshComplete();
+            showToast(getResources().getString(R.string.not_more_data));
+            return;
         }
         page++;
-        t.addListData(datas);
-        t.onRefresh();
-        mXListView.loadMoreComplete();
-        mXListView.refreshComplete();
+        mAdapter.addListData(datas);
+        mAdapter.onRefresh();
+        colorLoad();
+    }
+
+    /**
+     * 关闭加载
+     */
+    protected void colorLoad() {
+        if (mXListView != null) {
+            mXListView.loadMoreComplete();
+            mXListView.refreshComplete();
+        }
     }
 
     /**

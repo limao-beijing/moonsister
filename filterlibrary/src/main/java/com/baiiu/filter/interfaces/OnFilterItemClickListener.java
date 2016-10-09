@@ -6,5 +6,5 @@ package com.baiiu.filter.interfaces;
  * description:
  */
 public interface OnFilterItemClickListener<DATA> {
-    void onItemClick(DATA item);
+    void onItemClick(DATA item, int position);
 }

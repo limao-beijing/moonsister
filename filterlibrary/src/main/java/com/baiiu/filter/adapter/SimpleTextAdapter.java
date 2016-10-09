@@ -26,6 +26,7 @@ public abstract class SimpleTextAdapter<T> extends BaseBaseAdapter<T> {
 
     public static class FilterItemHolder {
         FilterCheckedTextView checkedTextView;
+
     }
 
     @Override

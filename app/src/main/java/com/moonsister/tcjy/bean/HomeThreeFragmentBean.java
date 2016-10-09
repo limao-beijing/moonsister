@@ -49,6 +49,16 @@ public class HomeThreeFragmentBean extends BaseBean {
         private String vip_level;
         private String lat;
         private String lng;
+        private String distance;
+
+        public String getDistance() {
+            return distance;
+        }
+
+        public void setDistance(String distance) {
+            this.distance = distance;
+        }
+
         /**
          * l : http://mimei.oss-cn-beijing.aliyuncs.com/mimages/005/145961/2010/16-71-2小妖(77).jpg
          * s : http://mimei.img-cn-beijing.aliyuncs.com/mimages/005/145961/2010/16-71-2小妖(77).jpg@!336_246

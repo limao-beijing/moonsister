@@ -52,7 +52,7 @@ public class NoScrollGridView extends GridView {
         }
         if (!isEnabled()) {
             // A disabled view that is clickable still consumes the touch
-            // events, it just doesn't respond to them.
+            // events, it just doesn'mAdapter respond to them.
             return isClickable() || isLongClickable();
         }
         final int motionPosition = pointToPosition((int) event.getX(), (int) event.getY());

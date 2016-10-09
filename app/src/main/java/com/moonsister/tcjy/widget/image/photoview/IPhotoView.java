@@ -290,7 +290,7 @@ public interface IPhotoView {
     void setZoomable(boolean zoomable);
 
     /**
-     * Enables rotation via PhotoView internal functions. Name is chosen so it won't collide with
+     * Enables rotation via PhotoView internal functions. Name is chosen so it won'mAdapter collide with
      * View.setRotation(float) in API since 11
      *
      * @param rotationDegree - Degree to rotate PhotoView to, should be in range 0 to 360

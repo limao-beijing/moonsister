@@ -58,11 +58,11 @@ public class HomeThreeViewHolder extends BaseRecyclerViewHolder<HomeThreeFragmen
         isViewShow(mIvQq, "1", bean.getQq());
         isViewShow(mIvPhone, "1", bean.getSmobile());
         isViewShow(mIvWinxin, "1", bean.getWeixin());
-
-        if (!mIvQq.isShown() && !mIvPhone.isShown() && !mIvWinxin.isShown()) {
-            ll_user_bind.setVisibility(View.GONE);
-        } else
-            ll_user_bind.setVisibility(View.VISIBLE);
+        mTvAddress.setText(bean.getDistance());
+//        if (!mIvQq.isShown() && !mIvPhone.isShown() && !mIvWinxin.isShown()) {
+//            ll_user_bind.setVisibility(View.GONE);
+//        } else
+//            ll_user_bind.setVisibility(View.VISIBLE);
         isViewShow(mIvAddVip, "1", bean.getVip_level());
 
     }

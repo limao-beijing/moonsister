@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.home.view;
 
 import com.moonsister.tcjy.base.BaseIView;
+import com.moonsister.tcjy.bean.BannerBean;
 import com.moonsister.tcjy.bean.HomeThreeFragmentBean;
 
 import java.util.List;
@@ -11,4 +12,5 @@ import java.util.List;
 public interface HomeThreeFragmentView extends BaseIView {
     void setData(List<HomeThreeFragmentBean.DataBean> data);
 
+    void setBanner(BannerBean bean);
 }

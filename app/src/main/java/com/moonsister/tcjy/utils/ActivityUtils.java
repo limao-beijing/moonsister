@@ -12,14 +12,18 @@ import com.moonsister.tcjy.center.widget.DefaultDynamicSendActivity;
 import com.moonsister.tcjy.center.widget.DynamicPublishActivity;
 import com.moonsister.tcjy.center.widget.DynamicSendActivity;
 import com.moonsister.tcjy.center.widget.RedpacketDynaimcActivity;
-import com.moonsister.tcjy.engagement.EengegamentPublishActivity;
-import com.moonsister.tcjy.engagement.EngagemengOrderActivity;
-import com.moonsister.tcjy.engagement.EngagementTypeActivity;
+import com.moonsister.tcjy.engagement.widget.EengegamentPublishActivity;
+import com.moonsister.tcjy.engagement.widget.EengegamentRecommendActivity;
+import com.moonsister.tcjy.engagement.widget.EngagemengOrderActivity;
+import com.moonsister.tcjy.engagement.widget.EngagementManagerActivity;
+import com.moonsister.tcjy.engagement.widget.EngagementTypeActivity;
+import com.moonsister.tcjy.engagement.widget.EngegamentAppealActivity;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.find.widget.NearbyActivity;
 import com.moonsister.tcjy.find.widget.RankActivity;
 import com.moonsister.tcjy.find.widget.VideoDynamicActivity;
+import com.moonsister.tcjy.home.widget.HomeSearchActivity;
 import com.moonsister.tcjy.home.widget.SearchActivity;
 import com.moonsister.tcjy.home.widget.SearchFragmentActivity;
 import com.moonsister.tcjy.home.widget.SearchReasonActivity;
@@ -30,11 +34,13 @@ import com.moonsister.tcjy.login.widget.RegActivity;
 import com.moonsister.tcjy.main.widget.BuyVipActivity;
 import com.moonsister.tcjy.main.widget.DynamicAtionActivity;
 import com.moonsister.tcjy.main.widget.DynamicDatailsActivity;
+import com.moonsister.tcjy.main.widget.H5Activity;
 import com.moonsister.tcjy.main.widget.HomePageActivity;
 import com.moonsister.tcjy.main.widget.ManorGrilActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentOrderActivity;
 import com.moonsister.tcjy.main.widget.PersonInfoChangeActivity;
+import com.moonsister.tcjy.main.widget.PersonThreeActivity;
 import com.moonsister.tcjy.main.widget.PictureSelectorActivity;
 import com.moonsister.tcjy.main.widget.RecommendMemberActivity;
 import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
@@ -48,6 +54,8 @@ import com.moonsister.tcjy.my.widget.AddCardActivity;
 import com.moonsister.tcjy.my.widget.AppointmentActivity;
 import com.moonsister.tcjy.my.widget.BirthdayActivity;
 import com.moonsister.tcjy.my.widget.ChangepwdActivity;
+import com.moonsister.tcjy.my.widget.DynamicResAddActivity;
+import com.moonsister.tcjy.my.widget.EditDynamicActivity;
 import com.moonsister.tcjy.my.widget.FollowActivity;
 import com.moonsister.tcjy.my.widget.GetMoneyActivity;
 import com.moonsister.tcjy.my.widget.HreatFragment;
@@ -725,27 +733,118 @@ public class ActivityUtils {
     }
 
     /**
-     * 约会主页
+     * 个人约会
      */
-    public static void startEngagementTypeActivity() {
-        startActivity(EngagementTypeActivity.class);
+    public static void startPersonEngagementTypeActivity(String uid, String nickname, String face) {
+        Intent intent = new Intent(getContext(), EngagementTypeActivity.class);
+        intent.putExtra("id", uid);
+        intent.putExtra("name", nickname);
+        intent.putExtra("avater", face);
+        startActivity(intent);
     }
 
     /**
      * 发布约会
      */
     public static void startEengegamentPublishActivity() {
-        startActivity(EengegamentPublishActivity.class);
+        Intent intent = new Intent(getContext(), EengegamentPublishActivity.class);
+        startActivity(intent);
     }
 
     /**
      * 约会下单
      */
-    public static void startEngagemengOrderActivity() {
-        startActivity(EngagemengOrderActivity.class);
+    public static void startEngagemengOrderActivity(EnumConstant.EngegamentType type, String uid, String nickname, String face) {
+        Intent intent = new Intent(getContext(), EngagemengOrderActivity.class);
+        intent.putExtra("id", uid);
+        intent.putExtra("nike", nickname);
+        intent.putExtra("face", face);
+        intent.putExtra("type", type);
+        startActivity(intent);
     }
-//    //我的页面不是会员    定义跳转的activity
-//    public static void startNoActivity() {
-//        startActivity(RZFirstActivity.class);
-//    }
+
+    /**
+     * 推荐约会
+     *
+     * @param type
+     */
+    public static void startEengegamentRecommendActivity(EnumConstant.EngegamentType type) {
+        Intent intent = new Intent(getContext(), EengegamentRecommendActivity.class);
+        intent.putExtra("type", type);
+        startActivity(intent);
+    }
+
+    /**
+     * 约会管理
+     */
+    public static void startEngagementManagerActivity() {
+        startActivity(EngagementManagerActivity.class);
+    }
+
+    /**
+     * 约会申诉
+     *
+     * @param engagementID
+     */
+    public static void startEengegamentAppealActivity(String engagementID) {
+        if (StringUtis.isEmpty(engagementID))
+            return;
+        Intent intent = new Intent(getContext(), EngegamentAppealActivity.class);
+        intent.putExtra("id", engagementID);
+        startActivity(intent);
+
+    }
+
+    /**
+     * 三版个人展示
+     *
+     * @param id
+     */
+    public static void startPersonThreeActivity(String id, String nikename, String avater) {
+        Intent intent = new Intent(getContext(), PersonThreeActivity.class);
+        intent.putExtra("name", nikename);
+        intent.putExtra("avater", avater);
+        intent.putExtra("id", id);
+        startActivity(intent);
+    }
+
+    /**
+     * 编辑页面
+     *
+     * @param uid
+     * @param nickname
+     * @param face
+     */
+    public static void startEditDynamicActivity(String type, String uid, String nickname, String face) {
+        Intent intent = new Intent(getContext(), EditDynamicActivity.class);
+        intent.putExtra("name", nickname);
+        intent.putExtra("avater", face);
+        intent.putExtra("id", uid);
+        intent.putExtra("type", type);
+        startActivity(intent);
+    }
+
+    /**
+     * 添加动态资源
+     */
+    public static void startDynamicResAddActivity() {
+        startActivity(DynamicResAddActivity.class);
+    }
+
+    public static void startH5Activity(String url) {
+        Intent intent = new Intent(getContext(), H5Activity.class);
+        intent.putExtra("url", url);
+        startActivity(intent);
+    }
+
+    /**
+     * 首页搜索
+     *
+     * @param pageType
+     */
+    public static void startHomeSearchActivity(String pageType) {
+        Intent intent = new Intent(getContext(), HomeSearchActivity.class);
+        intent.putExtra("type", pageType);
+        startActivity(intent);
+    }
 }

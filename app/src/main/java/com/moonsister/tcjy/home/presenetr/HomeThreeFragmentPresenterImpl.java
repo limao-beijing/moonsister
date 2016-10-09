@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.home.presenetr;
 
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.BaseBean;
+import com.moonsister.tcjy.bean.BannerBean;
 import com.moonsister.tcjy.bean.HomeParams;
 import com.moonsister.tcjy.bean.HomeThreeFragmentBean;
 import com.moonsister.tcjy.home.model.HomeThreeFragmentModel;
@@ -11,7 +11,7 @@ import com.moonsister.tcjy.home.view.HomeThreeFragmentView;
 /**
  * Created by jb on 2016/9/25.
  */
-public class HomeThreeFragmentPresenterImpl implements HomeThreeFragmentPresenter, BaseIModel.onLoadDateSingleListener<BaseBean> {
+public class HomeThreeFragmentPresenterImpl implements HomeThreeFragmentPresenter, BaseIModel.onLoadDateSingleListener {
     private HomeThreeFragmentView view;
     private HomeThreeFragmentModel model;
 
@@ -27,26 +27,34 @@ public class HomeThreeFragmentPresenterImpl implements HomeThreeFragmentPresente
     }
 
     @Override
-    public void laodRefresh(int page, String type, HomeParams params) {
+    public void laodRefresh(int page, String type, int flag, HomeParams params) {
         view.showLoading();
-        model.loadDate(type, params, page, this);
+        model.loadDate(type, params, page, flag, this);
     }
 
     @Override
-    public void loadMore(int page, String type, HomeParams params) {
+    public void loadMore(int page, String type, int flag, HomeParams params) {
         view.showLoading();
-        model.loadDate(type, params, page, this);
+        model.loadDate(type, params, page, flag, this);
     }
 
     @Override
-    public void onSuccess(BaseBean bean, BaseIModel.DataType dataType) {
+    public void loadBannerData() {
+        model.loadBannerData(this);
+    }
+
+    @Override
+    public void onSuccess(Object obj, BaseIModel.DataType dataType) {
         switch (dataType) {
             case DATA_ZERO:
-                if (bean instanceof HomeThreeFragmentBean) {
-                    HomeThreeFragmentBean threeFragmentBean = (HomeThreeFragmentBean) bean;
+                if (obj instanceof HomeThreeFragmentBean) {
+                    HomeThreeFragmentBean threeFragmentBean = (HomeThreeFragmentBean) obj;
                     view.setData(threeFragmentBean.getData());
                 }
 
+                break;
+            case DATA_ONE:
+                view.setBanner((BannerBean) obj);
                 break;
         }
         view.hideLoading();
@@ -56,6 +64,7 @@ public class HomeThreeFragmentPresenterImpl implements HomeThreeFragmentPresente
 
     @Override
     public void onFailure(String msg) {
-
+        view.hideLoading();
+        view.transfePageMsg(msg);
     }
 }

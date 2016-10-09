@@ -272,7 +272,7 @@ public class UpdateManager implements UpdateManagerView, View.OnClickListener {
 //                    }
 //
 //                    @Override
-//                    public void onSucceed(ResponseInfo t) {
+//                    public void onSucceed(ResponseInfo mAdapter) {
 //                        if (nm != null) {
 //                            nm.cancel(notification_id);
 //                        }

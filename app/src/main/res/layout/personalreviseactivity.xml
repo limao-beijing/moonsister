@@ -1,667 +1,671 @@
-<LinearLayout android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <LinearLayout
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x96"
             android:background="#f790ae"
             android:gravity="center_vertical"
-            android:layout_height="@dimen/x96"
-            android:layout_width="match_parent"
             android:orientation="horizontal">
 
             <ImageView
-                android:background="@mipmap/left_jiantou"
                 android:id="@+id/image_back"
-                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/x45"
+                android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/x40"
-                android:layout_width="wrap_content" />
+                android:background="@mipmap/left_jiantou"/>
 
             <TextView
-                android:gravity="center_horizontal"
-                android:layout_gravity="center_vertical"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
                 android:text="个人资料"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="20sp"/>
         </RelativeLayout>
 
         <ScrollView
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <RelativeLayout
-                    android:background="@color/background_white_color"
                     android:id="@+id/layout_avater"
-                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/background_white_color"
                     android:orientation="horizontal">
 
                     <TextView
-                        style="@style/info_change_text"
                         android:id="@+id/avater"
+                        style="@style/info_change_text"
                         android:layout_centerVertical="true"
                         android:text="@string/avater_change"
                         android:textColor="#737c7d"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <com.moonsister.tcjy.widget.RoundedImageView
                         android:id="@+id/riv_user_image"
+                        android:layout_width="@dimen/x84"
                         android:layout_height="@dimen/x84"
                         android:layout_margin="@dimen/x27"
                         android:layout_toRightOf="@+id/avater"
-                        android:layout_width="@dimen/x84"
-                        android:src="@mipmap/load_small" />
+                        android:src="@mipmap/load_small"/>
 
                     <ImageView
-                        android:background="@mipmap/right_jiantou"
-                        android:layout_centerVertical="true"
+                        android:layout_width="@dimen/x25"
                         android:layout_height="@dimen/x40"
+                        android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/x420"
                         android:layout_toRightOf="@+id/riv_user_image"
-                        android:layout_width="@dimen/x25" />
+                        android:background="@mipmap/right_jiantou"/>
                 </RelativeLayout>
 
                 <TextView
-                    android:background="@color/app_line"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_width="match_parent" />
+                    android:background="@color/app_line"/>
 
                 <LinearLayout
-                    android:background="@color/background_white_color"
                     android:id="@+id/layout_mobile"
-                    android:layout_height="@dimen/x88"
                     android:layout_width="match_parent"
+                    android:layout_height="@dimen/x88"
+                    android:background="@color/background_white_color"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/mobile"
-                        android:layout_gravity="center_vertical"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/x30"
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/x30"
                         android:text="手机："
                         android:textColor="#d96385"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <EditText
-                        android:background="@null"
                         android:id="@+id/tv_mobile"
-                        android:layout_gravity="center_vertical"
-                        android:layout_height="wrap_content"
                         android:layout_width="@dimen/x300"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@null"
                         android:text="@string/not_available"
                         android:textColor="#d96385"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <ImageView
-                        android:background="@mipmap/right_jiantou"
-                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/x25"
                         android:layout_height="@dimen/x40"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/x260"
-                        android:layout_width="@dimen/x25" />
+                        android:background="@mipmap/right_jiantou"/>
                 </LinearLayout>
 
                 <TextView
-                    android:background="@color/app_line"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_width="match_parent" />
+                    android:background="@color/app_line"/>
 
                 <LinearLayout
-                    android:background="@color/background_white_color"
                     android:id="@+id/layout_weixin"
-                    android:layout_height="@dimen/x88"
                     android:layout_width="match_parent"
+                    android:layout_height="@dimen/x88"
+                    android:background="@color/background_white_color"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/weixin"
-                        android:layout_gravity="center_vertical"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/x30"
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/x30"
                         android:text="微信："
                         android:textColor="#d96385"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <EditText
-                        android:background="@null"
                         android:id="@+id/tv_weixin"
-                        android:layout_gravity="center_vertical"
-                        android:layout_height="wrap_content"
                         android:layout_width="@dimen/x300"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@null"
                         android:text="@string/not_available"
                         android:textColor="#d96385"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <ImageView
-                        android:background="@mipmap/right_jiantou"
-                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/x25"
                         android:layout_height="@dimen/x40"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/x260"
-                        android:layout_width="@dimen/x25" />
+                        android:background="@mipmap/right_jiantou"/>
                 </LinearLayout>
 
                 <TextView
-                    android:background="@color/app_line"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_width="match_parent" />
+                    android:background="@color/app_line"/>
 
                 <RelativeLayout
-                    android:background="@color/background_white_color"
-                    android:gravity="center_vertical"
                     android:id="@+id/layout_nike_name"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/x88"
-                    android:layout_width="match_parent">
+                    android:background="@color/background_white_color"
+                    android:gravity="center_vertical">
 
                     <TextView
                         android:id="@+id/nike_name"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x30"
-                        android:layout_width="wrap_content"
                         android:text="我的昵称："
                         android:textColor="#737c7d"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <EditText
-                        android:background="@null"
                         android:id="@+id/tv_nike_name"
-                        android:layout_gravity="center_vertical"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/nike_name"
                         android:layout_width="@dimen/x300"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toRightOf="@+id/nike_name"
+                        android:background="@null"
                         android:text="@string/not_available"
                         android:textColor="#1a2729"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <ImageView
-                        android:background="@mipmap/right_jiantou"
-                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/x25"
                         android:layout_height="@dimen/x40"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/x184"
                         android:layout_toRightOf="@+id/tv_nike_name"
-                        android:layout_width="@dimen/x25" />
+                        android:background="@mipmap/right_jiantou"/>
                 </RelativeLayout>
 
                 <TextView
-                    android:background="@color/app_line"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_width="match_parent" />
+                    android:background="@color/app_line"/>
 
                 <RelativeLayout
-                    android:background="@color/background_white_color"
-                    android:gravity="center_vertical"
                     android:id="@+id/layout_signature"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/x88"
-                    android:layout_width="match_parent">
+                    android:background="@color/background_white_color"
+                    android:gravity="center_vertical">
 
                     <TextView
                         android:id="@+id/signature"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x30"
-                        android:layout_width="wrap_content"
                         android:text="爱情宣言："
                         android:textColor="#737c7d"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <EditText
-                        android:background="@null"
                         android:id="@+id/tv_signature"
-                        android:layout_gravity="center_vertical"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/signature"
                         android:layout_width="@dimen/x300"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toRightOf="@+id/signature"
+                        android:background="@null"
                         android:text="@string/not_available"
                         android:textColor="#1a2729"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <ImageView
-                        android:background="@mipmap/right_jiantou"
-                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/x25"
                         android:layout_height="@dimen/x40"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/x184"
                         android:layout_toRightOf="@+id/tv_signature"
-                        android:layout_width="@dimen/x25" />
+                        android:background="@mipmap/right_jiantou"/>
                 </RelativeLayout>
 
                 <TextView
-                    android:background="@color/app_line"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_width="match_parent" />
+                    android:background="@color/app_line"/>
 
                 <RelativeLayout
-                    android:background="@color/background_white_color"
-                    android:gravity="center_vertical"
                     android:id="@+id/layout_sex"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/x88"
-                    android:layout_width="match_parent">
+                    android:background="@color/background_white_color"
+                    android:gravity="center_vertical">
 
                     <TextView
                         android:id="@+id/info_change"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x30"
-                        android:layout_width="wrap_content"
                         android:text="性别："
                         android:textColor="#737c7d"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <EditText
-                        android:background="@null"
                         android:id="@+id/tv_sex"
-                        android:layout_gravity="center_vertical"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/info_change"
                         android:layout_width="@dimen/x300"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toRightOf="@+id/info_change"
+                        android:background="@null"
                         android:text="女"
                         android:textColor="#1a2729"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <ImageView
-                        android:background="@mipmap/right_jiantou"
-                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/x25"
                         android:layout_height="@dimen/x40"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/x255"
                         android:layout_toRightOf="@+id/tv_sex"
-                        android:layout_width="@dimen/x25" />
+                        android:background="@mipmap/right_jiantou"/>
                 </RelativeLayout>
 
                 <TextView
-                    android:background="@color/app_line"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_width="match_parent" />
+                    android:background="@color/app_line"/>
 
                 <RelativeLayout
-                    android:background="@color/background_white_color"
-                    android:gravity="center_vertical"
                     android:id="@+id/layout_birthday"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/x88"
-                    android:layout_width="match_parent">
+                    android:background="@color/background_white_color"
+                    android:gravity="center_vertical">
 
                     <TextView
                         android:id="@+id/birthaday"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x30"
-                        android:layout_width="wrap_content"
                         android:text="年龄："
                         android:textColor="#737c7d"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <EditText
-                        android:background="@null"
                         android:id="@+id/tv_birthday"
-                        android:layout_gravity="center_vertical"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/birthaday"
                         android:layout_width="@dimen/x300"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toRightOf="@+id/birthaday"
+                        android:background="@null"
                         android:text="22岁"
                         android:textColor="#1a2729"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <ImageView
-                        android:background="@mipmap/right_jiantou"
-                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/x25"
                         android:layout_height="@dimen/x40"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/x255"
                         android:layout_toRightOf="@+id/tv_birthday"
-                        android:layout_width="@dimen/x25" />
+                        android:background="@mipmap/right_jiantou"/>
                 </RelativeLayout>
 
                 <TextView
-                    android:background="@color/app_line"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_width="match_parent" />
+                    android:background="@color/app_line"/>
 
                 <RelativeLayout
-                    android:background="@color/background_white_color"
-                    android:gravity="center_vertical"
                     android:id="@+id/layout_hight"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/x88"
-                    android:layout_width="match_parent">
+                    android:background="@color/background_white_color"
+                    android:gravity="center_vertical">
 
                     <TextView
                         android:id="@+id/hight"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x30"
-                        android:layout_width="wrap_content"
                         android:text="身高："
                         android:textColor="#737c7d"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <EditText
-                        android:background="@null"
                         android:id="@+id/tv_hight"
-                        android:layout_gravity="center_vertical"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/hight"
                         android:layout_width="@dimen/x300"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toRightOf="@+id/hight"
+                        android:background="@null"
                         android:text="168公分"
                         android:textColor="#1a2729"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <ImageView
-                        android:background="@mipmap/right_jiantou"
-                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/x25"
                         android:layout_height="@dimen/x40"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/x255"
                         android:layout_toRightOf="@+id/tv_hight"
-                        android:layout_width="@dimen/x25" />
+                        android:background="@mipmap/right_jiantou"/>
                 </RelativeLayout>
 
                 <TextView
-                    android:background="@color/app_line"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_width="match_parent" />
+                    android:background="@color/app_line"/>
 
                 <RelativeLayout
-                    android:background="@color/background_white_color"
-                    android:gravity="center_vertical"
                     android:id="@+id/layout_weight"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/x88"
-                    android:layout_width="match_parent">
+                    android:background="@color/background_white_color"
+                    android:gravity="center_vertical">
 
                     <TextView
                         android:id="@+id/weight"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x30"
-                        android:layout_width="wrap_content"
                         android:text="体重："
                         android:textColor="#737c7d"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <EditText
-                        android:background="@null"
                         android:id="@+id/tv_weight"
-                        android:layout_gravity="center_vertical"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/weight"
                         android:layout_width="@dimen/x300"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toRightOf="@+id/weight"
+                        android:background="@null"
                         android:text="42kg"
                         android:textColor="#1a2729"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <ImageView
-                        android:background="@mipmap/right_jiantou"
-                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/x25"
                         android:layout_height="@dimen/x40"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/x255"
                         android:layout_toRightOf="@+id/tv_weight"
-                        android:layout_width="@dimen/x25" />
+                        android:background="@mipmap/right_jiantou"/>
                 </RelativeLayout>
 
                 <TextView
-                    android:background="@color/app_line"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_width="match_parent" />
+                    android:background="@color/app_line"/>
 
                 <RelativeLayout
-                    android:background="@color/background_white_color"
-                    android:gravity="center_vertical"
                     android:id="@+id/layout_address"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/x88"
-                    android:layout_width="match_parent">
+                    android:background="@color/background_white_color"
+                    android:gravity="center_vertical">
 
                     <TextView
                         android:id="@+id/address"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x30"
-                        android:layout_width="wrap_content"
                         android:text="现居："
                         android:textColor="#737c7d"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <EditText
-                        android:background="@null"
                         android:id="@+id/tv_address"
-                        android:layout_gravity="center_vertical"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/address"
                         android:layout_width="@dimen/x300"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toRightOf="@+id/address"
+                        android:background="@null"
                         android:text="北京市-朝阳区"
                         android:textColor="#1a2729"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <ImageView
-                        android:background="@mipmap/right_jiantou"
-                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/x25"
                         android:layout_height="@dimen/x40"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/x255"
                         android:layout_toRightOf="@+id/tv_address"
-                        android:layout_width="@dimen/x25" />
+                        android:background="@mipmap/right_jiantou"/>
                 </RelativeLayout>
 
                 <TextView
-                    android:background="@color/app_line"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_width="match_parent" />
+                    android:background="@color/app_line"/>
 
                 <RelativeLayout
-                    android:background="@color/background_white_color"
-                    android:gravity="center_vertical"
                     android:id="@+id/layout_birthplace"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/x88"
-                    android:layout_width="match_parent">
+                    android:background="@color/background_white_color"
+                    android:gravity="center_vertical">
 
                     <TextView
                         android:id="@+id/birthplace"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x30"
-                        android:layout_width="wrap_content"
                         android:text="籍贯："
                         android:textColor="#737c7d"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <EditText
-                        android:background="@null"
                         android:id="@+id/tv_birthplace"
-                        android:layout_gravity="center_vertical"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/birthplace"
                         android:layout_width="@dimen/x410"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toRightOf="@+id/birthplace"
+                        android:background="@null"
                         android:text="北京市-朝阳区"
                         android:textColor="#1a2729"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <ImageView
-                        android:background="@mipmap/right_jiantou"
-                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/x25"
                         android:layout_height="@dimen/x40"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/x145"
                         android:layout_toRightOf="@+id/tv_birthplace"
-                        android:layout_width="@dimen/x25" />
+                        android:background="@mipmap/right_jiantou"/>
                 </RelativeLayout>
 
                 <TextView
-                    android:background="@color/app_line"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_width="match_parent" />
+                    android:background="@color/app_line"/>
 
                 <RelativeLayout
-                    android:background="@color/background_white_color"
-                    android:gravity="center_vertical"
                     android:id="@+id/layout_distance_love"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/x88"
-                    android:layout_width="match_parent">
+                    android:background="@color/background_white_color"
+                    android:gravity="center_vertical">
 
                     <TextView
                         android:id="@+id/distance"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x30"
-                        android:layout_width="wrap_content"
                         android:text="是否接受异地恋："
                         android:textColor="#737c7d"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <EditText
-                        android:background="@null"
                         android:id="@+id/tv_distance_love"
-                        android:layout_gravity="center_vertical"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/distance"
                         android:layout_width="@dimen/x120"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toRightOf="@+id/distance"
+                        android:background="@null"
                         android:text="是"
                         android:textColor="#1a2729"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <ImageView
-                        android:background="@mipmap/right_jiantou"
-                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/x25"
                         android:layout_height="@dimen/x40"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/x255"
                         android:layout_toRightOf="@+id/tv_distance_love"
-                        android:layout_width="@dimen/x25" />
+                        android:background="@mipmap/right_jiantou"/>
                 </RelativeLayout>
 
                 <TextView
-                    android:background="@color/app_line"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_width="match_parent" />
+                    android:background="@color/app_line"/>
 
                 <RelativeLayout
-                    android:background="@color/background_white_color"
                     android:id="@+id/up_data_pictue"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/x250"
-                    android:layout_width="match_parent">
+                    android:background="@color/background_white_color">
 
                     <TextView
                         android:id="@+id/picture"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x30"
                         android:layout_marginTop="@dimen/y30"
-                        android:layout_width="wrap_content"
                         android:text="上传图片："
                         android:textColor="#737c7d"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
                     <ImageView
-                        android:background="@mipmap/ic_launcher"
                         android:id="@+id/pvt_picture"
+                        android:layout_width="@dimen/x190"
                         android:layout_height="@dimen/x190"
                         android:layout_margin="@dimen/x30"
                         android:layout_toRightOf="@+id/picture"
-                        android:layout_width="@dimen/x190" />
+                        android:background="@mipmap/ic_launcher"/>
 
                     <ImageView
-                        android:background="@mipmap/ic_launcher"
                         android:id="@+id/pvt_picture2"
+                        android:layout_width="@dimen/x190"
                         android:layout_height="@dimen/x190"
                         android:layout_marginLeft="@dimen/x3"
                         android:layout_marginTop="@dimen/y30"
                         android:layout_toRightOf="@+id/pvt_picture"
-                        android:layout_width="@dimen/x190" />
+                        android:background="@mipmap/ic_launcher"/>
 
                     <ImageView
-                        android:background="@mipmap/right_jiantou"
+                        android:layout_width="@dimen/x25"
                         android:layout_height="@dimen/x40"
                         android:layout_marginLeft="@dimen/x45"
                         android:layout_marginTop="@dimen/x110"
                         android:layout_toRightOf="@+id/pvt_picture2"
-                        android:layout_width="@dimen/x25" />
+                        android:background="@mipmap/right_jiantou"/>
                 </RelativeLayout>
 
                 <TextView
-                    android:background="@color/app_line"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_width="match_parent" />
+                    android:background="@color/app_line"/>
+
 
                 <RelativeLayout
-                    android:background="@color/background_white_color"
-                    android:id="@+id/up_data_video"
+                    android:id="@+id/rl_up_data_video"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/x250"
-                    android:layout_width="match_parent">
+                    android:background="@color/background_white_color">
 
                     <TextView
-                        android:id="@+id/video"
+                        android:id="@+id/tv_picture"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x30"
                         android:layout_marginTop="@dimen/y30"
-                        android:layout_width="wrap_content"
                         android:text="上传视频："
                         android:textColor="#737c7d"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"/>
 
-                    <include
-                        android:id="@+id/layout_content"
-                        android:layout_height="@dimen/x190"
-                        android:layout_margin="@dimen/y30"
-                        android:layout_toRightOf="@+id/video"
+                    <ImageView
+                        android:id="@+id/pvt_picture_1"
                         android:layout_width="@dimen/x190"
-                        layout="@layout/item_video" />
-
-                    <include
-                        android:id="@+id/layout_content1"
-                        android:layout_height="@dimen/x188"
-                        android:layout_marginLeft="@dimen/x3"
-                        android:layout_marginTop="@dimen/y30"
-                        android:layout_toRightOf="@+id/layout_content"
-                        android:layout_width="@dimen/x188"
-                        layout="@layout/item_video" />
+                        android:layout_height="@dimen/x190"
+                        android:layout_margin="@dimen/x30"
+                        android:layout_toRightOf="@+id/tv_picture"
+                        android:background="@mipmap/ic_launcher"/>
 
                     <ImageView
-                        android:background="@mipmap/right_jiantou"
+                        android:id="@+id/pvt_picture_2"
+                        android:layout_width="@dimen/x190"
+                        android:layout_height="@dimen/x190"
+                        android:layout_marginLeft="@dimen/x3"
+                        android:layout_marginTop="@dimen/y30"
+                        android:layout_toRightOf="@+id/pvt_picture_1"
+                        android:background="@mipmap/ic_launcher"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/x25"
                         android:layout_height="@dimen/x40"
                         android:layout_marginLeft="@dimen/x45"
                         android:layout_marginTop="@dimen/x110"
-                        android:layout_toRightOf="@+id/layout_content1"
-                        android:layout_width="@dimen/x25" />
+                        android:layout_toRightOf="@+id/pvt_picture_2"
+                        android:background="@mipmap/right_jiantou"/>
                 </RelativeLayout>
 
+
                 <TextView
-                    android:background="@color/app_line"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_width="match_parent" />
+                    android:background="@color/app_line"/>
+
 
                 <RelativeLayout
-                    android:background="@color/background_white_color"
-                    android:id="@+id/up_data_voice"
+                    android:id="@+id/rl_up_data_voice"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/x250"
-                    android:layout_width="match_parent">
+                    android:background="@color/background_white_color">
 
                     <TextView
-                        android:id="@+id/voice"
+                        android:id="@+id/tv_voice"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x30"
                         android:layout_marginTop="@dimen/y30"
-                        android:layout_width="wrap_content"
-                        android:text="上传视频："
+                        android:text="上传语音："
                         android:textColor="#737c7d"
-                        android:textSize="16sp" />
-
-                    <include
-                        android:id="@+id/layout_content"
-                        android:layout_height="@dimen/x188"
-                        android:layout_margin="@dimen/y30"
-                        android:layout_toRightOf="@+id/voice"
-                        android:layout_width="@dimen/x188"
-                        layout="@layout/item_voice" />
-
-                    <include
-                        android:id="@+id/layout_content1"
-                        android:layout_height="@dimen/x188"
-                        android:layout_marginLeft="@dimen/x3"
-                        android:layout_marginTop="@dimen/y30"
-                        android:layout_toRightOf="@+id/layout_content"
-                        android:layout_width="@dimen/x188"
-                        layout="@layout/item_voice" />
+                        android:textSize="16sp"/>
 
                     <ImageView
-                        android:background="@mipmap/right_jiantou"
+                        android:id="@+id/pvt_voice_1"
+                        android:layout_width="@dimen/x190"
+                        android:layout_height="@dimen/x190"
+                        android:layout_margin="@dimen/x30"
+                        android:layout_toRightOf="@+id/tv_voice"
+                        android:background="@mipmap/ic_launcher"/>
+
+                    <ImageView
+                        android:id="@+id/pvt_voice_2"
+                        android:layout_width="@dimen/x190"
+                        android:layout_height="@dimen/x190"
+                        android:layout_marginLeft="@dimen/x3"
+                        android:layout_marginTop="@dimen/y30"
+                        android:layout_toRightOf="@+id/pvt_voice_1"
+                        android:background="@mipmap/ic_launcher"/>
+
+                    <ImageView
+                        android:id="@+id/pvt_voice_3"
+                        android:layout_width="@dimen/x25"
                         android:layout_height="@dimen/x40"
                         android:layout_marginLeft="@dimen/x45"
                         android:layout_marginTop="@dimen/x110"
-                        android:layout_toRightOf="@+id/layout_content1"
-                        android:layout_width="@dimen/x25" />
+                        android:layout_toRightOf="@+id/pvt_voice_2"
+                        android:background="@mipmap/right_jiantou"/>
                 </RelativeLayout>
             </LinearLayout>
         </ScrollView>

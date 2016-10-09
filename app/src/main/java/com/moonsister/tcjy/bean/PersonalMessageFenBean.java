@@ -8,11 +8,11 @@ import java.util.List;
 public class PersonalMessageFenBean extends BaseBean {
 
     /**
-     * rules : [{"field":"nickname","name":"昵称：","edit":"1","isvip":"0","isshow":"1","value":"json"},{"field":"signature","name":"个性签名：","edit":"1","isvip":"0","isshow":"1","value":"Uzbek"},{"field":"sex","name":"性别：","edit":"2","isvip":"0","isshow":"1","value":"男"},{"field":"birthday","name":"出生年月：","edit":"1","isvip":"0","isshow":"1","value":"1991-01-31"},{"field":"star_sign","name":"星座：","edit":"1","isvip":"0","isshow":"1","value":"宝瓶座"},{"field":"height","name":"身高：","edit":"1","isvip":"0","isshow":"1","value":"160"},{"field":"weight","name":"体重：","edit":"1","isvip":"0","isshow":"1","value":"57"},{"field":"salary","name":"月薪：","edit":"1","isvip":"0","isshow":"1","value":"10000\u201415000"},{"field":"degree","name":"学历：","edit":"1","isvip":"0","isshow":"1","value":"专科以下"},{"field":"birthplace","name":"籍贯：","edit":"1","isvip":"0","isshow":"1","value":"重庆"},{"field":"residence","name":"现居：","edit":"1","isvip":"0","isshow":"1","value":"成都"},{"field":"profession","name":"职业：","edit":"1","isvip":"0","isshow":"1","value":"主持"},{"field":"hobby","name":"兴趣爱好：","edit":"1","isvip":"0","isshow":"1","value":"游戏"},{"field":"self_image","name":"自我印象：","edit":"1","isvip":"0","isshow":"1","value":"负责任"},{"field":"ishouse","name":"是否有房：","edit":"1","isvip":"0","isshow":"1","value":"有房"},{"field":"marital_status","name":"情感状态：","edit":"1","isvip":"0","isshow":"1","value":"恋爱中"},{"field":"distance_love","name":"接受异地恋：","edit":"1","isvip":"0","isshow":"1","value":"看情况"},{"field":"like_sex","name":"喜欢的异性：","edit":"1","isvip":"0","isshow":"1","value":"小鸟依人"},{"field":"premarital_sex","name":"婚前性行为：","edit":"1","isvip":"0","isshow":"1","value":"看情况"}]
-     * dlist : {"face":"http://mimei.oss-cn-beijing.aliyuncs.com/image/20160804/18/14703055089420276.jpg","like_image":"http://mimei.oss-cn-beijing.aliyuncs.com/image/20160812/13/14709792952357606.jpg","nickname":"json","signature":"Uzbek","sex":1,"birthday":"1991-01-31","star_sign":"宝瓶座","height":"160","weight":"57","salary":"10000\u201415000","degree":"专科以下","birthplace":"重庆","residence":"成都","profession":"主持","hobby":"游戏","self_image":"负责任","ishouse":"有房","marital_status":"恋爱中","distance_love":"看情况","like_sex":"小鸟依人","premarital_sex":"看情况","raddress":null,"rcode":null,"rname":null,"t1":null,"t2":null,"t3":null}
-     * baseinfo : {"nickname":"json","sex":1,"face":"http://mimei.oss-cn-beijing.aliyuncs.com/image/20160804/18/14703055089420276.jpg","like_image":"http://mimei.oss-cn-beijing.aliyuncs.com/image/20160812/13/14709792952357606.jpg","profession":"主持","birthday":"1991-01-31","signature":"Uzbek","age":"25岁","vip_level":0,"isauth":"1","isfollow":"2","image_data":"[{\"l\":\"http:\\/\\/mimei.oss-cn-beijing.aliyuncs.com\\/image\\/20160715\\/16\\/14685719449402490.jpg\",\"s\":\"\"},{\"l\":\"http:\\/\\/mimei.oss-cn-beijing.aliyuncs.com\\/image\\/20160715\\/16\\/14685719441527976.jpg\",\"s\":\"\"},{\"l\":\"http:\\/\\/mimei.oss-cn-beijing.aliyuncs.com\\/image\\/20160715\\/16\\/14685726820881173.jpg\",\"s\":\"\"}]","image_video":"{\"l\":\"http:\\/\\/mimei.oss-cn-beijing.aliyuncs.com\\/image\\/20160811\\/18\\/14709129297383161.jpg\",\"s\":\"http:\\/\\/mimei.oss-cn-beijing.aliyuncs.com\\/image\\/20160811\\/18\\/14709129300889004.jpg\",\"v\":\"http:\\/\\/mimei.oss-cn-beijing.aliyuncs.com\\/FREE_VIDEO\\/20160811\\/18\\/14709129209340802.mp4\"}","image_voice":"{\"l\":\"http:\\/\\/mimei.oss-cn-beijing.aliyuncs.com\\/default\\/voicebg\\/3.jpg\",\"s\":\"http:\\/\\/mimei.oss-cn-beijing.aliyuncs.com\\/default\\/voicebg\\/3.jpg\",\"v\":\"http:\\/\\/mimei.oss-cn-beijing.aliyuncs.com\\/VOICE\\/20160811\\/15\\/14709014657965662.amr\"}"}
+     * rules : [{"field":"nickname","name":"昵称：","edit":"1","isvip":"0","isshow":"1","value":"程思语"},{"field":"signature","name":"个性签名：","edit":"1","isvip":"0","isshow":"1","value":"女人的美丽，只给有才（huo）华（hao）的男人欣赏。"},{"field":"sex","name":"性别：","edit":"2","isvip":"0","isshow":"1","value":"女"},{"field":"birthday","name":"出生年月：","edit":"1","isvip":"0","isshow":"1","value":"1998-7-18"},{"field":"star_sign","name":"星座：","edit":"1","isvip":"0","isshow":"1","value":"巨蟹座"},{"field":"height","name":"身高：","edit":"1","isvip":"0","isshow":"1","value":"167"},{"field":"weight","name":"体重：","edit":"1","isvip":"0","isshow":"1","value":"51"},{"field":"salary","name":"月薪：","edit":"1","isvip":"0","isshow":"1","value":"20000以上"},{"field":"degree","name":"学历：","edit":"1","isvip":"0","isshow":"1","value":"专科以下"},{"field":"birthplace","name":"籍贯：","edit":"1","isvip":"0","isshow":"1","value":"安徽"},{"field":"residence","name":"现居：","edit":"1","isvip":"0","isshow":"1","value":"上海"},{"field":"profession","name":"职业：","edit":"1","isvip":"0","isshow":"1","value":"礼仪"},{"field":"hobby","name":"兴趣爱好：","edit":"1","isvip":"0","isshow":"1","value":"购物"},{"field":"self_image","name":"自我印象：","edit":"1","isvip":"0","isshow":"1","value":"妩媚"},{"field":"ishouse","name":"是否有房：","edit":"1","isvip":"0","isshow":"1","value":"有房"},{"field":"marital_status","name":"情感状态：","edit":"1","isvip":"0","isshow":"1","value":"恋爱中"},{"field":"distance_love","name":"接受异地恋：","edit":"1","isvip":"0","isshow":"1","value":"可以接受"},{"field":"like_sex","name":"喜欢的异性：","edit":"1","isvip":"0","isshow":"1","value":"温柔体贴"},{"field":"premarital_sex","name":"婚前性行为：","edit":"1","isvip":"0","isshow":"1","value":"看情况"}]
+     * dlist : {"face":"http://mimei.oss-cn-beijing.aliyuncs.com/a/image/11/2016-07-07/577e6faa28dea.png","like_image":"http://mimei.oss-cn-beijing.aliyuncs.com/a/image/11/2016-07-07/577e6fa003513.png","nickname":"程思语","signature":"女人的美丽，只给有才（huo）华（hao）的男人欣赏。","sex":2,"birthday":"1998-7-18","star_sign":"巨蟹座","height":"167","weight":"51","salary":"20000以上","degree":"专科以下","birthplace":"安徽","residence":"上海","profession":"礼仪","hobby":"购物","self_image":"妩媚","ishouse":"有房","marital_status":"恋爱中","distance_love":"可以接受","like_sex":"温柔体贴","premarital_sex":"看情况","raddress":null,"rcode":null,"rname":null,"t1":null,"t2":null,"t3":null}
+     * baseinfo : {"nickname":"程思语","sex":2,"face":"http://mimei.oss-cn-beijing.aliyuncs.com/a/image/11/2016-07-07/577e6faa28dea.png","like_image":"http://mimei.oss-cn-beijing.aliyuncs.com/a/image/11/2016-07-07/577e6fa003513.png","profession":"礼仪","birthday":"1998-7-18","signature":"女人的美丽，只给有才（huo）华（hao）的男人欣赏。","age":"18岁","vip_level":12,"isauth":"1","isfollow":"2","image_data":[{"s":"","v":"","l":"http://mimei.oss-cn-beijing.aliyuncs.com/a/image/05/2016-07-18/578c9febe6cc8.jpg"},{"l":"http://mimei.oss-cn-beijing.aliyuncs.com/image/20160707/19/14678900848175293.jpg","s":""},{"s":"","v":"","l":"http://mimei.oss-cn-beijing.aliyuncs.com/a/image/06/2016-07-08/577f7cbaade70.jpg"}],"image_video":[],"image_voice":[]}
      * vipinfo : {"smobile":null,"qq":null,"weixin":null}
-     * ainfo : {"vip_level":"0"}
+     * ainfo : {"vip_level":1}
      */
 
     private DataBean data;
@@ -27,26 +27,26 @@ public class PersonalMessageFenBean extends BaseBean {
 
     public static class DataBean {
         /**
-         * face : http://mimei.oss-cn-beijing.aliyuncs.com/image/20160804/18/14703055089420276.jpg
-         * like_image : http://mimei.oss-cn-beijing.aliyuncs.com/image/20160812/13/14709792952357606.jpg
-         * nickname : json
-         * signature : Uzbek
-         * sex : 1
-         * birthday : 1991-01-31
-         * star_sign : 宝瓶座
-         * height : 160
-         * weight : 57
-         * salary : 10000—15000
+         * face : http://mimei.oss-cn-beijing.aliyuncs.com/a/image/11/2016-07-07/577e6faa28dea.png
+         * like_image : http://mimei.oss-cn-beijing.aliyuncs.com/a/image/11/2016-07-07/577e6fa003513.png
+         * nickname : 程思语
+         * signature : 女人的美丽，只给有才（huo）华（hao）的男人欣赏。
+         * sex : 2
+         * birthday : 1998-7-18
+         * star_sign : 巨蟹座
+         * height : 167
+         * weight : 51
+         * salary : 20000以上
          * degree : 专科以下
-         * birthplace : 重庆
-         * residence : 成都
-         * profession : 主持
-         * hobby : 游戏
-         * self_image : 负责任
+         * birthplace : 安徽
+         * residence : 上海
+         * profession : 礼仪
+         * hobby : 购物
+         * self_image : 妩媚
          * ishouse : 有房
          * marital_status : 恋爱中
-         * distance_love : 看情况
-         * like_sex : 小鸟依人
+         * distance_love : 可以接受
+         * like_sex : 温柔体贴
          * premarital_sex : 看情况
          * raddress : null
          * rcode : null
@@ -58,20 +58,20 @@ public class PersonalMessageFenBean extends BaseBean {
 
         private DlistBean dlist;
         /**
-         * nickname : json
-         * sex : 1
-         * face : http://mimei.oss-cn-beijing.aliyuncs.com/image/20160804/18/14703055089420276.jpg
-         * like_image : http://mimei.oss-cn-beijing.aliyuncs.com/image/20160812/13/14709792952357606.jpg
-         * profession : 主持
-         * birthday : 1991-01-31
-         * signature : Uzbek
-         * age : 25岁
-         * vip_level : 0
+         * nickname : 程思语
+         * sex : 2
+         * face : http://mimei.oss-cn-beijing.aliyuncs.com/a/image/11/2016-07-07/577e6faa28dea.png
+         * like_image : http://mimei.oss-cn-beijing.aliyuncs.com/a/image/11/2016-07-07/577e6fa003513.png
+         * profession : 礼仪
+         * birthday : 1998-7-18
+         * signature : 女人的美丽，只给有才（huo）华（hao）的男人欣赏。
+         * age : 18岁
+         * vip_level : 12
          * isauth : 1
          * isfollow : 2
-         * image_data : [{"l":"http:\/\/mimei.oss-cn-beijing.aliyuncs.com\/image\/20160715\/16\/14685719449402490.jpg","s":""},{"l":"http:\/\/mimei.oss-cn-beijing.aliyuncs.com\/image\/20160715\/16\/14685719441527976.jpg","s":""},{"l":"http:\/\/mimei.oss-cn-beijing.aliyuncs.com\/image\/20160715\/16\/14685726820881173.jpg","s":""}]
-         * image_video : {"l":"http:\/\/mimei.oss-cn-beijing.aliyuncs.com\/image\/20160811\/18\/14709129297383161.jpg","s":"http:\/\/mimei.oss-cn-beijing.aliyuncs.com\/image\/20160811\/18\/14709129300889004.jpg","v":"http:\/\/mimei.oss-cn-beijing.aliyuncs.com\/FREE_VIDEO\/20160811\/18\/14709129209340802.mp4"}
-         * image_voice : {"l":"http:\/\/mimei.oss-cn-beijing.aliyuncs.com\/default\/voicebg\/3.jpg","s":"http:\/\/mimei.oss-cn-beijing.aliyuncs.com\/default\/voicebg\/3.jpg","v":"http:\/\/mimei.oss-cn-beijing.aliyuncs.com\/VOICE\/20160811\/15\/14709014657965662.amr"}
+         * image_data : [{"s":"","v":"","l":"http://mimei.oss-cn-beijing.aliyuncs.com/a/image/05/2016-07-18/578c9febe6cc8.jpg"},{"l":"http://mimei.oss-cn-beijing.aliyuncs.com/image/20160707/19/14678900848175293.jpg","s":""},{"s":"","v":"","l":"http://mimei.oss-cn-beijing.aliyuncs.com/a/image/06/2016-07-08/577f7cbaade70.jpg"}]
+         * image_video : []
+         * image_voice : []
          */
 
         private BaseinfoBean baseinfo;
@@ -83,7 +83,7 @@ public class PersonalMessageFenBean extends BaseBean {
 
         private VipinfoBean vipinfo;
         /**
-         * vip_level : 0
+         * vip_level : 1
          */
 
         private AinfoBean ainfo;
@@ -93,7 +93,7 @@ public class PersonalMessageFenBean extends BaseBean {
          * edit : 1
          * isvip : 0
          * isshow : 1
-         * value : json
+         * value : 程思语
          */
 
         private List<RulesBean> rules;
@@ -396,9 +396,15 @@ public class PersonalMessageFenBean extends BaseBean {
             private int vip_level;
             private String isauth;
             private String isfollow;
-            private String image_data;
-            private String image_video;
-            private String image_voice;
+            /**
+             * s :
+             * v :
+             * l : http://mimei.oss-cn-beijing.aliyuncs.com/a/image/05/2016-07-18/578c9febe6cc8.jpg
+             */
+
+            private List<ImageDataBean> image_data;
+            private List<ImageDataBean> image_video;
+            private List<ImageDataBean> image_voice;
 
             public String getNickname() {
                 return nickname;
@@ -488,69 +494,108 @@ public class PersonalMessageFenBean extends BaseBean {
                 this.isfollow = isfollow;
             }
 
-            public String getImage_data() {
+            public List<ImageDataBean> getImage_data() {
                 return image_data;
             }
 
-            public void setImage_data(String image_data) {
+            public void setImage_data(List<ImageDataBean> image_data) {
                 this.image_data = image_data;
             }
 
-            public String getImage_video() {
+            public List<ImageDataBean> getImage_video() {
                 return image_video;
             }
 
-            public void setImage_video(String image_video) {
+            public void setImage_video(List<ImageDataBean> image_video) {
                 this.image_video = image_video;
             }
 
-            public String getImage_voice() {
+            public List<ImageDataBean> getImage_voice() {
                 return image_voice;
             }
 
-            public void setImage_voice(String image_voice) {
+            public void setImage_voice(List<ImageDataBean> image_voice) {
                 this.image_voice = image_voice;
+            }
+
+            public static class ImageDataBean {
+                private String s;
+                private String v;
+                private String l;
+
+                public String getS() {
+                    return s;
+                }
+
+                public void setS(String s) {
+                    this.s = s;
+                }
+
+                public String getV() {
+                    return v;
+                }
+
+                public void setV(String v) {
+                    this.v = v;
+                }
+
+                public String getL() {
+                    return l;
+                }
+
+                public void setL(String l) {
+                    this.l = l;
+                }
             }
         }
 
         public static class VipinfoBean {
-            private Object smobile;
-            private Object qq;
-            private Object weixin;
+            private String smobile;
+            private String qq;
+            private String weixin;
+            private int zaixian;
 
-            public Object getSmobile() {
+            public int getZaixian() {
+                return zaixian;
+            }
+
+            public void setZaixian(int zaixian) {
+                this.zaixian = zaixian;
+            }
+
+            public String getSmobile() {
                 return smobile;
             }
 
-            public void setSmobile(Object smobile) {
+            public void setSmobile(String smobile) {
                 this.smobile = smobile;
             }
 
-            public Object getQq() {
+            public String getQq() {
                 return qq;
             }
 
-            public void setQq(Object qq) {
+            public void setQq(String qq) {
                 this.qq = qq;
             }
 
-            public Object getWeixin() {
+            public String getWeixin() {
                 return weixin;
             }
 
-            public void setWeixin(Object weixin) {
+            public void setWeixin(String weixin) {
                 this.weixin = weixin;
             }
         }
 
         public static class AinfoBean {
-            private String vip_level;
+            private int vip_level;
 
-            public String getVip_level() {
+            public int getVip_level() {
                 return vip_level;
             }
 
-            public void setVip_level(String vip_level) {
+            public void setVip_level(int vip_level) {
                 this.vip_level = vip_level;
             }
         }

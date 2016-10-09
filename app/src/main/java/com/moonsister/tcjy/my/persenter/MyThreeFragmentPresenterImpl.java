@@ -27,14 +27,14 @@ public class MyThreeFragmentPresenterImpl implements MyThreeFragmentPresenter, B
     }
 
     @Override
-    public void loadData(int page, String type) {
+    public void loadData(String uid, int page, String type) {
         view.showLoading();
-        model.loadData(page, type, this);
+        model.loadData(uid,page, type, this);
     }
 
     @Override
-    public void loadHeaderData() {
-        model.loadHeaderData(this);
+    public void loadHeaderData(String uid) {
+        model.loadHeaderData(uid,this);
     }
 
     @Override

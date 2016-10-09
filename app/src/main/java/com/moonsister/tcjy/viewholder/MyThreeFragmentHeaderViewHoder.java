@@ -11,6 +11,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.bean.UserDetailBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.CircularImageView;
 
@@ -18,6 +19,7 @@ import butterknife.Bind;
 import butterknife.OnClick;
 
 import static com.moonsister.tcjy.utils.UIUtils.getResources;
+import static com.moonsister.tcjy.utils.UIUtils.getStringRes;
 
 /**
  * Created by jb on 2016/9/22.
@@ -67,6 +69,8 @@ public class MyThreeFragmentHeaderViewHoder extends BaseHolder<UserDetailBean> {
     View mViewDynamicLine;
     @Bind(R.id.rl_dynamic)
     RelativeLayout mRlDynamic;
+    @Bind(R.id.iv_add_vip_icon)
+    View iv_add_vip_icon;
 
     @Override
     protected View initView() {
@@ -81,10 +85,17 @@ public class MyThreeFragmentHeaderViewHoder extends BaseHolder<UserDetailBean> {
             return;
         ImageServerApi.showURLImage(mCivUserAvater, bean.getBaseinfo().getFace());
         mTvSignature.setText(bean.getBaseinfo().getSignature());
-        mTvAge.setText(bean.getBaseinfo().getBirthday());
-//        mTvHeight.setText(bean.getBaseinfo().get);
-//        if (StringUtis.equals(bean.getBaseinfo().))
-
+        mTvAge.setText(bean.getBaseinfo().getAge());
+        mTvHeight.setText(bean.getBaseinfo().getHeight());
+        mTvAll.setText(String.format(getStringRes(R.string.my_three_pic), bean.getBaseinfo().getImage_count()));
+        mTvTypeDynamic.setText(String.format(getStringRes(R.string.my_three_voice), bean.getBaseinfo().getVoice_count()));
+        mTvTypeUser.setText(String.format(getStringRes(R.string.my_three_video), bean.getBaseinfo().getVideo_count()));
+        mTvAddress.setText(bean.getBaseinfo().getResidence());
+        if (StringUtis.string2Int(bean.getBaseinfo().getVip_level()) > 0) {
+            iv_add_vip_icon.setVisibility(View.VISIBLE);
+        } else {
+            iv_add_vip_icon.setVisibility(View.GONE);
+        }
         mIvAddVip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,7 +111,7 @@ public class MyThreeFragmentHeaderViewHoder extends BaseHolder<UserDetailBean> {
         mIvEngegamentManager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ActivityUtils.startEngagementManagerActivity();
             }
         });
         mIvFinanceManager.setOnClickListener(new View.OnClickListener() {
@@ -114,21 +125,10 @@ public class MyThreeFragmentHeaderViewHoder extends BaseHolder<UserDetailBean> {
 
     @OnClick({R.id.rl_all, R.id.rl_user, R.id.rl_dynamic})
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.rl_all:
 
-                break;
-            case R.id.rl_user:
-
-                break;
-            case R.id.rl_dynamic:
-
-                break;
-        }
-        selectColor(view.getId());
     }
 
-    private void selectColor(@IdRes int id) {
+    public void selectColor(@IdRes int id) {
         int yellow = getResources().getColor(R.color.blue_4285f4);
         int transparent = getResources().getColor(R.color.transparent);
         mTvAll.setSelected(id == R.id.rl_all);

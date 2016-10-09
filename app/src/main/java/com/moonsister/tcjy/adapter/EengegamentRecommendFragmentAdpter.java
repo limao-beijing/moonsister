@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class EengegamentRecommendFragmentAdpter extends BaseRecyclerViewAdapter<BaseDataBean> {
 
+
     private EengegamentRecommendFragmentViewHolder holder;
 
     public EengegamentRecommendFragmentAdpter(List<BaseDataBean> list) {

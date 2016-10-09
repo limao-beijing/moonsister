@@ -119,7 +119,7 @@ public class ViewPager extends ViewGroup {
 
     /**
      * Used to track what the expected number of items in the adapter should be.
-     * If the app changes this when we don't expect it, we'll throw a big
+     * If the app changes this when we don'mAdapter expect it, we'll throw a big
      * obnoxious exception.
      */
     private int mExpectedAdapterCount;
@@ -583,7 +583,7 @@ public class ViewPager extends ViewGroup {
         final boolean dispatchSelected = mCurItem != item;
 
         if (mFirstLayout) {
-            // We don't have any idea how big we are yet and shouldn't have any
+            // We don'mAdapter have any idea how big we are yet and shouldn'mAdapter have any
             // pages either.
             // Just set things up and let the pending layout handle things.
             mCurItem = item;
@@ -726,7 +726,7 @@ public class ViewPager extends ViewGroup {
                                     "setChildrenDrawingOrderEnabled",
                                     new Class[] { Boolean.TYPE });
                 } catch (NoSuchMethodException e) {
-                    Log.e(TAG, "Can't find setChildrenDrawingOrderEnabled", e);
+                    Log.e(TAG, "Can'mAdapter find setChildrenDrawingOrderEnabled", e);
                 }
             }
             try {
@@ -875,7 +875,7 @@ public class ViewPager extends ViewGroup {
 
     // We want the duration of the page snap animation to be influenced by the
     // distance that
-    // the screen has to travel, however, we don't want this duration to be
+    // the screen has to travel, however, we don'mAdapter want this duration to be
     // effected in a
     // purely linear fashion. Instead, we use this method to moderate the effect
     // that the distance
@@ -1067,7 +1067,7 @@ public class ViewPager extends ViewGroup {
             return;
         }
 
-        // Also, don't populate until we are attached to a window. This is to
+        // Also, don'mAdapter populate until we are attached to a window. This is to
         // avoid trying to populate before we have restored our view hierarchy
         // state and conflicting with what is restored.
         if (getWindowToken() == null) {
@@ -1214,7 +1214,7 @@ public class ViewPager extends ViewGroup {
             final LayoutParams lp = (LayoutParams) child.getLayoutParams();
             lp.childIndex = i;
             if (!lp.isDecor && lp.widthFactor == 0.f) {
-                // 0 means requery the adapter for this, it doesn't have a valid
+                // 0 means requery the adapter for this, it doesn'mAdapter have a valid
                 // width.
                 final ItemInfo ii = infoForChild(child);
                 if (ii != null) {
@@ -1281,7 +1281,7 @@ public class ViewPager extends ViewGroup {
                         ii = mItems.get(itemIndex);
                     }
                     while (pos < ii.position) {
-                        // We don't have an item populated for this,
+                        // We don'mAdapter have an item populated for this,
                         // ask the adapter for an offset.
                         offset += mAdapter.getPageWidth(pos) + marginOffset;
                         pos++;
@@ -1301,7 +1301,7 @@ public class ViewPager extends ViewGroup {
                         ii = mItems.get(itemIndex);
                     }
                     while (pos > ii.position) {
-                        // We don't have an item populated for this,
+                        // We don'mAdapter have an item populated for this,
                         // ask the adapter for an offset.
                         offset -= mAdapter.getPageWidth(pos) + marginOffset;
                         pos--;
@@ -1511,7 +1511,7 @@ public class ViewPager extends ViewGroup {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // For simple implementation, our internal size is always 0.
         // We depend on the container to specify the layout size of
-        // our view. We can't really know what it is since we will be
+        // our view. We can'mAdapter really know what it is since we will be
         // adding and removing different arbitrary views and do not
         // want the layout to change as this happens.
         setMeasuredDimension(getDefaultSize(0, widthMeasureSpec),
@@ -1530,7 +1530,7 @@ public class ViewPager extends ViewGroup {
 		/*
 		 * Make sure all children have been properly measured. Decor views
 		 * first. Right now we cheat and make this less complicated by assuming
-		 * decor views won't intersect. We will pin to edges based on gravity.
+		 * decor views won'mAdapter intersect. We will pin to edges based on gravity.
 		 */
         int size = getChildCount();
         for (int i = 0; i < size; ++i) {
@@ -2063,7 +2063,7 @@ public class ViewPager extends ViewGroup {
 			 */
                 final int activePointerId = mActivePointerId;
                 if (activePointerId == INVALID_POINTER) {
-                    // If we don't have a valid id, the touch down wasn't on
+                    // If we don'mAdapter have a valid id, the touch down wasn'mAdapter on
                     // content.
                     break;
                 }
@@ -2175,7 +2175,7 @@ public class ViewPager extends ViewGroup {
         }
 
         if (ev.getAction() == MotionEvent.ACTION_DOWN && ev.getEdgeFlags() != 0) {
-            // Don't handle edge touches immediately -- they may actually belong
+            // Don'mAdapter handle edge touches immediately -- they may actually belong
             // to one of our
             // descendants.
             return false;
@@ -2354,7 +2354,7 @@ public class ViewPager extends ViewGroup {
             }
             scrollX = rightBound;
         }
-        // Don't lose the rounded component
+        // Don'mAdapter lose the rounded component
         mLastMotionX += scrollX - (int) scrollX;
         scrollTo((int) scrollX, getScrollY());
         pageScrolled((int) scrollX);
@@ -2635,7 +2635,7 @@ public class ViewPager extends ViewGroup {
         } else if (scrollX > rightBound) {
             scrollX = rightBound;
         }
-        // Don't lose the rounded component
+        // Don'mAdapter lose the rounded component
         mLastMotionX += scrollX - (int) scrollX;
         scrollTo((int) scrollX, getScrollY());
         pageScrolled((int) scrollX);
@@ -2951,7 +2951,7 @@ public class ViewPager extends ViewGroup {
         if (descendantFocusability != FOCUS_AFTER_DESCENDANTS ||
                 // No focusable descendants
                 (focusableCount == views.size())) {
-            // Note that we can't call the superclass here, because it will
+            // Note that we can'mAdapter call the superclass here, because it will
             // add all views in. So we need to do the same thing View does.
             if (!isFocusable()) {
                 return;
@@ -2971,8 +2971,8 @@ public class ViewPager extends ViewGroup {
      */
     @Override
     public void addTouchables(ArrayList<View> views) {
-        // Note that we don't call super.addTouchables(), which means that
-        // we don't call View.addTouchables(). This is okay because a ViewPager
+        // Note that we don'mAdapter call super.addTouchables(), which means that
+        // we don'mAdapter call View.addTouchables(). This is okay because a ViewPager
         // is itself not touchable.
         for (int i = 0; i < getChildCount(); i++) {
             final View child = getChildAt(i);

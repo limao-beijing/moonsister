@@ -5,6 +5,7 @@ import android.view.View;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.HomeThreeFragmentAdapter;
 import com.moonsister.tcjy.base.BaseListFragment;
+import com.moonsister.tcjy.bean.BannerBean;
 import com.moonsister.tcjy.bean.HomeParams;
 import com.moonsister.tcjy.bean.HomeThreeFragmentBean;
 import com.moonsister.tcjy.home.presenetr.HomeThreeFragmentPresenter;
@@ -20,8 +21,10 @@ import java.util.List;
 public class HomeThreeFragment extends BaseListFragment<HomeThreeFragmentAdapter, HomeThreeFragmentBean.DataBean> implements HomeThreeFragmentView {
     private HomeThreeHeaderViewHolder threeHeaderViewHolder;
     private HomeThreeFragmentPresenter presenter;
-    private String type;
+    private String type = "1";
     private HomeParams mParams;
+    // 0 搜索  1  推荐
+    private int flag = 1;
 
     @Override
     public HomeThreeFragmentAdapter setAdapter() {
@@ -31,16 +34,35 @@ public class HomeThreeFragment extends BaseListFragment<HomeThreeFragmentAdapter
     @Override
     protected View addListViewHead() {
         threeHeaderViewHolder = new HomeThreeHeaderViewHolder();
+        threeHeaderViewHolder.setPageType(type);
         return threeHeaderViewHolder.getContentView();
     }
 
     @Override
     protected void initChildData() {
-
         threeHeaderViewHolder.setActivity(getActivity());
         threeHeaderViewHolder.refreshView("");
+        threeHeaderViewHolder.setFilterDoneListenter(new HomeThreeHeaderViewHolder.onFilterDoneListenter() {
+            @Override
+            public void onFilterDone(HomeParams params) {
+                if (params != null) {
+                    mParams = params;
+                    if (mXListView != null) {
+                        mXListView.setRefreshing(true);
+                    }
+                }
+            }
+        });
         presenter = new HomeThreeFragmentPresenterImpl();
         presenter.attachView(this);
+        presenter.loadBannerData();
+    }
+
+    /**
+     * 是否是推荐数据
+     */
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 
     @Override
@@ -50,12 +72,12 @@ public class HomeThreeFragment extends BaseListFragment<HomeThreeFragmentAdapter
 
     @Override
     protected void onRefresh() {
-        presenter.laodRefresh(page,type, mParams);
+        presenter.laodRefresh(page, type, flag, mParams);
     }
 
     @Override
     protected void onLoadMore() {
-        presenter.loadMore(page,type, mParams);
+        presenter.loadMore(page, type, flag, mParams);
     }
 
     @Override
@@ -65,7 +87,9 @@ public class HomeThreeFragment extends BaseListFragment<HomeThreeFragmentAdapter
 
     @Override
     public void hideLoading() {
+
         hideProgressDialog();
+        colorLoad();
     }
 
     @Override
@@ -78,5 +102,15 @@ public class HomeThreeFragment extends BaseListFragment<HomeThreeFragmentAdapter
         if (data != null) {
             addData(data);
         }
+    }
+
+    @Override
+    public void setBanner(BannerBean bean) {
+        threeHeaderViewHolder.setbanerDate(bean);
+    }
+
+    public void setShowSearchHeader(boolean showSearchHeader) {
+        if (threeHeaderViewHolder != null)
+            threeHeaderViewHolder.setSearchViewShow(true);
     }
 }

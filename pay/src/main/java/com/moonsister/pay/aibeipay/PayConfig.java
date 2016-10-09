@@ -10,9 +10,11 @@ public class PayConfig {
      * */
 
 
-    /**线上环境*/
-	public static final String appid = "3006375744";
-	public static final String publicKey="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCQ/SCVH37QQ8m8q2Z1+x/E1hvz0H9XWyHpOzHPGMuDc2EVQLDBxTFCIauwjPxmWboV8uy9ueCqm4fsp3Dm/kIAX2k4/QX7ifzie3eep8Ppo5n3m6T50R6BKm6VXJLuPAyqUjhgIWmYpxgZJEhMpnV982DzLmPpCy2wIc/6jORXGQIDAQAB";
+    /**
+     * 线上环境
+     */
+    public static final String appid = "3007658737";
+    public static final String publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDJho1GKRc2/F9AhzFgJNF94JXjAlKlsS/6LQvQ5aDPR1Yup1WuEWtEHTWosRK/2jOXdfa0VffZvMOdc2hD/HAJsr0kNMiXwd/33baxZAYOqEJH2uJFgzsnjkuhqkav+XbWMRndHqdsupK3YgTY0hpzHNlL16lo+Po2crg+Co7MEQIDAQAB";
 //    /**
 //     * demo
 //     * 线上环境

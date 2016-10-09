@@ -45,6 +45,10 @@ public class OnlineFragmentAdapterViewHolder extends BaseRecyclerViewHolder<Home
     ImageView mIvPicThree;
     @Bind(R.id.ll_pic)
     LinearLayout mLlPic;
+    @Bind(R.id.tv_im)
+    TextView tv_im;
+    @Bind(R.id.tv_engagement)
+    TextView tv_engagement;
 
     public OnlineFragmentAdapterViewHolder(View view) {
         super(view);
@@ -57,6 +61,7 @@ public class OnlineFragmentAdapterViewHolder extends BaseRecyclerViewHolder<Home
         mTvHeight.setText(bean.getHeight());
         tv_user_name.setText(bean.getNickname());
         mIvAddVip.setVisibility(StringUtis.equals("1", bean.getVip_level()) ? View.VISIBLE : View.GONE);
+        mTvAddress.setText(bean.getDistance());
         List<HomeThreeFragmentBean.DataBean.ShowlistBean> showlist = bean.getShowlist();
         if (showlist != null) {
             for (int i = 0; i < showlist.size(); i++) {
@@ -76,6 +81,18 @@ public class OnlineFragmentAdapterViewHolder extends BaseRecyclerViewHolder<Home
                     pics.add(showlist.get(i).getL());
             }
         }
+        tv_im.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startAppConversationActivity(bean.getUid(), bean.getNickname(), bean.getFace());
+            }
+        });
+        tv_engagement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startPersonEngagementTypeActivity(bean.getUid(), bean.getNickname(), bean.getFace());
+            }
+        });
     }
 
     @Override

@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.moonsister.tcjy.bean.BaseDataBean;
-import com.moonsister.tcjy.bean.PingbiBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +14,17 @@ import java.util.List;
  */
 public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends RecyclerView.Adapter {
     protected List<T> datas;
+    protected BaseIView mBaseIView;
+
 //    private int layoutID;
 
     public BaseRecyclerViewAdapter(List<T> list) {
         this.datas = list;
 //        this.layoutID = layoutID;
     }
-
-
+    public BaseIView getBaseIView(){
+        return mBaseIView;
+    }
 
     @Override
     public int getItemViewType(int position) {
@@ -102,6 +104,15 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends Re
             datas.add(0, t);
             notifyDataSetChanged();
         }
+    }
+
+    /**
+     * 获取数据
+     *
+     * @return
+     */
+    public List<T> getDatas() {
+        return datas;
     }
 
     public interface onItemClickListener {

@@ -1,10 +1,11 @@
-package com.moonsister.tcjy.engagement;
+package com.moonsister.tcjy.engagement.widget;
 
 import android.view.View;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.OnClick;
@@ -30,22 +31,31 @@ public class EengegamentPublishActivity extends BaseActivity {
             finish();
             return;
         }
+        EnumConstant.EngegamentType type = null;
         switch (view.getId()) {
             case R.id.tv_fadai:
-                ActivityUtils.startActivity(EengegamentRecommendActivity.class);
+                type = EnumConstant.EngegamentType.fadai;
                 break;
             case R.id.tv_meal:
+                type = EnumConstant.EngegamentType.meal;
                 break;
             case R.id.tv_movie:
+                type = EnumConstant.EngegamentType.movie;
                 break;
             case R.id.tv_shop:
+                type = EnumConstant.EngegamentType.shop;
                 break;
             case R.id.tv_coffee:
+                type = EnumConstant.EngegamentType.coffee;
                 break;
             case R.id.tv_travel:
+                type = EnumConstant.EngegamentType.travel;
                 break;
             case R.id.tv_more:
+                type = EnumConstant.EngegamentType.more;
                 break;
+
         }
+        ActivityUtils.startEengegamentRecommendActivity(type);
     }
 }

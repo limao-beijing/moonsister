@@ -7,7 +7,7 @@ import com.moonsister.tcjy.bean.BaseBean;
  * Created by jb on 2016/9/25.
  */
 public interface MyThreeFragmentModel extends BaseIModel {
-    void loadData(int page, String type, onLoadDateSingleListener<BaseBean> listener);
+    void loadData(String uid, int page, String type, onLoadDateSingleListener<BaseBean> listener);
 
-    void loadHeaderData(onLoadDateSingleListener<BaseBean> listener);
+    void loadHeaderData(String uid, onLoadDateSingleListener<BaseBean> listener);
 }

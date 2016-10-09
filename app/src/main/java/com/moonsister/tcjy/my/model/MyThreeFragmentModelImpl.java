@@ -15,8 +15,8 @@ import rx.Observable;
  */
 public class MyThreeFragmentModelImpl implements MyThreeFragmentModel {
     @Override
-    public void loadData(int page, String type, onLoadDateSingleListener<BaseBean> listener) {
-        Observable<MyThreeFragmentBean> observable = ServerApi.getAppAPI().getMyThreeFragment(page, type, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+    public void loadData(String uid, int page, String type, onLoadDateSingleListener<BaseBean> listener) {
+        Observable<MyThreeFragmentBean> observable = ServerApi.getAppAPI().getMyThreeFragment(uid, page, type, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<MyThreeFragmentBean>() {
             @Override
             public void onSuccess(MyThreeFragmentBean bean) {
@@ -31,8 +31,8 @@ public class MyThreeFragmentModelImpl implements MyThreeFragmentModel {
     }
 
     @Override
-    public void loadHeaderData(onLoadDateSingleListener<BaseBean> listener) {
-        Observable<UserDetailBean> observable = ServerApi.getAppAPI().userdetailbean(UserInfoManager.getInstance().getUid(), UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+    public void loadHeaderData(String uid, onLoadDateSingleListener<BaseBean> listener) {
+        Observable<UserDetailBean> observable = ServerApi.getAppAPI().userdetailbean(uid, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<UserDetailBean>() {
             @Override
             public void onSuccess(UserDetailBean bean) {

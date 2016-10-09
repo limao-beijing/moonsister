@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">初色</string>
+    <string name="app_name">同城约</string>
     <!--<string name="app_name">探探寂陌陌生人-求约爱</string>-->
-    <string name="app_home_page">首页</string>
+    <string name="app_home_page">广场</string>
     <string name="app_im_page">聊天</string>
-    <string name="find">发现</string>
+    <string name="find">实时</string>
     <string name="app__my_page">我的</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -128,7 +128,7 @@
     <string name="sex_change">性别：</string>
     <string name="birthday_change">生日:</string>
     <string name="address_change">所在地:</string>
-    <string name="personalized_signature_change">个性签名：</string>
+    <string name="personalized_signature_change">爱情宣言：</string>
     <string name="user_introduction_change">自我简介: </string>
     <string name="education_change">学历：</string>
     <string name="heigth_change">身高：</string>
@@ -290,7 +290,7 @@
     <string name="movie">电影</string>
     <string name="shop">逛街</string>
     <string name="coffee">咖啡</string>
-    <string name="engagement_pay">约见担保费:</string>
+    <string name="engagement_pay">约见担保费 :</string>
     <string name="input_engagement_pay_number">请输入打赏金额</string>
     <string name="date">日期:</string>
     <string name="input_engagement_pay_date">请选择约见时间</string>
@@ -307,4 +307,43 @@
     <string name="home_square">传情广场</string>
     <string name="already_binding">已绑定 : </string>
     <string name="online_user">实时在线会员</string>
+    <string name="my_three_pic"> 图片 ( %1$s )</string>
+    <string name="my_three_video"> 视频 ( %1$s )</string>
+    <string name="my_three_voice"> 语音 ( %1$s )</string>
+    <string name="engagement">约见</string>
+    <string name="engagement_address">地址： </string>
+    <string name="engagement_date">日期：</string>
+    <string name="engagement_message">留言： </string>
+    <string name="submit_engagment">提交约见</string>
+    <string name="hint_engagement_message">我想对你说.....</string>
+    <string name="engagement_rule">您的约见担保费将暂存平台，48小时内，对方若无回应或者 拒绝赴约，将返还你的财务中心；若约见成功，到达约会地 点后，您确认对方到场，约见信息真实之后，对方将获得约 见担保费；</string>
+    <string name="input_date_not_empty">输入资料不全</string>
+    <string name="travel">旅游</string>
+    <string name="engagemented">被约见</string>
+    <string name="not_more_data">没有更多数据</string>
+    <string name="engagement__appeal">我要申诉</string>
+    <string name="engagement_agree">同意赴约</string>
+    <string name="engagement_success">约会成功</string>
+    <string name="engagement_again">重新约见</string>
+    <string name="engagement_await">等待应约</string>
+    <string name="engagement_status_in">约见中</string>
+    <string name="engagement_status_failure">约见失败</string>
+    <string name="engagement_status_success">约见成功</string>
+    <string name="engagement_status_text_in">对方答应赴约</string>
+    <string name="engagement_status_text_failure">对方拒绝赴约</string>
+    <string name="engagement_status_text_success">已见面</string>
+    <string name="engagement_status_text_await">等待倒计时</string>
+    <string name="engagement_appeal_text">请输入申诉内容.....</string>
+    <string name="engagement_submit_appeal">提交申诉</string>
+    <string name="engagement_appeal">申诉</string>
+    <string name="engagement_invite">赴约</string>
+    <string name="engagement_refuse">婉拒</string>
+    <string name="engagement_appointments">您已赴约</string>
+    <string name="engagement_refuse_appointments">您已拒绝</string>
+    <string name="order_lock">订单锁定中,暂时无法操作</string>
+    <string name="order_finish">订单已经完成，无法操作</string>
+    <string name="add_res">添加</string>
+    <string name="hougong">后宫</string>
+
+
 </resources>

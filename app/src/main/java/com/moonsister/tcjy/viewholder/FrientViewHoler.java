@@ -51,9 +51,9 @@ public class FrientViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBean>
         tvUserName.setText(dataBean.getNickname());
         tvSubmit.setTag(position);
         //判断是否是新好友，1为新好友，2则不是
-        if(StringUtis.equals(dataBean.getIsnew(),"1")){
+        if (StringUtis.equals(dataBean.getIsnew(), "1")) {
             mImageView.setVisibility(View.VISIBLE);//是新好友则显示新好友图标，提醒用户
-        }else{
+        } else {
             mImageView.setVisibility(View.INVISIBLE);//不是新好友则隐藏提示
         }
         if (StringUtis.equals(dataBean.getIsfollow(), "1")) {//关注则1，未关注则2
@@ -105,7 +105,8 @@ public class FrientViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBean>
 
     @Override
     protected void onItemclick(View view, FrientBaen.DataBean dataBean, int position) {
-        ActivityUtils.startDynamicActivity(dataBean.getUid());
+//        ActivityUtils.startDynamicActivity(dataBean.getUid());
+        ActivityUtils.startPersonalActivity(dataBean.getUid());
 
     }
 

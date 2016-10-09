@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    >
+
+    <include layout="@layout/app_titlebar"/>
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/app_title_bar"
+        android:layout_margin="@dimen/x30"
+        android:background="@color/gray_d6dde4"
+        android:enabled="true"
+        android:gravity="left|top"
+        android:lines="8"
+        android:maxEms="200"
+        android:padding="@dimen/x15"
+        android:hint="@string/engagement_appeal_text"
+        android:textColor="@color/text_gray_737c7d"/>
+
+    <TextView
+        android:id="@+id/tv_submit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x96"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/x30"
+        android:background="@drawable/shape_background_half_round_gray"
+        android:gravity="center"
+        android:text="@string/engagement_submit_appeal"
+        android:textColor="@color/white"/>
+
+</RelativeLayout>

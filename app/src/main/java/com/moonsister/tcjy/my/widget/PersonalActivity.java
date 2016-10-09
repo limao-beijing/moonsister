@@ -1,19 +1,31 @@
 package com.moonsister.tcjy.my.widget;
 
+import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
+import com.moonsister.tcjy.base.BaseIModel;
+import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.PersonalMessageFenBean;
+import com.moonsister.tcjy.event.Events;
+import com.moonsister.tcjy.event.RxBus;
+import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenter;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.PersonalActivityFenView;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.trello.rxlifecycle.ActivityEvent;
 
 import java.util.Calendar;
 import java.util.List;
@@ -25,13 +37,14 @@ import butterknife.OnClick;
  * Created by x on 2016/8/25.
  */
 public class PersonalActivity extends BaseActivity implements PersonalActivityFenView {
-
-    //    @Bind(R.id.image_back)//返回键
+    //
+//    @Bind(R.id.image_back)//返回键
 //            ImageView image_back;
     PersonalMessageFenBean.DataBean.BaseinfoBean baseinfo;
     List<PersonalMessageFenBean.DataBean.RulesBean> rules;
     PersonalMessageFenBean.DataBean.VipinfoBean vipinfo;
     PersonalMessageFenBean.DataBean.DlistBean dlist;
+    PersonalMessageFenBean.DataBean.AinfoBean ainfo;
     PersonalActivityPersenter persenter;
     @Bind(R.id.iv_user_icon)//头像
             ImageView iv_user_icon;
@@ -59,8 +72,45 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
             TextView tv_love_talk;
     @Bind(R.id.sv)
     ScrollView mScrollView;
+
+    @Bind(R.id.tv_accept)
+    TextView tv_accept;
     String id;
     String get_source;
+    @Bind(R.id.pvt_picture)
+    ImageView mPvtPicture;
+    @Bind(R.id.pvt_picture2)
+    ImageView mPvtPicture2;
+    @Bind(R.id.pvt_picture3)
+    ImageView mPvtPicture3;
+    @Bind(R.id.pvt_video_1)
+    ImageView mPvtVideo1;
+    @Bind(R.id.pvt_video_2)
+    ImageView mPvtVideo2;
+    @Bind(R.id.pvt_video_3)
+    ImageView mPvtVideo3;
+    @Bind(R.id.pvt_voice_1)
+    ImageView mPvtVoice1;
+    @Bind(R.id.pvt_voice_2)
+    ImageView mPvtVoice2;
+    @Bind(R.id.pvt_voice_3)
+    ImageView mPvtVoice3;
+    @Bind(R.id.ll_pic)
+    LinearLayout mLlPic;
+    @Bind(R.id.ll_video)
+    LinearLayout mLlVideo;
+    @Bind(R.id.ll_vioce)
+    LinearLayout mLlVioce;
+    @Bind(R.id.tv_weixinhao)
+    TextView tv_weixinhao;
+    @Bind(R.id.tv_phone_number)
+    TextView tv_phone_number;
+    @Bind(R.id.tv_sex)
+    TextView tv_sex;
+    //    @Bind(R.id.massage_look_line)
+//    ImageView massage_look_line;
+    @Bind(R.id.tv_ifline)
+    TextView tv_ifline;
 
     @Override
     protected View setRootContentView() {
@@ -75,6 +125,14 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
         persenter = new PersonalActivityPersenterImpl();
         persenter.attachView(this);
         persenter.sendPersonalMessageFen(id, get_source);
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.BUY_VIP_SUCCESS)
+                .onNext(events ->
+                        persenter.sendPersonalMessageFen(id, get_source)
+                )
+                .create();
+
 
     }
 
@@ -94,12 +152,14 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
         showToast(msg);
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void success(PersonalMessageFenBean getPersonalBean) {
         baseinfo = getPersonalBean.getData().getBaseinfo();
         rules = getPersonalBean.getData().getRules();
         vipinfo = getPersonalBean.getData().getVipinfo();
         dlist = getPersonalBean.getData().getDlist();
+        ainfo = getPersonalBean.getData().getAinfo();
         ImageServerApi.showURLSamllImage(iv_user_icon, baseinfo.getFace());//展示头像
         String isvip = rules.get(1).getIsvip();//vip的显示与否
         if (isvip.equals("0")) {
@@ -107,6 +167,7 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
         } else {
             image_if_vip.setVisibility(View.VISIBLE);
         }
+        tv_sex.setText(getString(baseinfo.getSex() == 1 ? R.string.boy : R.string.girls));
         tv_name_three.setText(baseinfo.getNickname());//用户名显示
         Calendar c = Calendar.getInstance();//获得系统当前日期
         String birthday = baseinfo.getBirthday();//得到生日
@@ -129,7 +190,50 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
         } else if (value.equals("看情况")) {
             tv_long_distance.setText("是");
         }
+        if (StringUtis.equals(baseinfo.getIsfollow(), "1")) {
+            tv_accept.setText("已入宫");
+            Drawable drawable = getDrawable(R.mipmap.person_na_hougong);
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+            tv_accept.setCompoundDrawables(drawable, null, null, null);
+        } else {
+            tv_accept.setText("纳后宫");
+            Drawable drawable = getResources().getDrawable(R.mipmap.tv_accept);
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+            tv_accept.setCompoundDrawables(drawable, null, null, null);
+
+        }
         tv_love_talk.setText(baseinfo.getSignature());
+        List<PersonalMessageFenBean.DataBean.BaseinfoBean.ImageDataBean> images = baseinfo.getImage_data();
+        List<PersonalMessageFenBean.DataBean.BaseinfoBean.ImageDataBean> videos = baseinfo.getImage_video();
+        List<PersonalMessageFenBean.DataBean.BaseinfoBean.ImageDataBean> voices = baseinfo.getImage_voice();
+        showImage(images, mPvtPicture, mPvtPicture2, mPvtPicture3);
+        showImage(videos, mPvtVideo1, mPvtVideo2, mPvtVideo3);
+        showImage(voices, mPvtVoice1, mPvtVoice2, mPvtVoice3);
+        if (images != null && images.size() != 0) {
+            mLlPic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ActivityUtils.startPersonThreeActivity(id, baseinfo.getNickname(), baseinfo.getFace());
+                }
+            });
+        }
+        if (videos != null && videos.size() != 0) {
+            mLlVideo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ActivityUtils.startPersonThreeActivity(id, baseinfo.getNickname(), baseinfo.getFace());
+                }
+            });
+        }
+        if (voices != null && voices.size() != 0) {
+            mLlPic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ActivityUtils.startPersonThreeActivity(id, baseinfo.getNickname(), baseinfo.getFace());
+                }
+            });
+        }
+
     }
 
     @Override
@@ -137,18 +241,145 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
 
     }
 
+    private void showImage(List<PersonalMessageFenBean.DataBean.BaseinfoBean.ImageDataBean> pics, ImageView imageView1, ImageView imageView2, ImageView imageView3) {
+        if (pics == null || pics.size() == 0) {
+            imageView1.setImageResource(R.mipmap.person_no_data);
+            imageView2.setVisibility(View.GONE);
+            imageView3.setVisibility(View.GONE);
+            return;
+        }
 
-    @OnClick({R.id.tv_sayhello, R.id.tv_accept, R.id.tv_make_an_appointment})
+        for (int i = 0; i < pics.size(); i++) {
+            if (i == 0) {
+                String pic1 = pics.get(i).getS();
+                if (StringUtis.isEmpty(pic1)) {
+                    imageView1.setVisibility(View.GONE);
+                } else {
+                    ImageServerApi.showURLImage(imageView1, pics.get(i).getS());
+
+                }
+
+            }
+            if (i == 1) {
+                String pic1 = pics.get(i).getS();
+                if (StringUtis.isEmpty(pic1)) {
+                    imageView2.setVisibility(View.GONE);
+                } else {
+                    ImageServerApi.showURLImage(imageView2, pics.get(i).getS());
+
+                }
+            }
+            if (i == 2) {
+                String pic1 = pics.get(i).getS();
+                if (StringUtis.isEmpty(pic1)) {
+                    imageView3.setVisibility(View.GONE);
+                } else {
+                    ImageServerApi.showURLImage(imageView3, pics.get(i).getS());
+                }
+            }
+
+        }
+    }
+
+
+    @OnClick({R.id.image_back, R.id.tv_sayhello, R.id.tv_accept, R.id.tv_make_an_appointment, R.id.massage_look, R.id.massage_look_phone, R.id.massage_look_line})
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.image_back:
+                finish();
+                break;
             case R.id.tv_sayhello:
-                ActivityUtils.startAppConversationActivity(id, "", "");
+                ActivityUtils.startAppConversationActivity(id, baseinfo.getNickname(), baseinfo.getFace());
                 break;
             case R.id.tv_accept:
+                waicth();
                 break;
             case R.id.tv_make_an_appointment:
-                ActivityUtils.startEngagementTypeActivity();
+                if (baseinfo != null)
+                    ActivityUtils.startPersonEngagementTypeActivity(id, baseinfo.getNickname(), baseinfo.getFace());
+                break;
+            case R.id.massage_look:
+                if (baseinfo != null) {
+                    if (ainfo.getVip_level() > 0) {
+                        tv_weixinhao.setText(vipinfo.getWeixin());
+                    } else {
+                        showNotLevel();
+                    }
+                }
+                break;
+            case R.id.massage_look_phone:
+                if (baseinfo != null) {
+                    if (ainfo.getVip_level() > 0) {
+                        tv_phone_number.setText(vipinfo.getSmobile());
+                    } else {
+                        showNotLevel();
+                    }
+                }
+                break;
+            case R.id.massage_look_line:
+                if (baseinfo != null) {
+                    if (ainfo.getVip_level() > 0) {
+                        tv_ifline.setText(vipinfo.getZaixian() == 1 ? "在线" : "不在线");
+                    }
+                } else {
+                    showNotLevel();
+                }
                 break;
         }
     }
+
+    private void showNotLevel() {
+
+
+        AlertDialog myDialog = new AlertDialog.Builder(this).create();
+        myDialog.show();
+        View view = UIUtils.inflateLayout(R.layout.dialog_show_notlevel);
+        myDialog.getWindow().setContentView(view);
+        view.findViewById(R.id.view_que)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ActivityUtils.startBuyVipActivity();
+                        myDialog.dismiss();
+                    }
+                });
+
+
+    }
+
+    private void waicth() {
+        showLoading();
+        UserActionModelImpl model = new UserActionModelImpl();
+        model.wacthAction(id, StringUtis.equals(baseinfo.getIsfollow(), "1") ? "2" : "1", new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+            @Override
+            public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+                if (StringUtis.equals(bean.getCode(), "1")) {
+                    baseinfo.setIsfollow(StringUtis.equals(baseinfo.getIsfollow(), "1") ? "2" : "1");
+                    if (StringUtis.equals(baseinfo.getIsfollow(), "1")) {
+                        tv_accept.setText("已入宫");
+                        Drawable drawable = getResources().getDrawable(R.mipmap.person_na_hougong);
+                        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                        tv_accept.setCompoundDrawables(drawable, null, null, null);
+                        tv_accept.setTextColor(getResources().getColor(R.color.color_f790ae));
+                    } else {
+                        tv_accept.setText("纳后宫");
+                        Drawable drawable = getResources().getDrawable(R.mipmap.tv_accept);
+                        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                        tv_accept.setCompoundDrawables(drawable, null, null, null);
+                        tv_accept.setTextColor(getResources().getColor(R.color.color_3e838a));
+
+                    }
+                }
+                showToast(bean.getMsg());
+                hideLoading();
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                showToast(msg);
+                hideLoading();
+            }
+        });
+    }
+
 }

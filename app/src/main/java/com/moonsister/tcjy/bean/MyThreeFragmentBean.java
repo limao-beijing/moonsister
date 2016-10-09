@@ -26,6 +26,8 @@ public class MyThreeFragmentBean extends BaseBean {
     public static class DataBean extends BaseDataBean {
         private String create_time;
         private String uid;
+        private String source_type;
+
         /**
          * s : http://mimei.img-cn-beijing.aliyuncs.com/a/image/02/2016-07-13/5785e5905b122.jpg@!336_246
          * v :
@@ -33,6 +35,14 @@ public class MyThreeFragmentBean extends BaseBean {
          */
 
         private ContentsBean contents;
+
+        public String getSource_type() {
+            return source_type;
+        }
+
+        public void setSource_type(String source_type) {
+            this.source_type = source_type;
+        }
 
         public String getCreate_time() {
             return create_time;

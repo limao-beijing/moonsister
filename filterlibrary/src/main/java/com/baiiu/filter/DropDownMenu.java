@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
@@ -80,7 +82,7 @@ public class DropDownMenu extends RelativeLayout implements View.OnClickListener
          * 3.添加展开页面,装载筛选器list
          */
         frameLayoutContainer = new FrameLayout(getContext());
-        frameLayoutContainer.setBackgroundColor(getResources().getColor(R.color.black_p50));
+        frameLayoutContainer.setBackgroundColor(getResources().getColor(R.color.transparent));
         addView(frameLayoutContainer, params);
 
         frameLayoutContainer.setVisibility(GONE);
@@ -135,6 +137,10 @@ public class DropDownMenu extends RelativeLayout implements View.OnClickListener
 
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(-1, -2);
         params.bottomMargin = bottomMargin;//添加距离底部高度
+        ViewParent parent = view.getParent();
+        if (parent != null && parent instanceof ViewGroup) {
+            ((ViewGroup) parent).removeView(view);
+        }
         frameLayoutContainer.addView(view, position, params);
         view.setVisibility(GONE);
     }

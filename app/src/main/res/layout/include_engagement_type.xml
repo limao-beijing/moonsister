@@ -51,7 +51,7 @@
         android:layout_alignRight="@+id/tv_movie"
         android:layout_alignTop="@+id/tv_shop"
         android:drawableTop="@mipmap/engagment_main_travel"
-        android:text="@string/coffee"/>
+        android:text="@string/travel"/>
 
     <TextView
         android:id="@+id/tv_more"
@@ -59,8 +59,8 @@
         android:layout_alignLeft="@+id/tv_coffee"
         android:layout_below="@+id/tv_coffee"
         android:layout_marginTop="@dimen/x40"
-        android:drawableTop="@mipmap/engagment_main_coffee"
-        android:text="@string/coffee"/>
+        android:drawableTop="@mipmap/engagment_main_more"
+        android:text="@string/more"/>
 
     <ImageView
         android:id="@+id/iv_cancel"

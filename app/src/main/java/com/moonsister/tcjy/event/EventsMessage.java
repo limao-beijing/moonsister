@@ -549,7 +549,7 @@ public final class EventsMessage  implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         if (callback != null) {
             throw new RuntimeException(
-                    "Can't marshal callbacks across processes.");
+                    "Can'mAdapter marshal callbacks across processes.");
         }
         dest.writeInt(what);
         dest.writeInt(arg1);
@@ -561,7 +561,7 @@ public final class EventsMessage  implements Parcelable {
                 dest.writeParcelable(p, flags);
             } catch (ClassCastException e) {
                 throw new RuntimeException(
-                        "Can't marshal non-Parcelable objects across processes.");
+                        "Can'mAdapter marshal non-Parcelable objects across processes.");
             }
         } else {
             dest.writeInt(0);

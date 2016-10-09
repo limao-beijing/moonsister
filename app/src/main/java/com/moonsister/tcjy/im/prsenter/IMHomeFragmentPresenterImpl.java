@@ -22,13 +22,6 @@ public class IMHomeFragmentPresenterImpl implements IMHomeFragmentPresenter {
 
     @Override
     public void switchNavigation(int id) {
-        switch (id) {
-            case R.id.tv_navigation_good_select:
-                imHomeView.swith2PrivateChat();
-                break;
-            case R.id.tv_navigation_same_city:
-                imHomeView.swith2Friend();
-                break;
-        }
+
     }
 }

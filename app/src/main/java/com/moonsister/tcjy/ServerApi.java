@@ -5,6 +5,7 @@ import com.moonsister.pay.tencent.PayBean;
 import com.moonsister.tcjy.bean.BackInsertBean;
 import com.moonsister.tcjy.bean.BackTermsBean;
 import com.moonsister.tcjy.bean.BalanceBean;
+import com.moonsister.tcjy.bean.BannerBean;
 import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.CardInfoBean;
 import com.moonsister.tcjy.bean.CertificationStatusBean;
@@ -14,6 +15,8 @@ import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.DownApkBean;
 import com.moonsister.tcjy.bean.DynamicBean;
 import com.moonsister.tcjy.bean.DynamicDatailsBean;
+import com.moonsister.tcjy.bean.EngagemengRecommendBean;
+import com.moonsister.tcjy.bean.EngagementManagerBean;
 import com.moonsister.tcjy.bean.FeelingSquareFilterBean;
 import com.moonsister.tcjy.bean.FeelingSquarePMDBean;
 import com.moonsister.tcjy.bean.FeelingSquareSearchBean;
@@ -40,6 +43,7 @@ import com.moonsister.tcjy.bean.RegThridBean;
 import com.moonsister.tcjy.bean.RegiterBean;
 import com.moonsister.tcjy.bean.RongyunBean;
 import com.moonsister.tcjy.bean.SearchReasonBaen;
+import com.moonsister.tcjy.bean.StatusBean;
 import com.moonsister.tcjy.bean.TiXinrRecordBean;
 import com.moonsister.tcjy.bean.UserDetailBean;
 import com.moonsister.tcjy.bean.UserFriendListBean;
@@ -177,6 +181,7 @@ public class ServerApi {
 
     public interface AppAPI {
         String baseUrl = "http://3test.yytbzs.cn:88/index.php/index/";
+//        String baseUrl = "http://3.yytbzs.cn:88/index.php/index/";
 //        String baseUrl = "http://2.yytbzs.cn:88/index.php/index/";
 //        String baseUrl = "http://mimei.cntttt.com:88/public/index.php/index/";
 
@@ -1107,8 +1112,9 @@ public class ServerApi {
          * @param uid
          * @return
          */
-        @GET("user/user_detail_rule_single/")
+        @GET("user/user_detail_rule")
         Observable<PersonalReviseMessageBean> setPersonalReviseMessage(@Query("uid") String uid,
+                                                                       @Query("get_source") String get_source,
                                                                        @Query("authcode") String authcode,
                                                                        @Query("channel") String channelId,
                                                                        @Query("version_type") String apiVersion);
@@ -1298,6 +1304,7 @@ public class ServerApi {
         Observable<HomeThreeFragmentBean> getHomeThree(@Field("type") String type,
                                                        @Field("params") String serialize,
                                                        @Field("page") int page,
+                                                       @Field("flag") int flag,
                                                        @Field("authcode") String authcode,
                                                        @Field("channel") String id);
 
@@ -1311,10 +1318,148 @@ public class ServerApi {
          * @return
          */
         @GET("source/get_source_list")
-        Observable<MyThreeFragmentBean> getMyThreeFragment(@Query("page") int page,
+        Observable<MyThreeFragmentBean> getMyThreeFragment(@Query("uid") String uid,
+                                                           @Query("page") int page,
                                                            @Query("source_type") String type,
                                                            @Query("authcode") String authcode,
                                                            @Query("channel") String id);
+
+        /**
+         * 约会推荐用户列表
+         *
+         * @param page
+         * @param type
+         * @param authcode
+         * @param id
+         * @return
+         */
+        @GET("index/yuehui_list")
+        Observable<EngagemengRecommendBean> getEngagemengRecommen(@Query("page") int page,
+                                                                  @Query("type") int type,
+                                                                  @Query("authcode") String authcode,
+                                                                  @Query("channel") String id);
+
+        /**
+         * 发布约会
+         *
+         * @param type
+         * @param uid
+         * @param money
+         * @param date
+         * @param address
+         * @param message
+         * @param authcode
+         * @param id
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("dating/pub_dating")
+        Observable<PayBean> getEngagementOreder(@Field("type") int type,
+                                                @Field("to_uid") String uid,
+                                                @Field("money") String money,
+                                                @Field("date") String date,
+                                                @Field("address") String address,
+                                                @Field("msg") String message,
+                                                @Field("pay_type") String pay_type,
+                                                @Field("version_type") String version_type,
+                                                @Field("is_pay_type") String payType,
+                                                @Field("authcode") String authcode,
+                                                @Field("channel") String id);
+
+        /**
+         * 发布的约会
+         *
+         * @param page
+         * @param authcode
+         * @param channel
+         * @return
+         */
+        @GET("Dating/get_my_list_pub")
+        Observable<EngagementManagerBean> getEngagementList(@Query("page") int page,
+                                                            @Query("authcode") String authcode,
+                                                            @Query("channel") String channel);
+
+        /**
+         * 被要请的约会的约会
+         *
+         * @param page
+         * @param authcode
+         * @param channel
+         * @return
+         */
+        @GET("Dating/get_my_list")
+        Observable<EngagementManagerBean> getEngagementPassivityList(@Query("page") int page,
+                                                                     @Query("authcode") String authcode,
+                                                                     @Query("channel") String channel);
+
+        /**
+         * 设置约会成功
+         *
+         * @param id
+         * @param authcode
+         * @param channel
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("Dating/set_datting_success")
+        Observable<StatusBean> getSubmitSuccess(@Field("dating_id") String id,
+                                                @Field("authcode") String authcode,
+                                                @Field("channel") String channel);
+
+        /**
+         * 约会状态操作
+         *
+         * @param id
+         * @param authcode
+         * @param channel
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("Dating/set_dating_status")
+        Observable<StatusBean> getsubmitInviteSuccess(@Field("dating_id") String id,
+                                                      @Field("action_type") String type,
+                                                      @Field("authcode") String authcode,
+                                                      @Field("channel") String channel);
+
+        /**
+         * 约会申诉
+         *
+         * @param id
+         * @param content
+         * @param authcode
+         * @param channel
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("Dating/dating_appeal")
+        Observable<StatusBean> getSubmitEngagementAppeal(@Field("dating_id") String id,
+                                                         @Field("msg") String content,
+                                                         @Field("authcode") String authcode,
+                                                         @Field("channel") String channel);
+
+        /**
+         * 用户资源发布
+         *
+         * @param type
+         * @param json
+         * @param authcode
+         * @param id
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("source/add")
+        Observable<BaseBean> getDynamicResAdd(@Field("source_type") int type,
+                                              @Field("contents") String json,
+                                              @Field("authcode") String authcode,
+                                              @Field("channel") String id);
+
+        /**
+         * @param authcode
+         * @param id
+         */
+        @GET("index/v3_notice")
+        Observable<BannerBean> getloadBannerData(@Query("authcode") String authcode,
+                                                 @Query("channel") String id);
     }
 }
 

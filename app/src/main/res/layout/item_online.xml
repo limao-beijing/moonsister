@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@color/white">
 
     <LinearLayout
@@ -75,7 +75,7 @@
 
     <LinearLayout
         android:id="@+id/ll_pic"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/x210"
         android:layout_below="@+id/ll_user_info"
         android:layout_marginBottom="@dimen/x30"
@@ -86,7 +86,7 @@
         <ImageView
             android:id="@+id/iv_pic_one"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="@dimen/x2"
             android:scaleType="centerCrop"
@@ -95,7 +95,7 @@
         <ImageView
             android:id="@+id/iv_pic_two"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="@dimen/x2"
             android:scaleType="centerCrop"
@@ -104,11 +104,44 @@
         <ImageView
             android:id="@+id/iv_pic_three"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="@dimen/x2"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher"/>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_engagement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ll_pic"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/x10"
+        android:layout_marginRight="@dimen/x40"
+        android:background="@drawable/shape_background_half_round_red"
+        android:paddingBottom="@dimen/x10"
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x30"
+        android:paddingTop="@dimen/x10"
+        android:text="@string/engagement"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_13"/>
+
+    <TextView
+        android:id="@+id/tv_im"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ll_pic"
+        android:layout_marginBottom="@dimen/x10"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_toLeftOf="@id/tv_engagement"
+        android:background="@drawable/shape_online_bule_text"
+        android:paddingBottom="@dimen/x10"
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x30"
+        android:paddingTop="@dimen/x10"
+        android:text="@string/im"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_13"/>
 </RelativeLayout>

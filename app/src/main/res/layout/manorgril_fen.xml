@@ -31,9 +31,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/y36"
-        android:text="选择后不可更改性别，真是填写哦～"
+        android:text="选择后不可更改性别，务必认真填写哦～"
         android:textColor="@color/grid_line"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:id="@+id/textView"/>
 
     <TextView
         android:id="@+id/textview_login"

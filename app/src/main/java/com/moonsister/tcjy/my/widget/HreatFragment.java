@@ -88,7 +88,7 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
         //循环加载数据到gridview中
         for (int i = 0; i < images_text.length; i++) {
             Map<String, Object> listItem = new HashMap<String, Object>();
-            listItem.put("t", images[i]);
+            listItem.put("mAdapter", images[i]);
             //添加到List数组中
             listItem.put("m", images_text[i]);
             listItems.add(listItem);
@@ -96,7 +96,7 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
         }
         //利用simpleAdapter适配器适配数据
         SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(), listItems,
-                R.layout.gridviewitem, new String[]{"t", "m"}, new int[]{
+                R.layout.gridviewitem, new String[]{"mAdapter", "m"}, new int[]{
                 R.id.im, R.id.textview});
         gridView.setAdapter(simpleAdapter);
         gridView.setOnItemClickListener(this);

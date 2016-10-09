@@ -18,7 +18,7 @@ import java.util.List;
  * Created by baiiu on 15/12/17.
  * 双列ListView
  */
-public class DoubleListView<LEFTD, RIGHTD> extends LinearLayout implements AdapterView.OnItemClickListener {
+public class DoubleListView<LEFTD, RIGHTD> extends LinearLayout implements AdapterView.OnItemClickListener, View.OnClickListener {
 
     private BaseBaseAdapter<LEFTD> mLeftAdapter;
     private BaseBaseAdapter<RIGHTD> mRightAdapter;
@@ -45,6 +45,8 @@ public class DoubleListView<LEFTD, RIGHTD> extends LinearLayout implements Adapt
 
         lv_left = (ListView) findViewById(R.id.lv_left);
         lv_right = (ListView) findViewById(R.id.lv_right);
+        findViewById(R.id.tv_all_clean).setOnClickListener(this);
+        findViewById(R.id.tv_ok).setOnClickListener(this);
         lv_left.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         lv_right.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
@@ -83,17 +85,27 @@ public class DoubleListView<LEFTD, RIGHTD> extends LinearLayout implements Adapt
 
     private OnLeftItemClickListener<LEFTD, RIGHTD> mOnLeftItemClickListener;
     private OnRightItemClickListener<LEFTD, RIGHTD> mOnRightItemClickListener;
+    private OnActionItemClickListener mOnActionItemClickListener;
 
     public interface OnLeftItemClickListener<LEFTD, RIGHTD> {
         List<RIGHTD> provideRightList(LEFTD leftAdapter, int position);
     }
 
     public interface OnRightItemClickListener<LEFTD, RIGHTD> {
-        void onRightItemClick(LEFTD item, RIGHTD childItem);
+        void onRightItemClick(LEFTD item, RIGHTD childItem, int position);
+    }
+
+    public interface OnActionItemClickListener {
+        void onActionClick(View v);
     }
 
     public DoubleListView<LEFTD, RIGHTD> onLeftItemClickListener(OnLeftItemClickListener<LEFTD, RIGHTD> onLeftItemClickListener) {
         this.mOnLeftItemClickListener = onLeftItemClickListener;
+        return this;
+    }
+
+    public DoubleListView<LEFTD, RIGHTD> onActionItemClickListener(OnActionItemClickListener onActionItemClickListener) {
+        this.mOnActionItemClickListener = onActionItemClickListener;
         return this;
     }
 
@@ -114,6 +126,13 @@ public class DoubleListView<LEFTD, RIGHTD> extends LinearLayout implements Adapt
     private int mRightLastChecked;
     private int mLeftLastPosition;
     private int mLeftLastCheckedPosition;
+
+    @Override
+    public void onClick(View v) {
+        if (mOnActionItemClickListener != null) {
+            mOnActionItemClickListener.onActionClick(v);
+        }
+    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -146,7 +165,7 @@ public class DoubleListView<LEFTD, RIGHTD> extends LinearLayout implements Adapt
             mRightLastChecked = position;
 
             if (mOnRightItemClickListener != null) {
-                mOnRightItemClickListener.onRightItemClick(mLeftAdapter.getItem(mLeftLastCheckedPosition), mRightAdapter.getItem(mRightLastChecked));
+                mOnRightItemClickListener.onRightItemClick(mLeftAdapter.getItem(mLeftLastCheckedPosition), mRightAdapter.getItem(mRightLastChecked), mRightLastChecked);
             }
         }
     }

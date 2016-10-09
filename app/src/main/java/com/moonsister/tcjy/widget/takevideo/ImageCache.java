@@ -263,7 +263,7 @@ public class ImageCache {
 						if (canUseForInBitmap(item, options)) {
 							bitmap = item;
 
-							// Remove from reusable set so it can't be used
+							// Remove from reusable set so it can'mAdapter be used
 							// again
 							iterator.remove();
 							break;

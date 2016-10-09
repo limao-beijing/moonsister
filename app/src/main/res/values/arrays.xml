@@ -35,4 +35,14 @@
         <item>9420</item>
     </string-array>
 
+    <string-array name="engagement_type">
+        <item>约饭</item>
+        <item>发呆</item>
+        <item>电影</item>
+        <item>咖啡</item>
+        <item>逛街</item>
+        <item>旅游</item>
+        <item>其他</item>
+    </string-array>
+
 </resources>

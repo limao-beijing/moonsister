@@ -1,5 +1,7 @@
 package com.moonsister.tcjy.utils;
 
+import java.io.Serializable;
+
 /**
  * Created by jb on 2016/8/11.
  */
@@ -61,6 +63,20 @@ public class EnumConstant {
         private final int type;
 
         private SearchType(int type) {
+            this.type = type;
+        }
+
+        public int getType() {
+            return type;
+        }
+    }
+
+    public enum EngegamentType implements Serializable {
+        All(0), meal(1), fadai(2), movie(3),
+        coffee(4), shop(5), travel(6), more(7);
+        private final int type;
+
+        private EngegamentType(int type) {
             this.type = type;
         }
 
