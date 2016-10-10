@@ -183,7 +183,8 @@
                         android:layout_marginLeft="@dimen/x20"
                         android:layout_toRightOf="@+id/tv_wight_three"
                         android:background="@mipmap/image_position"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:visibility="gone"/>
 
                     <TextView
                         android:id="@+id/tv_position"
@@ -192,9 +193,10 @@
                         android:layout_marginLeft="@dimen/x5"
                         android:layout_toRightOf="@+id/image_position"
                         android:gravity="center"
-                        android:text="北京"
+                        android:text="@string/loading"
                         android:textColor="#3e838a"
-                        android:textSize="13sp"/>
+                        android:textSize="13sp"
+                        android:visibility="gone"/>
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -236,6 +238,7 @@
                     android:textColor="#1a2729"
                     android:textSize="16sp"/>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/y88"
@@ -400,6 +403,39 @@
                     android:textColor="#737c7d"
                     android:textSize="13sp"/>
             </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y88"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:text="QQ："
+                    android:textColor="#737c7d"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tv_qq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="XXXXXXXXXXX"
+                    android:textColor="#d96385"
+                    android:textSize="16sp"/>
+
+                <ImageView
+                    android:id="@+id/qq_massage_look"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x190"
+                    android:background="@mipmap/massage_look"/>
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"

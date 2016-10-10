@@ -1,60 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/app_gred_background"
-    android:orientation="vertical">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/y96"
-        android:orientation="horizontal"
-        android:background="@color/black">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/image_back"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/x20"
-            android:background="@mipmap/back"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/y96"
-            android:textSize="17sp"
-            android:textColor="#778998"
-            android:layout_marginLeft="@dimen/x240"
-            android:gravity="center"
-            android:text="余额充值"/>
-        </LinearLayout>
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_gred_background"
+              android:orientation="vertical">
+
+    <include layout="@layout/app_titlebar"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
+
         <EditText
+            android:id="@+id/recharge_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/recharge_edit"
             android:layout_marginTop="@dimen/y80"
+            android:background="@mipmap/edit_back"
             android:hint="请输入金额"
             android:paddingLeft="@dimen/x130"
-            android:textColor="@color/black"
-            android:background="@mipmap/edit_back"/>
+            android:textColor="@color/black"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:text="金额"
+            android:layout_marginLeft="@dimen/x30"
             android:layout_marginTop="@dimen/y110"
-            android:layout_marginLeft="@dimen/x30"/>
+            android:text="金额"
+            android:textColor="@color/black"
+            android:textSize="16sp"/>
     </RelativeLayout>
+
     <TextView
+        android:id="@+id/kending"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="确定"
-        android:id="@+id/kending"
-        android:textSize="18sp"
-        android:gravity="center"
         android:layout_marginTop="@dimen/y50"
+        android:background="@mipmap/withdraw"
+        android:gravity="center"
+        android:text="确定"
         android:textColor="@color/text_gray_color"
-        android:background="@mipmap/withdraw"/>
+        android:textSize="18sp"/>
 </LinearLayout>

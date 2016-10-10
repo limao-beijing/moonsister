@@ -57,7 +57,7 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
     public void onBindData(EngagementManagerBean.DataBean bean) {
         ImageServerApi.showURLImage(mRivAvater, bean.getFrom_face());
         mTvUserName.setText(bean.getFrom_nickname());
-        mTvEngagementMoney.setText(bean.getMoney());
+        mTvEngagementMoney.setText("约会费用：" + bean.getMoney());
         mTvEngagementAddress.setText(bean.getAddress());
         mTvEngagementDate.setText(bean.getDate());
         if (bean.getManagerType() == EngagementManagerFragment.ManagerType.activity) {
@@ -65,7 +65,37 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
         } else {
             selectEngegamentedStatus(bean);
         }
+        selectEngegamentedType(bean);
         setClick(bean);
+    }
+
+    private void selectEngegamentedType(EngagementManagerBean.DataBean bean) {
+        String type = "";
+        switch (bean.getType()) {
+
+            case 1:
+                type = getString(R.string.engagment_meal);
+                break;
+            case 2:
+                type = getString(R.string.asleep);
+                break;
+            case 3:
+                type = getString(R.string.movie);
+                break;
+            case 4:
+                type = getString(R.string.coffee);
+                break;
+            case 5:
+                type = getString(R.string.shop);
+                break;
+            case 6:
+                type = getString(R.string.travel);
+                break;
+            case 7:
+                type = getString(R.string.more);
+                break;
+        }
+        mTvEngagementType.setText("约见目的：" + type);
     }
 
     private void selectEngegamentedStatus(EngagementManagerBean.DataBean bean) {

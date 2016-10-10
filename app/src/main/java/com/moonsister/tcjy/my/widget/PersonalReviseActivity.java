@@ -1127,20 +1127,20 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
         rules = personalReviseMessageBean.getData().getRules();
         isshow = rules.get(0).getIsshow().toString();
         if (isshow.equals("1")) {
-            tv_mobile.setText(rules.get(0).getValue() + "");//手机  QQ 微信
+            tv_mobile.setText(rules.get(0).getValue() == null ? "" : rules.get(0).getValue() + "");//手机  QQ 微信
         } else {
             layout_mobile.setVisibility(View.GONE);
         }
 
         isshowqq = rules.get(1).getIsshow();
         if (isshowqq.equals("1")) {
-            tv_qq.setText(rules.get(1).getValue() + "");
+            tv_qq.setText(rules.get(1).getValue() == null ? "" : rules.get(1).getValue() + "");
         } else {
             layout_qq.setVisibility(View.GONE);
         }
         isshowweixin = rules.get(2).getIsshow();
         if (isshowweixin.equals("1")) {
-            tv_weixin.setText(rules.get(2).getValue() + "");
+            tv_weixin.setText(rules.get(2).getValue() == null ? "" : rules.get(2).getValue() + "");
         } else {
             layout_weixin.setVisibility(View.GONE);
         }

@@ -165,6 +165,7 @@
         <activity
             android:name=".widget.image.ShowImageActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".main.widget.RenZhengThreeActivity"/>
         <activity
             android:name=".center.widget.DefaultDynamicSendActivity"
             android:screenOrientation="portrait"/>

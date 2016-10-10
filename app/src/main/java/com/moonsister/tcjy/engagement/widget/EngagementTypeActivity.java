@@ -79,5 +79,6 @@ public class EngagementTypeActivity extends BaseActivity {
 
         }
         ActivityUtils.startEngagemengOrderActivity(type, uid, name, avater);
+        finish();
     }
 }

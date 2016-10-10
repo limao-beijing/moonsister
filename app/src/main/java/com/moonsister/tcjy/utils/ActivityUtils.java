@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
+import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
 import com.moonsister.tcjy.bean.TiXinrRecordBean;
 import com.moonsister.tcjy.center.widget.BuyDynamicRedPackketActivity;
@@ -45,6 +46,7 @@ import com.moonsister.tcjy.main.widget.PictureSelectorActivity;
 import com.moonsister.tcjy.main.widget.RecommendMemberActivity;
 import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
 import com.moonsister.tcjy.main.widget.RelationActivity;
+import com.moonsister.tcjy.main.widget.RenZhengThreeActivity;
 import com.moonsister.tcjy.main.widget.ShowShortVideoActivity;
 import com.moonsister.tcjy.main.widget.SwitchItemActivity;
 import com.moonsister.tcjy.main.widget.UserinfoActivity;
@@ -736,11 +738,35 @@ public class ActivityUtils {
      * 个人约会
      */
     public static void startPersonEngagementTypeActivity(String uid, String nickname, String face) {
-        Intent intent = new Intent(getContext(), EngagementTypeActivity.class);
-        intent.putExtra("id", uid);
-        intent.putExtra("name", nickname);
-        intent.putExtra("avater", face);
-        startActivity(intent);
+        Intent intent = null;
+        PersonInfoDetail detail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
+        int attestation = detail.getAttestation();
+        String sex = detail.getSex();
+        int status = detail.getVipStatus();
+        if (StringUtis.equals(sex, "1")) {
+            if (status == 1) {
+                intent = new Intent(getContext(), EngagementTypeActivity.class);
+
+            } else {
+                UIUtils.showToast(getContext(), "您还未是VIP,请先购买VIP");
+                intent = new Intent(getContext(), BuyVipActivity.class);
+            }
+        } else {
+            if (attestation == 1) {
+                intent = new Intent(getContext(), EngagementTypeActivity.class);
+            } else if (attestation == 2) {
+                UIUtils.showToast(getContext(), "您的认证正在审核中，请稍后再试");
+            } else {
+                intent = new Intent(getContext(), RenZhengThreeActivity.class);
+                UIUtils.showToast(getContext(), "您还未认证，请先认证");
+            }
+        }
+        if (intent != null) {
+            intent.putExtra("id", uid);
+            intent.putExtra("name", nickname);
+            intent.putExtra("avater", face);
+            startActivity(intent);
+        }
     }
 
     /**
@@ -755,12 +781,44 @@ public class ActivityUtils {
      * 约会下单
      */
     public static void startEngagemengOrderActivity(EnumConstant.EngegamentType type, String uid, String nickname, String face) {
-        Intent intent = new Intent(getContext(), EngagemengOrderActivity.class);
-        intent.putExtra("id", uid);
-        intent.putExtra("nike", nickname);
-        intent.putExtra("face", face);
-        intent.putExtra("type", type);
-        startActivity(intent);
+        Intent intent = null;
+        PersonInfoDetail detail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
+        int attestation = detail.getAttestation();
+        String sex = detail.getSex();
+        int status = detail.getVipStatus();
+        if (StringUtis.equals(sex, "1")) {
+            if (status == 1) {
+                intent = new Intent(getContext(), EngagemengOrderActivity.class);
+
+            } else {
+                UIUtils.showToast(getContext(), "您还未是VIP,请先购买VIP");
+                intent = new Intent(getContext(), BuyVipActivity.class);
+            }
+        } else {
+            if (attestation == 1) {
+                intent = new Intent(getContext(), EngagemengOrderActivity.class);
+            } else if (attestation == 2) {
+                UIUtils.showToast(getContext(), "您的认证正在审核中，请稍后再试");
+            } else {
+                intent = new Intent(getContext(), RenZhengThreeActivity.class);
+                UIUtils.showToast(getContext(), "您还未认证，请先认证");
+            }
+        }
+        if (intent != null) {
+            intent.putExtra("id", uid);
+            intent.putExtra("nike", nickname);
+            intent.putExtra("face", face);
+            intent.putExtra("type", type);
+            startActivity(intent);
+        }
+
+    }
+
+    /**
+     * 认证三版
+     */
+    public static void startRenzhengThreeActivity() {
+        startActivity(RenZhengThreeActivity.class);
     }
 
     /**

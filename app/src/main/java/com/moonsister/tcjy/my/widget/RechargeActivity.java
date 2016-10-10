@@ -3,8 +3,6 @@ package com.moonsister.tcjy.my.widget;
 import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
@@ -24,14 +22,13 @@ import butterknife.OnClick;
  */
 public class RechargeActivity extends BaseActivity implements RechargeActivityView {
     @Bind(R.id.recharge_edit)//输入充值金额的框框
-    EditText recharge_edit;
+            EditText recharge_edit;
     @Bind(R.id.kending)//确定按钮
-    TextView kending;
+            TextView kending;
     String pay_type;
     RechargeActivityPersenter persenter;
     String recharge;
-    @Bind(R.id.image_back)//返回
-    ImageView image_back;
+
     @Override
     protected View setRootContentView() {
 
@@ -39,18 +36,22 @@ public class RechargeActivity extends BaseActivity implements RechargeActivityVi
     }
 
     @Override
+    protected String initTitleName() {
+        return "充值";
+    }
+
+    @Override
     protected void initView() {
 
-        persenter=new RechargeActivityPersenterImpl();
+        persenter = new RechargeActivityPersenterImpl();
         persenter.attachView(this);
-
 
 
     }
 
     @Override
     public void success() {
-        Intent intent=new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         RechargeActivity.this.finish();
     }
@@ -70,19 +71,17 @@ public class RechargeActivity extends BaseActivity implements RechargeActivityVi
         showToast(msg);
     }
 
-    @OnClick({R.id.kending,R.id.image_back})
+    @OnClick(R.id.kending)
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.kending:
-                recharge=recharge_edit.getText().toString();
-                if(recharge.equals("")){
+                recharge = recharge_edit.getText().toString();
+                if (recharge.equals("")) {
                     return;
                 }
                 persenter.LoadData(recharge, EnumConstant.PayType.IAPP_PAY.getType());
                 break;
-            case R.id.image_back:
-                RechargeActivity.this.finish();
-                break;
+
         }
     }
 }

@@ -191,6 +191,7 @@ public class DropMenuAdapter implements MenuAdapter {
                             int i = v.getId();
                             if (i == R.id.tv_all_clean) {
                                 action = 1;
+
                             } else if (i == R.id.tv_ok) {
                                 action = 2;
                             }

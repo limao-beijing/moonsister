@@ -107,12 +107,21 @@ public class HomeThreeHeaderViewHolder extends BaseHolder<String> implements OnF
         switch (listPosition) {
             case 0:
                 params.setSex((itemPosition) + "");
+                dropDownMenu.close();
+                if (listenter != null)
+                    listenter.onFilterDone(params);
                 break;
             case 1:
                 params.setAgetype((itemPosition) + "");
+                dropDownMenu.close();
+                if (listenter != null)
+                    listenter.onFilterDone(params);
                 break;
             case 2:
                 params.setProvince(itemPosition + "");
+                dropDownMenu.close();
+                if (listenter != null)
+                    listenter.onFilterDone(params);
                 break;
             case 3:
                 switch (positionTitle) {
@@ -140,18 +149,20 @@ public class HomeThreeHeaderViewHolder extends BaseHolder<String> implements OnF
                 break;
 
         }
-        dropDownMenu.close();
-        if (listenter != null)
-            listenter.onFilterDone(params);
+
     }
 
     @Override
     public void onActionDone(int action) {
         switch (action) {
             case 1:
+                params = new HomeParams();
                 initFilterDropDownView();
                 break;
             case 2:
+                dropDownMenu.close();
+                if (listenter != null)
+                    listenter.onFilterDone(params);
                 break;
         }
     }

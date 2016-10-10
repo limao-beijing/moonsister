@@ -160,52 +160,10 @@ public class PersonalMessageFenBean extends BaseBean {
             private String distance_love;
             private String like_sex;
             private String premarital_sex;
-            private Object raddress;
-            private Object rcode;
-            private Object rname;
-            private Object t1;
-            private Object t2;
-            private Object t3;
-
-            public String getFace() {
-                return face;
-            }
-
-            public void setFace(String face) {
-                this.face = face;
-            }
-
-            public String getLike_image() {
-                return like_image;
-            }
-
-            public void setLike_image(String like_image) {
-                this.like_image = like_image;
-            }
-
-            public String getNickname() {
-                return nickname;
-            }
-
-            public void setNickname(String nickname) {
-                this.nickname = nickname;
-            }
-
-            public String getSignature() {
-                return signature;
-            }
-
-            public void setSignature(String signature) {
-                this.signature = signature;
-            }
-
-            public int getSex() {
-                return sex;
-            }
-
-            public void setSex(int sex) {
-                this.sex = sex;
-            }
+            private String raddress;
+            private String rcode;
+            private String rname;
+            private String t1;
 
             public String getBirthday() {
                 return birthday;
@@ -213,46 +171,6 @@ public class PersonalMessageFenBean extends BaseBean {
 
             public void setBirthday(String birthday) {
                 this.birthday = birthday;
-            }
-
-            public String getStar_sign() {
-                return star_sign;
-            }
-
-            public void setStar_sign(String star_sign) {
-                this.star_sign = star_sign;
-            }
-
-            public String getHeight() {
-                return height;
-            }
-
-            public void setHeight(String height) {
-                this.height = height;
-            }
-
-            public String getWeight() {
-                return weight;
-            }
-
-            public void setWeight(String weight) {
-                this.weight = weight;
-            }
-
-            public String getSalary() {
-                return salary;
-            }
-
-            public void setSalary(String salary) {
-                this.salary = salary;
-            }
-
-            public String getDegree() {
-                return degree;
-            }
-
-            public void setDegree(String degree) {
-                this.degree = degree;
             }
 
             public String getBirthplace() {
@@ -263,52 +181,20 @@ public class PersonalMessageFenBean extends BaseBean {
                 this.birthplace = birthplace;
             }
 
-            public String getResidence() {
-                return residence;
+            public String getDegree() {
+                return degree;
             }
 
-            public void setResidence(String residence) {
-                this.residence = residence;
+            public void setDegree(String degree) {
+                this.degree = degree;
             }
 
-            public String getProfession() {
-                return profession;
+            public String getFace() {
+                return face;
             }
 
-            public void setProfession(String profession) {
-                this.profession = profession;
-            }
-
-            public String getHobby() {
-                return hobby;
-            }
-
-            public void setHobby(String hobby) {
-                this.hobby = hobby;
-            }
-
-            public String getSelf_image() {
-                return self_image;
-            }
-
-            public void setSelf_image(String self_image) {
-                this.self_image = self_image;
-            }
-
-            public String getIshouse() {
-                return ishouse;
-            }
-
-            public void setIshouse(String ishouse) {
-                this.ishouse = ishouse;
-            }
-
-            public String getMarital_status() {
-                return marital_status;
-            }
-
-            public void setMarital_status(String marital_status) {
-                this.marital_status = marital_status;
+            public void setFace(String face) {
+                this.face = face;
             }
 
             public String getDistance_love() {
@@ -319,12 +205,60 @@ public class PersonalMessageFenBean extends BaseBean {
                 this.distance_love = distance_love;
             }
 
+            public String getHeight() {
+                return height;
+            }
+
+            public void setHeight(String height) {
+                this.height = height;
+            }
+
+            public String getHobby() {
+                return hobby;
+            }
+
+            public void setHobby(String hobby) {
+                this.hobby = hobby;
+            }
+
+            public String getIshouse() {
+                return ishouse;
+            }
+
+            public void setIshouse(String ishouse) {
+                this.ishouse = ishouse;
+            }
+
+            public String getLike_image() {
+                return like_image;
+            }
+
+            public void setLike_image(String like_image) {
+                this.like_image = like_image;
+            }
+
             public String getLike_sex() {
                 return like_sex;
             }
 
             public void setLike_sex(String like_sex) {
                 this.like_sex = like_sex;
+            }
+
+            public String getMarital_status() {
+                return marital_status;
+            }
+
+            public void setMarital_status(String marital_status) {
+                this.marital_status = marital_status;
+            }
+
+            public String getNickname() {
+                return nickname;
+            }
+
+            public void setNickname(String nickname) {
+                this.nickname = nickname;
             }
 
             public String getPremarital_sex() {
@@ -335,53 +269,122 @@ public class PersonalMessageFenBean extends BaseBean {
                 this.premarital_sex = premarital_sex;
             }
 
-            public Object getRaddress() {
+            public String getProfession() {
+                return profession;
+            }
+
+            public void setProfession(String profession) {
+                this.profession = profession;
+            }
+
+            public String getRaddress() {
                 return raddress;
             }
 
-            public void setRaddress(Object raddress) {
+            public void setRaddress(String raddress) {
                 this.raddress = raddress;
             }
 
-            public Object getRcode() {
+            public String getRcode() {
                 return rcode;
             }
 
-            public void setRcode(Object rcode) {
+            public void setRcode(String rcode) {
                 this.rcode = rcode;
             }
 
-            public Object getRname() {
+            public String getResidence() {
+                return residence;
+            }
+
+            public void setResidence(String residence) {
+                this.residence = residence;
+            }
+
+            public String getRname() {
                 return rname;
             }
 
-            public void setRname(Object rname) {
+            public void setRname(String rname) {
                 this.rname = rname;
             }
 
-            public Object getT1() {
+            public String getSalary() {
+                return salary;
+            }
+
+            public void setSalary(String salary) {
+                this.salary = salary;
+            }
+
+            public String getSelf_image() {
+                return self_image;
+            }
+
+            public void setSelf_image(String self_image) {
+                this.self_image = self_image;
+            }
+
+            public int getSex() {
+                return sex;
+            }
+
+            public void setSex(int sex) {
+                this.sex = sex;
+            }
+
+            public String getSignature() {
+                return signature;
+            }
+
+            public void setSignature(String signature) {
+                this.signature = signature;
+            }
+
+            public String getStar_sign() {
+                return star_sign;
+            }
+
+            public void setStar_sign(String star_sign) {
+                this.star_sign = star_sign;
+            }
+
+            public String getT1() {
                 return t1;
             }
 
-            public void setT1(Object t1) {
+            public void setT1(String t1) {
                 this.t1 = t1;
             }
 
-            public Object getT2() {
+            public String getT2() {
                 return t2;
             }
 
-            public void setT2(Object t2) {
+            public void setT2(String t2) {
                 this.t2 = t2;
             }
 
-            public Object getT3() {
+            public String getT3() {
                 return t3;
             }
 
-            public void setT3(Object t3) {
+            public void setT3(String t3) {
                 this.t3 = t3;
             }
+
+            public String getWeight() {
+                return weight;
+            }
+
+            public void setWeight(String weight) {
+                this.weight = weight;
+            }
+
+            private String t2;
+            private String t3;
+
+
         }
 
         public static class BaseinfoBean {
@@ -396,8 +399,13 @@ public class PersonalMessageFenBean extends BaseBean {
             private int vip_level;
             private String isauth;
             private String isfollow;
+            private String birthplace;
+
+
+
             /**
              * s :
+
              * v :
              * l : http://mimei.oss-cn-beijing.aliyuncs.com/a/image/05/2016-07-18/578c9febe6cc8.jpg
              */
@@ -501,7 +509,13 @@ public class PersonalMessageFenBean extends BaseBean {
             public void setImage_data(List<ImageDataBean> image_data) {
                 this.image_data = image_data;
             }
+            public String getBirthplace() {
+                return birthplace;
+            }
 
+            public void setBirthplace(String birthplace) {
+                this.birthplace = birthplace;
+            }
             public List<ImageDataBean> getImage_video() {
                 return image_video;
             }

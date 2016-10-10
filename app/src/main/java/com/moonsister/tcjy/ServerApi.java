@@ -15,6 +15,7 @@ import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.DownApkBean;
 import com.moonsister.tcjy.bean.DynamicBean;
 import com.moonsister.tcjy.bean.DynamicDatailsBean;
+import com.moonsister.tcjy.bean.EngagemengOrderBean;
 import com.moonsister.tcjy.bean.EngagemengRecommendBean;
 import com.moonsister.tcjy.bean.EngagementManagerBean;
 import com.moonsister.tcjy.bean.FeelingSquareFilterBean;
@@ -1354,7 +1355,8 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("dating/pub_dating")
-        Observable<PayBean> getEngagementOreder(@Field("type") int type,
+        Observable<PayBean> getEngagementOreder(@Field("dating_count") String dating_count,
+                                                @Field("type") int type,
                                                 @Field("to_uid") String uid,
                                                 @Field("money") String money,
                                                 @Field("date") String date,
@@ -1460,6 +1462,31 @@ public class ServerApi {
         @GET("index/v3_notice")
         Observable<BannerBean> getloadBannerData(@Query("authcode") String authcode,
                                                  @Query("channel") String id);
+
+        /**
+         * 认证申请:第二步，提交媒体数据信息【品牌版】
+         *
+         * @param content
+         * @param authcode
+         * @param id
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("apply/goadd_info_v")
+        Observable<BaseBean> getRenzhengThree(@Field("apply_image") String content,
+                                              @Field("authcode") String authcode,
+                                              @Field("channel") String id);
+
+        /**
+         * 约会：发布约会时，获取免费约会信息
+         *
+         * @param authcode
+         * @param id
+         * @return
+         */
+        @GET("Dating/get_dating_ss")
+        Observable<EngagemengOrderBean> getEngagemengOrder(@Query("authcode") String authcode,
+                                                           @Query("channel") String id);
     }
 }
 

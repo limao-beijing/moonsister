@@ -7,12 +7,14 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.EngagementManagerAdapter;
 import com.moonsister.tcjy.base.BaseListFragment;
 import com.moonsister.tcjy.bean.EngagementManagerBean;
+import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.bean.StatusBean;
 import com.moonsister.tcjy.engagement.presenter.EngagementManagerFragmentPresenter;
 import com.moonsister.tcjy.engagement.presenter.EngagementManagerFragmentPresenterImpl;
 import com.moonsister.tcjy.engagement.view.EngagementManagerFragmentView;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
+import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
@@ -54,6 +56,21 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
                 .setEndEvent(FragmentEvent.DESTROY)
                 .setEvent(Events.EventEnum.CLICK_ENGAGEMENT_INVITE_2)
                 .onNext(events -> {
+                    PersonInfoDetail detail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
+                    String sex = detail.getSex();
+                    if (StringUtis.equals(sex, "1")) {
+                        int attestation = detail.getAttestation();
+                        if (attestation != 1) {
+
+                            return;
+                        }
+                    } else {
+                        int status = detail.getVipStatus();
+                        if (status != 1) {
+                            showNotLevel();
+                            return;
+                        }
+                    }
                     Object message = events.message;
                     if (message instanceof String) {
 
@@ -91,7 +108,12 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityUtils.startBuyVipActivity();
+                        String sex = UserInfoManager.getInstance().getUserSex();
+                        if (StringUtis.equals(sex, "1")) {
+                            ActivityUtils.startBuyVipActivity();
+                        } else {
+                            ActivityUtils.startRenzhengThreeActivity();
+                        }
                         myDialog.dismiss();
                     }
                 });

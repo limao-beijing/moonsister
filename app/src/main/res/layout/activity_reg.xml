@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
@@ -10,7 +10,7 @@
         android:gravity="center"
         android:text="手机绑定"
         android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:textSize="18sp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -26,7 +26,7 @@
             android:gravity="center"
             android:text="@string/reg_text"
             android:textColor="@color/grid_line"
-            android:textSize="16sp" />
+            android:textSize="16sp"/>
     </LinearLayout>
 
     <EditText
@@ -41,7 +41,7 @@
         android:paddingLeft="@dimen/x15"
         android:textColor="@color/black"
         android:textColorHint="@color/white_d6dde4"
-        android:textSize="16sp" />
+        android:textSize="16sp"/>
 
     <EditText
         android:id="@+id/reg_edit_password"
@@ -56,7 +56,7 @@
         android:password="true"
         android:textColor="@color/black"
         android:textColorHint="@color/white_d6dde4"
-        android:textSize="16sp" />
+        android:textSize="16sp"/>
 
     <EditText
         android:id="@+id/reg_edit_brith"
@@ -70,7 +70,8 @@
         android:paddingLeft="@dimen/x15"
         android:textColor="@color/black"
         android:textColorHint="@color/white_d6dde4"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -91,7 +92,7 @@
             android:hint="输入验证码"
             android:inputType="number"
             android:textColor="@color/black"
-            android:textColorHint="@color/white_d6dde4" />
+            android:textColorHint="@color/white_d6dde4"/>
 
         <TextView
             android:id="@+id/tv_security_code"
@@ -105,7 +106,7 @@
             android:gravity="center"
             android:text="@string/get_security_code"
             android:textColor="@color/text_gray_778998"
-            android:textSize="16sp" />
+            android:textSize="16sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -122,7 +123,7 @@
             android:background="@mipmap/recharge_backgroud"
             android:gravity="center"
             android:text="完成注册"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/let_go"
@@ -133,7 +134,7 @@
             android:background="@mipmap/let_go"
             android:gravity="center"
             android:text="先去逛逛"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"/>
     </LinearLayout>
     <!--<TextView-->
     <!--android:layout_width="match_parent"-->

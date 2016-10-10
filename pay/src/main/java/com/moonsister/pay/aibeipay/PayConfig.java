@@ -13,8 +13,8 @@ public class PayConfig {
     /**
      * 线上环境
      */
-    public static final String appid = "3007658737";
-    public static final String publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDJho1GKRc2/F9AhzFgJNF94JXjAlKlsS/6LQvQ5aDPR1Yup1WuEWtEHTWosRK/2jOXdfa0VffZvMOdc2hD/HAJsr0kNMiXwd/33baxZAYOqEJH2uJFgzsnjkuhqkav+XbWMRndHqdsupK3YgTY0hpzHNlL16lo+Po2crg+Co7MEQIDAQAB";
+    public static final String appid = "3007713586";
+    public static final String publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCcC57+vzodUrUHXyxPlspg7OQ/D1rDmye93WQXyGcPlHtXom8xi/2BrK0q15w+Ii04KyZj4m4fejeyeTVCK0doPm66pzINuzDmwZlbbafH/AFDKZ7Q8dMNtnp8Y5JQnjiYmz3vfN2vOQUF/eMy5WRWalRlGa9k3XpXWSMsxKxOGwIDAQAB";
 //    /**
 //     * demo
 //     * 线上环境

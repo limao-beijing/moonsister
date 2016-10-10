@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.my.widget;
 
 import android.view.View;
+import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.MyThreeFragmentAdapter;
@@ -11,6 +12,8 @@ import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.persenter.MyThreeFragmentPresenter;
 import com.moonsister.tcjy.my.persenter.MyThreeFragmentPresenterImpl;
 import com.moonsister.tcjy.my.view.MyThreeFragmentView;
+import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.MyThreeFragmentHeaderViewHoder;
 
 import java.util.List;
@@ -26,11 +29,25 @@ public class MyThreeFragment extends BaseListFragment<MyThreeFragmentAdapter, My
     public static final String TYPE_VOICE = "3";
     private String type = TYPE_PIC;
     private String uid;
+    private TextView tv_user_name;
 
     @Override
     public MyThreeFragmentAdapter setAdapter() {
         mXListView.setVerticalGridLayoutManager(3);
         return new MyThreeFragmentAdapter(null);
+    }
+
+    @Override
+    protected View addListViewHead() {
+        View view = UIUtils.inflateLayout(R.layout.head_my_three);
+        tv_user_name = (TextView) view.findViewById(R.id.tv_user_name);
+        view.findViewById(R.id.iv_setting).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startSettingActivity();
+            }
+        });
+        return view;
     }
 
     @Override
@@ -107,6 +124,10 @@ public class MyThreeFragment extends BaseListFragment<MyThreeFragmentAdapter, My
 
     @Override
     public void setHeaderData(UserDetailBean bean) {
+        if (bean != null) {
+            String nickname = bean.getData().getBaseinfo().getNickname();
+            tv_user_name.setText(nickname);
+        }
         mHeaderViewHoder.refreshView(bean);
     }
 }

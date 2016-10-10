@@ -7,21 +7,17 @@ import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.utils.UIUtils;
 
 /**
- * Created by x on 2016/9/7.
+ * Created by jb on 2016/10/9.
  */
-public class TalkActivity extends BaseActivity {
 
+public class RenZhengThreeActivity extends BaseActivity {
     @Override
     protected View setRootContentView() {
-        return UIUtils.inflateLayout(R.layout.talkactivity);
+        return UIUtils.inflateLayout(R.layout.activity_renzheng_three);
     }
 
     @Override
     protected void initView() {
-    }
 
-    @Override
-    protected String initTitleName() {
-        return "说明";
     }
 }

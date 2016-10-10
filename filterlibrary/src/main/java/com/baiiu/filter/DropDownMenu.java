@@ -113,6 +113,7 @@ public class DropDownMenu extends RelativeLayout implements View.OnClickListener
      */
     public void setPositionView() {
         int count = mMenuAdapter.getMenuCount();
+        frameLayoutContainer.removeAllViews();
         for (int position = 0; position < count; ++position) {
             setPositionView(position, findViewAtPosition(position), mMenuAdapter.getBottomMargin(position));
         }
@@ -197,28 +198,18 @@ public class DropDownMenu extends RelativeLayout implements View.OnClickListener
         if (open) {
             close();
         } else {
-
-
             currentView = frameLayoutContainer.getChildAt(position);
-
             if (currentView == null) {
                 return;
             }
-
-
             frameLayoutContainer.getChildAt(fixedTabIndicator.getLastIndicatorPosition()).setVisibility(View.GONE);
             frameLayoutContainer.getChildAt(position).setVisibility(View.VISIBLE);
-
-
             if (isClosed()) {
                 frameLayoutContainer.setVisibility(VISIBLE);
                 frameLayoutContainer.startAnimation(alphaOccurAnimation);
-
                 //可移出去,进行每次展出
                 currentView.startAnimation(occurAnimation);
             }
-
-
         }
     }
 

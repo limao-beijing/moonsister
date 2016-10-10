@@ -59,7 +59,7 @@ public class EngagementManagerBean extends BaseBean {
         private String msg;
         private long create_time;
         private int status;
-        private Object channel;
+        private String channel;
         private long dead_time;
         private String date_status;
         private long appeal_dead_time;
@@ -195,11 +195,11 @@ public class EngagementManagerBean extends BaseBean {
             this.status = status;
         }
 
-        public Object getChannel() {
+        public String getChannel() {
             return channel;
         }
 
-        public void setChannel(Object channel) {
+        public void setChannel(String channel) {
             this.channel = channel;
         }
 

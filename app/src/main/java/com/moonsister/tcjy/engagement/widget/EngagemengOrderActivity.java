@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
+import com.moonsister.tcjy.bean.EngagemengOrderBean;
 import com.moonsister.tcjy.engagement.model.EngagemengOrderView;
 import com.moonsister.tcjy.engagement.presenter.EngagemengOrderPresenter;
 import com.moonsister.tcjy.engagement.presenter.EngagemengOrderPresenterImpl;
@@ -57,6 +58,8 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
     TextView et_input_date;
     @Bind(R.id.et_input_money)
     EditText et_input_money;
+    @Bind(R.id.tv_sumbit)
+    TextView mTvSumbit;
     private EnumConstant.EngegamentType type;
     private String uid;
     private String nike;
@@ -66,6 +69,10 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
             R.mipmap.engagment_main_movie, R.mipmap.engagment_main_coffee,
             R.mipmap.engagment_main_shop, R.mipmap.engagment_main_travel, R.mipmap.engagment_main_more};
     private EngagemengOrderPresenter presenter;
+
+
+    private int last_count = 0;
+    private int dating_money;
 
     @Override
     protected View setRootContentView() {
@@ -105,6 +112,7 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
                 et_input_date.setText(date);
             }
         });
+        presenter.loadData();
 
     }
 
@@ -117,16 +125,21 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
 
             case R.id.tv_sumbit:
                 String money = et_input_money.getText().toString();
+
                 String date = et_input_date.getText().toString();
                 String address = mEtInputAddress.getText().toString();
                 String message = mEtEngagementMessage.getText().toString();
-                if (StringUtis.isEmpty(money) || StringUtis.string2Int(money) <= 0
+                if (StringUtis.isEmpty(money)
                         || StringUtis.isEmpty(date) || StringUtis.isEmpty(address)
                         || StringUtis.isEmpty(message)) {
                     showToast(getString(R.string.input_date_not_empty));
                     return;
                 }
-                presenter.loadData(type, uid, money, date, message, address);
+                if (dating_money > StringUtis.string2Int(money)) {
+                    showToast("担保金额不能低于" + dating_money);
+                    return;
+                }
+                presenter.submit(last_count + "", type, uid, money, date, message, address);
                 break;
         }
     }
@@ -156,6 +169,20 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
         showNotLevel();
     }
 
+    @Override
+    public void setData(EngagemengOrderBean bean) {
+        if (bean != null && bean.getData() != null) {
+            EngagemengOrderBean.DataBean data = bean.getData();
+            dating_money = StringUtis.string2Int(data.getDating_money());
+            last_count = StringUtis.string2Int(data.getLast_count());
+            if (last_count > 0) {
+                mTvSumbit.setText("还有" + last_count + "次免费约见");
+                et_input_money.setText("0");
+            }
+            et_input_money.setHint("担保金额不能低于" + dating_money);
+        }
+    }
+
     private void showNotLevel() {
         AlertDialog myDialog = new AlertDialog.Builder(this).create();
         myDialog.show();
@@ -172,4 +199,6 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
 
 
     }
+
+
 }

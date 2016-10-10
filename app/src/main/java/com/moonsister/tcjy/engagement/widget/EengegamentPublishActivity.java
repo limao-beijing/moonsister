@@ -57,5 +57,6 @@ public class EengegamentPublishActivity extends BaseActivity {
 
         }
         ActivityUtils.startEengegamentRecommendActivity(type);
+        finish();
     }
 }

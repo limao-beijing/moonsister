@@ -6,9 +6,11 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.bean.BaseBean;
+import com.moonsister.tcjy.bean.EngagemengOrderBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
+import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
@@ -22,9 +24,9 @@ import rx.schedulers.Schedulers;
  */
 public class EngagemengOrderModelImpl implements EngagemengOrderModel {
     @Override
-    public void submitData(EnumConstant.EngegamentType type, String uid, String money, String date,
+    public void submitData(String dating_count, EnumConstant.EngegamentType type, String uid, String money, String date,
                            String message, String address, onLoadDateSingleListener<BaseBean> listener) {
-        Observable<PayBean> observable = ServerApi.getAppAPI().getEngagementOreder(type.getType(), uid, money, date, address, message, EnumConstant.PayType.IAPP_PAY.getType(), "1", "1",
+        Observable<PayBean> observable = ServerApi.getAppAPI().getEngagementOreder(dating_count, type.getType(), uid, money, date, address, message, EnumConstant.PayType.IAPP_PAY.getType(), "1", "1",
                 UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -43,7 +45,7 @@ public class EngagemengOrderModelImpl implements EngagemengOrderModel {
                     public void onNext(PayBean payBean) {
                         if (StringUtis.equals(payBean.getCode(), "1")) {
                             String type = payBean.getData().getType();
-                            if (StringUtis.equals(type, "1")) {
+                            if (StringUtis.equals(type, "1") || StringUtis.equals(type, "5")) {
                                 BaseBean bean = new BaseBean();
                                 bean.setCode("1");
                                 bean.setMsg(payBean.getMsg());
@@ -69,5 +71,21 @@ public class EngagemengOrderModelImpl implements EngagemengOrderModel {
                         }
                     }
                 });
+    }
+
+    @Override
+    public void loadData(onLoadDateSingleListener<BaseBean> listenter) {
+        Observable<EngagemengOrderBean> observable = ServerApi.getAppAPI().getEngagemengOrder(UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<BaseBean>() {
+            @Override
+            public void onSuccess(BaseBean bean) {
+                listenter.onSuccess(bean, DataType.DATA_ONE);
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                listenter.onFailure(msg);
+            }
+        });
     }
 }

@@ -33,6 +33,8 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.OnClick;
 
+import static com.moonsister.tcjy.R.id.qq_massage_look;
+
 /**
  * Created by x on 2016/8/25.
  */
@@ -111,6 +113,9 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
 //    ImageView massage_look_line;
     @Bind(R.id.tv_ifline)
     TextView tv_ifline;
+    @Bind(R.id.tv_qq)
+    TextView tv_qq;
+
 
     @Override
     protected View setRootContentView() {
@@ -162,7 +167,7 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
         ainfo = getPersonalBean.getData().getAinfo();
         ImageServerApi.showURLSamllImage(iv_user_icon, baseinfo.getFace());//展示头像
         String isvip = rules.get(1).getIsvip();//vip的显示与否
-        if (isvip.equals("0")) {
+        if (StringUtis.equals("0",isvip)) {
             image_if_vip.setVisibility(View.INVISIBLE);
         } else {
             image_if_vip.setVisibility(View.VISIBLE);
@@ -178,16 +183,16 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
         tv_age_three.setText(i + "岁");//年龄展示
         tv_hight_three.setText(dlist.getHeight() + "cm");//身高显示
         tv_wight_three.setText(dlist.getWeight() + "kg");//体重展示
-        tv_position.setText(dlist.getBirthplace());//地址
+        tv_position.setText(baseinfo.getBirthplace());//地址
         tv_native_place.setText(dlist.getResidence());//籍贯
         tv_hight.setText(dlist.getHeight() + "cm");//公开资料身高
         tv_wight.setText(dlist.getWeight() + "kg");//公开资料体重
         String value = dlist.getPremarital_sex();//是否接受异地恋
-        if (value.equals("可以接受")) {
+        if (StringUtis.equals(value,"可以接受")) {
             tv_long_distance.setText("是");
-        } else if (value.equals("不能接受")) {
+        } else if (StringUtis.equals(value,"不能接受")) {
             tv_long_distance.setText("否");
-        } else if (value.equals("看情况")) {
+        } else if (StringUtis.equals(value,"看情况")) {
             tv_long_distance.setText("是");
         }
         if (StringUtis.equals(baseinfo.getIsfollow(), "1")) {
@@ -282,7 +287,7 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
     }
 
 
-    @OnClick({R.id.image_back, R.id.tv_sayhello, R.id.tv_accept, R.id.tv_make_an_appointment, R.id.massage_look, R.id.massage_look_phone, R.id.massage_look_line})
+    @OnClick({qq_massage_look, R.id.image_back, R.id.tv_sayhello, R.id.tv_accept, R.id.tv_make_an_appointment, R.id.massage_look, R.id.massage_look_phone, R.id.massage_look_line})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.image_back:
@@ -320,21 +325,34 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
                 if (baseinfo != null) {
                     if (ainfo.getVip_level() > 0) {
                         tv_ifline.setText(vipinfo.getZaixian() == 1 ? "在线" : "不在线");
+                    } else {
+                        showNotLevel();
                     }
-                } else {
-                    showNotLevel();
+                }
+                break;
+            case R.id.qq_massage_look:
+                if (baseinfo != null) {
+                    if (ainfo.getVip_level() > 0) {
+                        tv_qq.setText(vipinfo.getQq());
+                    } else {
+                        showNotLevel();
+                    }
                 }
                 break;
         }
     }
 
     private void showNotLevel() {
-
-
         AlertDialog myDialog = new AlertDialog.Builder(this).create();
         myDialog.show();
         View view = UIUtils.inflateLayout(R.layout.dialog_show_notlevel);
         myDialog.getWindow().setContentView(view);
+        view.findViewById(R.id.iv_cancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
         view.findViewById(R.id.view_que)
                 .setOnClickListener(new View.OnClickListener() {
                     @Override

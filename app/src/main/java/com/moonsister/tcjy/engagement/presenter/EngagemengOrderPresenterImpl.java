@@ -2,6 +2,7 @@ package com.moonsister.tcjy.engagement.presenter;
 
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.BaseBean;
+import com.moonsister.tcjy.bean.EngagemengOrderBean;
 import com.moonsister.tcjy.engagement.model.EngagemengOrderModel;
 import com.moonsister.tcjy.engagement.model.EngagemengOrderModelImpl;
 import com.moonsister.tcjy.engagement.model.EngagemengOrderView;
@@ -29,25 +30,40 @@ public class EngagemengOrderPresenterImpl implements EngagemengOrderPresenter, B
     }
 
     @Override
-    public void loadData(EnumConstant.EngegamentType type, String uid, String money, String date, String message, String address) {
+    public void submit(String dating_count,EnumConstant.EngegamentType type, String uid, String money, String date, String message, String address) {
         view.showLoading();
-        model.submitData(type, uid, money, date, message, address, this);
+        model.submitData(dating_count,type, uid, money, date, message, address, this);
+    }
+
+    @Override
+    public void loadData() {
+        view.showLoading();
+        model.loadData(this);
     }
 
     @Override
     public void onSuccess(BaseBean bean, BaseIModel.DataType dataType) {
-        if (StringUtis.equals("1", bean.getCode())) {
-            UIUtils.sendDelayedOneMillis(new Runnable() {
-                @Override
-                public void run() {
-                    view.submitSuccess();
-                }
-            });
+        switch (dataType) {
+            case DATA_ZERO:
+                if (StringUtis.equals("1", bean.getCode())) {
+                    UIUtils.sendDelayedOneMillis(new Runnable() {
+                        @Override
+                        public void run() {
+                            view.submitSuccess();
+                        }
+                    });
 
-        }else if (StringUtis.equals("10",bean.getCode())){
-            view.notLevel();
+                } else if (StringUtis.equals("10", bean.getCode())) {
+                    view.notLevel();
+                }
+                view.transfePageMsg(bean.getMsg());
+                break;
+            case DATA_ONE:
+                view.setData((EngagemengOrderBean) bean);
+                break;
         }
-        view.transfePageMsg(bean.getMsg());
+
+
         view.hideLoading();
     }
 
