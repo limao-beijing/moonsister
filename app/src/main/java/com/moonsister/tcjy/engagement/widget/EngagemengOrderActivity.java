@@ -67,7 +67,7 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
     private Dateselecter dateselecter;
     private int[] picID = {R.mipmap.engagment_main_meal, R.mipmap.engagment_main_fadai,
             R.mipmap.engagment_main_movie, R.mipmap.engagment_main_coffee,
-            R.mipmap.engagment_main_shop, R.mipmap.engagment_main_travel, R.mipmap.engagment_main_more};
+            R.mipmap.engagment_main_shop, R.mipmap.engagment_main_travel, R.mipmap.engagment_main_other, R.mipmap.engagment_main_more};
     private EngagemengOrderPresenter presenter;
 
 

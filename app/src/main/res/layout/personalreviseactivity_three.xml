@@ -798,6 +798,7 @@
 
 
             <LinearLayout
+                android:layout_marginTop="@dimen/x2"
                 android:id="@+id/ll_pic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

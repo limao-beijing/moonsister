@@ -73,7 +73,7 @@ public class EnumConstant {
 
     public enum EngegamentType implements Serializable {
         All(0), meal(1), fadai(2), movie(3),
-        coffee(4), shop(5), travel(6), more(7);
+        coffee(4), shop(5), travel(6), other(7);
         private final int type;
 
         private EngegamentType(int type) {

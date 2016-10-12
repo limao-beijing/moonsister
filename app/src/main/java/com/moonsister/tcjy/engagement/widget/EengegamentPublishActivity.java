@@ -25,7 +25,7 @@ public class EengegamentPublishActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.tv_fadai, R.id.tv_meal, R.id.tv_movie, R.id.tv_shop, R.id.tv_coffee, R.id.tv_travel, R.id.tv_more, R.id.iv_cancel})
+    @OnClick({R.id.tv_other, R.id.tv_fadai, R.id.tv_meal, R.id.tv_movie, R.id.tv_shop, R.id.tv_coffee, R.id.tv_travel, R.id.tv_more, R.id.iv_cancel})
     public void onClick(View view) {
         if (view.getId() == R.id.iv_cancel) {
             finish();
@@ -51,8 +51,11 @@ public class EengegamentPublishActivity extends BaseActivity {
             case R.id.tv_travel:
                 type = EnumConstant.EngegamentType.travel;
                 break;
+            case R.id.tv_other:
+                type = EnumConstant.EngegamentType.other;
+                break;
             case R.id.tv_more:
-                type = EnumConstant.EngegamentType.more;
+                type = EnumConstant.EngegamentType.All;
                 break;
 
         }

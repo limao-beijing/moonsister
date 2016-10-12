@@ -75,7 +75,7 @@
 
     <LinearLayout
         android:id="@+id/ll_pic"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/x210"
         android:layout_below="@+id/ll_user_info"
         android:layout_marginBottom="@dimen/x30"
@@ -86,7 +86,7 @@
         <ImageView
             android:id="@+id/iv_pic_one"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="@dimen/x2"
             android:scaleType="centerCrop"
@@ -95,7 +95,7 @@
         <ImageView
             android:id="@+id/iv_pic_two"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="@dimen/x2"
             android:scaleType="centerCrop"
@@ -104,7 +104,7 @@
         <ImageView
             android:id="@+id/iv_pic_three"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="@dimen/x2"
             android:scaleType="centerCrop"

@@ -1,6 +1,8 @@
 package com.moonsister.tcjy.my.widget;
 
+import android.app.AlertDialog;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
@@ -8,14 +10,19 @@ import com.moonsister.tcjy.adapter.MyThreeFragmentAdapter;
 import com.moonsister.tcjy.base.BaseListFragment;
 import com.moonsister.tcjy.bean.MyThreeFragmentBean;
 import com.moonsister.tcjy.bean.UserDetailBean;
+import com.moonsister.tcjy.event.Events;
+import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.persenter.MyThreeFragmentPresenter;
 import com.moonsister.tcjy.my.persenter.MyThreeFragmentPresenterImpl;
 import com.moonsister.tcjy.my.view.MyThreeFragmentView;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.MyThreeFragmentHeaderViewHoder;
+import com.trello.rxlifecycle.FragmentEvent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,6 +41,23 @@ public class MyThreeFragment extends BaseListFragment<MyThreeFragmentAdapter, My
     @Override
     public MyThreeFragmentAdapter setAdapter() {
         mXListView.setVerticalGridLayoutManager(3);
+
+        RxBus.with(this)
+                .setEndEvent(FragmentEvent.DESTROY)
+                .setEvent(Events.EventEnum.MyThreeFragment_level)
+                .onNext(events -> {
+                    showNotLevel();
+                })
+                .create();
+        RxBus.with(this)
+                .setEndEvent(FragmentEvent.DESTROY)
+                .setEvent(Events.EventEnum.DynamicResAddActivity_up_success)
+                .onNext(events -> {
+                    if (mXListView != null)
+                        mXListView.setRefreshing(true);
+                })
+                .create();
+
         return new MyThreeFragmentAdapter(null);
     }
 
@@ -119,6 +143,19 @@ public class MyThreeFragment extends BaseListFragment<MyThreeFragmentAdapter, My
 
     @Override
     public void setData(List<MyThreeFragmentBean.DataBean> data) {
+
+        if (page == 1) {
+            if (data == null)
+                data = new ArrayList<>();
+            if (data.size() == 0 && page == 1) {
+                MyThreeFragmentBean.DataBean bean = new MyThreeFragmentBean.DataBean();
+                bean.setUpPIC(true);
+                data.add(bean);
+            }
+        }
+        for (MyThreeFragmentBean.DataBean bean : data) {
+            bean.setSource_type(type);
+        }
         addData(data);
     }
 
@@ -129,5 +166,37 @@ public class MyThreeFragment extends BaseListFragment<MyThreeFragmentAdapter, My
             tv_user_name.setText(nickname);
         }
         mHeaderViewHoder.refreshView(bean);
+    }
+
+    private void showNotLevel() {
+        AlertDialog myDialog = new AlertDialog.Builder(getActivity()).create();
+        myDialog.show();
+        View view = UIUtils.inflateLayout(R.layout.dialog_show_notlevel);
+        String sex = UserInfoManager.getInstance().getUserSex();
+        if (!StringUtis.equals(sex, "1")) {
+            ((ImageView) view.findViewById(R.id.iv_bg)).setImageResource(R.mipmap.bg_renzheng);
+        }
+        myDialog.getWindow().setContentView(view);
+        view.findViewById(R.id.iv_cancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        view.findViewById(R.id.view_que)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String sex = UserInfoManager.getInstance().getUserSex();
+                        if (StringUtis.equals(sex, "1")) {
+                            ActivityUtils.startBuyVipActivity();
+                        } else {
+                            ActivityUtils.startRenzhengThreeActivity();
+                        }
+                        myDialog.dismiss();
+                    }
+                });
+
+
     }
 }

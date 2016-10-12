@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.viewholder;
 
+import android.graphics.drawable.Drawable;
 import android.support.annotation.IdRes;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -80,6 +81,14 @@ public class MyThreeFragmentHeaderViewHoder extends BaseHolder<UserDetailBean> {
 
     @Override
     public void refreshView(UserDetailBean data) {
+        String sex = UserInfoManager.getInstance().getUserSex();
+        if (!StringUtis.equals(sex, "1")) {
+            mIvAddVip.setText("认证");
+            Drawable drawable = getResources().getDrawable(R.mipmap.my_three_renzheng);
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+            mIvAddVip.setCompoundDrawables(null, drawable, null, null);
+        }
+
         UserDetailBean.DataBean bean = data.getData();
         if (bean == null)
             return;
@@ -99,7 +108,11 @@ public class MyThreeFragmentHeaderViewHoder extends BaseHolder<UserDetailBean> {
         mIvAddVip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityUtils.startBuyVipActivity();
+                if (StringUtis.equals(sex, "1"))
+                    ActivityUtils.startBuyVipActivity();
+                else {
+                    ActivityUtils.startRenzhengThreeActivity();
+                }
             }
         });
         mIvDynamicManager.setOnClickListener(new View.OnClickListener() {

@@ -97,8 +97,35 @@ import io.rong.imlib.model.Conversation;
 public class ActivityUtils {
     private static String TAG = "ActivityUtils";
 
-    private static Context getContext() {
+    /**
+     * activity 上下文
+     *
+     * @return
+     */
+    private static Context getActivityContext() {
         return ConfigUtils.getInstance().getActivityContext();
+    }
+
+    /**
+     * 全局上下文
+     *
+     * @return
+     */
+    private static Context getApplicationContext() {
+
+        return ConfigUtils.getInstance().getApplicationContext();
+    }
+
+    private static Intent getIntent(Class clz) {
+        Intent intent = null;
+        Context context = getActivityContext();
+        if (context == null) {
+            intent = new Intent(getApplicationContext(), clz);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        } else {
+            intent = new Intent(context, clz);
+        }
+        return intent;
     }
 
     /**
@@ -107,8 +134,15 @@ public class ActivityUtils {
      * @param clz
      */
     public static void startActivity(Class clz) {
-        Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), clz);
-        ConfigUtils.getInstance().getActivityContext().startActivity(intent);
+
+        Intent intent = getIntent(clz);
+        Activity context = ConfigUtils.getInstance().getActivityContext();
+        if (context == null) {
+            getApplicationContext().startActivity(intent);
+        } else {
+            context.startActivity(intent);
+        }
+
     }
 
     /**
@@ -119,17 +153,33 @@ public class ActivityUtils {
     public static void startActivity(Intent intent) {
         if (intent == null)
             return;
-        ConfigUtils.getInstance().getActivityContext().startActivity(intent);
+        Activity context = ConfigUtils.getInstance().getActivityContext();
+        if (context == null) {
+            Context applicationContext = ConfigUtils.getInstance().getApplicationContext();
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            applicationContext.startActivity(intent);
+        } else {
+            context.startActivity(intent);
+        }
+
     }
 
     /**
      * @param intent
      */
     public static void startActivityForResult(Intent intent) {
-        if (intent == null)
+        Activity context = ConfigUtils.getInstance().getActivityContext();
+        if (intent == null || context == null)
             return;
+
         ConfigUtils.getInstance().getActivityContext().startActivityForResult(intent, 1);
     }
+
+
+//    private static Context getContext() {
+//        return ConfigUtils.getInstance().getActivityContext();
+//    }
+
 
     /**
      * 进入用户信息列表
@@ -283,7 +333,7 @@ public class ActivityUtils {
      * @param nike
      */
     public static void startRZSecondActivity(String address, String height, String sex, String nike, String path) {
-        Intent intent = new Intent(getContext(), RZSecondActivity.class);
+        Intent intent = getIntent(RZSecondActivity.class);
         intent.putExtra("address", address);
         intent.putExtra("height", height);
         intent.putExtra("sex", sex);
@@ -384,7 +434,7 @@ public class ActivityUtils {
      * @param type
      */
     public static void startPersonInfoChangeActivity(PersonInfoChangeActivity.ChangeType type) {
-        Intent intent = new Intent(getContext(), PersonInfoChangeActivity.class);
+        Intent intent = getIntent(PersonInfoChangeActivity.class);
         intent.putExtra("type", type.getValue());
         startActivity(intent);
     }
@@ -416,7 +466,7 @@ public class ActivityUtils {
      * @param dataBean
      */
     public static void startTiXianRecordActivity(TiXinrRecordBean.DataBean dataBean) {
-        Intent intent = new Intent(getContext(), TiXianRecordActivity.class);
+        Intent intent = getIntent(TiXianRecordActivity.class);
         intent.putExtra("data", dataBean);
         startActivity(intent);
     }
@@ -425,7 +475,7 @@ public class ActivityUtils {
      * 添加银行账号
      */
     public static void startAddCardActivity(String bankname, String type) {
-        Intent intent = new Intent(getContext(), AddCardActivity.class);
+        Intent intent = getIntent(AddCardActivity.class);
         intent.putExtra("type", type);
         intent.putExtra("bankname", bankname);
         startActivity(intent);
@@ -438,7 +488,7 @@ public class ActivityUtils {
      * @param number
      */
     public static void startSwitchCardActivity(String type, String number) {
-        Intent intent = new Intent(getContext(), SwitchCardActivity.class);
+        Intent intent = getIntent(SwitchCardActivity.class);
         intent.putExtra("number", number);
         intent.putExtra("type", type);
         startActivity(intent);
@@ -458,7 +508,7 @@ public class ActivityUtils {
      * @param search
      */
     public static void startSearchReasonActivity(String search) {
-        Intent intent = new Intent(getContext(), SearchReasonActivity.class);
+        Intent intent = getIntent(SearchReasonActivity.class);
         intent.putExtra("key", search);
         startActivity(intent);
     }
@@ -477,7 +527,7 @@ public class ActivityUtils {
      * @param uid
      */
     public static void startUserinfoActivity(String uid) {
-        Intent intent = new Intent(getContext(), UserinfoActivity.class);
+        Intent intent = getIntent(UserinfoActivity.class);
         intent.putExtra("uid", uid);
         startActivity(intent);
     }
@@ -488,7 +538,7 @@ public class ActivityUtils {
      * @param authcode
      */
     public static void startFindPasswordNextActivity(String authcode) {
-        Intent intent = new Intent(getContext(), FindPasswordNextActivity.class);
+        Intent intent = getIntent(FindPasswordNextActivity.class);
         intent.putExtra("code", authcode);
         startActivity(intent);
     }
@@ -516,7 +566,7 @@ public class ActivityUtils {
      * @param
      */
     public static void startDynamicAtionActivity(String uid, String id, int type, String istop) {
-        Intent intent = new Intent(getContext(), DynamicAtionActivity.class);
+        Intent intent = getIntent(DynamicAtionActivity.class);
         // 1 自己动态  2 他人的动态
         intent.putExtra("uid", uid);
         intent.putExtra("id", id);
@@ -531,7 +581,7 @@ public class ActivityUtils {
      * @param s
      */
     public static void startBirthdayActivity(String s) {
-        Intent intent = new Intent(getContext(), BirthdayActivity.class);
+        Intent intent = getIntent(BirthdayActivity.class);
         intent.putExtra("editdata", s);
         startActivity(intent);
     }
@@ -542,7 +592,7 @@ public class ActivityUtils {
      * @param uid
      */
     public static void startWacthRelationActivity(String uid) {
-        Intent intent = new Intent(getContext(), RelationActivity.class);
+        Intent intent = getIntent(RelationActivity.class);
         intent.putExtra("type", RelationActivity.WACTH_PAGE);
         intent.putExtra("uid", uid);
         startActivity(intent);
@@ -554,7 +604,8 @@ public class ActivityUtils {
      * @param uid
      */
     public static void startFenRelationActivity(String uid) {
-        Intent intent = new Intent(getContext(), RelationActivity.class);
+        Intent intent = getIntent(RelationActivity.class);
+        ;
         intent.putExtra("type", RelationActivity.FANS_PAGE);
         intent.putExtra("uid", uid);
         startActivity(intent);
@@ -578,7 +629,7 @@ public class ActivityUtils {
      * @param tag
      */
     public static void startSwitchItemActivity(LinkedHashMap<String, String> map, String tag) {
-        Intent intent = new Intent(getContext(), SwitchItemActivity.class);
+        Intent intent = getIntent(SwitchItemActivity.class);
         intent.putExtra("map", map);
         intent.putExtra("tag", tag);
         startActivity(intent);
@@ -594,7 +645,7 @@ public class ActivityUtils {
      * 开启购买vip
      */
     public static void startBuyVipActivity() {
-        Intent intent = new Intent(getContext(), BuyVipActivity.class);
+        Intent intent = getIntent(BuyVipActivity.class);
         startActivity(intent);
     }
 
@@ -604,7 +655,7 @@ public class ActivityUtils {
      * @param datas
      */
     public static void startRecommendMemberActivity(ArrayList<RecommendMemberFragmentBean.DataBean> datas) {
-        Intent intent = new Intent(getContext(), RecommendMemberActivity.class);
+        Intent intent = getIntent(RecommendMemberActivity.class);
         intent.putExtra("datas", datas);
         startActivity(intent);
 
@@ -627,7 +678,7 @@ public class ActivityUtils {
      */
     public static void startShowShortVideoActivity(String path) {
         if (!StringUtis.isEmpty(path)) {
-            Intent intent = new Intent(getContext(), ShowShortVideoActivity.class);
+            Intent intent = getIntent(ShowShortVideoActivity.class);
             intent.putExtra("path", path);
             startActivity(intent);
         }
@@ -636,7 +687,7 @@ public class ActivityUtils {
 
     //    //我的页面gridview中跳转关注页面   定义跳转的activity
     public static void startFollowActivity(String uid, int type) {
-        Intent intent = new Intent(getContext(), FollowActivity.class);
+        Intent intent = getIntent(FollowActivity.class);
         intent.putExtra("type", type);
         intent.putExtra("uid", uid);
         startActivity(intent);
@@ -655,7 +706,7 @@ public class ActivityUtils {
 
     //跳转动态管理页面
     public static void startInsertActivity(String my) {
-        Intent intent = new Intent(getContext(), InsertActivity.class);
+        Intent intent = getIntent(InsertActivity.class);
         intent.putExtra("my", "我爱你");
         startActivity(intent);
     }
@@ -672,7 +723,7 @@ public class ActivityUtils {
      * @param uid
      */
     public static void startPersonalActivity(String uid) {
-        Intent intent = new Intent(getContext(), PersonalActivity.class);
+        Intent intent = getIntent(PersonalActivity.class);
         intent.putExtra("id", uid);
         startActivity(intent);
     }
@@ -687,7 +738,7 @@ public class ActivityUtils {
 
     //跳转财务中心页面
     public static void startMoneyActivity(String uid) {
-        Intent intent = new Intent(getContext(), MoneyActivity.class);
+        Intent intent = getIntent(MoneyActivity.class);
         intent.putExtra("uid", uid);
         startActivity(intent);
     }
@@ -726,7 +777,7 @@ public class ActivityUtils {
      * 绑定手机
      */
     public static void startRegActivity() {
-        Intent intent = new Intent(getContext(), RegActivity.class);
+        Intent intent = getIntent(RegActivity.class);
         startActivity(intent);
     }
 
@@ -745,20 +796,20 @@ public class ActivityUtils {
         int status = detail.getVipStatus();
         if (StringUtis.equals(sex, "1")) {
             if (status == 1) {
-                intent = new Intent(getContext(), EngagementTypeActivity.class);
+                intent = getIntent(EngagementTypeActivity.class);
 
             } else {
-                UIUtils.showToast(getContext(), "您还未是VIP,请先购买VIP");
-                intent = new Intent(getContext(), BuyVipActivity.class);
+                UIUtils.showToast(getActivityContext(), "您还未是VIP,请先购买VIP");
+                intent = getIntent(BuyVipActivity.class);
             }
         } else {
             if (attestation == 1) {
-                intent = new Intent(getContext(), EngagementTypeActivity.class);
+                intent = getIntent(EngagementTypeActivity.class);
             } else if (attestation == 2) {
-                UIUtils.showToast(getContext(), "您的认证正在审核中，请稍后再试");
+                UIUtils.showToast(getApplicationContext(), "您的认证正在审核中，请稍后再试");
             } else {
-                intent = new Intent(getContext(), RenZhengThreeActivity.class);
-                UIUtils.showToast(getContext(), "您还未认证，请先认证");
+                intent = getIntent(RenZhengThreeActivity.class);
+                UIUtils.showToast(getApplicationContext(), "您还未认证，请先认证");
             }
         }
         if (intent != null) {
@@ -773,7 +824,7 @@ public class ActivityUtils {
      * 发布约会
      */
     public static void startEengegamentPublishActivity() {
-        Intent intent = new Intent(getContext(), EengegamentPublishActivity.class);
+        Intent intent = getIntent(EengegamentPublishActivity.class);
         startActivity(intent);
     }
 
@@ -788,20 +839,20 @@ public class ActivityUtils {
         int status = detail.getVipStatus();
         if (StringUtis.equals(sex, "1")) {
             if (status == 1) {
-                intent = new Intent(getContext(), EngagemengOrderActivity.class);
+                intent = getIntent(EngagemengOrderActivity.class);
 
             } else {
-                UIUtils.showToast(getContext(), "您还未是VIP,请先购买VIP");
-                intent = new Intent(getContext(), BuyVipActivity.class);
+                UIUtils.showToast(getApplicationContext(), "您还未是VIP,请先购买VIP");
+                intent = getIntent(BuyVipActivity.class);
             }
         } else {
             if (attestation == 1) {
-                intent = new Intent(getContext(), EngagemengOrderActivity.class);
+                intent = getIntent(EngagemengOrderActivity.class);
             } else if (attestation == 2) {
-                UIUtils.showToast(getContext(), "您的认证正在审核中，请稍后再试");
+                UIUtils.showToast(getApplicationContext(), "您的认证正在审核中，请稍后再试");
             } else {
-                intent = new Intent(getContext(), RenZhengThreeActivity.class);
-                UIUtils.showToast(getContext(), "您还未认证，请先认证");
+                intent = getIntent(RenZhengThreeActivity.class);
+                UIUtils.showToast(getApplicationContext(), "您还未认证，请先认证");
             }
         }
         if (intent != null) {
@@ -818,7 +869,16 @@ public class ActivityUtils {
      * 认证三版
      */
     public static void startRenzhengThreeActivity() {
-        startActivity(RenZhengThreeActivity.class);
+        int status = UserInfoManager.getInstance().getCertificationStatus();
+
+        if (status == 1) {
+            UIUtils.showToast(getApplicationContext(), "您已经认证");
+        } else if (status == 2) {
+            UIUtils.showToast(getApplicationContext(), "您的认证正在审核中，请稍后再试");
+        } else {
+            startActivity(RenZhengThreeActivity.class);
+        }
+
     }
 
     /**
@@ -827,7 +887,7 @@ public class ActivityUtils {
      * @param type
      */
     public static void startEengegamentRecommendActivity(EnumConstant.EngegamentType type) {
-        Intent intent = new Intent(getContext(), EengegamentRecommendActivity.class);
+        Intent intent = getIntent(EengegamentRecommendActivity.class);
         intent.putExtra("type", type);
         startActivity(intent);
     }
@@ -847,7 +907,7 @@ public class ActivityUtils {
     public static void startEengegamentAppealActivity(String engagementID) {
         if (StringUtis.isEmpty(engagementID))
             return;
-        Intent intent = new Intent(getContext(), EngegamentAppealActivity.class);
+        Intent intent = getIntent(EngegamentAppealActivity.class);
         intent.putExtra("id", engagementID);
         startActivity(intent);
 
@@ -859,7 +919,7 @@ public class ActivityUtils {
      * @param id
      */
     public static void startPersonThreeActivity(String id, String nikename, String avater) {
-        Intent intent = new Intent(getContext(), PersonThreeActivity.class);
+        Intent intent = getIntent(PersonThreeActivity.class);
         intent.putExtra("name", nikename);
         intent.putExtra("avater", avater);
         intent.putExtra("id", id);
@@ -874,7 +934,7 @@ public class ActivityUtils {
      * @param face
      */
     public static void startEditDynamicActivity(String type, String uid, String nickname, String face) {
-        Intent intent = new Intent(getContext(), EditDynamicActivity.class);
+        Intent intent = getIntent(EditDynamicActivity.class);
         intent.putExtra("name", nickname);
         intent.putExtra("avater", face);
         intent.putExtra("id", uid);
@@ -890,7 +950,7 @@ public class ActivityUtils {
     }
 
     public static void startH5Activity(String url) {
-        Intent intent = new Intent(getContext(), H5Activity.class);
+        Intent intent = getIntent(H5Activity.class);
         intent.putExtra("url", url);
         startActivity(intent);
     }
@@ -901,7 +961,7 @@ public class ActivityUtils {
      * @param pageType
      */
     public static void startHomeSearchActivity(String pageType) {
-        Intent intent = new Intent(getContext(), HomeSearchActivity.class);
+        Intent intent = getIntent(HomeSearchActivity.class);
         intent.putExtra("type", pageType);
         startActivity(intent);
     }

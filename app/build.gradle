@@ -14,6 +14,9 @@ android {
         versionName rootProject.ext.android.versionName
         multiDexEnabled true
     }
+    dexOptions {
+        javaMaxHeapSize "8g"
+    }
 
     signingConfigs {
         debug {

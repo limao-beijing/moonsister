@@ -343,6 +343,7 @@
     <string name="renzheng_three_rule">1.不限次数接受男性会员约见，赴约后，将获得80%约见担保费。\n2.查看会员所有视频、图片、语音资料。\n3.与非好友会员聊天。\n4.查看会员微信、手机号。\n5.与会员视频、语音聊天。\n6.赠送每月5次免费主动约见，超出5次按每次50元支付约见担保费。
 </string>
     <string name="now_renzheng">立即认证</string>
+    <string name="other">其他</string>
 
 
 </resources>

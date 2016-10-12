@@ -22,7 +22,8 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends Re
         this.datas = list;
 //        this.layoutID = layoutID;
     }
-    public BaseIView getBaseIView(){
+
+    public BaseIView getBaseIView() {
         return mBaseIView;
     }
 

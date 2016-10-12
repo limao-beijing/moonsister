@@ -280,8 +280,9 @@ public class DropMenuAdapter implements MenuAdapter {
 
         //初始化选中.
         comTypeDoubleListView.setLeftList(list, 0);
-        comTypeDoubleListView.setRightList(list.get(1).child, -1);
+        comTypeDoubleListView.setRightList(list.get(0).child, 0);
         comTypeDoubleListView.getLeftListView().setBackgroundColor(mContext.getResources().getColor(R.color.b_c_fafafa));
+
 
         return comTypeDoubleListView;
     }

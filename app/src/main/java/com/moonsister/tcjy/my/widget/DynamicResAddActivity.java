@@ -7,6 +7,8 @@ import android.widget.TextView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragmentActivity;
 import com.moonsister.tcjy.center.widget.DynamicContentFragment;
+import com.moonsister.tcjy.event.Events;
+import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.persenter.DynamicResAddPersenter;
 import com.moonsister.tcjy.my.persenter.DynamicResAddPersenterImpl;
 
@@ -64,6 +66,7 @@ public class DynamicResAddActivity extends BaseFragmentActivity implements Dynam
 
     @Override
     public void finishPage() {
+        RxBus.getInstance().send(Events.EventEnum.DynamicResAddActivity_up_success, null);
         finish();
     }
 }

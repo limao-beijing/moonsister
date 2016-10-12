@@ -55,15 +55,18 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
 
     @Override
     public void onBindData(EngagementManagerBean.DataBean bean) {
-        ImageServerApi.showURLImage(mRivAvater, bean.getFrom_face());
-        mTvUserName.setText(bean.getFrom_nickname());
+
         mTvEngagementMoney.setText("约会费用：" + bean.getMoney());
         mTvEngagementAddress.setText(bean.getAddress());
         mTvEngagementDate.setText(bean.getDate());
         if (bean.getManagerType() == EngagementManagerFragment.ManagerType.activity) {
             selectEngegamentStatus(bean);
+            ImageServerApi.showURLImage(mRivAvater, bean.getTo_face());
+            mTvUserName.setText(bean.getTo_nickname());
         } else {
             selectEngegamentedStatus(bean);
+            ImageServerApi.showURLImage(mRivAvater, bean.getFrom_face());
+            mTvUserName.setText(bean.getFrom_nickname());
         }
         selectEngegamentedType(bean);
         setClick(bean);
@@ -184,9 +187,10 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
                         baseRecyclerViewAdapter.getBaseIView().transfePageMsg(getString(R.string.order_finish));
                     return;
                 }
+
                 if (bean.getManagerType() == EngagementManagerFragment.ManagerType.activity) {
                     ActivityUtils.startEengegamentAppealActivity(bean.getId());
-                } else {
+                } else if (bean.getStatus() == 1) {
                     Events<String> events = new Events<>();
                     events.message = bean.getId();
                     events.what = Events.EventEnum.CLICK_ENGAGEMENT_REFUSE;
@@ -214,7 +218,7 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
 //                }
                 String content = mTvBtnOne.getText().toString();
                 if (StringUtis.equals(content, getString(R.string.engagement_again))) {
-                    EnumConstant.EngegamentType type = EnumConstant.EngegamentType.more;
+                    EnumConstant.EngegamentType type = EnumConstant.EngegamentType.other;
                     EnumConstant.EngegamentType[] values = EnumConstant.EngegamentType.values();
                     for (int i = 0; i < values.length; i++) {
                         if (values[i].getType() == bean.getType()) {

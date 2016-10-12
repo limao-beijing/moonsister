@@ -71,34 +71,56 @@ public class AppConversationActivity extends BaseActivity {
     }
 
     public void certificationStatus() {
-
         PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
-        if (memoryPersonInfoDetail.getVipStatus() == 1) {
-            return;
+
+        String sex = memoryPersonInfoDetail.getSex();
+        if (StringUtis.equals(sex, "1")) {
+            if (memoryPersonInfoDetail.getVipStatus() == 1)
+                return;
+        } else {
+            if (memoryPersonInfoDetail.getAttestation() == 1)
+                return;
         }
-        if (memoryPersonInfoDetail.getAttestation() != 3) {
-            return;
-        }
-        if (memoryPersonInfoDetail.getUserFriendList() != null && memoryPersonInfoDetail.getUserFriendList().contains(mTargetId)) {
-            return;
-        }
+
+
+//        if (memoryPersonInfoDetail.getVipStatus() == 1) {
+//            return;
+//        }
+//        if (memoryPersonInfoDetail.getAttestation() != 3) {
+//            return;
+//        }
+//        if (memoryPersonInfoDetail.getUserFriendList() != null && memoryPersonInfoDetail.getUserFriendList().contains(mTargetId)) {
+//            return;
+//        }
         AlearDialog alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_im_1015, this);
         alearDialog.setListenter(new AlearDialog.onClickListenter() {
             @Override
             public void clickType(AlearDialog.clickType type) {
                 switch (type) {
                     case cancel:
+                        alearDialog.dismiss();
                         finish();
                         break;
                     case confirm_vip:
-                        ActivityUtils.startBuyVipActivity();
+                        String sex = memoryPersonInfoDetail.getSex();
+                        if (StringUtis.equals(sex, "1")) {
+                            ActivityUtils.startBuyVipActivity();
+                            alearDialog.dismiss();
+                        } else {
+                            if (memoryPersonInfoDetail.getAttestation() == 2) {
+                                UIUtils.showToast(getApplicationContext(), "您的认证正在审核中，请稍后再试");
+                            } else {
+                                ActivityUtils.startRenzhengThreeActivity();
+                                alearDialog.dismiss();
+                            }
+                        }
                         break;
                     case confirm:
                         ActivityUtils.startCertificationActivity();
+                        alearDialog.dismiss();
                         break;
 
                 }
-                alearDialog.dismiss();
             }
         });
 

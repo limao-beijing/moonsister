@@ -143,7 +143,7 @@ public class PersonalMessageFenBean extends BaseBean {
             private String like_image;
             private String nickname;
             private String signature;
-            private int sex;
+            private String sex;
             private String birthday;
             private String star_sign;
             private String height;
@@ -325,13 +325,7 @@ public class PersonalMessageFenBean extends BaseBean {
                 this.self_image = self_image;
             }
 
-            public int getSex() {
-                return sex;
-            }
 
-            public void setSex(int sex) {
-                this.sex = sex;
-            }
 
             public String getSignature() {
                 return signature;
@@ -384,24 +378,44 @@ public class PersonalMessageFenBean extends BaseBean {
             private String t2;
             private String t3;
 
+            public String getSex() {
+                return sex;
+            }
 
+            public void setSex(String sex) {
+                this.sex = sex;
+            }
         }
 
         public static class BaseinfoBean {
             private String nickname;
-            private int sex;
+            private String sex;
             private String face;
             private String like_image;
             private String profession;
             private String birthday;
             private String signature;
             private String age;
-            private int vip_level;
+            private String vip_level;
             private String isauth;
             private String isfollow;
             private String birthplace;
 
+            public String getSex() {
+                return sex;
+            }
 
+            public void setSex(String sex) {
+                this.sex = sex;
+            }
+
+            public String getVip_level() {
+                return vip_level;
+            }
+
+            public void setVip_level(String vip_level) {
+                this.vip_level = vip_level;
+            }
 
             /**
              * s :
@@ -422,13 +436,8 @@ public class PersonalMessageFenBean extends BaseBean {
                 this.nickname = nickname;
             }
 
-            public int getSex() {
-                return sex;
-            }
 
-            public void setSex(int sex) {
-                this.sex = sex;
-            }
+
 
             public String getFace() {
                 return face;
@@ -478,13 +487,6 @@ public class PersonalMessageFenBean extends BaseBean {
                 this.age = age;
             }
 
-            public int getVip_level() {
-                return vip_level;
-            }
-
-            public void setVip_level(int vip_level) {
-                this.vip_level = vip_level;
-            }
 
             public String getIsauth() {
                 return isauth;
@@ -567,13 +569,13 @@ public class PersonalMessageFenBean extends BaseBean {
             private String smobile;
             private String qq;
             private String weixin;
-            private int zaixian;
+            private String zaixian;
 
-            public int getZaixian() {
+            public String getZaixian() {
                 return zaixian;
             }
 
-            public void setZaixian(int zaixian) {
+            public void setZaixian(String zaixian) {
                 this.zaixian = zaixian;
             }
 

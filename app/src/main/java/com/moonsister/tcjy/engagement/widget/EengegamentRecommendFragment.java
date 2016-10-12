@@ -29,6 +29,7 @@ public class EengegamentRecommendFragment extends BaseListFragment<EengegamentRe
         EnumConstant.EngegamentType type = (EnumConstant.EngegamentType) intent.getSerializableExtra("type");
         if (type != null) {
             mEngegamentType = type;
+
         }
         presenter = new EengegamentRecommendPresenterImpl();
         presenter.attachView(this);

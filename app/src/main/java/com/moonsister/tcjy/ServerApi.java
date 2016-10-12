@@ -181,8 +181,8 @@ public class ServerApi {
 
 
     public interface AppAPI {
-        String baseUrl = "http://3test.yytbzs.cn:88/index.php/index/";
-//        String baseUrl = "http://3.yytbzs.cn:88/index.php/index/";
+//        String baseUrl = "http://3test.yytbzs.cn:88/index.php/index/";
+        String baseUrl = "http://3.yytbzs.cn:88/index.php/index/";
 //        String baseUrl = "http://2.yytbzs.cn:88/index.php/index/";
 //        String baseUrl = "http://mimei.cntttt.com:88/public/index.php/index/";
 

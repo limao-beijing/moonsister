@@ -120,19 +120,32 @@ public abstract class BaseListFragment<T extends BaseRecyclerViewAdapter, M exte
 
 
     protected void addData(List<M> datas) {
-        if (isRefresh) {
+        if (page == 1) {
             mAdapter.clean();
         }
         if (datas == null || datas.size() == 0) {
-            mXListView.loadMoreComplete();
-            mXListView.refreshComplete();
             showToast(getResources().getString(R.string.not_more_data));
-            return;
+        } else {
+
+            page++;
+            mAdapter.addListData(datas);
         }
-        page++;
-        mAdapter.addListData(datas);
         mAdapter.onRefresh();
         colorLoad();
+//        if (isRefresh) {
+//            mAdapter.clean();
+//        }
+//        if (datas == null || datas.size() == 0) {
+//
+//            mXListView.loadMoreComplete();
+//            mXListView.refreshComplete();
+//            showToast(getResources().getString(R.string.not_more_data));
+//            return;
+//        }
+//        page++;
+//        mAdapter.addListData(datas);
+//        mAdapter.onRefresh();
+//        colorLoad();
     }
 
     /**

@@ -99,7 +99,7 @@
         <!-- 高德 start -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="61154f9c7287a67749c89f29f747a708"/>
+            android:value="f3a354b81e0a660b1135edea1d560f9f"/>
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService"/>
         <!-- 高德 end -->

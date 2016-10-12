@@ -7,6 +7,12 @@ package com.moonsister.tcjy.bean;
 public class StatusBean extends BaseBean {
     private String status;
     private String id;
+    /**
+     * dating_id : 44
+     */
+
+    private DataBean data;
+
 
     public String getId() {
         return id;
@@ -23,5 +29,25 @@ public class StatusBean extends BaseBean {
     public void setStatus(String status) {
 
         this.status = status;
+    }
+
+    public DataBean getData() {
+        return data;
+    }
+
+    public void setData(DataBean data) {
+        this.data = data;
+    }
+
+    public static class DataBean {
+        private String dating_id;
+
+        public String getDating_id() {
+            return dating_id;
+        }
+
+        public void setDating_id(String dating_id) {
+            this.dating_id = dating_id;
+        }
     }
 }

@@ -2,12 +2,12 @@ package com.moonsister.tcjy.engagement.widget;
 
 import android.app.AlertDialog;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.EngagementManagerAdapter;
 import com.moonsister.tcjy.base.BaseListFragment;
 import com.moonsister.tcjy.bean.EngagementManagerBean;
-import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.bean.StatusBean;
 import com.moonsister.tcjy.engagement.presenter.EngagementManagerFragmentPresenter;
 import com.moonsister.tcjy.engagement.presenter.EngagementManagerFragmentPresenterImpl;
@@ -21,6 +21,7 @@ import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.FragmentEvent;
 
 import java.util.List;
+
 
 /**
  * Created by jb on 2016/9/28.
@@ -56,24 +57,23 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
                 .setEndEvent(FragmentEvent.DESTROY)
                 .setEvent(Events.EventEnum.CLICK_ENGAGEMENT_INVITE_2)
                 .onNext(events -> {
-                    PersonInfoDetail detail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
-                    String sex = detail.getSex();
-                    if (StringUtis.equals(sex, "1")) {
-                        int attestation = detail.getAttestation();
-                        if (attestation != 1) {
-
-                            return;
-                        }
-                    } else {
-                        int status = detail.getVipStatus();
-                        if (status != 1) {
-                            showNotLevel();
-                            return;
-                        }
-                    }
+//                    PersonInfoDetail detail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
+//                    String sex = detail.getSex();
+//                    if (StringUtis.equals(sex, "1")) {
+//                        int attestation = detail.getAttestation();
+//                        if (attestation != 1) {
+//
+//                            return;
+//                        }
+//                    } else {
+//                        int status = detail.getVipStatus();
+//                        if (status != 1) {
+//                            showNotLevel();
+//                            return;
+//                        }
+//                    }
                     Object message = events.message;
                     if (message instanceof String) {
-
                         presenter.submitInviteSuccess((String) message, "1");
                     }
                 })
@@ -103,7 +103,17 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
         AlertDialog myDialog = new AlertDialog.Builder(getActivity()).create();
         myDialog.show();
         View view = UIUtils.inflateLayout(R.layout.dialog_show_notlevel);
+        String sex = UserInfoManager.getInstance().getUserSex();
+        if (!StringUtis.equals(sex, "1")) {
+            ((ImageView) view.findViewById(R.id.iv_bg)).setImageResource(R.mipmap.bg_renzheng);
+        }
         myDialog.getWindow().setContentView(view);
+        view.findViewById(R.id.iv_cancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
         view.findViewById(R.id.view_que)
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -172,12 +182,14 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
     public void submitInviteSuccess(StatusBean mbean) {
         if (StringUtis.equals(mbean.getCode(), "10")) {
             showNotLevel();
+        } else if (StringUtis.equals(mbean.getCode(), "11")) {
+            showNotLevel();
         } else if (StringUtis.equals(mbean.getCode(), "1")) {
             if (mAdapter != null) {
                 List<EngagementManagerBean.DataBean> datas = mAdapter.getDatas();
                 if (datas != null) {
                     for (EngagementManagerBean.DataBean bean : datas) {
-                        if (StringUtis.equals(bean.getId(), mbean.getId())) {
+                        if (StringUtis.equals(bean.getId(), mbean.getData().getDating_id())) {
                             bean.setStatus(2);
                             mAdapter.onRefresh();
                             break;
@@ -208,6 +220,7 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
 
     @Override
     public void transfePageMsg(String msg) {
+
         showToast(msg);
     }
 

@@ -27,6 +27,15 @@ public class MyThreeFragmentBean extends BaseBean {
         private String create_time;
         private String uid;
         private String source_type;
+        private boolean isUpPIC = false;
+
+        public boolean isUpPIC() {
+            return isUpPIC;
+        }
+
+        public void setUpPIC(boolean upPIC) {
+            isUpPIC = upPIC;
+        }
 
         /**
          * s : http://mimei.img-cn-beijing.aliyuncs.com/a/image/02/2016-07-13/5785e5905b122.jpg@!336_246

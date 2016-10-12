@@ -36,6 +36,23 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/tv_bind_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x20"
+        android:background="@color/white"
+        android:drawableRight="@mipmap/icon_arrow_right"
+        android:padding="@dimen/x25"
+        android:text="绑定手机"
+        android:textColor="@color/title_text"
+        android:textSize="@dimen/order_text_small4" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/j_wheel_timebtn_pre" />
+
+    <TextView
         android:id="@+id/tv_changepwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

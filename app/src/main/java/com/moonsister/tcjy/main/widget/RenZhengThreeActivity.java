@@ -47,9 +47,13 @@ public class RenZhengThreeActivity extends BaseActivity implements RenZhengThree
 
     @Override
     protected void initView() {
+
+
         contentFragment = new DynamicContentFragment();
         FragmentUtils.swichReplaceFramgent(getSupportFragmentManager(), R.id.fl_content, contentFragment);
+
     }
+
 
 
     @OnClick({R.id.rl, R.id.tv_submit})

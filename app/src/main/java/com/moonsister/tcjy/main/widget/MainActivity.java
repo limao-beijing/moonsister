@@ -129,7 +129,7 @@ public class MainActivity extends BaseActivity implements MainView {
         RongyunManager.getInstance().setConversationBehaviorListener(new MyConversationBehaviorListener() {
             @Override
             public boolean onUserPortraitClick(Context context, Conversation.ConversationType conversationType, UserInfo userInfo) {
-                ActivityUtils.startDynamicActivity(userInfo.getUserId());
+//                ActivityUtils.startDynamicActivity(userInfo.getUserId());
                 return super.onUserPortraitClick(context, conversationType, userInfo);
             }
         });

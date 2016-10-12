@@ -54,7 +54,7 @@
         android:layout_below="@+id/rl"
         android:layout_marginLeft="@dimen/x30"
         android:layout_marginTop="@dimen/x50"
-        android:text="三种方式任选其一，认证后，你讲享受"
+        android:text="三种方式任选其一，认证后，你将享受"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_18"/>
 

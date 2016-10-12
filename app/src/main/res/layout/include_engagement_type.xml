@@ -54,10 +54,20 @@
         android:text="@string/travel"/>
 
     <TextView
-        android:id="@+id/tv_more"
+        android:id="@+id/tv_other"
         style="@style/text_engament_main"
         android:layout_alignLeft="@+id/tv_coffee"
         android:layout_below="@+id/tv_coffee"
+        android:layout_marginTop="@dimen/x40"
+        android:drawableTop="@mipmap/engagment_main_other"
+        android:text="@string/other"/>
+
+    <TextView
+        android:id="@+id/tv_more"
+
+        style="@style/text_engament_main"
+        android:layout_below="@+id/tv_coffee"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/x40"
         android:drawableTop="@mipmap/engagment_main_more"
         android:text="@string/more"/>
@@ -68,6 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/x50"
         android:padding="@dimen/x30"
         android:src="@mipmap/engagment_main_cancel"/>
 

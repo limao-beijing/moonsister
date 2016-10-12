@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.my.widget;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -8,6 +9,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
+import com.moonsister.tcjy.login.widget.RegActivity;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.DataCleanUtils;
 import com.moonsister.tcjy.utils.PackageUtils;
@@ -31,6 +33,7 @@ public class SettingActivity extends BaseActivity {
     @Bind(R.id.tv_verson_status)
     TextView tvVersonStatus;
 
+
     @Override
     protected View setRootContentView() {
         return UIUtils.inflateLayout(R.layout.activity_other_setting);
@@ -47,7 +50,7 @@ public class SettingActivity extends BaseActivity {
         return UIUtils.getStringRes(R.string.setting);
     }
 
-    @OnClick({R.id.tv_changepwd, R.id.timeout, R.id.layout_delete_cache, R.id.layout_verson_name})
+    @OnClick({R.id.tv_bind_phone, R.id.tv_changepwd, R.id.timeout, R.id.layout_delete_cache, R.id.layout_verson_name})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.timeout:
@@ -73,6 +76,10 @@ public class SettingActivity extends BaseActivity {
             case R.id.layout_delete_cache:
                 DataCleanUtils.clearAllCache(getApplicationContext());
                 getCache();
+                break;
+            case R.id.tv_bind_phone:
+                Intent intent = new Intent(this, RegActivity.class);
+                startActivity(intent);
                 break;
         }
 

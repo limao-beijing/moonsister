@@ -19,6 +19,7 @@ import com.moonsister.tcjy.bean.PersonalMessageFenBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
+import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenter;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.PersonalActivityFenView;
@@ -167,17 +168,17 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
         ainfo = getPersonalBean.getData().getAinfo();
         ImageServerApi.showURLSamllImage(iv_user_icon, baseinfo.getFace());//展示头像
         String isvip = rules.get(1).getIsvip();//vip的显示与否
-        if (StringUtis.equals("0",isvip)) {
+        if (StringUtis.equals("0", isvip)) {
             image_if_vip.setVisibility(View.INVISIBLE);
         } else {
             image_if_vip.setVisibility(View.VISIBLE);
         }
-        tv_sex.setText(getString(baseinfo.getSex() == 1 ? R.string.boy : R.string.girls));
+        tv_sex.setText(getString(StringUtis.equals(baseinfo.getSex(), "1") ? R.string.boy : R.string.girls));
         tv_name_three.setText(baseinfo.getNickname());//用户名显示
         Calendar c = Calendar.getInstance();//获得系统当前日期
         String birthday = baseinfo.getBirthday();//得到生日
         String spStr[] = birthday.split("-");//截取字符串
-        int s = Integer.parseInt(spStr[0]);//将得到的年份转为int类型
+        int s = StringUtis.string2Int(spStr[0]);//将得到的年份转为int类型
         int year = c.get(Calendar.YEAR);//得到系统年份
         int i = year - s;//系统年份减去得到的年分
         tv_age_three.setText(i + "岁");//年龄展示
@@ -188,11 +189,11 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
         tv_hight.setText(dlist.getHeight() + "cm");//公开资料身高
         tv_wight.setText(dlist.getWeight() + "kg");//公开资料体重
         String value = dlist.getPremarital_sex();//是否接受异地恋
-        if (StringUtis.equals(value,"可以接受")) {
+        if (StringUtis.equals(value, "可以接受")) {
             tv_long_distance.setText("是");
-        } else if (StringUtis.equals(value,"不能接受")) {
+        } else if (StringUtis.equals(value, "不能接受")) {
             tv_long_distance.setText("否");
-        } else if (StringUtis.equals(value,"看情况")) {
+        } else if (StringUtis.equals(value, "看情况")) {
             tv_long_distance.setText("是");
         }
         if (StringUtis.equals(baseinfo.getIsfollow(), "1")) {
@@ -200,11 +201,13 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
             Drawable drawable = getDrawable(R.mipmap.person_na_hougong);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             tv_accept.setCompoundDrawables(drawable, null, null, null);
+            tv_accept.setTextColor(getResources().getColor(R.color.color_f790ae));
         } else {
             tv_accept.setText("纳后宫");
             Drawable drawable = getResources().getDrawable(R.mipmap.tv_accept);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             tv_accept.setCompoundDrawables(drawable, null, null, null);
+            tv_accept.setTextColor(getResources().getColor(R.color.color_3e838a));
 
         }
         tv_love_talk.setText(baseinfo.getSignature());
@@ -324,7 +327,7 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
             case R.id.massage_look_line:
                 if (baseinfo != null) {
                     if (ainfo.getVip_level() > 0) {
-                        tv_ifline.setText(vipinfo.getZaixian() == 1 ? "在线" : "不在线");
+                        tv_ifline.setText(StringUtis.equals(vipinfo.getZaixian(), "1") ? "在线" : "不在线");
                     } else {
                         showNotLevel();
                     }
@@ -342,10 +345,37 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
         }
     }
 
+//    private void showNotLevel() {
+//        AlertDialog myDialog = new AlertDialog.Builder(this).create();
+//        myDialog.show();
+//        View view = UIUtils.inflateLayout(R.layout.dialog_show_notlevel);
+//        myDialog.getWindow().setContentView(view);
+//        view.findViewById(R.id.iv_cancel).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                myDialog.dismiss();
+//            }
+//        });
+//        view.findViewById(R.id.view_que)
+//                .setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        ActivityUtils.startBuyVipActivity();
+//                        myDialog.dismiss();
+//                    }
+//                });
+//
+//
+//    }
+
     private void showNotLevel() {
         AlertDialog myDialog = new AlertDialog.Builder(this).create();
         myDialog.show();
         View view = UIUtils.inflateLayout(R.layout.dialog_show_notlevel);
+        String sex = UserInfoManager.getInstance().getUserSex();
+        if (!StringUtis.equals(sex, "1")) {
+            ((ImageView) view.findViewById(R.id.iv_bg)).setImageResource(R.mipmap.bg_renzheng);
+        }
         myDialog.getWindow().setContentView(view);
         view.findViewById(R.id.iv_cancel).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -357,7 +387,12 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityUtils.startBuyVipActivity();
+                        String sex = UserInfoManager.getInstance().getUserSex();
+                        if (StringUtis.equals(sex, "1")) {
+                            ActivityUtils.startBuyVipActivity();
+                        } else {
+                            ActivityUtils.startRenzhengThreeActivity();
+                        }
                         myDialog.dismiss();
                     }
                 });

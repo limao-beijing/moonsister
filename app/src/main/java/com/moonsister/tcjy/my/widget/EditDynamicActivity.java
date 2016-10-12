@@ -17,15 +17,16 @@ import com.moonsister.tcjy.utils.StringUtis;
 public class EditDynamicActivity extends BaseFragmentActivity {
     @Override
     protected Fragment initFragment() {
-        PersonThreeFragment fragment = new PersonThreeFragment() {
-            @Override
-            protected View addHeaderView() {
-                return null;
-            }
-        };
+        PersonThreeFragment fragment = new PersonThreeFragment();
+//        {
+//            @Override
+//            protected View addHeaderView() {
+//                return null;
+//            }
+//        };
+        fragment.isHaseaddHeaderView(false);
         String type = getIntent().getStringExtra("type");
         fragment.setType(type);
-
         return fragment;
     }
 
