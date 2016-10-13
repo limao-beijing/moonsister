@@ -3,10 +3,12 @@ package com.moonsister.tcjy.my.persenter;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.MyThreeFragmentBean;
+import com.moonsister.tcjy.bean.StatusBean;
 import com.moonsister.tcjy.bean.UserDetailBean;
 import com.moonsister.tcjy.my.model.MyThreeFragmentModel;
 import com.moonsister.tcjy.my.model.MyThreeFragmentModelImpl;
 import com.moonsister.tcjy.my.view.MyThreeFragmentView;
+import com.moonsister.tcjy.utils.StringUtis;
 
 /**
  * Created by jb on 2016/9/25.
@@ -29,12 +31,18 @@ public class MyThreeFragmentPresenterImpl implements MyThreeFragmentPresenter, B
     @Override
     public void loadData(String uid, int page, String type) {
         view.showLoading();
-        model.loadData(uid,page, type, this);
+        model.loadData(uid, page, type, this);
     }
 
     @Override
     public void loadHeaderData(String uid) {
-        model.loadHeaderData(uid,this);
+        model.loadHeaderData(uid, this);
+    }
+
+    @Override
+    public void delectRes(String ResId) {
+        view.showLoading();
+        model.deleteRes(ResId, this);
     }
 
     @Override
@@ -47,8 +55,15 @@ public class MyThreeFragmentPresenterImpl implements MyThreeFragmentPresenter, B
 
             case DATA_ONE:
                 if (bean instanceof UserDetailBean) {
-                    view.setHeaderData((UserDetailBean)bean);
+                    view.setHeaderData((UserDetailBean) bean);
                 }
+                break;
+            case DATA_TWO:
+                if (StringUtis.equals(bean.getCode(), "1") && bean instanceof StatusBean) {
+
+                    view.deleteSuccess(((StatusBean) bean).getId());
+                }
+                break;
         }
         view.hideLoading();
     }

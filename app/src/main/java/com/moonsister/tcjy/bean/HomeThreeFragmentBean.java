@@ -50,6 +50,15 @@ public class HomeThreeFragmentBean extends BaseBean {
         private String lat;
         private String lng;
         private String distance;
+        private String distance_love;
+
+        public String getDistance_love() {
+            return distance_love;
+        }
+
+        public void setDistance_love(String distance_love) {
+            this.distance_love = distance_love;
+        }
 
         public String getDistance() {
             return distance;

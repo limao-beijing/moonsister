@@ -103,7 +103,7 @@
 
     <LinearLayout
         android:id="@+id/ll_user_bind"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/view_all_line"
         android:layout_marginTop="@dimen/y10"
@@ -138,7 +138,17 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x10"
             android:src="@mipmap/home_three_weixin"/>
+
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_show_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/ll_user_bind"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/x30"
+        android:text="@string/loading"/>
 
 </RelativeLayout>

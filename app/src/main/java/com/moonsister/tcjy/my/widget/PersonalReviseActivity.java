@@ -370,6 +370,13 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                     }
                 })
                 .create();
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.DynamicResAddActivity_up_success)
+                .onNext(events -> {
+                    if (presenter != null)
+                        presenter.sendPersonalReviseMessage(UserInfoManager.getInstance().getUid());
+                }).create();
 
     }
 
@@ -1173,11 +1180,12 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
         isshowsex = rules.get(7).getIsshow();
         value = rules.get(7).getValue();//性别
         if (isshowsex.equals("1")) {
-            if (value == "1") {
-                tv_sex.setText("男");
-            } else {
-                tv_sex.setText("女");
-            }
+//            if (StringUtis.equals(value, "1")) {
+//                tv_sex.setText("男");
+//            } else {
+//                tv_sex.setText("女");
+//            }
+            tv_sex.setText(value);
         } else {
             layout_sex.setVisibility(View.GONE);
         }
@@ -1358,7 +1366,9 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
             imageView3.setVisibility(View.GONE);
             return;
         }
-
+        imageView1.setImageDrawable(null);
+        imageView2.setImageDrawable(null);
+        imageView3.setImageDrawable(null);
         for (int i = 0; i < pics.size(); i++) {
             if (i == 0) {
                 String pic1 = pics.get(i).getS();

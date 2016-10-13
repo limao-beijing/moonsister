@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.bean;
 
-import com.moonsister.tcjy.engagement.widget.EngagementManagerFragment;
+import com.moonsister.tcjy.engagement.presenter.EngagementManagerFragmentPresenter;
+import com.moonsister.tcjy.utils.EnumConstant;
 
 import java.util.List;
 
@@ -77,7 +78,12 @@ public class EngagementManagerBean extends BaseBean {
         private String timeinfo;
         //0未申诉，1申诉中，2已成功（约会状态同步为4已失败）
         private int appeal_status;
-        private EngagementManagerFragment.ManagerType mType;
+        private EnumConstant.ManagerType mType;
+        private EngagementManagerFragmentPresenter mPresenetr;
+
+        public EngagementManagerFragmentPresenter getPresenetr() {
+            return mPresenetr;
+        }
 
         public String getTimeinfo() {
             return timeinfo;
@@ -87,15 +93,15 @@ public class EngagementManagerBean extends BaseBean {
             this.timeinfo = timeinfo;
         }
 
-        public void setType(EngagementManagerFragment.ManagerType type) {
+        public void setType(EnumConstant.ManagerType type) {
             mType = type;
         }
 
-        public void setManagerType(EngagementManagerFragment.ManagerType type) {
+        public void setManagerType(EnumConstant.ManagerType type) {
             mType = type;
         }
 
-        public EngagementManagerFragment.ManagerType getManagerType() {
+        public EnumConstant.ManagerType getManagerType() {
             return mType;
         }
 
@@ -305,6 +311,10 @@ public class EngagementManagerBean extends BaseBean {
 
         public void setTo_face(String to_face) {
             this.to_face = to_face;
+        }
+
+        public void setPresenetr(EngagementManagerFragmentPresenter presenetr) {
+            mPresenetr = presenetr;
         }
     }
 }

@@ -16,6 +16,7 @@ import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.FragmentEvent;
@@ -27,22 +28,16 @@ import java.util.List;
  * Created by jb on 2016/9/28.
  */
 public class EngagementManagerFragment extends BaseListFragment<EngagementManagerAdapter, EngagementManagerBean.DataBean> implements EngagementManagerFragmentView {
-    private ManagerType mType;
+    private EnumConstant.ManagerType mType;
     private EngagementManagerFragmentPresenter presenter;
 
 
-    public enum ManagerType {
-        activity, passivity;
-    }
-
     public static EngagementManagerFragment newInstance() {
+
         return new EngagementManagerFragment();
     }
 
-    @Override
-    protected void initChildData() {
-        presenter = new EngagementManagerFragmentPresenterImpl();
-        presenter.attachView(this);
+    private void initRxbus() {
         RxBus.with(this)
                 .setEndEvent(FragmentEvent.DESTROY)
                 .setEvent(Events.EventEnum.CLICK_ENGAGEMENT_SUCCESS)
@@ -53,41 +48,26 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
                     }
                 })
                 .create();
-        RxBus.with(this)
-                .setEndEvent(FragmentEvent.DESTROY)
-                .setEvent(Events.EventEnum.CLICK_ENGAGEMENT_INVITE_2)
-                .onNext(events -> {
-//                    PersonInfoDetail detail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
-//                    String sex = detail.getSex();
-//                    if (StringUtis.equals(sex, "1")) {
-//                        int attestation = detail.getAttestation();
-//                        if (attestation != 1) {
-//
-//                            return;
-//                        }
-//                    } else {
-//                        int status = detail.getVipStatus();
-//                        if (status != 1) {
-//                            showNotLevel();
-//                            return;
-//                        }
+//        RxBus.with(this)
+//                .setEndEvent(FragmentEvent.DESTROY)
+//                .setEvent(Events.EventEnum.EngagementManagerFragment_CLICK_ENGAGEMENT_INVITE)
+//                .onNext(events -> {
+//                    Object message = events.message;
+//                    if (message instanceof String) {
+//                        presenter.submitInviteSuccess((String) message, "1");
 //                    }
-                    Object message = events.message;
-                    if (message instanceof String) {
-                        presenter.submitInviteSuccess((String) message, "1");
-                    }
-                })
-                .create();
-        RxBus.with(this)
-                .setEndEvent(FragmentEvent.DESTROY)
-                .setEvent(Events.EventEnum.CLICK_ENGAGEMENT_REFUSE)
-                .onNext(events -> {
-                    Object message = events.message;
-                    if (message instanceof String) {
-                        presenter.submitInviteSuccess((String) message, "2");
-                    }
-                })
-                .create();
+//                })
+//                .create();
+//        RxBus.with(this)
+//                .setEndEvent(FragmentEvent.DESTROY)
+//                .setEvent(Events.EventEnum.CLICK_ENGAGEMENT_REFUSE)
+//                .onNext(events -> {
+//                    Object message = events.message;
+//                    if (message instanceof String) {
+//                        presenter.submitInviteSuccess((String) message, "2");
+//                    }
+//                })
+//                .create();
         RxBus.with(this)
                 .setEndEvent(FragmentEvent.DESTROY)
                 .setEvent(Events.EventEnum.CLICK_ENGAGEMENT_LEVEL_NOT)
@@ -95,6 +75,13 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
                         showNotLevel()
                 )
                 .create();
+    }
+
+    @Override
+    protected void initChildData() {
+        presenter = new EngagementManagerFragmentPresenterImpl();
+        presenter.attachView(this);
+
         if (mAdapter != null)
             mAdapter.setBaseView(this);
     }
@@ -134,6 +121,7 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
     @Override
     public EngagementManagerAdapter setAdapter() {
         EngagementManagerAdapter adapter = new EngagementManagerAdapter(null);
+        initRxbus();
         return adapter;
     }
 
@@ -153,6 +141,7 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
         List<EngagementManagerBean.DataBean> datas = bean.getData();
         for (EngagementManagerBean.DataBean dataBean : datas) {
             dataBean.setManagerType(mType);
+            dataBean.setPresenetr(presenter);
         }
         addData(datas);
     }
@@ -203,7 +192,7 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
 
     }
 
-    public void setType(ManagerType type) {
+    public void setType(EnumConstant.ManagerType type) {
         mType = type;
     }
 

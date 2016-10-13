@@ -5,11 +5,13 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.login.widget.RegActivity;
+import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.DataCleanUtils;
 import com.moonsister.tcjy.utils.PackageUtils;
@@ -50,7 +52,7 @@ public class SettingActivity extends BaseActivity {
         return UIUtils.getStringRes(R.string.setting);
     }
 
-    @OnClick({R.id.tv_bind_phone, R.id.tv_changepwd, R.id.timeout, R.id.layout_delete_cache, R.id.layout_verson_name})
+    @OnClick({R.id.tv_help, R.id.tv_bind_phone, R.id.tv_changepwd, R.id.timeout, R.id.layout_delete_cache, R.id.layout_verson_name})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.timeout:
@@ -80,6 +82,10 @@ public class SettingActivity extends BaseActivity {
             case R.id.tv_bind_phone:
                 Intent intent = new Intent(this, RegActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.tv_help:
+                String uri = "http://3.yytbzs.cn:88/html/help.html?authcode=" + UserInfoManager.getInstance().getAuthcode() + "&channel=" + AppConstant.CHANNEL_ID;
+                ActivityUtils.startH5Activity(uri);
                 break;
         }
 

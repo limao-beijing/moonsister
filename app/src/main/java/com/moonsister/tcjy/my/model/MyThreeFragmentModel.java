@@ -10,4 +10,6 @@ public interface MyThreeFragmentModel extends BaseIModel {
     void loadData(String uid, int page, String type, onLoadDateSingleListener<BaseBean> listener);
 
     void loadHeaderData(String uid, onLoadDateSingleListener<BaseBean> listener);
+
+    void deleteRes(String id, onLoadDateSingleListener<BaseBean> listener);
 }

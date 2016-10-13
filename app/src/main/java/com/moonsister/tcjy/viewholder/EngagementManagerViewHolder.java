@@ -8,7 +8,7 @@ import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.EngagementManagerBean;
-import com.moonsister.tcjy.engagement.widget.EngagementManagerFragment;
+import com.moonsister.tcjy.engagement.presenter.EngagementManagerFragmentPresenter;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.utils.ActivityUtils;
@@ -59,14 +59,26 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
         mTvEngagementMoney.setText("约会费用：" + bean.getMoney());
         mTvEngagementAddress.setText(bean.getAddress());
         mTvEngagementDate.setText(bean.getDate());
-        if (bean.getManagerType() == EngagementManagerFragment.ManagerType.activity) {
+        if (bean.getManagerType() == EnumConstant.ManagerType.activity) {
             selectEngegamentStatus(bean);
             ImageServerApi.showURLImage(mRivAvater, bean.getTo_face());
             mTvUserName.setText(bean.getTo_nickname());
+            mRivAvater.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ActivityUtils.startPersonalActivity(bean.getTo_uid());
+                }
+            });
         } else {
             selectEngegamentedStatus(bean);
             ImageServerApi.showURLImage(mRivAvater, bean.getFrom_face());
             mTvUserName.setText(bean.getFrom_nickname());
+            mRivAvater.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ActivityUtils.startPersonalActivity(bean.getFrom_uid());
+                }
+            });
         }
         selectEngegamentedType(bean);
         setClick(bean);
@@ -188,13 +200,17 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
                     return;
                 }
 
-                if (bean.getManagerType() == EngagementManagerFragment.ManagerType.activity) {
+                if (bean.getManagerType() == EnumConstant.ManagerType.activity) {
                     ActivityUtils.startEengegamentAppealActivity(bean.getId());
                 } else if (bean.getStatus() == 1) {
-                    Events<String> events = new Events<>();
-                    events.message = bean.getId();
-                    events.what = Events.EventEnum.CLICK_ENGAGEMENT_REFUSE;
-                    RxBus.getInstance().send(events);
+//                    Events<String> events = new Events<>();
+//                    events.message = bean.getId();
+//                    events.what = Events.EventEnum.CLICK_ENGAGEMENT_REFUSE;
+//                    RxBus.getInstance().send(events);
+                    EngagementManagerFragmentPresenter presenetr = bean.getPresenetr();
+                    if (presenetr != null) {
+                        presenetr.submitInviteSuccess(bean.getId(), "2");
+                    }
                 }
 
             }
@@ -228,10 +244,14 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
                     }
                     ActivityUtils.startEngagemengOrderActivity(type, bean.getTo_uid(), bean.getFrom_nickname(), bean.getFrom_face());
                 } else if (StringUtis.equals(content, getString(R.string.engagement_invite))) {
-                    Events<String> events = new Events<>();
-                    events.message = bean.getId();
-                    events.what = Events.EventEnum.CLICK_ENGAGEMENT_INVITE_2;
-                    RxBus.getInstance().send(events);
+//                    Events<String> events = new Events<>();
+//                    events.message = bean.getId();
+//                    events.what = Events.EventEnum.EngagementManagerFragment_CLICK_ENGAGEMENT_INVITE;
+//                    RxBus.getInstance().send(events);
+                    EngagementManagerFragmentPresenter presenetr = bean.getPresenetr();
+                    if (presenetr != null) {
+                        presenetr.submitInviteSuccess(bean.getId(), "1");
+                    }
                 }
 
             }

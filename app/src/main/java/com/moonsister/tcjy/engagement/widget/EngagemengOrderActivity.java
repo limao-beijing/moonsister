@@ -177,7 +177,9 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
             last_count = StringUtis.string2Int(data.getLast_count());
             if (last_count > 0) {
                 mTvSumbit.setText("还有" + last_count + "次免费约见");
-                et_input_money.setText("0");
+                et_input_money.setText(dating_money+"");
+                et_input_money.setFocusable(false);
+                et_input_money.setClickable(false);
             }
             et_input_money.setHint("担保金额不能低于" + dating_money);
         }

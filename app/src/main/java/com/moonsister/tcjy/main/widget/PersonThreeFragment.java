@@ -54,6 +54,16 @@ public class PersonThreeFragment extends BaseListFragment<MyThreeFragmentAdapter
                         mXListView.setRefreshing(true);
                 })
                 .create();
+        RxBus.with(this)
+                .setEndEvent(FragmentEvent.DESTROY)
+                .setEvent(Events.EventEnum.PersonThreeFragment_delete_pic)
+                .onNext(events -> {
+                    Object message = events.message;
+                    if (message instanceof String) {
+                        presenter.delectRes((String) message);
+                    }
+                })
+                .create();
 
         return new MyThreeFragmentAdapter(null);
     }
@@ -139,7 +149,9 @@ public class PersonThreeFragment extends BaseListFragment<MyThreeFragmentAdapter
 
     @Override
     public void setData(List<MyThreeFragmentBean.DataBean> data) {
-
+        for (MyThreeFragmentBean.DataBean bean : data) {
+            bean.setDelect(true);
+        }
         addData(data);
     }
 
@@ -148,6 +160,23 @@ public class PersonThreeFragment extends BaseListFragment<MyThreeFragmentAdapter
 
         bean.getData().getBaseinfo().setUid(uid);
         mHeaderViewHoder.refreshView(bean);
+    }
+
+    @Override
+    public void deleteSuccess(String id) {
+        List<MyThreeFragmentBean.DataBean> datas = mAdapter.getDatas();
+        MyThreeFragmentBean.DataBean dataBean = null;
+        for (MyThreeFragmentBean.DataBean bean : datas) {
+            if (StringUtis.equals(bean.getId(), id)) {
+                dataBean = bean;
+                break;
+            }
+        }
+        if (dataBean != null) {
+            datas.remove(dataBean);
+            mAdapter.onRefresh();
+            RxBus.getInstance().send(Events.EventEnum.DynamicResAddActivity_up_success, null);
+        }
     }
 
     private void showNotLevel() {

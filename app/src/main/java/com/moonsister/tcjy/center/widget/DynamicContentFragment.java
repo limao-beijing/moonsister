@@ -20,6 +20,7 @@ import com.moonsister.tcjy.main.widget.PictureSelectorActivity;
 import com.moonsister.tcjy.main.widget.VideoSelectorActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
@@ -87,11 +88,11 @@ public class DynamicContentFragment extends BaseFragment {
                 break;
             case VIDEO:
 //                if (!StringUtis.isEmpty(videoPath))
-                    dynamicContents.add(videoPath);
+                dynamicContents.add(videoPath);
                 break;
             case VOICE:
 //                if (!StringUtis.isEmpty(voicePath))
-                    dynamicContents.add(voicePath);
+                dynamicContents.add(voicePath);
                 break;
         }
 
@@ -129,7 +130,7 @@ public class DynamicContentFragment extends BaseFragment {
 
     }
 
-    private void doClick(String id) {
+    public void doClick(String id) {
         switch (id) {
             case "1":
                 dynamicType = DynamicType.PIC;
@@ -174,7 +175,6 @@ public class DynamicContentFragment extends BaseFragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
         if (data == null)
             return;
         if (requestCode == 1) {
@@ -256,11 +256,12 @@ public class DynamicContentFragment extends BaseFragment {
                 }
             });
         }
+        RxBus.getInstance().send(Events.EventEnum.RenZhengThreeActivity_res_change, null);
 
     }
 
     private void startPicActivityForResult() {
-        Intent intent = new Intent(getActivity(), PictureSelectorActivity.class);
+        Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), PictureSelectorActivity.class);
         int munber = 0;
         if (pics != null) {
             munber = pics.size();

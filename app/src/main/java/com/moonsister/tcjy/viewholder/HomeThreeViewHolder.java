@@ -43,6 +43,8 @@ public class HomeThreeViewHolder extends BaseRecyclerViewHolder<HomeThreeFragmen
     ImageView mIvWinxin;
     @Bind(R.id.ll_user_bind)
     LinearLayout ll_user_bind;
+    @Bind(R.id.tv_show_address)
+    TextView tv_show_address;
 
     public HomeThreeViewHolder(View view) {
         super(view);
@@ -64,7 +66,7 @@ public class HomeThreeViewHolder extends BaseRecyclerViewHolder<HomeThreeFragmen
 //        } else
 //            ll_user_bind.setVisibility(View.VISIBLE);
         isViewShow(mIvAddVip, "1", bean.getVip_level());
-
+        tv_show_address.setText(bean.getDistance_love() == null ? "" : bean.getDistance_love());
     }
 
     @Override

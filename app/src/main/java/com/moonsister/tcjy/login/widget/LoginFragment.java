@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.login.widget;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,9 +20,11 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.login.presenter.LoginFragmentPersenter;
 import com.moonsister.tcjy.login.presenter.LoginFragmentPersenterImpl;
 import com.moonsister.tcjy.login.view.LoginFragmentView;
+import com.moonsister.tcjy.main.widget.MainActivity;
 import com.moonsister.tcjy.main.widget.ManorGrilActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
@@ -133,6 +136,10 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
         UIUtils.sendDelayed(new Runnable() {
             @Override
             public void run() {
+                Activity context = ConfigUtils.getInstance().getActivityContext();
+                if (context == null) {
+                    ActivityUtils.startActivity(MainActivity.class);
+                }
                 getActivity().finish();
             }
         }, 1000);

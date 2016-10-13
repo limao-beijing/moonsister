@@ -1,17 +1,15 @@
 package com.moonsister.tcjy.widget.speak;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Date;
-
 import android.content.Context;
 import android.media.MediaRecorder;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
-import android.text.format.Time;
 
 import com.moonsister.tcjy.utils.SDUtils;
+
+import java.io.File;
+import java.io.IOException;
 
 
 public class VoiceRecorder {
@@ -72,7 +70,7 @@ public class VoiceRecorder {
                 }
             }
         }).start();
-        this.startTime = new Date().getTime();
+        this.startTime = System.currentTimeMillis();
 //    EMLog.d("voice", "start voice recording to file:" + this.file.getAbsolutePath());
         return this.file == null ? null : this.file.getAbsolutePath();
     }
@@ -104,7 +102,7 @@ public class VoiceRecorder {
                 this.file.delete();
                 return -1011;
             }
-            int i = (int) (new Date().getTime() - this.startTime) / 1000;
+            int i = (int) ((System.currentTimeMillis() - this.startTime) / 1000);
 //      EMLog.d("voice", "voice recording finished. seconds:" + i + " file length:" + this.file.length());
             return i;
         }

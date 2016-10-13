@@ -13,4 +13,7 @@ public interface MyThreeFragmentView extends BaseIView {
     void setData(List<MyThreeFragmentBean.DataBean> data);
 
     void setHeaderData(UserDetailBean bean);
+
+    void deleteSuccess(String id);
+
 }

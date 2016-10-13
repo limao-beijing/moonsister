@@ -181,7 +181,7 @@ public class ServerApi {
 
 
     public interface AppAPI {
-//        String baseUrl = "http://3test.yytbzs.cn:88/index.php/index/";
+        //        String baseUrl = "http://3test.yytbzs.cn:88/index.php/index/";
         String baseUrl = "http://3.yytbzs.cn:88/index.php/index/";
 //        String baseUrl = "http://2.yytbzs.cn:88/index.php/index/";
 //        String baseUrl = "http://mimei.cntttt.com:88/public/index.php/index/";
@@ -1487,6 +1487,19 @@ public class ServerApi {
         @GET("Dating/get_dating_ss")
         Observable<EngagemengOrderBean> getEngagemengOrder(@Query("authcode") String authcode,
                                                            @Query("channel") String id);
+
+        /**
+         * 用户资源列表
+         *
+         * @param id
+         * @param authcode
+         * @param id1
+         * @return
+         */
+        @GET("source/del")
+        Observable<StatusBean> getDeleteRes(@Query("source_id") String id,
+                                          @Query("authcode") String authcode,
+                                          @Query("channel") String id1);
     }
 }
 

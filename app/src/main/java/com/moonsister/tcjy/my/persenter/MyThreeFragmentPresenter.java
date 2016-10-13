@@ -10,4 +10,6 @@ public interface MyThreeFragmentPresenter  extends BaseIPresenter<MyThreeFragmen
     void loadData(String uid, int page, String type);
 
     void loadHeaderData(String uid);
+
+    void delectRes(String ResId);
 }

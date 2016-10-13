@@ -20,7 +20,8 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 
-import static com.moonsister.tcjy.R.id.iv_show;
+import static com.moonsister.tcjy.event.Events.EventEnum.PersonThreeFragment_delete_pic;
+
 
 /**
  * Created by jb on 2016/9/22.
@@ -28,10 +29,12 @@ import static com.moonsister.tcjy.R.id.iv_show;
 public class MyThreeFragmentViewHoder extends BaseRecyclerViewHolder<MyThreeFragmentBean.DataBean> {
     @Bind(R.id.iv_show_bg)
     ImageView mIvShowBg;
-    @Bind(iv_show)
+    @Bind(R.id.iv_show_icon)
     ImageView mIvShow;
     @Bind(R.id.tv_mohu)
     ImageView tv_mohu;
+    @Bind(R.id.iv_delete_pic)
+    ImageView iv_delete_pic;
 
     public MyThreeFragmentViewHoder(View view) {
         super(view);
@@ -77,14 +80,27 @@ public class MyThreeFragmentViewHoder extends BaseRecyclerViewHolder<MyThreeFrag
         }
         ImageServerApi.showURLImage(mIvShowBg, bean.getContents().getS());
         String type = bean.getSource_type();
-        if (type == MyThreeFragment.TYPE_PIC) {
-            mIvShow.setImageDrawable(null);
-        } else if (type == MyThreeFragment.TYPE_VIDEO) {
+        if (StringUtis.equals(type, MyThreeFragment.TYPE_PIC)) {
+            mIvShow.setImageBitmap(null);
+        } else if (StringUtis.equals(type, MyThreeFragment.TYPE_VIDEO)) {
             mIvShow.setImageResource(R.mipmap.my_three_video);
 
-        } else if (type == MyThreeFragment.TYPE_VOICE) {
+        } else if (StringUtis.equals(type, MyThreeFragment.TYPE_VOICE)) {
             mIvShow.setImageResource(R.mipmap.my_three_voice);
         }
+        if (bean.isDelect() && StringUtis.equals(uid, bean.getUid())) {
+            iv_delete_pic.setVisibility(View.VISIBLE);
+            iv_delete_pic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Events<String> events = new Events<>();
+                    events.message = bean.getId();
+                    events.what = PersonThreeFragment_delete_pic;
+                    RxBus.getInstance().send(events);
+                }
+            });
+        } else
+            iv_delete_pic.setVisibility(View.GONE);
     }
 
     @Override

@@ -70,6 +70,7 @@
         android:background="@color/j_wheel_timebtn_pre" />
 
     <TextView
+        android:id="@+id/tv_help"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"

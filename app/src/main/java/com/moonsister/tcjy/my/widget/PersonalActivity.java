@@ -28,7 +28,6 @@ import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 
-import java.util.Calendar;
 import java.util.List;
 
 import butterknife.Bind;
@@ -139,7 +138,6 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
                 )
                 .create();
 
-
     }
 
 
@@ -175,13 +173,13 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
         }
         tv_sex.setText(getString(StringUtis.equals(baseinfo.getSex(), "1") ? R.string.boy : R.string.girls));
         tv_name_three.setText(baseinfo.getNickname());//用户名显示
-        Calendar c = Calendar.getInstance();//获得系统当前日期
-        String birthday = baseinfo.getBirthday();//得到生日
-        String spStr[] = birthday.split("-");//截取字符串
-        int s = StringUtis.string2Int(spStr[0]);//将得到的年份转为int类型
-        int year = c.get(Calendar.YEAR);//得到系统年份
-        int i = year - s;//系统年份减去得到的年分
-        tv_age_three.setText(i + "岁");//年龄展示
+//        Calendar c = Calendar.getInstance();//获得系统当前日期
+//        String birthday = baseinfo.getBirthday();//得到生日
+//        String spStr[] = birthday.split("-");//截取字符串
+//        int s = StringUtis.string2Int(spStr[0]);//将得到的年份转为int类型
+//        int year = c.get(Calendar.YEAR);//得到系统年份
+//        int i = year - s;//系统年份减去得到的年分
+        tv_age_three.setText(baseinfo.getAge());//年龄展示
         tv_hight_three.setText(dlist.getHeight() + "cm");//身高显示
         tv_wight_three.setText(dlist.getWeight() + "kg");//体重展示
         tv_position.setText(baseinfo.getBirthplace());//地址
@@ -198,7 +196,7 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityFe
         }
         if (StringUtis.equals(baseinfo.getIsfollow(), "1")) {
             tv_accept.setText("已入宫");
-            Drawable drawable = getDrawable(R.mipmap.person_na_hougong);
+            Drawable drawable = getResources().getDrawable(R.mipmap.person_na_hougong);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             tv_accept.setCompoundDrawables(drawable, null, null, null);
             tv_accept.setTextColor(getResources().getColor(R.color.color_f790ae));

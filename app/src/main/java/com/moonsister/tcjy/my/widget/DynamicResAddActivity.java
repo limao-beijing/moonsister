@@ -9,8 +9,11 @@ import com.moonsister.tcjy.base.BaseFragmentActivity;
 import com.moonsister.tcjy.center.widget.DynamicContentFragment;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
+import com.moonsister.tcjy.main.widget.PersonThreeFragment;
 import com.moonsister.tcjy.my.persenter.DynamicResAddPersenter;
 import com.moonsister.tcjy.my.persenter.DynamicResAddPersenterImpl;
+import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.List;
 
@@ -26,8 +29,29 @@ public class DynamicResAddActivity extends BaseFragmentActivity implements Dynam
         persenter = new DynamicResAddPersenterImpl();
         persenter.attachView(this);
         fragment = new DynamicContentFragment();
+
         return fragment;
     }
+
+    @Override
+    protected void initData() {
+        UIUtils.sendDelayedOneMillis(new Runnable() {
+            @Override
+            public void run() {
+                String type = getIntent().getStringExtra("type");
+                if (StringUtis.equals(type, PersonThreeFragment.TYPE_PIC)) {
+                    fragment.doClick("1");
+                } else if (StringUtis.equals(type, PersonThreeFragment.TYPE_VIDEO)) {
+                    fragment.doClick("2");
+                } else if (StringUtis.equals(type, PersonThreeFragment.TYPE_VOICE)) {
+                    fragment.doClick("3");
+                }
+            }
+        });
+
+
+    }
+
 
     @Override
     protected String initTitleName() {

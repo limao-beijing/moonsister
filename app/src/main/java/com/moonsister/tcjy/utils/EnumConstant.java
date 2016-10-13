@@ -84,4 +84,8 @@ public class EnumConstant {
             return type;
         }
     }
+
+    public enum ManagerType implements Serializable{
+        activity, passivity,
+    }
 }

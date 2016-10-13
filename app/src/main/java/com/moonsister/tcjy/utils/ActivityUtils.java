@@ -945,8 +945,10 @@ public class ActivityUtils {
     /**
      * 添加动态资源
      */
-    public static void startDynamicResAddActivity() {
-        startActivity(DynamicResAddActivity.class);
+    public static void startDynamicResAddActivity(String type) {
+        Intent intent = getIntent(DynamicResAddActivity.class);
+        intent.putExtra("type",type);
+        startActivity(intent);
     }
 
     public static void startH5Activity(String url) {

@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
+import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.FragmentUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 
@@ -49,14 +50,14 @@ public class EngagementManagerActivity extends BaseActivity {
             case R.id.tv_engagement:
                 if (mEngagementManagerFragment == null) {
                     mEngagementManagerFragment = EngagementManagerFragment.newInstance();
-                    mEngagementManagerFragment.setType(EngagementManagerFragment.ManagerType.activity);
+                    mEngagementManagerFragment.setType(EnumConstant.ManagerType.activity);
                 }
                 fragment = mEngagementManagerFragment;
                 break;
             case R.id.tv_engagemented:
                 if (mEngagementedManagerFragment == null) {
                     mEngagementedManagerFragment = EngagementManagerFragment.newInstance();
-                    mEngagementedManagerFragment.setType(EngagementManagerFragment.ManagerType.passivity);
+                    mEngagementedManagerFragment.setType(EnumConstant.ManagerType.passivity);
                 }
                 fragment = mEngagementedManagerFragment;
                 break;

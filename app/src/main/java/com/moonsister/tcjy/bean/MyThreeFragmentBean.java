@@ -28,6 +28,7 @@ public class MyThreeFragmentBean extends BaseBean {
         private String uid;
         private String source_type;
         private boolean isUpPIC = false;
+        private boolean isDelect = false;
 
         public boolean isUpPIC() {
             return isUpPIC;
@@ -35,6 +36,14 @@ public class MyThreeFragmentBean extends BaseBean {
 
         public void setUpPIC(boolean upPIC) {
             isUpPIC = upPIC;
+        }
+
+        public boolean isDelect() {
+            return isDelect;
+        }
+
+        public void setDelect(boolean delect) {
+            isDelect = delect;
         }
 
         /**

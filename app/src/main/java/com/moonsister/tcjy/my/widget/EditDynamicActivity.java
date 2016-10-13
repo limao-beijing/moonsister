@@ -46,7 +46,7 @@ public class EditDynamicActivity extends BaseFragmentActivity {
         tv_title_right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityUtils.startDynamicResAddActivity();
+                ActivityUtils.startDynamicResAddActivity(getIntent().getStringExtra("type"));
             }
         });
         return type;

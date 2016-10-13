@@ -168,6 +168,11 @@ public class MyThreeFragment extends BaseListFragment<MyThreeFragmentAdapter, My
         mHeaderViewHoder.refreshView(bean);
     }
 
+    @Override
+    public void deleteSuccess(String id) {
+
+    }
+
     private void showNotLevel() {
         AlertDialog myDialog = new AlertDialog.Builder(getActivity()).create();
         myDialog.show();

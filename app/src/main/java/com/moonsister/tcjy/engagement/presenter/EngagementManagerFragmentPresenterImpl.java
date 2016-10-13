@@ -6,7 +6,7 @@ import com.moonsister.tcjy.bean.StatusBean;
 import com.moonsister.tcjy.engagement.model.EngagementManagerFragmentModel;
 import com.moonsister.tcjy.engagement.model.EngagementManagerFragmentModelImpl;
 import com.moonsister.tcjy.engagement.view.EngagementManagerFragmentView;
-import com.moonsister.tcjy.engagement.widget.EngagementManagerFragment;
+import com.moonsister.tcjy.utils.EnumConstant;
 
 /**
  * Created by jb on 2016/9/28.
@@ -28,7 +28,7 @@ public class EngagementManagerFragmentPresenterImpl implements EngagementManager
     }
 
     @Override
-    public void loadData(EngagementManagerFragment.ManagerType type, int page) {
+    public void loadData(EnumConstant.ManagerType type, int page) {
         view.showLoading();
         model.loadData(type, page, this);
     }
