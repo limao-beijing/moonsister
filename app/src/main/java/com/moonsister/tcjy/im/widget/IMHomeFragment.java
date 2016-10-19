@@ -101,8 +101,10 @@ public class IMHomeFragment extends BaseFragment {
 
     public void swith2PrivateChat() {
         //启动会话列表界面
-        if (chatFragment == null)
-            chatFragment = ChatFragment.newInstance();
+        if (chatFragment == null) {
+//            chatFragment = ChatFragment.newInstance();
+            chatFragment = new ConversationListFragment();
+        }
         enterPage(chatFragment);
     }
 

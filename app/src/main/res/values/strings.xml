@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">同城约</string>
+    <string name="app_name">约见</string>
     <!--<string name="app_name">探探寂陌陌生人-求约爱</string>-->
     <string name="app_home_page">广场</string>
     <string name="app_im_page">聊天</string>
@@ -312,7 +312,7 @@
     <string name="engagement_message">留言： </string>
     <string name="submit_engagment">提交约见</string>
     <string name="hint_engagement_message">我想对你说.....</string>
-    <string name="engagement_rule">您的约见担保费将暂存平台，48小时内，对方若无回应或者 拒绝赴约，将返还你的财务中心；若约见成功，到达约会地 点后，您确认对方到场，约见信息真实之后，对方将获得约 见担保费；</string>
+    <string name="engagement_rule">您的约见担保费将暂存平台，48小时内，对方若无回应或者 拒绝赴约，将返还你的财务中心；若约见成功，到达约会地 点后，您确认对方到场，约见信息真实之后，对方将获得约 见担保费；约见不成功，全额返还约见担保费,约见成功，约见担保费（赴约打车费）归对方所有</string>
     <string name="input_date_not_empty">输入资料不全</string>
     <string name="travel">旅游</string>
     <string name="engagemented">被约见</string>
@@ -344,6 +344,7 @@
 </string>
     <string name="now_renzheng">立即认证</string>
     <string name="other">其他</string>
+    <string name="submit">提交</string>
 
 
 </resources>

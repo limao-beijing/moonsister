@@ -51,7 +51,6 @@
                 android:minWidth="0dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="@string/rc_picsel_toolbar_send"
                 android:textColor="@color/picsel_toolbar_send_text_normal"
                 android:textSize="14sp" />
         </RelativeLayout>

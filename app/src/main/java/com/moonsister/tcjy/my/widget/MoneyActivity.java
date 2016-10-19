@@ -1,7 +1,6 @@
 package com.moonsister.tcjy.my.widget;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -116,11 +115,14 @@ public class MoneyActivity extends BaseActivity implements WithdRawDepositView {
                 ActivityUtils.startRechargeActivity();
                 break;
             case R.id.see_talk:
-                ActivityUtils.startRuleActivity();
+//                ActivityUtils.startRuleActivity();
+
+                ActivityUtils.startH5Activity("http://3.yytbzs.cn:88/index.php/index/html/index/?key=danbaoguize");
                 break;
             case R.id.tv_title_right:
-                Intent intent = new Intent(MoneyActivity.this, TalkActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(MoneyActivity.this, TalkActivity.class);
+//                startActivity(intent);
+                ActivityUtils.startH5Activity("http://3.yytbzs.cn:88/index.php/index/html/index/?key=caiwushuoming");
                 break;
 
         }

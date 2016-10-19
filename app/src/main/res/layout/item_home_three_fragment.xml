@@ -142,6 +142,7 @@
     </LinearLayout>
 
     <TextView
+        android:textColor="@color/text_gray_737c7d"
         android:id="@+id/tv_show_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

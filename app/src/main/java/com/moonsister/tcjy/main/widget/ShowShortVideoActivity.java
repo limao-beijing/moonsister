@@ -45,11 +45,12 @@ public class ShowShortVideoActivity extends BaseActivity implements
 
     @Override
     protected void initView() {
+        if (mRootView != null)
+            mRootView.setOnTouchListener(this);
         showProgressDialog();
         vv = (VideoView) findViewById(R.id.vv);
         Intent intent = getIntent();
         path = intent.getStringExtra("path");
-
         if (TextUtils.isEmpty(path)) {
             finish();
             return;
@@ -81,6 +82,14 @@ public class ShowShortVideoActivity extends BaseActivity implements
                     }
                 }
             });
+            vv.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+                @Override
+                public boolean onError(MediaPlayer mp, int what, int extra) {
+                    UIUtils.showToast(ShowShortVideoActivity.this, "该视频不支持播放");
+
+                    return false;
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
             hideProgressDialog();
@@ -95,8 +104,7 @@ public class ShowShortVideoActivity extends BaseActivity implements
         try {
             vv.start();
 
-            if (mRootView != null)
-                mRootView.setOnTouchListener(this);
+
         } catch (Exception e) {
             UIUtils.showToast(this, "该视频不支持播放");
         } finally {

@@ -3,8 +3,8 @@ package com.moonsister.tcjy.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 
+import com.hyphenate.easeui.ui.ChatActivity;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
 import com.moonsister.tcjy.bean.TiXinrRecordBean;
@@ -87,9 +87,6 @@ import com.moonsister.tcjy.widget.takevideo.TakeVideoActivity;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
-
-import io.rong.imkit.RongyunManager;
-import io.rong.imlib.model.Conversation;
 
 /**
  * Created by jb on 2016/6/20.
@@ -268,17 +265,18 @@ public class ActivityUtils {
      * @param avatar
      */
     public static void startAppConversationActivity(String userId, String name, String avatar) {
-        if (!UserInfoManager.getInstance().isLogin()) {
-            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
-            return;
-        }
-        Uri uri = Uri.parse("rong://" + ConfigUtils.getInstance().getApplicationContext().getApplicationInfo().processName)
-                .buildUpon().appendPath("conversation")
-                .appendPath(Conversation.ConversationType.PRIVATE.getName().toLowerCase())
-                .appendQueryParameter("targetId", userId)
-                .appendQueryParameter("title", name).build();
-        RongyunManager.getInstance().setUserInfoCache(userId, name, avatar);
-        startActivity(new Intent("android.intent.action.VIEW", uri));
+//        if (!UserInfoManager.getInstance().isLogin()) {
+//            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+//            return;
+//        }
+//        Uri uri = Uri.parse("rong://" + ConfigUtils.getInstance().getApplicationContext().getApplicationInfo().processName)
+//                .buildUpon().appendPath("conversation")
+//                .appendPath(Conversation.ConversationType.PRIVATE.getName().toLowerCase())
+//                .appendQueryParameter("targetId", userId)
+//                .appendQueryParameter("title", name).build();
+//        RongyunManager.getInstance().setUserInfoCache(userId, name, avatar);
+//        startActivity(new Intent("android.intent.action.VIEW", uri));
+        startActivity(getIntent(ChatActivity.class).putExtra("userId", "10000"));
 
 
     }
@@ -947,7 +945,7 @@ public class ActivityUtils {
      */
     public static void startDynamicResAddActivity(String type) {
         Intent intent = getIntent(DynamicResAddActivity.class);
-        intent.putExtra("type",type);
+        intent.putExtra("type", type);
         startActivity(intent);
     }
 

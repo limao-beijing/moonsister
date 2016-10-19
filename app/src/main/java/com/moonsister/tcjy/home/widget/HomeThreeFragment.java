@@ -11,6 +11,7 @@ import com.moonsister.tcjy.bean.HomeThreeFragmentBean;
 import com.moonsister.tcjy.home.presenetr.HomeThreeFragmentPresenter;
 import com.moonsister.tcjy.home.presenetr.HomeThreeFragmentPresenterImpl;
 import com.moonsister.tcjy.home.view.HomeThreeFragmentView;
+import com.moonsister.tcjy.manager.EaseManager;
 import com.moonsister.tcjy.viewholder.HomeThreeHeaderViewHolder;
 
 import java.util.List;
@@ -40,6 +41,7 @@ public class HomeThreeFragment extends BaseListFragment<HomeThreeFragmentAdapter
 
     @Override
     protected void initChildData() {
+        EaseManager.getInstance().loginHx("161830", "7f547d8a7b0afa0d2177361fb46cb52d");
         threeHeaderViewHolder.setActivity(getActivity());
         threeHeaderViewHolder.refreshView("");
         threeHeaderViewHolder.setFilterDoneListenter(new HomeThreeHeaderViewHolder.onFilterDoneListenter() {
