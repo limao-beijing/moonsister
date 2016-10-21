@@ -15,7 +15,7 @@ android {
         multiDexEnabled true
     }
     dexOptions {
-        javaMaxHeapSize "8g"
+        javaMaxHeapSize "6g"
     }
 
     signingConfigs {
@@ -69,7 +69,7 @@ repositories {
 }
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':IMKit')
+    /*compile project(':IMKit')*/
     compile project(':pay')
     compile project(':progressdialog')
     compile project(':filterlibrary')
@@ -118,5 +118,6 @@ dependencies {
     compile rootProject.ext.dependencies["multidex"]
     //友盟
     compile rootProject.ext.dependencies["analytics"]
+    compile rootProject.ext.dependencies["PhotoView"]
     compile files('src/main/libs/nineoldandroids-2.4.0.jar')
 }

@@ -1,11 +1,12 @@
 package com.moonsister.tcjy.main.presenter;
 
+import com.hyphenate.chat.EMClient;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.CertificationStatusBean;
+import com.moonsister.tcjy.bean.IMDataBean;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
-import com.moonsister.tcjy.bean.RongyunBean;
 import com.moonsister.tcjy.bean.UserFriendListBean;
 import com.moonsister.tcjy.bean.UserPermissionBean;
 import com.moonsister.tcjy.event.Events;
@@ -13,18 +14,13 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.model.MainActivityModel;
 import com.moonsister.tcjy.main.model.MainActivityModelImpl;
 import com.moonsister.tcjy.main.view.MainView;
-import com.moonsister.tcjy.main.widget.MainActivity;
-import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
+import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.List;
-
-import io.rong.imkit.RongyunManager;
-import io.rong.imkit.provider.RedPacketProvider;
 
 /**
  * Created by pc on 2016/6/1.
@@ -79,7 +75,8 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
         /**
          * 在另一个设备登录
          */
-        RongyunManager.getInstance().setConnectionStatusListener(new RongyunManager.ConnectCallback() {
+
+        IMManager.getInstance().setConnectionStatusListener(new IMManager.ConnectCallback() {
             @Override
             public void onSuccess(String s) {
 
@@ -98,42 +95,44 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
 
             @Override
             public void onTokenIncorrect() {
-
+                UIUtils.onRunMainThred(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.offline();
+                    }
+                });
             }
         });
         if (!UserInfoManager.getInstance().isLogin())
             return;
-        String rongyunKey = UserInfoManager.getInstance().getRongyunKey();
+        String rongyunKey = UserInfoManager.getInstance().getIMServiceKey();
         if (StringUtis.isEmpty(rongyunKey)) {
-            RxBus.getInstance().send(Events.EventEnum.GET_RONGYUN_KEY, null);
+            RxBus.getInstance().send(Events.EventEnum.GET_IM_SERVICE_KEY, null);
             return;
         }
-        RongyunManager.getInstance().connectRonyun(rongyunKey, new RongyunManager.ConnectCallback() {
-
+        IMManager.getInstance().loginIMService(UserInfoManager.getInstance().getUid(), rongyunKey, new IMManager.ConnectCallback() {
             @Override
             public void onSuccess(String s) {
-                PersonInfoDetail infoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
-                RongyunManager.getInstance().setCurrentUserInfo(infoDetail.getId(), infoDetail.getNickname(), infoDetail.getFace());
-                RongyunManager.getInstance().setInputProvider(new RedPacketProvider.onPluginClickListenter() {
 
-                    @Override
-                    public void onPluginClick(String userId, String name, String path) {
-                        ActivityUtils.startRedpacketActivity(userId, RedpacketAcitivity.RedpacketType.TYPE_REDPACKET, path);
-                    }
-                });
-            }
-
-            @Override
-            public void onTokenIncorrect() {
-                LogUtils.e(MainActivity.class, "onTokenIncorrect : ");
-                RxBus.getInstance().send(Events.EventEnum.GET_RONGYUN_KEY, null);
             }
 
             @Override
             public void offline() {
 
             }
+
+            @Override
+            public void onTokenIncorrect() {
+                UIUtils.onRunMainThred(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.offline();
+                    }
+                });
+            }
         });
+
+
     }
 
     @Override
@@ -169,8 +168,8 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
         }
         switch (dataType) {
             case DATA_ZERO:// 0 融云key
-                if (object instanceof RongyunBean) {
-                    RongyunBean bean = (RongyunBean) object;
+                if (object instanceof IMDataBean) {
+                    IMDataBean bean = (IMDataBean) object;
                     if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success)) {
                         PersonInfoDetail presonInfo = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
                         presonInfo.setFace(bean.getData().getFace());
@@ -178,9 +177,12 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
                         presonInfo.setRongyunkey(bean.getData().getToken());
                         presonInfo.setSex(bean.getData().getSex());
                         presonInfo.setId(bean.getData().getUid());
+                        presonInfo.setHxPwd(bean.getData().getPassword());
                         presonInfo.setAttestation(StringUtis.string2Int(bean.getData().getApply_status()));
                         UserInfoManager.getInstance().saveMemoryInstance(presonInfo);
                         loginRongyun();
+                        EMClient.getInstance().updateCurrentUserNick(bean.getData().getNickname());
+//                        IMManager.getInstance().setUserInfo(bean.getData().getNickname(), bean.getData().getFace());
                     }
                 }
 

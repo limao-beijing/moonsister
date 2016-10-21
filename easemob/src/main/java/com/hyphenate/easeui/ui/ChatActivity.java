@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.easemob.easeui.R;
 import com.hyphenate.easeui.EaseConstant;
+import com.hyphenate.easeui.db.HxUserDao;
+import com.hyphenate.easeui.domain.EaseUser;
 
 
-
-
-public class ChatActivity extends EaseBaseActivity{
+public class ChatActivity extends EaseBaseActivity {
     public static ChatActivity activityInstance;
     private EaseChatFragment chatFragment;
     String toChatUsername;
@@ -20,10 +20,17 @@ public class ChatActivity extends EaseBaseActivity{
         setContentView(R.layout.activity_chat);
         activityInstance = this;
         //user or group id
-        toChatUsername = getIntent().getExtras().getString(EaseConstant.EXTRA_USER_ID);
+        Bundle extras = getIntent().getExtras();
+        toChatUsername = extras.getString(EaseConstant.EXTRA_USER_ID);
+
+        HxUserDao dao = new HxUserDao();
+        EaseUser user = new EaseUser(toChatUsername);
+        user.setAvatar(extras.getString(EaseConstant.EXTRA_USER_AVATER));
+        user.setNick(extras.getString(EaseConstant.EXTRA_USER_NIKE));
+        dao.saveUser(user);
         chatFragment = new ChatFragment();
         //set arguments
-        chatFragment.setArguments(getIntent().getExtras());
+        chatFragment.setArguments(extras);
         getSupportFragmentManager().beginTransaction().add(R.id.container, chatFragment).commit();
 
     }
@@ -41,17 +48,19 @@ public class ChatActivity extends EaseBaseActivity{
         if (toChatUsername.equals(username))
             super.onNewIntent(intent);
         else {
-            finish();
+
             startActivity(intent);
+            finish();
         }
 
     }
+
     @Override
     public void onBackPressed() {
         chatFragment.onBackPressed();
     }
 
-    public String getToChatUsername(){
+    public String getToChatUsername() {
         return toChatUsername;
     }
 }

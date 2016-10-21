@@ -3,7 +3,7 @@ package com.moonsister.tcjy.main.model;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.bean.RongyunBean;
+import com.moonsister.tcjy.bean.IMDataBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
@@ -25,7 +25,7 @@ public class RongyunKeyModelImpl implements RongyunKeyModel {
         ServerApi.getAppAPI().getRongyunKey(authcode,AppConstant.CHANNEL_ID)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<RongyunBean>() {
+                .subscribe(new Subscriber<IMDataBean>() {
                     @Override
                     public void onCompleted() {
 
@@ -37,7 +37,7 @@ public class RongyunKeyModelImpl implements RongyunKeyModel {
                     }
 
                     @Override
-                    public void onNext(RongyunBean rongyunBean) {
+                    public void onNext(IMDataBean rongyunBean) {
                         if (rongyunBean != null) {
                             String code = rongyunBean.getCode();
                             if (StringUtis.equals(code, AppConstant.code_timeout)) {

@@ -8,6 +8,8 @@ import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import com.easemob.easeui.R;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.easeui.Constant;
+import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.domain.EmojiconExampleGroupData;
 import com.hyphenate.easeui.ui.EaseChatFragment.EaseChatFragmentHelper;
 import com.hyphenate.easeui.widget.chatrow.EaseChatRow;
@@ -95,26 +98,26 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
 //            }
 //        });
         ((EaseEmojiconMenu)inputMenu.getEmojiconMenu()).addEmojiconGroup(EmojiconExampleGroupData.getData());
-//        if(chatType == EaseConstant.CHATTYPE_GROUP){
-//            inputMenu.getPrimaryMenu().getEditText().addTextChangedListener(new TextWatcher() {
-//
-//                @Override
-//                public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                    if(count == 1 && "@".equals(String.valueOf(s.charAt(start)))){
+        if(chatType == EaseConstant.CHATTYPE_GROUP){
+            inputMenu.getPrimaryMenu().getEditText().addTextChangedListener(new TextWatcher() {
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if(count == 1 && "@".equals(String.valueOf(s.charAt(start)))){
 //                        startActivityForResult(new Intent(getActivity(), PickAtUserActivity.class).
 //                                putExtra("groupId", toChatUsername), REQUEST_CODE_SELECT_AT_USER);
-//                    }
-//                }
-//                @Override
-//                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//                }
-//                @Override
-//                public void afterTextChanged(Editable s) {
-//
-//                }
-//            });
-//        }
+                    }
+                }
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
+        }
     }
     
     @Override
@@ -160,9 +163,9 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
 //                startActivity(intent);
 //
 //                break;
-//
-//            default:
-//                break;
+
+            default:
+                break;
             }
         }
         if(resultCode == Activity.RESULT_OK){

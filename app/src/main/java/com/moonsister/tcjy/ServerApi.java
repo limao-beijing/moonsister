@@ -42,7 +42,7 @@ import com.moonsister.tcjy.bean.RegFourBean;
 import com.moonsister.tcjy.bean.RegOneBean;
 import com.moonsister.tcjy.bean.RegThridBean;
 import com.moonsister.tcjy.bean.RegiterBean;
-import com.moonsister.tcjy.bean.RongyunBean;
+import com.moonsister.tcjy.bean.IMDataBean;
 import com.moonsister.tcjy.bean.SearchReasonBaen;
 import com.moonsister.tcjy.bean.StatusBean;
 import com.moonsister.tcjy.bean.TiXinrRecordBean;
@@ -181,8 +181,8 @@ public class ServerApi {
 
 
     public interface AppAPI {
-        //        String baseUrl = "http://3test.yytbzs.cn:88/index.php/index/";
-        String baseUrl = "http://3.yytbzs.cn:88/index.php/index/";
+                String baseUrl = "http://3test.yytbzs.cn:88/index.php/index/";
+//        String baseUrl = "http://3.yytbzs.cn:88/index.php/index/";
 //        String baseUrl = "http://2.yytbzs.cn:88/index.php/index/";
 //        String baseUrl = "http://mimei.cntttt.com:88/public/index.php/index/";
 
@@ -370,8 +370,8 @@ public class ServerApi {
          * @return
          */
         @GET("Rong/get_token")
-        Observable<RongyunBean> getRongyunKey(@Query("authcode") String authcode,
-                                              @Query("channel") String channel);
+        Observable<IMDataBean> getRongyunKey(@Query("authcode") String authcode,
+                                             @Query("channel") String channel);
 
         /**
          * 朋友圈

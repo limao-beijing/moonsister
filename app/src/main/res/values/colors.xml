@@ -140,6 +140,8 @@
     <color name="red_eaf9fa">#eaf9fa</color>
     <color name="color_f790ae">#f790ae</color>
     <color name="blue_67b0b7">#67b0b7</color>
+    <color name="rc_picsel_grid_mask">#00000000</color>
+    <color name="rc_picsel_grid_mask_pressed">#80000000</color>
 
 </resources>
 

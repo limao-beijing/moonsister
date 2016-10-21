@@ -3,7 +3,9 @@ package com.moonsister.tcjy.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
+import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.ui.ChatActivity;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
@@ -276,7 +278,13 @@ public class ActivityUtils {
 //                .appendQueryParameter("title", name).build();
 //        RongyunManager.getInstance().setUserInfoCache(userId, name, avatar);
 //        startActivity(new Intent("android.intent.action.VIEW", uri));
-        startActivity(getIntent(ChatActivity.class).putExtra("userId", "10000"));
+        //传入参数
+        Bundle args = new Bundle();
+        args.putInt(EaseConstant.EXTRA_CHAT_TYPE, EaseConstant.CHATTYPE_SINGLE);
+        args.putString(EaseConstant.EXTRA_USER_ID, userId);
+        args.putString(EaseConstant.EXTRA_USER_NIKE, name);
+        args.putString(EaseConstant.EXTRA_USER_AVATER, avatar);
+        startActivity(getIntent(ChatActivity.class).putExtras(args));
 
 
     }

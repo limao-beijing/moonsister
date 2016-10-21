@@ -7,8 +7,6 @@ import com.moonsister.tcjy.utils.StringUtis;
 
 import java.util.List;
 
-import io.rong.imkit.RongyunManager;
-
 
 /**
  * Created by jb on 2016/6/30.
@@ -108,8 +106,8 @@ public class UserInfoManager {
      *
      * @return
      */
-    public String getRongyunKey() {
-        String rongyunkey = info.getRongyunkey();
+    public String getIMServiceKey() {
+        String rongyunkey = info.getHxPwd();
         if (StringUtis.isEmpty(rongyunkey))
             return "";
         return rongyunkey;
@@ -121,7 +119,7 @@ public class UserInfoManager {
     public void logout() {
         saveFileInstance(null);
         initFilePersonInfoDetail();
-        RongyunManager.getInstance().offline();
+//        RongyunManager.getInstance().offline();
     }
 
     /**
@@ -192,29 +190,35 @@ public class UserInfoManager {
     }
 
     //总收入
-    public String getAll_Income(){
+    public String getAll_Income() {
         return info.getIncome_all();
     }
+
     //今日收入
-    public String getDay_Income(){
+    public String getDay_Income() {
         return info.getIncome_today();
     }
+
     //用户年龄
-    public String getAge(){
+    public String getAge() {
         return info.getAge();
     }
+
     //用户出生年月
-    public String getBrith(){
+    public String getBrith() {
         return info.getBrith();
     }
+
     //用户地址
-    public String getAddress(){
+    public String getAddress() {
         return info.getAddress();
     }
+
     //用户职业
-    public String getProfession(){
+    public String getProfession() {
         return info.getProfession();
     }
+
     /**
      * 获取用户手机号
      *

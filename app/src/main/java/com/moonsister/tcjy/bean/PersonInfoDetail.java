@@ -22,6 +22,15 @@ public class PersonInfoDetail extends BaseDataBean {
     private String profession;//用户职业
     private String mobile;//手机号
 
+    public String getHxPwd() {
+        return hxPwd;
+    }
+
+    public void setHxPwd(String hxPwd) {
+        this.hxPwd = hxPwd;
+    }
+
+    private String hxPwd;
     /**
      * 认证状态 1 已认证  2 认证中  3 未认证
      */

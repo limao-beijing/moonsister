@@ -2,7 +2,6 @@ package com.moonsister.tcjy.main.widget;
 
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -13,16 +12,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.ApplicationConfig;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.event.Events;
-
-
-
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.find.widget.OnlineFragment;
 import com.moonsister.tcjy.home.widget.HomeThreeFragment;
@@ -31,6 +26,7 @@ import com.moonsister.tcjy.main.presenter.MainPresenter;
 import com.moonsister.tcjy.main.presenter.MainPresenterImpl;
 import com.moonsister.tcjy.main.view.MainView;
 import com.moonsister.tcjy.manager.GaodeManager;
+import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.manager.RecommendMananger;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.widget.MyFragment;
@@ -45,11 +41,6 @@ import com.trello.rxlifecycle.ActivityEvent;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import io.rong.imkit.IMManager;
-import io.rong.imkit.RongyunManager;
-import io.rong.imkit.provider.MyConversationBehaviorListener;
-import io.rong.imlib.model.Conversation;
-import io.rong.imlib.model.UserInfo;
 
 public class MainActivity extends BaseActivity implements MainView {
     @Bind(R.id.tv_home_page)
@@ -111,7 +102,8 @@ public class MainActivity extends BaseActivity implements MainView {
         /**
          * 监听消息未读数
          */
-        RongyunManager.getInstance().setMsgNumber(new RongyunManager.onNotReadCallback() {
+
+        IMManager.getInstance().setMsgNumber(new IMManager.onNotReadCallback() {
             @Override
             public void onSuccess(int number) {
                 if (tvMsgNumber == null)
@@ -127,23 +119,24 @@ public class MainActivity extends BaseActivity implements MainView {
             }
         });
         /**
-         *会话页面点击监听
-         */
-        RongyunManager.getInstance().setConversationBehaviorListener(new MyConversationBehaviorListener() {
-            @Override
-            public boolean onUserPortraitClick(Context context, Conversation.ConversationType conversationType, UserInfo userInfo) {
-//                ActivityUtils.startDynamicActivity(userInfo.getUserId());
-                return super.onUserPortraitClick(context, conversationType, userInfo);
-            }
-        });
-        /**
-         * 融云设置Authcode
-         */
-        RongyunManager.getInstance().setAuthcode(UserInfoManager.getInstance().getAuthcode());
+         //       *会话页面点击监听
+         //                */
+//        RongyunManager.getInstance().setConversationBehaviorListener(new MyConversationBehaviorListener() {
+//            @Override
+//            public boolean onUserPortraitClick(Context context, Conversation.ConversationType conversationType, UserInfo userInfo) {
+////                ActivityUtils.startDynamicActivity(userInfo.getUserId());
+//                return super.onUserPortraitClick(context, conversationType, userInfo);
+//            }
+//        });
+//        /**
+//         * 融云设置Authcode
+//         */
+//        RongyunManager.getInstance().setAuthcode(UserInfoManager.getInstance().getAuthcode());
         /**
          * 登录融云
          */
-        mMainPresenter.loginRongyun();
+        if (!IMManager.getInstance().isConnected())
+            mMainPresenter.loginRongyun();
         /**
          *认证状态
          */
@@ -159,7 +152,7 @@ public class MainActivity extends BaseActivity implements MainView {
         /**
          * 轮询消息
          */
-        IMManager.getInstance().start(UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+//        IMManager.getInstance().start(UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
 
     }
 
@@ -331,8 +324,11 @@ public class MainActivity extends BaseActivity implements MainView {
                 .setEvent(Events.EventEnum.LOGIN_CODE_TIMEOUT)
                 .onNext(events -> {
                             ActivityUtils.startLoginMainActivity();
+                            String uid = UserInfoManager.getInstance().getUid();
+
                             UserInfoManager.getInstance().logout();
                             showToast(UIUtils.getStringRes(R.string.login_code_timeout));
+                            IMManager.getInstance().logoutIMService(uid);
                             ((ApplicationConfig) ConfigUtils.getInstance().getApplicationContext()).logout();
                             imHomeFragment = null;
                             findFragment = null;
@@ -347,7 +343,7 @@ public class MainActivity extends BaseActivity implements MainView {
          */
         RxBus.with(this)
                 .setEndEvent(ActivityEvent.DESTROY)
-                .setEvent(Events.EventEnum.GET_RONGYUN_KEY)
+                .setEvent(Events.EventEnum.GET_IM_SERVICE_KEY)
                 .onNext(events -> {
                     mMainPresenter.getRongyunKey();
                 })
@@ -373,7 +369,7 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     protected void onBaseDestroy() {
-        IMManager.getInstance().stop();
+//        IMManager.getInstance().stop();
         super.onBaseDestroy();
     }
 

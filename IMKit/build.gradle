@@ -46,4 +46,5 @@ dependencies {
     compile rootProject.ext.dependencies["rxandroid"]
     compile rootProject.ext.dependencies["rxjava"]
     compile rootProject.ext.dependencies["rxbinding"]
+    compile files('src/main/libs/Rong_IMKit_v2_6_2.jar')
 }

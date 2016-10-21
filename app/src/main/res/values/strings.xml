@@ -345,6 +345,21 @@
     <string name="now_renzheng">立即认证</string>
     <string name="other">其他</string>
     <string name="submit">提交</string>
+    <!-- PicturePreviewActivity -->
+    <string name="rc_picprev_origin">原图</string>
+    <string name="rc_picprev_origin_size">原图(%s)</string>
+    <string name="rc_picprev_select">选择</string>
 
+    <!-- PictureSelectorActivity -->
+    <string name="rc_picsel_toolbar">图片</string>
+    <string name="rc_picsel_toolbar_send">发送</string>
+    <string name="rc_picsel_toolbar_send_num">发送(%d/9)</string>
+    <string name="rc_picsel_pictype">图片</string>
+    <string name="rc_picsel_toolbar_preview">预览</string>
+    <string name="rc_picsel_toolbar_preview_num">预览(%d)</string>
+    <string name="rc_picsel_selected_max">您最多只能选择9张图片</string>
+    <string name="rc_picsel_take_picture">拍摄照片</string>
+    <string name="rc_picsel_catalog_allpic">所有图片</string>
+    <string name="rc_picsel_catalog_number">%d张</string>
 
 </resources>
