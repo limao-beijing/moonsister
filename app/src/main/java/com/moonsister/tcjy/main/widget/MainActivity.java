@@ -95,10 +95,7 @@ public class MainActivity extends BaseActivity implements MainView {
 
         if (!UserInfoManager.getInstance().isLogin())
             return;
-        /**
-         * 首页推荐会员
-         */
-        RecommendMananger.getInstance().start();
+
         /**
          * 监听消息未读数
          */
@@ -135,8 +132,7 @@ public class MainActivity extends BaseActivity implements MainView {
         /**
          * 登录融云
          */
-        if (!IMManager.getInstance().isConnected())
-            mMainPresenter.loginRongyun();
+        mMainPresenter.loginRongyun();
         /**
          *认证状态
          */
@@ -153,7 +149,10 @@ public class MainActivity extends BaseActivity implements MainView {
          * 轮询消息
          */
 //        IMManager.getInstance().start(UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
-
+        /**
+         * 首页推荐会员
+         */
+        RecommendMananger.getInstance().start();
     }
 
 

@@ -1,6 +1,10 @@
 package com.moonsister.tcjy.manager;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.support.v4.content.LocalBroadcastManager;
 
 import com.hyphenate.EMCallBack;
 import com.hyphenate.EMConnectionListener;
@@ -10,14 +14,17 @@ import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMConversation;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMOptions;
+import com.hyphenate.easeui.Constant;
 import com.hyphenate.easeui.controller.EaseUI;
 import com.hyphenate.easeui.db.HxUserDao;
 import com.hyphenate.easeui.domain.EaseUser;
-import com.hyphenate.exceptions.HyphenateException;
+import com.hyphenate.easeui.model.EaseAtMessageHelper;
 import com.hyphenate.util.NetUtils;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
+
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -51,8 +58,9 @@ public class IMManager {
         // 默认添加好友时，是不需要验证的，改成需要验证
         options.setAcceptInvitationAlways(false);
         EaseUI.getInstance().init(mContext, options);
-        setMessageListener();
+
         setUserInfo();
+        setConnectionListener();
     }
 
     /**
@@ -168,13 +176,15 @@ public class IMManager {
     /**
      * 状态连接监听
      *
-     * @param callback
+     * @param
      */
-    public void setConnectionListener(ConnectCallback callback) {
+    public void setConnectionListener() {
         EMClient.getInstance().addConnectionListener(new EMConnectionListener() {
             @Override
             public void onConnected() {
+
                 LogUtils.d(TAG, " 连接成功！");
+                setMessageListener();
             }
 
             @Override
@@ -249,24 +259,34 @@ public class IMManager {
         EMClient.getInstance().chatManager().addMessageListener(new EMMessageListener() {
             @Override
             public void onMessageReceived(List<EMMessage> list) {
+
+
+                EaseAtMessageHelper.get().parseMessages(list);
                 if (mMsgNumber != null) {
-                    mMsgNumber.onSuccess(getUnreadMsgCountTotal());
+                    UIUtils.onRunMainThred(new Runnable() {
+                        @Override
+                        public void run() {
+                            mMsgNumber.onSuccess(getUnreadMsgCountTotal());
+                        }
+                    });
+
                 }
                 try {
                     HxUserDao dao = new HxUserDao();
                     for (EMMessage message : list) {
-                        String name = message.getStringAttribute("name");
-                        String avater = message.getStringAttribute("avater");
+                        JSONObject userinfo = message.getJSONObjectAttribute("userinfo");
+                        String name = userinfo.getString("nike");
+                        String avater = userinfo.getString("avater");
                         EaseUser user = new EaseUser(message.getFrom());
                         user.setAvatar(avater);
                         user.setNick(name);
                         dao.saveUser(user);
+                        EaseUI instance = EaseUI.getInstance();
+                        instance.getNotifier().onNewMsg(message);
                     }
-                } catch (HyphenateException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-
             }
 
             @Override
@@ -291,24 +311,24 @@ public class IMManager {
         });
     }
 
-//    private void registerBroadcastReceiver() {
-//        LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(mContext);
-//        IntentFilter intentFilter = new IntentFilter();
-//        intentFilter.addAction(Constant.ACTION_CONTACT_CHANAGED);
-//        intentFilter.addAction(Constant.ACTION_GROUP_CHANAGED);
-//        intentFilter.addAction("refresh_group_money_action");
-//        BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-//
-//            @Override
-//            public void onReceive(Context context, Intent intent) {
-//                if (mMsgNumber != null) {
-//                    mMsgNumber.onSuccess(getUnreadMsgCountTotal());
-//                }
-//                //end of red packet code
-//            }
-//        };
-//        broadcastManager.registerReceiver(broadcastReceiver, intentFilter);
-//    }
+    private void registerBroadcastReceiver() {
+        LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(mContext);
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Constant.ACTION_CONTACT_CHANAGED);
+        intentFilter.addAction(Constant.ACTION_GROUP_CHANAGED);
+        intentFilter.addAction("refresh_group_money_action");
+        BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (mMsgNumber != null) {
+                    mMsgNumber.onSuccess(getUnreadMsgCountTotal());
+                }
+                //end of red packet code
+            }
+        };
+        broadcastManager.registerReceiver(broadcastReceiver, intentFilter);
+    }
 
     /**
      * get unread message count

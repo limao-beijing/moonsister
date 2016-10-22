@@ -103,13 +103,13 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
                 });
             }
         });
-        if (!UserInfoManager.getInstance().isLogin())
-            return;
         String rongyunKey = UserInfoManager.getInstance().getIMServiceKey();
         if (StringUtis.isEmpty(rongyunKey)) {
             RxBus.getInstance().send(Events.EventEnum.GET_IM_SERVICE_KEY, null);
             return;
         }
+        if (IMManager.getInstance().isConnected())
+            return;
         IMManager.getInstance().loginIMService(UserInfoManager.getInstance().getUid(), rongyunKey, new IMManager.ConnectCallback() {
             @Override
             public void onSuccess(String s) {

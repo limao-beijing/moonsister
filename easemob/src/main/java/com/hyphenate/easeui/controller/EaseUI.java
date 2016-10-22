@@ -12,7 +12,6 @@ import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMOptions;
 import com.hyphenate.easeui.domain.EaseEmojicon;
 import com.hyphenate.easeui.domain.EaseUser;
-import com.hyphenate.easeui.model.EaseAtMessageHelper;
 import com.hyphenate.easeui.model.EaseNotifier;
 
 import java.util.ArrayList;
@@ -148,7 +147,9 @@ public final class EaseUI {
             
             @Override
             public void onMessageReceived(List<EMMessage> messages) {
-                EaseAtMessageHelper.get().parseMessages(messages);
+
+
+
             }
             @Override
             public void onMessageReadAckReceived(List<EMMessage> messages) {

@@ -57,6 +57,9 @@ import com.hyphenate.easeui.widget.chatrow.EaseCustomChatRowProvider;
 import com.hyphenate.util.EMLog;
 import com.hyphenate.util.PathUtil;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.util.List;
 
@@ -744,6 +747,15 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
             message.setChatType(ChatType.ChatRoom);
         }
         //send message
+        JSONObject object = new JSONObject();
+        EaseUser user = EaseUI.getInstance().getUserProfileProvider().getUser(message.getFrom());
+        try {
+            object.put("nike", user.getNick());
+            object.put("avater", user.getAvatar());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        message.setAttribute("userinfo", object);
         EMClient.getInstance().chatManager().sendMessage(message);
         //refresh ui
         if (isMessageListInited) {

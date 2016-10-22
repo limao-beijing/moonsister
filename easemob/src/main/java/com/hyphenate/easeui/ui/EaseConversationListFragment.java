@@ -24,8 +24,10 @@ import com.easemob.easeui.R;
 import com.hyphenate.EMConnectionListener;
 import com.hyphenate.EMConversationListener;
 import com.hyphenate.EMError;
+import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMConversation;
+import com.hyphenate.chat.EMMessage;
 import com.hyphenate.easeui.widget.EaseConversationList;
 
 import java.util.ArrayList;
@@ -45,7 +47,7 @@ public class EaseConversationListFragment extends EaseBaseFragment {
     protected List<EMConversation> conversationList = new ArrayList<EMConversation>();
     protected EaseConversationList conversationListView;
     protected FrameLayout errorItemContainer;
-
+    protected EMMessageListener emMessageListener;
     protected boolean isConflict;
 
     protected EMConversationListener convListener = new EMConversationListener() {
@@ -77,6 +79,7 @@ public class EaseConversationListFragment extends EaseBaseFragment {
         // button to clear content in search bar
         clearSearch = (ImageButton) getView().findViewById(R.id.search_clear);
         errorItemContainer = (FrameLayout) getView().findViewById(R.id.fl_error_item);
+
     }
 
     @Override
@@ -130,6 +133,38 @@ public class EaseConversationListFragment extends EaseBaseFragment {
             }
         });
         hideTitleBar();
+//        registerMessageListener();
+    }
+
+    private void registerMessageListener() {
+
+        emMessageListener = new EMMessageListener() {
+
+            @Override
+            public void onMessageReceived(List<EMMessage> messages) {
+                refresh();
+            }
+
+            @Override
+            public void onMessageReadAckReceived(List<EMMessage> messages) {
+
+            }
+
+            @Override
+            public void onMessageDeliveryAckReceived(List<EMMessage> messages) {
+            }
+
+            @Override
+            public void onMessageChanged(EMMessage message, Object change) {
+
+            }
+
+            @Override
+            public void onCmdMessageReceived(List<EMMessage> messages) {
+
+            }
+        };
+        EMClient.getInstance().chatManager().addMessageListener(emMessageListener);
     }
 
 
@@ -146,7 +181,9 @@ public class EaseConversationListFragment extends EaseBaseFragment {
 
         @Override
         public void onConnected() {
+
             handler.sendEmptyMessage(1);
+            registerMessageListener();
         }
     };
     private EaseConversationListItemClickListener listItemClickListener;
@@ -282,6 +319,7 @@ public class EaseConversationListFragment extends EaseBaseFragment {
     public void onDestroy() {
         super.onDestroy();
         EMClient.getInstance().removeConnectionListener(connectionListener);
+        EMClient.getInstance().chatManager().removeMessageListener(emMessageListener);
     }
 
     @Override

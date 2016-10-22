@@ -1,6 +1,7 @@
 package com.hyphenate.easeui.utils;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,6 +44,10 @@ public class EaseUserUtils {
         EaseUser user = null;
         if (mUsers.containsKey(username)) {
             user = mUsers.get(username);
+            if (TextUtils.isEmpty(user.getNick())) {
+                user = getUserInfo(username);
+                mUsers.put(username, user);
+            }
         } else {
             user = getUserInfo(username);
             mUsers.put(username, user);
