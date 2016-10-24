@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.widget.image.photoview;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.moonsister.tcjy.R;
+import com.squareup.picasso.Picasso;
 
 /**
  * 单张图片显示Fragment
@@ -56,6 +58,23 @@ public class ImageDetailFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        progressBar.setVisibility(View.VISIBLE);
+        /**
+         * 设置加载错误时的默认图片
+         */
+        Picasso.with(getContext()).load(mImageUrl).config(Bitmap.Config.ARGB_8888).placeholder(R.mipmap.load_big).error(R.mipmap.load_failure).into(mImageView,
+                new com.squareup.picasso.Callback() {
+                    @Override
+                    public void onSuccess() {
+                        progressBar.setVisibility(View.GONE);
+                        mAttacher.update();
+                    }
+
+                    @Override
+                    public void onError() {
+                        progressBar.setVisibility(View.GONE);
+                    }
+                });
 
 //        ImageLoader.getInstance().displayImage(mImageUrl, mImageView, new SimpleImageLoadingListener() {
 //            @Override

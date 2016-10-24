@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.main.widget;
 
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hyphenate.easeui.runtimepermissions.PermissionsManager;
+import com.hyphenate.easeui.runtimepermissions.PermissionsResultAction;
 import com.moonsister.tcjy.ApplicationConfig;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
@@ -79,13 +82,28 @@ public class MainActivity extends BaseActivity implements MainView {
         initNetMianData();
         new UpdateManager(MainActivity.this).checkUpdate();
         GaodeManager.getInstance().getLocLocation();
-
+        requestPermissions();
     }
 
     @Override
     public boolean isAddActivity() {
 
         return false;
+    }
+
+    @TargetApi(23)
+    private void requestPermissions() {
+        PermissionsManager.getInstance().requestAllManifestPermissionsIfNecessary(this, new PermissionsResultAction() {
+            @Override
+            public void onGranted() {
+//                Toast.makeText(MainActivity.this, "权限是必须的", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onDenied(String permission) {
+//                Toast.makeText(MainActivity.this, "Permission " + permission + " has been denied", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     /**

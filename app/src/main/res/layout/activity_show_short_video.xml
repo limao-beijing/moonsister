@@ -6,18 +6,19 @@
                 android:orientation="vertical">
 
     <VideoView
+
         android:id="@+id/vv"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y600"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"/>
 
     <TextView
         android:id="@+id/tv_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/vv"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/y30"
+        android:layout_marginTop="@dimen/x100"
         android:padding="@dimen/y30"
         android:text="轻点退出"
         android:textColor="@color/white"/>

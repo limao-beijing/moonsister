@@ -2,10 +2,14 @@ package com.moonsister.tcjy.im.widget;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.hyphenate.easeui.EaseConstant;
+import com.hyphenate.easeui.db.HxUserDao;
+import com.hyphenate.easeui.domain.EaseUser;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
@@ -13,6 +17,7 @@ import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.hyphenate.easeui.ui.ChatFragment;
 
 import im.gouyin.com.progressdialog.AlearDialog;
 
@@ -25,6 +30,7 @@ public class AppConversationActivity extends BaseActivity {
 
     private GoogleApiClient client;
     private String mTargetId;
+    private String toChatUsername;
 
     @Override
     protected View setRootContentView() {
@@ -49,14 +55,14 @@ public class AppConversationActivity extends BaseActivity {
         });
         Intent intent = getIntent();
 
-        mTargetId = getIntent().getData().getQueryParameter("targetId");
+        mTargetId = getIntent().getExtras().getString(EaseConstant.EXTRA_USER_ID);
         getIntentDate(intent);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        if (!StringUtis.equals(getIntent().getData().getPath(), SYSTEM_PATH))
+        if (!StringUtis.equals(mTargetId, "10000"))
             certificationStatus();
     }
 
@@ -119,7 +125,7 @@ public class AppConversationActivity extends BaseActivity {
     @Override
     protected String initTitleName() {
 
-        String name = getIntent().getData().getQueryParameter("title");
+        String name = getIntent().getExtras().getString(EaseConstant.EXTRA_USER_NIKE);
         if (StringUtis.isEmpty(name)) {
 //            name = RongyunManager.getInstance().getUserName(mTargetId);
         }
@@ -135,7 +141,7 @@ public class AppConversationActivity extends BaseActivity {
      * 展示如何从 Intent 中得到 融云会话页面传递的 Uri
      */
     private void getIntentDate(Intent intent) {
-        String mTargetId = intent.getData().getQueryParameter("targetId");
+        String mTargetId = intent.getExtras().getString(EaseConstant.EXTRA_USER_ID);
         enterFragment(mTargetId);
     }
 
@@ -146,6 +152,20 @@ public class AppConversationActivity extends BaseActivity {
      * @param mTargetId
      */
     private void enterFragment(String mTargetId) {
+
+
+        Bundle extras = getIntent().getExtras();
+        toChatUsername = extras.getString(EaseConstant.EXTRA_USER_ID);
+
+        HxUserDao dao = new HxUserDao();
+        EaseUser user = new EaseUser(toChatUsername);
+        user.setAvatar(extras.getString(EaseConstant.EXTRA_USER_AVATER));
+        user.setNick(extras.getString(EaseConstant.EXTRA_USER_NIKE));
+        dao.saveUser(user);
+        ChatFragment chatFragment = new ChatFragment();
+        //set arguments
+        chatFragment.setArguments(extras);
+        getSupportFragmentManager().beginTransaction().add(R.id.conversation, chatFragment).commit();
 //        Conversation.ConversationType mConversationType;
 //        UriFragment fragment;
 //        if (!StringUtis.equals(getIntent().getData().getPath(), SYSTEM_PATH)) {

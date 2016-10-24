@@ -5,6 +5,7 @@ import com.hyphenate.chat.EMConversation;
 import com.hyphenate.easeui.db.HxUserDao;
 import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.easeui.ui.EaseConversationListFragment;
+import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 
 /**
@@ -25,4 +26,11 @@ public class ConversationListFragment extends EaseConversationListFragment {
             }
         });
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        IMManager.getInstance().uploadUnreadMsgCountTotal();
+    }
+
 }

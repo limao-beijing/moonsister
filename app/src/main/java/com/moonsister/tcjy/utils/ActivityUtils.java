@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.hyphenate.easeui.EaseConstant;
-import com.hyphenate.easeui.ui.ChatActivity;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
 import com.moonsister.tcjy.bean.TiXinrRecordBean;
@@ -30,6 +29,7 @@ import com.moonsister.tcjy.home.widget.HomeSearchActivity;
 import com.moonsister.tcjy.home.widget.SearchActivity;
 import com.moonsister.tcjy.home.widget.SearchFragmentActivity;
 import com.moonsister.tcjy.home.widget.SearchReasonActivity;
+import com.moonsister.tcjy.im.widget.AppConversationActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordNextActivity;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
@@ -284,7 +284,7 @@ public class ActivityUtils {
         args.putString(EaseConstant.EXTRA_USER_ID, userId);
         args.putString(EaseConstant.EXTRA_USER_NIKE, name);
         args.putString(EaseConstant.EXTRA_USER_AVATER, avatar);
-        startActivity(getIntent(ChatActivity.class).putExtras(args));
+        startActivity(getIntent(AppConversationActivity.class).putExtras(args));
 
 
     }

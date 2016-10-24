@@ -255,6 +255,18 @@ public class IMManager {
 
     }
 
+    public void uploadUnreadMsgCountTotal() {
+        if (mMsgNumber != null) {
+            UIUtils.onRunMainThred(new Runnable() {
+                @Override
+                public void run() {
+                    mMsgNumber.onSuccess(getUnreadMsgCountTotal());
+                }
+            });
+
+        }
+    }
+
     public void setMessageListener() {
         EMClient.getInstance().chatManager().addMessageListener(new EMMessageListener() {
             @Override
@@ -262,15 +274,7 @@ public class IMManager {
 
 
                 EaseAtMessageHelper.get().parseMessages(list);
-                if (mMsgNumber != null) {
-                    UIUtils.onRunMainThred(new Runnable() {
-                        @Override
-                        public void run() {
-                            mMsgNumber.onSuccess(getUnreadMsgCountTotal());
-                        }
-                    });
 
-                }
                 try {
                     HxUserDao dao = new HxUserDao();
                     for (EMMessage message : list) {
@@ -287,6 +291,7 @@ public class IMManager {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                uploadUnreadMsgCountTotal();
             }
 
             @Override

@@ -7,6 +7,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hyphenate.easeui.db.HxUserDao;
+import com.hyphenate.easeui.domain.EaseUser;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.bean.UserDetailBean;
@@ -93,6 +95,11 @@ public class MyThreeFragmentHeaderViewHoder extends BaseHolder<UserDetailBean> {
         if (bean == null)
             return;
         ImageServerApi.showURLImage(mCivUserAvater, bean.getBaseinfo().getFace());
+        EaseUser user = new EaseUser(bean.getBaseinfo().getUid());
+        user.setAvatar(bean.getBaseinfo().getFace());
+        user.setNick(bean.getBaseinfo().getNickname());
+        HxUserDao dao = new HxUserDao();
+        dao.saveUser(user);
         mTvSignature.setText(bean.getBaseinfo().getSignature());
         mTvAge.setText(bean.getBaseinfo().getAge());
         mTvHeight.setText(bean.getBaseinfo().getHeight());
