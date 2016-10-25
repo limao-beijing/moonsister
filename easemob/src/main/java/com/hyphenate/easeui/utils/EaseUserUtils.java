@@ -10,6 +10,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.easemob.easeui.R;
 import com.hyphenate.easeui.controller.EaseUI;
 import com.hyphenate.easeui.controller.EaseUI.EaseUserProfileProvider;
+import com.hyphenate.easeui.db.HxUserDao;
 import com.hyphenate.easeui.domain.EaseUser;
 
 import java.util.HashMap;
@@ -33,6 +34,16 @@ public class EaseUserUtils {
             return userProvider.getUser(username);
 
         return null;
+    }
+
+    public static void upUserInfo(String uid) {
+        HxUserDao dao = new HxUserDao();
+        EaseUser user = dao.getUser(uid);
+        if (user != null && mUsers.containsKey(uid)) {
+            EaseUser user1 = mUsers.get(uid);
+            user1.setAvatar(user.getAvatar());
+            user1.setNick(user.getNickname());
+        }
     }
 
     /**

@@ -12,6 +12,7 @@ import com.hyphenate.easeui.domain.EaseUser;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.bean.UserDetailBean;
+import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.StringUtis;
@@ -100,6 +101,7 @@ public class MyThreeFragmentHeaderViewHoder extends BaseHolder<UserDetailBean> {
         user.setNick(bean.getBaseinfo().getNickname());
         HxUserDao dao = new HxUserDao();
         dao.saveUser(user);
+        IMManager.getInstance().upUserInfo(bean.getBaseinfo().getUid());
         mTvSignature.setText(bean.getBaseinfo().getSignature());
         mTvAge.setText(bean.getBaseinfo().getAge());
         mTvHeight.setText(bean.getBaseinfo().getHeight());

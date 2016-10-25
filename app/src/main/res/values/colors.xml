@@ -142,6 +142,7 @@
     <color name="blue_67b0b7">#67b0b7</color>
     <color name="rc_picsel_grid_mask">#00000000</color>
     <color name="rc_picsel_grid_mask_pressed">#80000000</color>
+    <color name="videobackcolor">#FF333333</color>
 
 </resources>
 

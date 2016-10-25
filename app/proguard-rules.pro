@@ -387,3 +387,6 @@
 -dontwarn  com.hyphenate.**
 
 #ease end
+
+-keep class tv.danmaku.ijk.** { *; }
+-dontwarn tv.danmaku.ijk.**

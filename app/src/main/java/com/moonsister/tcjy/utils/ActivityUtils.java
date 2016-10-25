@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.hyphenate.easeui.EaseConstant;
+import com.hyphenate.easeui.ui.PlayDirectlyActivity;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
 import com.moonsister.tcjy.bean.TiXinrRecordBean;
@@ -49,7 +50,6 @@ import com.moonsister.tcjy.main.widget.RecommendMemberActivity;
 import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
 import com.moonsister.tcjy.main.widget.RelationActivity;
 import com.moonsister.tcjy.main.widget.RenZhengThreeActivity;
-import com.moonsister.tcjy.main.widget.ShowShortVideoActivity;
 import com.moonsister.tcjy.main.widget.SwitchItemActivity;
 import com.moonsister.tcjy.main.widget.UserinfoActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
@@ -684,7 +684,7 @@ public class ActivityUtils {
      */
     public static void startShowShortVideoActivity(String path) {
         if (!StringUtis.isEmpty(path)) {
-            Intent intent = getIntent(ShowShortVideoActivity.class);
+            Intent intent = getIntent(PlayDirectlyActivity.class);
             intent.putExtra("path", path);
             startActivity(intent);
         }

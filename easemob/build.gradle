@@ -39,4 +39,6 @@ dependencies {
     compile files('src/main/libs/HwPush_SDK_V2705_nomap.jar')
     //    compile files('src/main/libs/org.apache.http.legacy.jar')
     compile files('src/main/libs/MiPush_SDK_Client_2_2_19.jar')
+   /* compile 'fm.jiecao:jiecaovideoplayer:4.8.1'*/
+    compile project(':jcvideoplayer-lib')
 }

@@ -19,6 +19,7 @@ import com.hyphenate.easeui.controller.EaseUI;
 import com.hyphenate.easeui.db.HxUserDao;
 import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.easeui.model.EaseAtMessageHelper;
+import com.hyphenate.easeui.utils.EaseUserUtils;
 import com.hyphenate.util.NetUtils;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.utils.LogUtils;
@@ -127,6 +128,15 @@ public class IMManager {
                 return user;
             }
         });
+    }
+
+    /**
+     * 更新
+     *
+     * @param uid
+     */
+    public void upUserInfo(String uid) {
+        EaseUserUtils.upUserInfo(uid);
     }
 
 

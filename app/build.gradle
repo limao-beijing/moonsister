@@ -120,4 +120,6 @@ dependencies {
     compile rootProject.ext.dependencies["analytics"]
     compile rootProject.ext.dependencies["PhotoView"]
     compile files('src/main/libs/nineoldandroids-2.4.0.jar')
+
+
 }
