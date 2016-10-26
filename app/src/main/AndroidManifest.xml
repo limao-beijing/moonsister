@@ -77,16 +77,16 @@
             android:value="57e63d92e0f55a159d002acd"/>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="XMTONGCHENG3000"/>
+            android:value="OPPOMOMOSHITING3004"/>
         <!--API  接口-->
         <meta-data
             android:name="API_CHANNEL"
-            android:value="3000"/>
+            android:value="3004"/>
         <!-- 友盟  end -->
         <!-- 高德 start -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="f3a354b81e0a660b1135edea1d560f9f"/>
+            android:value="daed603031b2216d9394fbf8403bb888"/>
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService"/>
         <!-- 高德 end -->
@@ -95,7 +95,7 @@
         <activity android:name=".main.widget.RelationActivity"/>
 
         <!-- 聚合会话列表 -->
-
+<!--
         <activity
             android:name=".im.widget.SubConversationListActivtiy"
             android:screenOrientation="portrait"
@@ -110,21 +110,11 @@
                     android:pathPrefix="/subconversationlist"
                     android:scheme="rong"/>
             </intent-filter>
-        </activity>
+        </activity>-->
         <activity
             android:name=".im.widget.AppConversationActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-
-                <data
-                    android:host="com.tongcheng.xiehou"
-                    android:pathPrefix="/conversation/"
-                    android:scheme="rong"/>
-            </intent-filter>
         </activity>
         <activity android:name=".main.widget.H5Activity"/>
         <activity
@@ -149,6 +139,10 @@
             android:name=".widget.image.PhonePicActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".engagement.widget.EngagementManagerActivity"/>
+        <activity
+            android:name=".main.widget.WelcomeGuideActivity"
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name=".widget.image.ShowImageActivity"
             android:screenOrientation="portrait"/>

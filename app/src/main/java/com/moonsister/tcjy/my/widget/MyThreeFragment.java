@@ -63,6 +63,7 @@ public class MyThreeFragment extends BaseListFragment<MyThreeFragmentAdapter, My
 
     @Override
     protected View addListViewHead() {
+        uid = UserInfoManager.getInstance().getUid();
         View view = UIUtils.inflateLayout(R.layout.head_my_three);
         tv_user_name = (TextView) view.findViewById(R.id.tv_user_name);
         view.findViewById(R.id.iv_setting).setOnClickListener(new View.OnClickListener() {
@@ -81,6 +82,7 @@ public class MyThreeFragment extends BaseListFragment<MyThreeFragmentAdapter, My
 
     @Override
     protected void onRefresh() {
+        uid = UserInfoManager.getInstance().getUid();
         presenter.loadHeaderData(uid);
         presenter.loadData(uid, page, type);
     }
@@ -94,8 +96,14 @@ public class MyThreeFragment extends BaseListFragment<MyThreeFragmentAdapter, My
     protected void initChildData() {
         presenter = new MyThreeFragmentPresenterImpl();
         presenter.attachView(this);
-        uid = UserInfoManager.getInstance().getUid();
 
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        uid = UserInfoManager.getInstance().getUid();
     }
 
     @Override

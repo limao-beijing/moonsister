@@ -138,19 +138,30 @@
 -keep class * implements android.os.Parcelable {
   public static final android.os.Parcelable$Creator *;
 }
-#保持 Serializable 不被混淆
+##保持 Serializable 不被混淆
+#-keepnames class * implements java.io.Serializable
+##保持 Serializable 不被混淆并且enum 类也不被混淆
+#-keepclassmembers class * implements java.io.Serializable {
+#    static final long serialVersionUID;
+#    private static final java.io.ObjectStreamField[] serialPersistentFields;
+#    !static !transient <fields>;
+#    !private ;
+#    !private <methods>;
+#    private void writeObject(java.io.ObjectOutputStream);
+#    private void readObject(java.io.ObjectInputStream);
+#    java.lang.Object writeReplace();
+#    java.lang.Object readResolve();
+#}
+
 -keepnames class * implements java.io.Serializable
-#保持 Serializable 不被混淆并且enum 类也不被混淆
 -keepclassmembers class * implements java.io.Serializable {
-    static final long serialVersionUID;
-    private static final java.io.ObjectStreamField[] serialPersistentFields;
-    !static !transient <fields>;
- #   !private ;
-    !private <methods>;
-    private void writeObject(java.io.ObjectOutputStream);
-    private void readObject(java.io.ObjectInputStream);
-    java.lang.Object writeReplace();
-    java.lang.Object readResolve();
+static final long serialVersionUID;
+private static final java.io.ObjectStreamField[] serialPersistentFields;
+!static !transient <fields>;
+private void writeObject(java.io.ObjectOutputStream);
+private void readObject(java.io.ObjectInputStream);
+java.lang.Object writeReplace();
+java.lang.Object readResolve();
 }
 #保持枚举 enum 类不被混淆 如果混淆报错，建议直接使用上面的 -keepclassmembers class * implements java.io.Serializable即可
 #-keepclassmembers enum * {
@@ -360,31 +371,56 @@
 
 #爱贝支付  end
 
-#ease start
--keep class com.easemob.** {*;}
+##ease start
+#-keep class com.easemob.** {*;}
+#-keep class org.jivesoftware.** {*;}
+#-keep class org.apache.** {*;}
+#-dontwarn  com.easemob.**
+##2.0.9后的不需要加下面这个keep
+##-keep class org.xbill.DNS.** {*;}
+##另外，demo中发送表情的时候使用到反射，需要keep SmileUtils
+#-keep class com.easemob.chatuidemo.utils.SmileUtils {*;}
+##注意前面的包名，如果把这个类复制到自己的项目底下，比如放在com.example.utils底下，应该这么写（实际要去掉#）
+##-keep class com.example.utils.SmileUtils {*;}
+##如果使用EaseUI库，需要这么写
+#-keep class com.easemob.com.im.easeui.easeui.utils.EaseSmileUtils {*;}
+#
+##2.0.9后加入语音通话功能，如需使用此功能的API，加入以下keep
+#-dontwarn ch.imvs.**
+#-dontwarn org.slf4j.**
+#-keep class org.ice4j.** {*;}
+#-keep class net.java.sip.** {*;}
+#-keep class org.webrtc.voiceengine.** {*;}
+#-keep class org.bitlet.** {*;}
+#-keep class org.slf4j.** {*;}
+#-keep class ch.imvs.** {*;}
+-keep class com.hyphenate.** {*;}
+-dontwarn  com.hyphenate.**
+
+
+
+
+
+-keep class org.xmlpull.** {*;}
+-keep class com.baidu.** {*;}
+-keep public class * extends com.umeng.**
+-keep class com.umeng.** { *; }
+-keep class com.squareup.picasso.* {*;}
+
+-keep class com.hyphenate.* {*;}
+-keep class com.hyphenate.chat.** {*;}
 -keep class org.jivesoftware.** {*;}
 -keep class org.apache.** {*;}
--dontwarn  com.easemob.**
-#2.0.9后的不需要加下面这个keep
-#-keep class org.xbill.DNS.** {*;}
-#另外，demo中发送表情的时候使用到反射，需要keep SmileUtils
--keep class com.easemob.chatuidemo.utils.SmileUtils {*;}
-#注意前面的包名，如果把这个类复制到自己的项目底下，比如放在com.example.utils底下，应该这么写（实际要去掉#）
-#-keep class com.example.utils.SmileUtils {*;}
-#如果使用EaseUI库，需要这么写
--keep class com.easemob.com.im.easeui.easeui.utils.EaseSmileUtils {*;}
+#另外，demo中发送表情的时候使用到反射，需要keep SmileUtils,注意前面的包名，
+#不要SmileUtils复制到自己的项目下keep的时候还是写的demo里的包名
+-keep class com.hyphenate.easeui.utils.SmileUtils {*;}
 
-#2.0.9后加入语音通话功能，如需使用此功能的API，加入以下keep
--dontwarn ch.imvs.**
--dontwarn org.slf4j.**
--keep class org.ice4j.** {*;}
+#2.0.9后加入语音通话功能，如需使用此功能的api，加入以下keep
 -keep class net.java.sip.** {*;}
 -keep class org.webrtc.voiceengine.** {*;}
 -keep class org.bitlet.** {*;}
 -keep class org.slf4j.** {*;}
 -keep class ch.imvs.** {*;}
--keep class com.hyphenate.** {*;}
--dontwarn  com.hyphenate.**
 
 #ease end
 

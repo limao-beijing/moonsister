@@ -23,7 +23,8 @@ public class SplashActivity extends BaseActivity {
     protected void initView() {
         String authcode = UserInfoManager.getInstance().getAuthcode();
         if (StringUtis.isEmpty(authcode)) {
-            startActivity(new Intent(this, ManorGrilActivity.class));
+//            startActivity(new Intent(this, ManorGrilActivity.class));
+            startActivity(new Intent(this, WelcomeGuideActivity.class));
             finish();
         } else {
             enterMian();

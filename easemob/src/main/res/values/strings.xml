@@ -198,7 +198,7 @@
     <string name="send_the_request_is">发送请求成功，等待群主同意</string>
     <string name="Join_the_group_chat">加入群聊成功</string>
     <string name="Failed_to_join_the_group_chat">加入群聊失败:</string>
-    <string name="temporary_does_not">暂不支持大于10M的视频！</string>
+    <string name="temporary_does_not_10">暂不支持大于10M的视频！</string>
     <string name="Video_footage">拍摄录像</string>
     <string name="User_name_cannot_be_empty">用户名不能为空！</string>
     <string name="Password_cannot_be_empty">密码不能为空！</string>

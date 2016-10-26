@@ -7,7 +7,7 @@ public interface AppConstant {
     /**
      * 渠道id
      */
-    String CHANNEL_ID = "3000";
+    String CHANNEL_ID = "3004";
     /**
      * 用户id
      */

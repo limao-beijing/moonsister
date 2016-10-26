@@ -57,6 +57,7 @@ public abstract class BaseListFragment<T extends BaseRecyclerViewAdapter, M exte
      * @return
      */
     protected View addListViewHead() {
+
         return null;
     }
 

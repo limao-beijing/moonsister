@@ -75,6 +75,11 @@ public class RenZhengThreeActivity extends BaseActivity implements RenZhengThree
                     }
                 })
                 .create();
+        mFlContent.setVisibility(View.GONE);
+        rl.setVisibility(View.VISIBLE);
+        mTvSubmit.setBackground(getResources().getDrawable(R.drawable.shape_background_gray));
+        mTvSubmit.setClickable(false);
+        mTvSubmit.setFocusable(false);
     }
 
 
@@ -92,6 +97,10 @@ public class RenZhengThreeActivity extends BaseActivity implements RenZhengThree
                 break;
 
             case R.id.tv_submit:
+                if (contentFragment == null || contentFragment.getDynamicContent() == null || contentFragment.getDynamicContent().size() == 0) {
+                    showToast("提交的内容不能为空！");
+                    return;
+                }
                 if (contentFragment != null) {
                     presenter.submit(contentFragment.getDynamicContent(), contentFragment.getDynamicType());
                 }
@@ -125,8 +134,9 @@ public class RenZhengThreeActivity extends BaseActivity implements RenZhengThree
         finish();
     }
 
-    @Override
-    public boolean isAddActivity() {
-        return false;
-    }
+//    @Override
+//    public boolean isAddActivity()
+//    {
+//        return false;
+//    }
 }

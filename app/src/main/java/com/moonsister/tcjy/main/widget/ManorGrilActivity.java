@@ -85,10 +85,7 @@ public class ManorGrilActivity extends BaseActivity implements ManorGrilActivity
     @Override
     public void getReg(String authcode) {
 //        RxBus.getInstance().send(Events.EventEnum.BUY_VIP_SUCCESS, null);
-        PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();//获得对象
-        memoryPersonInfoDetail.setAuthcode(authcode);//保存值
-        memoryPersonInfoDetail.setLogin(true);
-        UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
+
 
         Intent intent = new Intent(ManorGrilActivity.this, RegActivity.class);
         startActivity(intent);

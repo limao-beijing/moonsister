@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">约见</string>
+    <string name="app_name">陌陌视听-快搜快播看视频</string>
     <!--<string name="app_name">探探寂陌陌生人-求约爱</string>-->
     <string name="app_home_page">广场</string>
     <string name="app_im_page">聊天</string>
@@ -361,5 +361,6 @@
     <string name="rc_picsel_take_picture">拍摄照片</string>
     <string name="rc_picsel_catalog_allpic">所有图片</string>
     <string name="rc_picsel_catalog_number">%d张</string>
+    <string name="entry">进入</string>
 
 </resources>
