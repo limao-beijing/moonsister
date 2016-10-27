@@ -5,13 +5,10 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
-import com.moonsister.tcjy.base.BaseActivity;
+import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-
-import io.rong.imkit.RongyunManager;
 
 /**
  * Created by pc on 2016/6/3.
@@ -29,25 +26,35 @@ public class ApplicationConfig extends MultiDexApplication {
 //                .serverApiModule(new ServerApiModule(new ServerApi()))
 //                .build();
 ////
-        initRongYun();
+//        initRongYun();
+        initHx();
     }
 
-    private void initRongYun() {
-
-        /**
-         * OnCreate 会被多个进程重入，这段保护代码，确保只有您需要使用 RongIM 的进程和 Push 进程执行了 init。
-         * io.rong.push 为融云 push 进程名称，不可修改。
-         */
-        if (getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext())) ||
-                "io.rong.push".equals(getCurProcessName(getApplicationContext()))) {
-
-            /**
-             * IMKit SDK调用第一步 初始化
-             */
-            RongyunManager.getInstance().init(this);
-        }
+    /**
+     * 初始化环信
+     */
+    private void initHx() {
+        IMManager.getInstance().initEaseUI(getApplicationContext());
 
     }
+
+//
+//    private void initRongYun() {
+//
+//        /**
+//         * OnCreate 会被多个进程重入，这段保护代码，确保只有您需要使用 RongIM 的进程和 Push 进程执行了 init。
+//         * io.rong.push 为融云 push 进程名称，不可修改。
+//         */
+//        if (getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext())) ||
+//                "io.rong.push".equals(getCurProcessName(getApplicationContext()))) {
+//
+//            /**
+//             * IMKit SDK调用第一步 初始化
+//             */
+//            RongyunManager.getInstance().init(this);
+//        }
+//
+//    }
 
 //    public AppComponent getAppComponent() {
 //

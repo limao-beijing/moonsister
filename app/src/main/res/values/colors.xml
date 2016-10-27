@@ -127,6 +127,8 @@
     <color name="text_gray_778998">#778998</color>
     <color name="white_778998">#778998</color>
     <color name="gray_d6dde4">#d6dde4</color>
+    <color name="rc_picsel_grid_mask">#00000000</color>
+    <color name="rc_picsel_grid_mask_pressed">#80000000</color>
 
 </resources>
 

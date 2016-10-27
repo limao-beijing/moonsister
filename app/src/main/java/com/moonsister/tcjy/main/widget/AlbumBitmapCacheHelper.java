@@ -7,10 +7,10 @@ package com.moonsister.tcjy.main.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
+import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.os.Handler;
 import android.os.Message;
@@ -18,7 +18,7 @@ import android.support.v4.util.LruCache;
 import android.util.Log;
 import android.view.WindowManager;
 
-import io.rong.imkit.utils.CommonUtils;
+import com.moonsister.tcjy.utils.CommonUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

@@ -53,6 +53,7 @@ ext {
             "analytics"             : "com.umeng.analytics:analytics:latest.integration",
             "gms"                   : "com.google.android.gms:play-services-appindexing:8.1.0",
             //方法数
-            "multidex"              : "com.android.support:multidex:1.0.0"
+            "multidex"              : "com.android.support:multidex:1.0.0",
+            "PhotoView"             : "com.github.chrisbanes:PhotoView:1.3.0"
     ]
 }

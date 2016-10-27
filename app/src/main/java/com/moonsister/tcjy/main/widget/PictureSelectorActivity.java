@@ -455,12 +455,12 @@ public class PictureSelectorActivity extends Activity {
 
         public SelectBox(Context context, AttributeSet attrs) {
             super(context, attrs);
-            this.setImageResource(R.drawable.select_check_nor);
+            this.setImageResource(R.mipmap.select_check_nor);
         }
 
         public void setChecked(boolean check) {
             this.mIsChecked = check;
-            this.setImageResource(this.mIsChecked ? R.drawable.select_check_sel : R.drawable.select_check_nor);
+            this.setImageResource(this.mIsChecked ? R.mipmap.select_check_sel : R.mipmap.select_check_nor);
         }
 
         public boolean getChecked() {

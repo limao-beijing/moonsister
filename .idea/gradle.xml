@@ -11,20 +11,13 @@
             <option value="$PROJECT_DIR$/IMKit" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baidu" />
+            <option value="$PROJECT_DIR$/easemob" />
+            <option value="$PROJECT_DIR$/jcvideoplayer-lib" />
             <option value="$PROJECT_DIR$/pay" />
             <option value="$PROJECT_DIR$/progressdialog" />
           </set>
         </option>
-        <option name="myModules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/IMKit" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/baidu" />
-            <option value="$PROJECT_DIR$/pay" />
-            <option value="$PROJECT_DIR$/progressdialog" />
-          </set>
-        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

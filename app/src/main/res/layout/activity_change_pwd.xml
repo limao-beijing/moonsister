@@ -147,7 +147,7 @@
             android:paddingLeft="@dimen/x50"
             android:paddingRight="@dimen/x50"
             android:paddingTop="@dimen/x10"
-            android:text="@string/rc_cs_submit"
+            android:text="@string/submit"
             android:textColor="@color/white"
             android:textSize="@dimen/order_text_small2" />
 

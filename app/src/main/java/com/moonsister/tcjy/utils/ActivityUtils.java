@@ -3,8 +3,10 @@ package com.moonsister.tcjy.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
+import android.os.Bundle;
 
+import com.hyphenate.easeui.EaseConstant;
+import com.hyphenate.easeui.ui.PlayDirectlyActivity;
 import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
 import com.moonsister.tcjy.bean.TiXinrRecordBean;
 import com.moonsister.tcjy.center.widget.BuyDynamicRedPackketActivity;
@@ -20,6 +22,7 @@ import com.moonsister.tcjy.find.widget.VideoDynamicActivity;
 import com.moonsister.tcjy.home.widget.SearchActivity;
 import com.moonsister.tcjy.home.widget.SearchFragmentActivity;
 import com.moonsister.tcjy.home.widget.SearchReasonActivity;
+import com.moonsister.tcjy.im.widget.AppConversationActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordNextActivity;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
@@ -36,7 +39,6 @@ import com.moonsister.tcjy.main.widget.PictureSelectorActivity;
 import com.moonsister.tcjy.main.widget.RecommendMemberActivity;
 import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
 import com.moonsister.tcjy.main.widget.RelationActivity;
-import com.moonsister.tcjy.main.widget.ShowShortVideoActivity;
 import com.moonsister.tcjy.main.widget.SwitchItemActivity;
 import com.moonsister.tcjy.main.widget.UserinfoActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
@@ -75,8 +77,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import io.rong.imkit.RongyunManager;
-import io.rong.imlib.model.Conversation;
 
 /**
  * Created by jb on 2016/6/20.
@@ -250,18 +250,24 @@ public class ActivityUtils {
      * @param avatar
      */
     public static void startAppConversationActivity(String userId, String name, String avatar) {
-        if (!UserInfoManager.getInstance().isLogin()) {
-            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
-            return;
-        }
-        Uri uri = Uri.parse("rong://" + ConfigUtils.getInstance().getApplicationContext().getApplicationInfo().processName)
-                .buildUpon().appendPath("conversation")
-                .appendPath(Conversation.ConversationType.PRIVATE.getName().toLowerCase())
-                .appendQueryParameter("targetId", userId)
-                .appendQueryParameter("title", name).build();
-        RongyunManager.getInstance().setUserInfoCache(userId, name, avatar);
-        startActivity(new Intent("android.intent.action.VIEW", uri));
+//        if (!UserInfoManager.getInstance().isLogin()) {
+//            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+//            return;
+//        }
+//        Uri uri = Uri.parse("rong://" + ConfigUtils.getInstance().getApplicationContext().getApplicationInfo().processName)
+//                .buildUpon().appendPath("conversation")
+//                .appendPath(Conversation.ConversationType.PRIVATE.getName().toLowerCase())
+//                .appendQueryParameter("targetId", userId)
+//                .appendQueryParameter("title", name).build();
+//        RongyunManager.getInstance().setUserInfoCache(userId, name, avatar);
+//        startActivity(new Intent("android.intent.action.VIEW", uri));
 
+        Bundle args = new Bundle();
+        args.putInt(EaseConstant.EXTRA_CHAT_TYPE, EaseConstant.CHATTYPE_SINGLE);
+        args.putString(EaseConstant.EXTRA_USER_ID, userId);
+        args.putString(EaseConstant.EXTRA_USER_NIKE, name);
+        args.putString(EaseConstant.EXTRA_USER_AVATER, avatar);
+        startActivity(getIntent(AppConversationActivity.class).putExtras(args));
 
     }
 
@@ -659,7 +665,7 @@ public class ActivityUtils {
      */
     public static void startShowShortVideoActivity(String path) {
         if (!StringUtis.isEmpty(path)) {
-            Intent intent = getIntent(ShowShortVideoActivity.class);
+            Intent intent = getIntent(PlayDirectlyActivity.class);
             intent.putExtra("path", path);
             startActivity(intent);
         }

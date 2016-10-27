@@ -14,6 +14,9 @@ android {
         versionName rootProject.ext.android.versionName
         multiDexEnabled true
     }
+    dexOptions {
+        javaMaxHeapSize "6g"
+    }
 
     signingConfigs {
         debug {
@@ -32,7 +35,7 @@ android {
     buildTypes {
 
         debug {
-            signingConfig signingConfigs.debug
+//            signingConfig signingConfigs.debug
             minifyEnabled false
         }
         release {
@@ -66,10 +69,11 @@ repositories {
 }
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':IMKit')
+    /*compile project(':IMKit')*/
     compile project(':pay')
     compile project(':progressdialog')
     /* compile project(':baidu')*/
+    compile project(':easemob')
     //阿里云
     compile files('src/main/libs/aliyun-oss-sdk-android-2.2.0.jar')
     compile files('src/main/libs/AMap_Location_V2.6.0_20160628.jar')
@@ -112,6 +116,8 @@ dependencies {
     //方法数
     compile rootProject.ext.dependencies["multidex"]
     //友盟
+
+    compile rootProject.ext.dependencies["PhotoView"]
     compile rootProject.ext.dependencies["analytics"]
     compile files('src/main/libs/nineoldandroids-2.4.0.jar')
 }

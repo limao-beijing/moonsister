@@ -22,7 +22,6 @@ import com.moonsister.tcjy.utils.FragmentUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import io.rong.imkit.fragment.ConversationListFragment;
 
 /**
  * Created by pc on 2016/5/31.
@@ -74,7 +73,7 @@ public class IMHomeFragment extends BaseFragment implements BaseIView, IMHomeVie
 
     @OnClick({R.id.tv_navigation_good_select, R.id.tv_navigation_same_city})
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.tv_navigation_good_select:
                 tvNavigationGoodSelect.setBackgroundResource(R.mipmap.my_foll);
                 tvNavigationGoodSelect.setTextColor(getResources().getColor(R.color.text_follow_color));
@@ -88,7 +87,7 @@ public class IMHomeFragment extends BaseFragment implements BaseIView, IMHomeVie
                 tvNavigationSameCity.setBackgroundResource(R.mipmap.foll_my);
                 break;
         }
-        ConversationListFragment instance = ConversationListFragment.getInstance();
+//        ConversationListFragment instance = new ConversationListFragment();
         presenter.switchNavigation(view.getId());
     }
 
@@ -96,8 +95,8 @@ public class IMHomeFragment extends BaseFragment implements BaseIView, IMHomeVie
     public void swith2PrivateChat() {
         //启动会话列表界面
         if (chatFragment == null)
-            chatFragment = ChatFragment.newInstance();
-
+//            chatFragment = ChatFragment.newInstance();
+            chatFragment = new ConversationListFragment();
         enterPage(chatFragment);
     }
 
