@@ -71,13 +71,16 @@ public class InsertActivity extends BaseActivity implements InsertActivityView {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_text://重置
+                if (data == null)
+                    return;
                 for (int i = 0; i < data.size(); i++) {
 
                     InsertBaen.DataBean bean = data.get(i);
                     bean.setIscheck(false);
 
                 }
-                adapter.notifyDataSetChanged();
+                if (adapter != null)
+                    adapter.notifyDataSetChanged();
                 break;
             case R.id.button1_text://已选好
                 if (data == null || data.size() < 1) {
