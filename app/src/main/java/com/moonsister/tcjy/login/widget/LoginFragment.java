@@ -22,6 +22,7 @@ import com.moonsister.tcjy.login.presenter.LoginFragmentPersenterImpl;
 import com.moonsister.tcjy.login.view.LoginFragmentView;
 import com.moonsister.tcjy.main.widget.MainActivity;
 import com.moonsister.tcjy.main.widget.ManorGrilActivity;
+import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ConfigUtils;
@@ -143,5 +144,6 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
                 getActivity().finish();
             }
         }, 1000);
+        IMManager.getInstance().cleanAllChatMsg();
     }
 }

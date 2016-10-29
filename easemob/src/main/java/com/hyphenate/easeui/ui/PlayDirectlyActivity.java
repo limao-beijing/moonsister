@@ -1,7 +1,5 @@
 package com.hyphenate.easeui.ui;
 
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -17,20 +15,21 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
  * Created by Nathen on 16/7/31.
  */
 public class PlayDirectlyActivity extends AppCompatActivity {
-    JCVideoPlayer.JCAutoFullscreenListener sensorEventListener;
-    SensorManager sensorManager;
+//    JCVideoPlayer.JCAutoFullscreenListener sensorEventListener;
+//    SensorManager sensorManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        sensorEventListener = new JCVideoPlayer.JCAutoFullscreenListener();
+//        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+//        sensorEventListener = new JCVideoPlayer.JCAutoFullscreenListener();
         String path = getIntent().getStringExtra("path");
         if (TextUtils.isEmpty(path))
             return;
         setContentView(R.layout.activity_directly_play);
         JCVideoPlayerStandard jcVideoPlayerStandard = (JCVideoPlayerStandard) findViewById(R.id.custom_videoplayer_standard);
         jcVideoPlayerStandard.setUp(path, JCVideoPlayerStandard.SCREEN_LAYOUT_LIST, "");
+        jcVideoPlayerStandard.onClick(jcVideoPlayerStandard.startButton);
     }
 
     @Override
@@ -44,7 +43,7 @@ public class PlayDirectlyActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        sensorManager.unregisterListener(sensorEventListener);
+//        sensorManager.unregisterListener(sensorEventListener);
         JCVideoPlayer.releaseAllVideos();
     }
 
@@ -61,7 +60,7 @@ public class PlayDirectlyActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Sensor accelerometerSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        sensorManager.registerListener(sensorEventListener, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
+//        Sensor accelerometerSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+//        sensorManager.registerListener(sensorEventListener, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 }

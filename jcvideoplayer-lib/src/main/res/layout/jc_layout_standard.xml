@@ -89,7 +89,8 @@
             android:layout_height="fill_parent"
             android:paddingRight="16dp"
             android:scaleType="center"
-            android:src="@drawable/jc_enlarge"/>
+            android:src="@drawable/jc_enlarge"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <ProgressBar

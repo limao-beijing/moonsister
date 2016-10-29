@@ -44,6 +44,7 @@ import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.bean.UserPermissionBean;
 import com.moonsister.tcjy.bean.VersionInfo;
+import com.moonsister.tcjy.bean.VipRule;
 import com.moonsister.tcjy.bean.WithdRawDepositBean;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UnicodeUtils;
@@ -171,7 +172,7 @@ public class ServerApi {
 
 
     public interface AppAPI {
-        String baseUrl = "http://2test.yytbzs.cn:88/index.php/index/";
+        String baseUrl = "http://brand1.yytbzs.cn:88/index.php/index/";
 //        String baseUrl = "http://2.yytbzs.cn:88/index.php/index/";
 //        String baseUrl = "http://mimei.cntttt.com:88/public/index.php/index/";
 
@@ -864,6 +865,7 @@ public class ServerApi {
                                       @Field("opentype") int opentype,
                                       @Field("fee_mobile") String phone, @Field("authcode") String authcode,
                                       @Field("channel") String channel);
+
         /**
          * 认证押金
          *
@@ -1249,6 +1251,8 @@ public class ServerApi {
         Observable<DownApkBean> getDownApk(@Query("authcode") String authcode,
                                            @Query("channel") String channel);
 
+        @GET("mmvip/get_data_info")
+        Observable<VipRule> getVipRule(@Query("authcode") String authcode, @Query("channel") String channel);
     }
 }
 

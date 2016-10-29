@@ -16,4 +16,6 @@ public interface BuyDynamicRedPackketPersenter extends BaseIPresenter<BuyDynamic
 
     void singBuy(String id);
 
+    void loadVipRule();
+
 }

@@ -74,11 +74,11 @@
             android:value="57fb6424e0f55a81f5000e94"/>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="2006"/>
+            android:value="XMCHUSE2000"/>
         <!--API  接口-->
         <meta-data
             android:name="API_CHANNEL"
-            android:value="2006"/>
+            android:value="2000"/>
         <!-- 友盟  end -->
         <!-- 高德 start -->
         <meta-data

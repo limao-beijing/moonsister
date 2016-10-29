@@ -6,7 +6,9 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.pay.tencent.PayBean;
+import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
+import com.moonsister.tcjy.bean.VipRule;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
@@ -196,7 +198,23 @@ public class BuyDynamicRedPacketModelImpl implements BuyDynamicRedPacketModel {
     }
 
     @Override
-    public void getPics(String id, onLoadDateSingleListener<PayRedPacketPicsBean> listener) {
+    public void getPics(String id, onLoadDateSingleListener<BaseBean> listener) {
         getPayDynamicPic(id, listener, DataType.DATA_ZERO);
+    }
+
+    @Override
+    public void loadVipRule(onLoadDateSingleListener<BaseBean> listener) {
+        Observable<VipRule> observable = ServerApi.getAppAPI().getVipRule(UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<VipRule>() {
+            @Override
+            public void onSuccess(VipRule vipRule) {
+                listener.onSuccess(vipRule, DataType.DATA_FOUR);
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                listener.onFailure(msg);
+            }
+        });
     }
 }

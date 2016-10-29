@@ -10,10 +10,13 @@ import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.hyphenate.easeui.db.HxUserDao;
+import com.hyphenate.easeui.domain.EaseUser;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.bean.UserDetailBean;
+import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.persenter.HreatFragmentPersenter;
 import com.moonsister.tcjy.my.persenter.HreatFragmentPresenterImpl;
@@ -207,6 +210,8 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
 
     @Override
     public void success(UserDetailBean userDetailBean) {
+
+
         data = userDetailBean.getData().getBaseinfo();
         addons = userDetailBean.getData().getAddons();
         tv_user_name.setText(data.getNickname());//用户昵称
@@ -248,6 +253,14 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
             vip_money.setVisibility(View.GONE);
 
         }
+        UserDetailBean.DataBean.BaseinfoBean baseinfo = userDetailBean.getData().getBaseinfo();
+
+        EaseUser user = new EaseUser(UserInfoManager.getInstance().getUid());
+        user.setAvatar(baseinfo.getFace());
+        user.setNick(baseinfo.getNickname());
+        HxUserDao dao = new HxUserDao();
+        dao.saveUser(user);
+        IMManager.getInstance().upUserInfo(UserInfoManager.getInstance().getUid());
     }
 
 }

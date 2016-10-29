@@ -3,7 +3,9 @@ package com.moonsister.tcjy.center.presenter;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
+import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
+import com.moonsister.tcjy.bean.VipRule;
 import com.moonsister.tcjy.center.model.BuyDynamicRedPacketModel;
 import com.moonsister.tcjy.center.model.BuyDynamicRedPacketModelImpl;
 import com.moonsister.tcjy.center.view.BuyDynamicRedPackketView;
@@ -16,7 +18,7 @@ import com.moonsister.tcjy.utils.UIUtils;
 /**
  * Created by jb on 2016/6/29.
  */
-public class BuyDynamicRedPackketPersenterImpl implements BuyDynamicRedPackketPersenter, BaseIModel.onLoadDateSingleListener<PayRedPacketPicsBean> {
+public class BuyDynamicRedPackketPersenterImpl implements BuyDynamicRedPackketPersenter, BaseIModel.onLoadDateSingleListener<BaseBean> {
     private BuyDynamicRedPackketView view;
     private BuyDynamicRedPacketModel model;
 
@@ -58,7 +60,13 @@ public class BuyDynamicRedPackketPersenterImpl implements BuyDynamicRedPackketPe
     }
 
     @Override
-    public void onSuccess(PayRedPacketPicsBean bean, BaseIModel.DataType dataType) {
+    public void loadVipRule() {
+        view.showLoading();
+        model.loadVipRule(this);
+    }
+
+    @Override
+    public void onSuccess(BaseBean bean, BaseIModel.DataType dataType) {
 
         switch (dataType) {
             case DATA_ZERO:
@@ -68,7 +76,7 @@ public class BuyDynamicRedPackketPersenterImpl implements BuyDynamicRedPackketPe
                     if (StringUtis.equals(AppConstant.code_request_success, bean.getCode())) {
                         Events<PayRedPacketPicsBean> events = new Events<PayRedPacketPicsBean>();
                         events.what = Events.EventEnum.PAY_SUCCESS_GET_DATA;
-                        events.message = bean;
+                        events.message = (PayRedPacketPicsBean) bean;
                         RxBus.getInstance().send(events);
                         UIUtils.sendDelayed(new Runnable() {
                             @Override
@@ -91,7 +99,13 @@ public class BuyDynamicRedPackketPersenterImpl implements BuyDynamicRedPackketPe
                     }
                 }, 5000);
                 break;
+            case DATA_FOUR:
+
+                view.setVipRule((VipRule)bean);
+                view.hideLoading();
+                break;
         }
+
 
     }
 

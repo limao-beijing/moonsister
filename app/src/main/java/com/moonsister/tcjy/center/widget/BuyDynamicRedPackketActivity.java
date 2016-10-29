@@ -8,13 +8,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
+import com.moonsister.tcjy.bean.VipRule;
 import com.moonsister.tcjy.center.presenter.BuyDynamicRedPackketPersenter;
 import com.moonsister.tcjy.center.presenter.BuyDynamicRedPackketPersenterImpl;
 import com.moonsister.tcjy.center.view.BuyDynamicRedPackketView;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
-import com.moonsister.tcjy.main.widget.BuyVipActivity;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 import com.trello.rxlifecycle.components.RxActivity;
@@ -30,6 +31,10 @@ import im.gouyin.com.progressdialog.ProgressDialog;
 public class BuyDynamicRedPackketActivity extends RxActivity implements BuyDynamicRedPackketView {
     @Bind(R.id.tv_money)
     TextView tvMoney;
+    @Bind(R.id.tv_vip_rule)
+    TextView tv_vip_rule;
+    @Bind(R.id.tv)
+    TextView tv;
     private String money;
     private String id;
     BuyDynamicRedPackketPersenter persenter;
@@ -62,13 +67,14 @@ public class BuyDynamicRedPackketActivity extends RxActivity implements BuyDynam
         persenter.attachView(this);
         money = getIntent().getStringExtra("money");
         id = getIntent().getStringExtra("id");
+        persenter.loadVipRule();
         return UIUtils.inflateLayout(R.layout.activity_pay_dynamic_packet);
     }
 
     protected void initView() {
         SpannableString html = new SpannableString(money + " " + UIUtils.getStringRes(R.string.yuan));
 
-        html.setSpan(new AbsoluteSizeSpan(30, true), 0, money.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        html.setSpan(new AbsoluteSizeSpan(35, true), 0, money.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
         tvMoney.setText(html);
     }
 
@@ -175,5 +181,14 @@ public class BuyDynamicRedPackketActivity extends RxActivity implements BuyDynam
     @Override
     public void finishPage() {
         finish();
+    }
+
+    @Override
+    public void setVipRule(VipRule bean) {
+        tv_vip_rule.setText(bean.getData().getInfo());
+        String top = bean.getData().getInfo_top();
+        if (!StringUtis.isEmpty(top)) {
+            tv.setText(top);
+        }
     }
 }

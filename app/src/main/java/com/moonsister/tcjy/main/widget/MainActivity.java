@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.ApplicationConfig;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
@@ -26,6 +27,7 @@ import com.moonsister.tcjy.main.presenter.MainPresenter;
 import com.moonsister.tcjy.main.presenter.MainPresenterImpl;
 import com.moonsister.tcjy.main.view.MainView;
 import com.moonsister.tcjy.manager.GaodeManager;
+import com.moonsister.tcjy.manager.IMLoopManager;
 import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.widget.HreatFragment;
@@ -133,7 +135,7 @@ public class MainActivity extends BaseActivity implements MainView {
         /**
          * 登录融云
          */
-//        mMainPresenter.loginRongyun();
+        mMainPresenter.loginRongyun();
         /**
          *认证状态
          */
@@ -151,7 +153,7 @@ public class MainActivity extends BaseActivity implements MainView {
         /**
          * 轮询消息
          */
-//        IMManager.getInstance().start(UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        IMLoopManager.getInstance().start(UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
 
     }
 
@@ -317,6 +319,7 @@ public class MainActivity extends BaseActivity implements MainView {
                 .setEvent(Events.EventEnum.LOGIN_CODE_TIMEOUT)
                 .onNext(events -> {
                             ActivityUtils.startLoginMainActivity();
+                            IMManager.getInstance().logoutIMService(UserInfoManager.getInstance().getUid());
                             UserInfoManager.getInstance().logout();
                             showToast(UIUtils.getStringRes(R.string.login_code_timeout));
                             ((ApplicationConfig) ConfigUtils.getInstance().getApplicationContext()).logout();
@@ -359,7 +362,7 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     protected void onBaseDestroy() {
-//        IMManager.getInstance().stop();
+        IMLoopManager.getInstance().stop();
         super.onBaseDestroy();
     }
 

@@ -12,7 +12,6 @@
         <item>1314</item>
     </string-array>
     <string-array name="flower_name">
-
         <item>约吧</item>
         <item>爱吧</item>
         <item>要吗</item>
@@ -34,5 +33,4 @@
         <item>1314</item>
         <item>9420</item>
     </string-array>
-
 </resources>

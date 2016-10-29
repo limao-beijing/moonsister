@@ -176,6 +176,7 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
                         presonInfo.setRongyunkey(bean.getData().getToken());
                         presonInfo.setSex(bean.getData().getSex());
                         presonInfo.setId(bean.getData().getUid());
+                        presonInfo.setHxPwd(bean.getData().getPassword());
                         presonInfo.setAttestation(StringUtis.string2Int(bean.getData().getApply_status()));
                         UserInfoManager.getInstance().saveMemoryInstance(presonInfo);
                         loginRongyun();

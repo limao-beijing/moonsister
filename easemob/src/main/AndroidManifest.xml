@@ -75,7 +75,9 @@
             android:name="com.hyphenate.easeui.ui.ImageGridActivity"
             android:screenOrientation="portrait"
             />
-        <activity android:name="com.hyphenate.easeui.ui.PlayDirectlyActivity"/>
+        <activity
+            android:name="com.hyphenate.easeui.ui.PlayDirectlyActivity"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name="com.hyphenate.easeui.ui.EaseShowVideoActivity"

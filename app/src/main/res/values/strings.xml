@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">阿狸阿猫</string>
+    <string name="app_name">初色</string>
     <!--<string name="app_name">探探寂陌陌生人-求约爱</string>-->
     <string name="app_home_page">首页</string>
     <string name="app_im_page">聊天</string>
@@ -231,8 +231,8 @@
     <string name="vip_prerogative_explain_late">1.免费查看所有会员的私密(收费)动态；\n2.可与全站任意会员免费聊天；\n3.成为超级认证会员，享受付费认证会员的一切特权</string>
     <string name="immediately_dredge">立即开通</string>
     <string name="appbar_vip">开通VIP会员</string>
-    <string name="buy_dynamic_vip">该条为私密收费内容，\n需要付费购买才能观看，\nVIP会员可以全站免费观看。</string>
-    <string name="upgrade_vip">升级 VIP</string>
+    <string name="buy_dynamic_vip">对不起，您不是VIP会员，该条信息为私密收费，您需要支付后才可以观看。VIP会员可以免费观看任意视频图片语音资料。</string>
+    <string name="upgrade_vip">成为VIP</string>
     <string name="single_buy">单独购买</string>
     <string name="combo_type"><![CDATA[ %1$s个月，<font color="#ff8201">%2$s</font> 元 ]]>  </string>
     <string name="refresh_page">刷新页面</string>
@@ -303,4 +303,5 @@
     <string name="rc_picsel_catalog_allpic">所有图片</string>
     <string name="rc_picsel_catalog_number">%d张</string>
     <string name="entry">进入</string>
+    <string name="single_money">订单价：</string>
 </resources>

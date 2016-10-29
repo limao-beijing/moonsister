@@ -28,6 +28,7 @@ import com.moonsister.tcjy.utils.UIUtils;
 import org.json.JSONObject;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jb on 2016/10/18.
@@ -152,7 +153,8 @@ public class IMManager {
             public void onSuccess() {
                 LogUtils.d(TAG, "退出聊天服务器成功！");
                 //删除和某个user会话，如果需要保留聊天记录，传false
-                EMClient.getInstance().chatManager().deleteConversation(uid, true);
+                cleanAllChatMsg();
+
             }
 
             @Override
@@ -237,6 +239,13 @@ public class IMManager {
 
     public void setMsgNumber(onNotReadCallback msgNumber) {
         mMsgNumber = msgNumber;
+    }
+
+    public void cleanAllChatMsg() {
+        Map<String, EMConversation> conversations = EMClient.getInstance().chatManager().getAllConversations();
+        for (String s : conversations.keySet()) {
+            EMClient.getInstance().chatManager().deleteConversation(s, true);
+        }
     }
 
     /**
