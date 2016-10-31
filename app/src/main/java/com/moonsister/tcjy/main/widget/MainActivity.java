@@ -101,7 +101,6 @@ public class MainActivity extends BaseActivity implements MainView {
          * 监听消息未读数
          */
         if (tvMsgNumber != null) {
-            tvMsgNumber.setVisibility(View.GONE);
             IMManager.getInstance().setMsgNumber(new IMManager.onNotReadCallback() {
                 @Override
                 public void onSuccess(int number) {
@@ -117,6 +116,7 @@ public class MainActivity extends BaseActivity implements MainView {
                     }
                 }
             });
+            IMManager.getInstance().uploadUnreadMsgCountTotal();
         }
 //        /**
 //         *会话页面点击监听
@@ -132,10 +132,7 @@ public class MainActivity extends BaseActivity implements MainView {
          * 融云设置Authcode
          */
 //        RongyunManager.getInstance().setAuthcode(UserInfoManager.getInstance().getAuthcode());
-        /**
-         * 登录融云
-         */
-        mMainPresenter.loginRongyun();
+
         /**
          *认证状态
          */
@@ -154,7 +151,10 @@ public class MainActivity extends BaseActivity implements MainView {
          * 轮询消息
          */
         IMLoopManager.getInstance().start(UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
-
+        /**
+         * 登录融云
+         */
+        mMainPresenter.loginRongyun();
     }
 
 
@@ -222,11 +222,11 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
-    public void offline() {
+    public void offline(String msg) {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(UIUtils.getStringRes(R.string.Logoff_notification));
-        builder.setMessage(UIUtils.getStringRes(R.string.connect_conflict));
+        builder.setMessage(msg);
         builder.setCancelable(false);
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
@@ -319,6 +319,7 @@ public class MainActivity extends BaseActivity implements MainView {
                 .setEvent(Events.EventEnum.LOGIN_CODE_TIMEOUT)
                 .onNext(events -> {
                             ActivityUtils.startLoginMainActivity();
+
                             IMManager.getInstance().logoutIMService(UserInfoManager.getInstance().getUid());
                             UserInfoManager.getInstance().logout();
                             showToast(UIUtils.getStringRes(R.string.login_code_timeout));

@@ -16,5 +16,5 @@ public interface MainView extends BaseIView {
 
     void switch2My();
 
-    void offline();
+    void offline(String msg);
 }

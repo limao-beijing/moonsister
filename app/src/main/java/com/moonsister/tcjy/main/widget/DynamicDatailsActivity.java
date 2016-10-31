@@ -419,7 +419,7 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
         int certificationStatus = UserInfoManager.getInstance().getCertificationStatus();
         if (certificationStatus == 3) {
             iscertificationStatus = true;
-            AlearDialog alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_comment, this);
+            AlearDialog alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_publish_1002, this);
             alearDialog.setListenter(new AlearDialog.onClickListenter() {
                 @Override
                 public void clickType(AlearDialog.clickType type) {

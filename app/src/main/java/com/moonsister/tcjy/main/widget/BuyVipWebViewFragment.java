@@ -77,7 +77,7 @@ public class BuyVipWebViewFragment extends BaseFragment implements WebView.onWeb
         RxBus.getInstance().send(Events.EventEnum.BUY_VIP_SUCCESS, null);
         PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
         memoryPersonInfoDetail.setVipStatus(1);
-        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1015") || StringUtis.equals(AppConstant.CHANNEL_ID, "1009")) {
+        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1015") || StringUtis.equals(AppConstant.CHANNEL_ID, "1009") || StringUtis.equals(AppConstant.CHANNEL_ID, "2000")) {
             memoryPersonInfoDetail.setAttestation(1);
         }
         UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);

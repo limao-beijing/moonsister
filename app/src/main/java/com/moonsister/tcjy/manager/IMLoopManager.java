@@ -91,8 +91,8 @@ public class IMLoopManager {
     }
 
     private long getRandomTime() {
-        long l = (long) ((Math.random() * 8 + 2) * 60 * 1000);
-//        long l = (long) 1000;
+        long l = (long) ((Math.random() * 8 + 5) * 60 * 1000);
+//        l = (long) 1000;
         LogUtils.d(this, "random : " + l);
         return l;
 

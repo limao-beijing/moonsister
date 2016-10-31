@@ -83,11 +83,11 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
             }
 
             @Override
-            public void offline() {
+            public void offline(String msg) {
                 UIUtils.onRunMainThred(new Runnable() {
                     @Override
                     public void run() {
-                        view.offline();
+                        view.offline(msg);
                     }
                 });
 
@@ -98,7 +98,7 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
                 UIUtils.onRunMainThred(new Runnable() {
                     @Override
                     public void run() {
-                        view.offline();
+                        view.offline("");
                     }
                 });
             }
@@ -117,18 +117,13 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
             }
 
             @Override
-            public void offline() {
+            public void offline(String msg) {
 
             }
 
             @Override
             public void onTokenIncorrect() {
-                UIUtils.onRunMainThred(new Runnable() {
-                    @Override
-                    public void run() {
-                        view.offline();
-                    }
-                });
+                RxBus.getInstance().send(Events.EventEnum.GET_IM_SERVICE_KEY, null);
             }
         });
 

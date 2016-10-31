@@ -15,6 +15,7 @@ import com.hyphenate.easeui.domain.EaseUser;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
+import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.bean.UserDetailBean;
 import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.manager.UserInfoManager;
@@ -67,7 +68,7 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
             TextView tv_look_people;
     @Bind(R.id.vip_money)//是否为VIP
             ImageView vip_money;
-    String[] images_text = new String[]{"我关注的", "关注我的", "动态管理", "诚信认证", "兴趣修改", "悬赏管理", "约见管理", "修改资料", "财务中心", "屏蔽手机联系人", "设置"};
+    String[] images_text = new String[]{"我关注的", "关注我的", "动态管理", "VIP", "兴趣修改", "悬赏管理", "约见管理", "修改资料", "财务中心", "屏蔽手机联系人", "设置"};
     //
     int[] images = new int[]{R.mipmap.mysee, R.mipmap.seemy, R.mipmap.makemessage, R.mipmap.vipmoney, R.mipmap.insert, R.mipmap.xuanshang, R.mipmap.yousee, R.mipmap.make, R.mipmap.money, R.mipmap.phone, R.mipmap.domake};
     //    ,,
@@ -254,13 +255,18 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
 
         }
         UserDetailBean.DataBean.BaseinfoBean baseinfo = userDetailBean.getData().getBaseinfo();
-
-        EaseUser user = new EaseUser(UserInfoManager.getInstance().getUid());
-        user.setAvatar(baseinfo.getFace());
-        user.setNick(baseinfo.getNickname());
-        HxUserDao dao = new HxUserDao();
-        dao.saveUser(user);
-        IMManager.getInstance().upUserInfo(UserInfoManager.getInstance().getUid());
+        PersonInfoDetail detail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
+        if (!StringUtis.isEmpty(detail.getId())) {
+            EaseUser user = new EaseUser(UserInfoManager.getInstance().getUid());
+            user.setAvatar(baseinfo.getFace());
+            user.setNick(baseinfo.getNickname());
+            HxUserDao dao = new HxUserDao();
+            dao.saveUser(user);
+            detail.setFace(baseinfo.getFace());
+            detail.setNickname(baseinfo.getNickname());
+            UserInfoManager.getInstance().saveMemoryInstance(detail);
+            IMManager.getInstance().upUserInfo(UserInfoManager.getInstance().getUid());
+        }
     }
 
 }

@@ -54,7 +54,7 @@ public class DynamicPublishActivity extends BaseFragmentActivity implements View
     public void certificationStatus() {
         int certificationStatus = UserInfoManager.getInstance().getCertificationStatus();
         if (certificationStatus == 3) {
-            AlearDialog alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_publish, this);
+            AlearDialog alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_publish_1002, this);
             alearDialog.setListenter(new AlearDialog.onClickListenter() {
                 @Override
                 public void clickType(AlearDialog.clickType type) {

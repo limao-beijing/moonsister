@@ -19,7 +19,7 @@ import rx.subjects.Subject;
  **/
 public class RxBus {
 
-    private  static RxBus rxBus;
+    private volatile static RxBus rxBus;
     private final Subject<Events<?>, Events<?>> _bus = new SerializedSubject<>(PublishSubject.create());
 
     private RxBus(){}
