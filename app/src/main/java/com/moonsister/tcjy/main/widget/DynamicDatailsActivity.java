@@ -3,6 +3,7 @@ package com.moonsister.tcjy.main.widget;
 import android.view.View;
 import android.widget.EditText;
 
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.DynamicAdapter;
@@ -22,14 +23,13 @@ import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tcjy.viewholder.DynamicViewHolder;
 import com.moonsister.tcjy.viewholder.dynamic.PicViewHolder;
 import com.moonsister.tcjy.viewholder.dynamic.VideoViewHolder;
 import com.moonsister.tcjy.viewholder.dynamic.VoiceViewHolder;
 import com.moonsister.tcjy.widget.XListView;
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.trello.rxlifecycle.ActivityEvent;
 
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
@@ -233,16 +233,25 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
 
     public boolean certificationStatus() {
         boolean iscertificationStatus = false;
+
         int certificationStatus = UserInfoManager.getInstance().getCertificationStatus();
         if (certificationStatus == 3) {
             iscertificationStatus = true;
-            AlearDialog alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_comment, this);
+            String[] array = getResources().getStringArray(R.array.dynamic_channel_1002);
+            List<String> strings = Arrays.asList(array);
+            AlearDialog alearDialog = null;
+            if (strings.contains(AppConstant.CHANNEL_ID)) {
+                alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_comment_1002, this);
+            } else
+                alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_comment, this);
+
+            AlearDialog finalAlearDialog = alearDialog;
             alearDialog.setListenter(new AlearDialog.onClickListenter() {
                 @Override
                 public void clickType(AlearDialog.clickType type) {
                     switch (type) {
                         case cancel:
-                            alearDialog.dismiss();
+                            finalAlearDialog.dismiss();
                             break;
                         case confirm_vip:
                             ActivityUtils.startBuyVipActivity();
@@ -252,7 +261,7 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
                             break;
 
                     }
-                    alearDialog.dismiss();
+                    finalAlearDialog.dismiss();
                 }
             });
         }

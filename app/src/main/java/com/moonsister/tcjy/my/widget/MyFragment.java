@@ -318,8 +318,9 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
 
     @Override
     public void setUserInfo(UserInfoDetailBean bean) {
-        if (personDynamicViewholder != null && bean != null)
+        if (personDynamicViewholder != null && bean != null) {
             personDynamicViewholder.refreshView(bean);
+        }
     }
 
 

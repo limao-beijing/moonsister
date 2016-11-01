@@ -13,17 +13,13 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.model.MainActivityModel;
 import com.moonsister.tcjy.main.model.MainActivityModelImpl;
 import com.moonsister.tcjy.main.view.MainView;
-import com.moonsister.tcjy.main.widget.MainActivity;
+import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.List;
-
-import io.rong.imkit.RongyunManager;
-import io.rong.imkit.provider.RedPacketProvider;
 
 /**
  * Created by pc on 2016/6/1.
@@ -64,6 +60,7 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
         }
     }
 
+
     @Override
     public void getRongyunKey() {
         model.getRongyunKey(this);
@@ -78,7 +75,8 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
         /**
          * 在另一个设备登录
          */
-        RongyunManager.getInstance().setConnectionStatusListener(new RongyunManager.ConnectCallback() {
+
+        IMManager.getInstance().setConnectionStatusListener(new IMManager.ConnectCallback() {
             @Override
             public void onSuccess(String s) {
 
@@ -97,43 +95,40 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
 
             @Override
             public void onTokenIncorrect() {
-
-            }
-        });
-        if (!UserInfoManager.getInstance().isLogin())
-            return;
-        String rongyunKey = UserInfoManager.getInstance().getRongyunKey();
-        if (StringUtis.isEmpty(rongyunKey)) {
-            RxBus.getInstance().send(Events.EventEnum.GET_RONGYUN_KEY, null);
-            return;
-        }
-        RongyunManager.getInstance().connectRonyun(rongyunKey, new RongyunManager.ConnectCallback() {
-
-            @Override
-            public void onSuccess(String s) {
-                PersonInfoDetail infoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
-                RongyunManager.getInstance().setCurrentUserInfo(infoDetail.getId(), infoDetail.getNickname(), infoDetail.getFace());
-                RongyunManager.getInstance().setInputProvider(new RedPacketProvider.onPluginClickListenter() {
-
+                UIUtils.onRunMainThred(new Runnable() {
                     @Override
-                    public void onPluginClick(String userId, String name, String path) {
-                        ActivityUtils.startRedpacketActivity(userId, 1, path);
+                    public void run() {
+                        view.offline();
                     }
                 });
             }
-
+        });
+        String rongyunKey = UserInfoManager.getInstance().getIMServiceKey();
+        if (StringUtis.isEmpty(rongyunKey)) {
+            RxBus.getInstance().send(Events.EventEnum.GET_IM_SERVICE_KEY, null);
+            return;
+        }
+        if (IMManager.getInstance().isConnected())
+            return;
+        IMManager.getInstance().loginIMService(UserInfoManager.getInstance().getUid(), rongyunKey, new IMManager.ConnectCallback() {
             @Override
-            public void onTokenIncorrect() {
-                LogUtils.e(MainActivity.class, "onTokenIncorrect : ");
-                RxBus.getInstance().send(Events.EventEnum.GET_RONGYUN_KEY, null);
+            public void onSuccess(String s) {
+
             }
 
             @Override
             public void offline() {
 
             }
+
+            @Override
+            public void onTokenIncorrect() {
+                getRongyunKey();
+            }
         });
+
     }
+
 
     @Override
     public void getCertificationStatus() {
@@ -177,6 +172,7 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
                         presonInfo.setRongyunkey(bean.getData().getToken());
                         presonInfo.setSex(bean.getData().getSex());
                         presonInfo.setId(bean.getData().getUid());
+                        presonInfo.setHxPwd(bean.getData().getPassword());
                         presonInfo.setAttestation(StringUtis.string2Int(bean.getData().getApply_status()));
                         UserInfoManager.getInstance().saveMemoryInstance(presonInfo);
                         loginRongyun();

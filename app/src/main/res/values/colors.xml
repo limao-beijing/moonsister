@@ -117,5 +117,7 @@
     <color name="color_1d262e">#1d262e</color>
     <color name="yellow_ffd305">#ffd305</color>
     <color name="white_d6dde4">#d6dde4</color>
+    <color name="rc_picsel_grid_mask">#00000000</color>
+    <color name="rc_picsel_grid_mask_pressed">#80000000</color>
 </resources>
 

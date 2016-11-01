@@ -5,13 +5,10 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
-import com.moonsister.tcjy.base.BaseActivity;
+import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-
-import io.rong.imkit.RongyunManager;
 
 /**
  * Created by pc on 2016/6/3.
@@ -44,8 +41,16 @@ public class ApplicationConfig extends MultiDexApplication {
             /**
              * IMKit SDK调用第一步 初始化
              */
-            RongyunManager.getInstance().init(this);
+//            RongyunManager.getInstance().init(this);
+            initHx();
         }
+
+    }
+    /**
+     * 初始化环信
+     */
+    private void initHx() {
+        IMManager.getInstance().initEaseUI(getApplicationContext());
 
     }
 

@@ -2,9 +2,9 @@
     <string name="app_name">ProgressDialog</string>
     <string name="pregress_text">玩命加载中...</string>
     <string name="none_certification">未认证</string>
-    <string name="certification_publish_text">为保证会员发布内容的真实性与合法性，您必须成为认证会员才可以发布动态信息</string>
+    <string name="certification_publish_text">为保证会员发布内容的真实性与合法性，您必须成为认证会员才可以发布动态信息。</string>
     <string name="go_to_certification">去认证</string>
-    <string name="certification_comment_text">为保证会员发布内容的真实性与合法性，您必须成为认证会员才可以进行评论</string>
+    <string name="certification_comment_text">为避免色情，虚假广告等违法内容，您必须成为认证会员，才可以发布评价信息。</string>
     <string name="upgrad_vip">升级VIP</string>
     <string name="certification_im_text">为避免黄色，诈骗，酒托，饭托，婚托等违法行为，非好友关系的男女会员都必须认证或者成为VIP会员，才能发布交友动态，发起聊天。\n【活动】10月31日前，升级VIP，最低返话费100元。</string>
     <string name="none_certification_vip">对不起，您不是VIP会员</string>
@@ -15,4 +15,9 @@
     <string name="upgrad_vip_1015">立即认证，开启约爱之旅</string>
     <string name="upgrad_vip_1002">立即升级VIP，开启约爱之旅</string>
     <string name="certification_publish_1002_text">为保证会员发布内容真实性与合法性，您必须成为VIP会员才可发布动态信息</string>
+    <string name="none_permission">无权限</string>
+    <string name="ma_go_to_certification">立即认证</string>
+    <string name="Certification_dynamic_1015">需要付费后才可以观看。只有成为认 证会员，才可以免费查看。</string>
+    <string name="go_to_certification_vip">开通VIP</string>
+    <string name="certification_comment_text_1002">为避免色情，虚假广告等违法内容，您必须成为vip会员，才可以发布评价信息。</string>
 </resources>

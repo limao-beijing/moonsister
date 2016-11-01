@@ -19,7 +19,8 @@ public class AlearDialog {
     private Dialog dialog;
 
     public static enum DialogType {
-        Certification_publish, Certification_publish_1002, Certification_comment, Certification_im, Certification_dynamic, Certification_im_1015, Certification_im_1002
+        Certification_publish, Certification_publish_1002, Certification_comment, Certification_im, Certification_dynamic,
+        Certification_im_1015, Certification_dynamic_1015, Certification_comment_1002, Certification_im_1002
     }
 
     public static enum clickType {
@@ -38,11 +39,17 @@ public class AlearDialog {
             case Certification_publish:
                 resID = R.layout.dialog_certification;
                 break;
+            case Certification_dynamic_1015:
+                resID = R.layout.dialog_certification_1015;
+                break;
             case Certification_publish_1002:
-                resID=R.layout.dialog_certification_10002;
+                resID = R.layout.dialog_certification_10002;
                 break;
             case Certification_comment:
                 resID = R.layout.dialog_certification;
+                break;
+            case Certification_comment_1002:
+                resID = R.layout.dialog_certification_1002;
                 break;
             case Certification_im:
                 resID = R.layout.dialog_certification_im;
@@ -92,10 +99,13 @@ public class AlearDialog {
                 content = activity.getResources().getString(R.string.certification_publish_text);
                 break;
             case Certification_publish_1002:
-                content=activity.getString(R.string.certification_publish_1002_text);
+                content = activity.getString(R.string.certification_publish_1002_text);
                 break;
             case Certification_comment:
                 content = activity.getResources().getString(R.string.certification_comment_text);
+                break;
+            case Certification_comment_1002:
+                content = activity.getResources().getString(R.string.certification_comment_text_1002);
                 break;
             case Certification_im:
                 content = "  " + activity.getResources().getString(R.string.certification_im_text);
@@ -108,6 +118,9 @@ public class AlearDialog {
                 break;
             case Certification_im_1002:
                 content = activity.getResources().getString(R.string.Certification_im_1015);
+                break;
+            case Certification_dynamic_1015:
+                content = activity.getResources().getString(R.string.Certification_dynamic_1015);
                 break;
         }
         return content;

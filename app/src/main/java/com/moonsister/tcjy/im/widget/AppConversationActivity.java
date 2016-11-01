@@ -1,29 +1,26 @@
 package com.moonsister.tcjy.im.widget;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.support.v4.app.FragmentTransaction;
+import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.hyphenate.easeui.EaseConstant;
+import com.hyphenate.easeui.db.HxUserDao;
+import com.hyphenate.easeui.domain.EaseUser;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
-import com.moonsister.tcjy.event.Events;
-import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.trello.rxlifecycle.ActivityEvent;
+
+import java.util.Arrays;
+import java.util.List;
 
 import im.gouyin.com.progressdialog.AlearDialog;
-import io.rong.imkit.RongyunManager;
-import io.rong.imkit.fragment.ConversationFragment;
-import io.rong.imkit.fragment.MessageListFragment;
-import io.rong.imkit.fragment.UriFragment;
-import io.rong.imlib.model.Conversation;
 
 /**
  * Created by jb on 2016/6/18.
@@ -33,6 +30,7 @@ public class AppConversationActivity extends BaseActivity {
 
     private GoogleApiClient client;
     private String mTargetId;
+    private String toChatUsername;
 
     @Override
     protected View setRootContentView() {
@@ -42,14 +40,14 @@ public class AppConversationActivity extends BaseActivity {
     @Override
     protected void initView() {
         Intent intent = getIntent();
-        mTargetId = getIntent().getData().getQueryParameter("targetId");
+        mTargetId = getIntent().getExtras().getString(EaseConstant.EXTRA_USER_ID);
         getIntentDate(intent);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        if (!StringUtis.equals(getIntent().getData().getPath(), SYSTEM_PATH)) {
+        if (!StringUtis.equals(mTargetId, "10000")) {
             certificationStatus();
         }
 
@@ -67,9 +65,12 @@ public class AppConversationActivity extends BaseActivity {
             return;
         }
         AlearDialog alearDialog = null;
+        String[] array = getResources().getStringArray(R.array.dynamic_channel_1002);
+        List<String> strings = Arrays.asList(array);
         if (StringUtis.equals(AppConstant.CHANNEL_ID, "1015") || StringUtis.equals(AppConstant.CHANNEL_ID, "1009")) {
+
             alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_im_1015, this);
-        } else if (StringUtis.equals(AppConstant.CHANNEL_ID, "1002") || StringUtis.equals(AppConstant.CHANNEL_ID, "1014")|| StringUtis.equals(AppConstant.CHANNEL_ID, "1016")) {
+        } else if (strings.contains(AppConstant.CHANNEL_ID)) {
             alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_im_1002, this);
         } else {
             alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_im, this);
@@ -95,12 +96,13 @@ public class AppConversationActivity extends BaseActivity {
 
     }
 
+
     @Override
     protected String initTitleName() {
 
-        String name = getIntent().getData().getQueryParameter("title");
+        String name = getIntent().getExtras().getString(EaseConstant.EXTRA_USER_NIKE);
         if (StringUtis.isEmpty(name)) {
-            name = RongyunManager.getInstance().getUserName(mTargetId);
+//            name = RongyunManager.getInstance().getUserName(mTargetId);
         }
         return name;
     }
@@ -114,7 +116,7 @@ public class AppConversationActivity extends BaseActivity {
      * 展示如何从 Intent 中得到 融云会话页面传递的 Uri
      */
     private void getIntentDate(Intent intent) {
-        String mTargetId = intent.getData().getQueryParameter("targetId");
+        String mTargetId = intent.getExtras().getString(EaseConstant.EXTRA_USER_ID);
         enterFragment(mTargetId);
     }
 
@@ -125,33 +127,47 @@ public class AppConversationActivity extends BaseActivity {
      * @param mTargetId
      */
     private void enterFragment(String mTargetId) {
-        Conversation.ConversationType mConversationType;
-        UriFragment fragment;
-        if (!StringUtis.equals(getIntent().getData().getPath(), SYSTEM_PATH)) {
-            mConversationType = Conversation.ConversationType.PRIVATE;
-            fragment = new ConversationFragment();
-        } else {
-            mConversationType = Conversation.ConversationType.SYSTEM;
-            fragment = new MessageListFragment();
-        }
 
-        Uri uri = Uri.parse("rong://" + getApplicationInfo().packageName).buildUpon()
-                .appendPath("conversation").appendPath(mConversationType.getName().toLowerCase())
-                .appendQueryParameter("targetId", mTargetId).build();
 
-        fragment.setUri(uri);
+        Bundle extras = getIntent().getExtras();
+        toChatUsername = extras.getString(EaseConstant.EXTRA_USER_ID);
 
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        //xxx 为你要加载的 id
-        transaction.add(R.id.conversation, fragment);
-        transaction.commit();
-        RxBus.with(this)
-                .setEndEvent(ActivityEvent.DESTROY)
-                .setEvent(Events.EventEnum.CHAT_SEND_REDPACKET_SUCCESS)
-                .onNext(events -> {
-                    RongyunManager.getInstance().sendRedPacketMessage(mTargetId, (String) events.message);
-                })
-                .create();
+        HxUserDao dao = new HxUserDao();
+        EaseUser user = new EaseUser(toChatUsername);
+        user.setAvatar(extras.getString(EaseConstant.EXTRA_USER_AVATER));
+        user.setNick(extras.getString(EaseConstant.EXTRA_USER_NIKE));
+        dao.saveUser(user);
+        com.hyphenate.easeui.ui.ChatFragment chatFragment = new com.hyphenate.easeui.ui.ChatFragment();
+        //set arguments
+        chatFragment.setArguments(extras);
+        getSupportFragmentManager().beginTransaction().add(R.id.conversation, chatFragment).commit();
+//        Conversation.ConversationType mConversationType;
+//        UriFragment fragment;
+//        if (!StringUtis.equals(getIntent().getData().getPath(), SYSTEM_PATH)) {
+//            mConversationType = Conversation.ConversationType.PRIVATE;
+//            fragment = new ConversationFragment();
+//        } else {
+//            mConversationType = Conversation.ConversationType.SYSTEM;
+//            fragment = new MessageListFragment();
+//        }
+//
+//        Uri uri = Uri.parse("rong://" + getApplicationInfo().packageName).buildUpon()
+//                .appendPath("conversation").appendPath(mConversationType.getName().toLowerCase())
+//                .appendQueryParameter("targetId", mTargetId).build();
+//
+//        fragment.setUri(uri);
+//
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        //xxx 为你要加载的 id
+//        transaction.add(R.id.conversation, fragment);
+//        transaction.commit();
+//        RxBus.with(this)
+//                .setEndEvent(ActivityEvent.DESTROY)
+//                .setEvent(Events.EventEnum.CHAT_SEND_REDPACKET_SUCCESS)
+//                .onNext(events -> {
+//                    RongyunManager.getInstance().sendRedPacketMessage(mTargetId, (String) events.message);
+//                })
+//                .create();
     }
 
 }

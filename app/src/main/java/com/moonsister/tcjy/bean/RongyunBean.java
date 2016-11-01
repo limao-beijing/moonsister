@@ -21,6 +21,15 @@ public class RongyunBean extends BaseBean {
         private String nickname;
         private String sex;
         private String apply_status;
+        private String password;
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
 
         public String getUid() {
             return uid;

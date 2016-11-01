@@ -9,22 +9,22 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.FrameLayout.LayoutParams;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.widget.HackyViewPager;
@@ -33,8 +33,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import io.rong.photoview.PhotoView;
-import io.rong.photoview.PhotoViewAttacher;
+import uk.co.senab.photoview.PhotoView;
 
 
 public class PicturePreviewActivity extends Activity {
@@ -161,8 +160,8 @@ public class PicturePreviewActivity extends Activity {
         this.mWholeView = this.findViewById(R.id.whole_layout);
         this.mViewPager = (HackyViewPager) this.findViewById(R.id.viewpager);
         this.mToolbarBottom = this.findViewById(R.id.toolbar_bottom);
-        this.mUseOrigin = new PicturePreviewActivity.CheckButton(this.findViewById(R.id.origin_check), R.drawable.rc_origin_check_nor, R.drawable.rc_origin_check_sel);
-        this.mSelectBox = new PicturePreviewActivity.CheckButton(this.findViewById(R.id.select_check), R.drawable.select_check_nor, R.drawable.select_check_sel);
+        this.mUseOrigin = new PicturePreviewActivity.CheckButton(this.findViewById(R.id.origin_check), R.mipmap.rc_origin_check_nor, R.mipmap.rc_origin_check_sel);
+        this.mSelectBox = new PicturePreviewActivity.CheckButton(this.findViewById(R.id.select_check), R.mipmap.select_check_nor, R.mipmap.select_check_sel);
     }
 
     protected void onResume() {
@@ -282,40 +281,40 @@ public class PicturePreviewActivity extends Activity {
 
         public Object instantiateItem(ViewGroup container, int position) {
             final PhotoView photoView = new PhotoView(container.getContext());
-            photoView.setOnViewTapListener(new PhotoViewAttacher.OnViewTapListener() {
+            photoView.setOnViewTapListener(new uk.co.senab.photoview.PhotoViewAttacher.OnViewTapListener() {
                 @Override
-                public void onViewTap(View view, float v, float v1) {
-                    {
-                        PicturePreviewActivity.this.mFullScreen = !PicturePreviewActivity.this.mFullScreen;
-                        View decorView;
-                        byte uiOptions;
-                        if (PicturePreviewActivity.this.mFullScreen) {
-                            if (VERSION.SDK_INT < 16) {
-                                PicturePreviewActivity.this.getWindow().setFlags(1024, 1024);
-                            } else {
-                                decorView = PicturePreviewActivity.this.getWindow().getDecorView();
-                                uiOptions = 4;
-                                decorView.setSystemUiVisibility(uiOptions);
-                            }
-
-                            PicturePreviewActivity.this.mToolbarTop.setVisibility(View.INVISIBLE);
-                            PicturePreviewActivity.this.mToolbarBottom.setVisibility(View.INVISIBLE);
+                public void onViewTap(View view, float x, float y) {
+                    PicturePreviewActivity.this.mFullScreen = !PicturePreviewActivity.this.mFullScreen;
+                    View decorView;
+                    byte uiOptions;
+                    if (PicturePreviewActivity.this.mFullScreen) {
+                        if (VERSION.SDK_INT < 16) {
+                            PicturePreviewActivity.this.getWindow().setFlags(1024, 1024);
                         } else {
-                            if (VERSION.SDK_INT < 16) {
-                                PicturePreviewActivity.this.getWindow().setFlags(1024, 1024);
-                            } else {
-                                decorView = PicturePreviewActivity.this.getWindow().getDecorView();
-                                uiOptions = 0;
-                                decorView.setSystemUiVisibility(uiOptions);
-                            }
-
-                            PicturePreviewActivity.this.mToolbarTop.setVisibility(View.VISIBLE);
-                            PicturePreviewActivity.this.mToolbarBottom.setVisibility(View.VISIBLE);
+                            decorView = PicturePreviewActivity.this.getWindow().getDecorView();
+                            uiOptions = 4;
+                            decorView.setSystemUiVisibility(uiOptions);
                         }
 
+                        PicturePreviewActivity.this.mToolbarTop.setVisibility(View.INVISIBLE);
+                        PicturePreviewActivity.this.mToolbarBottom.setVisibility(View.INVISIBLE);
+                    } else {
+                        if (VERSION.SDK_INT < 16) {
+                            PicturePreviewActivity.this.getWindow().setFlags(1024, 1024);
+                        } else {
+                            decorView = PicturePreviewActivity.this.getWindow().getDecorView();
+                            uiOptions = 0;
+                            decorView.setSystemUiVisibility(uiOptions);
+                        }
+
+                        PicturePreviewActivity.this.mToolbarTop.setVisibility(View.VISIBLE);
+                        PicturePreviewActivity.this.mToolbarBottom.setVisibility(View.VISIBLE);
                     }
+
+
                 }
             });
+
             container.addView(photoView, -1, -1);
             String path = ((PictureSelectorActivity.PicItem) PicturePreviewActivity.this.mItemList.get(position)).uri;
             AlbumBitmapCacheHelper.getInstance().removePathFromShowlist(path);
@@ -330,7 +329,7 @@ public class PicturePreviewActivity extends Activity {
             if (bitmap != null) {
                 photoView.setImageBitmap(bitmap);
             } else {
-                photoView.setImageResource(R.drawable.rc_grid_image_default);
+                photoView.setImageResource(R.mipmap.rc_grid_image_default);
             }
 
             return photoView;

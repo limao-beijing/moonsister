@@ -7,8 +7,6 @@ import com.moonsister.tcjy.utils.StringUtis;
 
 import java.util.List;
 
-import io.rong.imkit.RongyunManager;
-
 
 /**
  * Created by jb on 2016/6/30.
@@ -102,17 +100,19 @@ public class UserInfoManager {
         return authcode;
     }
 
+
     /**
      * 获取融云的key
      *
      * @return
      */
-    public String getRongyunKey() {
-        String rongyunkey = info.getRongyunkey();
+    public String getIMServiceKey() {
+        String rongyunkey = info.getHxPwd();
         if (StringUtis.isEmpty(rongyunkey))
             return "";
         return rongyunkey;
     }
+
 
     /**
      * 下线
@@ -120,7 +120,7 @@ public class UserInfoManager {
     public void logout() {
         saveFileInstance(null);
         initFilePersonInfoDetail();
-        RongyunManager.getInstance().offline();
+//        RongyunManager.getInstance().offline();
     }
 
     /**
@@ -180,6 +180,7 @@ public class UserInfoManager {
         return info.getId();
     }
 
+
     /**
      * 获取好友列表
      *
@@ -188,4 +189,17 @@ public class UserInfoManager {
     public List<String> getUserFrientList() {
         return info.getUserFriendList();
     }
+    /**
+//     * 获取用户手机号
+//     *
+//     * @return
+//     */
+//    public String getSmobile() {
+//        String smobile = info.getSmobile();
+//        if (StringUtis.isEmpty(smobile))
+//            return "";
+//        return smobile;
+//    }
+
+
 }

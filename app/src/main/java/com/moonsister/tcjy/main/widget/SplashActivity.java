@@ -21,7 +21,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void initView() {
         ViewGroup viewById = (ViewGroup) findViewById(R.id.fl_content);
-//        BaiduManager.getInstance(getApplicationContext()).adSplashBanner(this, viewById, MainActivity.class);
+//        BaiduManager.getInstance(getApplicationContext()).adSplashBanner(SplashActivity.this, viewById, MainActivity.class);
         UIUtils.sendDelayed(new Runnable() {
             @Override
             public void run() {

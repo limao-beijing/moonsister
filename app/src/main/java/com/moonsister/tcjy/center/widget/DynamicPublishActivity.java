@@ -17,6 +17,7 @@ import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
+import java.util.Arrays;
 import java.util.List;
 
 import im.gouyin.com.progressdialog.AlearDialog;
@@ -49,7 +50,9 @@ public class DynamicPublishActivity extends BaseFragmentActivity implements View
     @Override
     protected void onStart() {
         super.onStart();
-        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1002")||StringUtis.equals(AppConstant.CHANNEL_ID, "1014")||StringUtis.equals(AppConstant.CHANNEL_ID, "1016")) {
+        String[] array = getResources().getStringArray(R.array.dynamic_channel_1002);
+        List<String> strings = Arrays.asList(array);
+        if (strings.contains(AppConstant.CHANNEL_ID)) {
             certificationVIPStatu();
         } else {
             certificationStatus();

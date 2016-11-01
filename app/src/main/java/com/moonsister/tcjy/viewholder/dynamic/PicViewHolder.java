@@ -214,6 +214,8 @@ public class PicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.UserI
                     if (StringUtis.equals(bean.getIspay(), "2")) {
                         if (strings.contains(AppConstant.CHANNEL_ID)) {
                             alear();
+                        } else if (StringUtis.equals(AppConstant.CHANNEL_ID, "1015")) {
+                            alear();
                         } else
                             ActivityUtils.startPayDynamicRedPackketActivity(bean.getMoney(), bean.getLatest_id());
                     } else {
@@ -228,13 +230,20 @@ public class PicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.UserI
     private void alear() {
         if (mActivity == null)
             return;
-        AlearDialog dialog = new AlearDialog(AlearDialog.DialogType.Certification_dynamic, mActivity);
+        AlearDialog dialog = null;
+        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1015")) {
+            dialog = new AlearDialog(AlearDialog.DialogType.Certification_dynamic_1015, mActivity);
+        } else {
+            dialog = new AlearDialog(AlearDialog.DialogType.Certification_dynamic, mActivity);
+        }
+
+        AlearDialog finalDialog = dialog;
         dialog.setListenter(new AlearDialog.onClickListenter() {
             @Override
             public void clickType(AlearDialog.clickType type) {
                 if (type == AlearDialog.clickType.confirm_vip) {
                     ActivityUtils.startBuyVipActivity();
-                    dialog.dismiss();
+                    finalDialog.dismiss();
                 }
 
             }

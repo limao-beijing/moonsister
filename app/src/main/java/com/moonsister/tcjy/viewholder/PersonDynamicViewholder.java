@@ -6,15 +6,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hyphenate.easeui.db.HxUserDao;
+import com.hyphenate.easeui.domain.EaseUser;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
+import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
+import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
-
-import org.w3c.dom.Text;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -89,7 +91,18 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
                 tv_add_v.setVisibility(View.VISIBLE);
             } else tv_add_v.setVisibility(View.GONE);
 
-
+            PersonInfoDetail detail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
+            if (!StringUtis.isEmpty(detail.getId())) {
+                EaseUser user = new EaseUser(UserInfoManager.getInstance().getUid());
+                user.setAvatar(baseinfo.getFace());
+                user.setNick(baseinfo.getNickname());
+                HxUserDao dao = new HxUserDao();
+                dao.saveUser(user);
+                detail.setFace(baseinfo.getFace());
+                detail.setNickname(baseinfo.getNickname());
+                UserInfoManager.getInstance().saveMemoryInstance(detail);
+                IMManager.getInstance().upUserInfo(UserInfoManager.getInstance().getUid());
+            }
 
         }
 
@@ -106,7 +119,7 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
 
     }
 
-    @OnClick({R.id.iv_user_icon, R.id.layout_wacth, R.id.layout_fen, R.id.rl_dynamic,R.id.vip_money})
+    @OnClick({R.id.iv_user_icon, R.id.layout_wacth, R.id.layout_fen, R.id.rl_dynamic, R.id.vip_money})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_user_icon:
@@ -124,12 +137,12 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
                 break;
             case R.id.vip_money:
                 //我的页面VIP会员
-                int m=UserInfoManager.getInstance().getMemoryPersonInfoDetail().getVipStatus();
-                if(m == 1){
+                int m = UserInfoManager.getInstance().getMemoryPersonInfoDetail().getVipStatus();
+                if (m == 1) {
                     vip_money.setText("VIP会员");
 //                    ActivityUtils.startYesActivity();//是会员跳转充值页面
 //                    ActivityUtils.startBuyVipActivity();
-                }else{
+                } else {
                     vip_money.setText("VIP充值");
 //                    ActivityUtils.startNoActivity();//不是会员跳转认证页面
                     ActivityUtils.startBuyVipActivity();

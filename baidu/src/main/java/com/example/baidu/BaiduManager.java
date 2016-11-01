@@ -26,7 +26,6 @@ public class BaiduManager {
     private static String appkey;
     private static String appid;
 
-
     public static BaiduManager getInstance(Context context) {
         if (instance == null) {
             synchronized (BaiduManager.class) {
@@ -90,8 +89,9 @@ public class BaiduManager {
 
             @Override
             public void onAdFailed(String arg0) {
-                Log.i("RSplashActivity", "onAdFailed");
-
+                Log.e("RSplashActivity", arg0);
+                activity.startActivity(new Intent(activity, clz));
+                activity.finish();
             }
 
             @Override
@@ -105,13 +105,19 @@ public class BaiduManager {
                 // 设置开屏可接受点击时，该回调可用
             }
         };
-        String adPlaceId = "2856248"; // 重要：请填上您的广告位ID，代码位错误会导致无法请求到广告
+        String adPlaceId = "2927956"; // 重要：请填上您的广告位ID，代码位错误会导致无法请求到广告
         new SplashAd(activity, viewGroup, listener, adPlaceId, true);
     }
 
+    /**
+     * 添加banner
+     *
+     * @param activity
+     * @param viewGroup
+     */
     public void adBanner(final Activity activity, ViewGroup viewGroup) {
 
-        // 代码设置AppSid，此函数必须在AdView实例化前调用
+        // 代码设置AppSid，此函数必须在AdView实例化前调用final Activity activity, ViewGroup viewGroup
 //        AdView.setAppSid(activity.getApplicationContext(), "debug");
 
         // 设置'广告着陆页'动作栏的颜色主题
@@ -121,7 +127,7 @@ public class BaiduManager {
 //        AppActivity.getActionBarColorTheme().set[Background|Title|Progress|Close]Color(0xFFDEDADB);
 
         // 创建广告View
-        String adPlaceId = "2856248"; //  重要：请填上您的广告位ID，代码位错误会导致无法请求到广告
+        String adPlaceId = "2927797"; //  重要：请填上您的广告位ID，代码位错误会导致无法请求到广告
         AdView adView = new AdView(activity, adPlaceId);
         // 设置监听器
         adView.setListener(new AdViewListener() {
@@ -158,5 +164,10 @@ public class BaiduManager {
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
         rllp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         viewGroup.addView(adView, rllp);
+    }
+
+    public void addChuileiBanner(final Activity activity, ViewGroup viewGroup) {
+
+
     }
 }
