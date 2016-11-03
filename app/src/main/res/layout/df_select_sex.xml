@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/shape_background_text_white_color"
+              android:orientation="vertical"
+              android:padding="@dimen/x50">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:id="@+id/imageview_man"
+            android:layout_width="@dimen/x200"
+            android:layout_height="@dimen/y200"
+            android:background="@mipmap/imageview_men"/>
+
+        <ImageView
+            android:id="@+id/imageview_gril"
+            android:layout_width="@dimen/x200"
+            android:layout_height="@dimen/y200"
+            android:layout_marginLeft="@dimen/x74"
+            android:background="@mipmap/imageview_gril"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/x30"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tv_boy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/selector_text_select_sex"
+            android:drawablePadding="@dimen/x30"
+            android:text="@string/man"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18"/>
+
+        <TextView
+            android:id="@+id/tv_girls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x150"
+            android:drawableLeft="@drawable/selector_text_select_sex"
+            android:drawablePadding="@dimen/x30"
+            android:text="@string/women"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/x30"
+        android:text="请选择性别，我们将依据个人信息推送和展示更多激情视频、图片、语音等信息，选择后不可更改哦！"
+        android:textColor="@color/gray_788999"
+        android:textSize="@dimen/text_size_15"/>
+
+    <TextView
+        android:id="@+id/textview_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/x30"
+        android:padding="@dimen/x30"
+        android:text="已有账号？点此直接登录"
+        android:textColor="@color/color_ffd305"
+        android:textSize="16sp"/>
+
+</LinearLayout>

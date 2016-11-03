@@ -116,7 +116,7 @@ dependencies {
     //方法数
     compile rootProject.ext.dependencies["multidex"]
     //友盟
-    compile rootProject.ext.dependencies["gms"]
+ /*  compile rootProject.ext.dependencies["gms"]*/
     compile rootProject.ext.dependencies["PhotoView"]
 
     compile files('src/main/libs/nineoldandroids-2.4.0.jar')

@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
@@ -65,11 +64,6 @@ public class RenZhengActivity extends BaseActivity implements RenZhengActivityVi
     String realFilePath;
     private DynamicPublishFragment dyf;
     CharSequence text;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
 
     @Override
     protected View setRootContentView() {

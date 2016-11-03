@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">初色</string>
+    <string name="app_name">大片免费超快播放</string>
     <!--<string name="app_name">探探寂陌陌生人-求约爱</string>-->
     <string name="app_home_page">首页</string>
     <string name="app_im_page">聊天</string>
@@ -304,4 +304,7 @@
     <string name="rc_picsel_catalog_number">%d张</string>
     <string name="entry">进入</string>
     <string name="single_money">订单价：</string>
+    <string name="man">男</string>
+    <string name="women">女</string>
+    <string name="find_pwd">找回密码</string>
 </resources>

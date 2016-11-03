@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.db.HxUserDao;
 import com.hyphenate.easeui.domain.EaseUser;
@@ -27,7 +26,6 @@ import im.gouyin.com.progressdialog.AlearDialog;
 public class AppConversationActivity extends BaseActivity {
     public final static String SYSTEM_PATH = "/conversation/system";
 
-    private GoogleApiClient client;
     private String mTargetId;
     private String toChatUsername;
 
@@ -76,7 +74,7 @@ public class AppConversationActivity extends BaseActivity {
         if (memoryPersonInfoDetail.getUserFriendList() != null && memoryPersonInfoDetail.getUserFriendList().contains(mTargetId)) {
             return;
         }
-        AlearDialog alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_im_1015, this);
+        AlearDialog alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_im_1002, this);
         alearDialog.setListenter(new AlearDialog.onClickListenter() {
             @Override
             public void clickType(AlearDialog.clickType type) {

@@ -18,6 +18,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
+import com.moonsister.tcjy.dialogFragment.DialogMannager;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.find.widget.FindFragment;
@@ -37,6 +38,7 @@ import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.FragmentUtils;
 import com.moonsister.tcjy.utils.LogUtils;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 
@@ -78,16 +80,41 @@ public class MainActivity extends BaseActivity implements MainView {
         mMainPresenter.switchNavigation(R.id.tv_home_page);
         initRxBus();
         initNetMianData();
-        new UpdateManager(MainActivity.this).checkUpdate();
-        GaodeManager.getInstance().getLocLocation();
+        UIUtils.sendDelayedOneMillis(new Runnable() {
+            @Override
+            public void run() {
+                new UpdateManager(MainActivity.this).checkUpdate();
+                GaodeManager.getInstance().getLocLocation();
+
+            }
+        });
+
 
     }
 
     @Override
-    public boolean isAddActivity() {
+    protected void onStart() {
+        super.onStart();
+        if (StringUtis.isEmpty(UserInfoManager.getInstance().getAuthcode()))
+            shwoSelectSexDialog();
+    }
 
+    /**
+     * 选择男女
+     */
+    public void shwoSelectSexDialog() {
+        DialogMannager.getInstance().showSelectSexDialog(getSupportFragmentManager());
+    }
+
+    public void bindPhoneDialog() {
+        DialogMannager.getInstance().showBindPhoneDialog(getSupportFragmentManager());
+    }
+
+    @Override
+    public boolean isAddActivity() {
         return false;
     }
+
 
     /**
      * 初始化网络数据
@@ -188,6 +215,7 @@ public class MainActivity extends BaseActivity implements MainView {
         if (imHomeFragment == null)
             imHomeFragment = new IMHomeFragment();
         enterPage(imHomeFragment);
+
     }
 
     @Override
@@ -318,12 +346,13 @@ public class MainActivity extends BaseActivity implements MainView {
                 .setEndEvent(ActivityEvent.DESTROY)
                 .setEvent(Events.EventEnum.LOGIN_CODE_TIMEOUT)
                 .onNext(events -> {
-                            ActivityUtils.startLoginMainActivity();
+
 
                             IMManager.getInstance().logoutIMService(UserInfoManager.getInstance().getUid());
                             UserInfoManager.getInstance().logout();
                             showToast(UIUtils.getStringRes(R.string.login_code_timeout));
                             ((ApplicationConfig) ConfigUtils.getInstance().getApplicationContext()).logout();
+                            ActivityUtils.startLoginMainActivity();
                             imHomeFragment = null;
                             findFragment = null;
                             myFragment = null;
@@ -381,4 +410,5 @@ public class MainActivity extends BaseActivity implements MainView {
     public void transfePageMsg(String msg) {
         showToast(msg);
     }
+
 }

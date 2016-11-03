@@ -40,7 +40,7 @@ public class DynamicItemBean extends BaseDataBean {
     private String tmoney;
     private String comment_count;
     private String ldon;
-    private String view_num ;
+    private String view_num;
     //1认证  0 未认证
     private String isauth;
     //置顶
@@ -48,9 +48,25 @@ public class DynamicItemBean extends BaseDataBean {
     /**
      * 1 已支付  2 未支付
      */
-
-
+    private String vip_view_num;
+    private String buy_num;
     private String ispay;
+
+    public String getVip_view_num() {
+        return vip_view_num;
+    }
+
+    public void setVip_view_num(String vip_view_num) {
+        this.vip_view_num = vip_view_num;
+    }
+
+    public String getBuy_num() {
+        return buy_num;
+    }
+
+    public void setBuy_num(String buy_num) {
+        this.buy_num = buy_num;
+    }
 
     public String getVip_level() {
         return vip_level;

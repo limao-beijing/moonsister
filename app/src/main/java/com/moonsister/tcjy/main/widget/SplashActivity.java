@@ -6,7 +6,6 @@ import android.view.View;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 
@@ -22,12 +21,12 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void initView() {
         String authcode = UserInfoManager.getInstance().getAuthcode();
-        if (StringUtis.isEmpty(authcode)) {
-            startActivity(new Intent(this, ManorGrilActivity.class));
-            finish();
-        } else {
+//        if (StringUtis.isEmpty(authcode)) {
+//            startActivity(new Intent(this, ManorGrilActivity.class));
+//            finish();
+//        } else {
             enterMian();
-        }
+//        }
 
     }
 

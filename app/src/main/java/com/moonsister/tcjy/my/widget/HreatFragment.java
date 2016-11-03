@@ -17,7 +17,9 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.bean.UserDetailBean;
+import com.moonsister.tcjy.dialogFragment.DialogMannager;
 import com.moonsister.tcjy.manager.IMManager;
+import com.moonsister.tcjy.manager.UserInfoBannerManager;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.persenter.HreatFragmentPersenter;
 import com.moonsister.tcjy.my.persenter.HreatFragmentPresenterImpl;
@@ -68,6 +70,8 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
             TextView tv_look_people;
     @Bind(R.id.vip_money)//是否为VIP
             ImageView vip_money;
+    @Bind(R.id.fl_banner)
+    ViewGroup fl_banner;
     String[] images_text = new String[]{"我关注的", "关注我的", "动态管理", "VIP", "兴趣修改", "悬赏管理", "约见管理", "修改资料", "财务中心", "屏蔽手机联系人", "设置"};
     //
     int[] images = new int[]{R.mipmap.mysee, R.mipmap.seemy, R.mipmap.makemessage, R.mipmap.vipmoney, R.mipmap.insert, R.mipmap.xuanshang, R.mipmap.yousee, R.mipmap.make, R.mipmap.money, R.mipmap.phone, R.mipmap.domake};
@@ -84,6 +88,7 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
         persenter.PaySubmit(uid);
         return UIUtils.inflateLayout(R.layout.my_zhuye);//加载主页
     }
+
 
     @Override
     protected void initData() {
@@ -152,7 +157,7 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
                         @Override
                         public void clickType(AlearDialog.clickType type) {
                             if (type == AlearDialog.clickType.confirm_vip)
-                                ActivityUtils.startRegActivity();
+                                DialogMannager.getInstance().showBindPhoneDialog(getChildFragmentManager());
                             dialog.dismiss();
                         }
                     });
@@ -207,11 +212,11 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
         super.onStart();
         if (!StringUtis.isEmpty(UserInfoManager.getInstance().getAuthcode()))
             persenter.PaySubmit(uid);
+        UserInfoBannerManager.getInstance().show(getActivity(), fl_banner);
     }
 
     @Override
     public void success(UserDetailBean userDetailBean) {
-
 
         data = userDetailBean.getData().getBaseinfo();
         addons = userDetailBean.getData().getAddons();

@@ -1,8 +1,6 @@
 package com.moonsister.tcjy.home.widget;
 
 import android.annotation.TargetApi;
-
-
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,7 +17,6 @@ import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.home.presenetr.HomeFragmentPresenter;
 import com.moonsister.tcjy.home.presenetr.HomeFragmentPresenterImpl;
 import com.moonsister.tcjy.home.view.HomeView;
-import com.moonsister.tcjy.manager.UserInfoBannerManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.FragmentUtils;
 
@@ -58,7 +55,6 @@ public class HomeFragment extends BaseFragment implements HomeView {
     protected void initData() {
         tv_search.setVisibility(View.VISIBLE);
         mPresenter.swicthNavigation(R.id.tv_navigation_good_select);
-        UserInfoBannerManager.getInstance().show(getActivity(),flBanner);
     }
 
 

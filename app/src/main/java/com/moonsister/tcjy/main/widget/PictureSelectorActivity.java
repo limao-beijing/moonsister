@@ -44,6 +44,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.moonsister.tcjy.R;
+import com.moonsister.tcjy.utils.AlbumBitmapCacheHelper;
 import com.moonsister.tcjy.utils.CommonUtils;
 
 import java.io.File;

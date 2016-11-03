@@ -33,4 +33,12 @@
         <item>1314</item>
         <item>9420</item>
     </string-array>
+    <string-array name="channel_1005">
+        <item>1015</item>
+        <item>1009</item>
+        <item>2000</item>
+        <item>2003</item>
+        <item>2006</item>
+        <item>2001</item>
+    </string-array>
 </resources>

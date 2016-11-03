@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/x30"
+        android:background="@drawable/shape_background_text_white_color"
+        android:orientation="vertical"
+        android:padding="@dimen/x30">
+
+        <View
+            style="@style/app_line_horizontal"
+            android:layout_marginTop="@dimen/y30"/>
+
+        <EditText
+            android:id="@+id/et_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y96"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@drawable/shape_edit"
+            android:hint="请输入手机号"
+            android:padding="@dimen/x10"
+            android:paddingLeft="@dimen/x15"
+            android:textColor="@color/black"
+            android:textColorHint="@color/white_d6dde4"
+            android:textSize="16sp"/>
+
+        <View
+            style="@style/app_line_horizontal"/>
+
+        <View
+            style="@style/app_line_horizontal"
+            android:layout_marginTop="@dimen/y30"/>
+
+        <EditText
+            android:id="@+id/reg_edit_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y96"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@drawable/shape_edit"
+            android:hint="请输入密码"
+            android:paddingLeft="@dimen/x15"
+            android:password="true"
+            android:textColor="@color/black"
+            android:textColorHint="@color/white_d6dde4"
+            android:textSize="16sp"/>
+
+        <View
+            style="@style/app_line_horizontal"/>
+
+        <View
+            style="@style/app_line_horizontal"
+            android:layout_marginTop="@dimen/y30"/>
+
+        <TextView
+            android:id="@+id/reg_edit_brith"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y96"
+            android:layout_marginLeft="@dimen/x30"
+            android:background="@drawable/shape_edit"
+            android:gravity="center_vertical"
+            android:hint="出生年月日 如1988-12-25"
+            android:paddingLeft="@dimen/x15"
+            android:textColor="@color/black"
+            android:textColorHint="@color/white_d6dde4"
+            android:textSize="16sp"/>
+
+        <View
+            style="@style/app_line_horizontal"/>
+
+        <View
+            style="@style/app_line_horizontal"
+            android:layout_marginTop="@dimen/y30"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/x10">
+
+            <TextView
+                android:id="@+id/tv_security_code"
+                style="@style/textview_login"
+                android:layout_width="@dimen/x200"
+                android:layout_height="@dimen/y92"
+                android:layout_alignParentRight="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/shape_edit"
+                android:gravity="center"
+                android:text="@string/get_security_code"
+                android:textColor="@color/text_gray_778998"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:id="@+id/et_security_code"
+                style="@style/edittext_login"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y92"
+                android:layout_centerHorizontal="true"
+                android:layout_toLeftOf="@+id/tv_security_code"
+                android:background="@drawable/shape_edit"
+                android:ems="6"
+                android:gravity="center_vertical"
+                android:hint="输入验证码"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textColorHint="@color/white_d6dde4"/>
+
+
+        </RelativeLayout>
+
+        <View
+            style="@style/app_line_horizontal"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_submit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y50"
+                android:layout_weight="1"
+                android:background="@mipmap/reg_ok"
+                android:gravity="center"
+                android:text="完善注册"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/let_go"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_marginTop="@dimen/y50"
+                android:layout_weight="1"
+                android:background="@mipmap/let_go"
+                android:gravity="center"
+                android:text="我先看看"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/old_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/y30"
+            android:padding="@dimen/x30"
+            android:text="已有账号？点此直接登录"
+            android:textColor="@color/text_yellow_color"
+            android:textSize="18sp"/>
+    </LinearLayout>
+</FrameLayout>

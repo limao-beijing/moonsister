@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package com.moonsister.tcjy.main.widget;
+package com.moonsister.tcjy.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -17,8 +17,6 @@ import android.os.Message;
 import android.support.v4.util.LruCache;
 import android.util.Log;
 import android.view.WindowManager;
-
-import com.moonsister.tcjy.utils.CommonUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

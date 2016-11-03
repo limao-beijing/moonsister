@@ -57,15 +57,15 @@
             android:textSize="@dimen/text_size_16"/>
 
         <TextView
-
             android:id="@+id/tv_vip_rule"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv"
             android:layout_margin="@dimen/x30"
+            android:lineSpacingExtra="@dimen/x15"
             android:text="@string/loading"
             android:textColor="@color/yellow_fe8000"
-            android:textSize="@dimen/text_size_16"/>
+            android:textSize="@dimen/text_size_13"/>
 
 
         <RelativeLayout

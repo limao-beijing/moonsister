@@ -35,6 +35,7 @@
             android:text="@string/loading"
             android:textColor="@color/black_1d262e"
             android:textSize="@dimen/text_size_16"/>
+
         <ImageView
             android:id="@+id/iv_vip"
             android:layout_width="wrap_content"
@@ -59,7 +60,6 @@
             android:text="@string/loading"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_13"/>
-
 
 
         <TextView
@@ -215,6 +215,31 @@
                 android:drawablePadding="@dimen/x10"
                 android:gravity="center"
                 android:text="@string/loading"
+                android:textColor="@color/text_gray_778998"
+                android:textSize="@dimen/text_size_12"/>
+        </FrameLayout>
+
+        <View
+            android:id="@+id/tv_home_page_vip_line"
+            style="@style/vertical_line"
+            android:layout_marginBottom="@dimen/x15"
+            android:layout_marginTop="@dimen/x15"/>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_home_page_vip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableLeft="@mipmap/show_vip_icon"
+                android:drawablePadding="@dimen/x4"
+                android:gravity="center"
+                android:paddingLeft="@dimen/x10"
+                android:text="10000"
                 android:textColor="@color/text_gray_778998"
                 android:textSize="@dimen/text_size_12"/>
         </FrameLayout>

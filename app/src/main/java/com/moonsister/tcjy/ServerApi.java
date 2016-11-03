@@ -5,6 +5,7 @@ import com.moonsister.pay.tencent.PayBean;
 import com.moonsister.tcjy.bean.BackInsertBean;
 import com.moonsister.tcjy.bean.BackTermsBean;
 import com.moonsister.tcjy.bean.BalanceBean;
+import com.moonsister.tcjy.bean.BannerBean;
 import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.CardInfoBean;
 import com.moonsister.tcjy.bean.CertificationStatusBean;
@@ -172,7 +173,7 @@ public class ServerApi {
 
 
     public interface AppAPI {
-        String baseUrl = "http://brand1.yytbzs.cn:88/index.php/index/";
+        String baseUrl = "http://v2.chuse.hk:88/index.php/index/";
 //        String baseUrl = "http://2.yytbzs.cn:88/index.php/index/";
 //        String baseUrl = "http://mimei.cntttt.com:88/public/index.php/index/";
 
@@ -1253,6 +1254,21 @@ public class ServerApi {
 
         @GET("mmvip/get_data_info")
         Observable<VipRule> getVipRule(@Query("authcode") String authcode, @Query("channel") String channel);
+
+
+        /**
+         * 广告信息
+         *
+         * @param authcode
+         * @param channelId
+         * @param adtype
+         */
+        @GET("ad/get")
+        Observable<BannerBean> getBannerData(@Query("width") String width,
+                                             @Query("height") String height,
+                                             @Query("authcode") String authcode,
+                                             @Query("channel") String channelId,
+                                             @Query("adtype") String adtype);
     }
 }
 

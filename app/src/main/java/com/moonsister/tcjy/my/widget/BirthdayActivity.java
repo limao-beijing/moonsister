@@ -1,17 +1,11 @@
 package com.moonsister.tcjy.my.widget;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.Uri;
-import android.os.Bundle;
+
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.event.Events;
@@ -45,11 +39,6 @@ public class BirthdayActivity extends BaseActivity implements OnClickListener {
     private TextView tv_title_right;
     private TextView tv_birthday_constellation;// 显示星座
     String bright;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
 
     @Override
     protected View setRootContentView() {

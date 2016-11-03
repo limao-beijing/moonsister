@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
+import com.moonsister.tcjy.banner.BannerManager;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.manager.UserInfoBannerManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
 
@@ -28,6 +28,7 @@ public class HomeTopFragment extends BaseFragment {
     @Bind(R.id.fl_banner)
     ViewGroup flBanner;
     private HomeTopItemFragment homeHotFragment, homeNearbyFragment, honeNewFragment;
+    private BannerManager bannerManager;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,13 +38,14 @@ public class HomeTopFragment extends BaseFragment {
     @Override
     protected void initData() {
         onClick(tvHomeHot);
-
+        bannerManager = new BannerManager();
+        bannerManager.start(getActivity(), flBanner);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        UserInfoBannerManager.getInstance().show(getActivity(), flBanner);
+//        UserInfoBannerManager.getInstance().show(getActivity(), flBanner);
     }
 
     @OnClick({R.id.iv_search, R.id.tv_home_hot, R.id.tv_home_nearby, R.id.tv_home_new})
@@ -89,4 +91,10 @@ public class HomeTopFragment extends BaseFragment {
 
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (bannerManager != null)
+            bannerManager = null;
+    }
 }

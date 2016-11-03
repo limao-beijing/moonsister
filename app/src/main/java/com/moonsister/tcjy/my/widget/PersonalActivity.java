@@ -5,7 +5,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.PersonalAdapter;
@@ -77,11 +76,7 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
     PersonalMessageBean.DataBean.Ainfo ainfo;
     String uid;
     String id;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
 
     @Override
     protected View setRootContentView() {

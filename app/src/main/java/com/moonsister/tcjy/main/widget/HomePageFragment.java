@@ -68,6 +68,7 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
         presenter.attachView(this);
         return inflater.inflate(R.layout.fragment_home_page, container, false);
     }
+
     public static HomePageFragment newInstance() {
         return new HomePageFragment();
     }
@@ -76,38 +77,45 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
     protected void initData() {
         if (StringUtis.equals(userId, UserInfoManager.getInstance().getUid()))
             layout_home_content.setVisibility(View.GONE);
-        headHolder = new HomePageHeadHolder();
-        headHolder.setOnClickListener(new HomePageHeadHolder.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (presenter == null)
-                    return;
-                switch (view.getId()) {
-                    case R.id.rl_all:
-                        type = EnumConstant.SearchType.all;
 
-                        break;
-                    case R.id.rl_user:
-                        type = EnumConstant.SearchType.user;
-                        break;
-                    case R.id.rl_dynamic:
-                        type = EnumConstant.SearchType.dynamic;
-                        break;
-                    case R.id.iv_back:
-                        getActivity().finish();
-                        break;
+        if (isAddHeaderView()) {
+            headHolder = new HomePageHeadHolder();
+            headHolder.setOnClickListener(new HomePageHeadHolder.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (presenter == null)
+                        return;
+                    switch (view.getId()) {
+                        case R.id.rl_all:
+                            type = EnumConstant.SearchType.all;
+
+                            break;
+                        case R.id.rl_user:
+                            type = EnumConstant.SearchType.user;
+                            break;
+                        case R.id.rl_dynamic:
+                            type = EnumConstant.SearchType.dynamic;
+                            break;
+                        case R.id.iv_back:
+                            getActivity().finish();
+                            break;
+                    }
+                    isRefresh = true;
+                    presenter.loadRefresh(userId, type);
                 }
-                isRefresh = true;
+            });
 
-                presenter.loadRefresh(userId, type);
-            }
-        });
+            xlv.addHeaderView(headHolder.getContentView());
+            presenter.loadHeader(userId);
+            headHolder.onClick(headHolder.getContentView().findViewById(R.id.rl_all));
+        }
         xlv.setVerticalLinearLayoutManager();
         xlv.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
                 isRefresh = true;
-                presenter.loadHeader(userId);
+                if (isAddHeaderView())
+                    presenter.loadHeader(userId);
                 presenter.loadRefresh(userId, type);
             }
 
@@ -117,11 +125,10 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
                 presenter.loadMore(userId, type);
             }
         });
-        if (isAddHeaderView())
-            xlv.addHeaderView(headHolder.getContentView());
-//        xlv.setRefreshing(true);
-        presenter.loadHeader(userId);
-        headHolder.onClick(headHolder.getContentView().findViewById(R.id.rl_all));
+        if (isAddHeaderView()) {
+            presenter.loadHeader(userId);
+        }
+        xlv.setRefreshing(true);
         setRx();
     }
 

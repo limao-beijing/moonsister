@@ -62,6 +62,12 @@ public class WebActivity extends BaseActivity implements WebView.onWebViewListen
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        hideProgressDialog();
+    }
+
+    @Override
     // 设置回退
     // 覆盖Activity类的onKeyDown(int keyCoder,KeyEvent event)方法
     public boolean onKeyDown(int keyCode, KeyEvent event) {

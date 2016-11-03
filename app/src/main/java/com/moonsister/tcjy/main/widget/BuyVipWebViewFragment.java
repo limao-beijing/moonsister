@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.webkit.JsResult;
 
 import com.moonsister.tcjy.AppConstant;
+import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.base.BaseFragment;
@@ -20,8 +21,9 @@ import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenterImpl;
 import com.moonsister.tcjy.main.view.BuyVipFragmentView;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.widget.WebView;
+
+import java.util.Arrays;
 
 /**
  * Created by jb on 2016/9/8.
@@ -77,7 +79,9 @@ public class BuyVipWebViewFragment extends BaseFragment implements WebView.onWeb
         RxBus.getInstance().send(Events.EventEnum.BUY_VIP_SUCCESS, null);
         PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
         memoryPersonInfoDetail.setVipStatus(1);
-        if (StringUtis.equals(AppConstant.CHANNEL_ID, "1015") || StringUtis.equals(AppConstant.CHANNEL_ID, "1009") || StringUtis.equals(AppConstant.CHANNEL_ID, "2000")) {
+        String[] array = getResources().getStringArray(R.array.channel_1005);
+
+        if (Arrays.asList(array).contains(AppConstant.CHANNEL_ID)) {
             memoryPersonInfoDetail.setAttestation(1);
         }
         UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);

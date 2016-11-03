@@ -59,6 +59,10 @@ public class BaseHomePageViewHolder extends BaseRecyclerViewHolder<DynamicItemBe
     ImageView iv_vip;
     @Bind(R.id.tv_job)
     TextView tv_job;
+    @Bind(R.id.tv_home_page_vip)
+    TextView tv_home_page_vip;
+    @Bind(R.id.tv_home_page_vip_line)
+    View tv_home_page_vip_line;
 
     public BaseHomePageViewHolder(View view) {
         super(view);
@@ -113,11 +117,11 @@ public class BaseHomePageViewHolder extends BaseRecyclerViewHolder<DynamicItemBe
         tvUserTag.setText(tags);
         dynamicContent.setText(dynamicItemBean.getTitle());
         tvHomePageComment.setText(dynamicItemBean.getLcomn());
-        tvHomePagePay.setText(dynamicItemBean.getView_num());
+
         tvUserLike.setText(dynamicItemBean.getLupn());
 
 
-        isShowRed(dynamicItemBean.getType());
+        isShowRed(dynamicItemBean.getType(), dynamicItemBean);
     }
 
 
@@ -136,19 +140,25 @@ public class BaseHomePageViewHolder extends BaseRecyclerViewHolder<DynamicItemBe
         ActivityUtils.startDynamicDatailsActivity(bean.getLatest_id(), bean.getType());
     }
 
-    private void isShowRed(int type) {
+    private void isShowRed(int type, DynamicItemBean dynamicItemBean) {
         switch (type) {
             case HomePageFragmentAdapter.TYPE_CHARGE_PIC:
             case HomePageFragmentAdapter.TYPE_CHARGE_VIDEO:
             case HomePageFragmentAdapter.TYPE_CHARGE_VOICE:
                 vertical_line.setVisibility(View.VISIBLE);
                 tvHomePagePay.setVisibility(View.VISIBLE);
+                tv_home_page_vip.setVisibility(View.VISIBLE);
+                tv_home_page_vip_line.setVisibility(View.VISIBLE);
+                tvHomePagePay.setText(dynamicItemBean.getBuy_num());
+                tv_home_page_vip.setText(dynamicItemBean.getVip_view_num());
                 break;
             case HomePageFragmentAdapter.TYPE_FREE_PIC:
             case HomePageFragmentAdapter.TYPE_FREE_VIDEO:
             case HomePageFragmentAdapter.TYPE_FREE_VOICE:
                 vertical_line.setVisibility(View.GONE);
                 tvHomePagePay.setVisibility(View.GONE);
+                tv_home_page_vip.setVisibility(View.GONE);
+                tv_home_page_vip_line.setVisibility(View.GONE);
                 break;
         }
     }

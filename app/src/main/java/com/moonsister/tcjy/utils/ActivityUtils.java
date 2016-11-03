@@ -23,15 +23,15 @@ import com.moonsister.tcjy.home.widget.SearchActivity;
 import com.moonsister.tcjy.home.widget.SearchFragmentActivity;
 import com.moonsister.tcjy.home.widget.SearchReasonActivity;
 import com.moonsister.tcjy.im.widget.AppConversationActivity;
+import com.moonsister.tcjy.js.WebActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordNextActivity;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
-import com.moonsister.tcjy.login.widget.RegActivity;
 import com.moonsister.tcjy.main.widget.BuyVipActivity;
 import com.moonsister.tcjy.main.widget.DynamicAtionActivity;
 import com.moonsister.tcjy.main.widget.DynamicDatailsActivity;
 import com.moonsister.tcjy.main.widget.HomePageActivity;
-import com.moonsister.tcjy.main.widget.ManorGrilActivity;
+import com.moonsister.tcjy.main.widget.MainActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentOrderActivity;
 import com.moonsister.tcjy.main.widget.PersonInfoChangeActivity;
@@ -753,16 +753,32 @@ public class ActivityUtils {
      * 选择男女
      */
     public static void startManorGrilActivity() {
-        startActivity(ManorGrilActivity.class);
+//        startActivity(ManorGrilActivity.class);
+        Context context = getActivityContext();
+        if (context instanceof MainActivity) {
+            ((MainActivity) context).shwoSelectSexDialog();
+
+        }
     }
 
     /**
      * 绑定手机
      */
     public static void startRegActivity() {
-        Intent intent = getIntent(RegActivity.class);
+//        Intent intent = getIntent(RegActivity.class);
+//        startActivity(intent);
+        Context context = getActivityContext();
+        if (context instanceof MainActivity) {
+            ((MainActivity) context).bindPhoneDialog();
+        }
+    }
+
+    public static void startH5Activity(String url) {
+        Intent intent = getIntent(WebActivity.class);
+        intent.putExtra("url", url);
         startActivity(intent);
     }
+
 
     public static void starVideoDynamicActivity() {
         startActivity(VideoDynamicActivity.class);

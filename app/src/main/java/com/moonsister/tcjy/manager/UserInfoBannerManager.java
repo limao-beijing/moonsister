@@ -88,6 +88,7 @@ public class UserInfoBannerManager {
                 } else if (StringUtis.equals(status, "200")) {
                     ActivityUtils.startPersonalReviseActivity();
                 }
+                viewGroup.setVisibility(View.GONE);
             }
         });
         viewGroup.addView(view);

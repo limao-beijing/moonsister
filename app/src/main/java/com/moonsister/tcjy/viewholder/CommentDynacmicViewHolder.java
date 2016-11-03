@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.DynamicAdapter;
+import com.moonsister.tcjy.adapter.HomePageFragmentAdapter;
 import com.moonsister.tcjy.bean.DynamicDatailsBean;
 import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.utils.UIUtils;
@@ -23,6 +24,8 @@ public class CommentDynacmicViewHolder extends BaseHolder<DynamicDatailsBean> {
     TextView mTvNotLike;
     @Bind(R.id.tv_like)
     TextView mTvLike;
+    @Bind(R.id.tv_home_page_vip)
+    TextView tv_home_page_vip;
 
     @Override
     protected View initView() {
@@ -36,33 +39,50 @@ public class CommentDynacmicViewHolder extends BaseHolder<DynamicDatailsBean> {
         DynamicItemBean data = bean.getData();
         mTvCommentNumber.setText(UIUtils.getStringRes(R.string.comment) + "  " + data.getComment_count());
 
-        mTvWacth.setText(getWacth(data.getType()) + "  " + data.getView_num());
+        mTvWacth.setText(getWacth(data.getType(), data));
         mTvNotLike.setText("踩 " + data.getLdon());
         mTvLike.setText("赞 " + data.getLupn());
+        isShowRed(data.getType(), bean.getData());
     }
 
-    private String getWacth(int type) {
+    private String getWacth(int type, DynamicItemBean bean) {
         String str = "";
         switch (type) {
             case DynamicAdapter.TYPE_CHARGE_PIC:
-                str = "偷看";
+                str = "偷看" + "  " + bean.getBuy_num();
                 break;
             case DynamicAdapter.TYPE_FREE_PIC:
-                str = "查看";
+                str = "查看"  + "  "+ bean.getView_num();
                 break;
             case DynamicAdapter.TYPE_CHARGE_VIDEO:
-                str = "偷窥";
+                str = "偷窥" + "  " + bean.getBuy_num();
                 break;
             case DynamicAdapter.TYPE_FREE_VIDEO:
-                str = "观看";
+                str = "观看"  + "  "+ "  " + bean.getView_num();
                 break;
             case DynamicAdapter.TYPE_FREE_VOICE:
-                str = "收听";
+                str = "收听"  + "  "+ bean.getView_num();
                 break;
             case DynamicAdapter.TYPE_CHARGE_VOICE:
-                str = "偷听";
+                str = "偷听"  + "  "+ bean.getBuy_num();
                 break;
         }
         return str;
+    }
+
+    private void isShowRed(int type, DynamicItemBean dynamicItemBean) {
+        switch (type) {
+            case HomePageFragmentAdapter.TYPE_CHARGE_PIC:
+            case HomePageFragmentAdapter.TYPE_CHARGE_VIDEO:
+            case HomePageFragmentAdapter.TYPE_CHARGE_VOICE:
+                tv_home_page_vip.setVisibility(View.VISIBLE);
+                tv_home_page_vip.setText(dynamicItemBean.getVip_view_num());
+                break;
+            case HomePageFragmentAdapter.TYPE_FREE_PIC:
+            case HomePageFragmentAdapter.TYPE_FREE_VIDEO:
+            case HomePageFragmentAdapter.TYPE_FREE_VOICE:
+                tv_home_page_vip.setVisibility(View.GONE);
+                break;
+        }
     }
 }

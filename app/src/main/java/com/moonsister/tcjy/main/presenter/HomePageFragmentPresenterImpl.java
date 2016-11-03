@@ -63,6 +63,7 @@ public class HomePageFragmentPresenterImpl implements HomePageFragmentPresenter,
                     dynamicSort(list);
                     view.setDynamicData(list);
                 }
+                view.hideLoading();
                 break;
 
             case DATA_ONE:
@@ -72,7 +73,7 @@ public class HomePageFragmentPresenterImpl implements HomePageFragmentPresenter,
                 }
                 break;
         }
-        view.hideLoading();
+
     }
 
     private void dynamicSort(List<DynamicItemBean> t) {

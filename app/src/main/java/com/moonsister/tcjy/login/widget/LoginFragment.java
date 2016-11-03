@@ -1,7 +1,6 @@
 package com.moonsister.tcjy.login.widget;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -21,7 +20,6 @@ import com.moonsister.tcjy.login.presenter.LoginFragmentPersenter;
 import com.moonsister.tcjy.login.presenter.LoginFragmentPersenterImpl;
 import com.moonsister.tcjy.login.view.LoginFragmentView;
 import com.moonsister.tcjy.main.widget.MainActivity;
-import com.moonsister.tcjy.main.widget.ManorGrilActivity;
 import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
@@ -85,9 +83,15 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
                 login();
                 break;
             case R.id.reg_new_people://注册新用户
-                Intent intent = new Intent(getActivity(), ManorGrilActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getActivity(), ManorGrilActivity.class);
+//                startActivity(intent);
+
                 getActivity().finish();
+//                Activity context = ConfigUtils.getInstance().getActivityContext();
+//                if (context instanceof MainActivity) {
+//                    ((MainActivity) context).shwoSelectSexDialog();
+//                }
+
                 break;
             case R.id.login_page_yellow:
                 String s = etPassword.getText().toString();
@@ -132,7 +136,6 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
 
     @Override
     public void loginSuccss() {
-        showToast(resources.getString(R.string.str_login) + resources.getString(R.string.success));
         RxBus.getInstance().send(Events.EventEnum.LOGIN_SUCCSS, null);
         UIUtils.sendDelayed(new Runnable() {
             @Override

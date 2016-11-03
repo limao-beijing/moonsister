@@ -289,9 +289,8 @@ public abstract class BaseActivity extends RxAppCompatActivity {
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (!isBaseonActivityResult())
-            super.onActivityResult(requestCode, resultCode, data);
-        else {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (isBaseonActivityResult()) {
             FragmentManager fm = getSupportFragmentManager();
             int index = requestCode >> 16;
             if (index != 0) {
