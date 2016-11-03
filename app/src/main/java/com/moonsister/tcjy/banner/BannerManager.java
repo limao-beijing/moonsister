@@ -1,10 +1,11 @@
 package com.moonsister.tcjy.banner;
 
 import android.app.Activity;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.base.BaseIModel;
@@ -20,12 +21,20 @@ import com.moonsister.tcjy.utils.StringUtis;
 public class BannerManager {
 
     public void start(Activity activity, ViewGroup viewGroup) {
-        if (viewGroup == null || activity == null)
+        if (viewGroup == null || activity == null) {
             if (LogUtils.getDeBugState()) {
                 throw new RuntimeException("ViewGroup or Activity  not is null");
             } else {
                 return;
             }
+        }
+        if (!(viewGroup instanceof FrameLayout)) {
+            if (LogUtils.getDeBugState()) {
+                throw new RuntimeException("ViewGroup  not instanceof FrameLayout");
+            } else {
+                return;
+            }
+        }
         BannerManagerModel model = new BannerManagerModelImpl();
         model.loadBannerData(new BaseIModel.onLoadDateSingleListener<BannerBean>() {
             @Override
@@ -99,11 +108,13 @@ public class BannerManager {
         ImageView imageView = new ImageView(viewGroup.getContext());
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         viewGroup.addView(imageView);
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) imageView.getLayoutParams();
-        params.height = height;
-        params.width = width;
-        params.addRule(RelativeLayout.CENTER_IN_PARENT);
-        imageView.setLayoutParams(params);
+        if (viewGroup instanceof FrameLayout) {
+            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) imageView.getLayoutParams();
+            params.gravity = Gravity.CENTER_HORIZONTAL;
+            params.height = height;
+            params.width = width;
+            imageView.setLayoutParams(params);
+        }
         ImageServerApi.showURLBigImage(imageView, url);
         viewGroup.setVisibility(View.VISIBLE);
     }

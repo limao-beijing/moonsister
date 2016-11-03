@@ -220,11 +220,11 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
-    public void offline() {
+    public void offline(String msg) {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(UIUtils.getStringRes(R.string.Logoff_notification));
-        builder.setMessage(UIUtils.getStringRes(R.string.connect_conflict));
+        builder.setMessage(msg);
         builder.setCancelable(false);
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
@@ -317,7 +317,7 @@ public class MainActivity extends BaseActivity implements MainView {
                 .setEvent(Events.EventEnum.LOGIN_CODE_TIMEOUT)
                 .onNext(events -> {
                             ActivityUtils.startLoginMainActivity();
-                    IMManager.getInstance().offline( UserInfoManager.getInstance().getUid());
+                            IMManager.getInstance().offline(UserInfoManager.getInstance().getUid());
                             UserInfoManager.getInstance().logout();
                             showToast(UIUtils.getStringRes(R.string.login_code_timeout));
                             ((ApplicationConfig) ConfigUtils.getInstance().getApplicationContext()).logout();

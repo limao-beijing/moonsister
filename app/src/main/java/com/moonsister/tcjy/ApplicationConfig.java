@@ -26,7 +26,7 @@ public class ApplicationConfig extends MultiDexApplication {
 //                .serverApiModule(dynamic_new ServerApiModule(dynamic_new ServerApi()))
 //                .build();
 ////
-        initRongYun();
+        initHx();
     }
 
     private void initRongYun() {
@@ -42,10 +42,11 @@ public class ApplicationConfig extends MultiDexApplication {
              * IMKit SDK调用第一步 初始化
              */
 //            RongyunManager.getInstance().init(this);
-            initHx();
+
         }
 
     }
+
     /**
      * 初始化环信
      */

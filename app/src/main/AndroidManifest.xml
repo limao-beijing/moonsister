@@ -73,11 +73,11 @@
             android:value="57e63d92e0f55a159d002acd"/>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="BDYUEHUI1004"/>
+            android:value="YYBYUEHUI1003"/>
         <!--API  接口-->
         <meta-data
             android:name="API_CHANNEL"
-            android:value="1004"/>
+            android:value="1003"/>
         <!-- 友盟  end -->
         <!-- 高德 start -->
         <meta-data
@@ -268,13 +268,6 @@
             android:name=".main.widget.DynamicAtionActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
 
-        <!--
- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
-        -->
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"/>
 
         <activity android:name=".my.widget.RuleActivity"></activity>
 

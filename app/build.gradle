@@ -105,8 +105,8 @@ dependencies {
     compile rootProject.ext.dependencies["gson"]
     //图片裁剪
     compile rootProject.ext.dependencies["android_crop"]
-    //友盟
-    compile rootProject.ext.dependencies["gms"]
+  /*  //友盟
+    compile rootProject.ext.dependencies["gms"]*/
     //方法数
     compile rootProject.ext.dependencies["multidex"]
     //友盟

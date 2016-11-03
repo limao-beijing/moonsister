@@ -1,8 +1,6 @@
 package com.moonsister.tcjy.home.widget;
 
 import android.annotation.TargetApi;
-
-
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
@@ -42,10 +39,11 @@ public class HomeFragment extends BaseFragment implements HomeView {
     @Bind(R.id.tv_search)
     ImageView tv_search;
     @Bind(R.id.appx_banner_container)
-    RelativeLayout appx_banner_container;
+    FrameLayout appx_banner_container;
     private HomeFragmentPresenter mPresenter;
     private FragmentManager mFragmentManager;
     private GoodSelectFragment mCurrentFragment, goodSelectFragment, sameCityFragment;
+    private BannerManager bannerManager;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,7 +57,8 @@ public class HomeFragment extends BaseFragment implements HomeView {
     protected void initData() {
         tv_search.setVisibility(View.VISIBLE);
         mPresenter.swicthNavigation(R.id.tv_navigation_good_select);
-        new BannerManager().start(getActivity(), appx_banner_container);
+        bannerManager = new BannerManager();
+        bannerManager.start(getActivity(), appx_banner_container);
     }
 
 
@@ -112,6 +111,12 @@ public class HomeFragment extends BaseFragment implements HomeView {
         tvNavigationSameCity.setSelected(fragment == sameCityFragment);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (bannerManager != null)
+            bannerManager = null;
+    }
 
     @OnClick({R.id.tv_navigation_good_select, R.id.tv_navigation_same_city, R.id.tv_search})
     public void onClick(View view) {

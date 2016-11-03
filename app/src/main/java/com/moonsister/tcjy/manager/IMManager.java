@@ -19,8 +19,10 @@ import com.hyphenate.easeui.controller.EaseUI;
 import com.hyphenate.easeui.db.HxUserDao;
 import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.easeui.model.EaseAtMessageHelper;
+import com.hyphenate.easeui.model.EaseNotifier;
 import com.hyphenate.easeui.utils.EaseUserUtils;
 import com.hyphenate.util.NetUtils;
+import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
@@ -41,6 +43,9 @@ public class IMManager {
     private ConnectCallback mConnectionStatusListener;
     private onNotReadCallback mMsgNumber;
     private int logServiceCount = 0;
+    protected final static String[] msgs = {"发来一条消息", "发来一张图片", "发来一段语音", "发来位置信息", "发来一个视频", "发来一个文件",
+            "%1个联系人发来%2条消息"
+    };
 
     public static IMManager getInstance() {
         if (instance == null) {
@@ -81,11 +86,10 @@ public class IMManager {
      * @param password
      */
     public void loginIMService(String userName, String password, ConnectCallback callback) {
-        if (logServiceCount > 3) {
+        if (logServiceCount > 20) {
             return;
         }
         logServiceCount++;
-
         EMClient.getInstance().login(userName, password, new EMCallBack() {//回调
             @Override
             public void onSuccess() {
@@ -112,7 +116,7 @@ public class IMManager {
 
             @Override
             public void onError(int code, String message) {
-                LogUtils.d(TAG, "登录聊天服务器失败！");
+                LogUtils.e(TAG, "登录聊天服务器失败！:" + message);
                 if (callback != null) {
                     callback.onTokenIncorrect();
                 }
@@ -130,6 +134,61 @@ public class IMManager {
                     user = new EaseUser(username);
                 }
                 return user;
+            }
+        });
+        EaseUI.getInstance().getNotifier().setNotificationInfoProvider(new EaseNotifier.EaseNotificationInfoProvider() {
+            @Override
+            public String getDisplayedText(EMMessage message) {
+                EaseUser user = EaseUI.getInstance().getUserProfileProvider().getUser(message.getFrom());
+                if (user == null)
+                    return "";
+                String username = user.getNick();
+                String notifyText = username + " ";
+                switch (message.getType()) {
+                    case TXT:
+                        notifyText += msgs[0];
+                        break;
+                    case IMAGE:
+                        notifyText += msgs[1];
+                        break;
+                    case VOICE:
+
+                        notifyText += msgs[2];
+                        break;
+                    case LOCATION:
+                        notifyText += msgs[3];
+                        break;
+                    case VIDEO:
+                        notifyText += msgs[4];
+                        break;
+                    case FILE:
+                        notifyText += msgs[5];
+                        break;
+
+
+                }
+                return notifyText;
+
+            }
+
+            @Override
+            public String getLatestText(EMMessage message, int fromUsersNum, int messageNum) {
+                return null;
+            }
+
+            @Override
+            public String getTitle(EMMessage message) {
+                return null;
+            }
+
+            @Override
+            public int getSmallIcon(EMMessage message) {
+                return R.mipmap.ic_samll_launcher;
+            }
+
+            @Override
+            public Intent getLaunchIntent(EMMessage message) {
+                return mContext.getPackageManager().getLaunchIntentForPackage(mContext.getPackageName());
             }
         });
     }
@@ -157,7 +216,7 @@ public class IMManager {
                 LogUtils.d(TAG, "退出聊天服务器成功！");
                 //删除和某个user会话，如果需要保留聊天记录，传false
                 cleanAllChatMsg();
-
+                logServiceCount = 0;
             }
 
             @Override
@@ -210,11 +269,14 @@ public class IMManager {
                         if (error == EMError.USER_REMOVED) {
                             // 显示帐号已经被移除
                             LogUtils.d(TAG, " 显示帐号已经被移除！");
+                            if (mConnectionStatusListener != null) {
+                                mConnectionStatusListener.offline("显示帐号已经被移除");
+                            }
                         } else if (error == EMError.USER_LOGIN_ANOTHER_DEVICE) {
                             // 显示帐号在其他设备登录
                             LogUtils.d(TAG, "显示帐号在其他设备登录！");
                             if (mConnectionStatusListener != null) {
-                                mConnectionStatusListener.offline();
+                                mConnectionStatusListener.offline("显示帐号在其他设备登录");
                             }
                         } else {
                             if (NetUtils.hasNetwork(mContext)) {
@@ -257,7 +319,7 @@ public class IMManager {
     public interface ConnectCallback {
         void onSuccess(String s);
 
-        void offline();
+        void offline(String msg);
 
         void onTokenIncorrect();
     }
@@ -290,6 +352,7 @@ public class IMManager {
     }
 
     public void setMessageListener() {
+
         EMClient.getInstance().chatManager().addMessageListener(new EMMessageListener() {
             @Override
             public void onMessageReceived(List<EMMessage> list) {
@@ -308,6 +371,7 @@ public class IMManager {
                         user.setNick(name);
                         dao.saveUser(user);
                         EaseUI instance = EaseUI.getInstance();
+
                         instance.getNotifier().onNewMsg(message);
                     }
                 } catch (Exception e) {
