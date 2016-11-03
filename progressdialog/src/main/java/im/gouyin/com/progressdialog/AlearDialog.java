@@ -116,7 +116,7 @@ public class AlearDialog {
                 content = activity.getResources().getString(R.string.Certification_im_1015);
                 break;
             case Certification_im_1002:
-                content = activity.getResources().getString(R.string.Certification_im_1015);
+                content = activity.getResources().getString(R.string.Certification_im_1002);
                 break;
             case bind_phone:
                 content = activity.getResources().getString(R.string.bind_phone_text);
