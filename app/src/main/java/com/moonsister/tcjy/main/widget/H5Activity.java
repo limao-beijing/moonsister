@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.main.widget;
 
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.JsResult;
 
@@ -43,8 +44,12 @@ public class H5Activity extends BaseActivity implements WebView.onWebViewListene
 
     @Override
     public void onReceivedTitle(String title) {
-        setTitleName(title);
+        if (title == null)
+            return;
+
+        setTitleName(title.length() > 8 ? title.substring(0, 8) + "..." : title);
     }
+
 
     @Override
     public void onPageStart() {
@@ -61,4 +66,15 @@ public class H5Activity extends BaseActivity implements WebView.onWebViewListene
         super.onStop();
         hideProgressDialog();
     }
+    @Override
+    // 设置回退
+    // 覆盖Activity类的onKeyDown(int keyCoder,KeyEvent event)方法
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebView.canGoBack()) {
+            mWebView.goBack(); // goBack()表示返回WebView的上一页面
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 }

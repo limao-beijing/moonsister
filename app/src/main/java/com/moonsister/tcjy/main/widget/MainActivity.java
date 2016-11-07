@@ -117,22 +117,24 @@ public class MainActivity extends BaseActivity implements MainView {
         /**
          * 监听消息未读数
          */
-
-        IMManager.getInstance().setMsgNumber(new IMManager.onNotReadCallback() {
-            @Override
-            public void onSuccess(int number) {
-                if (tvMsgNumber == null)
-                    return;
-                if (number <= 0) {
-                    number = 0;
-                    tvMsgNumber.setText(number + "");
-                    tvMsgNumber.setVisibility(View.GONE);
-                } else {
-                    tvMsgNumber.setText(number + "");
-                    tvMsgNumber.setVisibility(View.VISIBLE);
+        if (tvMsgNumber != null) {
+            tvMsgNumber.setVisibility(View.GONE);
+            IMManager.getInstance().setMsgNumber(new IMManager.onNotReadCallback() {
+                @Override
+                public void onSuccess(int number) {
+                    if (tvMsgNumber == null)
+                        return;
+                    if (number <= 0) {
+                        number = 0;
+                        tvMsgNumber.setText(number + "");
+                        tvMsgNumber.setVisibility(View.GONE);
+                    } else {
+                        tvMsgNumber.setText(number + "");
+                        tvMsgNumber.setVisibility(View.VISIBLE);
+                    }
                 }
-            }
-        });
+            });
+        }
         /**
          //       *会话页面点击监听
          //                */

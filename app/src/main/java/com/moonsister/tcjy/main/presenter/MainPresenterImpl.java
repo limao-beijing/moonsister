@@ -179,6 +179,7 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
                         presonInfo.setId(bean.getData().getUid());
                         presonInfo.setHxPwd(bean.getData().getPassword());
                         presonInfo.setAttestation(StringUtis.string2Int(bean.getData().getApply_status()));
+                        presonInfo.setLogin(true);
                         UserInfoManager.getInstance().saveMemoryInstance(presonInfo);
                         loginRongyun();
                         EMClient.getInstance().updateCurrentUserNick(bean.getData().getNickname());

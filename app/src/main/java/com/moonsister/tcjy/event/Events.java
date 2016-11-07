@@ -14,7 +14,11 @@ public class Events<T> {
         WEIXIN_PAY_CALLBACK, GET_LOCLOCATION, FRIEND_CHANGE, USERINFO_CHANGE,
         DYNAMIC_UP_ACTION, DYNAMIC_DEL_UP_ACTION,
         LOGIN_SUCCSS, GET_IM_SERVICE_KEY, LOGIN_CODE_TIMEOUT,
-        SWITCH_ITEM, BUY_VIP_SUCCESS, MONEY_CHANGE, CLICK_ENGAGEMENT_SUCCESS, CLICK_ENGAGEMENT_INVITE, CLICK_ENGAGEMENT_INVITE_2, CLICK_ENGAGEMENT_REFUSE, CLICK_ENGAGEMENT_LEVEL_NOT, MyThreeFragment_level, DynamicResAddActivity_up_success, PersonThreeFragment_delete_pic, EngagementManagerFragment_CLICK_ENGAGEMENT_INVITE, RenZhengThreeActivity_res_change;
+        SWITCH_ITEM, BUY_VIP_SUCCESS, MONEY_CHANGE, CLICK_ENGAGEMENT_SUCCESS,
+        CLICK_ENGAGEMENT_INVITE, CLICK_ENGAGEMENT_INVITE_2, CLICK_ENGAGEMENT_REFUSE,
+        CLICK_ENGAGEMENT_LEVEL_NOT, MyThreeFragment_level, DynamicResAddActivity_up_success,
+        PersonThreeFragment_delete_pic,
+        EngagementManagerFragment_CLICK_ENGAGEMENT_INVITE, RenZhengThreeActivity_res_change;
     }
 
     public EventEnum what;

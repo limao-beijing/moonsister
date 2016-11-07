@@ -37,6 +37,11 @@ public class RenZhengThreeActivity extends BaseActivity implements RenZhengThree
     private RenZhengThreePresenter presenter;
 
     @Override
+    public boolean isBaseonActivityResult() {
+        return false;
+    }
+
+    @Override
     protected View setRootContentView() {
         presenter = new RenZhengThreePresenterImpl();
         presenter.attachView(this);
