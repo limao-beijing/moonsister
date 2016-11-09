@@ -4,11 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.adapter.MoneyAdapter;
 import com.moonsister.tcjy.adapter.MoneyTwoAdapter;
 import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.bean.BalanceBean;
@@ -32,8 +30,6 @@ public class TwoFragment extends BaseFragment implements BalanceActivityView {
     private MoneyTwoAdapter mAdapter;
     int type;
     int page;
-    int pagesize;
-    String uid;
     List<BalanceBean.DataBean> data;
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -103,8 +99,5 @@ public class TwoFragment extends BaseFragment implements BalanceActivityView {
 
     public void transfePageMsg(String msg) {
         showToast(msg);
-    }
-    public void setUid(String uid) {
-        this.uid = uid;
     }
 }

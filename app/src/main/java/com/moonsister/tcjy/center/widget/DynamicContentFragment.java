@@ -1,15 +1,9 @@
 package com.moonsister.tcjy.center.widget;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,26 +14,20 @@ import android.widget.RelativeLayout;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.bean.DynamicContent;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.widget.PictureSelectorActivity;
 import com.moonsister.tcjy.main.widget.VideoSelectorActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.SDUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
 import com.moonsister.tcjy.widget.NoScrollGridView;
-import com.moonsister.tcjy.widget.RoundedImageView;
 import com.moonsister.tcjy.widget.speak.VoicePlay;
-import com.moonsister.tcjy.widget.takevideo.TakeVideoActivity;
 import com.trello.rxlifecycle.FragmentEvent;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -139,7 +127,7 @@ public class DynamicContentFragment extends BaseFragment {
 
     }
 
-    private void doClick(String id) {
+    public void doClick(String id) {
         switch (id) {
             case "1":
                 dynamicType = DynamicType.PIC;
@@ -266,6 +254,7 @@ public class DynamicContentFragment extends BaseFragment {
                 }
             });
         }
+        RxBus.getInstance().send(Events.EventEnum.RenZhengThreeActivity_res_change, null);
 
     }
 

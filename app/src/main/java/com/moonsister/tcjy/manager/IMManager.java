@@ -25,6 +25,7 @@ import com.hyphenate.util.NetUtils;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.utils.LogUtils;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import org.json.JSONObject;
@@ -366,12 +367,17 @@ public class IMManager {
                         JSONObject userinfo = message.getJSONObjectAttribute("userinfo");
                         String name = userinfo.getString("nike");
                         String avater = userinfo.getString("avater");
-                        EaseUser user = new EaseUser(message.getFrom());
+                        String from = message.getFrom();
+                        EaseUser eu = EaseUI.getInstance().getUserProfileProvider().getUser(from);
+                        if (eu != null && StringUtis.equals(eu.getAvatar(), avater) && StringUtis.equals(eu.getNick(), name)) {
+                            continue;
+                        }
+                        EaseUser user = new EaseUser(from);
                         user.setAvatar(avater);
                         user.setNick(name);
                         dao.saveUser(user);
+                        IMManager.getInstance().upUserInfo(from);
                         EaseUI instance = EaseUI.getInstance();
-
                         instance.getNotifier().onNewMsg(message);
                     }
                 } catch (Exception e) {

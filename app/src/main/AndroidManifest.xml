@@ -66,7 +66,9 @@
         <activity android:name=".main.widget.ManorGrilActivity"/>
         <activity
             android:name=".main.widget.MainActivity"
-            android:screenOrientation="portrait"></activity>
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"></activity>
 
         <!-- 友盟 start -->
         <meta-data
@@ -74,16 +76,16 @@
             android:value="57e63d92e0f55a159d002acd"/>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="OPPODAPIAN2002"/>
+            android:value="OPPOKANPIAN2004"/>
         <!--API  接口-->
         <meta-data
             android:name="API_CHANNEL"
-            android:value="2002"/>
+            android:value="2004"/>
         <!-- 友盟  end -->
         <!-- 高德 start -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="61154f9c7287a67749c89f29f747a708"/>
+            android:value="d96700c0f996fd9bc3cb5e5239ec7b2f"/>
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService"/>
         <!-- 高德 end -->
@@ -119,6 +121,7 @@
             android:name=".login.widget.RegActivity"
             android:launchMode="singleInstance"></activity>
         <activity android:name=".my.widget.RenZhengActivity"/>
+        <activity android:name=".main.widget.RenZhengThreeActivity"/>
         <activity
             android:name=".center.widget.DynamicSendActivity"
             android:screenOrientation="portrait"/>

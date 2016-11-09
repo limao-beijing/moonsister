@@ -18,6 +18,9 @@ import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.DynamicDatailsBean;
 import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
+import com.moonsister.tcjy.dialogFragment.BaseDialogFragment;
+import com.moonsister.tcjy.dialogFragment.DialogMannager;
+import com.moonsister.tcjy.dialogFragment.ImPermissionDialog;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
@@ -25,7 +28,9 @@ import com.moonsister.tcjy.main.presenter.DynamincDatailsPresenter;
 import com.moonsister.tcjy.main.presenter.DynamincDatailsPresenterImpl;
 import com.moonsister.tcjy.main.view.DynamicDatailsView;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.permission.UserPermissionManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
@@ -305,7 +310,7 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
                     LikeAction(StringUtis.isEmpty(likeType) || StringUtis.equals("4", likeType) ? "1" : likeType);
                 break;
             case R.id.btn_send:
-                sendComment();
+                checkPermssion();
                 break;
             case R.id.rl_reward:
                 if (mDatailsBean != null && mDatailsBean.getData() != null) {
@@ -398,9 +403,34 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
     /**
      * 发送评论
      */
+    private void checkPermssion() {
+        UserPermissionManager.getInstance().checkVip(EnumConstant.PermissionType.COMMENT, new UserPermissionManager.PermissionCallback() {
+            @Override
+            public void onStatus(EnumConstant.PermissionReasult reasult, int imCount, String sex) {
+                if (reasult == EnumConstant.PermissionReasult.HAVE_PERSSION) {
+                    sendComment();
+                } else if (reasult == EnumConstant.PermissionReasult.NOT_PERSSION) {
+                    DialogMannager.getInstance().showImPermission(sex, getSupportFragmentManager(), new ImPermissionDialog.OnCallBack() {
+                        @Override
+                        public void onStatus(BaseDialogFragment dialogFragment, EnumConstant.DialogCallBack statusCode) {
+                            if (statusCode == EnumConstant.DialogCallBack.CONFIRM) {
+                                if (StringUtis.equals("1", sex)) {
+                                    ActivityUtils.startBuyVipActivity();
+                                } else
+                                    ActivityUtils.startRenZhengThreeActivity();
+                                dialogFragment.dismissDialogFragment();
+                            } else if (statusCode == EnumConstant.DialogCallBack.CANCEL) {
+                                dialogFragment.dismissDialogFragment();
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
+    }
+
     private void sendComment() {
-        if (certificationStatus())
-            return;
         s = edInput.getText().toString();
         if (StringUtis.isEmpty(s)) {
             showToast(UIUtils.getStringRes(R.string.input) + UIUtils.getStringRes(R.string.not_empty));

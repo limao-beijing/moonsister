@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    >
+
+    <include layout="@layout/app_titlebar"/>
+
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/app_title_bar"
+        android:visibility="gone"></FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fl_content">
+
+        <ImageView
+            android:id="@+id/iv_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/x30"
+            android:src="@mipmap/renzheng_three_video"/>
+
+        <ImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv_video"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@+id/iv_video"
+            android:src="@mipmap/renzheng_three_pic"/>
+
+        <ImageView
+            android:id="@+id/iv_voice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv_video"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toRightOf="@+id/iv_video"
+            android:src="@mipmap/renzheng_three_voice"/>
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/iv_renzhen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/x50"
+        android:text="三种方式任选其一，认证后，你将享受"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_18"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_renzhen"
+        android:layout_margin="@dimen/x30"
+        android:layout_marginTop="@dimen/x50"
+        android:text="@string/renzheng_three_rule"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_14"/>
+
+    <TextView
+        android:id="@+id/tv_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/x30"
+        android:background="@drawable/shape_background_gray"
+        android:gravity="center"
+        android:padding="@dimen/x20"
+        android:text="@string/now_renzheng"
+        android:textColor="@color/white"/>
+</RelativeLayout>

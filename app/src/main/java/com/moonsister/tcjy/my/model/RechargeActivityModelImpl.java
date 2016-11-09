@@ -1,6 +1,5 @@
 package com.moonsister.tcjy.my.model;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 
 import com.alibaba.sdk.android.oss.ClientException;
@@ -8,30 +7,23 @@ import com.alibaba.sdk.android.oss.ServiceException;
 import com.moonsister.pay.aibeipay.AiBeiPayManager;
 import com.moonsister.pay.tencent.PayBean;
 import com.moonsister.tcjy.AppConstant;
+import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.DynamicContent;
-import com.moonsister.tcjy.bean.RechargeBean;
-import com.moonsister.tcjy.login.widget.RegActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.manager.aliyun.AliyunManager;
-import com.moonsister.tcjy.my.widget.MoneyActivity;
-import com.moonsister.tcjy.my.widget.RechargeActivity;
-import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.FastBlur;
 import com.moonsister.tcjy.utils.FilePathUtlis;
 import com.moonsister.tcjy.utils.ImageUtils;
-import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
 
 import java.io.File;
 import java.util.ArrayList;
 
 import rx.Observable;
-import rx.Scheduler;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -41,7 +33,7 @@ import rx.schedulers.Schedulers;
  */
 public class RechargeActivityModelImpl implements RechargeActivityModel {
     @Override
-    public void loadData(String money, String pay_type, onLoadDateSingleListener<RechargeBean> listener) {
+    public void loadData(String money, String pay_type, onLoadDateSingleListener listener) {
         Observable<PayBean> observable = ServerApi.getAppAPI().getrechargeBean(money, pay_type, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID, AppConstant.API_VERSION);
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -53,7 +45,7 @@ public class RechargeActivityModelImpl implements RechargeActivityModel {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
                     }
 
                     @Override
@@ -62,10 +54,10 @@ public class RechargeActivityModelImpl implements RechargeActivityModel {
                             AiBeiPayManager.getInstance().pay(ConfigUtils.getInstance().getActivityContext(), payBean.getData().getAbcode(), new AiBeiPayManager.AiBeiResultCallback() {
                                 @Override
                                 public void onPayResult(int resultCode, String resultInfo) {
-                                    if (StringUtis.equals(payBean.getCode(), "1")) {
-                                        ActivityUtils.startRechaargeMoneyActivity();
+                                    if (resultCode == 1) {
+                                        listener.onSuccess(resultInfo, DataType.DATA_ZERO);
                                     } else {
-                                        listener.onFailure(payBean.getMsg());
+                                        listener.onFailure(resultInfo);
                                     }
                                 }
                             });
@@ -77,9 +69,7 @@ public class RechargeActivityModelImpl implements RechargeActivityModel {
     }
 
 
-
-    public void upLoadVideo(String srcVideoPath, ArrayList< DynamicContent > aliyunPtahs, boolean isCharge) throws ClientException, ServiceException
-    {
+    public void upLoadVideo(String srcVideoPath, ArrayList<DynamicContent> aliyunPtahs, boolean isCharge) throws ClientException, ServiceException {
 
 
         //视频

@@ -41,4 +41,16 @@ public class DialogMannager {
         fragment.showDialogFragment(manager);
 
     }
+
+    /**
+     * 显示权限的弹框
+     *
+     * @param sex
+     * @param manager
+     */
+    public void showImPermission(String sex, FragmentManager manager, ImPermissionDialog.OnCallBack onCallBack) {
+        ImPermissionDialog dialog = ImPermissionDialog.newInstance(sex);
+        dialog.showDialogFragment(manager);
+        dialog.setOnCallBack(onCallBack);
+    }
 }

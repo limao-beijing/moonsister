@@ -66,10 +66,10 @@ public class SwitchCardActivity extends BaseActivity implements SwitchCardActivi
 
     @Override
     public void setCardInfos(List<CardInfoBean.DataBean> datas) {
-        String type =getIntent().getStringExtra("type");
-        String number = getIntent().getStringExtra("number");
+        String type = getIntent().getStringExtra("type");
+        String cardID = getIntent().getStringExtra("cardID");
         for (CardInfoBean.DataBean dataBean : datas) {
-            if (StringUtis.equals(dataBean.getBank_no(), number)&&StringUtis.equals(type,dataBean.getType()))
+            if (StringUtis.equals(dataBean.getId(), cardID) && StringUtis.equals(type, dataBean.getType()))
                 dataBean.setIs_default("1");
         }
         SwitchCardAdatper adatper = new SwitchCardAdatper(datas);
@@ -83,6 +83,8 @@ public class SwitchCardActivity extends BaseActivity implements SwitchCardActivi
                 data.setBank_name(dataBean.getBank_name());
                 data.setLogo(dataBean.getLogo());
                 data.setBank_no(dataBean.getBank_no());
+                data.setType(data.getType());
+                data.setId(dataBean.getId());
                 bean.setData(data);
 
                 Events<GetMoneyBean> events = new Events<>();

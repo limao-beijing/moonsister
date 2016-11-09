@@ -39,6 +39,7 @@ import com.moonsister.tcjy.main.widget.PictureSelectorActivity;
 import com.moonsister.tcjy.main.widget.RecommendMemberActivity;
 import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
 import com.moonsister.tcjy.main.widget.RelationActivity;
+import com.moonsister.tcjy.main.widget.RenZhengThreeActivity;
 import com.moonsister.tcjy.main.widget.SwitchItemActivity;
 import com.moonsister.tcjy.main.widget.UserinfoActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
@@ -367,9 +368,13 @@ public class ActivityUtils {
 
     /**
      * 提现
+     *
+     * @param withdraw_money
      */
-    public static void startGetMoneyActivity() {
-        startActivity(GetMoneyActivity.class);
+    public static void startGetMoneyActivity(int withdraw_money) {
+        Intent intent = getIntent(GetMoneyActivity.class);
+        intent.putExtra("withdraw_money", withdraw_money);
+        startActivity(intent);
     }
 
     /**
@@ -473,11 +478,11 @@ public class ActivityUtils {
      * 选择支付银行卡
      *
      * @param type
-     * @param number
+     * @param cardID
      */
-    public static void startSwitchCardActivity(String type, String number) {
+    public static void startSwitchCardActivity(String cardID, String type) {
         Intent intent = getIntent(SwitchCardActivity.class);
-        intent.putExtra("number", number);
+        intent.putExtra("cardID", cardID);
         intent.putExtra("type", type);
         startActivity(intent);
 
@@ -782,6 +787,17 @@ public class ActivityUtils {
 
     public static void starVideoDynamicActivity() {
         startActivity(VideoDynamicActivity.class);
+    }
+
+    /**
+     * 三版认证
+     */
+    public static void startRenZhengThreeActivity() {
+        if (UserInfoManager.getInstance().getMemoryPersonInfoDetail().getAttestation() == 2) {
+            UIUtils.showToast(getApplicationContext(), "认证中!");
+            return;
+        }
+        startActivity(RenZhengThreeActivity.class);
     }
 //    //我的页面不是会员    定义跳转的activity
 //    public static void startNoActivity() {

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
@@ -31,8 +30,6 @@ public class OneFragment extends BaseFragment implements BalanceActivityView{
     public MoneyAdapter mAdapter;
     int type;
     int page;
-    int pagesize;
-    String uid;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -103,9 +100,6 @@ public class OneFragment extends BaseFragment implements BalanceActivityView{
         onfragment_listview.loadMoreComplete();
         onfragment_listview.refreshComplete();
 
-    }
-    public void setUid(String uid) {
-        this.uid = uid;
     }
 
 }

@@ -72,9 +72,9 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
             ImageView vip_money;
     @Bind(R.id.fl_banner)
     ViewGroup fl_banner;
-    String[] images_text = new String[]{"我关注的", "关注我的", "动态管理", "VIP", "兴趣修改", "悬赏管理", "约见管理", "修改资料", "财务中心", "屏蔽手机联系人", "设置"};
+    private String[] images_text;
     //
-    int[] images = new int[]{R.mipmap.mysee, R.mipmap.seemy, R.mipmap.makemessage, R.mipmap.vipmoney, R.mipmap.insert, R.mipmap.xuanshang, R.mipmap.yousee, R.mipmap.make, R.mipmap.money, R.mipmap.phone, R.mipmap.domake};
+    int[] images;
     //    ,,
     HreatFragmentPersenter persenter;
     UserDetailBean.DataBean.BaseinfoBean data;
@@ -86,6 +86,16 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
         persenter = new HreatFragmentPresenterImpl();
         persenter.attachView(this);
         persenter.PaySubmit(uid);
+        String sex = UserInfoManager.getInstance().getUserSex();
+        if (images_text == null) {
+
+            images_text = new String[]{"我关注的", "关注我的", "动态管理", StringUtis.equals("1", sex) ? "VIP" : "认证", "兴趣修改", "悬赏管理", "约见管理", "修改资料", "财务中心", "屏蔽手机联系人", "设置"};
+        }
+        if (images == null) {
+            images = new int[]{R.mipmap.mysee, R.mipmap.seemy, R.mipmap.makemessage, StringUtis.equals("1", sex) ? R.mipmap.vipmoney : R.mipmap.viprenzheng,
+                    R.mipmap.insert, R.mipmap.xuanshang, R.mipmap.yousee,
+                    R.mipmap.make, R.mipmap.money, R.mipmap.phone, R.mipmap.domake};
+        }
         return UIUtils.inflateLayout(R.layout.my_zhuye);//加载主页
     }
 
@@ -133,18 +143,20 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
                 break;
             case R.mipmap.vipmoney://VIP充值
                 ActivityUtils.startBuyVipActivity();
-                break;
-            case R.mipmap.insert://兴趣选项
-                ActivityUtils.startInsertActivity(my);
-                break;
-            case R.mipmap.viprenzheng://申请认证
-                int status = UserInfoManager.getInstance().getCertificationStatus();
 
-                if (status != 3) {
+                break;
+            case R.mipmap.viprenzheng://兴趣选项
+                int status = UserInfoManager.getInstance().getCertificationStatus();
+                if (status == 1) {
+                    showToast("认证中");
+                } else if (status == 2) {
                     showToast("您已认证");
-                    return;
+                } else if (status == 3) {
+                    ActivityUtils.startRenZhengThreeActivity();
                 }
-                ActivityUtils.startRenZhengActivity();
+                break;
+            case R.mipmap.insert:
+                ActivityUtils.startInsertActivity(my);
                 break;
             case R.mipmap.make://修改资料
                 ActivityUtils.startPersonalReviseActivity();

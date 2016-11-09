@@ -4,7 +4,6 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.GetMoneyBean;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.model.GetMoneyModel;
@@ -46,7 +45,7 @@ public class GetMoneyPersenterImpl implements GetMoneyPersenter, BaseIModel.onLo
 
     @Override
     public void onSuccess(BaseBean bean, BaseIModel.DataType dataType) {
-        view.hideLoading();
+
         if (bean == null) {
             return;
         }
@@ -58,17 +57,17 @@ public class GetMoneyPersenterImpl implements GetMoneyPersenter, BaseIModel.onLo
             case DATA_ONE:
                 if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success)) {
                     RxBus.getInstance().send(Events.EventEnum.MONEY_CHANGE, null);
-                    UIUtils.sendDelayedOneMillis(new Runnable() {
+                    UIUtils.sendDelayed(new Runnable() {
                         @Override
                         public void run() {
                             view.pageFinish();
                         }
-                    });
-                } else {
-                    view.transfePageMsg(bean.getMsg());
+                    }, 2000);
                 }
+                view.transfePageMsg(bean.getMsg());
                 break;
         }
+        view.hideLoading();
 
 
     }

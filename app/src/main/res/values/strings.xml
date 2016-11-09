@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">大片免费超快播放</string>
+    <string name="app_name">影视大全-看片陌陌交友</string>
     <!--<string name="app_name">探探寂陌陌生人-求约爱</string>-->
     <string name="app_home_page">首页</string>
     <string name="app_im_page">聊天</string>
@@ -307,4 +307,11 @@
     <string name="man">男</string>
     <string name="women">女</string>
     <string name="find_pwd">找回密码</string>
+     <string name="renzheng_three_rule">1.不限次数接受男性会员约见，赴约后，将获得80%约见担保费。\n2.查看会员所有视频、图片、语音资料。\n3.与非好友会员聊天。\n4.查看会员微信、手机号。\n5.与会员视频、语音聊天。\n6.赠送每月5次免费主动约见，超出5次按每次50元支付约见担保费。
+</string>
+    <string name="now_renzheng">立即认证</string>
+    <string name="im_certification_text">为保障诚信交友行为，拒绝虚假信息，违法信息，酒托，婚托，诈骗诱骗等行为，您必须%1$s</string>
+    <string name="none_permission">对不起，您不是%1$s,无此权限</string>
+    <string name="confirm_im_vip_text">立即开通VIP</string>
+    <string name="confirm_im_renzheng_text">立即免费认证</string>
 </resources>

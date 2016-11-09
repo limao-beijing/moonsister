@@ -9,16 +9,18 @@ import com.moonsister.tcjy.base.BaseFragmentActivity;
 import com.moonsister.tcjy.center.presenter.DynamicPublishPresenter;
 import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
 import com.moonsister.tcjy.center.view.DefaultDynamicView;
+import com.moonsister.tcjy.dialogFragment.BaseDialogFragment;
+import com.moonsister.tcjy.dialogFragment.DialogMannager;
+import com.moonsister.tcjy.dialogFragment.ImPermissionDialog;
 import com.moonsister.tcjy.manager.GaodeManager;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.permission.UserPermissionManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.List;
-
-import im.gouyin.com.progressdialog.AlearDialog;
 
 /**
  * Created by jb on 2016/8/8.
@@ -42,39 +44,72 @@ public class DynamicPublishActivity extends BaseFragmentActivity implements View
         tv_title_right.setOnClickListener(this);
         presenter = new DynamicPublishPresenterImpl();
         presenter.attachView(this);
+
         return dyf;
+    }
+
+
+    private void checkPermsission() {
+        UserPermissionManager.getInstance().checkVip(EnumConstant.PermissionType.LATEST_PUB, new UserPermissionManager.PermissionCallback() {
+            @Override
+            public void onStatus(EnumConstant.PermissionReasult reasult, int imCount, String sex) {
+                if (reasult == EnumConstant.PermissionReasult.NOT_PERSSION) {
+                    DialogMannager.getInstance().showImPermission(sex, getSupportFragmentManager(), new ImPermissionDialog.OnCallBack() {
+                        @Override
+                        public void onStatus(BaseDialogFragment dialogFragment, EnumConstant.DialogCallBack statusCode) {
+                            if (statusCode == EnumConstant.DialogCallBack.CONFIRM) {
+                                if (StringUtis.equals("1", sex)) {
+                                    ActivityUtils.startBuyVipActivity();
+                                } else{
+                                    if (UserInfoManager.getInstance().getMemoryPersonInfoDetail().getAttestation() == 2) {
+                                        UIUtils.showToast(getApplicationContext(), "认证中!");
+                                        return;
+                                    }
+                                    ActivityUtils.startRenZhengThreeActivity();
+                                }
+
+                                dialogFragment.dismissDialogFragment();
+                            } else if (statusCode == EnumConstant.DialogCallBack.CANCEL) {
+                                finish();
+                            }
+
+                        }
+                    });
+                }
+            }
+        });
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        certificationStatus();
+        checkPermsission();
     }
 
-    public void certificationStatus() {
-        int certificationStatus = UserInfoManager.getInstance().getCertificationStatus();
-        if (certificationStatus == 3) {
-            AlearDialog alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_publish_1002, this);
-            alearDialog.setListenter(new AlearDialog.onClickListenter() {
-                @Override
-                public void clickType(AlearDialog.clickType type) {
-                    switch (type) {
-                        case cancel:
-                            finish();
-                            break;
-                        case confirm_vip:
-                            ActivityUtils.startBuyVipActivity();
-                            break;
-                        case confirm:
-                            ActivityUtils.startCertificationActivity();
-                            break;
-
-                    }
-                    alearDialog.dismiss();
-                }
-            });
-        }
-    }
+//    public void certificationStatus() {
+//        int certificationStatus = UserInfoManager.getInstance().getCertificationStatus();
+//        if (certificationStatus == 3) {
+//            AlearDialog alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_publish_1002, this);
+//            alearDialog.setListenter(new AlearDialog.onClickListenter() {
+//                @Override
+//                public void clickType(AlearDialog.clickType type) {
+//                    switch (type) {
+//                        case cancel:
+//                            finish();
+//                            break;
+//                        case confirm_vip:
+//                            ActivityUtils.startBuyVipActivity();
+//                            break;
+//                        case confirm:
+//                            ActivityUtils.startCertificationActivity();
+//                            break;
+//
+//                    }
+//                    alearDialog.dismiss();
+//                }
+//            });
+//        }
+//    }
 
     @Override
     public boolean isBaseonActivityResult() {

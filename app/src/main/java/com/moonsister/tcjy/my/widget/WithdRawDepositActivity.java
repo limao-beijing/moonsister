@@ -1,11 +1,9 @@
 package com.moonsister.tcjy.my.widget;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -26,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -53,6 +50,7 @@ public class WithdRawDepositActivity extends BaseActivity implements WithdRawDep
     private MyAccountTiXianFragment tiXianFragment;
     private List<Fragment> fragmentList;
     private WithdRawDepositPresenter presenter;
+    private int withdraw_money;
 
     @Override
     protected View setRootContentView() {
@@ -130,7 +128,8 @@ public class WithdRawDepositActivity extends BaseActivity implements WithdRawDep
     public void setloadEnableMoney(WithdRawDepositBean bean) {
         if (bean == null || bean.getData() == null)
             return;
-        tv_enable_money.setText(String.format(UIUtils.getStringRes(R.string.enable_money), bean.getData().getWithdraw_money()));
+        withdraw_money=bean.getData().getWithdraw_money();
+        tv_enable_money.setText(String.format(UIUtils.getStringRes(R.string.enable_money), withdraw_money));
         if (StringUtis.string2Double(bean.getData().getFrozen_money()) > 0) {
             get_certification_money.setVisibility(View.VISIBLE);
             tvCertificationMoney.setVisibility(View.VISIBLE);
@@ -193,7 +192,7 @@ public class WithdRawDepositActivity extends BaseActivity implements WithdRawDep
                 viewPager.setCurrentItem(0);
                 break;
             case R.id.get_money:
-                ActivityUtils.startGetMoneyActivity();
+                ActivityUtils.startGetMoneyActivity(withdraw_money);
                 break;
             case R.id.get_certification_money:
                 ActivityUtils.startRuleActivity();

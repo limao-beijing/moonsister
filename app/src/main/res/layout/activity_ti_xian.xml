@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/line_color"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/line_color"
+              android:orientation="vertical">
 
-    <include layout="@layout/app_titlebar" />
+    <include layout="@layout/app_titlebar"/>
 
     <RelativeLayout
 
@@ -15,18 +15,18 @@
         android:background="@color/white"
         android:padding="@dimen/x35">
 
-        <ImageView
+        <com.moonsister.tcjy.widget.RoundedImageView
             android:id="@+id/iv_bank_logo"
-            android:layout_width="@dimen/x150"
+            android:layout_width="@dimen/x120"
             android:layout_height="@dimen/x100"
             android:layout_centerVertical="true"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/x20"
+            android:layout_marginLeft="@dimen/x30"
             android:layout_toRightOf="@+id/iv_bank_logo"
             android:orientation="vertical">
 
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/loading"
                 android:textColor="@color/title_text"
-                android:textSize="@dimen/order_text_small6" />
+                android:textSize="@dimen/order_text_small6"/>
 
             <TextView
                 android:id="@+id/tv_bank_number"
@@ -45,7 +45,7 @@
                 android:layout_marginTop="@dimen/x15"
                 android:text="@string/loading"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/order_text_small2" />
+                android:textSize="@dimen/order_text_small2"/>
 
 
         </LinearLayout>
@@ -56,7 +56,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:padding="@dimen/x50"
-            android:src="@mipmap/panel_return" />
+            android:src="@mipmap/panel_return"/>
 
 
         <TextView
@@ -67,7 +67,7 @@
             android:gravity="center"
             android:text="@string/add_card"
             android:textColor="@color/text_black_color"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
     </RelativeLayout>
 
@@ -89,7 +89,7 @@
             android:gravity="center"
             android:padding="@dimen/x25"
             android:text="@string/add_alipay_card"
-            android:textColor="@color/text_black_color" />
+            android:textColor="@color/text_black_color"/>
 
         <TextView
             android:id="@+id/tv_add_bank_card"
@@ -102,14 +102,14 @@
             android:gravity="center"
             android:padding="@dimen/x25"
             android:text="@string/add_winxin_card"
-            android:textColor="@color/text_black_color" />
+            android:textColor="@color/text_black_color"/>
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/j_wheel_timebtn_pre" />
+        android:background="@color/j_wheel_timebtn_pre"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -122,9 +122,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
             android:text="转出金额："
             android:textColor="@color/title_text"
-            android:textSize="@dimen/order_text_small4" />
+            android:textSize="@dimen/order_text_small4"/>
 
         <EditText
             android:id="@+id/et_input_money"
@@ -133,54 +134,58 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/tv_money"
             android:background="@null"
-            android:text="本次可转出10001"
             android:inputType="number"
             android:padding="@dimen/x7"
+            android:paddingLeft="@dimen/x20"
             android:textColor="@color/text_color"
+            android:textColorHint="@color/text_gray_778998"
             android:textSize="@dimen/order_text_small4"
             />
 
     </RelativeLayout>
 
     <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:paddingLeft="@dimen/x25"-->
-        <!--android:paddingTop="@dimen/x15"-->
-        <!--android:text="每次转出金额需≥200" />-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:paddingLeft="@dimen/x25"-->
+    <!--android:paddingTop="@dimen/x15"-->
+    <!--android:text="每次转出金额需≥200" />-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/text_gray_color"
-        android:text="@string/withdraw_text"
-        android:layout_marginTop="@dimen/x20"
         android:layout_marginLeft="@dimen/x130"
+        android:layout_marginTop="@dimen/x20"
+        android:text="@string/withdraw_text"
+        android:textColor="@color/text_gray_color"
         />
 
     <!--<TextView-->
-        <!--android:id="@+id/tv_sure"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/x92"-->
-        <!--android:layout_gravity="center_horizontal"-->
-        <!--android:layout_marginLeft="@dimen/x30"-->
-        <!--android:layout_marginRight="@dimen/x30"-->
-        <!--android:layout_marginTop="@dimen/x100"-->
-        <!--android:background="@mipmap/btn_affirm" />-->
+    <!--android:id="@+id/tv_sure"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/x92"-->
+    <!--android:layout_gravity="center_horizontal"-->
+    <!--android:layout_marginLeft="@dimen/x30"-->
+    <!--android:layout_marginRight="@dimen/x30"-->
+    <!--android:layout_marginTop="@dimen/x100"-->
+    <!--android:background="@mipmap/btn_affirm" />-->
     <TextView
+        android:id="@+id/tv_sure"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_sure"
-        android:text="确认"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
         android:layout_marginTop="@dimen/y100"
         android:background="@mipmap/withdraw"
-        android:textSize="18sp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:text="确认"
+        android:textSize="18sp"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/text_gray_color"
-        android:text="@string/withdraw"
-        android:layout_marginTop="@dimen/x20"
         android:layout_marginLeft="@dimen/x480"
+        android:layout_marginTop="@dimen/x20"
+        android:text="@string/withdraw"
+        android:textColor="@color/text_gray_color"
         />
 </LinearLayout>

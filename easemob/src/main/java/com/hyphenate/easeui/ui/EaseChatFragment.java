@@ -115,6 +115,19 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
     private EMChatRoomChangeListener chatRoomChangeListener;
     private boolean isMessageListInited;
     protected MyItemClickListener extendMenuItemClickListener;
+    private boolean mPermssion;
+    private String mSex;
+    private int lastCount;
+
+    public void setPermission(String permssion, String s, int lastCount) {
+        if (TextUtils.equals("1", permssion))
+            this.mPermssion = true;
+        else if (TextUtils.equals("2", permssion))
+            this.mPermssion = false;
+        this.mSex = s;
+        this.lastCount = lastCount;
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -735,8 +748,14 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
         sendMessage(message);
     }
 
+    public boolean isCanSendMessage(EMMessage message) {
+        return true;
+    }
 
     protected void sendMessage(EMMessage message) {
+        if (!isCanSendMessage(message)) {
+            return;
+        }
         if (message == null) {
             return;
         }

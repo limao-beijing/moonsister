@@ -6,18 +6,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.hyphenate.chat.EMMessage;
 import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.db.HxUserDao;
 import com.hyphenate.easeui.domain.EaseUser;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.bean.PersonInfoDetail;
-import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.dialogFragment.BaseDialogFragment;
+import com.moonsister.tcjy.dialogFragment.DialogMannager;
+import com.moonsister.tcjy.dialogFragment.ImPermissionDialog;
+import com.moonsister.tcjy.event.Events;
+import com.moonsister.tcjy.event.RxBus;
+import com.moonsister.tcjy.im.SendMsgForServiceHelper;
+import com.moonsister.tcjy.permission.UserPermissionManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
-
-import im.gouyin.com.progressdialog.AlearDialog;
+import com.trello.rxlifecycle.ActivityEvent;
 
 
 /**
@@ -28,6 +34,7 @@ public class AppConversationActivity extends BaseActivity {
 
     private String mTargetId;
     private String toChatUsername;
+    private com.hyphenate.easeui.ui.ChatFragment chatFragment;
 
     @Override
     protected View setRootContentView() {
@@ -54,47 +61,76 @@ public class AppConversationActivity extends BaseActivity {
 
         mTargetId = getIntent().getExtras().getString(EaseConstant.EXTRA_USER_ID);
         getIntentDate(intent);
+        getPermission();
+
     }
-    @Override
-    protected void onStart() {
-        super.onStart();
+
+    private EnumConstant.PermissionReasult mReasult;
+    private String mSex;
+    private int mImCount;
+
+    public void getPermission() {
         if (!StringUtis.equals(mTargetId, "10000"))
-            certificationStatus();
-    }
-
-    public void certificationStatus() {
-
-        PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
-        if (memoryPersonInfoDetail.getVipStatus() == 1) {
-            return;
-        }
-        if (memoryPersonInfoDetail.getAttestation() != 3) {
-            return;
-        }
-        if (memoryPersonInfoDetail.getUserFriendList() != null && memoryPersonInfoDetail.getUserFriendList().contains(mTargetId)) {
-            return;
-        }
-        AlearDialog alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_im_1002, this);
-        alearDialog.setListenter(new AlearDialog.onClickListenter() {
-            @Override
-            public void clickType(AlearDialog.clickType type) {
-                switch (type) {
-                    case cancel:
-                        finish();
-                        break;
-                    case confirm_vip:
-                        ActivityUtils.startBuyVipActivity();
-                        break;
-                    case confirm:
-                        ActivityUtils.startCertificationActivity();
-                        break;
-
+            UserPermissionManager.getInstance().checkIMPermission(mTargetId, new UserPermissionManager.PermissionCallback() {
+                @Override
+                public void onStatus(EnumConstant.PermissionReasult reasult, int count, String sex) {
+                    mReasult = reasult;
+                    mSex = sex;
+                    mImCount = count;
+                    if (mReasult != EnumConstant.PermissionReasult.HAVE_PERSSION) {
+                        setRxbus();
+                    }
                 }
-                alearDialog.dismiss();
-            }
-        });
-
+            });
+        else {
+            mReasult = EnumConstant.PermissionReasult.HAVE_PERSSION;
+        }
     }
+
+    private void setRxbus() {
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.BUY_VIP_SUCCESS)
+                .onNext(events -> {
+                    mReasult = EnumConstant.PermissionReasult.HAVE_PERSSION;
+                }).create();
+    }
+
+
+//        PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
+//        if (memoryPersonInfoDetail.getVipStatus() == 1) {
+//            return;
+//        }
+//        if (memoryPersonInfoDetail.getAttestation() != 3) {
+//            return;
+//        }
+//        if (memoryPersonInfoDetail.getUserFriendList() != null && memoryPersonInfoDetail.getUserFriendList().contains(mTargetId)) {
+//            return;
+//        }
+//        AlearDialog alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_im_1002, this);
+//        alearDialog.setListenter(new AlearDialog.onClickListenter() {
+//            @Override
+//            public void clickType(AlearDialog.clickType type) {
+//                switch (type) {
+//                    case cancel:
+//                        finish();
+//                        break;
+//                    case confirm_vip:
+//                        if (StringUtis.equals("1", sex))
+//                            ActivityUtils.startBuyVipActivity();
+//                        else
+//                            ActivityUtils.startRenZhengThreeActivity();
+//                        break;
+//                    case confirm:
+//                        ActivityUtils.startCertificationActivity();
+//                        break;
+//
+//                }
+//                alearDialog.dismiss();
+//            }
+//        });
+
+//    }
 
     @Override
     protected String initTitleName() {
@@ -125,8 +161,8 @@ public class AppConversationActivity extends BaseActivity {
      * @param
      * @param mTargetId
      */
-    private void enterFragment(String mTargetId) {
 
+    private void enterFragment(String mTargetId) {
 
         Bundle extras = getIntent().getExtras();
         toChatUsername = extras.getString(EaseConstant.EXTRA_USER_ID);
@@ -136,36 +172,58 @@ public class AppConversationActivity extends BaseActivity {
         user.setAvatar(extras.getString(EaseConstant.EXTRA_USER_AVATER));
         user.setNick(extras.getString(EaseConstant.EXTRA_USER_NIKE));
         dao.saveUser(user);
-        com.hyphenate.easeui.ui.ChatFragment chatFragment = new com.hyphenate.easeui.ui.ChatFragment();
+
+        chatFragment = new com.hyphenate.easeui.ui.ChatFragment() {
+            @Override
+            public boolean isCanSendMessage(EMMessage message) {
+                boolean isSend = false;
+                switch (mReasult) {
+                    case HAVE_PERSSION:
+                        isSend = true;
+                        break;
+                    case NOT_PERSSION:
+                        if (mImCount > 0) {
+                            isSend = true;
+                            mImCount--;
+                        } else {
+                            isSend = false;
+                            showPermissionDialog();
+                        }
+                        break;
+                    case NOT_NET:
+                        isSend = false;
+                        showToast(getString(R.string.request_failed));
+                        break;
+                }
+                if (mHelper == null)
+                    mHelper = new SendMsgForServiceHelper();
+                if (mReasult != EnumConstant.PermissionReasult.HAVE_PERSSION)
+                    mHelper.send(message);
+                return isSend;
+            }
+        };
         //set arguments
         chatFragment.setArguments(extras);
         getSupportFragmentManager().beginTransaction().add(R.id.conversation, chatFragment).commit();
-//        Conversation.ConversationType mConversationType;
-//        UriFragment fragment;
-//        if (!StringUtis.equals(getIntent().getData().getPath(), SYSTEM_PATH)) {
-//            mConversationType = Conversation.ConversationType.PRIVATE;
-//            fragment = new ConversationFragment();
-//        } else {
-//            mConversationType = Conversation.ConversationType.SYSTEM;
-//            fragment = new MessageListFragment();
-//        }
+
 //
-//        Uri uri = Uri.parse("rong://" + getApplicationInfo().packageName).buildUpon()
-//                .appendPath("conversation").appendPath(mConversationType.getName().toLowerCase())
-//                .appendQueryParameter("targetId", mTargetId).build();
-//
-//        fragment.setUri(uri);
-//
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        //xxx 为你要加载的 id
-//        transaction.add(R.id.conversation, fragment);
-//        transaction.commit();
-//        RxBus.with(this)
-//                .setEndEvent(ActivityEvent.DESTROY)
-//                .setEvent(Events.EventEnum.CHAT_SEND_REDPACKET_SUCCESS)
-//                .onNext(events -> {
-//                    RongyunManager.getInstance().sendRedPacketMessage(mTargetId, (String) events.message);
-//                })
-//                .create();
+    }
+
+    private SendMsgForServiceHelper mHelper;
+
+    private void showPermissionDialog() {
+        DialogMannager.getInstance().showImPermission(mSex, getSupportFragmentManager(), new ImPermissionDialog.OnCallBack() {
+            @Override
+            public void onStatus(BaseDialogFragment dialogFragment, EnumConstant.DialogCallBack statusCode) {
+                if (statusCode == EnumConstant.DialogCallBack.CONFIRM) {
+                    if (StringUtis.equals("1", mSex))
+                        ActivityUtils.startBuyVipActivity();
+                    else
+                        ActivityUtils.startRenZhengThreeActivity();
+                    dialogFragment.dismissDialogFragment();
+                }
+
+            }
+        });
     }
 }

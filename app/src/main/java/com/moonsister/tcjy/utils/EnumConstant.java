@@ -56,6 +56,9 @@ public class EnumConstant {
         }
     }
 
+    /**
+     * 搜索类型
+     */
     public enum SearchType {
         all(0), user(1), dynamic(2);
         private final int type;
@@ -67,5 +70,40 @@ public class EnumConstant {
         public int getType() {
             return type;
         }
+    }
+
+    /**
+     * 请求权限接口类型
+     */
+    public enum PermissionType {
+        CHAT_ACT("CHAT_ACT"), //是否可聊天
+        SEE_LATEST("SEE_LATEST"),//是否可看动态
+        COMMENT("COMMENT"),//是否可评论
+        LATEST_VIP("LATEST_VIP"),// 是否看动态VIP
+        LATEST_PUB("LATEST_PUB");//发布动态
+
+        private final String type;
+
+        private PermissionType(String type) {
+            this.type = type;
+        }
+
+        public String getType() {
+            return type;
+        }
+    }
+
+    /**
+     * 回调权限接口
+     */
+    public enum PermissionReasult {
+        NOT_PERSSION, HAVE_PERSSION, NOT_NET;//无网络
+    }
+
+    /**
+     * 弹出回调
+     */
+    public enum DialogCallBack {
+        CANCEL, CONFIRM,
     }
 }

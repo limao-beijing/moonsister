@@ -33,7 +33,7 @@ public class AddCardActivity extends BaseActivity implements AddCardActivityView
 
     @Override
     protected String initTitleName() {
-        return UIUtils.getStringRes(R.string.withdraw_deposit);
+        return getIntent().getStringExtra("bankname");
     }
 
     @Override

@@ -25,6 +25,7 @@ import com.moonsister.tcjy.bean.LableBean;
 import com.moonsister.tcjy.bean.LoginBean;
 import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
+import com.moonsister.tcjy.bean.PermissionBean;
 import com.moonsister.tcjy.bean.PersonalMessageBean;
 import com.moonsister.tcjy.bean.PersonalReviseMessageBean;
 import com.moonsister.tcjy.bean.PingbiBean;
@@ -1269,6 +1270,34 @@ public class ServerApi {
                                              @Query("authcode") String authcode,
                                              @Query("channel") String channelId,
                                              @Query("adtype") String adtype);
+
+        /**
+         * 认证申请:第二步，提交媒体数据信息【品牌版】
+         *
+         * @param content
+         * @param authcode
+         * @param id
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("apply/goadd_info_v")
+        Observable<BaseBean> getRenzhengThree(@Field("apply_image") String content,
+                                              @Field("authcode") String authcode,
+                                              @Field("channel") String id);
+
+
+        /**
+         * 权限检查
+         *
+         * @param authcode
+         * @param type
+         * @param id
+         * @return
+         */
+        @GET("")
+        Observable<PermissionBean> checkVip(@Query("authcode") String authcode,
+                                            @Query("act_type") String type,
+                                            @Query("channel") String id);
     }
 }
 

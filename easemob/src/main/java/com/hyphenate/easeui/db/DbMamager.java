@@ -51,6 +51,7 @@ public class DbMamager {
                     user.setNick(query.getString(query.getColumnIndex(HxUserDao.COLUMN_NAME_NICK)));
                 }
             }
+            query.close();
         }
         return user;
 

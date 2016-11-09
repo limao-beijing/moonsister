@@ -1,16 +1,12 @@
 package com.moonsister.tcjy.my.widget;
 
-import android.app.Activity;
-import android.content.SharedPreferences;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
@@ -24,6 +20,7 @@ import com.moonsister.tcjy.my.view.GetMoneyView;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tcjy.widget.RoundedImageView;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import java.util.regex.Matcher;
@@ -38,28 +35,27 @@ import butterknife.OnClick;
  */
 public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
     @Bind(R.id.iv_bank_logo)
-    ImageView ivBankLogo;
+    RoundedImageView ivBankLogo;
     @Bind(R.id.tv_bank_name)
     TextView tvBankName;
     @Bind(R.id.tv_bank_number)
     TextView tvBankNumber;
     @Bind(R.id.et_input_money)//转出金额输入框
-    EditText etInputMoney;
+            EditText etInputMoney;
     @Bind(R.id.tv_add_card)
     TextView tv_add_card;
     @Bind(R.id.tv_sure)//确认按钮
-    TextView tv_sure;
+            TextView tv_sure;
     @Bind(R.id.layout_swicth_card)
     RelativeLayout layout_swicth_card;
     private GetMoneyPersenter persenter;
-    private String number;
+    private String cardID;
     private String cardType;
 
     @Override
     protected View setRootContentView() {
         persenter = new GetMoneyPersenterImpl();
         persenter.attachView(this);
-
         return UIUtils.inflateLayout(R.layout.activity_ti_xian);
     }
 
@@ -71,12 +67,9 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
 
     @Override
     protected void initView() {
-        //同样，在读取SharedPreferences数据前要实例化出一个SharedPreferences对象
-        SharedPreferences sharedPreferences= getSharedPreferences("test", Activity.MODE_PRIVATE);
-        // 使用getInt方法获得value，注意第2个参数是value的默认值
-        int withdraw_money = sharedPreferences.getInt("withdraw_money", 0);
-        etInputMoney.setText("本次可转出"+withdraw_money);
-        InputFilter[] filters = {new InputFilter.LengthFilter(5)};//设置提现输入框的最大值
+        int money = getIntent().getIntExtra("withdraw_money", 0);
+        etInputMoney.setHint("本次可转出" + money);
+        InputFilter[] filters = {new InputFilter.LengthFilter(10)};//设置提现输入框的最大值
         etInputMoney.setFilters(filters);
         etInputMoney.addTextChangedListener(new TextWatcher() {
             @Override
@@ -94,7 +87,7 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
                 String s = etInputMoney.getText().toString();
                 Pattern p = Pattern.compile("[0-9]*");
                 Matcher m = p.matcher(s);
-                if(m.matches()){
+                if (m.matches()) {
                     tv_sure.setBackgroundResource(R.mipmap.recharge);
                 }
             }
@@ -108,7 +101,7 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.layout_swicth_card:
-                ActivityUtils.startSwitchCardActivity(number, cardType);
+                ActivityUtils.startSwitchCardActivity(cardID, cardType);
                 setSwicthCardRxbus();
                 break;
             case R.id.tv_add_alipay:
@@ -119,7 +112,7 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
                 ActivityUtils.startAddCardActivity(UIUtils.getStringRes(R.string.winxinpay), "3");
                 break;
             case R.id.tv_sure:
-                if (StringUtis.isEmpty(number)) {
+                if (StringUtis.isEmpty(cardID)) {
                     showToast(UIUtils.getStringRes(R.string.switch_card));
                     return;
                 }
@@ -135,7 +128,7 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
                     return;
                 }
 
-                persenter.PaySubmit(number, i);
+                persenter.PaySubmit(cardID, i);
                 break;
 
         }
@@ -184,9 +177,9 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
         layout_swicth_card.setFocusable(true);
         tv_add_card.setVisibility(View.GONE);
         tvBankName.setText(data.getBank_name());
-        number = data.getBank_no();
+        cardID = data.getId();
         cardType = data.getType();
-        tvBankNumber.setText(number);
+        tvBankNumber.setText(data.getBank_no());
         ImageServerApi.showURLSamllImage(ivBankLogo, data.getLogo());
 
 
