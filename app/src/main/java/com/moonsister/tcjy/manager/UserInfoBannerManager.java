@@ -11,7 +11,7 @@ import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.bean.UserInfoBannerBean;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import rx.Observable;

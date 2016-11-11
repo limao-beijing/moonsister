@@ -7,8 +7,8 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.TiXinrRecordBean;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.StringUtis;
-import com.moonsister.tcjy.utils.TimeUtils;
+import com.moonsister.tool.lang.StringUtis;
+import com.moonsister.tool.time.TimeUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;

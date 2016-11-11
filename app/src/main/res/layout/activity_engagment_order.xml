@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/gray_e6ebee"
+              android:orientation="vertical">
+
+    <include layout="@layout/app_titlebar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x240"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/x60"
+                android:layout_marginRight="@dimen/x60"
+                android:layout_marginTop="@dimen/x30"
+                android:background="@mipmap/engagement_avater_bg">
+
+                <TextView
+                    android:id="@+id/tv_engagement"
+                    style="@style/text_engament_main"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/x10"
+                    android:text="@string/asleep"
+                    android:textColor="@color/black"/>
+
+                <com.moonsister.tcjy.widget.CircularImageView
+                    android:id="@+id/civ_user_avater"
+                    android:layout_width="@dimen/x200"
+                    android:layout_height="@dimen/y200"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x20"
+                    android:src="@mipmap/ic_launcher"/>
+
+                <com.moonsister.tcjy.widget.CircularImageView
+                    android:id="@+id/civ_user_avatered"
+                    android:layout_width="@dimen/x200"
+                    android:layout_height="@dimen/y200"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x20"
+                    android:src="@mipmap/ic_launcher"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/x60"
+                android:layout_marginRight="@dimen/x60"
+                android:layout_marginTop="@dimen/x30"
+                >
+
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x40"
+                    android:layout_marginTop="@dimen/x24"
+                    android:paddingLeft="@dimen/x20"
+                    android:text="@string/loading"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_13"/>
+
+                <TextView
+                    android:id="@+id/tv_user_nameed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x20"
+                    android:gravity="center"
+
+                    android:paddingRight="@dimen/x10"
+                    android:text="@string/loading"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_13"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x88"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginRight="@dimen/x30"
+                android:layout_marginTop="@dimen/x20"
+                android:background="@drawable/shape_bg_engagement_text">
+
+                <TextView
+                    android:id="@+id/tv_engagement_pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:text="@string/engagement_pay"
+                    android:textColor="@color/black_1a2729"
+                    android:textSize="@dimen/text_size_16"/>
+
+                <EditText
+                    android:id="@+id/et_input_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/x30"
+                    android:layout_toRightOf="@+id/tv_engagement_pay"
+                    android:background="@null"
+                    android:hint="@string/input_engagement_pay_number"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/x20"
+                    android:textColor="@color/red_d96385"
+                    android:textColorHint="@color/gray_alacad"
+                    android:textSize="@dimen/text_size_16"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x88"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginRight="@dimen/x30"
+                android:layout_marginTop="@dimen/x20"
+                android:background="@drawable/shape_bg_engagement_text">
+
+                <TextView
+                    android:id="@+id/tv_engagement_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:text="@string/engagement_date"
+                    android:textColor="@color/black_1a2729"
+                    android:textSize="@dimen/text_size_16"/>
+
+                <TextView
+                    android:id="@+id/et_input_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/x30"
+                    android:layout_toRightOf="@+id/tv_engagement_date"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/input_engagement_pay_date"
+                    android:inputType="numberDecimal"
+                    android:paddingLeft="@dimen/x20"
+                    android:textColor="@color/black_1a2729"
+                    android:textColorHint="@color/gray_alacad"
+                    android:textSize="@dimen/text_size_16"/>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x88"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginRight="@dimen/x30"
+                android:layout_marginTop="@dimen/x20"
+                android:background="@drawable/shape_bg_engagement_text">
+
+                <TextView
+                    android:id="@+id/tv_engagement_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:text="@string/engagement_address"
+                    android:textColor="@color/black_1a2729"
+                    android:textSize="@dimen/text_size_16"/>
+
+                <EditText
+                    android:id="@+id/et_input_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignBaseline="@+id/tv_engagement_address"
+                    android:layout_alignBottom="@+id/tv_engagement_address"
+                    android:layout_marginRight="@dimen/x30"
+                    android:layout_toEndOf="@+id/tv_engagement_address"
+                    android:background="@null"
+                    android:hint="@string/input_engagement_pay_address"
+                    android:paddingLeft="@dimen/x20"
+                    android:textColor="@color/black_1a2729"
+                    android:textColorHint="@color/gray_alacad"
+                    android:textSize="@dimen/text_size_16"/>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x180"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginRight="@dimen/x30"
+                android:layout_marginTop="@dimen/x20"
+                android:background="@drawable/shape_bg_engagement_text">
+
+                <TextView
+
+                    android:id="@+id/tv_engagement_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_marginTop="@dimen/x10"
+                    android:gravity="left|top"
+                    android:text="@string/engagement_message"
+                    android:textColor="@color/black_1a2729"
+                    android:textSize="@dimen/text_size_16"/>
+
+                <EditText
+                    android:id="@+id/et_engagement_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/x30"
+                    android:layout_marginTop="@dimen/x10"
+                    android:layout_toRightOf="@+id/tv_engagement_message"
+                    android:background="@null"
+                    android:enabled="true"
+                    android:gravity="left"
+                    android:hint="@string/hint_engagement_message"
+                    android:paddingLeft="@dimen/x20"
+                    android:textColor="@color/black_1a2729"
+                    android:textColorHint="@color/gray_alacad"
+                    android:textSize="@dimen/text_size_16"/>
+            </RelativeLayout>
+
+            <!--<RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_center_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="@dimen/x86"
+                    android:text="@string/engagement_pay_text"
+                    android:textColor="@color/text_gray_737c7d"
+                    android:textSize="@dimen/text_size_16"/>
+
+
+                <View
+                    style="@style/horizontal_line_style"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/tv_center_txt"/>
+
+                <View
+                    style="@style/horizontal_line_style"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_center_txt"/>
+
+            </RelativeLayout>-->
+
+            <TextView
+                android:id="@+id/tv_engagement_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginRight="@dimen/x30"
+                android:layout_marginTop="@dimen/x50"
+                android:text="@string/loading"
+                android:textColor="@color/text_gray_737c7d"
+                android:textSize="@dimen/text_size_13"/>
+
+            <TextView
+                android:id="@+id/tv_sumbit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x80"
+                android:layout_margin="@dimen/x30"
+                android:background="@drawable/shape_engagement_pay"
+                android:gravity="center"
+                android:text="@string/once_ensure"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_20"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -17,14 +17,13 @@ import com.moonsister.tcjy.home.presenetr.SearchReasonFragmentPersenter;
 import com.moonsister.tcjy.home.presenetr.SearchReasonFragmentPersenterImpl;
 import com.moonsister.tcjy.home.view.SearchReasonFragmentView;
 import com.moonsister.tcjy.utils.EnumConstant;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.widget.XListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**

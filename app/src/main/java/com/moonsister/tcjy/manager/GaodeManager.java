@@ -6,14 +6,13 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tcjy.utils.PrefUtils;
+import com.moonsister.tool.file.PrefUtils;
 
 import java.util.ArrayList;
 
@@ -59,7 +58,7 @@ public class GaodeManager implements AMapLocationListener {
         LogUtils.e(this, "-------- finish loclocation---------");
         if (aMapLocation != null) {
             LogUtils.d(this, aMapLocation.toStr());
-            PrefUtils.setString(GaodeManager.class.getName(), aMapLocation.toStr());
+            PrefUtils.setString(ConfigUtils.getInstance().getApplicationContext(), GaodeManager.class.getName(), aMapLocation.toStr());
             if (UserInfoManager.getInstance().isLogin()) {
                 Observable<DefaultDataBean> observable = ServerApi.getAppAPI().uploadLoation(aMapLocation.toStr(), UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
                 ObservableUtils.parser(observable, null);
@@ -74,7 +73,7 @@ public class GaodeManager implements AMapLocationListener {
     }
 
     public String getStringAdress() {
-        return PrefUtils.getString(GaodeManager.class.getName(), "");
+        return PrefUtils.getString(ConfigUtils.getInstance().getApplicationContext(), GaodeManager.class.getName(), "");
     }
 
     // 根据控件的选择，重新设置定位参数

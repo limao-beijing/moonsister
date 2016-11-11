@@ -4,13 +4,12 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.HomeTopItemBean;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.home.model.HomeTopItemFragmentModel;
 import com.moonsister.tcjy.home.model.HomeTopItemFragmentModelImpl;
 import com.moonsister.tcjy.home.view.HomeTopItemFragmentView;
 import com.moonsister.tcjy.utils.EnumConstant;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tool.lang.StringUtis;
 
 import java.util.List;
 

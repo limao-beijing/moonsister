@@ -13,7 +13,7 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.persenter.SwitchCardActivityPresenter;
 import com.moonsister.tcjy.my.persenter.SwitchCardActivityPresenterImpl;
 import com.moonsister.tcjy.my.view.SwitchCardActivityView;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.XListView;
 

@@ -6,8 +6,8 @@ import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.login.model.RegActivityModel;
 import com.moonsister.tcjy.login.model.RegActivityModelImpl;
 import com.moonsister.tcjy.login.view.RegThridActivityView;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by x on 2016/8/31.

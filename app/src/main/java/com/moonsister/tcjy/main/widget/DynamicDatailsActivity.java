@@ -32,12 +32,12 @@ import com.moonsister.tcjy.permission.UserPermissionManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.CommentDynacmicViewHolder;
 import com.moonsister.tcjy.viewholder.homepage.HomePagePicViewHolder;
 import com.moonsister.tcjy.viewholder.homepage.HomePageVideoViewHolder;
 import com.moonsister.tcjy.widget.XListView;
+import com.moonsister.tool.lang.StringUtis;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import java.util.List;

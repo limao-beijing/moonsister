@@ -131,6 +131,12 @@
         <activity
             android:name=".widget.image.ShowImageActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".engagement.widget.EngegamentPublishActivity"/>
+        <activity android:name=".engagement.widget.EngagementManagerActivity"/>
+        <activity android:name=".engagement.widget.EngegamentAppealActivity"/>
+        <activity android:name=".engagement.widget.EngegamentRecommendActivity"/>
+        <activity android:name=".engagement.widget.EngagemengOrderActivity"/>
+        <activity android:name=".engagement.widget.EngagementDetailsActivity"/>
         <activity
             android:name=".center.widget.DefaultDynamicSendActivity"
             android:screenOrientation="portrait"/>
@@ -280,8 +286,6 @@
         <activity
             android:name=".main.widget.DynamicAtionActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-
-
         <activity android:name=".my.widget.RuleActivity"></activity>
         <activity android:name=".my.widget.MakeMessageActivity"></activity>
         <activity android:name=".my.widget.PersonalActivity"></activity>

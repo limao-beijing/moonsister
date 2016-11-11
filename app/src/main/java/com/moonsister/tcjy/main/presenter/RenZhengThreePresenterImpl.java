@@ -8,8 +8,8 @@ import com.moonsister.tcjy.main.model.RenZhengThreeModel;
 import com.moonsister.tcjy.main.model.RenZhengThreeModelImpl;
 import com.moonsister.tcjy.main.view.RenZhengThreeView;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tool.lang.StringUtis;
 
 import java.util.List;
 

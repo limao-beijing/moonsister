@@ -16,7 +16,7 @@ import com.moonsister.tcjy.my.persenter.WithdRawDepositPresenter;
 import com.moonsister.tcjy.my.persenter.WithdRawDepositPresenterImpl;
 import com.moonsister.tcjy.my.view.WithdRawDepositView;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 

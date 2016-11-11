@@ -4,10 +4,9 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.bean.PingbiBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import rx.Observable;

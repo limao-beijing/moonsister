@@ -7,7 +7,7 @@ import com.moonsister.tcjy.main.model.HomePageFragmentModel;
 import com.moonsister.tcjy.main.model.HomePageFragmentModelImpl;
 import com.moonsister.tcjy.main.view.HomePageFragmentView;
 import com.moonsister.tcjy.utils.EnumConstant;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 
 import java.util.List;
 

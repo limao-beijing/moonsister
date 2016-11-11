@@ -15,7 +15,7 @@ import com.moonsister.tcjy.my.persenter.RZSecondPersenter;
 import com.moonsister.tcjy.my.persenter.RZSecondPersenterImpl;
 import com.moonsister.tcjy.my.view.RZSecondView;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.NoScrollGridView;
 import com.trello.rxlifecycle.ActivityEvent;

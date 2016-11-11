@@ -2,7 +2,6 @@ package com.moonsister.tcjy.main.widget;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -19,7 +18,7 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.presenter.RedpacketAcitivityPresenter;
 import com.moonsister.tcjy.main.presenter.RedpacketAcitivityPresenterImpl;
 import com.moonsister.tcjy.main.view.PlayUserAcitivityView;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 import com.trello.rxlifecycle.ActivityEvent;

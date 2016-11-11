@@ -9,7 +9,7 @@ import com.moonsister.tcjy.center.widget.DynamicContentFragment;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.manager.aliyun.AliyunManager;
 import com.moonsister.tcjy.utils.FilePathUtlis;
-import com.moonsister.tcjy.utils.JsonUtils;
+import com.moonsister.tool.parse.JsonUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 

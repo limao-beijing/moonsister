@@ -10,10 +10,9 @@ import com.moonsister.tcjy.adapter.PingbiAdapter;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.bean.FrientBaen;
 import com.moonsister.tcjy.bean.PingbiBean;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 
 import butterknife.Bind;
 

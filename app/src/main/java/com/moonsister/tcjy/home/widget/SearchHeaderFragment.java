@@ -11,10 +11,9 @@ import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**

@@ -9,7 +9,7 @@ import com.moonsister.tcjy.manager.aliyun.AliyunManager;
 import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.FilePathUtlis;
-import com.moonsister.tcjy.utils.MD5Util;
+import com.moonsister.tool.security.MD5Util;
 import com.moonsister.tcjy.utils.ObservableUtils;
 
 import rx.Observable;

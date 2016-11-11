@@ -13,8 +13,6 @@
  */
 package com.moonsister.tcjy.widget.speak;
 
-import java.io.File;
-
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.AudioManager;
@@ -22,7 +20,7 @@ import android.media.MediaPlayer;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 
 
 public class VoicePlay {

@@ -1,11 +1,12 @@
 package com.moonsister.tcjy.base;
 
+import android.os.Looper;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.moonsister.tcjy.bean.BaseDataBean;
-import com.moonsister.tcjy.bean.PingbiBean;
+import com.moonsister.tcjy.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +16,21 @@ import java.util.List;
  */
 public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends RecyclerView.Adapter {
     protected List<T> datas;
+    protected BaseIView mBaseIView;
+
 //    private int layoutID;
 
     public BaseRecyclerViewAdapter(List<T> list) {
+        if (list == null) {
+            list = new ArrayList<T>();
+        }
         this.datas = list;
 //        this.layoutID = layoutID;
     }
 
-
+    public BaseIView getBaseIView() {
+        return mBaseIView;
+    }
 
     @Override
     public int getItemViewType(int position) {
@@ -104,6 +112,15 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends Re
         }
     }
 
+    /**
+     * 获取数据
+     *
+     * @return
+     */
+    public List<T> getDatas() {
+        return datas;
+    }
+
     public interface onItemClickListener {
         void onItemclick(View view, int position);
     }
@@ -157,6 +174,9 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends Re
     }
 
     public void onRefresh() {
+        if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
+            LogUtils.e(this, "主线程");
+        }
         notifyDataSetChanged();
     }
 

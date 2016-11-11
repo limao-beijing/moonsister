@@ -10,11 +10,11 @@
         android:gravity="center_vertical">
 
         <RelativeLayout
-            android:visibility="gone"
             android:id="@+id/rl_reward"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/tv_reward"
@@ -55,8 +55,6 @@
             style="@style/vertical_line"
             android:layout_marginBottom="@dimen/x15"
             android:layout_marginTop="@dimen/x15"/>
-        android:layout_marginTop="@dimen/x15"/>
-
         <RelativeLayout
             android:id="@+id/rl_wacth"
             android:layout_width="0dp"

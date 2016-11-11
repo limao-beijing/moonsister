@@ -3,7 +3,7 @@ package com.moonsister.tcjy.permission;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.PermissionBean;
 import com.moonsister.tcjy.utils.EnumConstant;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/11/6.

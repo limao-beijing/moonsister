@@ -13,9 +13,9 @@ import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
+import com.moonsister.tool.lang.StringUtis;
 
 import butterknife.Bind;
 

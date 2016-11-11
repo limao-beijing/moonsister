@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Toast;
@@ -17,7 +16,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tcjy.utils.URIUtils;
+import com.moonsister.tool.url.URIUtils;
 import com.soundcloud.android.crop.Crop;
 
 import java.io.File;
@@ -144,8 +143,8 @@ public class SelectPicPopupActivity extends Activity {
 //            Bitmap photo = extras.getParcelable("data");
             Uri output = Crop.getOutput(picdata);
 //            Bitmap bmCoompress = null;
-//            bmCoompress = IconCompress.comp(photo);
-//            File file = IconCompress.saveBitmap(bmCoompress,
+//            bmCoompress = ImageFileCompress.comp(photo);
+//            File file = ImageFileCompress.saveBitmap(bmCoompress,
 //                    GlobalConstantUtils.HEAD_ICON_SAVEPATH, System.currentTimeMillis() + ".jpg");
 
             seedRxBusMsg(URIUtils.getRealFilePath(this, output));

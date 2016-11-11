@@ -18,10 +18,10 @@ import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.StringUtis;
-import com.moonsister.tcjy.utils.TimeUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
+import com.moonsister.tool.lang.StringUtis;
+import com.moonsister.tool.time.TimeUtils;
 
 import butterknife.Bind;
 

@@ -8,7 +8,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.CommentDataListBean;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.TimeUtils;
+import com.moonsister.tool.time.TimeUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
 import butterknife.Bind;

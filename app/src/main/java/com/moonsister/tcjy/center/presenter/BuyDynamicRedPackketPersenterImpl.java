@@ -12,8 +12,8 @@ import com.moonsister.tcjy.center.view.BuyDynamicRedPackketView;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.utils.EnumConstant;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/6/29.

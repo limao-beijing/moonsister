@@ -1,5 +1,7 @@
 package com.moonsister.tcjy.utils;
 
+import java.io.Serializable;
+
 /**
  * Created by jb on 2016/8/11.
  */
@@ -106,4 +108,39 @@ public class EnumConstant {
     public enum DialogCallBack {
         CANCEL, CONFIRM,
     }
+
+    public enum EngegamentType implements Serializable {
+        All(0), meal(1), fadai(2), movie(3),
+        coffee(4), shop(5), travel(6), other(7);
+        private final int type;
+
+        private EngegamentType(int type) {
+            this.type = type;
+        }
+
+        public int getType() {
+            return type;
+        }
+    }
+
+    public enum ManagerType implements Serializable {
+        activity, passivity,
+    }
+
+    /**
+     * 约会文字
+     */
+    public enum EngegamentTextType {
+        ENGEGAMENT_PUBLISH("1"), ENGEGAMENT_SUCCESS("2");
+        private final String type;
+
+        private EngegamentTextType(String type) {
+            this.type = type;
+        }
+
+        public String getTextType() {
+            return type;
+        }
+    }
+
 }

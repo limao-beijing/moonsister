@@ -6,9 +6,10 @@ import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.manager.GaodeManager;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tcjy.utils.PrefUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.file.PrefUtils;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import org.json.JSONException;
@@ -22,7 +23,7 @@ import rx.Observable;
 public class NearbyActivityModelImpl implements NearbyActivityModel {
     @Override
     public void loadData(String sex, int page, onLoadListDateListener<NearbyBean.DataBean> listener) {
-        String location = PrefUtils.getString(GaodeManager.class.getName(), "");
+        String location = PrefUtils.getString(ConfigUtils.getInstance().getApplicationContext(),GaodeManager.class.getName(), "");
         double latitude = 0;
         double longitude = 0;
         if (!StringUtis.isEmpty(location)) {

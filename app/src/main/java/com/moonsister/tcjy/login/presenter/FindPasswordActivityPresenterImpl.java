@@ -3,7 +3,6 @@ package com.moonsister.tcjy.login.presenter;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.BaseBean;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.RegiterBean;
 import com.moonsister.tcjy.login.model.FindPasswordActivityModel;
 import com.moonsister.tcjy.login.model.FindPasswordActivityModelImpl;
@@ -11,8 +10,6 @@ import com.moonsister.tcjy.main.view.FindPasswordActivityView;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
-
-import java.util.Objects;
 
 /**
  * Created by jb on 2016/7/11.

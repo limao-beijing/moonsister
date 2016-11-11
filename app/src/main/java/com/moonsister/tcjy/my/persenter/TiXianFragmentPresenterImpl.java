@@ -2,12 +2,11 @@ package com.moonsister.tcjy.my.persenter;
 
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.TiXinrRecordBean;
 import com.moonsister.tcjy.my.model.TiXianFragmentModel;
 import com.moonsister.tcjy.my.model.TiXianFragmentModelImpl;
 import com.moonsister.tcjy.my.view.TiXianFragmentView;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/7/2.

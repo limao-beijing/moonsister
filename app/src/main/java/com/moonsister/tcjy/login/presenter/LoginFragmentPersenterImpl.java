@@ -10,8 +10,8 @@ import com.moonsister.tcjy.login.model.LoginFragmentModelImpl;
 import com.moonsister.tcjy.login.view.LoginFragmentView;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/6/17.

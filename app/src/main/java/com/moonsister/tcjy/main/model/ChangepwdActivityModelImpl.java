@@ -4,7 +4,7 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.MD5Util;
+import com.moonsister.tool.security.MD5Util;
 import com.moonsister.tcjy.utils.ObservableUtils;
 
 import rx.Observable;

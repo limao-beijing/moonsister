@@ -18,7 +18,7 @@ import com.moonsister.tcjy.my.persenter.GetMoneyPersenter;
 import com.moonsister.tcjy.my.persenter.GetMoneyPersenterImpl;
 import com.moonsister.tcjy.my.view.GetMoneyView;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 import com.trello.rxlifecycle.ActivityEvent;
@@ -119,7 +119,6 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
                 String money = etInputMoney.getText().toString().trim();
                 if (money.contains("\\.")) {
                     showToast(UIUtils.getStringRes(R.string.money_get));
-
                     return;
                 }
                 int i = StringUtis.string2Int(money);

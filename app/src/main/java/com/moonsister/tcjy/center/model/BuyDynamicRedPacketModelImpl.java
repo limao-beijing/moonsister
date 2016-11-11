@@ -16,7 +16,7 @@ import com.moonsister.pay.tencent.WeixinManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.wxapi.WXPayEntryActivity;
 

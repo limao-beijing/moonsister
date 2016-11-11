@@ -12,7 +12,7 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.widget.info.SelectPlandWindowActivity;
 import com.moonsister.tcjy.my.widget.info.SelectSexActivity;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 

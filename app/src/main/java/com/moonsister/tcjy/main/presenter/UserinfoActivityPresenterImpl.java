@@ -1,7 +1,6 @@
 package com.moonsister.tcjy.main.presenter;
 
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.UserInfoChangeBean;
 import com.moonsister.tcjy.main.model.UserinfoActivityModel;
 import com.moonsister.tcjy.main.model.UserinfoActivityModelImpl;

@@ -26,10 +26,10 @@ import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.HomePageHeadHolder;
 import com.moonsister.tcjy.widget.XListView;
+import com.moonsister.tool.lang.StringUtis;
 import com.trello.rxlifecycle.FragmentEvent;
 
 import java.util.List;

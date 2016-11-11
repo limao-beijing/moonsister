@@ -49,7 +49,7 @@ import com.moonsister.tcjy.bean.VersionInfo;
 import com.moonsister.tcjy.bean.VipRule;
 import com.moonsister.tcjy.bean.WithdRawDepositBean;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.UnicodeUtils;
+import com.moonsister.tool.security.UnicodeUtils;
 import com.moonsister.tcjy.utils.gson.GsonConverterFactory;
 
 import java.io.IOException;
@@ -174,9 +174,8 @@ public class ServerApi {
 
 
     public interface AppAPI {
-        String baseUrl = "http://v2.chuse.hk:88/index.php/index/";
-//        String baseUrl = "http://2.yytbzs.cn:88/index.php/index/";
-//        String baseUrl = "http://mimei.cntttt.com:88/public/index.php/index/";
+//        String baseUrl = "http://v2.chuse.hk:88/index.php/index/";
+        String baseUrl = "http://2testtest.yytbzs.cn:91/index.php/index/";
 
         /**
          * 登录

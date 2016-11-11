@@ -9,8 +9,8 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.model.GetMoneyModel;
 import com.moonsister.tcjy.my.model.GetMoneyModelImpl;
 import com.moonsister.tcjy.my.view.GetMoneyView;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/7/3.

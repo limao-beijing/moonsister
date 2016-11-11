@@ -15,7 +15,7 @@ import com.moonsister.tcjy.login.widget.LoginMainActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.widget.BirthdayActivity;
 import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 
 import butterknife.Bind;
 import butterknife.OnClick;

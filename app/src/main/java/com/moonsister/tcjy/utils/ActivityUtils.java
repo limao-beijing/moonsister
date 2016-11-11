@@ -14,6 +14,13 @@ import com.moonsister.tcjy.center.widget.DefaultDynamicSendActivity;
 import com.moonsister.tcjy.center.widget.DynamicPublishActivity;
 import com.moonsister.tcjy.center.widget.DynamicSendActivity;
 import com.moonsister.tcjy.center.widget.RedpacketDynaimcActivity;
+import com.moonsister.tcjy.engagement.widget.EngagemengOrderActivity;
+import com.moonsister.tcjy.engagement.widget.EngagementDetailsActivity;
+import com.moonsister.tcjy.engagement.widget.EngagementManagerActivity;
+import com.moonsister.tcjy.engagement.widget.EngagementTypeActivity;
+import com.moonsister.tcjy.engagement.widget.EngegamentAppealActivity;
+import com.moonsister.tcjy.engagement.widget.EngegamentPublishActivity;
+import com.moonsister.tcjy.engagement.widget.EngegamentRecommendActivity;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.find.widget.NearbyActivity;
@@ -73,6 +80,7 @@ import com.moonsister.tcjy.widget.image.PhonePicActivity;
 import com.moonsister.tcjy.widget.image.ShowImageActivity;
 import com.moonsister.tcjy.widget.image.photoview.ImagePagerActivity;
 import com.moonsister.tcjy.widget.takevideo.TakeVideoActivity;
+import com.moonsister.tool.lang.StringUtis;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -799,8 +807,128 @@ public class ActivityUtils {
         }
         startActivity(RenZhengThreeActivity.class);
     }
-//    //我的页面不是会员    定义跳转的activity
-//    public static void startNoActivity() {
-//        startActivity(RZFirstActivity.class);
-//    }
+
+
+    /**
+     * 个人约会
+     */
+    public static void startPersonEngagementTypeActivity(String uid, String nickname, String face) {
+        Intent intent = getIntent(EngagementTypeActivity.class);
+//        PersonInfoDetail detail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
+//        int attestation = detail.getAttestation();
+//        String sex = detail.getSex();
+//        int status = detail.getVipStatus();
+//        if (StringUtis.equals(sex, "1")) {
+//            if (status == 1) {
+//                intent = getIntent(EngagementTypeActivity.class);
+//
+//            } else {
+//                UIUtils.showToast(getActivityContext(), "您还未是VIP,请先购买VIP");
+//                intent = getIntent(BuyVipActivity.class);
+//            }
+//        } else {
+//            if (attestation == 1) {
+//                intent = getIntent(EngagementTypeActivity.class);
+//            } else if (attestation == 2) {
+//                UIUtils.showToast(getApplicationContext(), "您的认证正在审核中，请稍后再试");
+//            } else {
+//                intent = getIntent(RenZhengThreeActivity.class);
+//                UIUtils.showToast(getApplicationContext(), "您还未认证，请先认证");
+//            }
+//        }
+//        if (intent != null) {
+        intent.putExtra("id", uid);
+        intent.putExtra("name", nickname);
+        intent.putExtra("avater", face);
+        startActivity(intent);
+//        }
+    }
+
+    /**
+     * 发布约会
+     */
+    public static void startEengegamentPublishActivity() {
+        Intent intent = getIntent(EngegamentPublishActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * 约会下单
+     */
+    public static void startEngagemengOrderActivity(EnumConstant.EngegamentType type, String uid, String nickname, String face) {
+        Intent intent = getIntent(EngagemengOrderActivity.class);
+//        PersonInfoDetail detail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
+//        int attestation = detail.getAttestation();
+//        String sex = detail.getSex();
+//        int status = detail.getVipStatus();
+//        if (StringUtis.equals(sex, "1")) {
+//            if (status == 1) {
+//                intent = getIntent(EngagemengOrderActivity.class);
+//
+//            } else {
+//                UIUtils.showToast(getApplicationContext(), "您还未是VIP,请先购买VIP");
+//                intent = getIntent(BuyVipActivity.class);
+//            }
+//        } else {
+//            if (attestation == 1) {
+//                intent = getIntent(EngagemengOrderActivity.class);
+//            } else if (attestation == 2) {
+//                UIUtils.showToast(getApplicationContext(), "您的认证正在审核中，请稍后再试");
+//            } else {
+//                intent = getIntent(RenZhengThreeActivity.class);
+//                UIUtils.showToast(getApplicationContext(), "您还未认证，请先认证");
+//            }
+//        }
+//        if (intent != null) {
+        intent.putExtra("id", uid);
+        intent.putExtra("nike", nickname);
+        intent.putExtra("face", face);
+        intent.putExtra("type", type);
+        startActivity(intent);
+//        }
+
+    }
+
+    /**
+     * 推荐约会
+     *
+     * @param type
+     */
+    public static void startEengegamentRecommendActivity(EnumConstant.EngegamentType type) {
+        Intent intent = getIntent(EngegamentRecommendActivity.class);
+        intent.putExtra("type", type);
+        startActivity(intent);
+    }
+
+    /**
+     * 约会管理
+     */
+    public static void startEngagementManagerActivity() {
+        startActivity(EngagementManagerActivity.class);
+    }
+
+    /**
+     * 约会申诉
+     *
+     * @param engagementID
+     */
+    public static void startEengegamentAppealActivity(String engagementID) {
+        if (StringUtis.isEmpty(engagementID))
+            return;
+        Intent intent = getIntent(EngegamentAppealActivity.class);
+        intent.putExtra("id", engagementID);
+        startActivity(intent);
+
+    }
+
+    /**
+     * 订单详情页
+     *
+     * @param id
+     */
+    public static void startEngagementDetailsActivity(String id) {
+        Intent intent = getIntent(EngagementDetailsActivity.class);
+        intent.putExtra("id", id);
+        startActivity(intent);
+    }
 }

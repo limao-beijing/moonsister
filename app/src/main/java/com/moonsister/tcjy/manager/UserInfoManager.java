@@ -3,7 +3,7 @@ package com.moonsister.tcjy.manager;
 import com.moonsister.tcjy.CacheManager;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 
 import java.util.List;
 

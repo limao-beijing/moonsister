@@ -25,7 +25,7 @@ import com.moonsister.tcjy.my.persenter.HreatFragmentPersenter;
 import com.moonsister.tcjy.my.persenter.HreatFragmentPresenterImpl;
 import com.moonsister.tcjy.my.view.HreatFragmentView;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.HreatViewholder;
 
@@ -184,7 +184,7 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
 
                 break;
             case R.mipmap.yousee:
-                showToast("敬请期待");
+                ActivityUtils.startEngagementManagerActivity();
                 break;
 
         }

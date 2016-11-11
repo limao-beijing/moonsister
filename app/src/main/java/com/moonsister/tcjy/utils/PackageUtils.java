@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 
 import com.moonsister.tcjy.BuildConfig;
 
+
 /**
  * Created by jb on 2016/7/14.
  */

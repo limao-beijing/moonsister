@@ -11,15 +11,14 @@ import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.DynamicItemBean;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.StringUtis;
-import com.moonsister.tcjy.utils.TimeUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 import com.moonsister.tcjy.widget.speak.VoicePlay;
+import com.moonsister.tool.lang.StringUtis;
+import com.moonsister.tool.time.TimeUtils;
 
 import butterknife.Bind;
 

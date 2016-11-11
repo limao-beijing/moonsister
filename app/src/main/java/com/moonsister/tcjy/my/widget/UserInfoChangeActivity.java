@@ -16,7 +16,7 @@ import com.moonsister.tcjy.my.persenter.UserInfoChangeActivityPresenterImpl;
 import com.moonsister.tcjy.my.view.UserInfoChangeActivityView;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 import com.trello.rxlifecycle.ActivityEvent;

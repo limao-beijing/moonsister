@@ -15,7 +15,7 @@ import com.moonsister.tcjy.bean.SearchReasonBaen;
 import com.moonsister.tcjy.home.presenetr.SearchResultActivityPresenter;
 import com.moonsister.tcjy.home.presenetr.SearchResultActivityPresenterImpl;
 import com.moonsister.tcjy.home.view.SearchResultActivityView;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.XListView;
 

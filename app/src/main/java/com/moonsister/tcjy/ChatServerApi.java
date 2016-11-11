@@ -4,7 +4,7 @@ package com.moonsister.tcjy;
 import com.moonsister.tcjy.bean.MsgBean;
 import com.moonsister.tcjy.bean.PermissionBean;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.UnicodeUtils;
+import com.moonsister.tool.security.UnicodeUtils;
 import com.moonsister.tcjy.utils.gson.GsonConverterFactory;
 
 import java.io.IOException;

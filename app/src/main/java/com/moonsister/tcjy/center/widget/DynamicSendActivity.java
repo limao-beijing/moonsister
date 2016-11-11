@@ -26,16 +26,20 @@ public class DynamicSendActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.iv_cancel, R.id.iv_dynamic})
+    @OnClick({R.id.iv_cancel, R.id.iv_dynamic, R.id.iv_engagement})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_cancel:
-                finish();
                 break;
+            case R.id.iv_engagement:
+                ActivityUtils.startEengegamentPublishActivity();
+                break;
+
             case R.id.iv_dynamic:
                 ActivityUtils.startDynamicPublishActivity();
-                finish();
+
                 break;
         }
+        finish();
     }
 }

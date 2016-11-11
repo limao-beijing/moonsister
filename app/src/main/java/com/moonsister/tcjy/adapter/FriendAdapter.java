@@ -11,14 +11,13 @@ import com.moonsister.tcjy.base.BaseRecyclerViewAdapter;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.FrientBaen;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.my.widget.ChatFollowFragment;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.FriendViewHoler;
+import com.moonsister.tool.lang.StringUtis;
 
 import java.util.List;
 

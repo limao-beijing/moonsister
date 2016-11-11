@@ -9,7 +9,7 @@ import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.main.view.BasePageFragmentView;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.homepage.HomePagePicViewHolder;
 import com.moonsister.tcjy.viewholder.homepage.HomePageVideoViewHolder;

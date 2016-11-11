@@ -20,12 +20,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/x400"
+        android:layout_toLeftOf="@+id/iv_cancel"
         android:drawablePadding="@dimen/x25"
         android:drawableTop="@mipmap/publish_dynamic"
         android:gravity="center_horizontal"
         android:text="@string/dynamic"
+        android:textColor="@color/white"
+        android:textSize="@dimen/ipay_text_size_16"/>
+    <TextView
+        android:id="@+id/iv_engagement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/x400"
+        android:layout_toRightOf="@+id/iv_cancel"
+        android:drawablePadding="@dimen/x25"
+        android:drawableTop="@mipmap/publish_engagement"
+        android:gravity="center_horizontal"
+        android:text="@string/engagement"
         android:textColor="@color/white"
         android:textSize="@dimen/ipay_text_size_16"/>
 

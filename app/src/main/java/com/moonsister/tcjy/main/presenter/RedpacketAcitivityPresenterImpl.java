@@ -2,16 +2,13 @@ package com.moonsister.tcjy.main.presenter;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.model.RedpacketAcitivityModel;
 import com.moonsister.tcjy.main.model.RedpacketAcitivityModelImpl;
 import com.moonsister.tcjy.main.view.PlayUserAcitivityView;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
-
-import java.util.Objects;
+import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/6/24.

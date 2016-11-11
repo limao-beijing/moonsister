@@ -1,20 +1,12 @@
 package com.moonsister.tcjy.viewholder;
 
 import android.view.View;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
-import com.moonsister.tcjy.utils.MD5Util;
 import com.moonsister.tcjy.utils.UIUtils;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import butterknife.Bind;
 

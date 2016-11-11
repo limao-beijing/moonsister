@@ -25,7 +25,7 @@ import com.hyphenate.util.NetUtils;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import org.json.JSONObject;

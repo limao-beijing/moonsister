@@ -3,13 +3,12 @@ package com.moonsister.tcjy.main.presenter;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.RegOneBean;
 import com.moonsister.tcjy.main.model.ManorGrilActivityModel;
 import com.moonsister.tcjy.main.model.ManorGrilActivityModelImpl;
 import com.moonsister.tcjy.main.view.ManorGrilActivityView;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by x on 2016/8/31.

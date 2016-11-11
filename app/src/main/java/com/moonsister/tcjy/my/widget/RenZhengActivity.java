@@ -25,7 +25,7 @@ import com.moonsister.tcjy.my.persenter.RenZhengActivityPresenterImpl;
 import com.moonsister.tcjy.my.view.RenZhengActivityView;
 import com.moonsister.tcjy.utils.SDUtils;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tcjy.utils.URIUtils;
+import com.moonsister.tool.url.URIUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 

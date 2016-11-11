@@ -1,5 +1,9 @@
 package com.moonsister.tcjy.base;
 
+import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -14,13 +18,44 @@ import butterknife.ButterKnife;
 public abstract class BaseRecyclerViewHolder<T extends BaseDataBean> extends RecyclerView.ViewHolder {
     private View mRootView;
     protected BaseRecyclerViewAdapter<T> baseRecyclerViewAdapter;
-    protected BaseIView baseIView;
+    public BaseIView baseIView;
 
     public BaseRecyclerViewHolder(View view) {
         super(view);
         this.mRootView = view;
         ButterKnife.bind(this, view);
     }
+
+    /**
+     * 获取字符串资源
+     *
+     * @param id
+     * @return
+     */
+    public String getString(@StringRes int id) {
+        return mRootView.getContext().getResources().getString(id);
+    }
+
+    /**
+     * 获取图片资源
+     *
+     * @param id
+     * @return
+     */
+    public Drawable getDrawable(@DrawableRes int id) {
+        return mRootView.getContext().getResources().getDrawable(id);
+    }
+
+    /**
+     * 获取颜色资源
+     *
+     * @param id
+     * @return
+     */
+    public int getColor(@ColorRes int id) {
+        return mRootView.getContext().getResources().getColor(id);
+    }
+
 
     public void setView(BaseIView view) {
         this.baseIView = view;

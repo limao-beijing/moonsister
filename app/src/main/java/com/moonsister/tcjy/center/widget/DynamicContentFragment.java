@@ -20,7 +20,7 @@ import com.moonsister.tcjy.main.widget.PictureSelectorActivity;
 import com.moonsister.tcjy.main.widget.VideoSelectorActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
 import com.moonsister.tcjy.widget.NoScrollGridView;

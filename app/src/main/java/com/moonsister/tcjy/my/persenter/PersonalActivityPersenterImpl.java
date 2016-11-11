@@ -8,8 +8,8 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.model.PersonalActivityModel;
 import com.moonsister.tcjy.my.model.PersonalActivityModelImpl;
 import com.moonsister.tcjy.my.view.PersonalActivityView;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by x on 2016/9/2.

@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.VersionInfo;
 import com.moonsister.tcjy.update.UpdateManager;
 import com.moonsister.tcjy.update.model.UpdateManagerModel;
@@ -14,9 +13,9 @@ import com.moonsister.tcjy.update.model.UpdateManagerModelImpl;
 import com.moonsister.tcjy.update.view.UpdateManagerView;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.PrefUtils;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tool.file.PrefUtils;
+import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/7/14.
@@ -52,10 +51,10 @@ public class UpdateManagerPresenterImpl implements UpdateManagerPresenter, BaseI
         }
         VersionInfo.DataBean data = versionInfo.getData();
         if (isUpdate(StringUtis.string2Int(data.getVersion()))) {
-            PrefUtils.setString(UpdateManager.UPLOAD_DESC, data.getDesc());
-            PrefUtils.setString(UpdateManager.UPLOAD_VNAME, data.getTitle());
-            PrefUtils.setString(UpdateManager.UPLOAD_FSIZE, data.getSize());
-            PrefUtils.setString(UpdateManager.UPLOAD_PDATE, data.getTime());
+            PrefUtils.setString(ConfigUtils.getInstance().getApplicationContext(),UpdateManager.UPLOAD_DESC, data.getDesc());
+            PrefUtils.setString(ConfigUtils.getInstance().getApplicationContext(),UpdateManager.UPLOAD_VNAME, data.getTitle());
+            PrefUtils.setString(ConfigUtils.getInstance().getApplicationContext(),UpdateManager.UPLOAD_FSIZE, data.getSize());
+            PrefUtils.setString(ConfigUtils.getInstance().getApplicationContext(),UpdateManager.UPLOAD_PDATE, data.getTime());
             model.downFile(data.getUrl(), path, this);
             this.versionInfo = versionInfo;
 

@@ -9,7 +9,7 @@ import com.moonsister.tcjy.adapter.HomePageFragmentAdapter;
 import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.widget.speak.VoicePlay;
 
 import butterknife.Bind;

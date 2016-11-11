@@ -6,7 +6,7 @@ import com.moonsister.tcjy.bean.RegFourBean;
 import com.moonsister.tcjy.main.model.FillOutActivityModel;
 import com.moonsister.tcjy.main.model.FillOutActivityModelImpl;
 import com.moonsister.tcjy.main.view.FilloutActivityView;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by x on 2016/9/1.

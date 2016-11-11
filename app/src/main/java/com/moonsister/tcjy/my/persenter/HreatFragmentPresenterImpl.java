@@ -2,17 +2,11 @@ package com.moonsister.tcjy.my.persenter;
 
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.UserDetailBean;
-import com.moonsister.tcjy.event.Events;
-import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.model.HreatFragmentModel;
 import com.moonsister.tcjy.my.model.HreatFragmentModelImpl;
 import com.moonsister.tcjy.my.view.HreatFragmentView;
-import com.moonsister.tcjy.utils.StringUtis;
-import com.moonsister.tcjy.utils.UIUtils;
-
-import java.util.List;
+import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by x on 2016/9/8.

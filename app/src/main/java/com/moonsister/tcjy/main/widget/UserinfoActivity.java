@@ -10,7 +10,7 @@ import com.moonsister.tcjy.bean.UserInfoChangeBean;
 import com.moonsister.tcjy.main.presenter.UserinfoActivityPresenter;
 import com.moonsister.tcjy.main.presenter.UserinfoActivityPresenterImpl;
 import com.moonsister.tcjy.main.view.UserinfoActivityView;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 

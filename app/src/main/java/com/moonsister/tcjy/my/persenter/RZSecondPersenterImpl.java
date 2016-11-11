@@ -4,17 +4,15 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.model.RZSecondModel;
 import com.moonsister.tcjy.my.model.RZSecondModelImpl;
 import com.moonsister.tcjy.my.view.RZSecondView;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tool.lang.StringUtis;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * Created by jb on 2016/6/30.

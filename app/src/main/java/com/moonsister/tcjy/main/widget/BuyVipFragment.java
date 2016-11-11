@@ -20,7 +20,7 @@ import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenter;
 import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenterImpl;
 import com.moonsister.tcjy.main.view.BuyVipFragmentView;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 

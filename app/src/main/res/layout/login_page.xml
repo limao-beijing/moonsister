@@ -5,7 +5,7 @@
     android:background="#636363"
     android:orientation="vertical">
 
-    <com.moonsister.tcjy.my.view.RoundImageView
+    <com.moonsister.tcjy.widget.RoundImageView
         android:id="@+id/iv_user_icon"
         android:layout_width="@dimen/x300"
         android:layout_height="@dimen/y300"

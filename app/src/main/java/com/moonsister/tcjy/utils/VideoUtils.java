@@ -2,10 +2,10 @@ package com.moonsister.tcjy.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory;
 import android.media.MediaMetadataRetriever;
 
 import com.moonsister.tcjy.R;
+import com.moonsister.tool.view.image.ImageUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;

@@ -13,7 +13,7 @@ import com.moonsister.tcjy.bean.BannerBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/9/9.

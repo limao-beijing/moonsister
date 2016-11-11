@@ -20,9 +20,9 @@ import com.moonsister.tcjy.bean.DownApkBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tcjy.utils.URIUtils;
+import com.moonsister.tool.url.URIUtils;
 
 import butterknife.OnClick;
 import rx.Observable;

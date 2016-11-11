@@ -5,11 +5,12 @@ import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.RegThridBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.JsonUtils;
+import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.MD5Util;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tcjy.utils.PhoneInfoUtils;
+import com.moonsister.tool.parse.JsonUtils;
+import com.moonsister.tool.phoneinfo.PhoneInfoUtils;
+import com.moonsister.tool.security.MD5Util;
 
 import rx.Observable;
 
@@ -20,7 +21,7 @@ public class RegActivityModelImpl implements RegActivityModel {
 
     @Override
     public void getThridReg(String mobile, String pwd, String birthday, String code, onLoadDateSingleListener<BaseBean> listener) {
-        PhoneInfoUtils phoneInfoUtils = PhoneInfoUtils.newInstance();
+        PhoneInfoUtils phoneInfoUtils = PhoneInfoUtils.newInstance(ConfigUtils.getInstance().getActivityContext());
         phoneInfoUtils.setTel2(mobile);
         String serialize = JsonUtils.serialize(phoneInfoUtils);
         Observable<RegThridBean> observable = ServerApi.getAppAPI().getRegThridBean(mobile, MD5Util.string2MD5(pwd), birthday, code, serialize, UserInfoManager.getInstance().getAuthcode(), AppConstant.API_VERSION, AppConstant.CHANNEL_ID);
@@ -56,7 +57,7 @@ public class RegActivityModelImpl implements RegActivityModel {
     }
 
     private void uploadPhoneInfo(String mobile) {
-        PhoneInfoUtils phoneInfoUtils = PhoneInfoUtils.newInstance();
+        PhoneInfoUtils phoneInfoUtils = PhoneInfoUtils.newInstance(ConfigUtils.getInstance().getActivityContext());
         phoneInfoUtils.setTel2(mobile);
         String serialize = JsonUtils.serialize(phoneInfoUtils);
         LogUtils.e(this, serialize);

@@ -1,14 +1,11 @@
 package com.moonsister.tcjy.viewholder;
 
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.adapter.FriendAdapter;
 import com.moonsister.tcjy.adapter.FriendlyAdapter;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
@@ -16,13 +13,11 @@ import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.FrientBaen;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
+import com.moonsister.tool.lang.StringUtis;
 
 import butterknife.Bind;
-import butterknife.OnClick;
 
 /**
  * Created by x on 2016/8/25.

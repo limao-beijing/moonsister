@@ -18,7 +18,7 @@ import com.moonsister.tcjy.my.persenter.PersonalActivityPersenter;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.PersonalActivityView;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 

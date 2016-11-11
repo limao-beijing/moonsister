@@ -10,9 +10,9 @@ import com.moonsister.tcjy.bean.UserInfoChangeBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.manager.aliyun.AliyunManager;
 import com.moonsister.tcjy.utils.FilePathUtlis;
-import com.moonsister.tcjy.utils.ImageUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
+import com.moonsister.tool.view.image.ImageUtils;
 
 import java.io.File;
 

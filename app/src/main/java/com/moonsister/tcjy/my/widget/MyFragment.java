@@ -12,7 +12,6 @@ import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
-import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
@@ -20,7 +19,7 @@ import com.moonsister.tcjy.my.persenter.MyFragmentPresenter;
 import com.moonsister.tcjy.my.persenter.MyFragmentPresenterImpl;
 import com.moonsister.tcjy.my.view.MyFragmentView;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.PersonDynamicViewholder;
 import com.moonsister.tcjy.widget.XListView;
@@ -28,7 +27,6 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.trello.rxlifecycle.FragmentEvent;
 
 import java.util.List;
-import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.OnClick;

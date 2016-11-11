@@ -23,11 +23,10 @@ import com.moonsister.tcjy.update.presenter.UpdateManagerPresenterImpl;
 import com.moonsister.tcjy.update.view.UpdateManagerView;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.NetWorkUtil;
 import com.moonsister.tcjy.utils.PackageUtils;
-import com.moonsister.tcjy.utils.PrefUtils;
+import com.moonsister.tool.file.PrefUtils;
 import com.moonsister.tcjy.utils.SDUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.umeng.analytics.MobclickAgent;
 
@@ -81,7 +80,7 @@ public class UpdateManager implements UpdateManagerView, View.OnClickListener {
         //a:大于,说明本地已有下载好的升级包，用户没有安装
         //b:等于,说明当前版本相同，需要进行网络检查是否有更新版本
         //c:小于，说明当前存储错误，需要进行网络检查是否有更新版本
-        int currentCode = PrefUtils.getInt(UPLOAD_VERSIONCODE, 0);
+        int currentCode = PrefUtils.getInt(mContext,UPLOAD_VERSIONCODE, 0);
         int versionCode = PackageUtils.getVersionCode(mContext);
         LogUtils.e(UpdateManager.class, "currentCode ：" + currentCode);
         LogUtils.e(UpdateManager.class, "versionCode ：" + versionCode);
@@ -215,10 +214,10 @@ public class UpdateManager implements UpdateManagerView, View.OnClickListener {
         String fsize = null;
         String pdate = null;
         if (bean == null) {
-            desc = PrefUtils.getString(UPLOAD_DESC, "正在获取……");
-            vname = PrefUtils.getString(UPLOAD_VNAME, "正在获取……");
-            fsize = PrefUtils.getString(UPLOAD_FSIZE, "正在获取……");
-            pdate = PrefUtils.getString(UPLOAD_PDATE, "正在获取……");
+            desc = PrefUtils.getString(mContext,UPLOAD_DESC, "正在获取……");
+            vname = PrefUtils.getString(mContext,UPLOAD_VNAME, "正在获取……");
+            fsize = PrefUtils.getString(mContext,UPLOAD_FSIZE, "正在获取……");
+            pdate = PrefUtils.getString(mContext,UPLOAD_PDATE, "正在获取……");
         } else {
             desc = bean.getData().getDesc();
             vname = bean.getData().getTitle();

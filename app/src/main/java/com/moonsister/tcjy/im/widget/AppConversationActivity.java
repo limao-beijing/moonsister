@@ -21,7 +21,7 @@ import com.moonsister.tcjy.im.SendMsgForServiceHelper;
 import com.moonsister.tcjy.permission.UserPermissionManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 

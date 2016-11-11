@@ -1,1 +1,1 @@
-include ':app', ':progressdialog', ':IMKit', ':pay', ':baidu', ':jcvideoplayer-lib', ':easemob'
+include ':app', ':progressdialog', ':IMKit', ':pay', ':baidu', ':jcvideoplayer-lib', ':easemob', ':appointment', ':tool'

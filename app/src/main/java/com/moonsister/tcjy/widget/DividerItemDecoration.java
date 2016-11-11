@@ -39,17 +39,30 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
      * @param context
      * @param orientation
      */
-    public DividerItemDecoration(Context context, int orientation) {
+    public DividerItemDecoration(Context context, int ItemSize, int orientation) {
         this.mOrientation = orientation;
         if (orientation != LinearLayoutManager.VERTICAL && orientation != LinearLayoutManager.HORIZONTAL) {
             throw new IllegalArgumentException("请传入正确的参数");
         }
-        mItemSize = (int) context.getResources().getDimension(R.dimen.y1);
+        this.mItemSize = ItemSize;
+//                (int) context.getResources().getDimension(R.dimen.y1);
 //        mItemSize = (int) TypedValue.applyDimension(mItemSize, TypedValue.COMPLEX_UNIT_DIP, context.getResources().getDisplayMetrics());
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setColor(context.getResources().getColor(R.color.app_line));
          /*设置填充*/
         mPaint.setStyle(Paint.Style.FILL);
+    }
+
+    /**
+     * 设置分割线大小
+     *
+     * @param size
+     */
+    public void setItemDecorationSize(int size) {
+        if (size >= 0) {
+            this.mItemSize = size;
+        }
+
     }
 
     @Override

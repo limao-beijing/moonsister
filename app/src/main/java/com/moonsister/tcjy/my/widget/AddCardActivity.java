@@ -8,7 +8,7 @@ import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.my.persenter.AddCardActivityPersenter;
 import com.moonsister.tcjy.my.persenter.AddCardActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.AddCardActivityView;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;

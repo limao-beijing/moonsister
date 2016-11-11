@@ -6,11 +6,12 @@ import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.RegThridBean;
 import com.moonsister.tcjy.bean.RegiterBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.JsonUtils;
+import com.moonsister.tcjy.utils.ConfigUtils;
+import com.moonsister.tool.parse.JsonUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tcjy.utils.PhoneInfoUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.phoneinfo.PhoneInfoUtils;
+import com.moonsister.tool.lang.StringUtis;
 
 import rx.Observable;
 
@@ -103,7 +104,7 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
     }
 
     private void uploadPhoneInfo(String phoneMunber) {
-        PhoneInfoUtils phoneInfoUtils = PhoneInfoUtils.newInstance();
+        PhoneInfoUtils phoneInfoUtils = PhoneInfoUtils.newInstance(ConfigUtils.getInstance().getActivityContext());
         phoneInfoUtils.setTel2(phoneMunber);
         String serialize = JsonUtils.serialize(phoneInfoUtils);
         LogUtils.e(this, serialize);

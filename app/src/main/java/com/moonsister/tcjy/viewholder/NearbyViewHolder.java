@@ -3,17 +3,16 @@ package com.moonsister.tcjy.viewholder;
 import android.view.View;
 import android.widget.TextView;
 
-import com.amap.api.location.AMapLocation;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.manager.GaodeManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.JsonUtils;
+import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LocationUtils;
-import com.moonsister.tcjy.utils.PrefUtils;
-import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tool.file.PrefUtils;
+import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
 import org.json.JSONException;
@@ -38,7 +37,7 @@ public class NearbyViewHolder extends BaseRecyclerViewHolder<NearbyBean.DataBean
     public void onBindData(NearbyBean.DataBean dataBean) {
         if (dataBean == null)
             return;
-        String location = PrefUtils.getString(GaodeManager.class.getName(), "");
+        String location = PrefUtils.getString(ConfigUtils.getInstance().getApplicationContext(), GaodeManager.class.getName(), "");
         double latitude = 0;
         double longitude = 0;
         if (!StringUtis.isEmpty(location)) {

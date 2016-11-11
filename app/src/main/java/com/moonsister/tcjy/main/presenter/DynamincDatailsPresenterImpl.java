@@ -1,11 +1,7 @@
 package com.moonsister.tcjy.main.presenter;
 
 
-import android.support.annotation.IdRes;
-import android.view.View;
-
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.CommentDataListBean;
@@ -15,9 +11,7 @@ import com.moonsister.tcjy.main.model.DynamincDatailsModel;
 import com.moonsister.tcjy.main.model.DynamincDatailsModelImpl;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.main.view.DynamicDatailsView;
-import com.moonsister.tcjy.main.widget.DynamicDatailsActivity;
-import com.moonsister.tcjy.utils.StringUtis;
-import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tool.lang.StringUtis;
 
 import java.util.List;
 

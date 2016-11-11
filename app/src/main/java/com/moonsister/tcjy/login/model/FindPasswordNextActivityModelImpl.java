@@ -3,7 +3,7 @@ package com.moonsister.tcjy.login.model;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.bean.BaseBean;
-import com.moonsister.tcjy.utils.MD5Util;
+import com.moonsister.tool.security.MD5Util;
 import com.moonsister.tcjy.utils.ObservableUtils;
 
 import rx.Observable;

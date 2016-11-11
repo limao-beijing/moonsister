@@ -3,14 +3,13 @@ package com.moonsister.tcjy.my.persenter;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.model.AddCardActivityModel;
 import com.moonsister.tcjy.my.model.AddCardActivityModelImpl;
 import com.moonsister.tcjy.my.view.AddCardActivityView;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/7/3.

@@ -16,7 +16,7 @@
         android:layout_below="@+id/fl_banner"
         android:background="@color/backgroud_black_color">
 
-        <com.moonsister.tcjy.my.view.RoundImageView
+        <com.moonsister.tcjy.widget.RoundImageView
             android:id="@+id/iv_user_icon"
             android:layout_width="@dimen/x200"
             android:layout_height="@dimen/y200"

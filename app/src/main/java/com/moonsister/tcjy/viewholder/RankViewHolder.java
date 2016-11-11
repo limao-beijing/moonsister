@@ -10,14 +10,13 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.RankBean;
 import com.moonsister.tcjy.find.view.RankFragmentView;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
+import com.moonsister.tool.lang.StringUtis;
 
 import butterknife.Bind;
 

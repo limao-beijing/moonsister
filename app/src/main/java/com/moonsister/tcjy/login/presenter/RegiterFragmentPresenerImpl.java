@@ -3,7 +3,6 @@ package com.moonsister.tcjy.login.presenter;
 
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.BaseBean;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.bean.RegiterBean;
 import com.moonsister.tcjy.login.model.RegiterFragmentModel;
 import com.moonsister.tcjy.login.model.RegiterFragmentModelImpl;
