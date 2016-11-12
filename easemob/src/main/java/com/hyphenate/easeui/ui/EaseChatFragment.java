@@ -115,18 +115,18 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
     private EMChatRoomChangeListener chatRoomChangeListener;
     private boolean isMessageListInited;
     protected MyItemClickListener extendMenuItemClickListener;
-    private boolean mPermssion;
-    private String mSex;
-    private int lastCount;
 
-    public void setPermission(String permssion, String s, int lastCount) {
-        if (TextUtils.equals("1", permssion))
-            this.mPermssion = true;
-        else if (TextUtils.equals("2", permssion))
-            this.mPermssion = false;
-        this.mSex = s;
-        this.lastCount = lastCount;
+    public OnSendMsgListenter mMsgListenter;
 
+    /**
+     * 消息发送监听
+     */
+    public interface OnSendMsgListenter {
+        boolean isSendMsg(EMMessage message);
+    }
+
+    public void setOnSendMsgListenter(OnSendMsgListenter listenter) {
+        this.mMsgListenter = listenter;
     }
 
     @Override
@@ -748,15 +748,13 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
         sendMessage(message);
     }
 
-    public boolean isCanSendMessage(EMMessage message) {
-        return true;
-    }
 
     protected void sendMessage(EMMessage message) {
-        if (!isCanSendMessage(message)) {
+
+        if (message == null) {
             return;
         }
-        if (message == null) {
+        if (mMsgListenter != null && !mMsgListenter.isSendMsg(message)) {
             return;
         }
         if (chatFragmentHelper != null) {

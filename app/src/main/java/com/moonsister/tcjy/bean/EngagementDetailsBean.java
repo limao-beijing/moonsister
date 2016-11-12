@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 public class EngagementDetailsBean extends BaseBean {
 
     /**
-     * data : {"f_nickname":"华翰采","f_face":"http://mimei.oss-cn-beijing.aliyuncs.com/public/face/moren.png","f_uid":161992,"t_nickname":"麦","t_face":"http://mimei.oss-cn-beijing.aliyuncs.com/a/image/02/2016-07-12/578492210abdb.jpg","t_uid":144081,"type":3,"date":"1478849880","msg":"好想你在哪住呢你脑子","address":"杭州南站","money":10,"order_id":"912016111144059","daojishi":-9033}
+     * data : {"status":1,"f_nickname":"方颖秀","f_face":"http://mimei.oss-cn-beijing.aliyuncs.com/public/face/moren.png","f_uid":162011,"t_nickname":"不吃胡萝卜的兔子","t_face":"http://mimei.oss-cn-beijing.aliyuncs.com/a/image/12/2016-07-12/57846d473fa4f.jpg","t_uid":144094,"type":1,"date":"1478936520","msg":"还","address":"但","money":1,"order_id":"792016111214878","appeal_status":0,"daojishi":-27723,"dating_status_add":1001,"dating_status_add_msg":"等待应答"}
      */
 
     private DataBean data;
@@ -23,21 +23,26 @@ public class EngagementDetailsBean extends BaseBean {
 
     public static class DataBean extends BaseDataBean{
         /**
-         * f_nickname : 华翰采
+         * status : 1
+         * f_nickname : 方颖秀
          * f_face : http://mimei.oss-cn-beijing.aliyuncs.com/public/face/moren.png
-         * f_uid : 161992
-         * t_nickname : 麦
-         * t_face : http://mimei.oss-cn-beijing.aliyuncs.com/a/image/02/2016-07-12/578492210abdb.jpg
-         * t_uid : 144081
-         * type : 3
-         * date : 1478849880
-         * msg : 好想你在哪住呢你脑子
-         * address : 杭州南站
-         * money : 10
-         * order_id : 912016111144059
-         * daojishi : -9033
+         * f_uid : 162011
+         * t_nickname : 不吃胡萝卜的兔子
+         * t_face : http://mimei.oss-cn-beijing.aliyuncs.com/a/image/12/2016-07-12/57846d473fa4f.jpg
+         * t_uid : 144094
+         * type : 1
+         * date : 1478936520
+         * msg : 还
+         * address : 但
+         * money : 1
+         * order_id : 792016111214878
+         * appeal_status : 0
+         * daojishi : -27723
+         * dating_status_add : 1001
+         * dating_status_add_msg : 等待应答
          */
 
+        private int status;
         private String f_nickname;
         private String f_face;
         private String f_uid;
@@ -45,14 +50,16 @@ public class EngagementDetailsBean extends BaseBean {
         private String t_face;
         private String t_uid;
         private int type;
-        private int status;
         private String date;
         @SerializedName("msg")
         private String msgX;
         private String address;
         private String money;
         private String order_id;
+        private int appeal_status;
         private long daojishi;
+        private int dating_status_add;
+        private String dating_status_add_msg;
 
         public int getStatus() {
             return status;
@@ -158,12 +165,36 @@ public class EngagementDetailsBean extends BaseBean {
             this.order_id = order_id;
         }
 
+        public int getAppeal_status() {
+            return appeal_status;
+        }
+
+        public void setAppeal_status(int appeal_status) {
+            this.appeal_status = appeal_status;
+        }
+
         public long getDaojishi() {
             return daojishi;
         }
 
         public void setDaojishi(long daojishi) {
             this.daojishi = daojishi;
+        }
+
+        public int getDating_status_add() {
+            return dating_status_add;
+        }
+
+        public void setDating_status_add(int dating_status_add) {
+            this.dating_status_add = dating_status_add;
+        }
+
+        public String getDating_status_add_msg() {
+            return dating_status_add_msg;
+        }
+
+        public void setDating_status_add_msg(String dating_status_add_msg) {
+            this.dating_status_add_msg = dating_status_add_msg;
         }
     }
 }

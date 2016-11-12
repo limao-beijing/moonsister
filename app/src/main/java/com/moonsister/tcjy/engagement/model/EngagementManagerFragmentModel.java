@@ -9,7 +9,7 @@ import com.moonsister.tcjy.utils.EnumConstant;
 public interface EngagementManagerFragmentModel extends BaseIModel {
     void loadData(EnumConstant.ManagerType type, int page, onLoadDateSingleListener listener);
 
-    void submitSuccess(String id, onLoadDateSingleListener listener);
-
-    void submitInviteSuccess(String message, String type, onLoadDateSingleListener listener);
+//    void submitSuccess(String id, onLoadDateSingleListener listener);
+//
+//    void submitInviteSuccess(String message, String type, onLoadDateSingleListener listener);
 }

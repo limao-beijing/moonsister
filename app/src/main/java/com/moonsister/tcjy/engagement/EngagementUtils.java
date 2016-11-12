@@ -2,9 +2,12 @@ package com.moonsister.tcjy.engagement;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tool.lang.StringUtis;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.moonsister.tcjy.utils.UIUtils.getStringRes;
 
 /**
  * Created by jb on 2016/11/12.
@@ -40,25 +43,44 @@ public class EngagementUtils {
         return str;
     }
 
-    public static List<Integer> popTextStr(int status) {
+    public static List<Integer> popTextStr(int status, int failurecode, String failureMsg, boolean isEngagement) {
         ArrayList<Integer> integers = new ArrayList<>();
         switch (status) {
-            case 1://1已付款
-                integers.add(R.string.engagement_action_apply_canle);
+            case 1://1等待应答
+                if (isEngagement)
+                    integers.add(R.string.engagement_action_apply_canle);
+                else {
+                    integers.add(R.string.engagement_action_me_engagement);
+                    integers.add(R.string.engagement_action_reimburse_ta);
+                }
 
                 break;
             case 2://2已接受
-                integers.add(R.string.engagement_action_me_apply);
-                integers.add(R.string.engagement_action_affirm_enagement);
-                break;
-            case 3://3已拒绝
-                integers.add(R.string.engagement_action_apply_reimburse);
-                integers.add(R.string.engagement_action_again);
-                break;
-            case 4://4申诉中
+                if (isEngagement) {
+                    integers.add(R.string.engagement_action_me_apply);
+                    integers.add(R.string.engagement_action_affirm_enagement);
+                }
 
                 break;
-            case 5://5申诉成功
+            case 3://3 申诉中
+
+                break;
+            case 4://4已成功
+
+                break;
+            case 5://5已失败
+                if (isEngagement) {
+                    switch (failurecode) {
+                        case 5001:
+                            integers.add(R.string.engagement_action_apply_reimburse);
+                            integers.add(R.string.engagement_action_again);
+                            break;
+                        case 5003:
+                            integers.add(R.string.engagement_action_apply_reimburse);
+                            break;
+                    }
+
+                }
 
                 break;
             case 6://6申诉失败
@@ -70,36 +92,51 @@ public class EngagementUtils {
         return integers;
     }
 
-    public static String getStatusText(int status, boolean isEngagement) {
+    public static String getStatusText(int status, int failurecode, String failureMsg, boolean isEngagement) {
         String string = "";
         switch (status) {
-            case 1://1已付款
+            case 1://1等待应答
                 if (isEngagement)
-                    string = UIUtils.getStringRes(R.string.engagement_status_await);
-
+                    string = getStringRes(R.string.engagement_status_await);
                 else
-                    string = UIUtils.getStringRes(R.string.engagement_status_await_me);
-
-
+                    string = getStringRes(R.string.engagement_status_await_me);
                 break;
             case 2://2已接受
-                string = UIUtils.getStringRes(R.string.engagement_status_me_engagement);
+                if (isEngagement)
+                    string = getStringRes(R.string.engagement_status_peer_engagement);
+                else
+                    string = getStringRes(R.string.engagement_status_me_engagement);
                 break;
-            case 3://3已拒绝
-                string = UIUtils.getStringRes(R.string.engagement_status_me_reimburse);
+            case 3://3 申诉中
+                string = getStringRes(R.string.engagement_status_me_reimburse);
                 break;
-            case 4://4申诉中
+            case 4://4已成功
+                string = getStringRes(R.string.engagement_status_success);
+                break;
+            case 5://5已失败
+                string = failureMsg;
+                break;
 
-                break;
-            case 5://5申诉成功
-
-                break;
-            case 6://6申诉失败
-                break;
-            case 7://，7已完成
-                string = UIUtils.getStringRes(R.string.engagement_status_success);
-                break;
         }
         return string;
     }
+
+    public static int getClickCode(String tag) {
+        //操作类型 1取消订单，2拒绝，3接受，4设置成功，5失败后申请退款
+        int code = 0;
+        if (StringUtis.equals(tag, getStringRes(R.string.engagement_action_apply_canle))) {
+            code = 1;
+        } else if (StringUtis.equals(tag, getStringRes(R.string.engagement_action_reimburse_ta))) {
+            code = 2;
+        } else if (StringUtis.equals(tag, getStringRes(R.string.engagement_action_me_engagement))) {
+            code = 3;
+        } else if (StringUtis.equals(tag, getStringRes(R.string.engagement_action_affirm_enagement))) {
+            code = 4;
+        } else if (StringUtis.equals(tag, getStringRes(R.string.engagement_action_apply_reimburse))) {
+            code = 5;
+        }
+        return code;
+    }
+
+
 }

@@ -70,7 +70,7 @@ public class EngagementManagerActivity extends BaseActivity {
     }
 
     private void selectColor(View view) {
-        Drawable drawable = getResources().getDrawable(R.drawable.shape_background_half_round_red);
+        Drawable drawable = getResources().getDrawable(R.drawable.shape_background_half_round_blue_dark_151c22);
         mTvEngagemented.setBackground(view == mTvEngagemented ? drawable : null);
         mTvEngagement.setBackground(view == mTvEngagement ? drawable : null);
 

@@ -89,7 +89,7 @@ public class EngagemengOrderModelImpl implements EngagemengOrderModel {
         ObservableUtils.parser(observable, new ObservableUtils.Callback<BaseBean>() {
             @Override
             public void onSuccess(BaseBean bean) {
-                listenter.onSuccess((EngagementTextBane) bean, DataType.DATA_ONE);
+                listenter.onSuccess(bean, DataType.DATA_ONE);
             }
 
             @Override

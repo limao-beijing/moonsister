@@ -2,7 +2,6 @@ package com.moonsister.tcjy.engagement.presenter;
 
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.EngagementManagerBean;
-import com.moonsister.tcjy.bean.StatusBean;
 import com.moonsister.tcjy.engagement.model.EngagementManagerFragmentModel;
 import com.moonsister.tcjy.engagement.model.EngagementManagerFragmentModelImpl;
 import com.moonsister.tcjy.engagement.view.EngagementManagerFragmentView;
@@ -33,17 +32,7 @@ public class EngagementManagerFragmentPresenterImpl implements EngagementManager
         model.loadData(type, page, this);
     }
 
-    @Override
-    public void submitSuccess(String datingID) {
-        view.showLoading();
-        model.submitSuccess(datingID, this);
-    }
 
-    @Override
-    public void submitInviteSuccess(String message, String type) {
-        view.showLoading();
-        model.submitInviteSuccess(message, type, this);
-    }
 
     @Override
     public void onSuccess(Object obj, BaseIModel.DataType dataType) {
@@ -51,16 +40,6 @@ public class EngagementManagerFragmentPresenterImpl implements EngagementManager
             case DATA_ZERO:
                 if (obj instanceof EngagementManagerBean) {
                     view.setData((EngagementManagerBean) obj);
-                }
-                break;
-            case DATA_ONE:
-                if (obj instanceof StatusBean) {
-                    view.submitSuccess(((StatusBean) obj).getId());
-                }
-                break;
-            case DATA_TWO:
-                if (obj instanceof StatusBean) {
-                    view.submitInviteSuccess((StatusBean) obj);
                 }
                 break;
         }

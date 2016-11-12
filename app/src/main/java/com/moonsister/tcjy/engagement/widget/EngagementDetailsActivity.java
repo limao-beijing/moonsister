@@ -14,10 +14,13 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.EngagementDetailsBean;
 import com.moonsister.tcjy.engagement.EngagementUtils;
+import com.moonsister.tcjy.engagement.presenter.EngagementActionPersenter;
+import com.moonsister.tcjy.engagement.presenter.EngagementActionPersenterImpl;
 import com.moonsister.tcjy.engagement.presenter.EngagementDetailsPersenter;
 import com.moonsister.tcjy.engagement.presenter.EngagementDetailsPersenterImpl;
 import com.moonsister.tcjy.engagement.presenter.EngagementTextPersenter;
 import com.moonsister.tcjy.engagement.presenter.EngagementTextPersenterImpl;
+import com.moonsister.tcjy.engagement.view.EngagementActionView;
 import com.moonsister.tcjy.engagement.view.EngagementDetailsView;
 import com.moonsister.tcjy.engagement.view.EngagementTextView;
 import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
@@ -40,7 +43,7 @@ import butterknife.OnClick;
  * Created by jb on 2016/11/11.
  */
 
-public class EngagementDetailsActivity extends BaseActivity implements EngagementDetailsView, EngagementTextView, View.OnClickListener {
+public class EngagementDetailsActivity extends BaseActivity implements EngagementDetailsView, EngagementTextView, View.OnClickListener, EngagementActionView {
     @Bind(R.id.tv_im)
     TextView mTvIm;
     @Bind(R.id.tv_wacth)
@@ -75,6 +78,7 @@ public class EngagementDetailsActivity extends BaseActivity implements Engagemen
     private EngagementTextPersenter textPersenter;
     private String id;
     private EngagementDetailsBean.DataBean bean;
+    private EngagementActionPersenter actionPersenter;
 
     @Override
     protected String initTitleName() {
@@ -84,6 +88,15 @@ public class EngagementDetailsActivity extends BaseActivity implements Engagemen
     @Override
     protected View setRootContentView() {
         return UIUtils.inflateLayout(R.layout.activity_engagement_details);
+    }
+
+    @Override
+    public void actionSuccess() {
+        if (persenter != null) {
+            persenter.loadData(id);
+        }
+        if (textPersenter != null)
+            textPersenter.loadText(id, EnumConstant.EngegamentTextType.ENGEGAMENT_SUCCESS);
     }
 
     @Override
@@ -98,6 +111,9 @@ public class EngagementDetailsActivity extends BaseActivity implements Engagemen
             if (data instanceof EngagementDetailsBean.DataBean)
                 setData((EngagementDetailsBean.DataBean) data);
         }
+
+        actionPersenter = new EngagementActionPersenterImpl();
+        actionPersenter.attachView(this);
         textPersenter = new EngagementTextPersenterImpl();
         textPersenter.attachView(this);
         textPersenter.loadText(id, EnumConstant.EngegamentTextType.ENGEGAMENT_SUCCESS);
@@ -122,29 +138,43 @@ public class EngagementDetailsActivity extends BaseActivity implements Engagemen
             case R.id.rl_flower:
                 if (persenter == null)
                     return;
-                List<Integer> integers = EngagementUtils.popTextStr(bean.getStatus());
+                List<Integer> integers = EngagementUtils.popTextStr(bean.getStatus(), bean.getAppeal_status(), bean.getDating_status_add_msg(), StringUtis.equals(UserInfoManager.getInstance().getUid(), bean.getF_uid()));
                 if (integers != null && integers.size() != 0) {
                     showPopUp(rl_flower, integers);
                 }
                 break;
         }
+        Object tag = view.getTag();
+        if (tag != null && tag instanceof String) {
+            int code = EngagementUtils.getClickCode((String) tag);
+            if (code != 0) {
+                actionPersenter.actionEngagement(id, code);
+                showPopUp(null, null);
+            }
+        }
     }
 
+    private PopupWindow popupWindow;
 
     private void showPopUp(View v, List<Integer> integers) {
-        LinearLayout layout = new LinearLayout(this);
-        layout.setBackground(getResources().getDrawable(R.drawable.pop_engagement_manager));
-        layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setGravity(Gravity.CENTER);
-        addTextViewPopView(layout, integers);
-        ViewUtlis.measureView(layout);
-        PopupWindow popupWindow = new PopupWindow(layout, layout.getMeasuredWidth(), layout.getMeasuredHeight());
-        popupWindow.setFocusable(true);
-        popupWindow.setOutsideTouchable(true);
-        popupWindow.setBackgroundDrawable(new BitmapDrawable());
-        int[] location = new int[2];
-        v.getLocationOnScreen(location);
-        popupWindow.showAtLocation(v, Gravity.NO_GRAVITY, location[0], location[1] - popupWindow.getHeight());
+        if (popupWindow == null) {
+            LinearLayout layout = new LinearLayout(this);
+            layout.setBackground(getResources().getDrawable(R.drawable.pop_engagement_manager));
+            layout.setOrientation(LinearLayout.VERTICAL);
+            layout.setGravity(Gravity.CENTER);
+            addTextViewPopView(layout, integers);
+            ViewUtlis.measureView(layout);
+            popupWindow = new PopupWindow(layout, layout.getMeasuredWidth(), layout.getMeasuredHeight());
+            popupWindow.setFocusable(true);
+            popupWindow.setOutsideTouchable(true);
+            popupWindow.setBackgroundDrawable(new BitmapDrawable());
+            int[] location = new int[2];
+            v.getLocationOnScreen(location);
+            popupWindow.showAtLocation(v, Gravity.NO_GRAVITY, location[0], location[1] - popupWindow.getHeight());
+        } else {
+            popupWindow.dismiss();
+            popupWindow = null;
+        }
     }
 
     /**
@@ -183,7 +213,6 @@ public class EngagementDetailsActivity extends BaseActivity implements Engagemen
 
     @Override
     public void setData(EngagementDetailsBean.DataBean bean) {
-        bean.setStatus(2);
         this.bean = bean;
         //发起者
         ImageServerApi.showURLBigImage(mCivUserAvater, bean.getF_face());
@@ -198,11 +227,13 @@ public class EngagementDetailsActivity extends BaseActivity implements Engagemen
         String format = TimeUtils.format(StringUtis.string2long(bean.getDate()) * 1000);
         mEtInputDate.setText(format == null ? "" : format.substring(0, format.length() - 3));
         mTvEngagement.setText(EngagementUtils.getEngagementStr(bean.getType()));
-        mTvFlower.setText(EngagementUtils.getStatusText(bean.getStatus(), true));
+        mTvFlower.setText(EngagementUtils.getStatusText(bean.getStatus(), bean.getAppeal_status(), bean.getDating_status_add_msg(), StringUtis.equals(UserInfoManager.getInstance().getUid(), bean.getF_uid())));
     }
 
     @Override
     public void setEngagementText(String info) {
         mTvEngagementText.setText(info);
     }
+
+
 }

@@ -9,17 +9,16 @@ import com.moonsister.tcjy.adapter.EngagementManagerAdapter;
 import com.moonsister.tcjy.base.BaseListFragment;
 import com.moonsister.tcjy.bean.EngagementManagerBean;
 import com.moonsister.tcjy.bean.StatusBean;
+import com.moonsister.tcjy.engagement.presenter.EngagementActionPersenterImpl;
 import com.moonsister.tcjy.engagement.presenter.EngagementManagerFragmentPresenter;
 import com.moonsister.tcjy.engagement.presenter.EngagementManagerFragmentPresenterImpl;
+import com.moonsister.tcjy.engagement.view.EngagementActionView;
 import com.moonsister.tcjy.engagement.view.EngagementManagerFragmentView;
-import com.moonsister.tcjy.event.Events;
-import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tool.lang.StringUtis;
-import com.trello.rxlifecycle.FragmentEvent;
 
 import java.util.List;
 
@@ -27,10 +26,10 @@ import java.util.List;
 /**
  * Created by jb on 2016/9/28.
  */
-public class EngagementManagerFragment extends BaseListFragment<EngagementManagerAdapter, EngagementManagerBean.DataBean> implements EngagementManagerFragmentView {
+public class EngagementManagerFragment extends BaseListFragment<EngagementManagerAdapter, EngagementManagerBean.DataBean> implements EngagementManagerFragmentView, EngagementActionView {
     private EnumConstant.ManagerType mType;
     private EngagementManagerFragmentPresenter presenter;
-
+    private EngagementActionPersenterImpl actionPersenter;
 
     public static EngagementManagerFragment newInstance() {
 
@@ -38,16 +37,16 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
     }
 
     private void initRxbus() {
-        RxBus.with(this)
-                .setEndEvent(FragmentEvent.DESTROY)
-                .setEvent(Events.EventEnum.CLICK_ENGAGEMENT_SUCCESS)
-                .onNext(events -> {
-                    Object message = events.message;
-                    if (message instanceof String) {
-                        presenter.submitSuccess((String) message);
-                    }
-                })
-                .create();
+//        RxBus.with(this)
+//                .setEndEvent(FragmentEvent.DESTROY)
+//                .setEvent(Events.EventEnum.CLICK_ENGAGEMENT_SUCCESS)
+//                .onNext(events -> {
+//                    Object message = events.message;
+//                    if (message instanceof String) {
+//                        presenter.submitSuccess((String) message);
+//                    }
+//                })
+//                .create();
 //        RxBus.with(this)
 //                .setEndEvent(FragmentEvent.DESTROY)
 //                .setEvent(Events.EventEnum.EngagementManagerFragment_CLICK_ENGAGEMENT_INVITE)
@@ -68,20 +67,21 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
 //                    }
 //                })
 //                .create();
-        RxBus.with(this)
-                .setEndEvent(FragmentEvent.DESTROY)
-                .setEvent(Events.EventEnum.CLICK_ENGAGEMENT_LEVEL_NOT)
-                .onNext(events ->
-                        showNotLevel()
-                )
-                .create();
+//        RxBus.with(this)
+//                .setEndEvent(FragmentEvent.DESTROY)
+//                .setEvent(Events.EventEnum.CLICK_ENGAGEMENT_LEVEL_NOT)
+//                .onNext(events ->
+//                        showNotLevel()
+//                )
+//                .create();
     }
 
     @Override
     protected void initChildData() {
         presenter = new EngagementManagerFragmentPresenterImpl();
         presenter.attachView(this);
-
+        actionPersenter = new EngagementActionPersenterImpl();
+        actionPersenter.attachView(this);
         if (mAdapter != null)
             mAdapter.setBaseView(this);
     }
@@ -141,7 +141,7 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
         List<EngagementManagerBean.DataBean> datas = bean.getData();
         for (EngagementManagerBean.DataBean dataBean : datas) {
             dataBean.setManagerType(mType);
-            dataBean.setPresenetr(presenter);
+            dataBean.setPresenetr(actionPersenter);
         }
         addData(datas);
     }
@@ -214,4 +214,11 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
     }
 
 
+    @Override
+    public void actionSuccess() {
+        if (presenter != null) {
+            page = 1;
+            presenter.loadData(mType, page);
+        }
+    }
 }

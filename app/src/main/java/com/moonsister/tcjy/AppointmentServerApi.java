@@ -1,6 +1,7 @@
 package com.moonsister.tcjy;
 
 import com.moonsister.pay.tencent.PayBean;
+import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.EngagemengOrderBean;
 import com.moonsister.tcjy.bean.EngagemengRecommendBean;
 import com.moonsister.tcjy.bean.EngagementDetailsBean;
@@ -261,7 +262,7 @@ public class AppointmentServerApi {
          */
         @GET("dating/get_limit_info")
         Observable<EngagemengOrderBean> getEngagemengOrder(@Query("authcode") String authcode,
-                                                           @Query("channel") String id);
+                                                           @Query("channel") String channel);
 
         /**
          * 约会模块文字信息
@@ -275,7 +276,7 @@ public class AppointmentServerApi {
         Observable<EngagementTextBane> getEngagemengText(@Query("dating_id") String dating_id,
                                                          @Query("type") String type,
                                                          @Query("authcode") String authcode,
-                                                         @Query("channel") String id);
+                                                         @Query("channel") String channel);
 
         /**
          * 约会信息接口
@@ -290,6 +291,21 @@ public class AppointmentServerApi {
         Observable<EngagementDetailsBean> getEngagemengDetails(@Field("id") String id,
                                                                @Field("authcode") String authcode,
                                                                @Field("channel") String id1);
+
+        /**
+         * 约会状态操作
+         *
+         * @param id
+         * @param type
+         * @param authcode
+         * @param channel
+         * @return
+         */
+        @GET("dating/act_dating_status")
+        Observable<BaseBean> getActionEngagement(@Query("dating_id") String id,
+                                                 @Query("type") int type,
+                                                 @Query("authcode") String authcode,
+                                                 @Query("channel") String channel);
     }
 
 }

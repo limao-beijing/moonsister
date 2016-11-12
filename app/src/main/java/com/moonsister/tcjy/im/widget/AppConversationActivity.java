@@ -10,6 +10,8 @@ import com.hyphenate.chat.EMMessage;
 import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.db.HxUserDao;
 import com.hyphenate.easeui.domain.EaseUser;
+import com.hyphenate.easeui.ui.ChatFragment;
+import com.hyphenate.easeui.ui.EaseChatFragment;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.dialogFragment.BaseDialogFragment;
@@ -21,8 +23,8 @@ import com.moonsister.tcjy.im.SendMsgForServiceHelper;
 import com.moonsister.tcjy.permission.UserPermissionManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tool.lang.StringUtis;
 import com.trello.rxlifecycle.ActivityEvent;
 
 
@@ -34,7 +36,7 @@ public class AppConversationActivity extends BaseActivity {
 
     private String mTargetId;
     private String toChatUsername;
-    private com.hyphenate.easeui.ui.ChatFragment chatFragment;
+    private ChatFragment chatFragment;
 
     @Override
     protected View setRootContentView() {
@@ -173,9 +175,11 @@ public class AppConversationActivity extends BaseActivity {
         user.setNick(extras.getString(EaseConstant.EXTRA_USER_NIKE));
         dao.saveUser(user);
 
-        chatFragment = new com.hyphenate.easeui.ui.ChatFragment() {
+        chatFragment = new ChatFragment();
+
+        chatFragment.setOnSendMsgListenter(new EaseChatFragment.OnSendMsgListenter() {
             @Override
-            public boolean isCanSendMessage(EMMessage message) {
+            public boolean isSendMsg(EMMessage message) {
                 boolean isSend = false;
                 switch (mReasult) {
                     case HAVE_PERSSION:
@@ -201,7 +205,7 @@ public class AppConversationActivity extends BaseActivity {
                     mHelper.send(message);
                 return isSend;
             }
-        };
+        });
         //set arguments
         chatFragment.setArguments(extras);
         getSupportFragmentManager().beginTransaction().add(R.id.conversation, chatFragment).commit();

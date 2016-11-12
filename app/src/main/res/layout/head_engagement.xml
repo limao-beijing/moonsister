@@ -5,7 +5,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/x96"
-        android:background="@color/red_f790ae"
+        android:background="@color/blue_dark_151c22"
         android:gravity="center_vertical">
 
         <ImageView
@@ -27,7 +27,7 @@
                 android:id="@+id/tv_engagement"
                 android:layout_width="@dimen/x238"
                 android:layout_height="@dimen/x63"
-                android:background="@drawable/shape_background_half_round_red"
+                android:background="@drawable/shape_background_half_round_blue_dark_151c22"
                 android:gravity="center"
                 android:text="@string/engagement"/>
 
@@ -36,7 +36,7 @@
                 android:layout_width="@dimen/x238"
                 android:layout_height="@dimen/x63"
                 android:layout_toRightOf="@+id/tv_engagement"
-                android:background="@drawable/shape_background_half_round_red"
+                android:background="@drawable/shape_background_half_round_blue_dark_151c22"
                 android:gravity="center"
                 android:text="@string/engagemented"/>
         </RelativeLayout>

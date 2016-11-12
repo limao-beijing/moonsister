@@ -36,6 +36,8 @@ public class EngegamentRecommendActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        mTvEngagement.setText(getString(R.string.engagement_wacth));
+        mTvEngagemented.setText(getString(R.string.tv_recommend));
         onClick(mTvEngagement);
     }
 
@@ -47,7 +49,7 @@ public class EngegamentRecommendActivity extends BaseActivity {
                 if (mEngagementManagerFragment == null) {
                     mEngagementManagerFragment = EngegamentRecommendFragment.newInstance();
                     Bundle bundle = new Bundle();
-                    bundle.putString("userType","1");
+                    bundle.putString("userType", "1");
                     mEngagementManagerFragment.setArguments(bundle);
                 }
                 fragment = mEngagementManagerFragment;
@@ -56,7 +58,7 @@ public class EngegamentRecommendActivity extends BaseActivity {
                 if (mEngagementedManagerFragment == null) {
                     mEngagementedManagerFragment = EngegamentRecommendFragment.newInstance();
                     Bundle bundle = new Bundle();
-                    bundle.putString("userType","2");
+                    bundle.putString("userType", "2");
                     mEngagementedManagerFragment.setArguments(bundle);
 //                    mEngagementedManagerFragment.setType(EnumConstant.ManagerType.passivity);
                 }
@@ -71,9 +73,10 @@ public class EngegamentRecommendActivity extends BaseActivity {
     }
 
     private void selectColor(View view) {
-        Drawable drawable = getResources().getDrawable(R.drawable.shape_background_half_round_red);
-        mTvEngagemented.setBackground(view == mTvEngagemented ? drawable : null);
-        mTvEngagement.setBackground(view == mTvEngagement ? drawable : null);
+//        Drawable drawable = getResources().getDrawable(R.drawable.shape_background_half_round_blue_dark_151c22);
+        Drawable drawableed = getResources().getDrawable(R.drawable.shape_background_half_round_blue_dark_1d262e);
+        mTvEngagemented.setBackground(view == mTvEngagemented ? drawableed : null);
+        mTvEngagement.setBackground(view == mTvEngagement ? drawableed : null);
 
     }
 }

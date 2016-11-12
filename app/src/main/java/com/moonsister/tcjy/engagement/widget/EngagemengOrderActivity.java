@@ -174,6 +174,7 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
         bean.setAddress(mEtInputAddress.getText().toString());
         bean.setStatus(1);
         bean.setMsgX(mEtEngagementMessage.getText().toString());
+        bean.setMoney(et_input_money.getText().toString());
 
         bean.setDaojishi(System.currentTimeMillis() / 3000);
         bean.setDate((TimeUtils.formatTimestamp(et_input_date.getText().toString() + ":00") / 1000) + "");
@@ -221,7 +222,6 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
 
 
     }
-
 
     @Override
     public void setEngagementText(String info) {

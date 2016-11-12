@@ -371,9 +371,13 @@
     <string name="engagement_action_affirm_enagement">确认约会</string>
     <string name="engagement_action_again">重新约见</string>
     <string name="engagement_status_await">等待应答</string>
-    <string name="engagement_status_await_me">带我应答</string>
+    <string name="engagement_status_await_me">待我应答</string>
     <string name="engagement_status_me_engagement">我已应约</string>
     <string name="engagement_status_me_reimburse">我已婉拒</string>
+    <string name="engagement_status_peer_engagement">对方应约</string>
+    <string name="engagement_action_me_engagement">我要赴约</string>
+    <string name="engagement_action_reimburse_ta">婉拒TA</string>
+    <string name="engagement_wacth">关注</string>
 
 
 </resources>

@@ -9,8 +9,4 @@ import com.moonsister.tcjy.utils.EnumConstant;
  */
 public interface EngagementManagerFragmentPresenter extends BaseIPresenter<EngagementManagerFragmentView> {
     void loadData(EnumConstant.ManagerType type, int page);
-
-    void submitSuccess(String message);
-
-    void submitInviteSuccess(String message, String type);
 }
