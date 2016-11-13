@@ -26,6 +26,7 @@ public class EngegamentRecommendActivity extends BaseActivity {
     TextView mTvEngagemented;
     @Bind(R.id.fl_content)
     FrameLayout mFlContent;
+
     private Fragment currFragment;
     private Fragment mEngagementManagerFragment, mEngagementedManagerFragment;
 
@@ -41,10 +42,13 @@ public class EngegamentRecommendActivity extends BaseActivity {
         onClick(mTvEngagement);
     }
 
-    @OnClick({R.id.tv_engagement, R.id.tv_engagemented})
+    @OnClick({R.id.tv_engagement, R.id.tv_engagemented, R.id.iv_back})
     public void onClick(View view) {
         Fragment fragment = null;
         switch (view.getId()) {
+            case R.id.iv_back:
+                finish();
+                break;
             case R.id.tv_engagement:
                 if (mEngagementManagerFragment == null) {
                     mEngagementManagerFragment = EngegamentRecommendFragment.newInstance();

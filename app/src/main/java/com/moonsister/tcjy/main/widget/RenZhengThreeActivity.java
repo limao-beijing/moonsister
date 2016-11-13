@@ -136,7 +136,9 @@ public class RenZhengThreeActivity extends BaseActivity implements RenZhengThree
 
     @Override
     public void pageFinish() {
+        RxBus.getInstance().send(Events.EventEnum.REN_ZHENG_SUCCESS, null);
         finish();
+
     }
 
 //    @Override

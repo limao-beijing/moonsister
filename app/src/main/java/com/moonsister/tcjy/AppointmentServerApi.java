@@ -6,6 +6,7 @@ import com.moonsister.tcjy.bean.EngagemengOrderBean;
 import com.moonsister.tcjy.bean.EngagemengRecommendBean;
 import com.moonsister.tcjy.bean.EngagementDetailsBean;
 import com.moonsister.tcjy.bean.EngagementManagerBean;
+import com.moonsister.tcjy.bean.EngagementPermissTextBane;
 import com.moonsister.tcjy.bean.EngagementTextBane;
 import com.moonsister.tcjy.bean.StatusBean;
 import com.moonsister.tcjy.utils.LogUtils;
@@ -306,6 +307,17 @@ public class AppointmentServerApi {
                                                  @Query("type") int type,
                                                  @Query("authcode") String authcode,
                                                  @Query("channel") String channel);
+
+        /**
+         * 约会权限文字
+         *
+         * @param authcode
+         * @param channel
+         * @return
+         */
+        @GET("msg/dating_auth_info")
+        Observable<EngagementPermissTextBane> getTextMsg(@Query("authcode") String authcode,
+                                                         @Query("channel") String channel);
     }
 
 }

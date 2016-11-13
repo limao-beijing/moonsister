@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">影视大全-看片陌陌交友</string>
+    <string name="app_name">初色</string>
     <!--<string name="app_name">探探寂陌陌生人-求约爱</string>-->
     <string name="app_home_page">首页</string>
     <string name="app_im_page">聊天</string>
@@ -320,7 +320,7 @@
     <string name="movie">电影</string>
     <string name="shop">逛街</string>
     <string name="coffee">咖啡</string>
-    <string name="engagement_pay">约见担保费 :</string>
+    <string name="engagement_pay">赏金 :</string>
     <string name="input_engagement_pay_number">请输入打赏金额</string>
     <string name="date">日期:</string>
     <string name="input_engagement_pay_date">请选择约见时间</string>
@@ -378,6 +378,7 @@
     <string name="engagement_action_me_engagement">我要赴约</string>
     <string name="engagement_action_reimburse_ta">婉拒TA</string>
     <string name="engagement_wacth">关注</string>
+    <string name="to_do_engagement">继续约会</string>
 
 
 </resources>

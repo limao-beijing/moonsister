@@ -60,10 +60,16 @@
                     android:id="@+id/civ_user_avatered"
                     android:layout_width="@dimen/x200"
                     android:layout_height="@dimen/y200"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/x20"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@mipmap/ic_launcher"
+                    android:layout_alignTop="@+id/civ_user_avater"
+                    android:layout_alignParentEnd="true"/>
+                <TextView
+                    android:id="@+id/tv_count_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/black"/>
             </RelativeLayout>
 
             <RelativeLayout

@@ -1,4 +1,4 @@
-package com.moonsister.tcjy.dialogFragment;
+package com.moonsister.tcjy.dialogFragment.widget;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

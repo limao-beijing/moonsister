@@ -76,16 +76,16 @@
             android:value="57e63d92e0f55a159d002acd"/>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="OPPOKANPIAN2004"/>
+            android:value="BUKA2010"/>
         <!--API  接口-->
         <meta-data
             android:name="API_CHANNEL"
-            android:value="2004"/>
+            android:value="2010"/>
         <!-- 友盟  end -->
         <!-- 高德 start -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="d96700c0f996fd9bc3cb5e5239ec7b2f"/>
+            android:value="977627d8788489b55e786de34b0c46a4"/>
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService"/>
         <!-- 高德 end -->

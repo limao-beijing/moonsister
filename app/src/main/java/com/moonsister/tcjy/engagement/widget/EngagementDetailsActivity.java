@@ -74,6 +74,8 @@ public class EngagementDetailsActivity extends BaseActivity implements Engagemen
     TextView mTvEngagementText;
     @Bind(R.id.rl_flower)
     View rl_flower;
+    @Bind(R.id.tv_count_down)
+    TextView tv_count_down;
     private EngagementDetailsPersenter persenter;
     private EngagementTextPersenter textPersenter;
     private String id;
@@ -228,6 +230,10 @@ public class EngagementDetailsActivity extends BaseActivity implements Engagemen
         mEtInputDate.setText(format == null ? "" : format.substring(0, format.length() - 3));
         mTvEngagement.setText(EngagementUtils.getEngagementStr(bean.getType()));
         mTvFlower.setText(EngagementUtils.getStatusText(bean.getStatus(), bean.getAppeal_status(), bean.getDating_status_add_msg(), StringUtis.equals(UserInfoManager.getInstance().getUid(), bean.getF_uid())));
+        long daojishi = bean.getDaojishi();
+        if (daojishi > 0) {
+            tv_count_down.setText(TimeUtils.formatTime(daojishi, TimeUtils.HOUR_MINUTE));
+        }
     }
 
     @Override

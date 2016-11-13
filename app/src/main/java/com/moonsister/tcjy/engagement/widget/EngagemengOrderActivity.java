@@ -11,6 +11,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.EngagemengOrderBean;
 import com.moonsister.tcjy.bean.EngagementDetailsBean;
+import com.moonsister.tcjy.engagement.EngagementUtils;
 import com.moonsister.tcjy.engagement.model.EngagemengOrderView;
 import com.moonsister.tcjy.engagement.presenter.EngagemengOrderPresenter;
 import com.moonsister.tcjy.engagement.presenter.EngagemengOrderPresenterImpl;
@@ -95,6 +96,8 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
 
     @Override
     protected void initView() {
+
+        mTvEngagement.setText(EngagementUtils.getEngagementStr(type.getType()));
         presenter = new EngagemengOrderPresenterImpl();
         presenter.attachView(this);
 
@@ -202,7 +205,7 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
         if (bean != null && bean.getData() != null) {
             EngagemengOrderBean.DataBean data = bean.getData();
             dating_money = StringUtis.string2Int(data.getLimit_min());
-            et_input_money.setHint("金额不能低于" + dating_money + "元");
+            et_input_money.setHint("请输入约见赏金，赏金越高，约见成功率越高");
         }
     }
 

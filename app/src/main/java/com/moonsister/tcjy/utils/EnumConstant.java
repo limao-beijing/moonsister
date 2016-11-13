@@ -82,7 +82,8 @@ public class EnumConstant {
         SEE_LATEST("SEE_LATEST"),//是否可看动态
         COMMENT("COMMENT"),//是否可评论
         LATEST_VIP("LATEST_VIP"),// 是否看动态VIP
-        LATEST_PUB("LATEST_PUB");//发布动态
+        LATEST_PUB("LATEST_PUB"),//发布动态
+        DATING_STATUS("DATING_STATUS");//约会
 
         private final String type;
 
@@ -106,7 +107,7 @@ public class EnumConstant {
      * 弹出回调
      */
     public enum DialogCallBack {
-        CANCEL, CONFIRM,
+        CANCEL, CONFIRM, DISMISS
     }
 
     public enum EngegamentType implements Serializable {

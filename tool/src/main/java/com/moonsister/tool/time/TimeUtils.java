@@ -8,10 +8,11 @@ import java.util.Date;
  * Created by jb on 2016/6/17.
  */
 public class TimeUtils {
-    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
-    private static final String YEAR_MONTH_DAY = "yyyyMMdd";
-    private static final String HOUR_MINUTE_SECOND = "HHmmss";
-    private static final String HOUR = "HH";
+    public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    public static final String YEAR_MONTH_DAY = "yyyyMMdd";
+    public static final String HOUR_MINUTE_SECOND = "HH:mm:ss";
+    public static final String HOUR_MINUTE = "HH:mm";
+    public static final String HOUR = "HH";
 
     /**
      * 格式当前时间
@@ -23,6 +24,7 @@ public class TimeUtils {
         String format = simpleDateFormat.format(getDate());
         return format;
     }
+
 
     /**
      * 格式化当前的年月日
@@ -140,6 +142,19 @@ public class TimeUtils {
             e.printStackTrace();
         }
         return ts;
+
+
+    }
+
+    /**
+     * 格式化时间戳
+     *
+     * @param time
+     * @return
+     */
+    public static String formatTime(long time, String format) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
+        return simpleDateFormat.format(new Date(time));
 
 
     }

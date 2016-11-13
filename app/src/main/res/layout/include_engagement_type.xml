@@ -64,13 +64,14 @@
 
     <TextView
         android:id="@+id/tv_more"
-
         style="@style/text_engament_main"
+
         android:layout_below="@+id/tv_coffee"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/x40"
         android:drawableTop="@mipmap/engagment_main_more"
-        android:text="@string/more"/>
+        android:text="@string/more"
+        android:visibility="gone"/>
 
     <ImageView
         android:id="@+id/iv_cancel"

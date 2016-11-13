@@ -37,6 +37,9 @@ public class EngagementUtils {
                 str = UIUtils.getResources().getString(R.string.travel);
                 break;
             case 7:
+                str = UIUtils.getResources().getString(R.string.other);
+                break;
+            case 8:
                 str = UIUtils.getResources().getString(R.string.more);
                 break;
         }

@@ -52,6 +52,8 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/x20"
                     android:src="@mipmap/ic_launcher"/>
+
+
             </RelativeLayout>
 
             <RelativeLayout
