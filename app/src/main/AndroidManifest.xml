@@ -137,6 +137,10 @@
         <activity android:name=".engagement.widget.EngegamentRecommendActivity"/>
         <activity android:name=".engagement.widget.EngagemengOrderActivity"/>
         <activity android:name=".engagement.widget.EngagementDetailsActivity"/>
+        <activity android:name=".engagement.widget.EngagementTypeActivity"/>
+        <activity
+            android:name=".main.widget.WelcomeGuideActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".center.widget.DefaultDynamicSendActivity"
             android:screenOrientation="portrait"/>

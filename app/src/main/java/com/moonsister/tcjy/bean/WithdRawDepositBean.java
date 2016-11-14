@@ -25,27 +25,11 @@ public class WithdRawDepositBean extends BaseBean {
     }
 
     public static class DataBean {
-        private int withdraw_money;
-        private int isfrozen;
+        private String withdraw_money;
+        private String isfrozen;
         private String frozen_money;
-        private int totoal_money;
+        private String totoal_money;
         private String last_money;
-
-        public int getWithdraw_money() {
-            return withdraw_money;
-        }
-
-        public void setWithdraw_money(int withdraw_money) {
-            this.withdraw_money = withdraw_money;
-        }
-
-        public int getIsfrozen() {
-            return isfrozen;
-        }
-
-        public void setIsfrozen(int isfrozen) {
-            this.isfrozen = isfrozen;
-        }
 
         public String getFrozen_money() {
             return frozen_money;
@@ -55,12 +39,12 @@ public class WithdRawDepositBean extends BaseBean {
             this.frozen_money = frozen_money;
         }
 
-        public int getTotoal_money() {
-            return totoal_money;
+        public String getIsfrozen() {
+            return isfrozen;
         }
 
-        public void setTotoal_money(int totoal_money) {
-            this.totoal_money = totoal_money;
+        public void setIsfrozen(String isfrozen) {
+            this.isfrozen = isfrozen;
         }
 
         public String getLast_money() {
@@ -69,6 +53,22 @@ public class WithdRawDepositBean extends BaseBean {
 
         public void setLast_money(String last_money) {
             this.last_money = last_money;
+        }
+
+        public String getTotoal_money() {
+            return totoal_money;
+        }
+
+        public void setTotoal_money(String totoal_money) {
+            this.totoal_money = totoal_money;
+        }
+
+        public String getWithdraw_money() {
+            return withdraw_money;
+        }
+
+        public void setWithdraw_money(String withdraw_money) {
+            this.withdraw_money = withdraw_money;
         }
     }
 }

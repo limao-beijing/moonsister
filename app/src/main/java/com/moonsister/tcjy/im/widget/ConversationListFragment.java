@@ -33,6 +33,7 @@ public class ConversationListFragment extends EaseConversationListFragment {
                 ActivityUtils.startAppConversationActivity(conversation.getUserName(), user == null ? "" : user.getNick(), user == null ? "" : user.getAvatar());
             }
         });
+
     }
 
     @Override

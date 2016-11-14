@@ -23,7 +23,7 @@ import butterknife.Bind;
 /**
  * Created by x on 2016/8/26.
  */
-public class OneFragment extends BaseFragment implements BalanceActivityView{
+public class OneFragment extends BaseFragment implements BalanceActivityView {
     @Bind(R.id.onfragment_xlistview)
     XListView onfragment_listview;
     private MoneyActivityPersenter mPresenter;
@@ -33,8 +33,8 @@ public class OneFragment extends BaseFragment implements BalanceActivityView{
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        type=1;
-        page=1;
+        type = 1;
+        page = 1;
         mPresenter = new MoneyActivityPersenterImpl();
         mPresenter.attachView(this);
         return UIUtils.inflateLayout(R.layout.onefragment);
@@ -44,19 +44,19 @@ public class OneFragment extends BaseFragment implements BalanceActivityView{
     protected void initData() {
 
         onfragment_listview.setVerticalLinearLayoutManager();
-        onfragment_listview.setPullRefreshEnabled(false);
         onfragment_listview.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-
+                page = 1;
+                mPresenter.moneyba(type, page, 10);
             }
 
             @Override
             public void onLoadMore() {
-                mPresenter.moneyba(type,page,10);
+                mPresenter.moneyba(type, page, 10);
             }
         });
-        mPresenter.moneyba(type,page,10);
+        mPresenter.moneyba(type, page, 10);
     }
 
     @Override
@@ -76,30 +76,27 @@ public class OneFragment extends BaseFragment implements BalanceActivityView{
     @Override
     public void moneybalance(BalanceBean balanceBean) {
         List<BalanceBean.DataBean> data = balanceBean.getData();
-        if (balanceBean == null) {
-//            xlv.setNoMore();
-            onfragment_listview.loadMoreComplete();
-            onfragment_listview.refreshComplete();
-            return;
-        }
         if (balanceBean.getData() == null || balanceBean.getData().size() == 0) {
 //            xlv.setNoMore();
             onfragment_listview.loadMoreComplete();
             onfragment_listview.refreshComplete();
             return;
         }
+
         if (mAdapter == null) {
             mAdapter = new MoneyAdapter(balanceBean.getData(), this);
             mAdapter.setPageType(type);
             if (onfragment_listview != null)
                 onfragment_listview.setAdapter(mAdapter);
         } else {
+            if (page == 1)
+                mAdapter.clean();
             mAdapter.addListData(balanceBean.getData());
             mAdapter.onRefresh();
         }
         onfragment_listview.loadMoreComplete();
         onfragment_listview.refreshComplete();
-
+        page++;
     }
 
 }

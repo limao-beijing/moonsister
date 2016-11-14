@@ -33,7 +33,7 @@
     <string name="girls">女生</string>
     <string name="input_Security_code">输入验证码</string>
     <string name="not_empty">不能为空</string>
-    <string name="request_failed">网络异常请稍后再试</string>
+    <string name="request_failed">网络连接失败,请检查网络</string>
     <string name="agein_get_code">再次获取</string>
     <string name="take_picture">拍照</string>
     <string name="photo_album">相册</string>
@@ -379,6 +379,10 @@
     <string name="engagement_action_reimburse_ta">婉拒TA</string>
     <string name="engagement_wacth">关注</string>
     <string name="to_do_engagement">继续约会</string>
+    <string name="engagement_manager">约会管理</string>
+    <string name="upgrade_renzheng">诚信认证</string>
+    <string name="engagement_status_applying">申诉中</string>
+    <string name="engagement_status_msg_order_lock">订单锁定中</string>
 
 
 </resources>

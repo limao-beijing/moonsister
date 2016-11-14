@@ -7,10 +7,18 @@ import android.widget.TextView;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
+import com.moonsister.tcjy.dialogFragment.DialogMannager;
+import com.moonsister.tcjy.dialogFragment.widget.BaseDialogFragment;
+import com.moonsister.tcjy.dialogFragment.widget.ImPermissionDialog;
+import com.moonsister.tcjy.event.Events;
+import com.moonsister.tcjy.event.RxBus;
+import com.moonsister.tcjy.permission.UserPermissionManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.CircularImageView;
+import com.moonsister.tool.lang.StringUtis;
+import com.trello.rxlifecycle.ActivityEvent;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -28,6 +36,7 @@ public class EngagementTypeActivity extends BaseActivity {
     private String name;
     @Bind(R.id.tv_more)
     TextView tv_more;
+    private EnumConstant.EngegamentType type;
 
     @Override
     protected View setRootContentView() {
@@ -55,7 +64,7 @@ public class EngagementTypeActivity extends BaseActivity {
             finish();
             return;
         }
-        EnumConstant.EngegamentType type = null;
+
         switch (view.getId()) {
             case R.id.tv_fadai:
                 type = EnumConstant.EngegamentType.fadai;
@@ -83,7 +92,50 @@ public class EngagementTypeActivity extends BaseActivity {
                 break;
 
         }
-        ActivityUtils.startEngagemengOrderActivity(type, uid, name, avater);
-        finish();
+        checkPermission();
+
+    }
+
+    private void checkPermission() {
+        UserPermissionManager.getInstance().checkVip(EnumConstant.PermissionType.LATEST_PUB, new UserPermissionManager.PermissionCallback() {
+            @Override
+            public void onStatus(EnumConstant.PermissionReasult reasult, int imCount, String sex) {
+                if (reasult == EnumConstant.PermissionReasult.HAVE_PERSSION) {
+                    ActivityUtils.startEngagemengOrderActivity(type, uid, name, avater);
+                    finish();
+                } else if (reasult == EnumConstant.PermissionReasult.NOT_PERSSION) {
+                    DialogMannager.getInstance().showEngagementPermission(sex, getSupportFragmentManager(), new ImPermissionDialog.OnCallBack() {
+                        @Override
+                        public void onStatus(BaseDialogFragment dialogFragment, EnumConstant.DialogCallBack statusCode) {
+                            if (statusCode == EnumConstant.DialogCallBack.CANCEL) {
+                                ActivityUtils.startEngagemengOrderActivity(type, uid, name, avater);
+                                finish();
+                            } else {
+                                if (StringUtis.equals(sex, "1")) {
+                                    ActivityUtils.startBuyVipActivity();
+                                    RxBus.with(EngagementTypeActivity.this)
+                                            .setEndEvent(ActivityEvent.DESTROY)
+                                            .setEvent(Events.EventEnum.BUY_VIP_SUCCESS)
+                                            .onNext(events ->
+                                                    dialogFragment.dismissDialogFragment()
+                                            )
+                                            .create();
+                                } else {
+                                    ActivityUtils.startRenZhengThreeActivity();
+                                    RxBus.with(EngagementTypeActivity.this)
+                                            .setEndEvent(ActivityEvent.DESTROY)
+                                            .setEvent(Events.EventEnum.REN_ZHENG_SUCCESS)
+                                            .onNext(events ->
+                                                    dialogFragment.dismissDialogFragment()
+                                            )
+                                            .create();
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
     }
 }

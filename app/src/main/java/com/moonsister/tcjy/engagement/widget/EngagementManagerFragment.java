@@ -209,7 +209,6 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
 
     @Override
     public void transfePageMsg(String msg) {
-
         showToast(msg);
     }
 

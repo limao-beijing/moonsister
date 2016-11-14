@@ -76,6 +76,10 @@ public class EngagementDetailsActivity extends BaseActivity implements Engagemen
     View rl_flower;
     @Bind(R.id.tv_count_down)
     TextView tv_count_down;
+    @Bind(R.id.tv_sumbit)
+    View tv_sumbit;
+    @Bind(R.id.inc_content)
+    View inc_content;
     private EngagementDetailsPersenter persenter;
     private EngagementTextPersenter textPersenter;
     private String id;
@@ -109,9 +113,13 @@ public class EngagementDetailsActivity extends BaseActivity implements Engagemen
             persenter.attachView(this);
             id = getIntent().getStringExtra("id");
             persenter.loadData(id);
+            tv_sumbit.setVisibility(View.GONE);
+            inc_content.setVisibility(View.VISIBLE);
         } else {
             if (data instanceof EngagementDetailsBean.DataBean)
                 setData((EngagementDetailsBean.DataBean) data);
+            tv_sumbit.setVisibility(View.VISIBLE);
+            inc_content.setVisibility(View.GONE);
         }
 
         actionPersenter = new EngagementActionPersenterImpl();
@@ -121,7 +129,7 @@ public class EngagementDetailsActivity extends BaseActivity implements Engagemen
         textPersenter.loadText(id, EnumConstant.EngegamentTextType.ENGEGAMENT_SUCCESS);
     }
 
-    @OnClick({R.id.rl_im, R.id.rl_wacth, R.id.rl_pay, R.id.rl_flower})
+    @OnClick({R.id.rl_im, R.id.rl_wacth, R.id.rl_pay, R.id.rl_flower, R.id.tv_sumbit})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rl_im:
@@ -135,23 +143,43 @@ public class EngagementDetailsActivity extends BaseActivity implements Engagemen
                             RedpacketAcitivity.RedpacketType.TYPE_FLOWER, StringUtis.equals(UserInfoManager.getInstance().getUid(), bean.getF_uid()) ? bean.getT_face() : bean.getT_face());
                 break;
             case R.id.rl_pay:
-                ActivityUtils.startHomePageActivity(StringUtis.equals(UserInfoManager.getInstance().getUid(), bean.getF_uid()) ? bean.getT_uid() : bean.getT_uid());
+                ActivityUtils.startHomePageActivity(StringUtis.equals(UserInfoManager.getInstance().getUid(), bean.getF_uid()) ? bean.getT_uid() : bean.getF_uid());
                 break;
             case R.id.rl_flower:
                 if (persenter == null)
                     return;
-                List<Integer> integers = EngagementUtils.popTextStr(bean.getStatus(), bean.getAppeal_status(), bean.getDating_status_add_msg(), StringUtis.equals(UserInfoManager.getInstance().getUid(), bean.getF_uid()));
+                List<Integer> integers = EngagementUtils.popTextStr(bean.getStatus(), bean.getDating_status_add(), bean.getDating_status_add_msg(), StringUtis.equals(UserInfoManager.getInstance().getUid(), bean.getF_uid()));
                 if (integers != null && integers.size() != 0) {
                     showPopUp(rl_flower, integers);
                 }
+                break;
+            case R.id.tv_sumbit:
+                ActivityUtils.startEngagementManagerActivity();
+                finish();
                 break;
         }
         Object tag = view.getTag();
         if (tag != null && tag instanceof String) {
             int code = EngagementUtils.getClickCode((String) tag);
             if (code != 0) {
-                actionPersenter.actionEngagement(id, code);
-                showPopUp(null, null);
+                if (code == 7) {
+                    if (bean != null)
+                        ActivityUtils.startEengegamentAppealActivity(id);
+                } else if (code == 6) {
+                    if (bean != null)
+                        for (EnumConstant.EngegamentType type : EnumConstant.EngegamentType.values()) {
+                            if (type.getType() == bean.getType()) {
+                                ActivityUtils.startEngagemengOrderActivity(type, StringUtis.equals(UserInfoManager.getInstance().getUid(), bean.getF_uid()) ? bean.getT_uid() : bean.getT_uid(),
+                                        StringUtis.equals(UserInfoManager.getInstance().getUid(), bean.getF_uid()) ? bean.getT_nickname() : bean.getT_nickname(), StringUtis.equals(UserInfoManager.getInstance().getUid(), bean.getF_uid()) ? bean.getT_face() : bean.getT_face());
+                                break;
+                            }
+
+                        }
+
+                } else {
+                    actionPersenter.actionEngagement(id, code);
+                    showPopUp(null, null);
+                }
             }
         }
     }
@@ -232,7 +260,7 @@ public class EngagementDetailsActivity extends BaseActivity implements Engagemen
         mTvFlower.setText(EngagementUtils.getStatusText(bean.getStatus(), bean.getAppeal_status(), bean.getDating_status_add_msg(), StringUtis.equals(UserInfoManager.getInstance().getUid(), bean.getF_uid())));
         long daojishi = bean.getDaojishi();
         if (daojishi > 0) {
-            tv_count_down.setText(TimeUtils.formatTime(daojishi, TimeUtils.HOUR_MINUTE));
+            tv_count_down.setText(daojishi / 3600 + " 时 " + (daojishi % 3600) / 60 + " 分");
         }
     }
 

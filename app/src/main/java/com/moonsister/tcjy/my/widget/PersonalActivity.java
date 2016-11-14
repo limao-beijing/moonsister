@@ -9,17 +9,15 @@ import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.PersonalAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.bean.PersonalMessageBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
-import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenter;
 import com.moonsister.tcjy.my.persenter.PersonalActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.PersonalActivityView;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tool.lang.StringUtis;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import java.util.List;
@@ -197,9 +195,9 @@ public class PersonalActivity extends BaseActivity implements PersonalActivityVi
 //                }
 //            });
 //        }
-        PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();//获得对象
-        memoryPersonInfoDetail.setSmobile(smobile);//保存值
-        UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
+//        PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();//获得对象
+//        memoryPersonInfoDetail.setSmobile(smobile);//保存值
+//        UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
         String qq = data3.getQq();//用户QQ号
 //        if (qq == null) {
         qq_number.setText("xxxxxxxxxxx");

@@ -45,7 +45,7 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
     TextView tv_engagement_status;
     @Bind(R.id.tv_engagement_text_status)
     TextView mTvEngagementTextStatus;
-    int bgRed = R.drawable.shape_background_half_round_blue_dark_151c22;
+    int bgRed = R.drawable.shape_background_half_round_red;
     int bgGray = R.drawable.shape_background_half_round_gray;
 
     public EngagementManagerViewHolder(View view) {
@@ -111,12 +111,11 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
 
                 break;
             case 3://3 申诉中
-                mTvBtnOne.setText(getString(R.string.engagement_refuse_appointments));
-                mTvBtnOne.setBackground(getDrawable(bgGray));
-                mTvBtnThree.setVisibility(View.INVISIBLE);
-                mTvBtnTwo.setText(getString(R.string.engagement_refuse));
-                tv_engagement_status.setText(getString(R.string.engagement_status_failure));
-                mTvEngagementTextStatus.setText(getString(R.string.engagement_status_text_failure));
+                mTvBtnOne.setVisibility(View.GONE);
+                mTvBtnTwo.setVisibility(View.GONE);
+                mTvBtnThree.setVisibility(View.GONE);
+                tv_engagement_status.setText(getString(R.string.engagement_status_applying));
+                mTvEngagementTextStatus.setText(getString(R.string.engagement_status_msg_order_lock));
                 break;
             case 4://4 已成功
 
@@ -128,8 +127,8 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
                 mTvEngagementTextStatus.setText(getString(R.string.engagement_status_text_success));
                 break;
             case 5://5 已失败
-                mTvBtnOne.setText(getString(R.string.engagement_again));
-                mTvBtnOne.setBackground(getDrawable(bgRed));
+                mTvBtnOne.setText(getString(R.string.engagement_agree));
+                mTvBtnOne.setBackground(getDrawable(bgGray));
                 mTvBtnThree.setVisibility(View.INVISIBLE);
                 mTvBtnTwo.setText(getString(R.string.engagement_refuse));
                 tv_engagement_status.setText(getString(R.string.engagement_status_failure));
@@ -178,7 +177,7 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
         mTvBtnTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (bean.getAppeal_status() == 1) {
+                if (bean.getAppeal_status() == 3) {
                     if (baseRecyclerViewAdapter.getBaseIView() != null)
                         baseRecyclerViewAdapter.getBaseIView().transfePageMsg(getString(R.string.order_lock));
                     return;
@@ -207,14 +206,9 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
         mTvBtnOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (bean.getAppeal_status() == 1) {
+                if (bean.getStatus() == 3) {
                     if (baseRecyclerViewAdapter.getBaseIView() != null)
                         baseRecyclerViewAdapter.getBaseIView().transfePageMsg(getString(R.string.order_lock));
-                    return;
-                }
-                if (bean.getStatus() == 5) {
-                    if (baseRecyclerViewAdapter.getBaseIView() != null)
-                        baseRecyclerViewAdapter.getBaseIView().transfePageMsg(getString(R.string.order_finish));
                     return;
                 }
 //                if (StringUtis.string2Int(bean.getVip_level()) <= 0 && bean.getStatus() == 1) {
@@ -231,7 +225,7 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
                             break;
                         }
                     }
-                    ActivityUtils.startEngagemengOrderActivity(type, bean.getTo_uid(), bean.getFrom_nickname(), bean.getFrom_face());
+                    ActivityUtils.startEngagemengOrderActivity(type, bean.getTo_uid(), bean.getTo_nickname(), bean.getTo_face());
                 } else if (StringUtis.equals(content, getString(R.string.engagement_invite))) {
 //                    Events<String> events = new Events<>();
 //                    events.message = bean.getId();
@@ -262,6 +256,7 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
          */
         switch (bean.getStatus()) {
             case 1://1 等待应答
+                mTvBtnTwo.setVisibility(View.GONE);
                 mTvBtnOne.setText(getString(R.string.engagement_await));
                 mTvBtnOne.setBackground(getDrawable(bgGray));
                 mTvBtnThree.setVisibility(View.INVISIBLE);
@@ -269,6 +264,7 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
                 mTvEngagementTextStatus.setText(getString(R.string.engagement_status_text_await));
                 break;
             case 2:// 2 约会中
+                mTvBtnTwo.setVisibility(View.GONE);
                 mTvBtnOne.setText(getString(R.string.engagement_agree));
                 mTvBtnOne.setBackground(getDrawable(bgGray));
                 mTvBtnThree.setVisibility(View.VISIBLE);
@@ -280,13 +276,14 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
 
                 break;
             case 3:// 3 申诉中
-                mTvBtnOne.setText(getString(R.string.engagement_again));
-                mTvBtnOne.setBackground(getDrawable(bgRed));
-                mTvBtnThree.setVisibility(View.INVISIBLE);
-                tv_engagement_status.setText(getString(R.string.engagement_status_failure));
-                mTvEngagementTextStatus.setText(getString(R.string.engagement_status_text_failure));
+                mTvBtnOne.setVisibility(View.GONE);
+                mTvBtnTwo.setVisibility(View.GONE);
+                mTvBtnThree.setVisibility(View.GONE);
+                tv_engagement_status.setText(getString(R.string.engagement_status_applying));
+                mTvEngagementTextStatus.setText(getString(R.string.engagement_status_msg_order_lock));
                 break;
             case 4:// 4 已成功
+                mTvBtnTwo.setVisibility(View.GONE);
                 mTvBtnOne.setText(getString(R.string.engagement_agree));
                 mTvBtnOne.setBackground(getDrawable(bgGray));
                 mTvBtnThree.setVisibility(View.VISIBLE);
@@ -298,7 +295,7 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
 
                 break;
             case 5://  5 已失败
-
+                mTvBtnTwo.setVisibility(View.GONE);
                 mTvBtnOne.setText(getString(R.string.engagement_again));
                 mTvBtnOne.setBackground(getDrawable(bgRed));
                 mTvBtnThree.setVisibility(View.INVISIBLE);

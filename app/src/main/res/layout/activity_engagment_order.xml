@@ -42,7 +42,7 @@
                     android:layout_height="@dimen/y200"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/x20"
-                    android:src="@mipmap/ic_launcher"/>
+                    />
 
                 <com.moonsister.tcjy.widget.CircularImageView
                     android:id="@+id/civ_user_avatered"
@@ -51,7 +51,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/x20"
-                    android:src="@mipmap/ic_launcher"/>
+                    />
 
 
             </RelativeLayout>
@@ -111,6 +111,7 @@
                     android:textSize="@dimen/text_size_16"/>
 
                 <EditText
+
                     android:id="@+id/et_input_money"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -122,7 +123,7 @@
                     android:paddingLeft="@dimen/x20"
                     android:textColor="@color/red_d96385"
                     android:textColorHint="@color/gray_alacad"
-                    android:textSize="@dimen/text_size_16"/>
+                    android:textSize="@dimen/text_size_14"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -276,7 +277,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/x80"
                 android:layout_margin="@dimen/x30"
-                android:background="@drawable/shape_engagement_pay"
+                android:background="@drawable/shape_bg_yellow_ff8201"
                 android:gravity="center"
                 android:text="@string/once_ensure"
                 android:textColor="@color/white"

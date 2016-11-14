@@ -379,7 +379,7 @@ public class ActivityUtils {
      *
      * @param withdraw_money
      */
-    public static void startGetMoneyActivity(int withdraw_money) {
+    public static void startGetMoneyActivity(String withdraw_money) {
         Intent intent = getIntent(GetMoneyActivity.class);
         intent.putExtra("withdraw_money", withdraw_money);
         startActivity(intent);
@@ -814,29 +814,7 @@ public class ActivityUtils {
      */
     public static void startPersonEngagementTypeActivity(String uid, String nickname, String face) {
         Intent intent = getIntent(EngagementTypeActivity.class);
-//        PersonInfoDetail detail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
-//        int attestation = detail.getAttestation();
-//        String sex = detail.getSex();
-//        int status = detail.getVipStatus();
-//        if (StringUtis.equals(sex, "1")) {
-//            if (status == 1) {
-//                intent = getIntent(EngagementTypeActivity.class);
-//
-//            } else {
-//                UIUtils.showToast(getActivityContext(), "您还未是VIP,请先购买VIP");
-//                intent = getIntent(BuyVipActivity.class);
-//            }
-//        } else {
-//            if (attestation == 1) {
-//                intent = getIntent(EngagementTypeActivity.class);
-//            } else if (attestation == 2) {
-//                UIUtils.showToast(getApplicationContext(), "您的认证正在审核中，请稍后再试");
-//            } else {
-//                intent = getIntent(RenZhengThreeActivity.class);
-//                UIUtils.showToast(getApplicationContext(), "您还未认证，请先认证");
-//            }
-//        }
-//        if (intent != null) {
+
         intent.putExtra("id", uid);
         intent.putExtra("name", nickname);
         intent.putExtra("avater", face);
@@ -857,29 +835,6 @@ public class ActivityUtils {
      */
     public static void startEngagemengOrderActivity(EnumConstant.EngegamentType type, String uid, String nickname, String face) {
         Intent intent = getIntent(EngagemengOrderActivity.class);
-//        PersonInfoDetail detail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
-//        int attestation = detail.getAttestation();
-//        String sex = detail.getSex();
-//        int status = detail.getVipStatus();
-//        if (StringUtis.equals(sex, "1")) {
-//            if (status == 1) {
-//                intent = getIntent(EngagemengOrderActivity.class);
-//
-//            } else {
-//                UIUtils.showToast(getApplicationContext(), "您还未是VIP,请先购买VIP");
-//                intent = getIntent(BuyVipActivity.class);
-//            }
-//        } else {
-//            if (attestation == 1) {
-//                intent = getIntent(EngagemengOrderActivity.class);
-//            } else if (attestation == 2) {
-//                UIUtils.showToast(getApplicationContext(), "您的认证正在审核中，请稍后再试");
-//            } else {
-//                intent = getIntent(RenZhengThreeActivity.class);
-//                UIUtils.showToast(getApplicationContext(), "您还未认证，请先认证");
-//            }
-//        }
-//        if (intent != null) {
         intent.putExtra("id", uid);
         intent.putExtra("nike", nickname);
         intent.putExtra("face", face);

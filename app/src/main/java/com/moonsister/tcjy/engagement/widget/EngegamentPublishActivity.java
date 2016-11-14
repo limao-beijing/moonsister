@@ -73,14 +73,16 @@ public class EngegamentPublishActivity extends BaseActivity {
     }
 
     private void checkPermission() {
+        showProgressDialog();
         UserPermissionManager.getInstance().checkVip(EnumConstant.PermissionType.LATEST_PUB, new UserPermissionManager.PermissionCallback() {
             @Override
             public void onStatus(EnumConstant.PermissionReasult reasult, int imCount, String sex) {
+                hideProgressDialog();
                 if (reasult == EnumConstant.PermissionReasult.HAVE_PERSSION) {
                     ActivityUtils.startEengegamentRecommendActivity(type);
                     finish();
                 } else if (reasult == EnumConstant.PermissionReasult.NOT_PERSSION) {
-                    DialogMannager.getInstance().showEngagementPermission(getSupportFragmentManager(), new ImPermissionDialog.OnCallBack() {
+                    DialogMannager.getInstance().showEngagementPermission(sex, getSupportFragmentManager(), new ImPermissionDialog.OnCallBack() {
                         @Override
                         public void onStatus(BaseDialogFragment dialogFragment, EnumConstant.DialogCallBack statusCode) {
                             if (statusCode == EnumConstant.DialogCallBack.CANCEL) {
@@ -111,6 +113,8 @@ public class EngegamentPublishActivity extends BaseActivity {
                     });
                 }
             }
+
+
         });
 
     }

@@ -45,7 +45,6 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="@dimen/x10"
-                    android:text="@string/asleep"
                     android:textColor="@color/black"/>
 
                 <com.moonsister.tcjy.widget.CircularImageView
@@ -60,10 +59,11 @@
                     android:id="@+id/civ_user_avatered"
                     android:layout_width="@dimen/x200"
                     android:layout_height="@dimen/y200"
-                    android:layout_marginRight="@dimen/x20"
-                    android:src="@mipmap/ic_launcher"
+                    android:layout_alignParentEnd="true"
                     android:layout_alignTop="@+id/civ_user_avater"
-                    android:layout_alignParentEnd="true"/>
+                    android:layout_marginRight="@dimen/x20"
+                    android:src="@mipmap/ic_launcher"/>
+
                 <TextView
                     android:id="@+id/tv_count_down"
                     android:layout_width="wrap_content"
@@ -285,6 +285,19 @@
                 android:text="@string/loading"
                 android:textColor="@color/text_gray_737c7d"
                 android:textSize="@dimen/text_size_13"/>
+
+            <TextView
+                android:id="@+id/tv_sumbit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x80"
+                android:layout_margin="@dimen/x30"
+                android:layout_marginTop="@dimen/x30"
+                android:background="@drawable/shape_bg_yellow_ff8201"
+                android:gravity="center"
+                android:text="@string/engagement_manager"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_20"
+                android:visibility="gone"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

@@ -55,6 +55,7 @@
             style="@style/vertical_line"
             android:layout_marginBottom="@dimen/x15"
             android:layout_marginTop="@dimen/x15"/>
+
         <RelativeLayout
             android:id="@+id/rl_wacth"
             android:layout_width="0dp"
@@ -117,6 +118,29 @@
                 android:drawablePadding="@dimen/x10"
                 android:gravity="center"
                 android:text="@string/home_flower"/>
+        </RelativeLayout>
+
+        <View
+            style="@style/vertical_line"
+            android:layout_marginBottom="@dimen/x15"
+            android:layout_marginTop="@dimen/x15"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_engagement"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_engagement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@mipmap/home_person_engaggement"
+                android:drawablePadding="@dimen/x10"
+                android:gravity="center"
+                android:text="@string/engagement"/>
         </RelativeLayout>
 
 

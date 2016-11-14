@@ -161,7 +161,7 @@ public class EaseConversationListFragment extends EaseBaseFragment {
 
             @Override
             public void onCmdMessageReceived(List<EMMessage> messages) {
-
+                refresh();
             }
         };
         EMClient.getInstance().chatManager().addMessageListener(emMessageListener);

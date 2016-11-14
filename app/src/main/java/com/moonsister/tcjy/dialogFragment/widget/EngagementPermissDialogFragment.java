@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.dialogFragment.widget;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
@@ -10,6 +11,7 @@ import com.moonsister.tcjy.dialogFragment.presenter.EngagementPermissPersenter;
 import com.moonsister.tcjy.dialogFragment.presenter.EngagementPermissPersenterImpl;
 import com.moonsister.tcjy.dialogFragment.view.EngagementPermissView;
 import com.moonsister.tcjy.utils.EnumConstant;
+import com.moonsister.tool.lang.StringUtis;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -23,6 +25,8 @@ public class EngagementPermissDialogFragment extends BaseDialogFragment implemen
     TextView mTv;
     @Bind(R.id.tv_vip_rule)
     TextView mTvVipRule;
+    @Bind(R.id.tv_upgrade_vip)
+    TextView tv_upgrade_vip;
     private ImPermissionDialog.OnCallBack mOnCallBack;
     private EngagementPermissPersenter persenter;
 
@@ -34,13 +38,24 @@ public class EngagementPermissDialogFragment extends BaseDialogFragment implemen
 
     @Override
     protected void initData() {
+        String sex = getArguments().getString("sex");
+        if (StringUtis.equals(sex,"1")){
+            tv_upgrade_vip.setText(getText(R.string.upgrade_vip));
+        }else {
+            tv_upgrade_vip.setText(getText(R.string.upgrade_renzheng));
+        }
         persenter = new EngagementPermissPersenterImpl();
         persenter.attachView(this);
         persenter.loadTextMsg();
+
     }
 
-    public static EngagementPermissDialogFragment newInstance() {
-        return new EngagementPermissDialogFragment();
+    public static EngagementPermissDialogFragment newInstance(String sex) {
+        EngagementPermissDialogFragment fragment = new EngagementPermissDialogFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("sex", sex);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     public void setOnCallBack(ImPermissionDialog.OnCallBack onCallBack) {

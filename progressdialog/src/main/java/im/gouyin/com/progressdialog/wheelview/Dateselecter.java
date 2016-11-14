@@ -97,6 +97,12 @@ public class Dateselecter {
                 makeWindowLight();
             }
         });
+
+//界面底部弹出了popupwindow，而 popupwindow上面的button控件被虚拟键挡着，
+        popupWindow.setInputMethodMode(PopupWindow.INPUT_METHOD_NEEDED);
+        popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
+
         popupWindow.showAtLocation(showAtView, Gravity.CENTER | Gravity.BOTTOM, 0, 0);
         tv_end_time.setText(GetTimeUtil.getYMDTime(System.currentTimeMillis()));
         popupWindowView.findViewById(R.id.tv_ok).setOnClickListener(new View.OnClickListener() {

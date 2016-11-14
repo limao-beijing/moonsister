@@ -31,10 +31,11 @@ public class TwoFragment extends BaseFragment implements BalanceActivityView {
     int type;
     int page;
     List<BalanceBean.DataBean> data;
+
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        type=2;
-        page=1;
+        type = 2;
+        page = 1;
         mPresenter = new MoneyActivityPersenterImpl();
         mPresenter.attachView(this);
         return UIUtils.inflateLayout(R.layout.twofragment);
@@ -43,19 +44,20 @@ public class TwoFragment extends BaseFragment implements BalanceActivityView {
     @Override
     protected void initData() {
         onfragment_listview.setVerticalLinearLayoutManager();
-        onfragment_listview.setPullRefreshEnabled(false);
+
         onfragment_listview.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-
+                page = 1;
+                mPresenter.moneyba(type, page, 10);
             }
 
             @Override
             public void onLoadMore() {
-                mPresenter.moneyba(type,page,10);
+                mPresenter.moneyba(type, page, 10);
             }
         });
-        mPresenter.moneyba(type,page,10);
+        mPresenter.moneyba(type, page, 10);
 
     }
 
@@ -74,17 +76,21 @@ public class TwoFragment extends BaseFragment implements BalanceActivityView {
             onfragment_listview.refreshComplete();
             return;
         }
+
         if (mAdapter == null) {
             mAdapter = new MoneyTwoAdapter(balanceBean.getData(), this);
             mAdapter.setPageType(type);
             if (onfragment_listview != null)
                 onfragment_listview.setAdapter(mAdapter);
         } else {
+            if (page == 1)
+                mAdapter.clean();
             mAdapter.addListData(balanceBean.getData());
             mAdapter.onRefresh();
         }
         onfragment_listview.loadMoreComplete();
         onfragment_listview.refreshComplete();
+        page++;
     }
 
     @Override

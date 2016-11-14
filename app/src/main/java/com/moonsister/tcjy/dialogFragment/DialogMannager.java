@@ -48,7 +48,7 @@ public class DialogMannager {
     }
 
     /**
-     * 显示权限的弹框
+     * 显示聊天权限的弹框
      *
      * @param sex
      * @param manager
@@ -59,13 +59,13 @@ public class DialogMannager {
         dialog.setOnCallBack(onCallBack);
     }
     /**
-     * 显示权限的弹框
+     * 显示约会权限的弹框
      *
 
      * @param manager
      */
-    public void showEngagementPermission(FragmentManager manager, ImPermissionDialog.OnCallBack onCallBack) {
-        EngagementPermissDialogFragment dialog = EngagementPermissDialogFragment.newInstance();
+    public void showEngagementPermission(String sex,FragmentManager manager, ImPermissionDialog.OnCallBack onCallBack) {
+        EngagementPermissDialogFragment dialog = EngagementPermissDialogFragment.newInstance(sex);
         dialog.showDialogFragment(manager);
         dialog.setOnCallBack(onCallBack);
     }

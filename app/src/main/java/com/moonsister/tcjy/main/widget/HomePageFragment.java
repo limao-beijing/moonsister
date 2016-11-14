@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -53,6 +54,8 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
     View rl_pay;
     @Bind(R.id.rl_flower)
     View rl_flower;
+    @Bind(R.id.rl_engagement)
+    RelativeLayout rl_engagement;
     private HomePageFragmentPresenter presenter;
     private HomePageFragmentAdapter adapter;
     private String userId;
@@ -206,6 +209,7 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
         if (!StringUtis.equals(isverify, "1")) {
             rl_pay.setVisibility(View.GONE);
             rl_flower.setVisibility(View.GONE);
+            rl_engagement.setVisibility(View.GONE);
         }
         String follow = userInfo.getData().getFollow();
         boolean equals = StringUtis.equals(follow, "1");
@@ -240,7 +244,7 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
     }
 
 
-    @OnClick({R.id.rl_reward, R.id.rl_im, R.id.rl_wacth, R.id.rl_pay, R.id.rl_flower})
+    @OnClick({R.id.rl_reward, R.id.rl_im, R.id.rl_wacth, R.id.rl_pay, R.id.rl_flower, R.id.rl_engagement})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rl_reward:
@@ -258,6 +262,9 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
                 break;
             case R.id.rl_flower:
                 ActivityUtils.startRedpacketActivity(userId, RedpacketAcitivity.RedpacketType.TYPE_FLOWER, userInfo.getData().getBaseinfo().getFace());
+                break;
+            case R.id.rl_engagement:
+                ActivityUtils.startPersonEngagementTypeActivity(userId, userInfo.getData().getBaseinfo().getNickname(), userInfo.getData().getBaseinfo().getFace());
                 break;
         }
     }

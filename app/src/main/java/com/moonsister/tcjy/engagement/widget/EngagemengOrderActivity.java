@@ -1,7 +1,10 @@
 package com.moonsister.tcjy.engagement.widget;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.Build;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -86,7 +89,9 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
         uid = intent.getStringExtra("id");
         nike = intent.getStringExtra("nike");
         face = intent.getStringExtra("face");
-        return UIUtils.inflateLayout(R.layout.activity_engagment_order);
+        View view = UIUtils.inflateLayout(R.layout.activity_engagment_order);
+        view.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+        return view;
     }
 
     @Override
@@ -128,11 +133,19 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
 
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        hideVirtualButtons();
+        return super.onTouchEvent(event);
+    }
+
     @OnClick({R.id.tv_sumbit, R.id.et_input_date})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.et_input_date:
+
                 dateselecter.showPop();
+
                 break;
 
             case R.id.tv_sumbit:
@@ -149,6 +162,11 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
                 }
                 if (dating_money > StringUtis.string2Int(money)) {
                     showToast("金额不能低于" + dating_money);
+                    return;
+                }
+                long l = TimeUtils.formatTimestamp(date + ":00");
+                if ((l - System.currentTimeMillis()) < (1000 * 60 * 60 * 2)) {
+                    showToast("约会时间不能少于2个小时");
                     return;
                 }
                 presenter.submit(last_count + "", type, uid, money, (TimeUtils.formatTimestamp(date + ":00") / 1000) + "", message, address);
@@ -178,8 +196,12 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
         bean.setStatus(1);
         bean.setMsgX(mEtEngagementMessage.getText().toString());
         bean.setMoney(et_input_money.getText().toString());
-
-        bean.setDaojishi(System.currentTimeMillis() / 3000);
+        long l = TimeUtils.formatTimestamp(et_input_date.getText().toString() + ":00");
+        if ((l - System.currentTimeMillis()) > (48 * 3600000)) {
+            bean.setDaojishi(48 * 3600);
+        } else {
+            bean.setDaojishi((l - System.currentTimeMillis()) / 1000);
+        }
         bean.setDate((TimeUtils.formatTimestamp(et_input_date.getText().toString() + ":00") / 1000) + "");
         bean.setF_face(UserInfoManager.getInstance().getAvater());
         bean.setF_nickname(UserInfoManager.getInstance().getNickeName());
@@ -229,6 +251,15 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
     @Override
     public void setEngagementText(String info) {
         tv_engagement_text.setText(info);
+    }
+
+    @SuppressLint("NewApi")
+    private void hideVirtualButtons() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE);
+        }
     }
 
 }

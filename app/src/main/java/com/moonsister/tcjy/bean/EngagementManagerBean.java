@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.bean;
 
-import com.moonsister.tcjy.engagement.presenter.EngagementActionPersenter;
+import com.google.gson.annotations.SerializedName;
+import com.moonsister.tcjy.engagement.presenter.EngagementActionPersenterImpl;
 import com.moonsister.tcjy.utils.EnumConstant;
 
 import java.util.List;
@@ -10,34 +11,6 @@ import java.util.List;
  */
 public class EngagementManagerBean extends BaseBean {
 
-
-    /**
-     * id : 12
-     * from_uid : 156794
-     * to_uid : 145982
-     * money : 1000
-     * order_id : 0
-     * type : 1
-     * date : 2016-10-03 17:30
-     * address : 湖南省长沙市雨花区xxx街
-     * msg : 我来了，你在哪儿13
-     * create_time : 1475030396
-     * status : 1
-     * channel : null
-     * dead_time : 0
-     * date_status : 2
-     * appeal_dead_time : 0
-     * deal_time : 0
-     * ac_je_time : 0
-     * appeal_time : 0
-     * from_nickname : 哈哈
-     * from_sex : 2
-     * from_face : http://mimei.cntttt.com:88/public/
-     * vip_level : 1
-     * to_nickname : mm61080908
-     * to_sex : 1
-     * to_face : http://mimei.cntttt.com:88/public/
-     */
 
     private List<DataBean> data;
 
@@ -50,6 +23,40 @@ public class EngagementManagerBean extends BaseBean {
     }
 
     public static class DataBean extends BaseDataBean {
+        /**
+         * id : 120
+         * from_uid : 162043
+         * to_uid : 161833
+         * money : 1
+         * order_id : 572016111456781
+         * type : 2
+         * date : 11月14号 18:08
+         * address : jxjx
+         * msg : 轰炸
+         * create_time : 1479107321
+         * status : 1
+         * channel : null
+         * dead_time : 1479193721
+         * appeal_status : 0
+         * deal_time : 0
+         * ac_je_time : 0
+         * isauto : 1
+         * isvip : 0
+         * mstatus : 1
+         * dating_status_add : 1001
+         * dating_id : 120
+         * from_nickname : 费和平
+         * from_sex : 1
+         * from_face : http://mimei.oss-cn-beijing.aliyuncs.com/public/face/moren.png
+         * vip_level : 12
+         * accept_cdown : 1479366521
+         * to_nickname : Nihao
+         * to_sex : 2
+         * to_face : http://mimei.oss-cn-beijing.aliyuncs.com/image/20161026/16/40451477471245394.jpg
+         * timeinfo : 2时39分
+         * dating_status_add_msg : 等待应答
+         */
+
         private String from_uid;
         private String to_uid;
         private String money;
@@ -57,68 +64,39 @@ public class EngagementManagerBean extends BaseBean {
         private int type;
         private String date;
         private String address;
-        private String msg;
-        private long create_time;
+        @SerializedName("msg")
+        private String msgX;
+        private int create_time;
         private int status;
-        private String channel;
+        private Object channel;
         private long dead_time;
-        private String date_status;
-        private long appeal_dead_time;
+        private int appeal_status;
         private long deal_time;
         private long ac_je_time;
-        private long appeal_time;
+        private int isauto;
+        private int isvip;
+        private int mstatus;
+        private int dating_status_add;
+        private String dating_id;
         private String from_nickname;
-        private String from_sex;
+        private int from_sex;
         private String from_face;
-        private String vip_level;
+        private int vip_level;
+        private long accept_cdown;
         private String to_nickname;
-        private String to_sex;
+        private int to_sex;
         private String to_face;
-        private String accept_cdown;
         private String timeinfo;
-        //0未申诉，1申诉中，2已成功（约会状态同步为4已失败）
-        private int appeal_status;
-        private EnumConstant.ManagerType mType;
-        private EngagementActionPersenter mPresenetr;
+        private String dating_status_add_msg;
+        private EnumConstant.ManagerType mManagerType;
+        private EngagementActionPersenterImpl mPresenetr;
 
-        public EngagementActionPersenter getPresenetr() {
+        public EngagementActionPersenterImpl getPresenetr() {
             return mPresenetr;
         }
 
-        public String getTimeinfo() {
-            return timeinfo;
-        }
-
-        public void setTimeinfo(String timeinfo) {
-            this.timeinfo = timeinfo;
-        }
-
-        public void setType(EnumConstant.ManagerType type) {
-            mType = type;
-        }
-
-        public void setManagerType(EnumConstant.ManagerType type) {
-            mType = type;
-        }
-
         public EnumConstant.ManagerType getManagerType() {
-            return mType;
-        }
-
-        public int getAppeal_status() {
-            return appeal_status;
-        }
-
-        public void setAppeal_status(int appeal_status) {
-            this.appeal_status = appeal_status;
-        }
-
-        public String getAccept_cdown() {
-            return accept_cdown;
-        }
-
-        public void setAccept_cdown(String accept_cdown) {
-            this.accept_cdown = accept_cdown;
+            return mManagerType;
         }
 
         public String getFrom_uid() {
@@ -177,19 +155,19 @@ public class EngagementManagerBean extends BaseBean {
             this.address = address;
         }
 
-        public String getMsg() {
-            return msg;
+        public String getMsgX() {
+            return msgX;
         }
 
-        public void setMsg(String msg) {
-            this.msg = msg;
+        public void setMsgX(String msgX) {
+            this.msgX = msgX;
         }
 
-        public long getCreate_time() {
+        public int getCreate_time() {
             return create_time;
         }
 
-        public void setCreate_time(long create_time) {
+        public void setCreate_time(int create_time) {
             this.create_time = create_time;
         }
 
@@ -201,11 +179,11 @@ public class EngagementManagerBean extends BaseBean {
             this.status = status;
         }
 
-        public String getChannel() {
+        public Object getChannel() {
             return channel;
         }
 
-        public void setChannel(String channel) {
+        public void setChannel(Object channel) {
             this.channel = channel;
         }
 
@@ -217,20 +195,12 @@ public class EngagementManagerBean extends BaseBean {
             this.dead_time = dead_time;
         }
 
-        public String getDate_status() {
-            return date_status;
+        public int getAppeal_status() {
+            return appeal_status;
         }
 
-        public void setDate_status(String date_status) {
-            this.date_status = date_status;
-        }
-
-        public long getAppeal_dead_time() {
-            return appeal_dead_time;
-        }
-
-        public void setAppeal_dead_time(long appeal_dead_time) {
-            this.appeal_dead_time = appeal_dead_time;
+        public void setAppeal_status(int appeal_status) {
+            this.appeal_status = appeal_status;
         }
 
         public long getDeal_time() {
@@ -249,12 +219,44 @@ public class EngagementManagerBean extends BaseBean {
             this.ac_je_time = ac_je_time;
         }
 
-        public long getAppeal_time() {
-            return appeal_time;
+        public int getIsauto() {
+            return isauto;
         }
 
-        public void setAppeal_time(long appeal_time) {
-            this.appeal_time = appeal_time;
+        public void setIsauto(int isauto) {
+            this.isauto = isauto;
+        }
+
+        public int getIsvip() {
+            return isvip;
+        }
+
+        public void setIsvip(int isvip) {
+            this.isvip = isvip;
+        }
+
+        public int getMstatus() {
+            return mstatus;
+        }
+
+        public void setMstatus(int mstatus) {
+            this.mstatus = mstatus;
+        }
+
+        public int getDating_status_add() {
+            return dating_status_add;
+        }
+
+        public void setDating_status_add(int dating_status_add) {
+            this.dating_status_add = dating_status_add;
+        }
+
+        public String getDating_id() {
+            return dating_id;
+        }
+
+        public void setDating_id(String dating_id) {
+            this.dating_id = dating_id;
         }
 
         public String getFrom_nickname() {
@@ -265,11 +267,11 @@ public class EngagementManagerBean extends BaseBean {
             this.from_nickname = from_nickname;
         }
 
-        public String getFrom_sex() {
+        public int getFrom_sex() {
             return from_sex;
         }
 
-        public void setFrom_sex(String from_sex) {
+        public void setFrom_sex(int from_sex) {
             this.from_sex = from_sex;
         }
 
@@ -281,12 +283,20 @@ public class EngagementManagerBean extends BaseBean {
             this.from_face = from_face;
         }
 
-        public String getVip_level() {
+        public int getVip_level() {
             return vip_level;
         }
 
-        public void setVip_level(String vip_level) {
+        public void setVip_level(int vip_level) {
             this.vip_level = vip_level;
+        }
+
+        public long getAccept_cdown() {
+            return accept_cdown;
+        }
+
+        public void setAccept_cdown(long accept_cdown) {
+            this.accept_cdown = accept_cdown;
         }
 
         public String getTo_nickname() {
@@ -297,11 +307,11 @@ public class EngagementManagerBean extends BaseBean {
             this.to_nickname = to_nickname;
         }
 
-        public String getTo_sex() {
+        public int getTo_sex() {
             return to_sex;
         }
 
-        public void setTo_sex(String to_sex) {
+        public void setTo_sex(int to_sex) {
             this.to_sex = to_sex;
         }
 
@@ -313,7 +323,27 @@ public class EngagementManagerBean extends BaseBean {
             this.to_face = to_face;
         }
 
-        public void setPresenetr(EngagementActionPersenter presenetr) {
+        public String getTimeinfo() {
+            return timeinfo;
+        }
+
+        public void setTimeinfo(String timeinfo) {
+            this.timeinfo = timeinfo;
+        }
+
+        public String getDating_status_add_msg() {
+            return dating_status_add_msg;
+        }
+
+        public void setDating_status_add_msg(String dating_status_add_msg) {
+            this.dating_status_add_msg = dating_status_add_msg;
+        }
+
+        public void setManagerType(EnumConstant.ManagerType managerType) {
+            mManagerType = managerType;
+        }
+
+        public void setPresenetr(EngagementActionPersenterImpl presenetr) {
             mPresenetr = presenetr;
         }
     }

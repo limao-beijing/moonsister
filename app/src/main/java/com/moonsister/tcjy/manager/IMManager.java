@@ -24,14 +24,21 @@ import com.hyphenate.easeui.utils.EaseUserUtils;
 import com.hyphenate.util.NetUtils;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.bean.PersonInfoDetail;
+import com.moonsister.tcjy.event.Events;
+import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tool.lang.StringUtis;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
 import java.util.Map;
+
+import rx.Observable;
+import rx.Subscriber;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by jb on 2016/10/18.
@@ -69,6 +76,7 @@ public class IMManager {
 
         setUserInfo();
         setConnectionListener();
+        setMessageListener();
     }
 
     /**
@@ -259,7 +267,7 @@ public class IMManager {
             public void onConnected() {
 
                 LogUtils.d(TAG, " 连接成功！");
-                setMessageListener();
+
             }
 
             @Override
@@ -352,6 +360,27 @@ public class IMManager {
         }
     }
 
+    /**
+     * 保存用户信息
+     *
+     * @param uid
+     * @param nike
+     * @param avater
+     */
+    public void saveUserInfo(String uid, String nike, String avater) {
+        EaseUser eu = EaseUI.getInstance().getUserProfileProvider().getUser(uid);
+        if (eu != null && StringUtis.equals(eu.getAvatar(), avater) && StringUtis.equals(eu.getNick(), nike)) {
+            return;
+        }
+        HxUserDao dao = new HxUserDao();
+        EaseUser user = new EaseUser(uid);
+        user.setAvatar(avater);
+        user.setNick(nike);
+        dao.saveUser(user);
+        IMManager.getInstance().upUserInfo(uid);
+    }
+
+
     public void setMessageListener() {
 
         EMClient.getInstance().chatManager().addMessageListener(new EMMessageListener() {
@@ -362,21 +391,12 @@ public class IMManager {
                 EaseAtMessageHelper.get().parseMessages(list);
 
                 try {
-                    HxUserDao dao = new HxUserDao();
                     for (EMMessage message : list) {
                         JSONObject userinfo = message.getJSONObjectAttribute("userinfo");
                         String name = userinfo.getString("nike");
                         String avater = userinfo.getString("avater");
                         String from = message.getFrom();
-                        EaseUser eu = EaseUI.getInstance().getUserProfileProvider().getUser(from);
-                        if (eu != null && StringUtis.equals(eu.getAvatar(), avater) && StringUtis.equals(eu.getNick(), name)) {
-                            continue;
-                        }
-                        EaseUser user = new EaseUser(from);
-                        user.setAvatar(avater);
-                        user.setNick(name);
-                        dao.saveUser(user);
-                        IMManager.getInstance().upUserInfo(from);
+                        saveUserInfo(from, name, avater);
                         EaseUI instance = EaseUI.getInstance();
                         instance.getNotifier().onNewMsg(message);
                     }
@@ -388,7 +408,66 @@ public class IMManager {
 
             @Override
             public void onCmdMessageReceived(List<EMMessage> list) {
+                if (list == null)
+                    return;
+                try {
+                    Observable.create(new Observable.OnSubscribe<EMMessage>() {
+                        @Override
+                        public void call(Subscriber<? super EMMessage> subscriber) {
+                            for (EMMessage message : list) {
+                                try {
+                                    JSONObject cmdmsg1 = message.getJSONObjectAttribute("cmdmsg");
+                                    String uid = cmdmsg1.getString("b_uid");
+                                    String msg = cmdmsg1.getString("msg");
+                                    String nickname = cmdmsg1.getString("b_nickname");
+                                    String face = cmdmsg1.getString("b_face");
 
+                                    saveUserInfo(uid, nickname, face);
+
+                                    String type = cmdmsg1.getString("type");
+                                    EMMessage sendMessage = createTxtSendMessage(msg, uid);
+                                    //send message
+                                    JSONObject object = new JSONObject();
+                                    EaseUser user = EaseUI.getInstance().getUserProfileProvider().getUser(message.getTo());
+                                    try {
+                                        object.put("nike", user.getNick());
+                                        object.put("avater", user.getAvatar());
+                                        message.setAttribute("userinfo", object);
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                    subscriber.onNext(sendMessage);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    subscriber.onError(e);
+                                }
+                            }
+                            subscriber.onCompleted();
+                        }
+                    }).subscribeOn(Schedulers.io())
+                            .observeOn(Schedulers.io())
+                            .subscribe(new Subscriber<EMMessage>() {
+                                @Override
+                                public void onCompleted() {
+
+                                }
+
+                                @Override
+                                public void onError(Throwable e) {
+
+                                }
+
+                                @Override
+                                public void onNext(EMMessage s) {
+                                    sendMessage(s);
+                                    RxBus.getInstance().send(Events.EventEnum.EM_SEND_CMD, null);
+                                }
+                            });
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -443,5 +522,21 @@ public class IMManager {
         return unreadMsgCountTotal - chatroomUnreadMsgCount;
     }
 
+    //send message
+    public EMMessage createTxtSendMessage(String content, String toUid) {
+//        if (EaseAtMessageHelper.get().containsAtUsername(content)) {
+//            sendAtMessage(content);
+//        } else {
+        EMMessage message = EMMessage.createTxtSendMessage(content, toUid);
+        return message;
+//        }
+    }
+
+    private void sendMessage(EMMessage message) {
+        if (message == null)
+            return;
+        EMClient.getInstance().chatManager().sendMessage(message);
+        //refresh ui
+    }
 
 }

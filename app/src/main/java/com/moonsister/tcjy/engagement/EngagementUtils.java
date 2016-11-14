@@ -84,13 +84,13 @@ public class EngagementUtils {
                     }
 
                 }
-
+//
                 break;
-            case 6://6申诉失败
-                break;
-            case 7://，7已完成
-                integers.add(R.string.engagement_action_again);
-                break;
+//            case 6://6申诉失败
+//                break;
+//            case 7://，7已完成
+//                integers.add(R.string.engagement_action_again);
+//                break;
         }
         return integers;
     }
@@ -111,7 +111,7 @@ public class EngagementUtils {
                     string = getStringRes(R.string.engagement_status_me_engagement);
                 break;
             case 3://3 申诉中
-                string = getStringRes(R.string.engagement_status_me_reimburse);
+                string = getStringRes(R.string.engagement_status_applying);
                 break;
             case 4://4已成功
                 string = getStringRes(R.string.engagement_status_success);
@@ -125,7 +125,7 @@ public class EngagementUtils {
     }
 
     public static int getClickCode(String tag) {
-        //操作类型 1取消订单，2拒绝，3接受，4设置成功，5失败后申请退款
+        //操作类型 1取消订单，2拒绝，3接受，4设置成功，5失败后申请退款 6重新约见,7申诉
         int code = 0;
         if (StringUtis.equals(tag, getStringRes(R.string.engagement_action_apply_canle))) {
             code = 1;
@@ -137,8 +137,13 @@ public class EngagementUtils {
             code = 4;
         } else if (StringUtis.equals(tag, getStringRes(R.string.engagement_action_apply_reimburse))) {
             code = 5;
+        } else if (StringUtis.equals(tag, getStringRes(R.string.engagement_action_again))) {
+            code = 6;
+        } else if (StringUtis.equals(tag, getStringRes(R.string.engagement_action_me_apply))) {
+            code = 7;
         }
         return code;
+
     }
 
 

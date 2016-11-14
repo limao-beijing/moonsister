@@ -44,7 +44,6 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/x7"
             android:src="@mipmap/engegament_publish_head"
-
             />
 
         <TextView

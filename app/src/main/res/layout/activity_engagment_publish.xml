@@ -4,7 +4,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-    <ImageView
+    <com.moonsister.tcjy.widget.RoundedImageView
         android:id="@+id/engegament_publish_head"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -12,11 +12,24 @@
         android:layout_marginTop="@dimen/x80"
         android:src="@mipmap/engegament_publish_head"/>
 
+    <TextView
+        android:id="@+id/tv_engagement_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/engegament_publish_head"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/x30"
+        android:text="@string/loading"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_18"
+        android:textStyle="bold"
+        />
+
     <include
         layout="@layout/include_engagement_type"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/engegament_publish_head"
-        android:layout_marginTop="@dimen/x118"/>
+        android:layout_below="@+id/tv_engagement_username"
+        android:layout_marginTop="@dimen/x40"/>
 
 </RelativeLayout>

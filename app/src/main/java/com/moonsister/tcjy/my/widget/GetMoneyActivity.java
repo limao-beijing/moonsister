@@ -67,7 +67,7 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
 
     @Override
     protected void initView() {
-        int money = getIntent().getIntExtra("withdraw_money", 0);
+        String money = getIntent().getStringExtra("withdraw_money");
         etInputMoney.setHint("本次可转出" + money);
         InputFilter[] filters = {new InputFilter.LengthFilter(10)};//设置提现输入框的最大值
         etInputMoney.setFilters(filters);

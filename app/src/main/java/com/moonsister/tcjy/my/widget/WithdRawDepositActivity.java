@@ -50,7 +50,7 @@ public class WithdRawDepositActivity extends BaseActivity implements WithdRawDep
     private MyAccountTiXianFragment tiXianFragment;
     private List<Fragment> fragmentList;
     private WithdRawDepositPresenter presenter;
-    private int withdraw_money;
+    private String withdraw_money;
 
     @Override
     protected View setRootContentView() {

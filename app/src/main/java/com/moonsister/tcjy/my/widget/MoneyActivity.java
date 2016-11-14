@@ -50,7 +50,7 @@ public class MoneyActivity extends BaseActivity implements WithdRawDepositView {
     WithdRawDepositPresenter presenter;
     @Bind(R.id.titile_money)//认证费
             TextView titile_money;
-    private int withdraw_money;
+    private String withdraw_money;
 
     @Override
     protected View setRootContentView() {

@@ -15,10 +15,13 @@ import android.widget.TextView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.base.BaseIView;
+import com.moonsister.tcjy.event.Events;
+import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.im.prsenter.IMHomeFragmentPresenter;
 import com.moonsister.tcjy.im.prsenter.IMHomeFragmentPresenterImpl;
 import com.moonsister.tcjy.im.view.IMHomeView;
 import com.moonsister.tcjy.utils.FragmentUtils;
+import com.trello.rxlifecycle.FragmentEvent;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -53,6 +56,17 @@ public class IMHomeFragment extends BaseFragment implements BaseIView, IMHomeVie
         tvNavigationGoodSelect.setText(resources.getString(R.string.private_hat));
         tvNavigationSameCity.setText(resources.getString(R.string.friend));
         presenter.switchNavigation(tvNavigationGoodSelect.getId());
+        RxBus.with(this)
+                .setEvent(Events.EventEnum.EM_SEND_CMD)
+                .setEndEvent(FragmentEvent.DESTROY)
+                .onNext(events -> {
+                            if (chatFragment != null && chatFragment instanceof ConversationListFragment) {
+                                ((ConversationListFragment) chatFragment).refresh();
+                            }
+                        }
+
+                )
+                .create();
     }
 
     @Override
