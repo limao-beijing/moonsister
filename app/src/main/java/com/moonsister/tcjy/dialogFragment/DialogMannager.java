@@ -3,6 +3,7 @@ package com.moonsister.tcjy.dialogFragment;
 import android.support.v4.app.FragmentManager;
 
 import com.moonsister.tcjy.dialogFragment.widget.BindPhoneDialogFragment;
+import com.moonsister.tcjy.dialogFragment.widget.EngagementDelectDioalogFragment;
 import com.moonsister.tcjy.dialogFragment.widget.EngagementPermissDialogFragment;
 import com.moonsister.tcjy.dialogFragment.widget.ImPermissionDialog;
 import com.moonsister.tcjy.dialogFragment.widget.SelectSexDialogFragment;
@@ -58,15 +59,21 @@ public class DialogMannager {
         dialog.showDialogFragment(manager);
         dialog.setOnCallBack(onCallBack);
     }
+
     /**
      * 显示约会权限的弹框
      *
-
      * @param manager
      */
-    public void showEngagementPermission(String sex,FragmentManager manager, ImPermissionDialog.OnCallBack onCallBack) {
+    public void showEngagementPermission(String sex, FragmentManager manager, ImPermissionDialog.OnCallBack onCallBack) {
         EngagementPermissDialogFragment dialog = EngagementPermissDialogFragment.newInstance(sex);
         dialog.showDialogFragment(manager);
         dialog.setOnCallBack(onCallBack);
+    }
+
+    public void showEngaggementDialogFragment(FragmentManager manager, ImPermissionDialog.OnCallBack onCallBack) {
+        EngagementDelectDioalogFragment fragment = EngagementDelectDioalogFragment.newInstance();
+        fragment.showDialogFragment(manager);
+        fragment.setOnCallBack(onCallBack);
     }
 }

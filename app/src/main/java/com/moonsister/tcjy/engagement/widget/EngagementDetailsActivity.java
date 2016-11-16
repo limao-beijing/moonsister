@@ -80,6 +80,7 @@ public class EngagementDetailsActivity extends BaseActivity implements Engagemen
     View tv_sumbit;
     @Bind(R.id.inc_content)
     View inc_content;
+
     private EngagementDetailsPersenter persenter;
     private EngagementTextPersenter textPersenter;
     private String id;
@@ -105,6 +106,7 @@ public class EngagementDetailsActivity extends BaseActivity implements Engagemen
             textPersenter.loadText(id, EnumConstant.EngegamentTextType.ENGEGAMENT_SUCCESS);
     }
 
+
     @Override
     protected void initView() {
         Serializable data = getIntent().getSerializableExtra("data");
@@ -127,6 +129,7 @@ public class EngagementDetailsActivity extends BaseActivity implements Engagemen
         textPersenter = new EngagementTextPersenterImpl();
         textPersenter.attachView(this);
         textPersenter.loadText(id, EnumConstant.EngegamentTextType.ENGEGAMENT_SUCCESS);
+
     }
 
     @OnClick({R.id.rl_im, R.id.rl_wacth, R.id.rl_pay, R.id.rl_flower, R.id.tv_sumbit})

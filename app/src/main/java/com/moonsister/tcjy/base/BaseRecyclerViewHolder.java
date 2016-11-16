@@ -20,6 +20,7 @@ public abstract class BaseRecyclerViewHolder<T extends BaseDataBean> extends Rec
     protected BaseRecyclerViewAdapter<T> baseRecyclerViewAdapter;
     public BaseIView baseIView;
 
+
     public BaseRecyclerViewHolder(View view) {
         super(view);
         this.mRootView = view;
@@ -68,7 +69,7 @@ public abstract class BaseRecyclerViewHolder<T extends BaseDataBean> extends Rec
      * @param position
      */
     public void setOnClick(final T t, final int position) {
-        if (mRootView != null)
+        if (mRootView != null) {
             mRootView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -77,6 +78,14 @@ public abstract class BaseRecyclerViewHolder<T extends BaseDataBean> extends Rec
                         listener.onItemclick(v, position);
                 }
             });
+            mRootView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    return BaseRecyclerViewHolder.this.onLongClick(v, t, position);
+                }
+            });
+        }
+
     }
 
     /**
@@ -107,6 +116,17 @@ public abstract class BaseRecyclerViewHolder<T extends BaseDataBean> extends Rec
      */
     protected abstract void onItemclick(View view, T t, int position);
 
+    /**
+     * 长按点击事件
+     *
+     * @param view
+     * @param t
+     * @param position
+     */
+    protected boolean onLongClick(View view, T t, int position) {
+        return false;
+    }
+
     private onItemClickListener listener;
 
     public void setOnItemClickListener(onItemClickListener listener) {
@@ -121,4 +141,5 @@ public abstract class BaseRecyclerViewHolder<T extends BaseDataBean> extends Rec
     public interface onItemClickListener {
         void onItemclick(View view, int position);
     }
+
 }

@@ -23,6 +23,7 @@
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_18"
         android:textStyle="bold"
+        android:visibility="gone"
         />
 
     <include

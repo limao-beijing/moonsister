@@ -2,6 +2,7 @@ package com.moonsister.tcjy;
 
 import com.moonsister.pay.tencent.PayBean;
 import com.moonsister.tcjy.bean.BaseBean;
+import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.EngagemengOrderBean;
 import com.moonsister.tcjy.bean.EngagemengRecommendBean;
 import com.moonsister.tcjy.bean.EngagementDetailsBean;
@@ -135,7 +136,7 @@ public class AppointmentServerApi {
     }
 
     public interface AppAPI {
-        String baseUrl = "http://3test.yytbzs.cn:93/index.php/index/";
+        String baseUrl = "http://module.chuse.hk/index.php/index/";
 
         /**
          * 约会推荐用户列表
@@ -249,16 +250,15 @@ public class AppointmentServerApi {
          */
         @FormUrlEncoded
         @POST("Dating/dating_appeal")
-        Observable<StatusBean> getSubmitEngagementAppeal(@Field("dating_id") String id,
-                                                         @Field("msg") String content,
-                                                         @Field("authcode") String authcode,
-                                                         @Field("channel") String channel);
+        Observable<DefaultDataBean> getSubmitEngagementAppeal(@Field("dating_id") String id,
+                                                              @Field("msg") String content,
+                                                              @Field("authcode") String authcode,
+                                                              @Field("channel") String channel);
 
         /**
          * 约会：发布约会时，获取免费约会信息
          *
          * @param authcode
-         * @param id
          * @return
          */
         @GET("dating/get_limit_info")

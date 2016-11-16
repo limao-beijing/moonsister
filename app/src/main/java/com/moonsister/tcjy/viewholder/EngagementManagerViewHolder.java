@@ -10,6 +10,7 @@ import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.EngagementManagerBean;
 import com.moonsister.tcjy.engagement.EngagementUtils;
 import com.moonsister.tcjy.engagement.presenter.EngagementActionPersenter;
+import com.moonsister.tcjy.engagement.view.EngagementManagerFragmentView;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.widget.RoundImageView;
@@ -306,4 +307,11 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
         }
     }
 
+    @Override
+    protected boolean onLongClick(View view, EngagementManagerBean.DataBean bean, int position) {
+
+        if (baseIView != null && baseIView instanceof EngagementManagerFragmentView)
+            ((EngagementManagerFragmentView) baseIView).showDelectDialog(bean, position);
+        return true;
+    }
 }

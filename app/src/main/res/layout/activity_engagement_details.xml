@@ -247,34 +247,6 @@
                     android:textSize="@dimen/text_size_16"/>
             </RelativeLayout>
 
-            <!--<RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tv_center_txt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginTop="@dimen/x86"
-                    android:text="@string/engagement_pay_text"
-                    android:textColor="@color/text_gray_737c7d"
-                    android:textSize="@dimen/text_size_16"/>
-
-
-                <View
-                    style="@style/horizontal_line_style"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/tv_center_txt"/>
-
-                <View
-                    style="@style/horizontal_line_style"
-                    android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/tv_center_txt"/>
-
-            </RelativeLayout>-->
-
             <TextView
                 android:id="@+id/tv_engagement_text"
                 android:layout_width="match_parent"
@@ -287,6 +259,7 @@
                 android:textSize="@dimen/text_size_13"/>
 
             <TextView
+
                 android:id="@+id/tv_sumbit"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/x80"

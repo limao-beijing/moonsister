@@ -129,9 +129,9 @@ public class ChatServerApi {
 
 
     public interface AppAPI {
-//        String baseUrl = "http://chatapi.yytbzs.cn:88/";
+        String baseUrl = "http://chatapi.yytbzs.cn:88/";
 
-        String baseUrl = "http://3test.yytbzs.cn:92/";
+//        String baseUrl = "http://3test.yytbzs.cn:92/";
 
 
         /**

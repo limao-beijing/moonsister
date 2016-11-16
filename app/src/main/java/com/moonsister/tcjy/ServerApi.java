@@ -174,8 +174,8 @@ public class ServerApi {
 
 
     public interface AppAPI {
-//        String baseUrl = "http://v2.chuse.hk:88/index.php/index/";
-        String baseUrl = "http://2testtest.yytbzs.cn:91/index.php/index/";
+        String baseUrl = "http://v2.chuse.hk:88/index.php/index/";
+//        String baseUrl = "http://2testtest.yytbzs.cn:91/index.php/index/";
 
         /**
          * 登录

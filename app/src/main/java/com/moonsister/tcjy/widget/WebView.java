@@ -1,15 +1,20 @@
 package com.moonsister.tcjy.widget;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.View;
+import android.webkit.DownloadListener;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebViewClient;
 
 import com.moonsister.tcjy.utils.LogUtils;
+
+import static com.moonsister.tcjy.utils.ActivityUtils.startActivity;
 
 /**
  * Created by jb on 2016/9/8.
@@ -80,8 +85,24 @@ public class WebView extends android.webkit.WebView {
         setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         setWebChromeClient(new MyWebChromeClient());
         setWebViewClient(new MyWebViewClient());
+        this.setDownloadListener(new MyWebViewDownLoadListener());
     }
 
+    private class MyWebViewDownLoadListener implements DownloadListener {
+
+        @Override
+        public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype,
+                                    long contentLength) {
+            LogUtils.i("tag", "url=" + url);
+            LogUtils.i("tag", "userAgent=" + userAgent);
+            LogUtils.i("tag", "contentDisposition=" + contentDisposition);
+            LogUtils.i("tag", "mimetype=" + mimetype);
+            LogUtils.i("tag", "contentLength=" + contentLength);
+            Uri uri = Uri.parse(url);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        }
+    }
 
     public class MyWebChromeClient extends WebChromeClient {
         @Override
@@ -108,10 +129,10 @@ public class WebView extends android.webkit.WebView {
         public boolean shouldOverrideUrlLoading(android.webkit.WebView view, String url) {
             // 使用自己的WebView组件来响应Url加载事件，而不是使用默认浏览器器加载页面
             LogUtils.d(this, "url : " + url);
-        loadUrl(url);
-        // 消耗掉这个事件。Android中返回True的即到此为止吧,事件就会不会冒泡传递了，我们称之为消耗掉
-        return true;
-    }
+            loadUrl(url);
+            // 消耗掉这个事件。Android中返回True的即到此为止吧,事件就会不会冒泡传递了，我们称之为消耗掉
+            return true;
+        }
 
         @Override
         public void onPageStarted(android.webkit.WebView view, String url, Bitmap favicon) {

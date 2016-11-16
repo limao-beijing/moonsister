@@ -8,7 +8,9 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.EngagementManagerAdapter;
 import com.moonsister.tcjy.base.BaseListFragment;
 import com.moonsister.tcjy.bean.EngagementManagerBean;
-import com.moonsister.tcjy.bean.StatusBean;
+import com.moonsister.tcjy.dialogFragment.DialogMannager;
+import com.moonsister.tcjy.dialogFragment.widget.BaseDialogFragment;
+import com.moonsister.tcjy.dialogFragment.widget.ImPermissionDialog;
 import com.moonsister.tcjy.engagement.presenter.EngagementActionPersenterImpl;
 import com.moonsister.tcjy.engagement.presenter.EngagementManagerFragmentPresenter;
 import com.moonsister.tcjy.engagement.presenter.EngagementManagerFragmentPresenterImpl;
@@ -36,45 +38,6 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
         return new EngagementManagerFragment();
     }
 
-    private void initRxbus() {
-//        RxBus.with(this)
-//                .setEndEvent(FragmentEvent.DESTROY)
-//                .setEvent(Events.EventEnum.CLICK_ENGAGEMENT_SUCCESS)
-//                .onNext(events -> {
-//                    Object message = events.message;
-//                    if (message instanceof String) {
-//                        presenter.submitSuccess((String) message);
-//                    }
-//                })
-//                .create();
-//        RxBus.with(this)
-//                .setEndEvent(FragmentEvent.DESTROY)
-//                .setEvent(Events.EventEnum.EngagementManagerFragment_CLICK_ENGAGEMENT_INVITE)
-//                .onNext(events -> {
-//                    Object message = events.message;
-//                    if (message instanceof String) {
-//                        presenter.submitInviteSuccess((String) message, "1");
-//                    }
-//                })
-//                .create();
-//        RxBus.with(this)
-//                .setEndEvent(FragmentEvent.DESTROY)
-//                .setEvent(Events.EventEnum.CLICK_ENGAGEMENT_REFUSE)
-//                .onNext(events -> {
-//                    Object message = events.message;
-//                    if (message instanceof String) {
-//                        presenter.submitInviteSuccess((String) message, "2");
-//                    }
-//                })
-//                .create();
-//        RxBus.with(this)
-//                .setEndEvent(FragmentEvent.DESTROY)
-//                .setEvent(Events.EventEnum.CLICK_ENGAGEMENT_LEVEL_NOT)
-//                .onNext(events ->
-//                        showNotLevel()
-//                )
-//                .create();
-    }
 
     @Override
     protected void initChildData() {
@@ -85,6 +48,7 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
         if (mAdapter != null)
             mAdapter.setBaseView(this);
     }
+
 
     private void showNotLevel() {
         AlertDialog myDialog = new AlertDialog.Builder(getActivity()).create();
@@ -121,7 +85,6 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
     @Override
     public EngagementManagerAdapter setAdapter() {
         EngagementManagerAdapter adapter = new EngagementManagerAdapter(null);
-        initRxbus();
         return adapter;
     }
 
@@ -167,30 +130,30 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
         }
     }
 
-    @Override
-    public void submitInviteSuccess(StatusBean mbean) {
-        if (StringUtis.equals(mbean.getCode(), "10")) {
-            showNotLevel();
-        } else if (StringUtis.equals(mbean.getCode(), "11")) {
-            showNotLevel();
-        } else if (StringUtis.equals(mbean.getCode(), "1")) {
-            if (mAdapter != null) {
-                List<EngagementManagerBean.DataBean> datas = mAdapter.getDatas();
-                if (datas != null) {
-                    for (EngagementManagerBean.DataBean bean : datas) {
-                        if (StringUtis.equals(bean.getId(), mbean.getData().getDating_id())) {
-                            bean.setStatus(2);
-                            mAdapter.onRefresh();
-                            break;
-                        }
-                    }
-                }
-            }
-        } else {
-            showToast(mbean.getMsg());
-        }
-
-    }
+//    @Override
+//    public void submitInviteSuccess(StatusBean mbean) {
+//        if (StringUtis.equals(mbean.getCode(), "10")) {
+//            showNotLevel();
+//        } else if (StringUtis.equals(mbean.getCode(), "11")) {
+//            showNotLevel();
+//        } else if (StringUtis.equals(mbean.getCode(), "1")) {
+//            if (mAdapter != null) {
+//                List<EngagementManagerBean.DataBean> datas = mAdapter.getDatas();
+//                if (datas != null) {
+//                    for (EngagementManagerBean.DataBean bean : datas) {
+//                        if (StringUtis.equals(bean.getId(), mbean.getData().getDating_id())) {
+//                            bean.setStatus(2);
+//                            mAdapter.onRefresh();
+//                            break;
+//                        }
+//                    }
+//                }
+//            }
+//        } else {
+//            showToast(mbean.getMsg());
+//        }
+//
+//    }
 
     public void setType(EnumConstant.ManagerType type) {
         mType = type;
@@ -219,5 +182,22 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
             page = 1;
             presenter.loadData(mType, page);
         }
+    }
+
+    @Override
+    public void showDelectDialog(EngagementManagerBean.DataBean bean, int position) {
+        DialogMannager.getInstance().showEngaggementDialogFragment(getFragmentManager(), new ImPermissionDialog.OnCallBack() {
+            @Override
+            public void onStatus(BaseDialogFragment dialogFragment, EnumConstant.DialogCallBack statusCode) {
+                if (statusCode == EnumConstant.DialogCallBack.CONFIRM) {
+                    if (actionPersenter != null) {
+                        actionPersenter.actionEngagement(bean.getDating_id(), 6);
+                        dialogFragment.dismissDialogFragment();
+                    }
+                } else if (statusCode == EnumConstant.DialogCallBack.CANCEL) {
+                    dialogFragment.dismissDialogFragment();
+                }
+            }
+        });
     }
 }

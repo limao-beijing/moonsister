@@ -34,6 +34,7 @@ public class EngagementManagerAdapter extends BaseRecyclerViewAdapter<Engagement
 
     @Override
     protected BaseRecyclerViewHolder getBaseViewHolder(View v, int viewType) {
+        viewHolder.setView(mBaseIView);
         return viewHolder;
     }
 

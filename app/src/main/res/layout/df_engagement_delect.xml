@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/shape_background_text_white_color">
+
+        <ImageView
+            android:id="@+id/action_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x30"
+            android:clickable="false"
+            android:focusable="false"
+            android:paddingBottom="@dimen/x20"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:src="@mipmap/dynmic_buy_coles"
+            android:visibility="invisible"/>
+
+
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/action_back"
+            android:layout_centerHorizontal="true"
+            android:text="@string/hint"
+            android:textColor="@color/yellow_fe8000"
+            android:textSize="@dimen/text_size_28"/>
+
+        <ImageView
+            android:id="@+id/tv_money_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_money"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/x7"
+            android:src="@mipmap/engegament_publish_head"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_money"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/x30"
+            android:layout_marginTop="@dimen/x10"
+            android:lineSpacingExtra="@dimen/x10"
+            android:text="@string/engagement_delect"
+            android:textColor="@color/gray_text"
+            android:textSize="@dimen/text_size_20"/>
+
+        <TextView
+            android:id="@+id/tv_vip_rule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv"
+            android:layout_margin="@dimen/x30"
+            android:lineSpacingExtra="@dimen/x15"
+            android:text="@string/loading"
+            android:textColor="@color/yellow_fe8000"
+            android:textSize="@dimen/text_size_12"
+            android:visibility="gone"/>
+
+
+        <RelativeLayout
+            android:id="@+id/rl_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/center_line"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_marginTop="@dimen/x60"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_weixin_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x50"
+                android:background="@drawable/shape_background_text_white_color"
+                android:paddingBottom="@dimen/x30"
+                android:paddingEnd="@dimen/x50"
+                android:paddingStart="@dimen/x50"
+
+                android:paddingTop="@dimen/x30"
+                android:text="@string/weixin_play"
+                android:textColor="@color/background_red_color"/>
+
+            <TextView
+                android:id="@+id/tv_aliplay_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/x50"
+                android:background="@drawable/shape_background_text_white_color"
+                android:paddingBottom="@dimen/x30"
+                android:paddingEnd="@dimen/x50"
+                android:paddingStart="@dimen/x50"
+                android:paddingTop="@dimen/x30"
+                android:text="@string/aliplay_play"
+                android:textColor="@color/background_red_color"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x92"
+            android:layout_below="@+id/tv_vip_rule"
+            android:layout_marginTop="@dimen/x20">
+
+            <View
+                android:id="@+id/center_buy_line"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:id="@+id/tv_to_do_engagement"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@+id/center_buy_line"
+                android:background="@drawable/shape_vip_text_color_ye_left"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_16"/>
+
+            <TextView
+                android:id="@+id/tv_upgrade_vip"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/center_buy_line"
+                android:background="@drawable/shape_vip_text_right"
+                android:gravity="center"
+                android:text="@string/affirm"
+
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_16"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

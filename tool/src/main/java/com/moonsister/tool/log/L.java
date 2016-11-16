@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class L {
-    private static final boolean DEBUG = true;
+    protected static final boolean DEBUG = false;
 
     public static boolean getDeBugState() {
         return DEBUG;

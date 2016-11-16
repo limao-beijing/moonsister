@@ -22,6 +22,7 @@ import com.moonsister.tcjy.engagement.presenter.EngagementTextPersenter;
 import com.moonsister.tcjy.engagement.presenter.EngagementTextPersenterImpl;
 import com.moonsister.tcjy.engagement.view.EngagementTextView;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.permission.UserPermissionManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.UIUtils;
@@ -32,6 +33,8 @@ import com.moonsister.tool.time.TimeUtils;
 import butterknife.Bind;
 import butterknife.OnClick;
 import im.gouyin.com.progressdialog.wheelview.Dateselecter;
+
+
 
 /**
  * Created by jb on 2016/9/21.
@@ -68,6 +71,9 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
     TextView mTvSumbit;
     @Bind(R.id.tv_engagement_text)
     TextView tv_engagement_text;
+
+    @Bind(R.id.tv_vip_permission)
+    TextView tv_vip_permission;
     private EnumConstant.EngegamentType type;
     private String uid;
     private String nike;
@@ -130,6 +136,31 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
             }
         });
         presenter.loadData();
+        UserPermissionManager.getInstance().checkVip(EnumConstant.PermissionType.LATEST_PUB, new UserPermissionManager.PermissionCallback() {
+            @Override
+            public void onStatus(EnumConstant.PermissionReasult reasult, int imCount, String sex) {
+                if (reasult == EnumConstant.PermissionReasult.HAVE_PERSSION) {
+                    tv_vip_permission.setVisibility(View.GONE);
+                } else if (reasult == EnumConstant.PermissionReasult.NOT_PERSSION) {
+                    tv_vip_permission.setVisibility(View.VISIBLE);
+                    if (StringUtis.equals("1", sex)) {
+                        tv_vip_permission.setText(getString(R.string.upgrad_vip));
+                    } else {
+                        tv_vip_permission.setText(getString(R.string.upgrade_renzheng));
+                    }
+                    tv_vip_permission.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (StringUtis.equals(sex, "1")) {
+                                ActivityUtils.startBuyVipActivity();
+                            } else {
+                                ActivityUtils.startRenZhengThreeActivity();
+                            }
+                        }
+                    });
+                }
+            }
+        });
 
     }
 
@@ -227,7 +258,7 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
         if (bean != null && bean.getData() != null) {
             EngagemengOrderBean.DataBean data = bean.getData();
             dating_money = StringUtis.string2Int(data.getLimit_min());
-            et_input_money.setHint("请输入约见赏金，赏金越高，约见成功率越高");
+            et_input_money.setHint("请输入约见赏金，赏金越高成功率越高");
         }
     }
 
