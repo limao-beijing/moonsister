@@ -39,9 +39,9 @@ public class EngagementPermissDialogFragment extends BaseDialogFragment implemen
     @Override
     protected void initData() {
         String sex = getArguments().getString("sex");
-        if (StringUtis.equals(sex,"1")){
+        if (StringUtis.equals(sex, "1")) {
             tv_upgrade_vip.setText(getText(R.string.upgrade_vip));
-        }else {
+        } else {
             tv_upgrade_vip.setText(getText(R.string.upgrade_renzheng));
         }
         persenter = new EngagementPermissPersenterImpl();
@@ -94,6 +94,8 @@ public class EngagementPermissDialogFragment extends BaseDialogFragment implemen
 
     @Override
     public void setTextMsg(EngagementPermissTextBane bean) {
+        if (bean == null || bean.getData() == null)
+            return;
         mTv.setText(bean.getData().getTop_info());
         mTvVipRule.setText(bean.getData().getInfo());
     }

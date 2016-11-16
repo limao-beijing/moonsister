@@ -7,13 +7,14 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.RemoteViews;
 import android.widget.TextView;
-
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.bean.VersionInfo;
@@ -24,10 +25,10 @@ import com.moonsister.tcjy.update.view.UpdateManagerView;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.PackageUtils;
-import com.moonsister.tool.file.PrefUtils;
 import com.moonsister.tcjy.utils.SDUtils;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tool.file.PrefUtils;
+import com.moonsister.tool.lang.StringUtis;
 import com.umeng.analytics.MobclickAgent;
 
 import java.io.File;
@@ -80,7 +81,7 @@ public class UpdateManager implements UpdateManagerView, View.OnClickListener {
         //a:大于,说明本地已有下载好的升级包，用户没有安装
         //b:等于,说明当前版本相同，需要进行网络检查是否有更新版本
         //c:小于，说明当前存储错误，需要进行网络检查是否有更新版本
-        int currentCode = PrefUtils.getInt(mContext,UPLOAD_VERSIONCODE, 0);
+        int currentCode = PrefUtils.getInt(mContext, UPLOAD_VERSIONCODE, 0);
         int versionCode = PackageUtils.getVersionCode(mContext);
         LogUtils.e(UpdateManager.class, "currentCode ：" + currentCode);
         LogUtils.e(UpdateManager.class, "versionCode ：" + versionCode);
@@ -174,8 +175,16 @@ public class UpdateManager implements UpdateManagerView, View.OnClickListener {
         final LayoutInflater inflater = LayoutInflater.from(mContext);
         View v = inflater.inflate(R.layout.update_dialog, null);
         mNoticeDialog = builder.create();
+        mNoticeDialog.setCancelable(false);
+
+        Window window = mNoticeDialog.getWindow();
+//        WindowManager.LayoutParams lp = window.getAttributes();
+//        lp.alpha = 1f;
+//        window.setAttributes(lp);
+        window.setBackgroundDrawable(new ColorDrawable());
         mNoticeDialog.show();
-        mNoticeDialog.getWindow().setContentView(v);
+        window.setContentView(v);
+        mNoticeDialog.setCanceledOnTouchOutside(false);
         v.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
@@ -214,10 +223,10 @@ public class UpdateManager implements UpdateManagerView, View.OnClickListener {
         String fsize = null;
         String pdate = null;
         if (bean == null) {
-            desc = PrefUtils.getString(mContext,UPLOAD_DESC, "正在获取……");
-            vname = PrefUtils.getString(mContext,UPLOAD_VNAME, "正在获取……");
-            fsize = PrefUtils.getString(mContext,UPLOAD_FSIZE, "正在获取……");
-            pdate = PrefUtils.getString(mContext,UPLOAD_PDATE, "正在获取……");
+            desc = PrefUtils.getString(mContext, UPLOAD_DESC, "正在获取……");
+            vname = PrefUtils.getString(mContext, UPLOAD_VNAME, "正在获取……");
+            fsize = PrefUtils.getString(mContext, UPLOAD_FSIZE, "正在获取……");
+            pdate = PrefUtils.getString(mContext, UPLOAD_PDATE, "正在获取……");
         } else {
             desc = bean.getData().getDesc();
             vname = bean.getData().getTitle();

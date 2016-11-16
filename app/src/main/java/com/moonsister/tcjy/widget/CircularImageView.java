@@ -19,7 +19,7 @@ import com.moonsister.tcjy.R;
 /**
  * Created by jb on 2016/9/21.
  */
-public class CircularImageView extends ImageView{
+public class CircularImageView extends ImageView {
     private int mBorderThickness = 0;
     private Context mContext;
     private int defaultColor = 0xFFFFFFFF;
@@ -73,7 +73,7 @@ public class CircularImageView extends ImageView{
         if (drawable.getClass() == NinePatchDrawable.class)
             return;
         Bitmap b = ((BitmapDrawable) drawable).getBitmap();
-        Bitmap bitmap = b.copy(Bitmap.Config.ARGB_8888, true);
+        Bitmap bitmap = b.copy(Bitmap.Config.RGB_565, true);
         if (defaultWidth == 0) {
             defaultWidth = getWidth();
 
@@ -122,8 +122,7 @@ public class CircularImageView extends ImageView{
     /**
      * 获取裁剪后的圆形图片
      *
-     * @param radius
-     *            半径
+     * @param radius 半径
      */
     public Bitmap getCroppedRoundBitmap(Bitmap bmp, int radius) {
         Bitmap scaledSrcBmp;

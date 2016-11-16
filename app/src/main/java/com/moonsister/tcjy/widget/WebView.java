@@ -1,9 +1,7 @@
 package com.moonsister.tcjy.widget;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.View;
 import android.webkit.DownloadListener;
@@ -12,9 +10,8 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebViewClient;
 
+import com.moonsister.tcjy.manager.FileDownManger;
 import com.moonsister.tcjy.utils.LogUtils;
-
-import static com.moonsister.tcjy.utils.ActivityUtils.startActivity;
 
 /**
  * Created by jb on 2016/9/8.
@@ -98,9 +95,10 @@ public class WebView extends android.webkit.WebView {
             LogUtils.i("tag", "contentDisposition=" + contentDisposition);
             LogUtils.i("tag", "mimetype=" + mimetype);
             LogUtils.i("tag", "contentLength=" + contentLength);
-            Uri uri = Uri.parse(url);
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(intent);
+            new FileDownManger().downApk(getContext(), url);
+//            Uri uri = Uri.parse(url);
+//            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//            startActivity(intent);
         }
     }
 

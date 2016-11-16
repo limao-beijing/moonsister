@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:padding="@dimen/x30"
-        android:text="请选择性别，我们将依据个人信息推送和展示更多激情视频、图片、语音等信息，选择后不可更改哦！"
+        android:text="请选择性别，我们将依据个人信息推送和展示更多精彩视频、图片、语音等信息，选择后不可更改哦！"
         android:textColor="@color/gray_788999"
         android:textSize="@dimen/text_size_15"/>
 

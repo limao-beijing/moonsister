@@ -54,7 +54,7 @@
             android:layout_centerHorizontal="true"
             android:layout_margin="@dimen/x30"
             android:layout_marginTop="@dimen/x10"
-            android:text="@string/buy_dynamic_vip"
+            android:text="@string/loading"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_16"/>
 

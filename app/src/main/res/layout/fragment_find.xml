@@ -3,11 +3,11 @@
                 android:layout_height="match_parent">
 
     <TextView
-        android:background="@color/blue_dark_151c22"
         android:id="@+id/tv_title_name"
         android:layout_width="match_parent"
         android:layout_height="@dimen/x92"
         android:layout_centerHorizontal="true"
+        android:background="@color/blue_dark_151c22"
         android:gravity="center"
         android:text="@string/find"
         android:textColor="@color/white"
@@ -95,7 +95,8 @@
         android:layout_marginRight="@dimen/x15"
         android:layout_marginTop="@dimen/x50"
         android:layout_toLeftOf="@+id/center_line"
-        android:background="@mipmap/video_small">
+        android:background="@mipmap/video_small"
+        android:visibility="gone">
 
 
         <ImageView
