@@ -18,6 +18,7 @@ import com.moonsister.tcjy.engagement.widget.EngagemengOrderActivity;
 import com.moonsister.tcjy.engagement.widget.EngagementDetailsActivity;
 import com.moonsister.tcjy.engagement.widget.EngagementManagerActivity;
 import com.moonsister.tcjy.engagement.widget.EngagementTypeActivity;
+import com.moonsister.tcjy.engagement.widget.EngagementedDetailsActivity;
 import com.moonsister.tcjy.engagement.widget.EngegamentAppealActivity;
 import com.moonsister.tcjy.engagement.widget.EngegamentPublishActivity;
 import com.moonsister.tcjy.engagement.widget.EngegamentRecommendActivity;
@@ -885,5 +886,17 @@ public class ActivityUtils {
         Intent intent = getIntent(EngagementDetailsActivity.class);
         intent.putExtra("id", id);
         startActivity(intent);
+    }
+
+    /**
+     * 被约见
+     *
+     * @param id
+     */
+    public static void startEngagementedDetailsActivity(String id) {
+        Intent intent = getIntent(EngagementedDetailsActivity.class);
+        intent.putExtra("id", id);
+        startActivity(intent);
+
     }
 }

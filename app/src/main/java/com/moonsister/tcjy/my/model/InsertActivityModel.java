@@ -11,7 +11,7 @@ import com.moonsister.tcjy.utils.EnumConstant;
  * Created by x on 2016/8/27.
  */
 public interface InsertActivityModel extends BaseIModel{
-//    void loadData(int tagid, String tagname,int img, EnumConstant.HomeTopFragmentTop homeType,onLoadDateSingleListener<InsertBaen> listener);
+//    void loadByIdData(int tagid, String tagname,int img, EnumConstant.HomeTopFragmentTop homeType,onLoadDateSingleListener<InsertBaen> listener);
 
     void loadData(int tagid, String tagname, int img, onLoadDateSingleListener<BaseBean> listener);
 

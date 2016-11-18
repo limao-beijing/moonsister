@@ -13,7 +13,6 @@ import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.EngagemengOrderBean;
-import com.moonsister.tcjy.bean.EngagementDetailsBean;
 import com.moonsister.tcjy.engagement.EngagementUtils;
 import com.moonsister.tcjy.engagement.model.EngagemengOrderView;
 import com.moonsister.tcjy.engagement.presenter.EngagemengOrderPresenter;
@@ -33,7 +32,6 @@ import com.moonsister.tool.time.TimeUtils;
 import butterknife.Bind;
 import butterknife.OnClick;
 import im.gouyin.com.progressdialog.wheelview.Dateselecter;
-
 
 
 /**
@@ -221,29 +219,29 @@ public class EngagemengOrderActivity extends BaseActivity implements EngagemengO
     }
 
     @Override
-    public void submitSuccess() {
-        EngagementDetailsBean.DataBean bean = new EngagementDetailsBean.DataBean();
-        bean.setAddress(mEtInputAddress.getText().toString());
-        bean.setStatus(1);
-        bean.setMsgX(mEtEngagementMessage.getText().toString());
-        bean.setMoney(et_input_money.getText().toString());
-        long l = TimeUtils.formatTimestamp(et_input_date.getText().toString() + ":00");
-        if ((l - System.currentTimeMillis()) > (48 * 3600000)) {
-            bean.setDaojishi(48 * 3600);
-        } else {
-            bean.setDaojishi((l - System.currentTimeMillis()) / 1000);
-        }
-        bean.setDate((TimeUtils.formatTimestamp(et_input_date.getText().toString() + ":00") / 1000) + "");
-        bean.setF_face(UserInfoManager.getInstance().getAvater());
-        bean.setF_nickname(UserInfoManager.getInstance().getNickeName());
-        bean.setF_uid(UserInfoManager.getInstance().getUid());
-
-        bean.setT_face(face);
-        bean.setT_nickname(nike);
-        bean.setT_uid(uid);
-        bean.setType(type.getType());
-        Intent intent = new Intent(this, EngagementDetailsActivity.class);
-        intent.putExtra("data", bean);
+    public void submitSuccess(String id) {
+//        EngagementDetailsBean.DataBean bean = new EngagementDetailsBean.DataBean();
+//        bean.setAddress(mEtInputAddress.getText().toString());
+//        bean.setStatus(1);
+//        bean.setMsgX(mEtEngagementMessage.getText().toString());
+//        bean.setMoney(et_input_money.getText().toString());
+//        long l = TimeUtils.formatTimestamp(et_input_date.getText().toString() + ":00");
+//        if ((l - System.currentTimeMillis()) > (48 * 3600000)) {
+//            bean.setDaojishi(48 * 3600);
+//        } else {
+//            bean.setDaojishi((l - System.currentTimeMillis()) / 1000);
+//        }
+//        bean.setDate((TimeUtils.formatTimestamp(et_input_date.getText().toString() + ":00") / 1000) + "");
+//        bean.setF_face(UserInfoManager.getInstance().getAvater());
+//        bean.setF_nickname(UserInfoManager.getInstance().getNickeName());
+//        bean.setF_uid(UserInfoManager.getInstance().getUid());
+//
+//        bean.setT_face(face);
+//        bean.setT_nickname(nike);
+//        bean.setT_uid(uid);
+//        bean.setType(type.getType());
+        Intent intent = new Intent(this, EngagementedDetailsActivity.class);
+        intent.putExtra("order_id", id);
         startActivity(intent);
         finish();
     }

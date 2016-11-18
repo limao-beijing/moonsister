@@ -26,9 +26,21 @@ public class EngagementDetailsPersenterImpl implements EngagementDetailsPersente
     }
 
     @Override
-    public void loadData(String id) {
+    public void loadByIdData(String id) {
         view.showLoading();
         model.loadDate(id, this);
+    }
+
+    @Override
+    public void loadByIdData2(String id) {
+        view.showLoading();
+        model.loadByIdData2(id,this);
+    }
+
+    @Override
+    public void loadByOrderIdData2(String id) {
+        view.showLoading();
+        model.loadByOrderIdData(id,this);
     }
 
     @Override

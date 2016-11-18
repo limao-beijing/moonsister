@@ -67,7 +67,7 @@ public class AppConversationActivity extends BaseActivity {
 
     }
 
-    private EnumConstant.PermissionReasult mReasult;
+    private EnumConstant.PermissionReasult mReasult = EnumConstant.PermissionReasult.HAVE_PERSSION;
     private String mSex;
     private int mImCount;
 

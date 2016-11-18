@@ -11,6 +11,7 @@ import com.moonsister.tcjy.bean.EngagementManagerBean;
 import com.moonsister.tcjy.engagement.EngagementUtils;
 import com.moonsister.tcjy.engagement.presenter.EngagementActionPersenter;
 import com.moonsister.tcjy.engagement.view.EngagementManagerFragmentView;
+import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.widget.RoundImageView;
@@ -244,7 +245,11 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
 
     @Override
     protected void onItemclick(View view, EngagementManagerBean.DataBean bean, int position) {
-        ActivityUtils.startEngagementDetailsActivity(bean.getId());
+        if (!StringUtis.equals(UserInfoManager.getInstance().getUid(), bean.getTo_uid())) {
+            ActivityUtils.startEngagementedDetailsActivity(bean.getId());
+        } else
+            ActivityUtils.startEngagementDetailsActivity(bean.getId());
+
     }
 
     private void selectEngegamentStatus(EngagementManagerBean.DataBean bean) {

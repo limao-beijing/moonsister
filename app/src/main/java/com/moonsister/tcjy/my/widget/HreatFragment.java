@@ -143,7 +143,6 @@ public class HreatFragment extends BaseFragment implements AdapterView.OnItemCli
                 break;
             case R.mipmap.vipmoney://VIP充值
                 ActivityUtils.startBuyVipActivity();
-
                 break;
             case R.mipmap.viprenzheng://兴趣选项
                 int status = UserInfoManager.getInstance().getCertificationStatus();

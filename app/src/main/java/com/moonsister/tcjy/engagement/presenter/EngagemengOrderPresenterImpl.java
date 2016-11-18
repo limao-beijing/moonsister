@@ -3,10 +3,12 @@ package com.moonsister.tcjy.engagement.presenter;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.bean.EngagemengOrderBean;
+import com.moonsister.tcjy.bean.EngagementTextBane;
 import com.moonsister.tcjy.engagement.model.EngagemengOrderModel;
 import com.moonsister.tcjy.engagement.model.EngagemengOrderModelImpl;
 import com.moonsister.tcjy.engagement.model.EngagemengOrderView;
 import com.moonsister.tcjy.utils.EnumConstant;
+import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tool.lang.StringUtis;
 
 /**
@@ -45,25 +47,27 @@ public class EngagemengOrderPresenterImpl implements EngagemengOrderPresenter, B
         switch (dataType) {
             case DATA_ZERO:
                 if (StringUtis.equals("1", bean.getCode())) {
-//                    UIUtils.sendDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            view.submitSuccess("");
-//                        }
-//                    }, 5000);
-                    view.submitSuccess();
+                    UIUtils.sendDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (bean != null && bean instanceof EngagementTextBane)
+                                view.submitSuccess(((EngagementTextBane) bean).getData().getOrder_id());
+                            view.hideLoading();
+                        }
+                    }, 5000);
                 } else if (StringUtis.equals("10", bean.getCode())) {
                     view.notLevel();
+                    view.hideLoading();
                 }
                 view.transfePageMsg(bean.getMsg());
                 break;
             case DATA_ONE:
                 view.setData((EngagemengOrderBean) bean);
+                view.hideLoading();
                 break;
         }
 
 
-        view.hideLoading();
     }
 
     @Override

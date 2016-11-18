@@ -2,6 +2,8 @@ package com.moonsister.tcjy.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by jb on 2016/11/11.
  */
@@ -60,6 +62,43 @@ public class EngagementDetailsBean extends BaseBean {
         private long daojishi;
         private int dating_status_add;
         private String dating_status_add_msg;
+        private String info1;
+        private String info2;
+        private List<String> info3;
+        private String dating_id ;
+
+
+        public String getDating_id() {
+            return dating_id;
+        }
+
+        public void setDating_id(String dating_id) {
+            this.dating_id = dating_id;
+        }
+
+        public String getInfo1() {
+            return info1;
+        }
+
+        public void setInfo1(String info1) {
+            this.info1 = info1;
+        }
+
+        public String getInfo2() {
+            return info2;
+        }
+
+        public void setInfo2(String info2) {
+            this.info2 = info2;
+        }
+
+        public List<String> getInfo3() {
+            return info3;
+        }
+
+        public void setInfo3(List<String> info3) {
+            this.info3 = info3;
+        }
 
         public int getStatus() {
             return status;

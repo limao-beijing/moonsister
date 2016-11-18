@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/gray_e6ebee"
+                android:orientation="vertical">
+
+    <include layout="@layout/app_titlebar"/>
+
+    <include
+        android:id="@+id/inc_content"
+        layout="@layout/engagement_details_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/inc_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/app_title_bar"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x240"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/x60"
+                android:layout_marginRight="@dimen/x60"
+                android:layout_marginTop="@dimen/x30"
+                android:background="@mipmap/engagement_avater_bg">
+
+                <TextView
+                    android:id="@+id/tv_engagement"
+                    style="@style/text_engament_main"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/x10"
+                    android:textColor="@color/black"/>
+
+                <com.moonsister.tcjy.widget.CircularImageView
+                    android:id="@+id/civ_user_avater"
+                    android:layout_width="@dimen/x200"
+                    android:layout_height="@dimen/y200"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x20"
+                    android:src="@mipmap/ic_launcher"/>
+
+                <com.moonsister.tcjy.widget.CircularImageView
+                    android:id="@+id/civ_user_avatered"
+                    android:layout_width="@dimen/x200"
+                    android:layout_height="@dimen/y200"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignTop="@+id/civ_user_avater"
+                    android:layout_marginRight="@dimen/x20"
+                    android:src="@mipmap/ic_launcher"/>
+
+                <TextView
+                    android:id="@+id/tv_count_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/black"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/x60"
+                android:layout_marginRight="@dimen/x60"
+                android:layout_marginTop="@dimen/x30"
+                >
+
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x40"
+                    android:layout_marginTop="@dimen/x24"
+                    android:paddingLeft="@dimen/x20"
+                    android:text="@string/loading"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_13"/>
+
+                <TextView
+                    android:id="@+id/tv_user_nameed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x20"
+                    android:gravity="center"
+
+                    android:paddingRight="@dimen/x10"
+                    android:text="@string/loading"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_13"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginRight="@dimen/x30"
+                android:layout_marginTop="@dimen/x20"
+                android:background="@drawable/shape_bg_engagement_text"
+                android:paddingBottom="@dimen/x20"
+                android:paddingTop="@dimen/x20">
+
+                <TextView
+                    android:id="@+id/tv_engagement_pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_marginRight="@dimen/x30"
+                    android:textColor="@color/black_151c22"
+                    android:textSize="@dimen/text_size_13"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginRight="@dimen/x30"
+                android:layout_marginTop="@dimen/x20"
+                android:background="@drawable/shape_bg_engagement_text"
+                android:paddingBottom="@dimen/x20"
+                android:paddingTop="@dimen/x20">
+
+                <TextView
+                    android:id="@+id/tv_engagement_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_marginRight="@dimen/x30"
+                    android:textColor="@color/yellow_ff8201"
+                    android:textSize="@dimen/text_size_16"/>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x30"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginRight="@dimen/x30"
+                android:layout_marginTop="@dimen/x20"
+                android:background="@drawable/shape_bg_engagement_text">
+
+                <com.moonsister.tcjy.widget.RollingView
+                    android:id="@+id/Rollin_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

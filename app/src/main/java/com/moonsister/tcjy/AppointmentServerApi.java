@@ -35,6 +35,8 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 import rx.Observable;
 
+import static android.R.attr.id;
+
 
 /**
  * Created by jb on 2016/11/9.
@@ -282,6 +284,7 @@ public class AppointmentServerApi {
         /**
          * 约会信息接口
          *
+         *
          * @param id
          * @param authcode
          * @param id1
@@ -290,6 +293,21 @@ public class AppointmentServerApi {
         @FormUrlEncoded
         @POST("dating/get_dating_detail")
         Observable<EngagementDetailsBean> getEngagemengDetails(@Field("id") String id,
+                                                               @Field("authcode") String authcode,
+                                                               @Field("channel") String id1);
+        /**
+         * 约会信息接口
+         *
+         *
+         * @param id
+         * @param authcode
+         * @param id1
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("dating/get_dating_detail2")
+        Observable<EngagementDetailsBean> getEngagemengDetails2(@Field("id") String id,
+                                                               @Field("order_id") String order_id,
                                                                @Field("authcode") String authcode,
                                                                @Field("channel") String id1);
 

@@ -41,7 +41,7 @@ public class RecommendMemberFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-//        presenter.loadData();
+//        presenter.loadByIdData();
     }
 
     public static RecommendMemberFragment newInstance() {

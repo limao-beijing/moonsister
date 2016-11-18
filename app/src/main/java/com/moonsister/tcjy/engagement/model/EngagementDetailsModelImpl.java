@@ -27,4 +27,37 @@ public class EngagementDetailsModelImpl implements EngagementDetailsModel {
             }
         });
     }
+
+
+    @Override
+    public void loadByOrderIdData(String id, onLoadDateSingleListener<EngagementDetailsBean> listener) {
+        Observable<EngagementDetailsBean> observable = AppointmentServerApi.getAppAPI().getEngagemengDetails2("", id, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<EngagementDetailsBean>() {
+            @Override
+            public void onSuccess(EngagementDetailsBean bean) {
+                listener.onSuccess(bean, DataType.DATA_ZERO);
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                listener.onFailure(msg);
+            }
+        });
+    }
+
+    @Override
+    public void loadByIdData2(String id, onLoadDateSingleListener<EngagementDetailsBean> listener) {
+        Observable<EngagementDetailsBean> observable = AppointmentServerApi.getAppAPI().getEngagemengDetails2(id, "", UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<EngagementDetailsBean>() {
+            @Override
+            public void onSuccess(EngagementDetailsBean bean) {
+                listener.onSuccess(bean, DataType.DATA_ZERO);
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                listener.onFailure(msg);
+            }
+        });
+    }
 }

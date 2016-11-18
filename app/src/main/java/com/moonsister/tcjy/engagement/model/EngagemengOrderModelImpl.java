@@ -52,6 +52,7 @@ public class EngagemengOrderModelImpl implements EngagemengOrderModel {
                                 bean.setMsg("");
                                 EngagementTextBane.DataBean dataBean = new EngagementTextBane.DataBean();
                                 dataBean.setInfo(payBean.getData().getAbcode());
+                                dataBean.setOrder_id(payBean.getData().getOrder_id());
                                 bean.setData(dataBean);
                                 listener.onSuccess(bean, DataType.DATA_ZERO);
 
@@ -66,6 +67,7 @@ public class EngagemengOrderModelImpl implements EngagemengOrderModel {
                                             bean.setMsg(resultInfo);
                                             EngagementTextBane.DataBean dataBean = new EngagementTextBane.DataBean();
                                             dataBean.setInfo(payBean.getData().getAbcode());
+                                            dataBean.setOrder_id(payBean.getData().getOrder_id());
                                             bean.setData(dataBean);
 
                                             listener.onSuccess(bean, DataType.DATA_ZERO);

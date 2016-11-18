@@ -9,6 +9,6 @@ import com.moonsister.tcjy.my.persenter.HreatFragmentPresenterImpl;
  * Created by x on 2016/9/8.
  */
 public interface HreatFragmentModel extends BaseIModel {
-//    void loadData(String uid, onLoadListDateListener listener);
+//    void loadByIdData(String uid, onLoadListDateListener listener);
     void loadData(String uid, onLoadDateSingleListener listener);
 }
