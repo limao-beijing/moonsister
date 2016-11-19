@@ -20,6 +20,8 @@ import com.moonsister.tcjy.engagement.presenter.EngagementDetailsPersenter;
 import com.moonsister.tcjy.engagement.presenter.EngagementDetailsPersenterImpl;
 import com.moonsister.tcjy.engagement.view.EngagementActionView;
 import com.moonsister.tcjy.engagement.view.EngagementDetailsView;
+import com.moonsister.tcjy.event.Events;
+import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
@@ -58,6 +60,9 @@ public class EngagementedDetailsActivity extends BaseActivity implements View.On
     TextView mTvUserName;
     @Bind(R.id.tv_user_nameed)
     TextView mTvUserNameed;
+    @Bind(R.id.tv_count_down)
+    TextView tv_count_down;
+
 
     @Bind(R.id.rl_flower)
     View rl_flower;
@@ -241,8 +246,18 @@ public class EngagementedDetailsActivity extends BaseActivity implements View.On
             mTvFlower.setText(EngagementUtils.getStatusText(bean.getStatus(), bean.getAppeal_status(), bean.getDating_status_add_msg(), StringUtis.equals(UserInfoManager.getInstance().getUid(), bean.getF_uid())));
         }
         tv_engagement_pay.setText(bean.getInfo1());
-        tv_engagement_date.setText(Html.fromHtml(bean.getInfo2()));
+        if (bean.getInfo2() != null) {
+            tv_engagement_date.setText(Html.fromHtml(bean.getInfo2()));
+        } else {
+            tv_engagement_date.setText("");
+        }
         rollingView(bean.getInfo3());
+        long daojishi = bean.getDaojishi();
+
+
+        if (daojishi > 0) {
+            tv_count_down.setText(daojishi / 3600 + " 时 " + (daojishi % 3600) / 60 + " 分");
+        }
 
     }
 
@@ -254,6 +269,7 @@ public class EngagementedDetailsActivity extends BaseActivity implements View.On
         Rollin_view.setRollingText(info3);
 //        Rollin_view.setOnItemClickListener(this);
         Rollin_view.setTextColor(R.color.color_ff8201);
+        Rollin_view.pause();
         Rollin_view.resume();
 
     }
@@ -271,8 +287,9 @@ public class EngagementedDetailsActivity extends BaseActivity implements View.On
             return;
         }
         if (persenter != null) {
-            persenter.loadByIdData(id);
+            persenter.loadByIdData2(id);
         }
+        RxBus.getInstance().send(Events.EventEnum.ENGAGEMENT_ACTION_SUCCESS, null);
     }
 
 

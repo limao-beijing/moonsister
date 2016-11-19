@@ -51,7 +51,7 @@ public class RollingView extends FrameLayout implements View.OnClickListener {
     private static final int ANIMATION_DURATION = 1000;
 
     // 延迟滚动时间间隔
-    private long mDuration = 2000;
+    private long mDuration = 4000;
     // 字体颜色
     private int mTextColor = 0xff000000;
     // 点击后字体颜色
@@ -226,8 +226,9 @@ public class RollingView extends FrameLayout implements View.OnClickListener {
     }
 
     public void setRollingText(List<String> array) {
-        if (null == array || array.isEmpty()) return;
         this.removeAllViews();
+        if (null == array || array.isEmpty()) return;
+
         if (mRollingPages == null) {
             mRollingPages = new ArrayList<>();
         }

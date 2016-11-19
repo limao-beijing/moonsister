@@ -89,7 +89,7 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
     }
 
     @Override
-    protected void onRefresh() {
+    public void onRefresh() {
         presenter.loadData(mType, page);
 
     }
@@ -200,4 +200,6 @@ public class EngagementManagerFragment extends BaseListFragment<EngagementManage
             }
         });
     }
+
+
 }

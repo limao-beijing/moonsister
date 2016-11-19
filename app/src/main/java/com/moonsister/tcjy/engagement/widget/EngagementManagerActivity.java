@@ -8,9 +8,12 @@ import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
+import com.moonsister.tcjy.event.Events;
+import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.FragmentUtils;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.trello.rxlifecycle.ActivityEvent;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -37,6 +40,17 @@ public class EngagementManagerActivity extends BaseActivity {
     @Override
     protected void initView() {
         onClick(mTvEngagement);
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.ENGAGEMENT_ACTION_SUCCESS)
+                .onNext(events ->
+                {
+                    if (mEngagementManagerFragment != null)
+                        mEngagementManagerFragment.actionSuccess();
+                    if (mEngagementedManagerFragment != null)
+                        mEngagementedManagerFragment.actionSuccess();
+                })
+                .create();
     }
 
     @OnClick({R.id.tv_engagement, R.id.tv_engagemented, R.id.iv_back})
