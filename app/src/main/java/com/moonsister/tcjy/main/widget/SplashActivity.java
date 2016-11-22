@@ -7,7 +7,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.lang.StringUtis;
+import com.hickey.tool.lang.StringUtis;
 
 
 /**

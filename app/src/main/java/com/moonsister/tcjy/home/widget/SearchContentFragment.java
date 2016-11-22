@@ -15,14 +15,12 @@ import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.home.presenetr.SearchContentFragmentPersenter;
 import com.moonsister.tcjy.home.presenetr.SearchContentFragmentPersenterImpl;
 import com.moonsister.tcjy.home.view.SearchContentFragmentView;
-import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.FlowLayout;
 
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Created by jb on 2016/8/26.

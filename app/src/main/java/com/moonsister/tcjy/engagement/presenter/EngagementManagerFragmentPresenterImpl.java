@@ -5,7 +5,7 @@ import com.moonsister.tcjy.bean.EngagementManagerBean;
 import com.moonsister.tcjy.engagement.model.EngagementManagerFragmentModel;
 import com.moonsister.tcjy.engagement.model.EngagementManagerFragmentModelImpl;
 import com.moonsister.tcjy.engagement.view.EngagementManagerFragmentView;
-import com.moonsister.tcjy.utils.EnumConstant;
+import com.hickey.tool.constant.EnumConstant;
 
 /**
  * Created by jb on 2016/9/28.

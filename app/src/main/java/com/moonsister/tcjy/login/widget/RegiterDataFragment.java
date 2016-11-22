@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.moonsister.tcjy.ImageServerApi;
+import com.hickey.network.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.event.Events;

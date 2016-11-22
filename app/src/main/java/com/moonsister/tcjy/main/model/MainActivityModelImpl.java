@@ -1,17 +1,17 @@
 package com.moonsister.tcjy.main.model;
 
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.CertificationStatusBean;
+import com.hickey.network.bean.RongyunBean;
+import com.hickey.network.bean.UserFriendListBean;
+import com.hickey.network.bean.UserPermissionBean;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.bean.CertificationStatusBean;
-import com.moonsister.tcjy.bean.RongyunBean;
-import com.moonsister.tcjy.bean.UserFriendListBean;
-import com.moonsister.tcjy.bean.UserPermissionBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import rx.Observable;

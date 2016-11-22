@@ -9,11 +9,11 @@ import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.moonsister.tcjy.ImageServerApi;
+import com.hickey.network.ImageServerApi;
+import com.hickey.network.bean.DynamicItemBean;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.widget.NoScrollGridView;
 
 import butterknife.Bind;

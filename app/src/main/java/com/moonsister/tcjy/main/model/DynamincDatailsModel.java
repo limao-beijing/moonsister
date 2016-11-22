@@ -1,10 +1,9 @@
 package com.moonsister.tcjy.main.model;
 
+import com.hickey.network.bean.BaseBean;
+import com.hickey.network.bean.CommentDataListBean;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.BaseBean;
-import com.moonsister.tcjy.bean.CommentDataListBean;
-import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.main.presenter.DynamincDatailsPresenterImpl;
+
 
 /**
  * Created by pc on 2016/6/8.

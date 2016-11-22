@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.engagement.view;
 
+import com.hickey.network.bean.EngagemengRecommendBean;
 import com.moonsister.tcjy.base.BaseIView;
-import com.moonsister.tcjy.bean.EngagemengRecommendBean;
 
 import java.util.List;
 

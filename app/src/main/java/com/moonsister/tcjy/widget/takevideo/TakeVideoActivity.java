@@ -4,7 +4,6 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -52,8 +51,6 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.center.widget.DynamicSendActivity;
-import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.SDUtils;

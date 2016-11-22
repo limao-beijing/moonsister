@@ -2,7 +2,7 @@ package com.moonsister.tcjy.my.widget;
 
 import android.view.View;
 
-import com.moonsister.tcjy.ImageServerApi;
+import com.hickey.network.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.event.Events;

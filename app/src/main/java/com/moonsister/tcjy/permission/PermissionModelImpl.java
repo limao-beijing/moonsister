@@ -1,10 +1,10 @@
 package com.moonsister.tcjy.permission;
 
+import com.hickey.network.ChatServerApi;
+import com.hickey.network.bean.PermissionBean;
+import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.ChatServerApi;
-import com.moonsister.tcjy.bean.PermissionBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.ObservableUtils;
 
 import rx.Observable;

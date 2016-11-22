@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
 
+import com.hickey.network.bean.PersonInfoDetail;
+import com.hickey.tool.lang.StringUtis;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.EMConnectionListener;
 import com.hyphenate.EMError;
@@ -23,12 +25,10 @@ import com.hyphenate.easeui.model.EaseNotifier;
 import com.hyphenate.easeui.utils.EaseUserUtils;
 import com.hyphenate.util.NetUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.lang.StringUtis;
 
 import org.json.JSONException;
 import org.json.JSONObject;

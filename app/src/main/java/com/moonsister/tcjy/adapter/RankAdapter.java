@@ -2,21 +2,16 @@ package com.moonsister.tcjy.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.hickey.network.bean.RankBean;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewAdapter;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
-import com.moonsister.tcjy.bean.RankBean;
 import com.moonsister.tcjy.find.view.RankFragmentView;
-import com.moonsister.tcjy.find.widget.RankFragment;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.RankViewHolder;
 
 import java.util.List;
-
-import butterknife.Bind;
 
 /**
  * Created by jb on 2016/8/3.

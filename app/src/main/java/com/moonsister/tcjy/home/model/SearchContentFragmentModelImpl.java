@@ -1,8 +1,8 @@
 package com.moonsister.tcjy.home.model;
 
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.ChooseKeyBean;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.bean.ChooseKeyBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
 

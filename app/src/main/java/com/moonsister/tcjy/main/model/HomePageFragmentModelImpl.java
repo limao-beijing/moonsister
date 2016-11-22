@@ -1,15 +1,15 @@
 package com.moonsister.tcjy.main.model;
 
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.DynamicItemBean;
+import com.hickey.network.bean.UserInfoDetailBean;
+import com.hickey.network.bean.UserInfoListBean;
+import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.bean.DynamicItemBean;
-import com.moonsister.tcjy.bean.UserInfoDetailBean;
-import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.List;

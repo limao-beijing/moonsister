@@ -1,8 +1,8 @@
 package com.moonsister.tcjy.engagement.model;
 
+import com.hickey.network.bean.EngagementDetailsBean;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.AppointmentServerApi;
-import com.moonsister.tcjy.bean.EngagementDetailsBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
 

@@ -16,8 +16,10 @@ import android.view.Window;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 
+import com.hickey.network.bean.VersionInfo;
+import com.hickey.tool.file.PrefUtils;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.bean.VersionInfo;
 import com.moonsister.tcjy.main.widget.MainActivity;
 import com.moonsister.tcjy.update.presenter.UpdateManagerPresenter;
 import com.moonsister.tcjy.update.presenter.UpdateManagerPresenterImpl;
@@ -27,8 +29,6 @@ import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.PackageUtils;
 import com.moonsister.tcjy.utils.SDUtils;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.file.PrefUtils;
-import com.moonsister.tool.lang.StringUtis;
 import com.umeng.analytics.MobclickAgent;
 
 import java.io.File;

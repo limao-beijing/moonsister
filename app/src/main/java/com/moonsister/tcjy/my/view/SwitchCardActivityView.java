@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.my.view;
 
+import com.hickey.network.bean.CardInfoBean;
 import com.moonsister.tcjy.base.BaseIView;
-import com.moonsister.tcjy.bean.CardInfoBean;
 
 import java.util.List;
 

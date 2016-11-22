@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.main.presenter;
 
+import com.hickey.network.bean.FrientBaen;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.FrientBaen;
 import com.moonsister.tcjy.main.model.RelationActivityModel;
 import com.moonsister.tcjy.main.model.RelationActivityModelImpl;
 import com.moonsister.tcjy.main.view.RelationActivityView;

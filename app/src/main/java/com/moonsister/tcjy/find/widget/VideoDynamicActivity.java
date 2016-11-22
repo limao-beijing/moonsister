@@ -2,11 +2,11 @@ package com.moonsister.tcjy.find.widget;
 
 import android.view.View;
 
+import com.hickey.network.bean.DynamicItemBean;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.HomePageFragmentAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.find.presenter.VideoDynamicActivityPresenter;
 import com.moonsister.tcjy.find.presenter.VideoDynamicActivityPresenterImpl;
 import com.moonsister.tcjy.find.view.VideoDynamicActivityView;

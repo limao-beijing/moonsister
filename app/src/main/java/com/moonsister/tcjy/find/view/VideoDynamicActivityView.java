@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.find.view;
 
-import com.moonsister.tcjy.bean.DynamicItemBean;
+
+import com.hickey.network.bean.DynamicItemBean;
 import com.moonsister.tcjy.main.view.BasePageFragmentView;
 
 import java.util.List;

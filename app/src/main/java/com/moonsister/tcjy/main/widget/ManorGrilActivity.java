@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hickey.network.bean.PersonInfoDetail;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
 import com.moonsister.tcjy.main.presenter.ManorFrilActivityPresenter;
 import com.moonsister.tcjy.main.presenter.ManorFrilActivityPresenterImpl;

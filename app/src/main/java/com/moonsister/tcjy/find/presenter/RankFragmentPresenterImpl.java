@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.find.presenter;
 
+import com.hickey.network.bean.RankBean;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.RankBean;
 import com.moonsister.tcjy.find.model.RankFragmentModel;
 import com.moonsister.tcjy.find.model.RankFragmentModelImpl;
 import com.moonsister.tcjy.find.view.RankFragmentView;

@@ -1,17 +1,17 @@
 package com.moonsister.tcjy;
 
-import com.moonsister.pay.tencent.PayBean;
-import com.moonsister.tcjy.bean.BaseBean;
-import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.bean.EngagemengOrderBean;
-import com.moonsister.tcjy.bean.EngagemengRecommendBean;
-import com.moonsister.tcjy.bean.EngagementDetailsBean;
+import com.hickey.network.bean.BaseBean;
+import com.hickey.network.bean.DefaultDataBean;
+import com.hickey.network.bean.EngagemengOrderBean;
+import com.hickey.network.bean.EngagemengRecommendBean;
+import com.hickey.network.bean.EngagementDetailsBean;
+import com.hickey.network.bean.EngagementPermissTextBane;
+import com.hickey.network.bean.EngagementTextBane;
+import com.hickey.network.bean.PayBean;
+import com.hickey.network.bean.StatusBean;
+import com.hickey.tool.security.UnicodeUtils;
 import com.moonsister.tcjy.bean.EngagementManagerBean;
-import com.moonsister.tcjy.bean.EngagementPermissTextBane;
-import com.moonsister.tcjy.bean.EngagementTextBane;
-import com.moonsister.tcjy.bean.StatusBean;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tool.security.UnicodeUtils;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -34,8 +34,6 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 import rx.Observable;
-
-import static android.R.attr.id;
 
 
 /**

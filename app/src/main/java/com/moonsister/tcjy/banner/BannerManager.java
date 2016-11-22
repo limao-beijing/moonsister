@@ -7,13 +7,13 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.moonsister.tcjy.ImageServerApi;
+import com.hickey.network.ImageServerApi;
+import com.hickey.network.bean.BannerBean;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.BannerBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/9/9.

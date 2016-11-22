@@ -1,16 +1,13 @@
 package com.moonsister.tcjy.my.model;
 
 
-
-
-import rx.Observable;
-
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.PersonalMessageBean;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.ServerApi;
-
-import com.moonsister.tcjy.bean.PersonalMessageBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
+
+import rx.Observable;
 
 /**
  * Created by x on 2016/9/2.

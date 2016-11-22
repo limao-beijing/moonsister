@@ -3,13 +3,13 @@ package com.moonsister.tcjy.viewholder.homepage;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.moonsister.tcjy.ImageServerApi;
+import com.hickey.network.ImageServerApi;
+import com.hickey.network.bean.DynamicItemBean;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.HomePageFragmentAdapter;
-import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.widget.speak.VoicePlay;
 
 import butterknife.Bind;

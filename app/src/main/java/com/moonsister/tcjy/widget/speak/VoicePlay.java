@@ -20,7 +20,7 @@ import android.media.MediaPlayer;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.moonsister.tool.lang.StringUtis;
+import com.hickey.tool.lang.StringUtis;
 
 
 public class VoicePlay {

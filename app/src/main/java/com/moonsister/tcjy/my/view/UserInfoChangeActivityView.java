@@ -1,7 +1,8 @@
 package com.moonsister.tcjy.my.view;
 
+import com.hickey.network.bean.UserInfoChangeBean;
 import com.moonsister.tcjy.base.BaseIView;
-import com.moonsister.tcjy.bean.UserInfoChangeBean;
+
 
 /**
  * Created by jb on 2016/7/11.

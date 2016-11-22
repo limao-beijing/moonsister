@@ -1,6 +1,5 @@
 package com.moonsister.tcjy.my.widget;
 
-import android.media.Image;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -10,8 +9,6 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
-
-import org.w3c.dom.Text;
 
 import butterknife.Bind;
 import butterknife.OnClick;

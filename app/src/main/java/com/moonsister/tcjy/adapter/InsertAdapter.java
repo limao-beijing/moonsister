@@ -2,27 +2,18 @@ package com.moonsister.tcjy.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.moonsister.tcjy.ImageServerApi;
+import com.hickey.network.ImageServerApi;
+import com.hickey.network.bean.InsertBaen;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.bean.InsertBaen;
-import com.moonsister.tcjy.my.widget.InsertActivity;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by x on 2016/8/29.

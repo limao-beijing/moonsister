@@ -1,10 +1,8 @@
 package com.moonsister.tcjy.main.model;
 
+import com.hickey.network.bean.FrientBaen;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.BaseBean;
-import com.moonsister.tcjy.bean.FrientBaen;
-import com.moonsister.tcjy.bean.PingbiBean;
-import com.moonsister.tcjy.main.presenter.RelationActivityPresenterImpl;
+
 
 /**
  * Created by jb on 2016/7/22.

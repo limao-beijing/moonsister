@@ -86,6 +86,9 @@
             android:name="com.hyphenate.easeui.ui.EaseShowBigImageActivity"
             android:screenOrientation="portrait"
             />
+        <activity
+            android:name="com.hyphenate.easeui.ui.ChargeMessageActivity"
+            android:screenOrientation="portrait"/>
 
         <!-- 设置环信应用的appkey -->
         <!--<meta-data

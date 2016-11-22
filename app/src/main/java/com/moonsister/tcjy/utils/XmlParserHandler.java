@@ -1,15 +1,16 @@
 package com.moonsister.tcjy.utils;
 
-import com.moonsister.tcjy.bean.model.CityModel;
-import com.moonsister.tcjy.bean.model.DistrictModel;
-import com.moonsister.tcjy.bean.model.ProvinceModel;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.hickey.network.bean.model.CityModel;
+import com.hickey.network.bean.model.DistrictModel;
+import com.hickey.network.bean.model.ProvinceModel;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class XmlParserHandler extends DefaultHandler {

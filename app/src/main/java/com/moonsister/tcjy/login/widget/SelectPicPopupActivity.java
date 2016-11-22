@@ -16,7 +16,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.url.URIUtils;
+import com.hickey.tool.url.URIUtils;
 import com.soundcloud.android.crop.Crop;
 
 import java.io.File;

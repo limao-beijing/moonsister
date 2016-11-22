@@ -1,11 +1,11 @@
 package com.moonsister.tcjy.engagement.presenter;
 
+import com.hickey.network.bean.EngagementDetailsBean;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.EngagementDetailsBean;
 import com.moonsister.tcjy.engagement.model.EngagementDetailsModel;
 import com.moonsister.tcjy.engagement.model.EngagementDetailsModelImpl;
 import com.moonsister.tcjy.engagement.view.EngagementDetailsView;
-import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/11/11.

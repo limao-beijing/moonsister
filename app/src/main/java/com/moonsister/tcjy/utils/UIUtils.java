@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.moonsister.tool.lang.StringUtis;
+import com.hickey.tool.lang.StringUtis;
 
 /**
  * Created by pc on 2016/6/3.

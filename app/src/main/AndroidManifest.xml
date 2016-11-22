@@ -47,14 +47,14 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <!-- GCM 配置开始 < -->
     <application
-        android:name=".ApplicationConfig"
+        android:name="com.moonsister.tcjy.ApplicationConfig"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".main.widget.SplashActivity"
+            android:name="com.moonsister.tcjy.main.widget.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppStartLoad">
             <intent-filter>
@@ -63,9 +63,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".main.widget.ManorGrilActivity"/>
+        <activity android:name="com.moonsister.tcjy.main.widget.ManorGrilActivity"/>
         <activity
-            android:name=".main.widget.MainActivity"
+            android:name="com.moonsister.tcjy.main.widget.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"></activity>
@@ -76,11 +76,11 @@
             android:value="57e63d92e0f55a159d002acd"/>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="XMXIEHOU2011"/>
+            android:value="BAIDUXIEHOU2012"/>
         <!--API  接口-->
         <meta-data
             android:name="API_CHANNEL"
-            android:value="2011"/>
+            android:value="2012"/>
         <!-- 友盟  end -->
         <!-- 高德 start -->
         <meta-data
@@ -91,62 +91,62 @@
         <!-- 高德 end -->
 
         <!-- 会话页面 -->
-        <activity android:name=".main.widget.RelationActivity"/>
+        <activity android:name="com.moonsister.tcjy.main.widget.RelationActivity"/>
 
         <!-- 聚合会话列表 -->
 
         <activity
-            android:name=".im.widget.SubConversationListActivtiy"
+            android:name="com.moonsister.tcjy.im.widget.SubConversationListActivtiy"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
 
         </activity>
         <activity
-            android:name=".im.widget.AppConversationActivity"
+            android:name="com.moonsister.tcjy.im.widget.AppConversationActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
         </activity>
 
         <activity
-            android:name=".main.widget.DynamicActivity"
+            android:name="com.moonsister.tcjy.main.widget.DynamicActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".main.widget.DynamicDatailsActivity"
+            android:name="com.moonsister.tcjy.main.widget.DynamicDatailsActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".login.widget.LoginMainActivity"
+            android:name="com.moonsister.tcjy.login.widget.LoginMainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".login.widget.RegActivity"
+            android:name="com.moonsister.tcjy.login.widget.RegActivity"
             android:launchMode="singleInstance"></activity>
-        <activity android:name=".my.widget.RenZhengActivity"/>
-        <activity android:name=".main.widget.RenZhengThreeActivity"/>
+        <activity android:name="com.moonsister.tcjy.my.widget.RenZhengActivity"/>
+        <activity android:name="com.moonsister.tcjy.main.widget.RenZhengThreeActivity"/>
         <activity
-            android:name=".center.widget.DynamicSendActivity"
+            android:name="com.moonsister.tcjy.center.widget.DynamicSendActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".widget.image.PhonePicActivity"
+            android:name="com.moonsister.tcjy.widget.image.PhonePicActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".widget.image.ShowImageActivity"
+            android:name="com.moonsister.tcjy.widget.image.ShowImageActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".engagement.widget.EngegamentPublishActivity"/>
-        <activity android:name=".engagement.widget.EngagementManagerActivity"/>
-        <activity android:name=".engagement.widget.EngegamentAppealActivity"/>
-        <activity android:name=".engagement.widget.EngegamentRecommendActivity"/>
-        <activity android:name=".engagement.widget.EngagemengOrderActivity"/>
-        <activity android:name=".engagement.widget.EngagementDetailsActivity"/>
-        <activity android:name=".engagement.widget.EngagementTypeActivity"/>
-        <activity android:name=".engagement.widget.EngagementedDetailsActivity"/>
+        <activity android:name="com.moonsister.tcjy.engagement.widget.EngegamentPublishActivity"/>
+        <activity android:name="com.moonsister.tcjy.engagement.widget.EngagementManagerActivity"/>
+        <activity android:name="com.moonsister.tcjy.engagement.widget.EngegamentAppealActivity"/>
+        <activity android:name="com.moonsister.tcjy.engagement.widget.EngegamentRecommendActivity"/>
+        <activity android:name="com.moonsister.tcjy.engagement.widget.EngagemengOrderActivity"/>
+        <activity android:name="com.moonsister.tcjy.engagement.widget.EngagementDetailsActivity"/>
+        <activity android:name="com.moonsister.tcjy.engagement.widget.EngagementTypeActivity"/>
+        <activity android:name="com.moonsister.tcjy.engagement.widget.EngagementedDetailsActivity"/>
         <activity
-            android:name=".main.widget.WelcomeGuideActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".center.widget.DefaultDynamicSendActivity"
+            android:name="com.moonsister.tcjy.main.widget.WelcomeGuideActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".login.widget.SelectPicPopupActivity"
+            android:name="com.moonsister.tcjy.center.widget.DefaultDynamicSendActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.moonsister.tcjy.login.widget.SelectPicPopupActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyDialogStyleBottom"/>
         <activity
@@ -154,117 +154,117 @@
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".my.widget.MyOrderActivity"
+            android:name="com.moonsister.tcjy.my.widget.MyOrderActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".my.widget.CertificationActivity"
+            android:name="com.moonsister.tcjy.my.widget.CertificationActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".main.widget.ShowShortVideoActivity"/>
-        <activity android:name=".main.widget.FillOutMessageActivity"/>
-        <activity android:name=".find.widget.VideoDynamicActivity"/>
-        <activity android:name=".js.WebActivity"/>
+        <activity android:name="com.moonsister.tcjy.main.widget.ShowShortVideoActivity"/>
+        <activity android:name="com.moonsister.tcjy.main.widget.FillOutMessageActivity"/>
+        <activity android:name="com.moonsister.tcjy.find.widget.VideoDynamicActivity"/>
+        <activity android:name="com.moonsister.tcjy.js.WebActivity"/>
         <activity
-            android:name=".my.widget.RZFirstActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".my.widget.RZSecondActivity"
+            android:name="com.moonsister.tcjy.my.widget.RZFirstActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".my.widget.RZThidActivity"
+            android:name="com.moonsister.tcjy.my.widget.RZSecondActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".my.widget.AppointmentActivity"
+            android:name="com.moonsister.tcjy.my.widget.RZThidActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".my.widget.RefundActivity"
+            android:name="com.moonsister.tcjy.my.widget.AppointmentActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".my.widget.ChangepwdActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".main.widget.HomePageActivity"/>
-        <activity
-            android:name=".my.widget.SettingActivity"
+            android:name="com.moonsister.tcjy.my.widget.RefundActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".my.widget.FollowActivity"
+            android:name="com.moonsister.tcjy.my.widget.ChangepwdActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.moonsister.tcjy.main.widget.HomePageActivity"/>
+        <activity
+            android:name="com.moonsister.tcjy.my.widget.SettingActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".my.widget.WithdRawDepositActivity"
+            android:name="com.moonsister.tcjy.my.widget.FollowActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".my.widget.GetMoneyActivity"
+            android:name="com.moonsister.tcjy.my.widget.WithdRawDepositActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".center.widget.RedpacketDynaimcActivity"
+            android:name="com.moonsister.tcjy.my.widget.GetMoneyActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".center.widget.BuyDynamicRedPackketActivity"
+            android:name="com.moonsister.tcjy.center.widget.RedpacketDynaimcActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.moonsister.tcjy.center.widget.BuyDynamicRedPackketActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity
-            android:name=".widget.image.photoview.ImagePagerActivity"
+            android:name="com.moonsister.tcjy.widget.image.photoview.ImagePagerActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".widget.takevideo.TakeVideoActivity"
+            android:name="com.moonsister.tcjy.widget.takevideo.TakeVideoActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".main.widget.PersonInfoChangeActivity"
+            android:name="com.moonsister.tcjy.main.widget.PersonInfoChangeActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".my.widget.info.SelectPlandWindowActivity"
+            android:name="com.moonsister.tcjy.my.widget.info.SelectPlandWindowActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyDialogStyleBottom"/>
         <activity
-            android:name=".my.widget.info.SelectSexActivity"
+            android:name="com.moonsister.tcjy.my.widget.info.SelectSexActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyDialogStyleBottom"/>
         <activity
-            android:name=".main.widget.PayAppointmentActivity"
+            android:name="com.moonsister.tcjy.main.widget.PayAppointmentActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".main.widget.PayAppointmentOrderActivity"
+            android:name="com.moonsister.tcjy.main.widget.PayAppointmentOrderActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".my.widget.TiXianRecordActivity"
+            android:name="com.moonsister.tcjy.my.widget.TiXianRecordActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".my.widget.AddCardActivity"
+            android:name="com.moonsister.tcjy.my.widget.AddCardActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".my.widget.InsertActivity"
+            android:name="com.moonsister.tcjy.my.widget.InsertActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".main.widget.BuyVipActivity"/>
+        <activity android:name="com.moonsister.tcjy.main.widget.BuyVipActivity"/>
         <activity
-            android:name=".main.widget.VideoSelectorActivity"
+            android:name="com.moonsister.tcjy.main.widget.VideoSelectorActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".main.widget.RecommendMemberActivity"/>
+        <activity android:name="com.moonsister.tcjy.main.widget.RecommendMemberActivity"/>
         <activity
-            android:name=".my.widget.SwitchCardActivity"
+            android:name="com.moonsister.tcjy.my.widget.SwitchCardActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".my.widget.BirthdayActivity"/>
-        <activity android:name=".center.widget.DynamicPublishActivity"/>
+        <activity android:name="com.moonsister.tcjy.my.widget.BirthdayActivity"/>
+        <activity android:name="com.moonsister.tcjy.center.widget.DynamicPublishActivity"/>
         <activity
-            android:name=".main.widget.PictureSelectorActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".main.widget.PicturePreviewActivity"
+            android:name="com.moonsister.tcjy.main.widget.PictureSelectorActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".center.widget.VoiceActivity"
+            android:name="com.moonsister.tcjy.main.widget.PicturePreviewActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.moonsister.tcjy.center.widget.VoiceActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyDialogStyleBottom"/>
         <activity
-            android:name=".main.widget.SwitchItemActivity"
+            android:name="com.moonsister.tcjy.main.widget.SwitchItemActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyDialogStyleBottom"/>
-        <activity android:name=".home.widget.SearchFragmentActivity"/>
+        <activity android:name="com.moonsister.tcjy.home.widget.SearchFragmentActivity"/>
         <!-- 微信支付  start -->
         <activity
-            android:name=".wxapi.WXPayEntryActivity"
+            android:name="com.moonsister.tcjy.wxapi.WXPayEntryActivity"
             android:exported="true"
             android:screenOrientation="portrait"/>
 
-        <receiver android:name=".wxapi.AppRegister">
+        <receiver android:name="com.moonsister.tcjy.wxapi.AppRegister">
             <intent-filter>
                 <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP"/>
             </intent-filter>
@@ -272,36 +272,36 @@
         <!-- 微信支付  end -->
 
         <activity
-            android:name=".home.widget.SearchActivity"
+            android:name="com.moonsister.tcjy.home.widget.SearchActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".home.widget.SearchReasonActivity"
+            android:name="com.moonsister.tcjy.home.widget.SearchReasonActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".find.widget.NearbyActivity"/>
+        <activity android:name="com.moonsister.tcjy.find.widget.NearbyActivity"/>
         <activity
-            android:name=".my.widget.UserInfoChangeActivity"
+            android:name="com.moonsister.tcjy.my.widget.UserInfoChangeActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".find.widget.RankActivity"/>
-        <activity android:name=".main.widget.UserinfoActivity"/>
-        <activity android:name=".login.widget.FindPasswordActivity"/>
-        <activity android:name=".login.widget.FindPasswordNextActivity"/>
+        <activity android:name="com.moonsister.tcjy.find.widget.RankActivity"/>
+        <activity android:name="com.moonsister.tcjy.main.widget.UserinfoActivity"/>
+        <activity android:name="com.moonsister.tcjy.login.widget.FindPasswordActivity"/>
+        <activity android:name="com.moonsister.tcjy.login.widget.FindPasswordNextActivity"/>
         <!-- 图片裁剪 -->
         <activity android:name="com.soundcloud.android.crop.CropImageActivity"/>
-        <activity android:name=".widget.image.CropImageMainActivity"/>
+        <activity android:name="com.moonsister.tcjy.widget.image.CropImageMainActivity"/>
         <activity
-            android:name=".main.widget.DynamicAtionActivity"
+            android:name="com.moonsister.tcjy.main.widget.DynamicAtionActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-        <activity android:name=".my.widget.RuleActivity"></activity>
-        <activity android:name=".my.widget.MakeMessageActivity"></activity>
-        <activity android:name=".my.widget.PersonalActivity"></activity>
-        <activity android:name=".my.widget.MoneyActivity"></activity>
-        <activity android:name=".my.widget.WithdrawActivity"></activity>
-        <activity android:name=".my.widget.RechargeActivity"></activity>
-        <activity android:name=".my.widget.AddActivity"></activity>
-        <activity android:name=".my.widget.PersonalReviseActivity"></activity>
-        <activity android:name=".my.widget.TeQueActivity"></activity>
-        <activity android:name=".my.widget.TalkActivity"></activity>
-        <activity android:name=".my.widget.PingbiActivity"></activity>
+        <activity android:name="com.moonsister.tcjy.my.widget.RuleActivity"></activity>
+        <activity android:name="com.moonsister.tcjy.my.widget.MakeMessageActivity"></activity>
+        <activity android:name="com.moonsister.tcjy.my.widget.PersonalActivity"></activity>
+        <activity android:name="com.moonsister.tcjy.my.widget.MoneyActivity"></activity>
+        <activity android:name="com.moonsister.tcjy.my.widget.WithdrawActivity"></activity>
+        <activity android:name="com.moonsister.tcjy.my.widget.RechargeActivity"></activity>
+        <activity android:name="com.moonsister.tcjy.my.widget.AddActivity"></activity>
+        <activity android:name="com.moonsister.tcjy.my.widget.PersonalReviseActivity"></activity>
+        <activity android:name="com.moonsister.tcjy.my.widget.TeQueActivity"></activity>
+        <activity android:name="com.moonsister.tcjy.my.widget.TalkActivity"></activity>
+        <activity android:name="com.moonsister.tcjy.my.widget.PingbiActivity"></activity>
 
     </application>
 

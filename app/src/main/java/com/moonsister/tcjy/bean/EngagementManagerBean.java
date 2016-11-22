@@ -1,8 +1,10 @@
 package com.moonsister.tcjy.bean;
 
 import com.google.gson.annotations.SerializedName;
+import com.hickey.network.bean.BaseBean;
+import com.hickey.network.bean.BaseDataBean;
+import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.engagement.presenter.EngagementActionPersenterImpl;
-import com.moonsister.tcjy.utils.EnumConstant;
 
 import java.util.List;
 

@@ -3,12 +3,12 @@ package com.moonsister.tcjy.viewholder;
 import android.view.View;
 import android.widget.TextView;
 
+import com.hickey.network.bean.TiXinrRecordBean;
+import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.time.TimeUtils;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
-import com.moonsister.tcjy.bean.TiXinrRecordBean;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tool.lang.StringUtis;
-import com.moonsister.tool.time.TimeUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;

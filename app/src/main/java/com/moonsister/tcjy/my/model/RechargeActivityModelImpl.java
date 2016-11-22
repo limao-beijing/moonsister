@@ -4,21 +4,21 @@ import android.graphics.Bitmap;
 
 import com.alibaba.sdk.android.oss.ClientException;
 import com.alibaba.sdk.android.oss.ServiceException;
-import com.moonsister.pay.aibeipay.AiBeiPayManager;
-import com.moonsister.pay.tencent.PayBean;
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.DynamicContent;
+import com.hickey.network.bean.PayBean;
+import com.hickey.pay.aibeipay.AiBeiPayManager;
+import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.view.image.FastBlur;
+import com.hickey.tool.view.image.ImageUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.bean.DynamicContent;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.manager.aliyun.AliyunManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.FilePathUtlis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
-import com.moonsister.tool.lang.StringUtis;
-import com.moonsister.tool.view.image.FastBlur;
-import com.moonsister.tool.view.image.ImageUtils;
 
 import java.io.File;
 import java.util.ArrayList;

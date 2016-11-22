@@ -4,7 +4,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.moonsister.tcjy.ImageServerApi;
+import com.hickey.network.ImageServerApi;
+import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.EngagementManagerBean;
@@ -13,9 +15,7 @@ import com.moonsister.tcjy.engagement.presenter.EngagementActionPersenter;
 import com.moonsister.tcjy.engagement.view.EngagementManagerFragmentView;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.widget.RoundImageView;
-import com.moonsister.tool.lang.StringUtis;
 
 import butterknife.Bind;
 

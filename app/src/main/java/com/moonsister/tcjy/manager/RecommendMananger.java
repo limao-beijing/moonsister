@@ -1,8 +1,8 @@
 package com.moonsister.tcjy.manager;
 
+import com.hickey.network.bean.DefaultDataBean;
+import com.hickey.network.bean.RecommendMemberFragmentBean;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
 import com.moonsister.tcjy.main.model.RecommendMemberFragmentModelImpl;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.LogUtils;

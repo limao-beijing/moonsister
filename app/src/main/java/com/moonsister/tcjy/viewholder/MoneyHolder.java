@@ -1,15 +1,14 @@
 package com.moonsister.tcjy.viewholder;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.moonsister.tcjy.ImageServerApi;
+import com.hickey.network.ImageServerApi;
+import com.hickey.network.bean.BalanceBean;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.MoneyAdapter;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
-import com.moonsister.tcjy.bean.BalanceBean;
 import com.moonsister.tcjy.utils.ActivityUtils;
 
 import butterknife.Bind;

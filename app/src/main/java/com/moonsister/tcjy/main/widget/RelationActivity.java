@@ -2,11 +2,11 @@ package com.moonsister.tcjy.main.widget;
 
 import android.view.View;
 
+import com.hickey.network.bean.FrientBaen;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.FrientAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.bean.FrientBaen;
 import com.moonsister.tcjy.main.presenter.RelationActivityPresenter;
 import com.moonsister.tcjy.main.presenter.RelationActivityPresenterImpl;
 import com.moonsister.tcjy.main.view.RelationActivityView;

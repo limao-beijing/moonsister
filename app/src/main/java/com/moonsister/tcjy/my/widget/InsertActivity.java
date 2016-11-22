@@ -6,10 +6,10 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.hickey.network.bean.InsertBaen;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.InsertAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.bean.InsertBaen;
 import com.moonsister.tcjy.login.widget.RegActivity;
 import com.moonsister.tcjy.my.persenter.InsertActivityPersenter;
 import com.moonsister.tcjy.my.persenter.InsertActivityPersenterImpl;

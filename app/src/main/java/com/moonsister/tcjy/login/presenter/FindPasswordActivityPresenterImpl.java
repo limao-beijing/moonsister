@@ -1,9 +1,9 @@
 package com.moonsister.tcjy.login.presenter;
 
+import com.hickey.network.bean.BaseBean;
+import com.hickey.network.bean.RegiterBean;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.BaseBean;
-import com.moonsister.tcjy.bean.RegiterBean;
 import com.moonsister.tcjy.login.model.FindPasswordActivityModel;
 import com.moonsister.tcjy.login.model.FindPasswordActivityModelImpl;
 import com.moonsister.tcjy.main.view.FindPasswordActivityView;

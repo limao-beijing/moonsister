@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.hickey.network.bean.BaseDataBean;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.bean.BaseDataBean;
 import com.moonsister.tcjy.widget.XListView;
 
 import java.util.List;

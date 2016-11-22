@@ -1,21 +1,11 @@
 package com.moonsister.tcjy.main.model;
 
-import com.moonsister.pay.tencent.PayBean;
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.RegOneBean;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.AuthenticationBean;
-import com.moonsister.tcjy.bean.RegOneBean;
-import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.EnumConstant;
-import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by x on 2016/8/30.

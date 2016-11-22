@@ -9,10 +9,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.moonsister.tcjy.ImageServerApi;
+import com.hickey.network.ImageServerApi;
+import com.hickey.network.bean.EngagemengOrderBean;
+import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.time.TimeUtils;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.bean.EngagemengOrderBean;
 import com.moonsister.tcjy.engagement.EngagementUtils;
 import com.moonsister.tcjy.engagement.model.EngagemengOrderView;
 import com.moonsister.tcjy.engagement.presenter.EngagemengOrderPresenter;
@@ -23,11 +26,8 @@ import com.moonsister.tcjy.engagement.view.EngagementTextView;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.permission.UserPermissionManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.CircularImageView;
-import com.moonsister.tool.lang.StringUtis;
-import com.moonsister.tool.time.TimeUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;

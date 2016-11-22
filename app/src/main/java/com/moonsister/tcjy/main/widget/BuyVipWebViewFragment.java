@@ -7,12 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JsResult;
 
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.PersonInfoDetail;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.js.JavaScriptObject;

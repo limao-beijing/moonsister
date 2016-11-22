@@ -1,12 +1,12 @@
 package com.moonsister.tcjy.main.presenter;
 
+import com.hickey.network.bean.RegFourBean;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.RegFourBean;
 import com.moonsister.tcjy.main.model.FillOutActivityModel;
 import com.moonsister.tcjy.main.model.FillOutActivityModelImpl;
 import com.moonsister.tcjy.main.view.FilloutActivityView;
-import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by x on 2016/9/1.

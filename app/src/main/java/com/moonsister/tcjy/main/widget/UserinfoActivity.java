@@ -3,14 +3,14 @@ package com.moonsister.tcjy.main.widget;
 import android.view.View;
 import android.widget.TextView;
 
-import com.moonsister.tcjy.ImageServerApi;
+import com.hickey.network.ImageServerApi;
+import com.hickey.network.bean.UserInfoChangeBean;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.bean.UserInfoChangeBean;
 import com.moonsister.tcjy.main.presenter.UserinfoActivityPresenter;
 import com.moonsister.tcjy.main.presenter.UserinfoActivityPresenterImpl;
 import com.moonsister.tcjy.main.view.UserinfoActivityView;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 

@@ -1,14 +1,14 @@
 package com.moonsister.tcjy.login.presenter;
 
+import com.hickey.network.bean.BaseBean;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.login.model.FindPasswordNextActivityModel;
 import com.moonsister.tcjy.login.model.FindPasswordNextActivityModelImpl;
 import com.moonsister.tcjy.login.view.FindPasswordNextActivityView;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/7/11.

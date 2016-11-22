@@ -1,8 +1,8 @@
 package com.moonsister.tcjy.login.presenter;
 
+import com.hickey.network.bean.BaseBean;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.login.model.RegiterDataFragmentModel;
 import com.moonsister.tcjy.login.model.RegiterDataFragmentModelImpl;
 import com.moonsister.tcjy.login.view.RegiterDataFragmentView;

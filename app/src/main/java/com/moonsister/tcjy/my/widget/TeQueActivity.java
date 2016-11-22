@@ -5,7 +5,6 @@ import android.widget.ImageView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;

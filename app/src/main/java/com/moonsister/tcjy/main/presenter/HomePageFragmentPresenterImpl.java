@@ -1,13 +1,13 @@
 package com.moonsister.tcjy.main.presenter;
 
+import com.hickey.network.bean.DynamicItemBean;
+import com.hickey.network.bean.UserInfoDetailBean;
+import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.DynamicItemBean;
-import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.main.model.HomePageFragmentModel;
 import com.moonsister.tcjy.main.model.HomePageFragmentModelImpl;
 import com.moonsister.tcjy.main.view.HomePageFragmentView;
-import com.moonsister.tcjy.utils.EnumConstant;
-import com.moonsister.tool.lang.StringUtis;
 
 import java.util.List;
 

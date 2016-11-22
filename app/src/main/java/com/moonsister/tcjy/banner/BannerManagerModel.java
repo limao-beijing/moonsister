@@ -1,7 +1,8 @@
 package com.moonsister.tcjy.banner;
 
+import com.hickey.network.bean.BannerBean;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.BannerBean;
+
 
 /**
  * Created by jb on 2016/9/9.

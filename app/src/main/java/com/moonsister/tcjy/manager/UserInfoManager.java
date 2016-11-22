@@ -1,9 +1,9 @@
 package com.moonsister.tcjy.manager;
 
+import com.hickey.network.bean.PersonInfoDetail;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.CacheManager;
-import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tool.lang.StringUtis;
 
 import java.util.List;
 

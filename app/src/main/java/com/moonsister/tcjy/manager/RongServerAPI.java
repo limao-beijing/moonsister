@@ -2,7 +2,7 @@ package com.moonsister.tcjy.manager;
 
 import android.text.TextUtils;
 
-import com.moonsister.tcjy.bean.BaseBean;
+import com.hickey.network.bean.BaseBean;
 import com.moonsister.tcjy.utils.LogUtils;
 
 import java.io.IOException;

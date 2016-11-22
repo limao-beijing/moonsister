@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pay">
+    package="com.moonsister.pay">
 
     <application
         android:allowBackup="true"

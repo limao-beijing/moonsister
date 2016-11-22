@@ -1,8 +1,8 @@
 package com.moonsister.tcjy.my.model;
 
+import com.hickey.network.bean.WithdRawDepositBean;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.bean.WithdRawDepositBean;
+
 
 /**
  * Created by jb on 2016/7/2.

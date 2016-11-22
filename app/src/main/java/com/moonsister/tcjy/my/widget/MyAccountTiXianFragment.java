@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hickey.network.bean.TiXinrRecordBean;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.TiXianAdapter;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.bean.TiXinrRecordBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.persenter.TiXianFragmentPresenter;

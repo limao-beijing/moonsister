@@ -1,7 +1,8 @@
 package com.moonsister.tcjy.im.model;
 
+import com.hickey.network.bean.FrientBaen;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.FrientBaen;
+
 
 /**
  * Created by jb on 2016/7/8.

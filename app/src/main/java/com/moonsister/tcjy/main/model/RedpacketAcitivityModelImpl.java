@@ -1,17 +1,17 @@
 package com.moonsister.tcjy.main.model;
 
-import com.moonsister.pay.aibeipay.AiBeiPayManager;
-import com.moonsister.pay.aliyun.AliPayManager;
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.PayBean;
+import com.hickey.pay.aibeipay.AiBeiPayManager;
+import com.hickey.pay.aliyun.AliPayManager;
+import com.hickey.pay.tencent.WeixinManager;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.ServerApi;
-import com.moonsister.pay.tencent.PayBean;
-import com.moonsister.pay.tencent.WeixinManager;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.wxapi.WXPayEntryActivity;
 
@@ -119,6 +119,7 @@ public class RedpacketAcitivityModelImpl implements RedpacketAcitivityModel {
                                 AiBeiPayManager.getInstance().pay(ConfigUtils.getInstance().getActivityContext(), data.getAbcode(), new AiBeiPayManager.AiBeiResultCallback() {
                                     @Override
                                     public void onPayResult(int resultCode, String resultInfo) {
+//                                        listener.onSuccess("1", DataType.DATA_TWO);
                                         if (resultCode == 1) {
                                             listener.onSuccess(resultCode + "", DataType.DATA_TWO);
                                         } else if (resultCode == 4) {

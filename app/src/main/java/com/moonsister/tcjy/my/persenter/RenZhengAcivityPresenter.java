@@ -1,13 +1,7 @@
 package com.moonsister.tcjy.my.persenter;
 
-import android.net.Uri;
-
 import com.moonsister.tcjy.base.BaseIPresenter;
 import com.moonsister.tcjy.my.view.RenZhengActivityView;
-import com.moonsister.tcjy.utils.EnumConstant;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by x on 2016/9/3.

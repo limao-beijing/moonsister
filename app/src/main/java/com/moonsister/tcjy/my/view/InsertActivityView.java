@@ -1,9 +1,8 @@
 package com.moonsister.tcjy.my.view;
 
-import com.moonsister.tcjy.base.BaseIPresenter;
+import com.hickey.network.bean.InsertBaen;
 import com.moonsister.tcjy.base.BaseIView;
-import com.moonsister.tcjy.bean.BackInsertBean;
-import com.moonsister.tcjy.bean.InsertBaen;
+
 
 /**
  * Created by x on 2016/8/27.

@@ -4,15 +4,15 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.DefaultDataBean;
+import com.hickey.tool.file.PrefUtils;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tool.file.PrefUtils;
 
 import java.util.ArrayList;
 

@@ -1,9 +1,8 @@
 package com.moonsister.tcjy.my.view;
 
+import com.hickey.network.bean.PersonalMessageBean;
 import com.moonsister.tcjy.base.BaseIView;
-import com.moonsister.tcjy.bean.PersonalMessageBean;
 
-import org.json.JSONException;
 
 /**
  * Created by x on 2016/9/2.

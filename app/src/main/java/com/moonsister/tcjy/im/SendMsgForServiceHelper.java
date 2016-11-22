@@ -1,9 +1,9 @@
 package com.moonsister.tcjy.im;
 
 
+import com.hickey.network.ChatServerApi;
+import com.hickey.network.bean.MsgBean;
 import com.hyphenate.chat.EMMessage;
-import com.moonsister.tcjy.ChatServerApi;
-import com.moonsister.tcjy.bean.MsgBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.LogUtils;
 

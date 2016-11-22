@@ -1,8 +1,8 @@
 package com.moonsister.tcjy.home.model;
 
+import com.hickey.network.bean.KeyMateBean;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.KeyMateBean;
-import com.moonsister.tcjy.home.presenetr.SearchFragmentPersenterImpl;
+
 
 /**
  * Created by jb on 2016/8/28.

@@ -4,15 +4,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.moonsister.tcjy.ImageServerApi;
+import com.hickey.network.ImageServerApi;
+import com.hickey.network.bean.DefaultDataBean;
+import com.hickey.network.bean.PingbiBean;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.PingbiAdapter;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
-import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.bean.PingbiBean;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
-import com.moonsister.tool.lang.StringUtis;
 
 import butterknife.Bind;
 

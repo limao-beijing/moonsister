@@ -1,8 +1,8 @@
 package com.moonsister.tcjy.permission;
 
+import com.hickey.network.bean.PermissionBean;
+import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.PermissionBean;
-import com.moonsister.tcjy.utils.EnumConstant;
 
 /**
  * Created by jb on 2016/11/6.

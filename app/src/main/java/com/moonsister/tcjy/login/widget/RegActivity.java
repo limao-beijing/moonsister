@@ -5,9 +5,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.hickey.network.bean.PersonInfoDetail;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.login.presenter.RegActivityPresenter;
 import com.moonsister.tcjy.login.presenter.RegActivityPresenterImpl;
 import com.moonsister.tcjy.login.view.RegThridActivityView;
@@ -15,7 +16,6 @@ import com.moonsister.tcjy.main.widget.FillOutMessageActivity;
 import com.moonsister.tcjy.main.widget.MainActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;

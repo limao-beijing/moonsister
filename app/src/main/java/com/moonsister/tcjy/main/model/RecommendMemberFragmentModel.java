@@ -1,7 +1,8 @@
 package com.moonsister.tcjy.main.model;
 
+import com.hickey.network.bean.RecommendMemberFragmentBean;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
+
 
 /**
  * Created by jb on 2016/8/15.

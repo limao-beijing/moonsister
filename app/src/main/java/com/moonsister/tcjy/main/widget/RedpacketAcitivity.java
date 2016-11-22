@@ -1,5 +1,7 @@
 package com.moonsister.tcjy.main.widget;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -10,7 +12,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.moonsister.tcjy.ImageServerApi;
+import com.hickey.network.ImageServerApi;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.event.Events;
@@ -18,7 +21,6 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.presenter.RedpacketAcitivityPresenter;
 import com.moonsister.tcjy.main.presenter.RedpacketAcitivityPresenterImpl;
 import com.moonsister.tcjy.main.view.PlayUserAcitivityView;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 import com.trello.rxlifecycle.ActivityEvent;
@@ -62,7 +64,6 @@ public class RedpacketAcitivity extends BaseActivity implements PlayUserAcitivit
     public void afterTextChanged(Editable s) {
 
     }
-
 
 
     public enum RedpacketType {
@@ -162,6 +163,9 @@ public class RedpacketAcitivity extends BaseActivity implements PlayUserAcitivit
 
     @Override
     public void pageFinish() {
+        Intent intent = new Intent();
+        intent.putExtra("money", editText.getText().toString().trim());
+        setResult(Activity.RESULT_OK, intent);
         finish();
     }
 

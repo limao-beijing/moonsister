@@ -7,7 +7,7 @@ import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.moonsister.tcjy.bean.BaseDataBean;
+import com.hickey.network.bean.BaseDataBean;
 
 import butterknife.ButterKnife;
 

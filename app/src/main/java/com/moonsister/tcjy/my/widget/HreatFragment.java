@@ -10,13 +10,14 @@ import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.hickey.network.ImageServerApi;
+import com.hickey.network.bean.PersonInfoDetail;
+import com.hickey.network.bean.UserDetailBean;
+import com.hickey.tool.lang.StringUtis;
 import com.hyphenate.easeui.db.HxUserDao;
 import com.hyphenate.easeui.domain.EaseUser;
-import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.bean.PersonInfoDetail;
-import com.moonsister.tcjy.bean.UserDetailBean;
 import com.moonsister.tcjy.dialogFragment.DialogMannager;
 import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.manager.UserInfoBannerManager;
@@ -25,7 +26,6 @@ import com.moonsister.tcjy.my.persenter.HreatFragmentPersenter;
 import com.moonsister.tcjy.my.persenter.HreatFragmentPresenterImpl;
 import com.moonsister.tcjy.my.view.HreatFragmentView;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.HreatViewholder;
 

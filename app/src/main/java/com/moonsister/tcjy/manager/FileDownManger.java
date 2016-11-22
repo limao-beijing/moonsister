@@ -9,8 +9,8 @@ import android.net.Uri;
 
 import com.moonsister.tcjy.utils.SDUtils;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.lang.StringUtis;
-import com.moonsister.tool.url.URIUtils;
+import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.url.URIUtils;
 
 
 /**

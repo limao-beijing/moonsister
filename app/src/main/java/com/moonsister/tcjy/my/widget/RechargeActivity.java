@@ -11,7 +11,7 @@ import com.moonsister.tcjy.main.widget.MainActivity;
 import com.moonsister.tcjy.my.persenter.RechargeActivityPersenter;
 import com.moonsister.tcjy.my.persenter.RechargeActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.RechargeActivityView;
-import com.moonsister.tcjy.utils.EnumConstant;
+import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;

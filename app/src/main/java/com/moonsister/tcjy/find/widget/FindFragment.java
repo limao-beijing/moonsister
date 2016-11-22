@@ -12,17 +12,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.DownApkBean;
+import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.url.URIUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.bean.DownApkBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.url.URIUtils;
 
 import butterknife.OnClick;
 import rx.Observable;

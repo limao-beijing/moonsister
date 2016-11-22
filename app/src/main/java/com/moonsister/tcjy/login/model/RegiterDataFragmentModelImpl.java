@@ -2,14 +2,14 @@ package com.moonsister.tcjy.login.model;
 
 import com.alibaba.sdk.android.oss.ClientException;
 import com.alibaba.sdk.android.oss.ServiceException;
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.BaseBean;
+import com.hickey.tool.security.MD5Util;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.manager.aliyun.AliyunManager;
-import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.FilePathUtlis;
-import com.moonsister.tool.security.MD5Util;
 import com.moonsister.tcjy.utils.ObservableUtils;
 
 import rx.Observable;

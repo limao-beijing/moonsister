@@ -11,9 +11,9 @@ import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.permission.UserPermissionManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.EnumConstant;
+import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.lang.StringUtis;
+import com.hickey.tool.lang.StringUtis;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import butterknife.OnClick;

@@ -3,10 +3,12 @@ package com.moonsister.tcjy.update.presenter;
 import android.content.Context;
 import android.content.pm.PackageManager;
 
+import com.hickey.network.bean.VersionInfo;
+import com.hickey.tool.file.PrefUtils;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.VersionInfo;
 import com.moonsister.tcjy.update.UpdateManager;
 import com.moonsister.tcjy.update.model.UpdateManagerModel;
 import com.moonsister.tcjy.update.model.UpdateManagerModelImpl;
@@ -14,8 +16,6 @@ import com.moonsister.tcjy.update.view.UpdateManagerView;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.file.PrefUtils;
-import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/7/14.

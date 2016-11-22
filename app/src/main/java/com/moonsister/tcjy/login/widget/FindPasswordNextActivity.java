@@ -8,7 +8,7 @@ import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.login.presenter.FindPasswordNextActivityPresenter;
 import com.moonsister.tcjy.login.presenter.FindPasswordNextActivityPresenterImpl;
 import com.moonsister.tcjy.login.view.FindPasswordNextActivityView;
-import com.moonsister.tool.lang.StringUtis;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;

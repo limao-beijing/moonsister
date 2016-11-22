@@ -38,6 +38,7 @@ import com.hyphenate.chat.EMImageMessageBody;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMMessage.ChatType;
 import com.hyphenate.chat.EMTextMessageBody;
+import com.hyphenate.easeui.CustomConstant;
 import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.controller.EaseUI;
 import com.hyphenate.easeui.domain.EaseEmojicon;
@@ -118,11 +119,25 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
 
     public OnSendMsgListenter mMsgListenter;
 
+
     /**
      * 消息发送监听
      */
     public interface OnSendMsgListenter {
         boolean isSendMsg(EMMessage message);
+    }
+
+    /**
+     * 点击的消息类型
+     */
+    public interface OnSendTypeMsgCallBack {
+        void onSendType(int type, Bundle bundle);
+    }
+
+    public OnSendTypeMsgCallBack mTypeMsgCallBack;
+
+    public void setOnSendTypeMsgCallBack(OnSendTypeMsgCallBack callBack) {
+        this.mTypeMsgCallBack = callBack;
     }
 
     public void setOnSendMsgListenter(OnSendMsgListenter listenter) {
@@ -770,12 +785,12 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
         JSONObject object = new JSONObject();
         EaseUser user = EaseUI.getInstance().getUserProfileProvider().getUser(message.getFrom());
         try {
-            object.put("nike", user.getNick());
-            object.put("avater", user.getAvatar());
+            object.put(CustomConstant.MESSAGE_Attribute_NIKE, user.getNick());
+            object.put(CustomConstant.MESSAGE_Attribute_AVATER, user.getAvatar());
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        message.setAttribute("userinfo", object);
+        message.setAttribute(CustomConstant.ESSAGE_ATTRIBUTE_USERINFO, object);
         EMClient.getInstance().chatManager().sendMessage(message);
         //refresh ui
         if (isMessageListInited) {

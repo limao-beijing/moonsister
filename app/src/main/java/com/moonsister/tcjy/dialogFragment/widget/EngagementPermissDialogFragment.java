@@ -5,13 +5,13 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 
+import com.hickey.network.bean.EngagementPermissTextBane;
+import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.bean.EngagementPermissTextBane;
 import com.moonsister.tcjy.dialogFragment.presenter.EngagementPermissPersenter;
 import com.moonsister.tcjy.dialogFragment.presenter.EngagementPermissPersenterImpl;
 import com.moonsister.tcjy.dialogFragment.view.EngagementPermissView;
-import com.moonsister.tcjy.utils.EnumConstant;
-import com.moonsister.tool.lang.StringUtis;
 
 import butterknife.Bind;
 import butterknife.OnClick;

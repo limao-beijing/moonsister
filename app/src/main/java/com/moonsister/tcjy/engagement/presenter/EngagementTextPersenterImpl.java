@@ -1,12 +1,12 @@
 package com.moonsister.tcjy.engagement.presenter;
 
+import com.hickey.network.bean.EngagementTextBane;
+import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.EngagementTextBane;
 import com.moonsister.tcjy.engagement.model.EngegamentTextModel;
 import com.moonsister.tcjy.engagement.model.EngegamentTextModelImpl;
 import com.moonsister.tcjy.engagement.view.EngagementTextView;
-import com.moonsister.tcjy.utils.EnumConstant;
-import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/11/11.

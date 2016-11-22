@@ -5,12 +5,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hickey.network.ImageServerApi;
+import com.hickey.network.bean.DefaultDataBean;
+import com.hickey.network.bean.UserInfoDetailBean;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
@@ -18,7 +19,6 @@ import com.moonsister.tcjy.main.widget.DynamicActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.lang.StringUtis;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

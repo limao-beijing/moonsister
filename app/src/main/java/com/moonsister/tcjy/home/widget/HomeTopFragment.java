@@ -10,7 +10,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.banner.BannerManager;
 import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.EnumConstant;
+import com.hickey.tool.constant.EnumConstant;
 
 import butterknife.Bind;
 import butterknife.OnClick;

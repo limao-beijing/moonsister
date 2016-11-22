@@ -42,4 +42,6 @@ dependencies {
     compile files('src/main/libs/MiPush_SDK_Client_2_2_19.jar')
    /* compile 'fm.jiecao:jiecaovideoplayer:4.8.1'*/
     compile project(':jcvideoplayer-lib')
+    compile project(':tool')
+    compile rootProject.ext.dependencies["butterknife"]
 }

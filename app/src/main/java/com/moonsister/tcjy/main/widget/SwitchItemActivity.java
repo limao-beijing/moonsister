@@ -15,7 +15,6 @@ import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

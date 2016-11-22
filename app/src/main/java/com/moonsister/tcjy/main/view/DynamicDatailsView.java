@@ -1,8 +1,8 @@
 package com.moonsister.tcjy.main.view;
 
+import com.hickey.network.bean.CommentDataListBean;
+import com.hickey.network.bean.DynamicDatailsBean;
 import com.moonsister.tcjy.base.BaseIView;
-import com.moonsister.tcjy.bean.CommentDataListBean;
-import com.moonsister.tcjy.bean.DynamicDatailsBean;
 
 import java.util.List;
 

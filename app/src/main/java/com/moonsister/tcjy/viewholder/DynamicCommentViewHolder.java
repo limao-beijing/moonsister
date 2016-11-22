@@ -3,12 +3,12 @@ package com.moonsister.tcjy.viewholder;
 import android.view.View;
 import android.widget.TextView;
 
-import com.moonsister.tcjy.ImageServerApi;
+import com.hickey.network.ImageServerApi;
+import com.hickey.network.bean.CommentDataListBean;
+import com.hickey.tool.time.TimeUtils;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
-import com.moonsister.tcjy.bean.CommentDataListBean;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tool.time.TimeUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
 import butterknife.Bind;

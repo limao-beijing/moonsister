@@ -4,21 +4,21 @@ import android.graphics.Bitmap;
 
 import com.alibaba.sdk.android.oss.ClientException;
 import com.alibaba.sdk.android.oss.ServiceException;
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.BaseBean;
+import com.hickey.network.bean.DynamicContent;
+import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.parse.JsonUtils;
+import com.hickey.tool.view.image.FastBlur;
+import com.hickey.tool.view.image.ImageUtils;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.bean.BaseBean;
-import com.moonsister.tcjy.bean.DynamicContent;
 import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.manager.aliyun.AliyunManager;
-import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.FilePathUtlis;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
-import com.moonsister.tool.parse.JsonUtils;
-import com.moonsister.tool.view.image.FastBlur;
-import com.moonsister.tool.view.image.ImageUtils;
 
 import java.io.File;
 import java.util.ArrayList;

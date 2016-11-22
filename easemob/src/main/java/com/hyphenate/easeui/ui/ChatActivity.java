@@ -28,11 +28,13 @@ public class ChatActivity extends EaseBaseActivity {
         user.setNick(extras.getString(EaseConstant.EXTRA_USER_NIKE));
         dao.saveUser(user);
         chatFragment = new ChatFragment();
+
         //set arguments
         chatFragment.setArguments(extras);
         getSupportFragmentManager().beginTransaction().add(R.id.container, chatFragment).commit();
 
     }
+
 
     @Override
     protected void onDestroy() {

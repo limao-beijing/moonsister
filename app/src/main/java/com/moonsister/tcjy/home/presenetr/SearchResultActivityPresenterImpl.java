@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.home.presenetr;
 
+import com.hickey.network.bean.SearchReasonBaen;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.SearchReasonBaen;
 import com.moonsister.tcjy.home.model.SearchResultActivityModel;
 import com.moonsister.tcjy.home.model.SearchResultActivityModelImpl;
 import com.moonsister.tcjy.home.view.SearchResultActivityView;

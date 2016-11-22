@@ -3,9 +3,9 @@ package com.moonsister.tcjy.update.model;
 import android.os.Looper;
 import android.util.Log;
 
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.VersionInfo;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.bean.VersionInfo;
 import com.moonsister.tcjy.update.down.DownloadProgressHandler;
 import com.moonsister.tcjy.update.down.ProgressHelper;
 

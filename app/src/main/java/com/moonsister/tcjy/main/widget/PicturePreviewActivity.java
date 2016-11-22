@@ -27,7 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.moonsister.tcjy.R;
-import com.moonsister.tool.view.image.AlbumBitmapCacheHelper;
+import com.hickey.tool.view.image.AlbumBitmapCacheHelper;
 import com.moonsister.tcjy.widget.HackyViewPager;
 
 import java.io.File;

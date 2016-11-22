@@ -1,7 +1,6 @@
 package com.moonsister.tcjy.im.widget;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +10,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hickey.network.bean.FrientBaen;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.FrientAdapter;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.bean.FrientBaen;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.im.prsenter.FrientFragmentPresenter;
@@ -23,7 +23,6 @@ import com.moonsister.tcjy.my.view.FrientFragmentView;
 import com.moonsister.tcjy.utils.FragmentUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.XListView;
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.trello.rxlifecycle.FragmentEvent;
 
 import butterknife.Bind;

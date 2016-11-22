@@ -14,9 +14,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.hickey.network.bean.LableBean;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.bean.LableBean;
 import com.moonsister.tcjy.center.presenter.LableFragmentPersenter;
 import com.moonsister.tcjy.center.presenter.LableFragmentPersenterImpl;
 import com.moonsister.tcjy.center.view.LableFragmentView;

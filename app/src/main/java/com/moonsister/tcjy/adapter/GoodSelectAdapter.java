@@ -4,10 +4,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hickey.network.bean.GoodSelectBaen;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewAdapter;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
-import com.moonsister.tcjy.bean.GoodSelectBaen;
 import com.moonsister.tcjy.viewholder.GoodSelectViewHolder;
 
 import java.util.List;

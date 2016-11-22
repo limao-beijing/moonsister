@@ -13,10 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hickey.network.bean.ChannelItem;
+import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.bean.ChannelItem;
-import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.widget.ColumnHorizontalScrollView;
 import com.moonsister.tcjy.widget.ViewPager;
 

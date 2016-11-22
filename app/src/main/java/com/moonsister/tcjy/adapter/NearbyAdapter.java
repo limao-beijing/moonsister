@@ -2,19 +2,15 @@ package com.moonsister.tcjy.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
+import com.hickey.network.bean.NearbyBean;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewAdapter;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
-import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.NearbyViewHolder;
-import com.moonsister.tcjy.widget.RoundedImageView;
 
 import java.util.List;
-
-import butterknife.Bind;
 
 /**
  * Created by jb on 2016/8/4.

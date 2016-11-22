@@ -1,17 +1,17 @@
 package com.moonsister.tcjy.main.presenter;
 
 
+import com.hickey.network.bean.BaseBean;
+import com.hickey.network.bean.CommentDataListBean;
+import com.hickey.network.bean.DefaultDataBean;
+import com.hickey.network.bean.DynamicDatailsBean;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.BaseBean;
-import com.moonsister.tcjy.bean.CommentDataListBean;
-import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.bean.DynamicDatailsBean;
 import com.moonsister.tcjy.main.model.DynamincDatailsModel;
 import com.moonsister.tcjy.main.model.DynamincDatailsModelImpl;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.main.view.DynamicDatailsView;
-import com.moonsister.tool.lang.StringUtis;
 
 import java.util.List;
 

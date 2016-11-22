@@ -1,8 +1,8 @@
 package com.moonsister.tcjy.my.model;
 
+import com.hickey.network.bean.PersonalMessageBean;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.PersonalMessageBean;
-import com.moonsister.tcjy.my.persenter.PersonalActivityPersenterImpl;
+
 
 /**
  * Created by x on 2016/8/29.

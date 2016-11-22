@@ -3,16 +3,16 @@ package com.moonsister.tcjy.my.model;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.DefaultDataBean;
+import com.hickey.network.bean.UserInfoChangeBean;
+import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.view.image.ImageUtils;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.bean.UserInfoChangeBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.manager.aliyun.AliyunManager;
 import com.moonsister.tcjy.utils.FilePathUtlis;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tool.lang.StringUtis;
-import com.moonsister.tool.view.image.ImageUtils;
 
 import java.io.File;
 

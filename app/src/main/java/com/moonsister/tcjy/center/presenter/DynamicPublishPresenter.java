@@ -2,7 +2,7 @@ package com.moonsister.tcjy.center.presenter;
 
 import com.moonsister.tcjy.base.BaseIPresenter;
 import com.moonsister.tcjy.center.view.DefaultDynamicView;
-import com.moonsister.tcjy.utils.EnumConstant;
+import com.hickey.tool.constant.EnumConstant;
 
 import java.util.List;
 

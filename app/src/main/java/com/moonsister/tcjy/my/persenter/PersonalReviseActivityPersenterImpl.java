@@ -1,16 +1,16 @@
 package com.moonsister.tcjy.my.persenter;
 
+import com.hickey.network.bean.BaseBean;
+import com.hickey.network.bean.PersonalReviseMessageBean;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.BaseBean;
-import com.moonsister.tcjy.bean.PersonalReviseMessageBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.model.PersonalReviseActivityModel;
 import com.moonsister.tcjy.my.model.PersonalReviseActivityModelImpl;
 import com.moonsister.tcjy.my.view.PersonalReviseActivityView;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by x on 2016/9/10.

@@ -5,7 +5,7 @@
                 android:layout_height="match_parent"
                 tools:context="com.moonsister.tcjy.my.widget.RuleActivity">
 
-    <include layout="@layout/app_titlebar"/>
+    <include layout="@layout/em_app_titlebar"/>
 
     <TextView
         android:id="@+id/rule_talk"

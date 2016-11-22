@@ -1,8 +1,8 @@
 package com.moonsister.tcjy.main.model;
 
+import com.hickey.network.bean.DynamicItemBean;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.DynamicItemBean;
-import com.moonsister.tcjy.bean.UserInfoListBean;
+
 
 /**
  * Created by pc on 2016/6/6.

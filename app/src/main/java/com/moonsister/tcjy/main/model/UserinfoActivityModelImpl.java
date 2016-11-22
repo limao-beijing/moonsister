@@ -1,8 +1,8 @@
 package com.moonsister.tcjy.main.model;
 
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.UserInfoChangeBean;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.bean.UserInfoChangeBean;
 import com.moonsister.tcjy.utils.ObservableUtils;
 
 import rx.Observable;

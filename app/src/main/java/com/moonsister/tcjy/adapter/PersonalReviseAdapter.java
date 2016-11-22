@@ -1,9 +1,6 @@
 package com.moonsister.tcjy.adapter;
 
 import android.content.Context;
-import android.text.Editable;
-import android.text.InputType;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.hickey.network.bean.PersonalMessageBean;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.bean.BaseBean;
-import com.moonsister.tcjy.bean.GoodSelectBaen;
-import com.moonsister.tcjy.bean.PersonalMessageBean;
-import com.moonsister.tcjy.my.widget.PersonalReviseActivity;
 
 import java.util.List;
 

@@ -4,7 +4,7 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.AppointmentServerApi;
 import com.moonsister.tcjy.bean.EngagementManagerBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.EnumConstant;
+import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.utils.ObservableUtils;
 
 import rx.Observable;

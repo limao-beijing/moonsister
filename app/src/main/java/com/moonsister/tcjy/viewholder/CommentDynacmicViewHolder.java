@@ -3,11 +3,11 @@ package com.moonsister.tcjy.viewholder;
 import android.view.View;
 import android.widget.TextView;
 
+import com.hickey.network.bean.DynamicDatailsBean;
+import com.hickey.network.bean.DynamicItemBean;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.DynamicAdapter;
 import com.moonsister.tcjy.adapter.HomePageFragmentAdapter;
-import com.moonsister.tcjy.bean.DynamicDatailsBean;
-import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;

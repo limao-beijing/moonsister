@@ -1,14 +1,6 @@
 package com.moonsister.tcjy.adapter;
 
 import android.content.Context;
-
-import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.bean.GoodSelectBaen;
-import com.moonsister.tcjy.bean.PersonalMessageBean;
-import com.moonsister.tcjy.my.widget.PersonalActivity;
-
-import java.util.List;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.hickey.network.bean.PersonalMessageBean;
+import com.moonsister.tcjy.R;
+
+import java.util.List;
 
 /**
  * Created by x on 2016/8/27.

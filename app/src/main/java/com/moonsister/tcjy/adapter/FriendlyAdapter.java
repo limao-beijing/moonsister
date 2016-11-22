@@ -3,14 +3,15 @@ package com.moonsister.tcjy.adapter;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hickey.network.bean.DefaultDataBean;
+import com.hickey.network.bean.FrientBaen;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.base.BaseIView;
 import com.moonsister.tcjy.base.BaseRecyclerViewAdapter;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
-import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.bean.FrientBaen;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.im.widget.FrientFragment;
@@ -18,7 +19,6 @@ import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.my.widget.ContactsFragment;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.FriendlyViewHoler;
-import com.moonsister.tool.lang.StringUtis;
 
 import java.util.List;
 

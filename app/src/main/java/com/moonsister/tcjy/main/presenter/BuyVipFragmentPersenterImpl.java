@@ -5,9 +5,9 @@ import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.main.model.BuyVipFragmentModel;
 import com.moonsister.tcjy.main.model.BuyVipFragmentModelImpl;
 import com.moonsister.tcjy.main.view.BuyVipFragmentView;
-import com.moonsister.tcjy.utils.EnumConstant;
+import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.lang.StringUtis;
+import com.hickey.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/8/13.

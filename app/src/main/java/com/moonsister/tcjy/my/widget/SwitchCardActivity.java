@@ -2,18 +2,18 @@ package com.moonsister.tcjy.my.widget;
 
 import android.view.View;
 
+import com.hickey.network.bean.CardInfoBean;
+import com.hickey.network.bean.GetMoneyBean;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.SwitchCardAdatper;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.base.BaseRecyclerViewAdapter;
-import com.moonsister.tcjy.bean.CardInfoBean;
-import com.moonsister.tcjy.bean.GetMoneyBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.persenter.SwitchCardActivityPresenter;
 import com.moonsister.tcjy.my.persenter.SwitchCardActivityPresenterImpl;
 import com.moonsister.tcjy.my.view.SwitchCardActivityView;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.XListView;
 

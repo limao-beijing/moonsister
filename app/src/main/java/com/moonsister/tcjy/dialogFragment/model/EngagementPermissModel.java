@@ -1,7 +1,8 @@
 package com.moonsister.tcjy.dialogFragment.model;
 
+import com.hickey.network.bean.EngagementPermissTextBane;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.EngagementPermissTextBane;
+
 
 /**
  * Created by jb on 2016/11/14.

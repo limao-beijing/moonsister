@@ -7,17 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.hickey.network.bean.DynamicItemBean;
+import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.lang.StringUtis;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.CacheManager;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.SearchReasonFragmentAdapter;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.bean.DynamicItemBean;
 import com.moonsister.tcjy.home.presenetr.SearchReasonFragmentPersenter;
 import com.moonsister.tcjy.home.presenetr.SearchReasonFragmentPersenterImpl;
 import com.moonsister.tcjy.home.view.SearchReasonFragmentView;
-import com.moonsister.tcjy.utils.EnumConstant;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.widget.XListView;
 
 import java.util.ArrayList;

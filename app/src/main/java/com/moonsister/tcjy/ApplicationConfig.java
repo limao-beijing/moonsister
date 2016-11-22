@@ -5,6 +5,7 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
+import com.hickey.network.ImageServerApi;
 import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
 
@@ -27,6 +28,7 @@ public class ApplicationConfig extends MultiDexApplication {
 //                .build();
 ////
 //        initRongYun();
+        ImageServerApi.initImageServerApi(getApplicationContext(), R.mipmap.load_failure, R.mipmap.load_small, R.mipmap.load_big);
         initHx();
     }
 

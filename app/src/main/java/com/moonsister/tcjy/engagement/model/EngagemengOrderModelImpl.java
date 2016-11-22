@@ -1,19 +1,19 @@
 package com.moonsister.tcjy.engagement.model;
 
-import com.moonsister.pay.aibeipay.AiBeiPayManager;
-import com.moonsister.pay.tencent.PayBean;
+import com.hickey.network.bean.BaseBean;
+import com.hickey.network.bean.EngagemengOrderBean;
+import com.hickey.network.bean.EngagementTextBane;
+import com.hickey.network.bean.PayBean;
+import com.hickey.pay.aibeipay.AiBeiPayManager;
+import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.AppointmentServerApi;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.bean.BaseBean;
-import com.moonsister.tcjy.bean.EngagemengOrderBean;
-import com.moonsister.tcjy.bean.EngagementTextBane;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.lang.StringUtis;
 
 import rx.Observable;
 import rx.Subscriber;

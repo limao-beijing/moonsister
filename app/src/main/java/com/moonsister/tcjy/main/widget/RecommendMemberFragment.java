@@ -6,10 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.hickey.network.bean.RecommendMemberFragmentBean;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.CardAdapter;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.flingswipe.SwipeFlingAdapterView;
 

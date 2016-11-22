@@ -1,7 +1,8 @@
 package com.moonsister.tcjy.home.model;
 
+import com.hickey.network.bean.ChooseKeyBean;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.ChooseKeyBean;
+
 
 /**
  * Created by jb on 2016/8/28.

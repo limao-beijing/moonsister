@@ -1,30 +1,17 @@
 package com.moonsister.tcjy.my.widget;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
+import com.hickey.network.bean.FrientBaen;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.FriendAdapter;
-import com.moonsister.tcjy.adapter.FrientAdapter;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.bean.FrientBaen;
-import com.moonsister.tcjy.im.prsenter.FrientFragmentPresenter;
-import com.moonsister.tcjy.im.prsenter.FrientFragmentPresenterImpl;
-import com.moonsister.tcjy.im.widget.FrientFragment;
-import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenter;
-import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenterImpl;
 import com.moonsister.tcjy.main.presenter.RelationActivityPresenterImpl;
-import com.moonsister.tcjy.main.view.BuyVipFragmentView;
 import com.moonsister.tcjy.main.view.RelationActivityView;
-import com.moonsister.tcjy.my.view.FrientFragmentView;
-import com.moonsister.tcjy.my.view.MyFragmentView;
-import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.XListView;
 

@@ -14,7 +14,7 @@ import android.content.Context;
 import android.os.Environment;
 import android.os.StatFs;
 
-import com.moonsister.tool.file.PrefUtils;
+import com.hickey.tool.file.PrefUtils;
 
 
 public class SDUtils {

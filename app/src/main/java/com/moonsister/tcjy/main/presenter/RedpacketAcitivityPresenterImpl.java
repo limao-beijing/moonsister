@@ -8,7 +8,7 @@ import com.moonsister.tcjy.main.model.RedpacketAcitivityModel;
 import com.moonsister.tcjy.main.model.RedpacketAcitivityModelImpl;
 import com.moonsister.tcjy.main.view.PlayUserAcitivityView;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.lang.StringUtis;
+import com.hickey.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/6/24.

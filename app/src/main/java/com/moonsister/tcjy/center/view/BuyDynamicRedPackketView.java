@@ -1,7 +1,8 @@
 package com.moonsister.tcjy.center.view;
 
+import com.hickey.network.bean.VipRule;
 import com.moonsister.tcjy.base.BaseIView;
-import com.moonsister.tcjy.bean.VipRule;
+
 
 /**
  * Created by jb on 2016/6/29.

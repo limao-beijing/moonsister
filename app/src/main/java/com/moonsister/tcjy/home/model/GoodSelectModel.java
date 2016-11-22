@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.home.model;
 
+import com.hickey.network.bean.GoodSelectBaen;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.GoodSelectBaen;
 
 import java.util.List;
 

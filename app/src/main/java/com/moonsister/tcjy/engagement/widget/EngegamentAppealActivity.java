@@ -9,7 +9,7 @@ import com.moonsister.tcjy.engagement.presenter.EngegamentAppealPresenter;
 import com.moonsister.tcjy.engagement.presenter.EngegamentAppealPresenterImpl;
 import com.moonsister.tcjy.engagement.view.EngegamentAppealView;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.lang.StringUtis;
+import com.hickey.tool.lang.StringUtis;
 
 import butterknife.Bind;
 import butterknife.OnClick;

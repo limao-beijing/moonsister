@@ -3,7 +3,6 @@ package com.moonsister.tcjy.login.widget;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;

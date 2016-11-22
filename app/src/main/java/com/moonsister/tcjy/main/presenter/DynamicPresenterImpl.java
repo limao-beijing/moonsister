@@ -1,19 +1,19 @@
 package com.moonsister.tcjy.main.presenter;
 
+import com.hickey.network.bean.DefaultDataBean;
+import com.hickey.network.bean.DynamicItemBean;
+import com.hickey.network.bean.UserInfoDetailBean;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.base.BaseIModel.onLoadDateSingleListener;
-import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.bean.DynamicItemBean;
-import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.main.model.DynamicModel;
 import com.moonsister.tcjy.main.model.DynamicModelImpl;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.main.view.DynamicView;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.lang.StringUtis;
 
 import java.util.List;
 

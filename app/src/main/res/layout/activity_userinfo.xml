@@ -5,7 +5,7 @@
     android:background="@color/app_gred_background"
     android:orientation="vertical">
 
-    <include layout="@layout/app_titlebar" />
+    <include layout="@layout/em_app_titlebar" />
 
 
     <RelativeLayout

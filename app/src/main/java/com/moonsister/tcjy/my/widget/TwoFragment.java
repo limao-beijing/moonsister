@@ -5,11 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hickey.network.bean.BalanceBean;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.MoneyTwoAdapter;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.bean.BalanceBean;
 import com.moonsister.tcjy.my.persenter.MoneyActivityPersenter;
 import com.moonsister.tcjy.my.persenter.MoneyActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.BalanceActivityView;

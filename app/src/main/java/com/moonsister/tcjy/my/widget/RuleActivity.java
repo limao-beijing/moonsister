@@ -1,7 +1,5 @@
 package com.moonsister.tcjy.my.widget;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 
 import com.moonsister.tcjy.R;

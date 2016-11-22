@@ -5,10 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.hickey.network.bean.RecommendMemberFragmentBean;
+import com.hickey.network.bean.TiXinrRecordBean;
+import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.lang.StringUtis;
 import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.ui.PlayDirectlyActivity;
-import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
-import com.moonsister.tcjy.bean.TiXinrRecordBean;
 import com.moonsister.tcjy.center.widget.BuyDynamicRedPackketActivity;
 import com.moonsister.tcjy.center.widget.DefaultDynamicSendActivity;
 import com.moonsister.tcjy.center.widget.DynamicPublishActivity;
@@ -81,7 +83,6 @@ import com.moonsister.tcjy.widget.image.PhonePicActivity;
 import com.moonsister.tcjy.widget.image.ShowImageActivity;
 import com.moonsister.tcjy.widget.image.photoview.ImagePagerActivity;
 import com.moonsister.tcjy.widget.takevideo.TakeVideoActivity;
-import com.moonsister.tool.lang.StringUtis;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

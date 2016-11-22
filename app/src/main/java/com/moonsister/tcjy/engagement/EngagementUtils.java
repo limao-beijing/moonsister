@@ -2,7 +2,7 @@ package com.moonsister.tcjy.engagement;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.lang.StringUtis;
+import com.hickey.tool.lang.StringUtis;
 
 import java.util.ArrayList;
 import java.util.List;

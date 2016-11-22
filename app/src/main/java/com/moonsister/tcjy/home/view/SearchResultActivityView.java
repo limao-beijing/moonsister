@@ -1,7 +1,8 @@
 package com.moonsister.tcjy.home.view;
 
+import com.hickey.network.bean.SearchReasonBaen;
 import com.moonsister.tcjy.base.BaseIView;
-import com.moonsister.tcjy.bean.SearchReasonBaen;
+
 
 /**
  * Created by jb on 2016/7/10.

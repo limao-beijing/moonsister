@@ -2,21 +2,17 @@ package com.moonsister.tcjy.my.widget;
 
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ListView;
 
+import com.hickey.network.bean.PingbiBean;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.PingbiAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.base.BaseAdapter;
-import com.moonsister.tcjy.bean.PingbiBean;
 import com.moonsister.tcjy.my.persenter.PingbiActivityPersenter;
 import com.moonsister.tcjy.my.persenter.PingbiActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.PingbiView;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.XListView;
-
-import java.util.List;
 
 import butterknife.Bind;
 

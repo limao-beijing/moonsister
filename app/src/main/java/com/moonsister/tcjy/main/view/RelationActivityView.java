@@ -1,8 +1,8 @@
 package com.moonsister.tcjy.main.view;
 
+import com.hickey.network.bean.FrientBaen;
 import com.moonsister.tcjy.base.BaseIView;
-import com.moonsister.tcjy.bean.FrientBaen;
-import com.moonsister.tcjy.bean.PingbiBean;
+
 
 /**
  * Created by jb on 2016/7/22.

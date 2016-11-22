@@ -1,17 +1,17 @@
 package com.moonsister.tcjy.login.model;
 
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.BaseBean;
+import com.hickey.network.bean.RegThridBean;
+import com.hickey.network.bean.RegiterBean;
+import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.parse.JsonUtils;
+import com.hickey.tool.phoneinfo.PhoneInfoUtils;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.bean.BaseBean;
-import com.moonsister.tcjy.bean.RegThridBean;
-import com.moonsister.tcjy.bean.RegiterBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tool.parse.JsonUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tool.phoneinfo.PhoneInfoUtils;
-import com.moonsister.tool.lang.StringUtis;
 
 import rx.Observable;
 

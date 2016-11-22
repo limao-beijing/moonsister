@@ -7,15 +7,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.hickey.network.bean.SearchReasonBaen;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.CacheManager;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.SearchAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.bean.SearchReasonBaen;
 import com.moonsister.tcjy.home.presenetr.SearchResultActivityPresenter;
 import com.moonsister.tcjy.home.presenetr.SearchResultActivityPresenterImpl;
 import com.moonsister.tcjy.home.view.SearchResultActivityView;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.XListView;
 

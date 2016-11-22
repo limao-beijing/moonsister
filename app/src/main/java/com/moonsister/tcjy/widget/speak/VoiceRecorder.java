@@ -9,7 +9,6 @@ import android.media.MediaRecorder;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
-import android.text.format.Time;
 
 import com.moonsister.tcjy.utils.SDUtils;
 

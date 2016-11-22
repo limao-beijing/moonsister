@@ -1,14 +1,14 @@
 package com.moonsister.tcjy.my.persenter;
 
+import com.hickey.network.bean.DefaultDataBean;
+import com.hickey.network.bean.UserInfoChangeBean;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.bean.UserInfoChangeBean;
 import com.moonsister.tcjy.my.model.UserInfoChangeActivityModel;
 import com.moonsister.tcjy.my.model.UserInfoChangeActivityModelImpl;
 import com.moonsister.tcjy.my.view.UserInfoChangeActivityView;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/7/11.

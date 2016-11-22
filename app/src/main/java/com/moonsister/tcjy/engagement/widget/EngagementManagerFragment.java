@@ -18,9 +18,9 @@ import com.moonsister.tcjy.engagement.view.EngagementActionView;
 import com.moonsister.tcjy.engagement.view.EngagementManagerFragmentView;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.EnumConstant;
+import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.lang.StringUtis;
+import com.hickey.tool.lang.StringUtis;
 
 import java.util.List;
 

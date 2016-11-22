@@ -1,7 +1,8 @@
 package com.moonsister.tcjy.my.model;
 
+import com.hickey.network.bean.BalanceBean;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.BalanceBean;
+
 
 /**
  * Created by x on 2016/9/2.

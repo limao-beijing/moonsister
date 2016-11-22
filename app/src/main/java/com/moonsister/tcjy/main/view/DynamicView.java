@@ -1,9 +1,8 @@
 package com.moonsister.tcjy.main.view;
 
+import com.hickey.network.bean.DynamicItemBean;
+import com.hickey.network.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.base.BaseIView;
-import com.moonsister.tcjy.bean.DynamicItemBean;
-import com.moonsister.tcjy.bean.UserInfoDetailBean;
-import com.moonsister.tcjy.bean.UserInfoListBean;
 
 import java.util.List;
 

@@ -5,15 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hickey.network.bean.DynamicItemBean;
+import com.hickey.network.bean.UserInfoDetailBean;
+import com.hickey.tool.constant.EnumConstant;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.adapter.HomePageFragmentAdapter;
 import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.bean.DynamicItemBean;
-import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.main.presenter.HomePageFragmentPresenter;
 import com.moonsister.tcjy.main.presenter.HomePageFragmentPresenterImpl;
 import com.moonsister.tcjy.main.view.HomePageFragmentView;
-import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.widget.XListView;
 
 import java.util.List;

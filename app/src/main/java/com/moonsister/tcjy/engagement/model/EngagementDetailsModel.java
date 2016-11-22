@@ -1,7 +1,8 @@
 package com.moonsister.tcjy.engagement.model;
 
+import com.hickey.network.bean.EngagementDetailsBean;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.EngagementDetailsBean;
+
 
 /**
  * Created by jb on 2016/11/11.

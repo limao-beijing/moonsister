@@ -1,11 +1,11 @@
 package com.moonsister.tcjy.utils;
 
+import com.hickey.network.bean.BaseBean;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
-import com.moonsister.tool.lang.StringUtis;
 
 import rx.Observable;
 import rx.Subscriber;

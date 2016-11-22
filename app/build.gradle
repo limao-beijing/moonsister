@@ -75,13 +75,12 @@ dependencies {
     /* compile project(':baidu')*/
     compile project(':easemob')
     compile project(':tool')
+    compile project(':network')
     //阿里云
     compile files('src/main/libs/aliyun-oss-sdk-android-2.2.0.jar')
     compile files('src/main/libs/AMap_Location_V2.6.0_20160628.jar')
     compile files('src/main/libs/nineoldandroids-2.4.0.jar')
     compile rootProject.ext.dependencies["appcompat-v7"]
-    compile rootProject.ext.dependencies["butterknife"]
-    compile rootProject.ext.dependencies["support-v4"]
     compile rootProject.ext.dependencies["xrecyclerview"]
     // Reactive Programming RxJava
     compile rootProject.ext.dependencies["rxandroid"]

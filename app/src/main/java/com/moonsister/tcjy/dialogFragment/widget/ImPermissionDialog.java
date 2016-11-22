@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.utils.EnumConstant;
-import com.moonsister.tool.lang.StringUtis;
+import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.lang.StringUtis;
 
 import butterknife.Bind;
 import butterknife.OnClick;

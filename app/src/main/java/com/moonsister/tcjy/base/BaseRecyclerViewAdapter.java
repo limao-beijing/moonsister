@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.moonsister.tcjy.bean.BaseDataBean;
+import com.hickey.network.bean.BaseDataBean;
 import com.moonsister.tcjy.utils.LogUtils;
 
 import java.util.ArrayList;

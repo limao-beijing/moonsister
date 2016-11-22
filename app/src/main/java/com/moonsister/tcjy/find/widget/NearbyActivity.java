@@ -1,20 +1,18 @@
 package com.moonsister.tcjy.find.widget;
 
 import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hickey.network.bean.NearbyBean;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.NearbyAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.find.presenter.NearbyActivityPresenter;
 import com.moonsister.tcjy.find.presenter.NearbyActivityPresenterImpl;
 import com.moonsister.tcjy.find.view.NearbyActivityView;
@@ -24,7 +22,6 @@ import com.moonsister.tcjy.widget.XListView;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Created by jb on 2016/8/4.

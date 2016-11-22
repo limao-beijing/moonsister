@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hickey.network.bean.PersonInfoDetail;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;

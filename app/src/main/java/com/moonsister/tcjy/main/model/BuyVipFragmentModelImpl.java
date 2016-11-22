@@ -1,17 +1,17 @@
 package com.moonsister.tcjy.main.model;
 
-import com.moonsister.pay.aibeipay.AiBeiPayManager;
-import com.moonsister.pay.tencent.PayBean;
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.PayBean;
+import com.hickey.pay.aibeipay.AiBeiPayManager;
+import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import rx.Observable;

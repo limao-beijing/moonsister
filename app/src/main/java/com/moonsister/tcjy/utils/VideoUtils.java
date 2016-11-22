@@ -5,7 +5,7 @@ import android.graphics.Bitmap.CompressFormat;
 import android.media.MediaMetadataRetriever;
 
 import com.moonsister.tcjy.R;
-import com.moonsister.tool.view.image.ImageUtils;
+import com.hickey.tool.view.image.ImageUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;

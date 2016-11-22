@@ -1,9 +1,9 @@
 package com.moonsister.tcjy.main.model;
 
+import com.hickey.network.bean.DynamicItemBean;
+import com.hickey.network.bean.UserInfoDetailBean;
+import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.DynamicItemBean;
-import com.moonsister.tcjy.bean.UserInfoDetailBean;
-import com.moonsister.tcjy.utils.EnumConstant;
 
 import java.util.List;
 

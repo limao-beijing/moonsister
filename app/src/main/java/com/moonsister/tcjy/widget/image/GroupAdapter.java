@@ -11,8 +11,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hickey.network.bean.ImageBean;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.bean.ImageBean;
 import com.moonsister.tcjy.widget.MyImageView;
 
 import java.util.List;

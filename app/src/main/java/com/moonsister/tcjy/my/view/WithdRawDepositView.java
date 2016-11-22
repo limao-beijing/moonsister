@@ -1,7 +1,8 @@
 package com.moonsister.tcjy.my.view;
 
+import com.hickey.network.bean.WithdRawDepositBean;
 import com.moonsister.tcjy.base.BaseIView;
-import com.moonsister.tcjy.bean.WithdRawDepositBean;
+
 
 /**
  * Created by jb on 2016/7/2.

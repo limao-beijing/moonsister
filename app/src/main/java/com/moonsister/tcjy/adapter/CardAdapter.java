@@ -1,6 +1,5 @@
 package com.moonsister.tcjy.adapter;
 
-import android.app.job.JobInfo;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.moonsister.tcjy.ImageServerApi;
+import com.hickey.network.ImageServerApi;
+import com.hickey.network.bean.RecommendMemberFragmentBean;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.bean.CardMode;
-import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
 
 import java.util.List;
 

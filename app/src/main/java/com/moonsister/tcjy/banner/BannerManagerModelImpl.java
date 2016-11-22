@@ -1,12 +1,12 @@
 package com.moonsister.tcjy.banner;
 
+import com.hickey.network.ServerApi;
+import com.hickey.network.bean.BannerBean;
+import com.hickey.tool.phoneinfo.SystemUtils;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.bean.BannerBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tool.phoneinfo.SystemUtils;
 
 import rx.Observable;
 

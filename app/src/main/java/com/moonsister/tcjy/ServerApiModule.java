@@ -1,5 +1,7 @@
 package com.moonsister.tcjy;
 
+import com.hickey.network.ServerApi;
+
 import javax.inject.Singleton;
 
 import dagger.Module;

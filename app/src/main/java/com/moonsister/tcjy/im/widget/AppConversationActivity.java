@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.lang.StringUtis;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.db.HxUserDao;
@@ -14,17 +16,17 @@ import com.hyphenate.easeui.ui.ChatFragment;
 import com.hyphenate.easeui.ui.EaseChatFragment;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.dialogFragment.widget.BaseDialogFragment;
+import com.moonsister.tcjy.center.widget.BuyDynamicRedPackketActivity;
 import com.moonsister.tcjy.dialogFragment.DialogMannager;
+import com.moonsister.tcjy.dialogFragment.widget.BaseDialogFragment;
 import com.moonsister.tcjy.dialogFragment.widget.ImPermissionDialog;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.im.SendMsgForServiceHelper;
+import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
 import com.moonsister.tcjy.permission.UserPermissionManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tool.lang.StringUtis;
 import com.trello.rxlifecycle.ActivityEvent;
 
 
@@ -176,7 +178,22 @@ public class AppConversationActivity extends BaseActivity {
         dao.saveUser(user);
 
         chatFragment = new ChatFragment();
-
+        //界面点击
+        chatFragment.setOnSendTypeMsgCallBack(new EaseChatFragment.OnSendTypeMsgCallBack() {
+            @Override
+            public void onSendType(int type, Bundle bundle) {
+                switch (type) {
+                    case ChatFragment.REQUEST_CODE_SEND_RED_PACKET:
+                        Intent intent = new Intent(AppConversationActivity.this, RedpacketAcitivity.class);
+                        intent.putExtra("id", bundle.getString("id"));
+                        intent.putExtra("type", BuyDynamicRedPackketActivity.RedpacketType.TYPE_REDPACKET.getValue());
+                        intent.putExtra("avater", bundle.getString("avater"));
+                        startActivityForResult(intent, ChatFragment.REQUEST_CODE_SEND_RED_PACKET);
+                        break;
+                }
+            }
+        });
+        //消息发送
         chatFragment.setOnSendMsgListenter(new EaseChatFragment.OnSendMsgListenter() {
             @Override
             public boolean isSendMsg(EMMessage message) {
@@ -212,6 +229,15 @@ public class AppConversationActivity extends BaseActivity {
 
 //
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (chatFragment != null) {
+            chatFragment.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
 
     private SendMsgForServiceHelper mHelper;
 

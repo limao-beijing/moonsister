@@ -23,7 +23,7 @@ import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.home.presenetr.SearchFragmentPersenter;
 import com.moonsister.tcjy.home.presenetr.SearchFragmentPersenterImpl;
 import com.moonsister.tcjy.home.view.SearchFragmentView;
-import com.moonsister.tool.lang.StringUtis;
+import com.hickey.tool.lang.StringUtis;
 
 import java.util.List;
 

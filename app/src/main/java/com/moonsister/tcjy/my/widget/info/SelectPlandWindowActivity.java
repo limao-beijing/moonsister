@@ -1,13 +1,5 @@
 package com.moonsister.tcjy.my.widget.info;
 
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
@@ -18,16 +10,24 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.hickey.network.bean.model.CityModel;
+import com.hickey.network.bean.model.DistrictModel;
+import com.hickey.network.bean.model.ProvinceModel;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.bean.model.CityModel;
-import com.moonsister.tcjy.bean.model.DistrictModel;
-import com.moonsister.tcjy.bean.model.ProvinceModel;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.utils.XmlParserHandler;
 import com.moonsister.tcjy.widget.wheelview.ArrayWheelAdapter;
 import com.moonsister.tcjy.widget.wheelview.OnWheelChangedListener;
 import com.moonsister.tcjy.widget.wheelview.WheelView;
+
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 
 /*

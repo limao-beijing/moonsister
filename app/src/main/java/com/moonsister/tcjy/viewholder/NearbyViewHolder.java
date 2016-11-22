@@ -3,16 +3,16 @@ package com.moonsister.tcjy.viewholder;
 import android.view.View;
 import android.widget.TextView;
 
-import com.moonsister.tcjy.ImageServerApi;
+import com.hickey.network.ImageServerApi;
+import com.hickey.network.bean.NearbyBean;
+import com.hickey.tool.file.PrefUtils;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
-import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.manager.GaodeManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LocationUtils;
-import com.moonsister.tool.file.PrefUtils;
-import com.moonsister.tool.lang.StringUtis;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
 import org.json.JSONException;
