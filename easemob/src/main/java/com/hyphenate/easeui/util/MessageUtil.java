@@ -21,6 +21,8 @@ public class MessageUtil {
     public static EMMessage createChargeMessage(FragmentActivity activity, Intent data, String username) {
         EMMessage redMeg = EMMessage.createTxtSendMessage("收费图片 : ", username);
         redMeg.setAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_IMAGE_MESSAGE, true);
+        redMeg.setAttribute("pic", data.getStringExtra("pic"));
+        redMeg.setAttribute("lid", data.getStringExtra("lid"));
         return redMeg;
     }
 }

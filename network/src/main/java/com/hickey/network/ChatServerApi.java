@@ -128,7 +128,7 @@ public class ChatServerApi {
 
 
     public interface AppAPI {
-        String baseUrl = "http://chatapi.yytbzs.cn:88/";
+        String baseUrl = "http://chatapi.yytbzs.cn:88/mimei/";
 
 //        String baseUrl = "http://3test.yytbzs.cn:92/";
 
@@ -142,14 +142,23 @@ public class ChatServerApi {
          * @param id
          * @return
          */
-        @GET("mimei/auth.php?action=get")
+        @GET("auth.php?action=get")
         Observable<PermissionBean> checkVip(@Query("to_uid") String toUid,
                                             @Query("authcode") String authcode,
                                             @Query("auth_type") String type,
                                             @Query("channel") String id);
 
+        /**
+         * 发送聊天消息
+         *
+         * @param chatType
+         * @param toUid
+         * @param content
+         * @param authcode
+         * @return
+         */
         @FormUrlEncoded
-        @POST("mimei/chat.php?action=chat")
+        @POST("chat.php?action=chat")
         Observable<MsgBean> send(@Field("chat_type") String chatType,
                                  @Field("to_uid") String toUid,
                                  @Field("chat_content") String content,

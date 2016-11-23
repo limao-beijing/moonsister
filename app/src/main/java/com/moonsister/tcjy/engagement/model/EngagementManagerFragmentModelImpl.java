@@ -1,8 +1,8 @@
 package com.moonsister.tcjy.engagement.model;
 
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.AppointmentServerApi;
-import com.moonsister.tcjy.bean.EngagementManagerBean;
+import com.hickey.network.AppointmentServerApi;
+import com.hickey.network.bean.EngagementManagerBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.utils.ObservableUtils;

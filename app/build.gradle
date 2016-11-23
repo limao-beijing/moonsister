@@ -4,7 +4,11 @@ apply plugin: 'me.tatarka.retrolambda'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
 
+    }
     defaultConfig {
 
         applicationId rootProject.ext.android.applicationId
@@ -72,9 +76,9 @@ dependencies {
     /*compile project(':IMKit')*/
     compile project(':pay')
     compile project(':progressdialog')
-    /* compile project(':baidu')*/
+     compile project(':baidu')
     compile project(':easemob')
-    compile project(':tool')
+/*    compile project(':tool')*/
     compile project(':network')
     //阿里云
     compile files('src/main/libs/aliyun-oss-sdk-android-2.2.0.jar')

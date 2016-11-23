@@ -102,7 +102,7 @@
     <color name="color_ffd305">#ffd305</color>
     <color name="color_2a343e">#2a343e</color>
     <color name="color_ff8201">#ff8201</color>
-    <!-- PictureSelectorActivity -->
+<!--    &lt;!&ndash; PictureSelectorActivity &ndash;&gt;
     <color name="picsel_toolbar">#393A3E</color>
     <color name="picsel_toolbar_transparent">#F0393A3E</color>
     <color name="picsel_toolbar_send_normal">#45C018</color>
@@ -113,10 +113,10 @@
     <color name="picsel_grid_mask">#00000000</color>
     <color name="picsel_grid_mask_pressed">#80000000</color>
     <color name="picsel_catalog_shadow">#C0000000</color>
-    <!-- PicturePreviewActivity -->
+    &lt;!&ndash; PicturePreviewActivity &ndash;&gt;
     <color name="picprev_toolbar_transparent">@color/picsel_toolbar_transparent</color>
     <color name="card_background">#ffffff</color>
-    <color name="card_shadow">#10000000</color>
+    <color name="card_shadow">#10000000</color>-->
 
     <!--深蓝-->
     <color name="blue_dark_151c22">#151c22</color>

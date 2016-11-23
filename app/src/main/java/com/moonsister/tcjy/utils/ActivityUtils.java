@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.hickey.network.bean.RecommendMemberFragmentBean;
 import com.hickey.network.bean.TiXinrRecordBean;
+import com.hickey.tool.activity.pic.PictureSelectorActivity;
 import com.hickey.tool.constant.EnumConstant;
 import com.hickey.tool.lang.StringUtis;
 import com.hyphenate.easeui.EaseConstant;
@@ -45,7 +46,6 @@ import com.moonsister.tcjy.main.widget.MainActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentOrderActivity;
 import com.moonsister.tcjy.main.widget.PersonInfoChangeActivity;
-import com.moonsister.tcjy.main.widget.PictureSelectorActivity;
 import com.moonsister.tcjy.main.widget.RecommendMemberActivity;
 import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
 import com.moonsister.tcjy.main.widget.RelationActivity;

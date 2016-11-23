@@ -26,6 +26,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hickey.tool.activity.video.ImageCache;
+import com.hickey.tool.activity.video.ImageResizer;
+import com.hickey.tool.activity.video.RecyclingImageView;
+import com.hickey.tool.activity.video.Utils;
+import com.hickey.tool.activity.video.VideoEntity;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.utils.LogUtils;
 

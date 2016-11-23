@@ -24,6 +24,7 @@ import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.im.SendMsgForServiceHelper;
 import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
+import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.permission.UserPermissionManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
@@ -178,6 +179,7 @@ public class AppConversationActivity extends BaseActivity {
         dao.saveUser(user);
 
         chatFragment = new ChatFragment();
+        chatFragment.setAuthcode(UserInfoManager.getInstance().getAuthcode());
         //界面点击
         chatFragment.setOnSendTypeMsgCallBack(new EaseChatFragment.OnSendTypeMsgCallBack() {
             @Override

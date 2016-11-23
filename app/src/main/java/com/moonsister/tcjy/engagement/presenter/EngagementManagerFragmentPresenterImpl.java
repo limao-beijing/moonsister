@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.engagement.presenter;
 
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.bean.EngagementManagerBean;
+import com.hickey.network.bean.EngagementManagerBean;
 import com.moonsister.tcjy.engagement.model.EngagementManagerFragmentModel;
 import com.moonsister.tcjy.engagement.model.EngagementManagerFragmentModelImpl;
 import com.moonsister.tcjy.engagement.view.EngagementManagerFragmentView;

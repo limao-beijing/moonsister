@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.engagement.view;
 
 import com.moonsister.tcjy.base.BaseIView;
-import com.moonsister.tcjy.bean.EngagementManagerBean;
+import com.hickey.network.bean.EngagementManagerBean;
 
 /**
  * Created by jb on 2016/9/28.

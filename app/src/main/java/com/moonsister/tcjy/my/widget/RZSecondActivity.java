@@ -17,7 +17,7 @@ import com.moonsister.tcjy.my.view.RZSecondView;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tcjy.widget.NoScrollGridView;
+import com.hickey.tool.widget.NoScrollGridView;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import java.util.ArrayList;

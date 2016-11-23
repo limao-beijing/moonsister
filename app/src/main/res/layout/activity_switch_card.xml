@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/em_app_titlebar" />
+    <include layout="@layout/app_titlebar" />
 
     <com.moonsister.tcjy.widget.XListView
         android:id="@+id/xlv"

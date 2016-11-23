@@ -2,11 +2,19 @@
           package="com.moonsister.tool">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <application android:allowBackup="true"
-                 android:label="@string/app_name"
-                 android:supportsRtl="true"
-    >
-
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        >
+        <activity
+            android:name="com.hickey.tool.activity.pic.PicturePreviewActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.hickey.tool.activity.pic.PictureSelectorActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.hickey.tool.activity.video.RecorderVideoActivity"/>
+        <activity android:name="com.hickey.tool.activity.video.ImageGridActivity"/>
     </application>
 
 </manifest>

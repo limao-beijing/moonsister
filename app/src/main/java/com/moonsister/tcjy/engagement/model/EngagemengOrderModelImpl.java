@@ -8,7 +8,7 @@ import com.hickey.pay.aibeipay.AiBeiPayManager;
 import com.hickey.tool.constant.EnumConstant;
 import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.AppointmentServerApi;
+import com.hickey.network.AppointmentServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ConfigUtils;

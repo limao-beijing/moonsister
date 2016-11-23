@@ -64,14 +64,14 @@
             android:layout_height="wrap_content"
             android:scaleType="centerCrop" />
 
-        <com.moonsister.tcjy.widget.NoScrollGridView
+        <com.hickey.tool.widget.NoScrollGridView
 
             android:id="@+id/gv_pic_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:horizontalSpacing="@dimen/x30"
             android:numColumns="3"
-            android:verticalSpacing="@dimen/x30"></com.moonsister.tcjy.widget.NoScrollGridView>
+            android:verticalSpacing="@dimen/x30"></com.hickey.tool.widget.NoScrollGridView>
     </RelativeLayout>
 
     <RelativeLayout

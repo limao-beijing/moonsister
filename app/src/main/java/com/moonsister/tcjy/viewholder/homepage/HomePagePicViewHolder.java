@@ -14,7 +14,7 @@ import com.hickey.network.bean.DynamicItemBean;
 import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.widget.NoScrollGridView;
+import com.hickey.tool.widget.NoScrollGridView;
 
 import butterknife.Bind;
 

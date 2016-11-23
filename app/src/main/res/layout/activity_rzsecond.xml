@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/em_app_titlebar" />
+    <include layout="@layout/app_titlebar" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -149,7 +149,7 @@
                     android:layout_marginTop="@dimen/x25"
                     android:background="@color/j_wheel_timebtn_pre" />
 
-                <com.moonsister.tcjy.widget.NoScrollGridView
+                <com.hickey.tool.widget.NoScrollGridView
                     android:id="@+id/grid_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

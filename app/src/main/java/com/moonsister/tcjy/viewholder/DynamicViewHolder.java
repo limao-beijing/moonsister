@@ -23,7 +23,7 @@ import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tcjy.widget.NoScrollGridView;
+import com.hickey.tool.widget.NoScrollGridView;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
 import butterknife.Bind;

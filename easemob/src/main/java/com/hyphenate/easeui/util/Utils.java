@@ -8,7 +8,7 @@ import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.os.StrictMode;
 
-import com.hyphenate.easeui.ui.ImageGridActivity;
+import com.hickey.tool.activity.video.ImageGridActivity;
 
 import java.util.Comparator;
 import java.util.List;

@@ -43,5 +43,6 @@ dependencies {
    /* compile 'fm.jiecao:jiecaovideoplayer:4.8.1'*/
     compile project(':jcvideoplayer-lib')
     compile project(':tool')
-    compile rootProject.ext.dependencies["butterknife"]
+    compile project(':network')
+
 }

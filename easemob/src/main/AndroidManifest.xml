@@ -68,11 +68,11 @@
             android:screenOrientation="portrait"
             />
         <activity
-            android:name="com.hyphenate.easeui.ui.RecorderVideoActivity"
+            android:name="com.hickey.tool.activity.video.RecorderVideoActivity"
             android:screenOrientation="portrait"
             />
         <activity
-            android:name="com.hyphenate.easeui.ui.ImageGridActivity"
+            android:name="com.hickey.tool.activity.pic.ImageGridActivity"
             android:screenOrientation="portrait"
             />
         <activity

@@ -17,6 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.Toast;
 
 import com.easemob.easeui.R;
+import com.hickey.tool.activity.video.ImageGridActivity;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.easeui.Constant;
@@ -76,6 +77,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
      * if it is chatBot
      */
     private boolean isRobot;
+    private String mAuthcode;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -137,7 +139,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
         inputMenu.registerExtendMenuItem(R.string.attach_video, R.drawable.em_chat_video_selector, ITEM_VIDEO, extendMenuItemClickListener);
         inputMenu.registerExtendMenuItem(R.string.attach_file, R.drawable.em_chat_file_selector, ITEM_FILE, extendMenuItemClickListener);
         inputMenu.registerExtendMenuItem(R.string.attach_redpacket, R.drawable.em_chat_redpacket, ITEM_RED_PACKET, extendMenuItemClickListener);
-        inputMenu.registerExtendMenuItem("", R.drawable.em_chat_charge_massage, ITEM_CHARGE_IMAGE, extendMenuItemClickListener);
+        inputMenu.registerExtendMenuItem("美图", R.drawable.em_chat_charge_image, ITEM_CHARGE_IMAGE, extendMenuItemClickListener);
 
 //        if(chatType == Constant.CHATTYPE_SINGLE){
 //            inputMenu.registerExtendMenuItem(R.string.attach_voice_call, R.drawable.em_chat_voice_call_selector, ITEM_VOICE_CALL, extendMenuItemClickListener);
@@ -220,6 +222,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                     }
                     break;
                 case REQUEST_CODE_CHARGE_MESSAGE:
+
                     sendMessage(MessageUtil.createChargeMessage(getActivity(), data, toChatUsername));
                     break;
 
@@ -347,6 +350,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
             case ITEM_CHARGE_IMAGE:
                 Intent chargeIntent = new Intent(getActivity(), ChargeMessageActivity.class);
                 chargeIntent.putExtra("id", toChatUsername);
+                chargeIntent.putExtra("authcode", mAuthcode);
                 startActivityForResult(chargeIntent, REQUEST_CODE_CHARGE_MESSAGE);
                 break;
 //        case ITEM_TRANSFER_PACKET://进入转账页面
@@ -358,6 +362,10 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
         }
         //keep exist extend menu
         return false;
+    }
+
+    public void setAuthcode(String authcode) {
+        mAuthcode = authcode;
     }
 
     /**
@@ -429,8 +437,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                 } else if (message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_RED_PACKET_MESSAGE, false)) {
                     //红包
                     return message.direct() == EMMessage.Direct.RECEIVE ? MESSAGE_TYPE_RECV_RED_PACKET : MESSAGE_TYPE_SENT_RED_PACKET;
-                }
-                else if (message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_IMAGE_MESSAGE, false)) {
+                } else if (message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_IMAGE_MESSAGE, false)) {
                     //红包
                     return message.direct() == EMMessage.Direct.RECEIVE ? MESSAGE_TYPE_RECV_CHARGE_IMAGE : MESSAGE_TYPE_SENT_CHARGE_IMAGE;
                 }
@@ -455,10 +462,9 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
             if (message.getType() == EMMessage.Type.TXT) {
                 if (message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_RED_PACKET_MESSAGE, false)) {
                     return new ChatRowRedPacket(getActivity(), message, position, adapter);
-                }else if (message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_IMAGE_MESSAGE, false)){
+                } else if (message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_IMAGE_MESSAGE, false)) {
                     return new EaseChatRowChargeImage(getActivity(), message, position, adapter);
                 }
-
 
 
                 // voice call or video call

@@ -3,7 +3,7 @@ package com.moonsister.tcjy.engagement.model;
 import com.hickey.network.bean.EngagementTextBane;
 import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.AppointmentServerApi;
+import com.hickey.network.AppointmentServerApi;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
 

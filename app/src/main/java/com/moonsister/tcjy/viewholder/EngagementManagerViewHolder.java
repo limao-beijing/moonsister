@@ -9,7 +9,7 @@ import com.hickey.tool.constant.EnumConstant;
 import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
-import com.moonsister.tcjy.bean.EngagementManagerBean;
+import com.hickey.network.bean.EngagementManagerBean;
 import com.moonsister.tcjy.engagement.EngagementUtils;
 import com.moonsister.tcjy.engagement.presenter.EngagementActionPersenter;
 import com.moonsister.tcjy.engagement.view.EngagementManagerFragmentView;
@@ -168,7 +168,7 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
 //                        events.message = bean.getId();
 //                        events.what = Events.EventEnum.CLICK_ENGAGEMENT_SUCCESS;
 //                        RxBus.getInstance().send(events);
-                        EngagementActionPersenter presenetr = bean.getPresenetr();
+                        EngagementActionPersenter presenetr = (EngagementActionPersenter) bean.getPresenetr();
                         if (presenetr != null) {
                             presenetr.actionEngagement(bean.getId(), 4);
                         }
@@ -197,7 +197,7 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
 //                    events.message = bean.getId();
 //                    events.what = Events.EventEnum.CLICK_ENGAGEMENT_REFUSE;
 //                    RxBus.getInstance().send(events);
-                    EngagementActionPersenter presenetr = bean.getPresenetr();
+                    EngagementActionPersenter presenetr = (EngagementActionPersenter) bean.getPresenetr();
                     if (presenetr != null) {
                         presenetr.actionEngagement(bean.getId(), 2);
                     }
@@ -233,7 +233,7 @@ public class EngagementManagerViewHolder extends BaseRecyclerViewHolder<Engageme
 //                    events.message = bean.getId();
 //                    events.what = Events.EventEnum.EngagementManagerFragment_CLICK_ENGAGEMENT_INVITE;
 //                    RxBus.getInstance().send(events);
-                    EngagementActionPersenter presenetr = bean.getPresenetr();
+                    EngagementActionPersenter presenetr = (EngagementActionPersenter) bean.getPresenetr();
                     if (presenetr != null) {
                         presenetr.actionEngagement(bean.getId(), 3);
                     }

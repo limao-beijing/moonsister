@@ -30,7 +30,7 @@ import com.moonsister.tcjy.utils.SDUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
 import com.moonsister.tcjy.widget.RecyclingImageView;
-import com.moonsister.tcjy.widget.takevideo.VideoEntity;
+import com.hickey.tool.activity.video.VideoEntity;
 
 import java.io.File;
 import java.util.ArrayList;

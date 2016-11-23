@@ -244,12 +244,6 @@
         <activity android:name="com.moonsister.tcjy.my.widget.BirthdayActivity"/>
         <activity android:name="com.moonsister.tcjy.center.widget.DynamicPublishActivity"/>
         <activity
-            android:name="com.moonsister.tcjy.main.widget.PictureSelectorActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.moonsister.tcjy.main.widget.PicturePreviewActivity"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name="com.moonsister.tcjy.center.widget.VoiceActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyDialogStyleBottom"/>

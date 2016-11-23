@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.EngagementManagerAdapter;
 import com.moonsister.tcjy.base.BaseListFragment;
-import com.moonsister.tcjy.bean.EngagementManagerBean;
+import com.hickey.network.bean.EngagementManagerBean;
 import com.moonsister.tcjy.dialogFragment.DialogMannager;
 import com.moonsister.tcjy.dialogFragment.widget.BaseDialogFragment;
 import com.moonsister.tcjy.dialogFragment.widget.ImPermissionDialog;

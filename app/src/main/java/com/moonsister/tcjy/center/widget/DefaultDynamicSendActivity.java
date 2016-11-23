@@ -25,7 +25,7 @@ import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
 import com.moonsister.tcjy.widget.MySwitch;
-import com.moonsister.tcjy.widget.NoScrollGridView;
+import com.hickey.tool.widget.NoScrollGridView;
 import com.moonsister.tcjy.widget.RoundedImageView;
 import com.trello.rxlifecycle.ActivityEvent;
 
