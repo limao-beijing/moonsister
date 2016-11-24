@@ -69,7 +69,6 @@ public class EngagemengOrderModelImpl implements EngagemengOrderModel {
                                             dataBean.setInfo(payBean.getData().getAbcode());
                                             dataBean.setOrder_id(payBean.getData().getOrder_id());
                                             bean.setData(dataBean);
-
                                             listener.onSuccess(bean, DataType.DATA_ZERO);
                                         } else {
                                             listener.onFailure(payBean.getMsg());

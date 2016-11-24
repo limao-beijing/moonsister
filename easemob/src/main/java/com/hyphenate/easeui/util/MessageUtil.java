@@ -19,10 +19,40 @@ public class MessageUtil {
     }
 
     public static EMMessage createChargeMessage(FragmentActivity activity, Intent data, String username) {
-        EMMessage redMeg = EMMessage.createTxtSendMessage("收费图片 : ", username);
-        redMeg.setAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_IMAGE_MESSAGE, true);
+        EMMessage redMeg = null;
+        int type = data.getIntExtra("type", -1);
+        if (type == 1) {
+            redMeg = EMMessage.createTxtSendMessage("[收费视频]", username);
+            redMeg.setAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_VIDEO_MESSAGE, true);
+        } else if (type == 2) {
+            redMeg = EMMessage.createTxtSendMessage("[收费图片]", username);
+            redMeg.setAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_IMAGE_MESSAGE, true);
+        }
+        if (redMeg == null)
+            return null;
+
         redMeg.setAttribute("pic", data.getStringExtra("pic"));
         redMeg.setAttribute("lid", data.getStringExtra("lid"));
+        redMeg.setAttribute("msg", data.getStringExtra("msg"));
+        redMeg.setAttribute("money", data.getStringExtra("money"));
+        redMeg.setAttribute("look", false);
+//        redMeg.setAttribute("datas", data.getStringExtra("datas"));
         return redMeg;
     }
+
+//    public static EMMessage createChargeImageMessage(FragmentActivity activity, Intent data, String username) {
+//        EMMessage redMeg = EMMessage.createTxtSendMessage("收费图片 : ", username);
+//        redMeg.setAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_IMAGE_MESSAGE, true);
+//        redMeg.setAttribute("pic", data.getStringExtra("pic"));
+//        redMeg.setAttribute("lid", data.getStringExtra("lid"));
+//        redMeg.setAttribute("msg", data.getStringExtra("msg"));
+//        redMeg.setAttribute("money", data.getStringExtra("money"));
+//        redMeg.setAttribute("look", false);
+//        redMeg.setAttribute("datas", data.getStringExtra("datas"));
+//        return redMeg;
+//    }
+//
+//    public static EMMessage createChargeVideoMessage(FragmentActivity activity, Intent data, String username) {
+//        return null;
+//    }
 }

@@ -52,21 +52,21 @@ public class EngagemengOrderPresenterImpl implements EngagemengOrderPresenter, B
                         public void run() {
                             if (bean != null && bean instanceof EngagementTextBane)
                                 view.submitSuccess(((EngagementTextBane) bean).getData().getOrder_id());
-                            view.hideLoading();
+                           
                         }
                     }, 5000);
                 } else if (StringUtis.equals("10", bean.getCode())) {
                     view.notLevel();
-                    view.hideLoading();
                 }
                 view.transfePageMsg(bean.getMsg());
+
                 break;
             case DATA_ONE:
                 view.setData((EngagemengOrderBean) bean);
-                view.hideLoading();
+
                 break;
         }
-
+        view.hideLoading();
 
     }
 

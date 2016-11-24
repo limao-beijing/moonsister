@@ -81,7 +81,7 @@ import com.moonsister.tcjy.my.widget.WithdrawActivity;
 import com.moonsister.tcjy.widget.image.CropImageMainActivity;
 import com.moonsister.tcjy.widget.image.PhonePicActivity;
 import com.moonsister.tcjy.widget.image.ShowImageActivity;
-import com.moonsister.tcjy.widget.image.photoview.ImagePagerActivity;
+import com.hickey.tool.activity.pic.ImagePagerActivity;
 import com.moonsister.tcjy.widget.takevideo.TakeVideoActivity;
 
 import java.util.ArrayList;

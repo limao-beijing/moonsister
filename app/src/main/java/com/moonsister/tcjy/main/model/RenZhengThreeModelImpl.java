@@ -8,8 +8,9 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.center.widget.DynamicContentFragment;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.manager.aliyun.AliyunManager;
-import com.moonsister.tcjy.utils.FilePathUtlis;
+import com.hickey.network.aliyun.AliyunManager;
+import com.hickey.network.aliyun.FilePathUtlis;
+import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 
@@ -37,7 +38,7 @@ public class RenZhengThreeModelImpl implements RenZhengThreeModel {
                     switch (type) {
                         case VIDEO:
 
-                            String video = AliyunManager.getInstance().upLoadFile(content.get(0), FilePathUtlis.FileType.MP4);
+                            String video = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFile(content.get(0), FilePathUtlis.FileType.MP4);
                             object.put("video", video);
                             object.put("voice", "");
                             object.put("image", "");
@@ -46,7 +47,7 @@ public class RenZhengThreeModelImpl implements RenZhengThreeModel {
                         case PIC:
                             ArrayList<String> strings = new ArrayList<>();
                             for (String path : content) {
-                                String pic = AliyunManager.getInstance().upLoadFile(path, FilePathUtlis.FileType.JPG);
+                                String pic = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFile(path, FilePathUtlis.FileType.JPG);
                                 strings.add(pic);
                             }
                             object.put("video", "");
@@ -54,7 +55,7 @@ public class RenZhengThreeModelImpl implements RenZhengThreeModel {
                             object.put("image", JsonUtils.serialize(strings));
                             break;
                         case VOICE:
-                            String voice = AliyunManager.getInstance().upLoadFile(content.get(0), FilePathUtlis.FileType.AMR);
+                            String voice = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFile(content.get(0), FilePathUtlis.FileType.AMR);
                             object.put("video", "");
                             object.put("voice", voice);
                             object.put("image", "");

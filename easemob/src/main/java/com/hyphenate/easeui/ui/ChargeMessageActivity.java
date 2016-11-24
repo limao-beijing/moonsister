@@ -19,17 +19,23 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.easemob.easeui.R;
 import com.hickey.network.AppointmentServerApi;
+import com.hickey.network.aliyun.AliyunManager;
+import com.hickey.network.aliyun.FilePathUtlis;
 import com.hickey.network.bean.ChargeMessageBean;
 import com.hickey.tool.activity.pic.PictureSelectorActivity;
 import com.hickey.tool.activity.video.ImageGridActivity;
 import com.hickey.tool.widget.NoScrollGridView;
 import com.hyphenate.util.PathUtil;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import im.gouyin.com.progressdialog.ProgressDialog;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -61,6 +67,7 @@ public class ChargeMessageActivity extends AppCompatActivity implements View.OnC
     //video
     private String videoPath;
     private int duration;
+    private String videoPic;
     //user
     private String toUid;
     private String authcode;
@@ -127,7 +134,10 @@ public class ChargeMessageActivity extends AppCompatActivity implements View.OnC
                     Toast.makeText(this, "信息不完整", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                sendData(money, "", msg, TYPE_VIDEO, toUid, authcode);
+                ArrayList<String> vs = new ArrayList<>();
+                vs.add(videoPath);
+                vs.add(videoPic);
+                sendData(money, vs, msg, TYPE_VIDEO, toUid, authcode);
 
 
             } else if (type == TYPE_IMAGE) {
@@ -135,7 +145,7 @@ public class ChargeMessageActivity extends AppCompatActivity implements View.OnC
                     Toast.makeText(this, "信息不完整", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                sendData(money, "", msg, TYPE_IMAGE, toUid, authcode);
+                sendData(money, pics, msg, TYPE_IMAGE, toUid, authcode);
             } else {
                 Toast.makeText(this, "信息不完整", Toast.LENGTH_SHORT).show();
                 return;
@@ -170,6 +180,7 @@ public class ChargeMessageActivity extends AppCompatActivity implements View.OnC
                             ThumbBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
                             fos.close();
                             Glide.with(this).load(file).into(iv_voice);
+                            videoPic = file.getAbsolutePath();
 //                            sendVideoMessage(videoPath, file.getAbsolutePath(), duration);
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -240,9 +251,6 @@ public class ChargeMessageActivity extends AppCompatActivity implements View.OnC
                 @Override
                 public void onClick(View v) {
                     pics.remove(position);
-
-//                    if (pics.size() == 0)
-//                        ivAddContent.setVisibility(View.VISIBLE);
                     notifyDataSetChanged();
                 }
             });
@@ -268,7 +276,100 @@ public class ChargeMessageActivity extends AppCompatActivity implements View.OnC
         }
     }
 
-    public void sendData(String money, String content, String desc, int type, String toUid, String authcode) {
+    private ProgressDialog progressDialog;
+
+    /**
+     * 初始化加载进度条
+     */
+    private void initProgressDialog() {
+        progressDialog = new ProgressDialog(this);
+    }
+
+    /**
+     * 显示加载jindt
+     */
+    protected void showProgressDialog() {
+        if (progressDialog == null)
+            initProgressDialog();
+        if (!progressDialog.isShowing())
+            progressDialog.show();
+    }
+
+    /**
+     * 隐藏加载进度条
+     */
+    protected void hideProgressDialog() {
+        if (progressDialog == null)
+            return;
+        if (progressDialog.isShowing())
+            progressDialog.dismiss();
+        progressDialog = null;
+    }
+
+
+    public void sendData(final String money, final List<String> contents, final String desc, final int type, final String toUid, final String authcode) {
+        showProgressDialog();
+        Observable.create(new Observable.OnSubscribe<String>() {
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                try {
+                    if (type == TYPE_VIDEO) {
+                        String videoPtah = AliyunManager.getInstance(getApplicationContext()).upLoadFile(contents.get(0), FilePathUtlis.FileType.MP4);
+                        String videoPic = AliyunManager.getInstance(getApplicationContext()).upLoadFile(contents.get(1), FilePathUtlis.FileType.JPG);
+                        JSONObject videoJson = new JSONObject();
+                        videoJson.put("v", videoPtah);
+                        videoJson.put("l", videoPic);
+                        videoJson.put("s", "");
+                        videoJson.put("sc", duration);
+                        videoJson.put("size", "");
+                        subscriber.onNext(videoJson.toString());
+                    } else {
+                        JSONObject picjson = new JSONObject();
+                        JSONArray picJsons = new JSONArray();
+                        for (String s : contents) {
+                            JSONObject data = new JSONObject();
+                            String s1 = AliyunManager.getInstance(getApplicationContext()).upLoadFile(s, FilePathUtlis.FileType.JPG);
+                            data.put("l", s1);
+                            picJsons.put(data);
+                        }
+                        picjson.put("cont", picJsons);
+                        subscriber.onNext(picjson.toString());
+                    }
+                } catch (Exception e) {
+
+                }
+
+
+            }
+        }).observeOn(Schedulers.io())
+                .observeOn(Schedulers.io())
+                .subscribe(new Subscriber<String>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                hideProgressDialog();
+                                Toast.makeText(ChargeMessageActivity.this, "发送失败", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+                        uploadService(money, s, desc, type, toUid, authcode);
+                    }
+                });
+
+
+    }
+
+    private void uploadService(final String money, final String content, final String desc, final int type, String toUid, String authcode) {
         Observable<ChargeMessageBean> observable = AppointmentServerApi.getAppAPI().sendChargeMsg(money, content, desc, type, toUid, authcode);
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -280,15 +381,20 @@ public class ChargeMessageActivity extends AppCompatActivity implements View.OnC
 
                     @Override
                     public void onError(Throwable e) {
+                        hideProgressDialog();
                         Toast.makeText(ChargeMessageActivity.this, "发送失败", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onNext(ChargeMessageBean bean) {
+                        hideProgressDialog();
                         Toast.makeText(ChargeMessageActivity.this, "发送成功", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent();
                         intent.putExtra("lid", bean.getData().getSend_id());
                         intent.putExtra("pic", bean.getData().getPic());
+                        intent.putExtra("msg", desc);
+                        intent.putExtra("money", money);
+                        intent.putExtra("type", type);
                         setResult(Activity.RESULT_OK, intent);
                         finish();
                     }

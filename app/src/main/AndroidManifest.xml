@@ -202,7 +202,7 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity
-            android:name="com.moonsister.tcjy.widget.image.photoview.ImagePagerActivity"
+            android:name="com.moonsister.tcjy.com.hickey.tool.activity.pic.ImagePagerActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name="com.moonsister.tcjy.widget.takevideo.TakeVideoActivity"

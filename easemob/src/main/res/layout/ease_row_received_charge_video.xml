@@ -58,21 +58,22 @@
             <RelativeLayout
                 android:id="@+id/rl_charge_bg"
                 android:layout_width="180dp"
-                android:layout_height="80dp"
+                android:layout_height="120dp"
                 android:layout_below="@+id/tv_msg"
-                android:layout_marginTop="50dp"
-                android:visibility="gone">
+                android:layout_marginTop="10dp"
+                >
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black"/>
+                    />
 
                 <ImageView
                     android:id="@+id/iv_charge_lock"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="true"
                     android:src="@drawable/em_charge_lock"/>
 
                 <TextView

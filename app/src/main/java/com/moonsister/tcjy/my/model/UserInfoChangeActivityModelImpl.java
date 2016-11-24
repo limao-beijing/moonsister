@@ -10,8 +10,9 @@ import com.hickey.tool.lang.StringUtis;
 import com.hickey.tool.view.image.ImageUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.manager.aliyun.AliyunManager;
-import com.moonsister.tcjy.utils.FilePathUtlis;
+import com.hickey.network.aliyun.AliyunManager;
+import com.hickey.network.aliyun.FilePathUtlis;
+import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 
 import java.io.File;
@@ -57,7 +58,7 @@ public class UserInfoChangeActivityModelImpl implements UserInfoChangeActivityMo
                 public void call(Subscriber<? super String> subscriber) {
 
                     Bitmap avater = ImageUtils.compressImageSzie(BitmapFactory.decodeFile(face), 400, 400);
-                    String s = AliyunManager.getInstance().upLoadFiletFromByteArray(ImageUtils.getBitmapByte(avater), FilePathUtlis.FileType.JPG);
+                    String s = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFiletFromByteArray(ImageUtils.getBitmapByte(avater), FilePathUtlis.FileType.JPG);
                     subscriber.onNext(s);
 
                 }

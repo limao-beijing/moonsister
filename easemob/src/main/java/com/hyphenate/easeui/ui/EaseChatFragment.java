@@ -769,8 +769,18 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
         if (message == null) {
             return;
         }
-        if (mMsgListenter != null && !mMsgListenter.isSendMsg(message)) {
-            return;
+//    } else if (message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_IMAGE_MESSAGE, false)) {
+//        //收费图片
+//        return message.direct() == EMMessage.Direct.RECEIVE ? MESSAGE_TYPE_RECV_CHARGE_IMAGE : MESSAGE_TYPE_SENT_CHARGE_IMAGE;
+//    } else if (message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_VIDEO_MESSAGE, false)) {
+//        //收费视频
+//        return message.direct() == EMMessage.Direct.RECEIVE ? MESSAGE_TYPE_RECV_CHARGE_VIDEO : MESSAGE_TYPE_SENT_CHARGE_VIDEO;
+//    }
+        if (!message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_IMAGE_MESSAGE, false) &&
+                !message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_VIDEO_MESSAGE, false)) {
+            if (mMsgListenter != null && !mMsgListenter.isSendMsg(message)) {
+                return;
+            }
         }
         if (chatFragmentHelper != null) {
             //set extension

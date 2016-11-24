@@ -7,9 +7,9 @@ import com.hickey.network.bean.BaseBean;
 import com.hickey.tool.security.MD5Util;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.manager.aliyun.AliyunManager;
+import com.hickey.network.aliyun.AliyunManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.FilePathUtlis;
+import com.hickey.network.aliyun.FilePathUtlis;
 import com.moonsister.tcjy.utils.ObservableUtils;
 
 import rx.Observable;
@@ -46,7 +46,7 @@ public class RegiterDataFragmentModelImpl implements RegiterDataFragmentModel {
             @Override
             public void call(Subscriber<? super String> subscriber) {
                 try {
-                    String host = AliyunManager.getInstance().upLoadFile(iconPath, FilePathUtlis.FileType.JPG);
+                    String host = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFile(iconPath, FilePathUtlis.FileType.JPG);
                     subscriber.onNext(host);
                 } catch (ClientException e) {
                     subscriber.onError(e);

@@ -15,6 +15,9 @@
             android:screenOrientation="portrait"/>
         <activity android:name="com.hickey.tool.activity.video.RecorderVideoActivity"/>
         <activity android:name="com.hickey.tool.activity.video.ImageGridActivity"/>
+        <activity
+            android:name="com.hickey.tool.activity.pic.ImagePagerActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

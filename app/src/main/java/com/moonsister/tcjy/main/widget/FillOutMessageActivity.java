@@ -18,10 +18,11 @@ import com.moonsister.tcjy.login.widget.SelectPicPopupActivity;
 import com.moonsister.tcjy.main.presenter.FillOutActivityPresenter;
 import com.moonsister.tcjy.main.presenter.FillOutActivityPresenterImpl;
 import com.moonsister.tcjy.main.view.FilloutActivityView;
-import com.moonsister.tcjy.manager.aliyun.AliyunManager;
+import com.hickey.network.aliyun.AliyunManager;
 import com.moonsister.tcjy.my.widget.RZFirstActivity;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.FilePathUtlis;
+import com.hickey.network.aliyun.FilePathUtlis;
+import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
@@ -70,7 +71,7 @@ public class FillOutMessageActivity extends BaseActivity implements FilloutActiv
                         @Override
                         public void run() {
                             try {
-                                imagePath = AliyunManager.getInstance().upLoadFile(usermessage, FilePathUtlis.FileType.JPG);
+                                imagePath = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFile(usermessage, FilePathUtlis.FileType.JPG);
                                 File file = new File(usermessage);
                                 if (file.exists())
                                     file.delete();

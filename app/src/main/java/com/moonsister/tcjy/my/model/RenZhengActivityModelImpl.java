@@ -18,9 +18,9 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.manager.aliyun.AliyunManager;
+import com.hickey.network.aliyun.AliyunManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.FilePathUtlis;
+import com.hickey.network.aliyun.FilePathUtlis;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.UIUtils;
@@ -116,8 +116,8 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
                 String s = null;
                 String s1 = null;
                 try {
-                    s = AliyunManager.getInstance().upLoadFile(address1, FilePathUtlis.FileType.MP4);
-                    s1 = AliyunManager.getInstance().upLoadFile(address2, FilePathUtlis.FileType.AMR);
+                    s = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFile(address1, FilePathUtlis.FileType.MP4);
+                    s1 = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFile(address2, FilePathUtlis.FileType.AMR);
 
                 } catch (ClientException e) {
                     e.printStackTrace();
@@ -190,7 +190,7 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
 
 
         //视频
-        String vidoPath = AliyunManager.getInstance().upLoadFile(srcVideoPath, FilePathUtlis.FileType.MP4);
+        String vidoPath = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFile(srcVideoPath, FilePathUtlis.FileType.MP4);
         //图片
         String videoThumbnail = VideoUtils.getInstance().getVideoThumbnail(srcVideoPath);
 //        String videoThumbnail = VideoUtils.getInstance().getVideoThumbnail(videoPath);
@@ -211,7 +211,7 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
             //模糊
             Bitmap bitmap2 = FastBlur.doBlur(bitmap1, 20, true);
             byte[] bitmapByte = ImageUtils.getBitmapByte(bitmap2);
-            String fuzzyFile = AliyunManager.getInstance().upLoadFiletFromByteArray(bitmapByte, FilePathUtlis.FileType.JPG);
+            String fuzzyFile = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFiletFromByteArray(bitmapByte, FilePathUtlis.FileType.JPG);
 
             if (fuzzyFile == null)
                 fuzzyFile = "";
@@ -392,7 +392,7 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
 //    }
 //
     public void upLoadVoice(String videoPath, ArrayList<DynamicContent> aliyunPtahs, boolean isCharge) throws ClientException, ServiceException {
-        String s = AliyunManager.getInstance().upLoadFile(videoPath, FilePathUtlis.FileType.AMR);
+        String s = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFile(videoPath, FilePathUtlis.FileType.AMR);
         DynamicContent content = new DynamicContent();
         content.setV(s);
         content.setL("");

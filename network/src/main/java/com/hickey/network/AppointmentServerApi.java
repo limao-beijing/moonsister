@@ -1,6 +1,7 @@
 package com.hickey.network;
 
 import com.hickey.network.bean.BaseBean;
+import com.hickey.network.bean.ChargeDataBean;
 import com.hickey.network.bean.ChargeMessageBean;
 import com.hickey.network.bean.DefaultDataBean;
 import com.hickey.network.bean.EngagemengOrderBean;
@@ -352,6 +353,12 @@ public class AppointmentServerApi {
                                                     @Field("type") int type,
                                                     @Field("to_uid") String uid,
                                                     @Field("authcode") String authcode);
+
+        /**
+         * @param lid
+         */
+        @GET("chat/get2")
+        Observable<ChargeDataBean> getChargeMessage(@Query("send_id") String lid);
     }
 
 

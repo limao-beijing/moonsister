@@ -1,4 +1,4 @@
-package com.moonsister.tcjy.utils;
+package com.hickey.tool.lang;
 
 /**
  * Created by jb on 2016/6/17.

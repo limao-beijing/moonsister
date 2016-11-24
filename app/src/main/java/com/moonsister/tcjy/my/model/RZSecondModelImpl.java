@@ -18,9 +18,9 @@ import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.manager.aliyun.AliyunManager;
+import com.hickey.network.aliyun.AliyunManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.FilePathUtlis;
+import com.hickey.network.aliyun.FilePathUtlis;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 
@@ -94,7 +94,7 @@ public class RZSecondModelImpl implements RZSecondModel {
                         String path = pics.get(i);
                         Bitmap size = ImageUtils.compressImageWithPathSzie(path, 800, 600);
                         Bitmap bitmap = ImageUtils.compressImage(size, 1000);
-                        String loadFile = AliyunManager.getInstance().upLoadFiletFromByteArray(ImageUtils.getBitmapByte(bitmap), FilePathUtlis.FileType.JPG);
+                        String loadFile = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFiletFromByteArray(ImageUtils.getBitmapByte(bitmap), FilePathUtlis.FileType.JPG);
                         image.setL(loadFile);
                         aliyunPtahs.add(image);
                     }
@@ -124,7 +124,7 @@ public class RZSecondModelImpl implements RZSecondModel {
                         if (!StringUtis.isEmpty(avaterpath)) {
                             Bitmap avater = ImageUtils.compressImageSzie(BitmapFactory.decodeFile(avaterpath), 120, 120);
                             Bitmap bitmap = ImageUtils.compressImage(avater, 10);
-                            loadFile = AliyunManager.getInstance().upLoadFiletFromByteArray(ImageUtils.getBitmapByte(bitmap), FilePathUtlis.FileType.JPG);
+                            loadFile = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFiletFromByteArray(ImageUtils.getBitmapByte(bitmap), FilePathUtlis.FileType.JPG);
                         }
                         LogUtils.e(DynamicPublishPresenterImpl.class, "  onNext :　" + aliyunPtahs.toString());
                         String serialize = JsonUtils.serialize(s);

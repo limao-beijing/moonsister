@@ -79,7 +79,7 @@
                     android:gravity="left|top"
                     android:hint="50字以内"
                     android:lines="5"
-                    android:maxEms="50"
+                    android:maxLength="50"
                     android:paddingTop="15dp"
                     android:textColorHint="@android:color/darker_gray"/>
             </RelativeLayout>

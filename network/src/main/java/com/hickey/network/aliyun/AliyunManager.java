@@ -1,6 +1,7 @@
-package com.moonsister.tcjy.manager.aliyun;
+package com.hickey.network.aliyun;
 
 
+import android.content.Context;
 import android.util.Log;
 
 import com.alibaba.sdk.android.oss.ClientConfiguration;
@@ -13,10 +14,7 @@ import com.alibaba.sdk.android.oss.common.auth.OSSCredentialProvider;
 import com.alibaba.sdk.android.oss.common.auth.OSSPlainTextAKSKCredentialProvider;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
-
-import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.FilePathUtlis;
-import com.moonsister.tcjy.utils.LogUtils;
+import com.hickey.network.LogUtils;
 
 import java.io.File;
 
@@ -36,6 +34,7 @@ public class AliyunManager {
 
     private static final String downloadObject = "sampleObject";
     private static AliyunManager instances;
+    private static Context mContext;
 
     private AliyunManager() {
         OSSCredentialProvider credentialProvider = new OSSPlainTextAKSKCredentialProvider(accessKeyId, accessKeySecret);
@@ -46,14 +45,16 @@ public class AliyunManager {
         conf.setMaxConcurrentRequest(5); // 最大并发请求书，默认5个
         conf.setMaxErrorRetry(2); // 失败后最大重试次数，默认2次
         OSSLog.enableLog();
-        oss = new OSSClient(ConfigUtils.getInstance().getApplicationContext(), endpoint, credentialProvider, conf);
+        oss = new OSSClient(mContext, endpoint, credentialProvider, conf);
     }
 
-    public static AliyunManager getInstance() {
+    public static AliyunManager getInstance(Context context) {
         if (instances == null) {
             synchronized (AliyunManager.class) {
-                if (instances == null)
+                if (instances == null) {
+                    mContext = context;
                     return new AliyunManager();
+                }
                 return instances;
             }
         }

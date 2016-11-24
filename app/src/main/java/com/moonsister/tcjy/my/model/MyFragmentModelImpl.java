@@ -10,8 +10,9 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.manager.aliyun.AliyunManager;
-import com.moonsister.tcjy.utils.FilePathUtlis;
+import com.hickey.network.aliyun.AliyunManager;
+import com.hickey.network.aliyun.FilePathUtlis;
+import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 
@@ -69,7 +70,7 @@ public class MyFragmentModelImpl implements MyFragmentModel {
             @Override
             public void call(Subscriber<? super String> subscriber) {
                 try {
-                    String s = AliyunManager.getInstance().upLoadFile(path, FilePathUtlis.FileType.JPG);
+                    String s = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFile(path, FilePathUtlis.FileType.JPG);
                     File file = new File(path);
                     if (file.exists())
                         file.delete();

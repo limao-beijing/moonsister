@@ -25,13 +25,14 @@ import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.login.widget.SelectPicPopupActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.manager.aliyun.AliyunManager;
+import com.hickey.network.aliyun.AliyunManager;
 import com.moonsister.tcjy.my.persenter.PersonalReviseActivityPersenter;
 import com.moonsister.tcjy.my.persenter.PersonalReviseActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.PersonalReviseActivityView;
 import com.moonsister.tcjy.my.widget.info.SelectPlandWindowActivity;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.FilePathUtlis;
+import com.hickey.network.aliyun.FilePathUtlis;
+import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.PersonDynamicViewholder;
@@ -282,7 +283,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                         @Override
                         public void run() {
                             try {
-                                message = AliyunManager.getInstance().upLoadFile(usermessage, FilePathUtlis.FileType.JPG);
+                                message = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFile(usermessage, FilePathUtlis.FileType.JPG);
                                 File file = new File(usermessage);
                                 if (file.exists())
                                     file.delete();
@@ -315,7 +316,7 @@ public class PersonalReviseActivity extends BaseActivity implements PersonalRevi
                             @Override
                             public void run() {
                                 try {
-                                    path = AliyunManager.getInstance().upLoadFile(likepath, FilePathUtlis.FileType.JPG);
+                                    path = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFile(likepath, FilePathUtlis.FileType.JPG);
                                     File file = new File(likepath);
                                     if (file.exists())
                                         file.delete();

@@ -1,4 +1,4 @@
-package com.moonsister.tcjy.widget.image.photoview;
+package com.hickey.tool.activity.pic;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -9,8 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-import com.moonsister.tcjy.R;
+import com.moonsister.tool.R;
 import com.squareup.picasso.Picasso;
+
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
  * 单张图片显示Fragment
@@ -42,12 +44,15 @@ public class ImageDetailFragment extends Fragment {
 		final View v = inflater.inflate(R.layout.image_detail_fragment, container, false);
 		mImageView = (ImageView) v.findViewById(R.id.image);
 		mAttacher = new PhotoViewAttacher(mImageView);
-
 		mAttacher.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
+			@Override
+			public void onPhotoTap(View view, float x, float y) {
+				getActivity().finish();
+			}
 
 			@Override
-			public void onPhotoTap(View arg0, float arg1, float arg2) {
-				getActivity().finish();
+			public void onOutsidePhotoTap() {
+
 			}
 		});
 

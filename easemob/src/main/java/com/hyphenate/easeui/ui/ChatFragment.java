@@ -30,6 +30,7 @@ import com.hyphenate.easeui.utils.EaseUserUtils;
 import com.hyphenate.easeui.widget.chatrow.ChatRowRedPacket;
 import com.hyphenate.easeui.widget.chatrow.EaseChatRow;
 import com.hyphenate.easeui.widget.chatrow.EaseChatRowChargeImage;
+import com.hyphenate.easeui.widget.chatrow.EaseChatRowChargeVideo;
 import com.hyphenate.easeui.widget.chatrow.EaseCustomChatRowProvider;
 import com.hyphenate.easeui.widget.emojicon.EaseEmojiconMenu;
 import com.hyphenate.util.PathUtil;
@@ -69,8 +70,9 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
     //收费图片
     private static final int MESSAGE_TYPE_SENT_CHARGE_IMAGE = 7;
     private static final int MESSAGE_TYPE_RECV_CHARGE_IMAGE = 8;
-
-
+    //video
+    private static final int MESSAGE_TYPE_RECV_CHARGE_VIDEO = 9;
+    private static final int MESSAGE_TYPE_SENT_CHARGE_VIDEO = 10;
     //end of red packet code
 
     /**
@@ -139,7 +141,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
         inputMenu.registerExtendMenuItem(R.string.attach_video, R.drawable.em_chat_video_selector, ITEM_VIDEO, extendMenuItemClickListener);
         inputMenu.registerExtendMenuItem(R.string.attach_file, R.drawable.em_chat_file_selector, ITEM_FILE, extendMenuItemClickListener);
         inputMenu.registerExtendMenuItem(R.string.attach_redpacket, R.drawable.em_chat_redpacket, ITEM_RED_PACKET, extendMenuItemClickListener);
-        inputMenu.registerExtendMenuItem("美图", R.drawable.em_chat_charge_image, ITEM_CHARGE_IMAGE, extendMenuItemClickListener);
+        inputMenu.registerExtendMenuItem("收费图片/视频", R.drawable.em_chat_charge_image, ITEM_CHARGE_IMAGE, extendMenuItemClickListener);
 
 //        if(chatType == Constant.CHATTYPE_SINGLE){
 //            inputMenu.registerExtendMenuItem(R.string.attach_voice_call, R.drawable.em_chat_voice_call_selector, ITEM_VOICE_CALL, extendMenuItemClickListener);
@@ -217,13 +219,14 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                 //red packet code : 发送红包消息到聊天界面
                 case REQUEST_CODE_SEND_RED_PACKET:
                     if (data != null) {
-
                         sendMessage(MessageUtil.createRPMessage(getActivity(), data, toChatUsername));
                     }
                     break;
                 case REQUEST_CODE_CHARGE_MESSAGE:
+                    if (data != null) {
+                        sendMessage(MessageUtil.createChargeMessage(getActivity(), data, toChatUsername));
+                    }
 
-                    sendMessage(MessageUtil.createChargeMessage(getActivity(), data, toChatUsername));
                     break;
 
 //            case REQUEST_CODE_SEND_TRANSFER_PACKET://发送转账消息
@@ -421,7 +424,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
         public int getCustomChatRowTypeCount() {
             //here the number is the message type in EMMessage::Type
             //which is used to count the number of different chat row
-            return 10;
+            return 12;
         }
 
         @Override
@@ -438,8 +441,11 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                     //红包
                     return message.direct() == EMMessage.Direct.RECEIVE ? MESSAGE_TYPE_RECV_RED_PACKET : MESSAGE_TYPE_SENT_RED_PACKET;
                 } else if (message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_IMAGE_MESSAGE, false)) {
-                    //红包
+                    //收费图片
                     return message.direct() == EMMessage.Direct.RECEIVE ? MESSAGE_TYPE_RECV_CHARGE_IMAGE : MESSAGE_TYPE_SENT_CHARGE_IMAGE;
+                } else if (message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_VIDEO_MESSAGE, false)) {
+                    //收费视频
+                    return message.direct() == EMMessage.Direct.RECEIVE ? MESSAGE_TYPE_RECV_CHARGE_VIDEO : MESSAGE_TYPE_SENT_CHARGE_VIDEO;
                 }
                 //red packet code : 红包消息、红包回执消息以及转账消息的chatrow type
 //                else if (message.getBooleanAttribute(RPConstant.MESSAGE_ATTR_IS_RED_PACKET_MESSAGE, false)) {
@@ -464,6 +470,8 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                     return new ChatRowRedPacket(getActivity(), message, position, adapter);
                 } else if (message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_IMAGE_MESSAGE, false)) {
                     return new EaseChatRowChargeImage(getActivity(), message, position, adapter);
+                }else if (message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_VIDEO_MESSAGE, false)){
+                    return new EaseChatRowChargeVideo(getActivity(), message, position, adapter);
                 }
 
 

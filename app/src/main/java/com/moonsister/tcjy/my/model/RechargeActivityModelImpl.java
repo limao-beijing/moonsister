@@ -14,9 +14,9 @@ import com.hickey.tool.view.image.ImageUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.manager.aliyun.AliyunManager;
+import com.hickey.network.aliyun.AliyunManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.FilePathUtlis;
+import com.hickey.network.aliyun.FilePathUtlis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
 
@@ -73,14 +73,14 @@ public class RechargeActivityModelImpl implements RechargeActivityModel {
 
 
         //视频
-        String vidoPath = AliyunManager.getInstance().upLoadFile(srcVideoPath, FilePathUtlis.FileType.MP4);
+        String vidoPath = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFile(srcVideoPath, FilePathUtlis.FileType.MP4);
         //图片
         String videoThumbnail = VideoUtils.getInstance().getVideoThumbnail(srcVideoPath);
 //        String videoThumbnail = VideoUtils.getInstance().getVideoThumbnail(videoPath);
         Bitmap size = ImageUtils.compressImageWithPathSzie(videoThumbnail, 1280, 720);
         //压缩大小
         Bitmap bitmap = ImageUtils.compressImage(size, 100);
-        String loadFile = AliyunManager.getInstance().upLoadFiletFromByteArray(ImageUtils.getBitmapByte(bitmap), FilePathUtlis.FileType.JPG);
+        String loadFile = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFiletFromByteArray(ImageUtils.getBitmapByte(bitmap), FilePathUtlis.FileType.JPG);
         DynamicContent content = new DynamicContent();
         content.setV(vidoPath);
         content.setL(loadFile);
@@ -94,7 +94,7 @@ public class RechargeActivityModelImpl implements RechargeActivityModel {
             //模糊
             Bitmap bitmap2 = FastBlur.doBlur(bitmap1, 20, true);
             byte[] bitmapByte = ImageUtils.getBitmapByte(bitmap2);
-            String fuzzyFile = AliyunManager.getInstance().upLoadFiletFromByteArray(bitmapByte, FilePathUtlis.FileType.JPG);
+            String fuzzyFile = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFiletFromByteArray(bitmapByte, FilePathUtlis.FileType.JPG);
 
             if (fuzzyFile == null)
                 fuzzyFile = "";
@@ -110,7 +110,7 @@ public class RechargeActivityModelImpl implements RechargeActivityModel {
     }
 
     public void upLoadVoice(String videoPath, ArrayList<DynamicContent> aliyunPtahs, boolean isCharge) throws ClientException, ServiceException {
-        String s = AliyunManager.getInstance().upLoadFile(videoPath, FilePathUtlis.FileType.AMR);
+        String s = AliyunManager.getInstance(ConfigUtils.getInstance().getApplicationContext()).upLoadFile(videoPath, FilePathUtlis.FileType.AMR);
         DynamicContent content = new DynamicContent();
         content.setV(s);
         content.setL("");

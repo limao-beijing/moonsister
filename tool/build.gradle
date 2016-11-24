@@ -25,5 +25,7 @@ dependencies {
     compile rootProject.ext.dependencies["gson"]
 
     compile rootProject.ext.dependencies["PhotoView"]
+    //picasso
+    compile rootProject.ext.dependencies["picasso"]
 
 }

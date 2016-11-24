@@ -22,11 +22,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDirs = ['src/main/java']
+            resources.srcDirs = ['src/main/java']
+            renderscript.srcDirs = ['src/main/java']
+            res.srcDirs = ['src/main/res']
+            assets.srcDirs = ['src/main/assets']
+            jni.srcDirs = []
+            jniLibs.srcDirs = ['src/main/libs']
+        }
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project (":tool")
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':tool')
     compile rootProject.ext.dependencies["appcompat-v7"]
     //gson
     compile rootProject.ext.dependencies["gson"]
@@ -46,4 +59,7 @@ dependencies {
     compile rootProject.ext.dependencies["adapter_rxjava"]
     compile rootProject.ext.dependencies["logging_interceptor"]
     compile rootProject.ext.dependencies["okhttp3"]
+    compile files('src/main/libs/aliyun-oss-sdk-android-2.2.0.jar')
+    compile files('src/main/libs/AMap_Location_V2.6.0_20160628.jar')
+    compile files('src/main/libs/nineoldandroids-2.4.0.jar')
 }

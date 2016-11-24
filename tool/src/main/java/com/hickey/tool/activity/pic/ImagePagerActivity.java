@@ -1,4 +1,4 @@
-package com.moonsister.tcjy.widget.image.photoview;
+package com.hickey.tool.activity.pic;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,7 +8,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.widget.TextView;
 
-import com.moonsister.tcjy.R;
+import com.hickey.tool.widget.HackyViewPager;
+import com.moonsister.tool.R;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.moonsister.tcjy.manager.aliyun;
+package com.hickey.network.aliyun;
 
 import android.util.Log;
 

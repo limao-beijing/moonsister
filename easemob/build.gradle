@@ -44,5 +44,6 @@ dependencies {
     compile project(':jcvideoplayer-lib')
     compile project(':tool')
     compile project(':network')
+    compile project(':progressdialog');
 
 }
