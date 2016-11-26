@@ -2,7 +2,7 @@ package com.moonsister.tcjy.main.view;
 
 import com.hickey.network.bean.CommentDataListBean;
 import com.hickey.network.bean.DynamicDatailsBean;
-import com.moonsister.tcjy.base.BaseIView;
+import com.hickey.tool.base.BaseIView;
 
 import java.util.List;
 

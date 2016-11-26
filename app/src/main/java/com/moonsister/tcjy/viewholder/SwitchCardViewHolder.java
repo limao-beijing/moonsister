@@ -6,9 +6,9 @@ import android.widget.TextView;
 
 import com.hickey.network.ImageServerApi;
 import com.hickey.network.bean.CardInfoBean;
+import com.hickey.tool.base.BaseRecyclerViewHolder;
 import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 
 import butterknife.Bind;
 

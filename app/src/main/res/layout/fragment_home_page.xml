@@ -17,7 +17,7 @@
         style="@style/horizontal_line_style"
         android:layout_above="@+id/inc_content"/>
 
-    <com.moonsister.tcjy.widget.XListView
+    <com.hickey.tool.widget.XListView
         android:id="@+id/xlv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

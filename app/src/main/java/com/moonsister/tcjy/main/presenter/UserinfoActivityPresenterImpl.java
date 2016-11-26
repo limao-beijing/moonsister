@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.main.presenter;
 
 import com.hickey.network.bean.UserInfoChangeBean;
-import com.moonsister.tcjy.base.BaseIModel;
+import com.hickey.tool.base.BaseIModel;
 import com.moonsister.tcjy.main.model.UserinfoActivityModel;
 import com.moonsister.tcjy.main.model.UserinfoActivityModelImpl;
 import com.moonsister.tcjy.main.view.UserinfoActivityView;

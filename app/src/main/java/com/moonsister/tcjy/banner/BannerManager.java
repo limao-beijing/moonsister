@@ -9,8 +9,8 @@ import android.widget.ImageView;
 
 import com.hickey.network.ImageServerApi;
 import com.hickey.network.bean.BannerBean;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.lang.StringUtis;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.LogUtils;

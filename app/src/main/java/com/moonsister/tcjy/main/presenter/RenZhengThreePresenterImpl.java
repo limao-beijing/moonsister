@@ -2,14 +2,14 @@ package com.moonsister.tcjy.main.presenter;
 
 import com.hickey.network.bean.BaseBean;
 import com.hickey.network.bean.PersonInfoDetail;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.lang.StringUtis;
-import com.moonsister.tcjy.base.BaseIModel;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.center.widget.DynamicContentFragment;
 import com.moonsister.tcjy.main.model.RenZhengThreeModel;
 import com.moonsister.tcjy.main.model.RenZhengThreeModelImpl;
 import com.moonsister.tcjy.main.view.RenZhengThreeView;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.List;
 

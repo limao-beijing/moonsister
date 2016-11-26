@@ -6,16 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hickey.network.bean.TiXinrRecordBean;
+import com.hickey.tool.base.BaseFragment;
+import com.hickey.tool.widget.UIUtils;
+import com.hickey.tool.widget.XListView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.TiXianAdapter;
-import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.persenter.TiXianFragmentPresenter;
 import com.moonsister.tcjy.my.persenter.TiXianFragmentPresenterImpl;
 import com.moonsister.tcjy.my.view.TiXianFragmentView;
-import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tcjy.widget.XListView;
 import com.trello.rxlifecycle.FragmentEvent;
 
 import java.util.List;

@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.media.MediaMetadataRetriever;
 
+import com.hickey.tool.ConfigUtils;
 import com.moonsister.tcjy.R;
 import com.hickey.tool.view.image.ImageUtils;
 

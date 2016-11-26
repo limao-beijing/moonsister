@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.center.presenter;
 
 import com.hickey.network.bean.LableBean;
-import com.moonsister.tcjy.base.BaseIModel;
+import com.hickey.tool.base.BaseIModel;
 import com.moonsister.tcjy.center.model.LableFragmentModel;
 import com.moonsister.tcjy.center.model.LableFragmentModelImpl;
 import com.moonsister.tcjy.center.view.LableFragmentView;

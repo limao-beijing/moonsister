@@ -2,13 +2,13 @@ package com.moonsister.tcjy.my.persenter;
 
 import com.hickey.network.bean.BackTermsBean;
 import com.hickey.network.bean.BaseBean;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.my.model.RenZhengActivityModel;
 import com.moonsister.tcjy.my.model.RenZhengActivityModelImpl;
 import com.moonsister.tcjy.my.view.RenZhengActivityView;
-import com.moonsister.tcjy.utils.UIUtils;
 
 /**
  * Created by x on 2016/9/3.

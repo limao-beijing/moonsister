@@ -2,8 +2,8 @@ package com.moonsister.tcjy.main.model;
 
 import com.hickey.network.bean.DynamicItemBean;
 import com.hickey.network.bean.UserInfoDetailBean;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.constant.EnumConstant;
-import com.moonsister.tcjy.base.BaseIModel;
 
 import java.util.List;
 

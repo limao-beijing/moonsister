@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseFragment;
+import com.hickey.tool.base.BaseFragment;
 import com.hickey.tool.lang.StringUtis;
+import com.moonsister.tcjy.R;
 
 import butterknife.Bind;
 import butterknife.OnClick;

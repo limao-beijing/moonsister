@@ -4,15 +4,15 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.hickey.network.bean.PingbiBean;
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.widget.UIUtils;
+import com.hickey.tool.widget.XListView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.PingbiAdapter;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.my.persenter.PingbiActivityPersenter;
 import com.moonsister.tcjy.my.persenter.PingbiActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.PingbiView;
-import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tcjy.widget.XListView;
 
 import butterknife.Bind;
 

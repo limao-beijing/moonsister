@@ -1,8 +1,8 @@
 package com.moonsister.tcjy.engagement.model;
 
+import com.hickey.network.ModuleServerApi;
 import com.hickey.network.bean.DefaultDataBean;
 import com.moonsister.tcjy.AppConstant;
-import com.hickey.network.AppointmentServerApi;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
 
@@ -14,7 +14,7 @@ import rx.Observable;
 public class EngegamentAppealModelImpl implements EngegamentAppealModel {
     @Override
     public void submitAppeal(String id, String content, onLoadDateSingleListener<DefaultDataBean> listenter) {
-        Observable<DefaultDataBean> observable = AppointmentServerApi.getAppAPI().getSubmitEngagementAppeal(id, content, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        Observable<DefaultDataBean> observable = ModuleServerApi.getAppAPI().getSubmitEngagementAppeal(id, content, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<DefaultDataBean>() {
             @Override
             public void onSuccess(DefaultDataBean bean) {

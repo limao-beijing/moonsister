@@ -7,10 +7,10 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.hickey.tool.activity.FragmentUtils;
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.utils.FragmentUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;

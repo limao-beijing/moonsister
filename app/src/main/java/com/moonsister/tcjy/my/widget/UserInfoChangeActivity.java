@@ -5,9 +5,10 @@ import android.widget.TextView;
 
 import com.hickey.network.ImageServerApi;
 import com.hickey.network.bean.UserInfoChangeBean;
+import com.hickey.tool.base.BaseActivity;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.login.widget.SelectPicPopupActivity;
@@ -17,7 +18,6 @@ import com.moonsister.tcjy.my.persenter.UserInfoChangeActivityPresenterImpl;
 import com.moonsister.tcjy.my.view.UserInfoChangeActivityView;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 import com.trello.rxlifecycle.ActivityEvent;
 

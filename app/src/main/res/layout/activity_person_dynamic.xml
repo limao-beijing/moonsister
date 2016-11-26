@@ -90,7 +90,7 @@
         style="@style/horizontal_line_style"
         android:layout_below="@+id/layout_person_head" />
 
-    <com.moonsister.tcjy.widget.XListView
+    <com.hickey.tool.widget.XListView
 
         android:id="@+id/recyclerview"
         android:layout_width="fill_parent"

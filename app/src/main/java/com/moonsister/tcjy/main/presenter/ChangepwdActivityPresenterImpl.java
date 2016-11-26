@@ -1,14 +1,14 @@
 package com.moonsister.tcjy.main.presenter;
 
 import com.hickey.network.bean.DefaultDataBean;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.main.model.ChangepwdActivityModel;
 import com.moonsister.tcjy.main.model.ChangepwdActivityModelImpl;
 import com.moonsister.tcjy.main.view.ChangepwdActivityView;
-import com.moonsister.tcjy.utils.UIUtils;
 
 /**
  * Created by jb on 2016/7/11.

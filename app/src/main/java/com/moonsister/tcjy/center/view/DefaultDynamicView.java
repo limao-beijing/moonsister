@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.center.view;
 
-import com.moonsister.tcjy.base.BaseIView;
+
+import com.hickey.tool.base.BaseIView;
 
 /**
  * Created by jb on 2016/6/23.

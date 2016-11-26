@@ -1,22 +1,19 @@
 package com.moonsister.tcjy;
 
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
 import com.hickey.network.ImageServerApi;
+import com.hickey.tool.ConfigUtils;
 import com.moonsister.tcjy.manager.IMManager;
-import com.moonsister.tcjy.utils.ConfigUtils;
-
-import java.util.ArrayList;
 
 /**
  * Created by pc on 2016/6/3.
  */
 public class ApplicationConfig extends MultiDexApplication {
     //    AppComponent appComponent;
-    private ArrayList<Activity> activities = new ArrayList<Activity>();
+
 
     @Override
     public void onCreate() {
@@ -86,32 +83,7 @@ public class ApplicationConfig extends MultiDexApplication {
         return null;
     }
 
-    /**
-     * 添加activity
-     *
-     * @param activity
-     */
-    public void addActivity(Activity activity) {
-        if (!activities.contains(activity))
-            activities.add(activity);
-    }
 
-    /**
-     * 添加activity
-     *
-     * @param activity
-     */
-    public void removeActivity(Activity activity) {
-        if (activities.contains(activity))
-            activities.remove(activity);
-    }
-
-    public void logout() {
-        for (int i = 0; i < activities.size(); i++) {
-            activities.get(i).finish();
-        }
-        activities.clear();
-    }
 
 
 }

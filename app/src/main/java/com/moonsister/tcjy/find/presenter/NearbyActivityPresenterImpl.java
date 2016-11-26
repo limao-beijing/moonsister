@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.find.presenter;
 
 import com.hickey.network.bean.NearbyBean;
-import com.moonsister.tcjy.base.BaseIModel;
+import com.hickey.tool.base.BaseIModel;
 import com.moonsister.tcjy.find.model.NearbyActivityModel;
 import com.moonsister.tcjy.find.model.NearbyActivityModelImpl;
 import com.moonsister.tcjy.find.view.NearbyActivityView;

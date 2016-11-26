@@ -9,10 +9,10 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
+import com.hickey.tool.base.BaseFragment;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.manager.GaodeManager;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.MySwitch;
 
 import java.util.List;

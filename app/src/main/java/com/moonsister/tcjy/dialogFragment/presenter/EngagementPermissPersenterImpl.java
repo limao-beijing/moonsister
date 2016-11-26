@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.dialogFragment.presenter;
 
 import com.hickey.network.bean.EngagementPermissTextBane;
-import com.moonsister.tcjy.base.BaseIModel;
+import com.hickey.tool.base.BaseIModel;
 import com.moonsister.tcjy.dialogFragment.model.EngagementPermissModel;
 import com.moonsister.tcjy.dialogFragment.model.EngagementPermissModelImpl;
 import com.moonsister.tcjy.dialogFragment.view.EngagementPermissView;

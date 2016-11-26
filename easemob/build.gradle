@@ -45,5 +45,6 @@ dependencies {
     compile project(':tool')
     compile project(':network')
     compile project(':progressdialog');
+    compile project(':pay')
 
 }

@@ -75,14 +75,13 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     /*compile project(':IMKit')*/
     compile project(':pay')
-    compile project(':progressdialog')
     compile project(':baidu')
     compile project(':easemob')
     /*    compile project(':tool')*/
     compile project(':network')
     //阿里云
     compile rootProject.ext.dependencies["appcompat-v7"]
-    compile rootProject.ext.dependencies["xrecyclerview"]
+
     // Reactive Programming RxJava
     compile rootProject.ext.dependencies["rxandroid"]
     compile rootProject.ext.dependencies["rxjava"]
@@ -99,9 +98,7 @@ dependencies {
     compile rootProject.ext.dependencies["adapter_rxjava"]
     compile rootProject.ext.dependencies["logging_interceptor"]
     compile rootProject.ext.dependencies["okhttp3"]
-    //Rxlifecycle
-    compile rootProject.ext.dependencies["rxlifecycle"]
-    compile rootProject.ext.dependencies["rxlifecycle_components"]
+
     //dagger2
     compile rootProject.ext.dependencies["dagger2"]
     //apt 'com.google.dagger:dagger-compiler:2.0'
@@ -112,12 +109,10 @@ dependencies {
     compile rootProject.ext.dependencies["gson"]
     //图片裁剪
     compile rootProject.ext.dependencies["android_crop"]
-    //友盟
-    compile rootProject.ext.dependencies["analytics"]
+
     //方法数
     compile rootProject.ext.dependencies["multidex"]
-    //友盟
-    /*  compile rootProject.ext.dependencies["gms"]*/
+
     compile rootProject.ext.dependencies["PhotoView"]
     compile files('src/main/libs/nineoldandroids-2.4.0.jar')
 }

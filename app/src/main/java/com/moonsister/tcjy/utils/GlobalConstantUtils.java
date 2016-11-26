@@ -1,5 +1,7 @@
 package com.moonsister.tcjy.utils;
 
+import com.hickey.tool.ConfigUtils;
+
 /**
  * Created by pc on 2016/6/14.
  */

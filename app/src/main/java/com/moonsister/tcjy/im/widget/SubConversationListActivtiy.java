@@ -3,9 +3,9 @@ package com.moonsister.tcjy.im.widget;
 import android.content.Intent;
 import android.view.View;
 
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.utils.UIUtils;
 
 /**
  * Created by jb on 2016/7/20.

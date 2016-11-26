@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,35 +16,26 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.easemob.easeui.R;
-import com.hickey.network.AppointmentServerApi;
-import com.hickey.network.aliyun.AliyunManager;
-import com.hickey.network.aliyun.FilePathUtlis;
-import com.hickey.network.bean.ChargeMessageBean;
+import com.hickey.network.bean.resposen.ChargeMessageBean;
 import com.hickey.tool.activity.pic.PictureSelectorActivity;
 import com.hickey.tool.activity.video.ImageGridActivity;
 import com.hickey.tool.widget.NoScrollGridView;
+import com.hyphenate.easeui.mvp.presenter.ChargeMessageActivityPresenter;
+import com.hyphenate.easeui.mvp.presenter.ChargeMessageActivityPresenterImpl;
+import com.hyphenate.easeui.mvp.view.ChargeMessageActivityView;
 import com.hyphenate.util.PathUtil;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import im.gouyin.com.progressdialog.ProgressDialog;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-
 
 /**
  * Created by jb on 2016/11/22.
  */
 
-public class ChargeMessageActivity extends AppCompatActivity implements View.OnClickListener {
+public class ChargeMessageActivity extends com.hickey.tool.base.BaseActivity implements View.OnClickListener, ChargeMessageActivityView {
 
 
     private static final int REQUEST_CODE_SELECT_VIDEO = 1;
@@ -66,33 +55,33 @@ public class ChargeMessageActivity extends AppCompatActivity implements View.OnC
     private int type;
     //video
     private String videoPath;
-    private int duration;
+    private long duration;
     private String videoPic;
     //user
     private String toUid;
     private String authcode;
+    private ChargeMessageActivityPresenter presenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.ease_activity_charge_message);
-        Intent intent = getIntent();
-        toUid = intent.getStringExtra("id");
-        authcode = intent.getStringExtra("authcode");
-        initView();
-        initListener();
-
+    protected View setRootContentView() {
+        return View.inflate(getApplicationContext(), R.layout.ease_activity_charge_message, null);
     }
 
-    private void initView() {
-
+    @Override
+    protected void initView() {
         iv_voice = $(R.id.iv_voice);
         gv = $(R.id.gv);
         ll_select_layout = $(R.id.ll_select_layout);
         et_money = $(R.id.et_money);
         et_msg = $(R.id.et_msg);
-    }
+        Intent intent = getIntent();
+        toUid = intent.getStringExtra("id");
+        authcode = intent.getStringExtra("authcode");
+        initListener();
+        presenter = new ChargeMessageActivityPresenterImpl();
+        presenter.attachView(this);
 
+    }
 
     private void initListener() {
         $(R.id.action_back).setOnClickListener(this);
@@ -100,8 +89,8 @@ public class ChargeMessageActivity extends AppCompatActivity implements View.OnC
         $(R.id.tv_add_video).setOnClickListener(this);
         $(R.id.tv_send).setOnClickListener(this);
         $(R.id.tv_reset).setOnClickListener(this);
-    }
 
+    }
 
     @Override
     public void onClick(View v) {
@@ -137,7 +126,7 @@ public class ChargeMessageActivity extends AppCompatActivity implements View.OnC
                 ArrayList<String> vs = new ArrayList<>();
                 vs.add(videoPath);
                 vs.add(videoPic);
-                sendData(money, vs, msg, TYPE_VIDEO, toUid, authcode);
+                presenter.submitData(money, vs, msg, type, toUid, duration, authcode);
 
 
             } else if (type == TYPE_IMAGE) {
@@ -145,7 +134,7 @@ public class ChargeMessageActivity extends AppCompatActivity implements View.OnC
                     Toast.makeText(this, "信息不完整", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                sendData(money, pics, msg, TYPE_IMAGE, toUid, authcode);
+                presenter.submitData(money, pics, msg, type, toUid, duration, authcode);
             } else {
                 Toast.makeText(this, "信息不完整", Toast.LENGTH_SHORT).show();
                 return;
@@ -171,7 +160,7 @@ public class ChargeMessageActivity extends AppCompatActivity implements View.OnC
             switch (requestCode) {
                 case REQUEST_CODE_SELECT_VIDEO:
                     if (data != null) {
-                        duration = data.getIntExtra("dur", 0);
+                        duration = data.getLongExtra("dur", 0);
                         videoPath = data.getStringExtra("path");
                         File file = new File(PathUtil.getInstance().getImagePath(), "thvideo" + System.currentTimeMillis());
                         try {
@@ -217,6 +206,36 @@ public class ChargeMessageActivity extends AppCompatActivity implements View.OnC
                     break;
             }
         }
+    }
+
+    @Override
+    public void showLoading() {
+        showProgressDialog();
+    }
+
+    @Override
+    public void hideLoading() {
+        hideProgressDialog();
+    }
+
+    @Override
+    public void transfePageMsg(String msg) {
+        showToast(msg);
+    }
+
+    @Override
+    public void setData(ChargeMessageBean bean) {
+        String msg = et_msg.getText().toString().trim();
+        String money = et_money.getText().toString().trim();
+        Intent intent = new Intent();
+        intent.putExtra("lid", bean.getSource_id());
+        intent.putExtra("pic", bean.getPic());
+        intent.putExtra("msg", msg);
+        intent.putExtra("money", money);
+        intent.putExtra("type", type);
+        intent.putExtra("expire_time", System.currentTimeMillis() + (bean.getExpire_time() * 1000));
+        setResult(Activity.RESULT_OK, intent);
+        finish();
     }
 
 
@@ -274,131 +293,6 @@ public class ChargeMessageActivity extends AppCompatActivity implements View.OnC
 
             return view;
         }
-    }
-
-    private ProgressDialog progressDialog;
-
-    /**
-     * 初始化加载进度条
-     */
-    private void initProgressDialog() {
-        progressDialog = new ProgressDialog(this);
-    }
-
-    /**
-     * 显示加载jindt
-     */
-    protected void showProgressDialog() {
-        if (progressDialog == null)
-            initProgressDialog();
-        if (!progressDialog.isShowing())
-            progressDialog.show();
-    }
-
-    /**
-     * 隐藏加载进度条
-     */
-    protected void hideProgressDialog() {
-        if (progressDialog == null)
-            return;
-        if (progressDialog.isShowing())
-            progressDialog.dismiss();
-        progressDialog = null;
-    }
-
-
-    public void sendData(final String money, final List<String> contents, final String desc, final int type, final String toUid, final String authcode) {
-        showProgressDialog();
-        Observable.create(new Observable.OnSubscribe<String>() {
-            @Override
-            public void call(Subscriber<? super String> subscriber) {
-                try {
-                    if (type == TYPE_VIDEO) {
-                        String videoPtah = AliyunManager.getInstance(getApplicationContext()).upLoadFile(contents.get(0), FilePathUtlis.FileType.MP4);
-                        String videoPic = AliyunManager.getInstance(getApplicationContext()).upLoadFile(contents.get(1), FilePathUtlis.FileType.JPG);
-                        JSONObject videoJson = new JSONObject();
-                        videoJson.put("v", videoPtah);
-                        videoJson.put("l", videoPic);
-                        videoJson.put("s", "");
-                        videoJson.put("sc", duration);
-                        videoJson.put("size", "");
-                        subscriber.onNext(videoJson.toString());
-                    } else {
-                        JSONObject picjson = new JSONObject();
-                        JSONArray picJsons = new JSONArray();
-                        for (String s : contents) {
-                            JSONObject data = new JSONObject();
-                            String s1 = AliyunManager.getInstance(getApplicationContext()).upLoadFile(s, FilePathUtlis.FileType.JPG);
-                            data.put("l", s1);
-                            picJsons.put(data);
-                        }
-                        picjson.put("cont", picJsons);
-                        subscriber.onNext(picjson.toString());
-                    }
-                } catch (Exception e) {
-
-                }
-
-
-            }
-        }).observeOn(Schedulers.io())
-                .observeOn(Schedulers.io())
-                .subscribe(new Subscriber<String>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                hideProgressDialog();
-                                Toast.makeText(ChargeMessageActivity.this, "发送失败", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onNext(String s) {
-                        uploadService(money, s, desc, type, toUid, authcode);
-                    }
-                });
-
-
-    }
-
-    private void uploadService(final String money, final String content, final String desc, final int type, String toUid, String authcode) {
-        Observable<ChargeMessageBean> observable = AppointmentServerApi.getAppAPI().sendChargeMsg(money, content, desc, type, toUid, authcode);
-        observable.observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<ChargeMessageBean>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        hideProgressDialog();
-                        Toast.makeText(ChargeMessageActivity.this, "发送失败", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onNext(ChargeMessageBean bean) {
-                        hideProgressDialog();
-                        Toast.makeText(ChargeMessageActivity.this, "发送成功", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent();
-                        intent.putExtra("lid", bean.getData().getSend_id());
-                        intent.putExtra("pic", bean.getData().getPic());
-                        intent.putExtra("msg", desc);
-                        intent.putExtra("money", money);
-                        intent.putExtra("type", type);
-                        setResult(Activity.RESULT_OK, intent);
-                        finish();
-                    }
-                });
     }
 
     public <T extends View> T $(@IdRes int t) {

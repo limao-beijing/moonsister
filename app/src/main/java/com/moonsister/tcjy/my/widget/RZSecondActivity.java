@@ -6,18 +6,18 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.NoScrollGridView;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.RZGridViewAdapter;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.persenter.RZSecondPersenter;
 import com.moonsister.tcjy.my.persenter.RZSecondPersenterImpl;
 import com.moonsister.tcjy.my.view.RZSecondView;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.hickey.tool.lang.StringUtis;
-import com.moonsister.tcjy.utils.UIUtils;
-import com.hickey.tool.widget.NoScrollGridView;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import java.util.ArrayList;

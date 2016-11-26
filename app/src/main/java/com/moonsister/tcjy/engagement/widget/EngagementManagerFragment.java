@@ -4,12 +4,15 @@ import android.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.hickey.network.bean.EngagementManagerBean;
+import com.hickey.tool.base.BaseListFragment;
+import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.EngagementManagerAdapter;
-import com.moonsister.tcjy.base.BaseListFragment;
-import com.hickey.network.bean.EngagementManagerBean;
 import com.moonsister.tcjy.dialogFragment.DialogMannager;
-import com.moonsister.tcjy.dialogFragment.widget.BaseDialogFragment;
+import com.hickey.tool.base.BaseDialogFragment;
 import com.moonsister.tcjy.dialogFragment.widget.ImPermissionDialog;
 import com.moonsister.tcjy.engagement.presenter.EngagementActionPersenterImpl;
 import com.moonsister.tcjy.engagement.presenter.EngagementManagerFragmentPresenter;
@@ -18,9 +21,6 @@ import com.moonsister.tcjy.engagement.view.EngagementActionView;
 import com.moonsister.tcjy.engagement.view.EngagementManagerFragmentView;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.hickey.tool.constant.EnumConstant;
-import com.moonsister.tcjy.utils.UIUtils;
-import com.hickey.tool.lang.StringUtis;
 
 import java.util.List;
 

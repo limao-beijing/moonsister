@@ -8,7 +8,7 @@ import android.os.Bundle;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.UIUtils;
+import com.hickey.tool.widget.UIUtils;
 import com.tencent.mm.sdk.constants.ConstantsAPI;
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;

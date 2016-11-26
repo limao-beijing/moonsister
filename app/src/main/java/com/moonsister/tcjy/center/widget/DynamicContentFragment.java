@@ -13,17 +13,17 @@ import android.widget.RelativeLayout;
 
 import com.hickey.network.ImageServerApi;
 import com.hickey.tool.activity.pic.PictureSelectorActivity;
+import com.hickey.tool.base.BaseFragment;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.NoScrollGridView;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.widget.VideoSelectorActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
-import com.hickey.tool.widget.NoScrollGridView;
 import com.moonsister.tcjy.widget.speak.VoicePlay;
 import com.trello.rxlifecycle.FragmentEvent;
 

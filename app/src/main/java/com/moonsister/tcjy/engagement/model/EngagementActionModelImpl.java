@@ -1,8 +1,8 @@
 package com.moonsister.tcjy.engagement.model;
 
+import com.hickey.network.ModuleServerApi;
 import com.hickey.network.bean.BaseBean;
 import com.moonsister.tcjy.AppConstant;
-import com.hickey.network.AppointmentServerApi;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
 
@@ -16,7 +16,7 @@ public class EngagementActionModelImpl implements EngagementActionModel {
 
     @Override
     public void actionEngagement(String id, int type, onLoadDateSingleListener<BaseBean> listener) {
-        Observable<BaseBean> observable = AppointmentServerApi.getAppAPI().getActionEngagement(id, type, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        Observable<BaseBean> observable = ModuleServerApi.getAppAPI().getActionEngagement(id, type, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<BaseBean>() {
             @Override
             public void onSuccess(BaseBean bean) {

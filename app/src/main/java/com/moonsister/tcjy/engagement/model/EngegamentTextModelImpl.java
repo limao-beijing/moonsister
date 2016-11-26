@@ -3,7 +3,7 @@ package com.moonsister.tcjy.engagement.model;
 import com.hickey.network.bean.EngagementTextBane;
 import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.AppConstant;
-import com.hickey.network.AppointmentServerApi;
+import com.hickey.network.ModuleServerApi;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
 
@@ -15,7 +15,7 @@ import rx.Observable;
 public class EngegamentTextModelImpl implements EngegamentTextModel {
     @Override
     public void loadText(String datingID, EnumConstant.EngegamentTextType type, onLoadDateSingleListener<EngagementTextBane> listener) {
-        Observable observable = AppointmentServerApi.getAppAPI().getEngagemengText(datingID, type.getTextType(), UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        Observable observable = ModuleServerApi.getAppAPI().getEngagemengText(datingID, type.getTextType(), UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<EngagementTextBane>() {
             @Override
             public void onSuccess(EngagementTextBane bean) {

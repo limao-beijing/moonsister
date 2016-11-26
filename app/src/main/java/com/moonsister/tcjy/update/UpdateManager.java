@@ -24,11 +24,11 @@ import com.moonsister.tcjy.main.widget.MainActivity;
 import com.moonsister.tcjy.update.presenter.UpdateManagerPresenter;
 import com.moonsister.tcjy.update.presenter.UpdateManagerPresenterImpl;
 import com.moonsister.tcjy.update.view.UpdateManagerView;
-import com.moonsister.tcjy.utils.ConfigUtils;
+import com.hickey.tool.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.PackageUtils;
 import com.moonsister.tcjy.utils.SDUtils;
-import com.moonsister.tcjy.utils.UIUtils;
+import com.hickey.tool.widget.UIUtils;
 import com.umeng.analytics.MobclickAgent;
 
 import java.io.File;

@@ -9,7 +9,7 @@ import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.HomePageFragmentAdapter;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.ConfigUtils;
+import com.hickey.tool.ConfigUtils;
 import com.moonsister.tcjy.widget.speak.VoicePlay;
 
 import butterknife.Bind;

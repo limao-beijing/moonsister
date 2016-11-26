@@ -7,14 +7,14 @@ import android.widget.TextView;
 import com.hickey.network.ImageServerApi;
 import com.hickey.network.bean.DefaultDataBean;
 import com.hickey.network.bean.FrientBaen;
+import com.hickey.tool.base.BaseIModel;
+import com.hickey.tool.base.BaseRecyclerViewHolder;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.FriendlyAdapter;
-import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
 import butterknife.Bind;
@@ -22,7 +22,7 @@ import butterknife.Bind;
 /**
  * Created by x on 2016/8/25.
  */
-public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBean>  {
+public class FriendlyViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBean> {
     @Bind(R.id.riv_user_image)//头像
     RoundedImageView rivUserImage;
     @Bind(R.id.tv_user_name)

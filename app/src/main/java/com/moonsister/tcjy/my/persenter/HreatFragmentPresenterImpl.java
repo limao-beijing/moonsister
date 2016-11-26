@@ -1,9 +1,9 @@
 package com.moonsister.tcjy.my.persenter;
 
 import com.hickey.network.bean.UserDetailBean;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.my.model.HreatFragmentModel;
 import com.moonsister.tcjy.my.model.HreatFragmentModelImpl;
 import com.moonsister.tcjy.my.view.HreatFragmentView;

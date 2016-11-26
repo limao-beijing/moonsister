@@ -4,14 +4,14 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.phoneinfo.DataCleanUtils;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.hickey.tool.phoneinfo.DataCleanUtils;
 import com.moonsister.tcjy.utils.PackageUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;

@@ -2,7 +2,7 @@ package com.moonsister.tcjy.im.prsenter;
 
 
 import com.hickey.network.bean.FrientBaen;
-import com.moonsister.tcjy.base.BaseIModel;
+import com.hickey.tool.base.BaseIModel;
 import com.moonsister.tcjy.im.model.FrientFragmentModel;
 import com.moonsister.tcjy.im.model.FrientFragmentModelImpl;
 import com.moonsister.tcjy.my.view.FrientFragmentView;

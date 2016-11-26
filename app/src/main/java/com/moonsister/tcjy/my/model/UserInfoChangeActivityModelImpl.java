@@ -12,7 +12,7 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.hickey.network.aliyun.AliyunManager;
 import com.hickey.network.aliyun.FilePathUtlis;
-import com.moonsister.tcjy.utils.ConfigUtils;
+import com.hickey.tool.ConfigUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 
 import java.io.File;

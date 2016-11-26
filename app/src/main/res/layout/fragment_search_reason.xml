@@ -77,7 +77,7 @@
 
     </LinearLayout>
 
-    <com.moonsister.tcjy.widget.XListView
+    <com.hickey.tool.widget.XListView
         android:id="@+id/xlv"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

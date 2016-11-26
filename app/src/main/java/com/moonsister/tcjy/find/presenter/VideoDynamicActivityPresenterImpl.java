@@ -2,7 +2,7 @@ package com.moonsister.tcjy.find.presenter;
 
 import com.hickey.network.bean.DynamicItemBean;
 import com.hickey.network.bean.UserInfoListBean;
-import com.moonsister.tcjy.base.BaseIModel;
+import com.hickey.tool.base.BaseIModel;
 import com.moonsister.tcjy.find.model.VideoDynamicActivityModel;
 import com.moonsister.tcjy.find.model.VideoDynamicActivityModelImpl;
 import com.moonsister.tcjy.find.view.VideoDynamicActivityView;

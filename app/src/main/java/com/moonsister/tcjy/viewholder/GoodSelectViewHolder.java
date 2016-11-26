@@ -5,8 +5,8 @@ import android.widget.TextView;
 
 import com.hickey.network.ImageServerApi;
 import com.hickey.network.bean.GoodSelectBaen;
+import com.hickey.tool.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 

@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.find.model;
 
 import com.hickey.network.bean.RankBean;
-import com.moonsister.tcjy.base.BaseIModel;
+import com.hickey.tool.base.BaseIModel;
 
 
 /**

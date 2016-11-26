@@ -7,14 +7,14 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.hickey.network.bean.InsertBaen;
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.InsertAdapter;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.login.widget.RegActivity;
 import com.moonsister.tcjy.my.persenter.InsertActivityPersenter;
 import com.moonsister.tcjy.my.persenter.InsertActivityPersenterImpl;
 import com.moonsister.tcjy.my.view.InsertActivityView;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -7,10 +7,10 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.base.BaseFragment;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ import butterknife.OnClick;
 /**
  * Created by jb on 2016/6/27.
  */
-public class MyOrderActivity  extends BaseActivity{
+public class MyOrderActivity  extends BaseActivity {
 
 
 

@@ -1,8 +1,8 @@
 package com.moonsister.tcjy.engagement.presenter;
 
 import com.hickey.network.bean.BaseBean;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.lang.StringUtis;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.engagement.model.EngagementActionModel;
 import com.moonsister.tcjy.engagement.model.EngagementActionModelImpl;
 import com.moonsister.tcjy.engagement.view.EngagementActionView;

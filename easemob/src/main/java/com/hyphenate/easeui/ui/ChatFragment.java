@@ -83,6 +83,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mAuthcode = getArguments().getString(CustomConstant.ESSAGE_ATTRIBUTE_ACTHCODE);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -367,9 +368,6 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
         return false;
     }
 
-    public void setAuthcode(String authcode) {
-        mAuthcode = authcode;
-    }
 
     /**
      * select file
@@ -469,9 +467,9 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                 if (message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_RED_PACKET_MESSAGE, false)) {
                     return new ChatRowRedPacket(getActivity(), message, position, adapter);
                 } else if (message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_IMAGE_MESSAGE, false)) {
-                    return new EaseChatRowChargeImage(getActivity(), message, position, adapter);
-                }else if (message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_VIDEO_MESSAGE, false)){
-                    return new EaseChatRowChargeVideo(getActivity(), message, position, adapter);
+                    return new EaseChatRowChargeImage(getActivity(), mAuthcode, message, position, adapter);
+                } else if (message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_VIDEO_MESSAGE, false)) {
+                    return new EaseChatRowChargeVideo(getActivity(), mAuthcode, message, position, adapter);
                 }
 
 

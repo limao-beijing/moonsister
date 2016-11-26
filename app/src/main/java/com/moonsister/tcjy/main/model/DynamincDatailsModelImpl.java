@@ -5,12 +5,12 @@ import com.hickey.network.bean.BaseBean;
 import com.hickey.network.bean.CommentDataListBean;
 import com.hickey.network.bean.DefaultDataBean;
 import com.hickey.network.bean.DynamicDatailsBean;
+import com.hickey.tool.base.BaseIModel;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.find.view;
 
 import com.hickey.network.bean.NearbyBean;
-import com.moonsister.tcjy.base.BaseIView;
+import com.hickey.tool.base.BaseIView;
 
 import java.util.List;
 

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.hickey.network.bean.EngagementPermissTextBane;
+import com.hickey.tool.base.BaseDialogFragment;
 import com.hickey.tool.constant.EnumConstant;
 import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
@@ -58,9 +59,6 @@ public class EngagementPermissDialogFragment extends BaseDialogFragment implemen
         return fragment;
     }
 
-    public void setOnCallBack(ImPermissionDialog.OnCallBack onCallBack) {
-        mOnCallBack = onCallBack;
-    }
 
 
     @OnClick({R.id.tv_to_do_engagement, R.id.tv_upgrade_vip})

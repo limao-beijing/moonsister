@@ -1,13 +1,13 @@
 package com.moonsister.tcjy.main.presenter;
 
+import com.hickey.tool.base.BaseIModel;
+import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.main.model.BuyVipFragmentModel;
 import com.moonsister.tcjy.main.model.BuyVipFragmentModelImpl;
 import com.moonsister.tcjy.main.view.BuyVipFragmentView;
-import com.hickey.tool.constant.EnumConstant;
-import com.moonsister.tcjy.utils.UIUtils;
-import com.hickey.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/8/13.

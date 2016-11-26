@@ -15,12 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hickey.network.bean.LableBean;
+import com.hickey.tool.base.BaseFragment;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.center.presenter.LableFragmentPersenter;
 import com.moonsister.tcjy.center.presenter.LableFragmentPersenterImpl;
 import com.moonsister.tcjy.center.view.LableFragmentView;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.FlowLayout;
 
 import java.util.ArrayList;

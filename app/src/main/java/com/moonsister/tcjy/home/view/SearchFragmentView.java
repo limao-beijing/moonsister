@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.home.view;
 
-import com.moonsister.tcjy.base.BaseIView;
+
+import com.hickey.tool.base.BaseIView;
 
 import java.util.List;
 

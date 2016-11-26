@@ -15,6 +15,8 @@
  */
 package com.hickey.network.gson;
 
+import android.text.TextUtils;
+
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.reflect.TypeToken;
@@ -46,13 +48,15 @@ final class GsonResponseBodyConverter<T> implements Converter<ResponseBody, T> {
         try {
             BufferedSource source = value.source();
             s = source.readUtf8();
-
-
-            return adapter.fromJson(s);
+            JSONObject object = new JSONObject(s);
+            String code = object.getString("code");
+            if (!TextUtils.equals("1", code)) {
+                object.put("data", null);
+            }
+            return adapter.fromJson(object.toString());
 //            new
 //            return adapter.fromJson(value.charStream());
         } catch (Exception e) {
-
             try {
                 String className = type.getType().toString();
                 JSONObject object = new JSONObject(s);

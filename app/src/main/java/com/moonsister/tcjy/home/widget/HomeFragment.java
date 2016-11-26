@@ -12,13 +12,13 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hickey.tool.activity.FragmentUtils;
+import com.hickey.tool.base.BaseFragment;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.home.presenetr.HomeFragmentPresenter;
 import com.moonsister.tcjy.home.presenetr.HomeFragmentPresenterImpl;
 import com.moonsister.tcjy.home.view.HomeView;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.FragmentUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;

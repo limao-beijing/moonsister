@@ -1,6 +1,6 @@
 package com.moonsister.tcjy.im.prsenter;
 
-import com.moonsister.tcjy.base.BaseIPresenter;
+import com.hickey.tool.base.BaseIPresenter;
 import com.moonsister.tcjy.my.view.FrientFragmentView;
 
 /**

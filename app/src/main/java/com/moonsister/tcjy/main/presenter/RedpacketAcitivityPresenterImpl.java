@@ -1,14 +1,14 @@
 package com.moonsister.tcjy.main.presenter;
 
+import com.hickey.tool.base.BaseIModel;
+import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.model.RedpacketAcitivityModel;
 import com.moonsister.tcjy.main.model.RedpacketAcitivityModelImpl;
 import com.moonsister.tcjy.main.view.PlayUserAcitivityView;
-import com.moonsister.tcjy.utils.UIUtils;
-import com.hickey.tool.lang.StringUtis;
 
 /**
  * Created by jb on 2016/6/24.

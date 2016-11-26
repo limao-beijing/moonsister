@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_white_color">
 
-    <com.moonsister.tcjy.widget.XListView
+    <com.hickey.tool.widget.XListView
         android:id="@+id/recyclerview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

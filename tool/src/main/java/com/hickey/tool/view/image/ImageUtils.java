@@ -1,9 +1,11 @@
 package com.hickey.tool.view.image;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.annotation.DrawableRes;
+import android.widget.ImageView;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -209,6 +211,40 @@ public class ImageUtils {
         } else {
             return null;
         }
+    }
+    /**
+     * 自适应宽度加载图片。保持图片的长宽比例不变，通过修改imageView的高度来完全显示图片。
+     */
+    public static void loadIntoUseFitWidth(Context context, final String imageUrl, final ImageView imageView) {
+//        Glide.with(context)
+//                .load(imageUrl)
+//                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+//                .listener(new RequestListener<String, GlideDrawable>() {
+//                    @Override
+//                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+//                        return false;
+//                    }
+//
+//                    @Override
+//                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+//                        if (imageView == null) {
+//                            return false;
+//                        }
+//                        if (imageView.getScaleType() != ImageView.ScaleType.FIT_XY) {
+//                            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+//                        }
+//                        ViewGroup.LayoutParams params = imageView.getLayoutParams();
+//                        int vw = imageView.getWidth() - imageView.getPaddingLeft() - imageView.getPaddingRight();
+//                        float scale = (float) vw / (float) resource.getIntrinsicWidth();
+//                        int vh = Math.round(resource.getIntrinsicHeight() * scale);
+//                        params.height = vh + imageView.getPaddingTop() + imageView.getPaddingBottom();
+//                        imageView.setLayoutParams(params);
+//                        return false;
+//                    }
+//                })
+////                .placeholder(errorImageId)
+////                .error(errorImageId)
+//                .into(imageView);
     }
 
 }

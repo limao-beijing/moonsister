@@ -1,12 +1,13 @@
 package com.moonsister.tcjy.my.persenter;
 
-import com.moonsister.tcjy.base.BaseIModel;
+
+import com.hickey.tool.base.BaseIModel;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.model.RechargeActivityModel;
 import com.moonsister.tcjy.my.model.RechargeActivityModelImpl;
 import com.moonsister.tcjy.my.view.RechargeActivityView;
-import com.moonsister.tcjy.utils.UIUtils;
 
 /**
  * Created by x on 2016/9/3.

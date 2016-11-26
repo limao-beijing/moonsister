@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.main.model;
 
-import com.moonsister.tcjy.base.BaseIModel;
+
+import com.hickey.tool.base.BaseIModel;
 import com.moonsister.tcjy.center.widget.DynamicContentFragment;
 
 import java.util.List;

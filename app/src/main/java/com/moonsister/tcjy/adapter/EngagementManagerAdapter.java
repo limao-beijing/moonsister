@@ -3,12 +3,12 @@ package com.moonsister.tcjy.adapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseRecyclerViewAdapter;
-import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.hickey.network.bean.EngagementManagerBean;
+import com.hickey.tool.base.BaseRecyclerViewAdapter;
+import com.hickey.tool.base.BaseRecyclerViewHolder;
+import com.hickey.tool.widget.UIUtils;
+import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.engagement.view.EngagementManagerFragmentView;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.EngagementManagerViewHolder;
 
 import java.util.List;

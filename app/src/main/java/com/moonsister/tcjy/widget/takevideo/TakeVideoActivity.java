@@ -44,10 +44,10 @@ import android.widget.VideoView;
 
 import com.hickey.tool.activity.video.Utils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.utils.ConfigUtils;
+import com.hickey.tool.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.SDUtils;
-import com.moonsister.tcjy.utils.UIUtils;
+import com.hickey.tool.widget.UIUtils;
 
 import java.io.BufferedOutputStream;
 import java.io.File;

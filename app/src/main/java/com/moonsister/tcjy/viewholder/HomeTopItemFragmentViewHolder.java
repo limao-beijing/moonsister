@@ -8,10 +8,10 @@ import android.widget.TextView;
 
 import com.hickey.network.ImageServerApi;
 import com.hickey.network.bean.HomeTopItemBean;
+import com.hickey.tool.base.BaseRecyclerViewHolder;
 import com.hickey.tool.constant.EnumConstant;
 import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 

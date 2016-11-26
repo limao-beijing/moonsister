@@ -2,7 +2,7 @@ package com.moonsister.tcjy.home.presenetr;
 
 
 import com.hickey.network.bean.GoodSelectBaen;
-import com.moonsister.tcjy.base.BaseIModel;
+import com.hickey.tool.base.BaseIModel;
 import com.moonsister.tcjy.home.model.GoodSelectModelImpl;
 import com.moonsister.tcjy.home.view.GoodSelectView;
 

@@ -1,12 +1,12 @@
 package com.moonsister.tcjy.center.presenter;
 
+import com.hickey.tool.base.BaseIModel;
+import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.center.model.DynamicPublishModel;
 import com.moonsister.tcjy.center.model.DynamicPublishModelImpl;
 import com.moonsister.tcjy.center.view.DefaultDynamicView;
-import com.hickey.tool.constant.EnumConstant;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.List;
 

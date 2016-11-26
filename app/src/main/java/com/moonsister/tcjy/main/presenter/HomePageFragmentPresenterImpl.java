@@ -2,9 +2,9 @@ package com.moonsister.tcjy.main.presenter;
 
 import com.hickey.network.bean.DynamicItemBean;
 import com.hickey.network.bean.UserInfoDetailBean;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.constant.EnumConstant;
 import com.hickey.tool.lang.StringUtis;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.main.model.HomePageFragmentModel;
 import com.moonsister.tcjy.main.model.HomePageFragmentModelImpl;
 import com.moonsister.tcjy.main.view.HomePageFragmentView;

@@ -12,11 +12,12 @@ import android.widget.TextView;
 
 import com.hickey.network.ImageServerApi;
 import com.hickey.network.bean.EngagementDetailsBean;
+import com.hickey.tool.base.BaseActivity;
 import com.hickey.tool.constant.EnumConstant;
 import com.hickey.tool.lang.StringUtis;
 import com.hickey.tool.view.image.ViewUtlis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.engagement.EngagementUtils;
 import com.moonsister.tcjy.engagement.presenter.EngagementActionPersenterImpl;
 import com.moonsister.tcjy.engagement.presenter.EngagementDetailsPersenter;
@@ -28,7 +29,6 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.CircularImageView;
 import com.moonsister.tcjy.widget.RollingView;
 

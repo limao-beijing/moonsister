@@ -9,15 +9,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hickey.tool.ConfigUtils;
+import com.hickey.tool.activity.FragmentUtils;
+import com.hickey.tool.base.BaseFragment;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.login.presenter.RegiterFragmentPresener;
 import com.moonsister.tcjy.login.presenter.RegiterFragmentPresenerImpl;
 import com.moonsister.tcjy.login.view.RegiterFragmentView;
-import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.FragmentUtils;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;

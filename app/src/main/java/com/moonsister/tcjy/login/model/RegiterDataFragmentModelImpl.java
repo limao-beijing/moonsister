@@ -8,7 +8,7 @@ import com.hickey.tool.security.MD5Util;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.hickey.network.aliyun.AliyunManager;
-import com.moonsister.tcjy.utils.ConfigUtils;
+import com.hickey.tool.ConfigUtils;
 import com.hickey.network.aliyun.FilePathUtlis;
 import com.moonsister.tcjy.utils.ObservableUtils;
 

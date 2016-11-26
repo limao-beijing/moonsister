@@ -1,19 +1,18 @@
 package com.moonsister.tcjy.my.widget;
 
 import android.content.Intent;
-
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.time.CaculationUtils;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.widget.PersonInfoChangeActivity;
-import com.hickey.tool.time.CaculationUtils;
-import com.hickey.tool.lang.StringUtis;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.wheelview.NumericWheelAdapter;
 import com.moonsister.tcjy.widget.wheelview.OnWheelScrollListener;
 import com.moonsister.tcjy.widget.wheelview.WheelView;

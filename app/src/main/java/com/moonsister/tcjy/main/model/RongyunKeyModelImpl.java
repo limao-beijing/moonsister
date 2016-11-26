@@ -8,7 +8,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.UIUtils;
+import com.hickey.tool.widget.UIUtils;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;

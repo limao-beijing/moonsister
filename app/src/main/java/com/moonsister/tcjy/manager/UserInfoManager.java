@@ -3,7 +3,7 @@ package com.moonsister.tcjy.manager;
 import com.hickey.network.bean.PersonInfoDetail;
 import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.CacheManager;
-import com.moonsister.tcjy.utils.ConfigUtils;
+import com.hickey.tool.ConfigUtils;
 
 import java.util.List;
 

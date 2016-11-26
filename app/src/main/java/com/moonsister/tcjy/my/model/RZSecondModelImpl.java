@@ -19,10 +19,10 @@ import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.hickey.network.aliyun.AliyunManager;
-import com.moonsister.tcjy.utils.ConfigUtils;
+import com.hickey.tool.ConfigUtils;
 import com.hickey.network.aliyun.FilePathUtlis;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.UIUtils;
+import com.hickey.tool.widget.UIUtils;
 
 import java.util.ArrayList;
 

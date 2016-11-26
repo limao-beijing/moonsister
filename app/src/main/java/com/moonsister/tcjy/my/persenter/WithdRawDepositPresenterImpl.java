@@ -1,13 +1,13 @@
 package com.moonsister.tcjy.my.persenter;
 
 import com.hickey.network.bean.WithdRawDepositBean;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.my.model.WithdRawDepositModel;
 import com.moonsister.tcjy.my.model.WithdRawDepositModelImpl;
 import com.moonsister.tcjy.my.view.WithdRawDepositView;
-import com.moonsister.tcjy.utils.UIUtils;
 
 /**
  * Created by jb on 2016/7/2.

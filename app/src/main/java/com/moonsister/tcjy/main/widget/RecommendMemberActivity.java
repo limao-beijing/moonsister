@@ -4,11 +4,11 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.hickey.network.bean.RecommendMemberFragmentBean;
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.CardAdapter;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.manager.RecommendMananger;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;

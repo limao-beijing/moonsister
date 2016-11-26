@@ -1,11 +1,12 @@
 package com.moonsister.tcjy.engagement.view;
 
-import com.moonsister.tcjy.base.BaseIView;
+
+import com.hickey.tool.base.BaseIView;
 
 /**
  * Created by jb on 2016/9/29.
  */
-public interface EngegamentAppealView extends BaseIView{
+public interface EngegamentAppealView extends BaseIView {
     void submitSuccess();
 
 }

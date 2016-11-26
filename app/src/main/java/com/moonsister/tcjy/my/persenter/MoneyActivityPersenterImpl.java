@@ -1,15 +1,15 @@
 package com.moonsister.tcjy.my.persenter;
 
 import com.hickey.network.bean.BalanceBean;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.model.MoneyActivityModel;
 import com.moonsister.tcjy.my.model.MoneyActivityModelImpl;
 import com.moonsister.tcjy.my.view.BalanceActivityView;
-import com.moonsister.tcjy.utils.UIUtils;
 
 /**
  * Created by x on 2016/9/2.

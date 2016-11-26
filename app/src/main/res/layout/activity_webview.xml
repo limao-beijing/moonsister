@@ -6,9 +6,9 @@
 
     <include layout="@layout/app_titlebar"/>
 
-    <com.moonsister.tcjy.widget.WebView
+    <com.hickey.tool.widget.WebView
         android:id="@+id/web_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.moonsister.tcjy.widget.WebView>
+        android:layout_height="match_parent"></com.hickey.tool.widget.WebView>
 
 </LinearLayout>

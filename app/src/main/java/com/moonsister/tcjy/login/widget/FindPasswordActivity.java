@@ -4,14 +4,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.hickey.tool.ConfigUtils;
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.login.presenter.FindPasswordActivityPresenterImpl;
 import com.moonsister.tcjy.login.presenter.FindPasswordActivityPresenter;
+import com.moonsister.tcjy.login.presenter.FindPasswordActivityPresenterImpl;
 import com.moonsister.tcjy.main.view.FindPasswordActivityView;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;

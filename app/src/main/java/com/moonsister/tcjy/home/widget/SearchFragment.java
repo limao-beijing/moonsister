@@ -17,13 +17,13 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.hickey.tool.base.BaseAdapter;
+import com.hickey.tool.base.BaseFragment;
+import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseAdapter;
-import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.home.presenetr.SearchFragmentPersenter;
 import com.moonsister.tcjy.home.presenetr.SearchFragmentPersenterImpl;
 import com.moonsister.tcjy.home.view.SearchFragmentView;
-import com.hickey.tool.lang.StringUtis;
 
 import java.util.List;
 

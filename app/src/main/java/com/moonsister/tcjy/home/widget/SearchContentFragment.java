@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.hickey.tool.base.BaseAdapter;
+import com.hickey.tool.base.BaseFragment;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.CacheManager;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseAdapter;
-import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.home.presenetr.SearchContentFragmentPersenter;
 import com.moonsister.tcjy.home.presenetr.SearchContentFragmentPersenterImpl;
 import com.moonsister.tcjy.home.view.SearchContentFragmentView;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.FlowLayout;
 
 import java.util.List;

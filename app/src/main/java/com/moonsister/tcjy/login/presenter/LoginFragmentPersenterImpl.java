@@ -2,16 +2,16 @@ package com.moonsister.tcjy.login.presenter;
 
 import com.hickey.network.bean.LoginBean;
 import com.hickey.network.bean.PersonInfoDetail;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.login.model.LoginFragmentModel;
 import com.moonsister.tcjy.login.model.LoginFragmentModelImpl;
 import com.moonsister.tcjy.login.view.LoginFragmentView;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 
 /**
  * Created by jb on 2016/6/17.

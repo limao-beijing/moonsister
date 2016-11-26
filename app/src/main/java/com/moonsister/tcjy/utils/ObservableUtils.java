@@ -2,6 +2,7 @@ package com.moonsister.tcjy.utils;
 
 import com.hickey.network.bean.BaseBean;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.event.Events;

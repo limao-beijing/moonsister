@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.login.view;
 
-import com.moonsister.tcjy.base.BaseIView;
+
+import com.hickey.tool.base.BaseIView;
 
 /**
  * Created by pc on 2016/6/14.

@@ -6,9 +6,9 @@ import android.widget.TextView;
 
 import com.hickey.network.ImageServerApi;
 import com.hickey.network.bean.EngagemengRecommendBean;
+import com.hickey.tool.base.BaseRecyclerViewHolder;
 import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.widget.CircularImageView;
 

@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.login.model;
 
 import com.hickey.network.bean.BaseBean;
-import com.moonsister.tcjy.base.BaseIModel;
+import com.hickey.tool.base.BaseIModel;
 
 
 /**

@@ -2,13 +2,13 @@ package com.moonsister.tcjy.home.model;
 
 import com.hickey.network.ServerApi;
 import com.hickey.network.bean.GoodSelectBaen;
+import com.hickey.tool.base.BaseIModel;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.home.widget.GoodSelectFragment;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.List;
 

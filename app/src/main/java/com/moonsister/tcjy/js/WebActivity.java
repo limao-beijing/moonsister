@@ -5,11 +5,11 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.JsResult;
 
-import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
+import com.hickey.tool.base.BaseActivity;
 import com.hickey.tool.lang.StringUtis;
-import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tcjy.widget.WebView;
+import com.hickey.tool.widget.UIUtils;
+import com.hickey.tool.widget.WebView;
+import com.moonsister.tcjy.R;
 
 import butterknife.Bind;
 

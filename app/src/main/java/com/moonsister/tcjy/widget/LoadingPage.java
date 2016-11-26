@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.utils.UIUtils;
+import com.hickey.tool.widget.UIUtils;
 
 import rx.Observable;
 import rx.Subscriber;

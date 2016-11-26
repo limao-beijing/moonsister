@@ -5,10 +5,11 @@ import com.hickey.network.bean.PersonInfoDetail;
 import com.hickey.network.bean.RongyunBean;
 import com.hickey.network.bean.UserFriendListBean;
 import com.hickey.network.bean.UserPermissionBean;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.model.MainActivityModel;
@@ -17,7 +18,6 @@ import com.moonsister.tcjy.main.view.MainView;
 import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.List;
 

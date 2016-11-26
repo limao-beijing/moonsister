@@ -3,15 +3,15 @@ package com.moonsister.tcjy.my.persenter;
 import com.hickey.network.bean.DefaultDataBean;
 import com.hickey.network.bean.DynamicItemBean;
 import com.hickey.network.bean.UserInfoDetailBean;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.my.model.MyFragmentModel;
 import com.moonsister.tcjy.my.model.MyFragmentModelImpl;
 import com.moonsister.tcjy.my.view.MyFragmentView;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.List;
 

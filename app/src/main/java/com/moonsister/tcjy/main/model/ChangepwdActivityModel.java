@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.main.model;
 
 import com.hickey.network.bean.DefaultDataBean;
-import com.moonsister.tcjy.base.BaseIModel;
+import com.hickey.tool.base.BaseIModel;
 
 
 /**

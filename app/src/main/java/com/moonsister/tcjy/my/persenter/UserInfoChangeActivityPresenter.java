@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.my.persenter;
 
 import com.hickey.network.bean.UserInfoChangeBean;
-import com.moonsister.tcjy.base.BaseIPresenter;
+import com.hickey.tool.base.BaseIPresenter;
 import com.moonsister.tcjy.my.view.UserInfoChangeActivityView;
 
 /**

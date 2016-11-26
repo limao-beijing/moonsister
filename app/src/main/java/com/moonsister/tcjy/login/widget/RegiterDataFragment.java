@@ -10,8 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hickey.network.ImageServerApi;
+import com.hickey.tool.base.BaseFragment;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.login.presenter.RegiterDataFragmentPresenter;
@@ -19,7 +20,6 @@ import com.moonsister.tcjy.login.presenter.RegiterDataFragmentPresenterImpl;
 import com.moonsister.tcjy.login.view.RegiterDataFragmentView;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.FragmentEvent;
 
 import butterknife.Bind;

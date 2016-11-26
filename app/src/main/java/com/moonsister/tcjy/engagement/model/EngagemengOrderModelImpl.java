@@ -8,12 +8,12 @@ import com.hickey.pay.aibeipay.AiBeiPayManager;
 import com.hickey.tool.constant.EnumConstant;
 import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.AppConstant;
-import com.hickey.network.AppointmentServerApi;
+import com.hickey.network.ModuleServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.ConfigUtils;
+import com.hickey.tool.ConfigUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tcjy.utils.UIUtils;
+import com.hickey.tool.widget.UIUtils;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -27,7 +27,7 @@ public class EngagemengOrderModelImpl implements EngagemengOrderModel {
     @Override
     public void submitData(String dating_count, EnumConstant.EngegamentType type, String uid, String money, String date,
                            String message, String address, onLoadDateSingleListener<BaseBean> listener) {
-        Observable<PayBean> observable = AppointmentServerApi.getAppAPI().getEngagementOreder(dating_count, type.getType(), uid, money, date, address, message, EnumConstant.PayType.IAPP_PAY.getType(), "1", "1", "1",
+        Observable<PayBean> observable = ModuleServerApi.getAppAPI().getEngagementOreder(dating_count, type.getType(), uid, money, date, address, message, EnumConstant.PayType.IAPP_PAY.getType(), "1", "1", "1",
                 UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -86,7 +86,7 @@ public class EngagemengOrderModelImpl implements EngagemengOrderModel {
 
     @Override
     public void loadData(onLoadDateSingleListener<BaseBean> listenter) {
-        Observable<EngagemengOrderBean> observable = AppointmentServerApi.getAppAPI().getEngagemengOrder(UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        Observable<EngagemengOrderBean> observable = ModuleServerApi.getAppAPI().getEngagemengOrder(UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<BaseBean>() {
             @Override
             public void onSuccess(BaseBean bean) {

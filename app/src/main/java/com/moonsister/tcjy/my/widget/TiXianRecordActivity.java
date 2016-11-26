@@ -4,11 +4,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.hickey.network.bean.TiXinrRecordBean;
+import com.hickey.tool.base.BaseActivity;
 import com.hickey.tool.lang.StringUtis;
 import com.hickey.tool.time.TimeUtils;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;
 

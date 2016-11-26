@@ -12,7 +12,7 @@ import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.UIUtils;
+import com.hickey.tool.widget.UIUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;

@@ -1,8 +1,9 @@
 package com.moonsister.tcjy.engagement.presenter;
 
-import com.moonsister.tcjy.base.BaseIPresenter;
-import com.moonsister.tcjy.engagement.view.EngagementTextView;
+
+import com.hickey.tool.base.BaseIPresenter;
 import com.hickey.tool.constant.EnumConstant;
+import com.moonsister.tcjy.engagement.view.EngagementTextView;
 
 /**
  * Created by jb on 2016/11/11.

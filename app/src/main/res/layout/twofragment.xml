@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.moonsister.tcjy.widget.XListView
+    <com.hickey.tool.widget.XListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/app_gred_background"
-        android:id="@+id/twofragment_listview"></com.moonsister.tcjy.widget.XListView>
+        android:id="@+id/twofragment_listview"></com.hickey.tool.widget.XListView>
 </LinearLayout>

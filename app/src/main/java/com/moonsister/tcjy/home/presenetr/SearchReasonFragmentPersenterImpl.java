@@ -2,8 +2,8 @@ package com.moonsister.tcjy.home.presenetr;
 
 import com.hickey.network.bean.DynamicBean;
 import com.hickey.network.bean.DynamicItemBean;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.constant.EnumConstant;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.home.model.SearchReasonFragmentModel;
 import com.moonsister.tcjy.home.model.SearchReasonFragmentModelImpl;
 import com.moonsister.tcjy.home.view.SearchReasonFragmentView;

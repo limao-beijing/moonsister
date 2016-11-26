@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by jb on 2016/11/24.
  */
 
-public class ChargeDataBean extends BaseBean {
+public class ChargeDataBean   {
     private ArrayList<String> data;
 
     public ArrayList<String> getData() {

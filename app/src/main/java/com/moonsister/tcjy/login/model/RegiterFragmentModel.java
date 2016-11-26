@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.login.model;
 
-import com.moonsister.tcjy.base.BaseIModel;
+
+import com.hickey.tool.base.BaseIModel;
 
 /**
  * Created by pc on 2016/6/14.

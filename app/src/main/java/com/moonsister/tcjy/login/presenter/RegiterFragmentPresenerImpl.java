@@ -3,11 +3,11 @@ package com.moonsister.tcjy.login.presenter;
 
 import com.hickey.network.bean.BaseBean;
 import com.hickey.network.bean.RegiterBean;
-import com.moonsister.tcjy.base.BaseIModel;
+import com.hickey.tool.ConfigUtils;
+import com.hickey.tool.base.BaseIModel;
 import com.moonsister.tcjy.login.model.RegiterFragmentModel;
 import com.moonsister.tcjy.login.model.RegiterFragmentModelImpl;
 import com.moonsister.tcjy.login.view.RegiterFragmentView;
-import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 
 /**

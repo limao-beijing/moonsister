@@ -28,7 +28,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.UIUtils;
+import com.hickey.tool.widget.UIUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 
+import com.hickey.tool.base.BaseDialogFragment;
 import com.moonsister.tcjy.R;
 import com.hickey.tool.constant.EnumConstant;
 import com.hickey.tool.lang.StringUtis;
@@ -56,15 +57,6 @@ public class ImPermissionDialog extends BaseDialogFragment {
     }
 
 
-    public interface OnCallBack {
-        void onStatus(BaseDialogFragment dialogFragment, EnumConstant.DialogCallBack statusCode);
-    }
-
-    private OnCallBack mOnCallBack;
-
-    public void setOnCallBack(OnCallBack onCallBack) {
-        this.mOnCallBack = onCallBack;
-    }
 
     @OnClick({R.id.cancel, R.id.confirm_vip})
     public void onClick(View view) {

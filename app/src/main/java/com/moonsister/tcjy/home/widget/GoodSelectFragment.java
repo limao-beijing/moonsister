@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hickey.network.bean.GoodSelectBaen;
+import com.hickey.tool.base.BaseFragment;
+import com.hickey.tool.widget.XListView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.GoodSelectAdapter;
-import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.home.presenetr.GoodSelectPresenter;
 import com.moonsister.tcjy.home.presenetr.GoodSelectPresenterImpl;
 import com.moonsister.tcjy.home.view.GoodSelectView;
-import com.moonsister.tcjy.widget.XListView;
 
 import java.util.List;
 

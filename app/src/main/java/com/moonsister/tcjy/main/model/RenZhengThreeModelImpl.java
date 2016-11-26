@@ -1,18 +1,18 @@
 package com.moonsister.tcjy.main.model;
 
 import com.hickey.network.ServerApi;
-import com.hickey.network.bean.BaseBean;
-import com.hickey.tool.parse.JsonUtils;
-import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.center.widget.DynamicContentFragment;
-import com.moonsister.tcjy.manager.UserInfoManager;
 import com.hickey.network.aliyun.AliyunManager;
 import com.hickey.network.aliyun.FilePathUtlis;
-import com.moonsister.tcjy.utils.ConfigUtils;
+import com.hickey.network.bean.BaseBean;
+import com.hickey.tool.ConfigUtils;
+import com.hickey.tool.base.BaseIModel;
+import com.hickey.tool.parse.JsonUtils;
+import com.hickey.tool.widget.UIUtils;
+import com.moonsister.tcjy.AppConstant;
+import com.moonsister.tcjy.R;
+import com.moonsister.tcjy.center.widget.DynamicContentFragment;
+import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import org.json.JSONObject;
 

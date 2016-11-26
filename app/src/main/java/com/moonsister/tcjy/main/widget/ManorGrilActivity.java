@@ -8,8 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hickey.network.bean.PersonInfoDetail;
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
 import com.moonsister.tcjy.main.presenter.ManorFrilActivityPresenter;
 import com.moonsister.tcjy.main.presenter.ManorFrilActivityPresenterImpl;
@@ -17,7 +18,6 @@ import com.moonsister.tcjy.main.view.ManorGrilActivityView;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.widget.InsertActivity;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;

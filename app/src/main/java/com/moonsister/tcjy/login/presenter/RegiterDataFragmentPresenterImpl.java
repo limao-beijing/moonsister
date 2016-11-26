@@ -1,14 +1,14 @@
 package com.moonsister.tcjy.login.presenter;
 
 import com.hickey.network.bean.BaseBean;
+import com.hickey.tool.ConfigUtils;
+import com.hickey.tool.base.BaseIModel;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.login.model.RegiterDataFragmentModel;
 import com.moonsister.tcjy.login.model.RegiterDataFragmentModelImpl;
 import com.moonsister.tcjy.login.view.RegiterDataFragmentView;
-import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 
 /**
  * Created by jb on 2016/6/15.

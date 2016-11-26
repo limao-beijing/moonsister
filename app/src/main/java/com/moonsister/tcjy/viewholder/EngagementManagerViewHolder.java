@@ -5,11 +5,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hickey.network.ImageServerApi;
+import com.hickey.network.bean.EngagementManagerBean;
+import com.hickey.tool.base.BaseRecyclerViewHolder;
 import com.hickey.tool.constant.EnumConstant;
 import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
-import com.hickey.network.bean.EngagementManagerBean;
 import com.moonsister.tcjy.engagement.EngagementUtils;
 import com.moonsister.tcjy.engagement.presenter.EngagementActionPersenter;
 import com.moonsister.tcjy.engagement.view.EngagementManagerFragmentView;

@@ -14,15 +14,15 @@ import android.view.ViewGroup;
 
 import com.hickey.network.ServerApi;
 import com.hickey.network.bean.DownApkBean;
+import com.hickey.tool.base.BaseFragment;
 import com.hickey.tool.lang.StringUtis;
 import com.hickey.tool.url.URIUtils;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.OnClick;
 import rx.Observable;

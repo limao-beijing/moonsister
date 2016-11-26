@@ -14,9 +14,10 @@ import android.widget.TextView;
 
 import com.hickey.network.ImageServerApi;
 import com.hickey.network.bean.BackTermsBean;
+import com.hickey.tool.base.BaseActivity;
 import com.hickey.tool.url.URIUtils;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.center.widget.DynamicPublishFragment;
 import com.moonsister.tcjy.center.widget.VoiceActivity;
 import com.moonsister.tcjy.event.Events;
@@ -25,7 +26,6 @@ import com.moonsister.tcjy.my.persenter.RenZhengAcivityPresenter;
 import com.moonsister.tcjy.my.persenter.RenZhengActivityPresenterImpl;
 import com.moonsister.tcjy.my.view.RenZhengActivityView;
 import com.moonsister.tcjy.utils.SDUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 

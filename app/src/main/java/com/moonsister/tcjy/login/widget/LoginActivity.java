@@ -2,7 +2,7 @@ package com.moonsister.tcjy.login.widget;
 
 import android.view.View;
 
-import com.moonsister.tcjy.base.BaseActivity;
+import com.hickey.tool.base.BaseActivity;
 import com.moonsister.tcjy.login.view.LoginMainView;
 
 /**

@@ -1,10 +1,10 @@
 package com.moonsister.tcjy.engagement.model;
 
 
+import com.hickey.network.ModuleServerApi;
 import com.hickey.network.bean.EngagemengRecommendBean;
 import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.AppConstant;
-import com.hickey.network.AppointmentServerApi;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
 
@@ -16,7 +16,7 @@ import rx.Observable;
 public class EngagemengRecommendModelImpl implements EngagemengRecommendModel {
     @Override
     public void loadData(String userType, int page, EnumConstant.EngegamentType type, onLoadDateSingleListener<EngagemengRecommendBean> listener) {
-        Observable<EngagemengRecommendBean> observable = AppointmentServerApi.getAppAPI().getEngagemengRecommen(userType,page, type.getType(), UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        Observable<EngagemengRecommendBean> observable = ModuleServerApi.getAppAPI().getEngagemengRecommen(userType,page, type.getType(), UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<EngagemengRecommendBean>() {
             @Override
             public void onSuccess(EngagemengRecommendBean bean) {

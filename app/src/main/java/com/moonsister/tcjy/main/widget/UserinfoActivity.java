@@ -5,13 +5,13 @@ import android.widget.TextView;
 
 import com.hickey.network.ImageServerApi;
 import com.hickey.network.bean.UserInfoChangeBean;
+import com.hickey.tool.base.BaseActivity;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.main.presenter.UserinfoActivityPresenter;
 import com.moonsister.tcjy.main.presenter.UserinfoActivityPresenterImpl;
 import com.moonsister.tcjy.main.view.UserinfoActivityView;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
 
 import butterknife.Bind;

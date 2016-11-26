@@ -4,21 +4,21 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.TextView;
 
+import com.hickey.tool.base.BaseFragmentActivity;
+import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseFragmentActivity;
 import com.moonsister.tcjy.center.presenter.DynamicPublishPresenter;
 import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
 import com.moonsister.tcjy.center.view.DefaultDynamicView;
-import com.moonsister.tcjy.dialogFragment.widget.BaseDialogFragment;
 import com.moonsister.tcjy.dialogFragment.DialogMannager;
+import com.hickey.tool.base.BaseDialogFragment;
 import com.moonsister.tcjy.dialogFragment.widget.ImPermissionDialog;
 import com.moonsister.tcjy.manager.GaodeManager;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.permission.UserPermissionManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.hickey.tool.constant.EnumConstant;
-import com.hickey.tool.lang.StringUtis;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.List;
 

@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 
 import com.hickey.network.bean.EngagemengRecommendBean;
+import com.hickey.tool.base.BaseListFragment;
 import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.adapter.EengegamentRecommendFragmentAdpter;
-import com.moonsister.tcjy.base.BaseListFragment;
 import com.moonsister.tcjy.engagement.presenter.EengegamentRecommendPresenter;
 import com.moonsister.tcjy.engagement.presenter.EengegamentRecommendPresenterImpl;
 import com.moonsister.tcjy.engagement.view.EngagemengRecommendView;

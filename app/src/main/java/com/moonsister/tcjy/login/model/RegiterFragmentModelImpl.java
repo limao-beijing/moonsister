@@ -9,7 +9,7 @@ import com.hickey.tool.parse.JsonUtils;
 import com.hickey.tool.phoneinfo.PhoneInfoUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.ConfigUtils;
+import com.hickey.tool.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 

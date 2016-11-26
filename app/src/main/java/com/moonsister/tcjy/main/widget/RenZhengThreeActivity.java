@@ -5,16 +5,16 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hickey.tool.activity.FragmentUtils;
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.center.widget.DynamicContentFragment;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.presenter.RenZhengThreePresenter;
 import com.moonsister.tcjy.main.presenter.RenZhengThreePresenterImpl;
 import com.moonsister.tcjy.main.view.RenZhengThreeView;
-import com.moonsister.tcjy.utils.FragmentUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import java.util.List;

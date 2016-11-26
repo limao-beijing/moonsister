@@ -17,6 +17,10 @@ public interface CustomConstant {
     String MESSAGE_Attribute_AVATER = "avater";
     String ESSAGE_ATTRIBUTE_USERINFO = "userinfo";
     String ESSAGE_ATTRIBUTE_MONEY = "money";
+    String ESSAGE_ATTRIBUTE_ACTHCODE = "acthcode";
 
 
+    String ESSAGE_ATTRIBUTE_LID = "lid";
+    String ESSAGE_ATTRIBUTE_LOOK = "look";
+    String ESSAGE_ATTRIBUTE_MSG = "msg";
 }

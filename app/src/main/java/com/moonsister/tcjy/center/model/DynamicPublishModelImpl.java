@@ -16,7 +16,7 @@ import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.hickey.network.aliyun.AliyunManager;
 import com.hickey.network.aliyun.FilePathUtlis;
-import com.moonsister.tcjy.utils.ConfigUtils;
+import com.hickey.tool.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.VideoUtils;

@@ -7,11 +7,11 @@ import android.widget.TextView;
 import com.hickey.network.ImageServerApi;
 import com.hickey.network.bean.DefaultDataBean;
 import com.hickey.network.bean.PingbiBean;
+import com.hickey.tool.base.BaseIModel;
+import com.hickey.tool.base.BaseRecyclerViewHolder;
 import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.PingbiAdapter;
-import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
 
 import butterknife.Bind;

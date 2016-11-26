@@ -8,7 +8,7 @@ import com.hickey.network.bean.DynamicItemBean;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.DynamicAdapter;
 import com.moonsister.tcjy.adapter.HomePageFragmentAdapter;
-import com.moonsister.tcjy.utils.UIUtils;
+import com.hickey.tool.widget.UIUtils;
 
 import butterknife.Bind;
 

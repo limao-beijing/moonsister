@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.center.model;
 
-import com.moonsister.tcjy.base.BaseIModel;
+
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.constant.EnumConstant;
 
 import java.util.List;

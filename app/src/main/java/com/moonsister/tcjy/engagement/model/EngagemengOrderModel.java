@@ -1,8 +1,9 @@
 package com.moonsister.tcjy.engagement.model;
 
 import com.hickey.network.bean.BaseBean;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.constant.EnumConstant;
-import com.moonsister.tcjy.base.BaseIModel;
+
 
 /**
  * Created by jb on 2016/9/27.

@@ -10,7 +10,7 @@ import com.hickey.tool.file.PrefUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
-import com.moonsister.tcjy.utils.ConfigUtils;
+import com.hickey.tool.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 

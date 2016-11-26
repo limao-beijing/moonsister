@@ -7,16 +7,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hickey.network.bean.WithdRawDepositBean;
+import com.hickey.tool.activity.FragmentUtils;
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.my.persenter.WithdRawDepositPresenter;
 import com.moonsister.tcjy.my.persenter.WithdRawDepositPresenterImpl;
 import com.moonsister.tcjy.my.view.WithdRawDepositView;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.FragmentUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import butterknife.Bind;

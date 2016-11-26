@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 import com.hickey.network.ImageServerApi;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.utils.UIUtils;
+import com.hickey.tool.widget.UIUtils;
 
 import java.util.ArrayList;
 

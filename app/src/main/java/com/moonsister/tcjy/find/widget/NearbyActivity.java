@@ -9,15 +9,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hickey.network.bean.NearbyBean;
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.widget.UIUtils;
+import com.hickey.tool.widget.XListView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.NearbyAdapter;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.find.presenter.NearbyActivityPresenter;
 import com.moonsister.tcjy.find.presenter.NearbyActivityPresenterImpl;
 import com.moonsister.tcjy.find.view.NearbyActivityView;
-import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tcjy.widget.XListView;
 
 import java.util.List;
 

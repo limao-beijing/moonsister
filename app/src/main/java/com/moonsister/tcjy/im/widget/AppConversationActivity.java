@@ -6,19 +6,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.hickey.tool.base.BaseActivity;
 import com.hickey.tool.constant.EnumConstant;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.hyphenate.chat.EMMessage;
+import com.hyphenate.easeui.CustomConstant;
 import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.db.HxUserDao;
 import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.easeui.ui.ChatFragment;
 import com.hyphenate.easeui.ui.EaseChatFragment;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.center.widget.BuyDynamicRedPackketActivity;
 import com.moonsister.tcjy.dialogFragment.DialogMannager;
-import com.moonsister.tcjy.dialogFragment.widget.BaseDialogFragment;
+import com.hickey.tool.base.BaseDialogFragment;
 import com.moonsister.tcjy.dialogFragment.widget.ImPermissionDialog;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
@@ -27,7 +29,6 @@ import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.permission.UserPermissionManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 
 
@@ -179,7 +180,7 @@ public class AppConversationActivity extends BaseActivity {
         dao.saveUser(user);
 
         chatFragment = new ChatFragment();
-        chatFragment.setAuthcode(UserInfoManager.getInstance().getAuthcode());
+        extras.putString(CustomConstant.ESSAGE_ATTRIBUTE_ACTHCODE, UserInfoManager.getInstance().getAuthcode());
         //界面点击
         chatFragment.setOnSendTypeMsgCallBack(new EaseChatFragment.OnSendTypeMsgCallBack() {
             @Override

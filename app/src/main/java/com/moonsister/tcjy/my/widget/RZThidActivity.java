@@ -2,11 +2,11 @@ package com.moonsister.tcjy.my.widget;
 
 import android.view.View;
 
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.OnClick;
 

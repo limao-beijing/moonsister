@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.login.presenter;
 
-import com.moonsister.tcjy.base.BaseIPresenter;
+
+import com.hickey.tool.base.BaseIPresenter;
 import com.moonsister.tcjy.login.view.FindPasswordNextActivityView;
 
 /**

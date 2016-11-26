@@ -5,6 +5,7 @@ import com.hickey.network.ServerApi;
 import com.hickey.network.bean.BackInsertBean;
 import com.hickey.network.bean.BaseBean;
 import com.hickey.network.bean.InsertBaen;
+import com.hickey.tool.base.BaseIModel;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
@@ -17,12 +18,12 @@ import rx.Observable;
 public class InsertActivityImpl implements InsertActivityModel {
 
     @Override
-    public void loadData(int tagid, String tagname, int img, onLoadDateSingleListener<BaseBean> listener) {
+    public void loadData(int tagid, String tagname, int img, BaseIModel.onLoadDateSingleListener<BaseBean> listener) {
         Observable<InsertBaen> observable = ServerApi.getAppAPI().getInsertRelation(tagid,tagname,img, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<BaseBean>() {
             @Override
             public void onSuccess(BaseBean bean) {
-                listener.onSuccess(bean, DataType.DATA_ZERO);
+                listener.onSuccess(bean, BaseIModel.DataType.DATA_ZERO);
             }
 
             @Override

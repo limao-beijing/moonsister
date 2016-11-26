@@ -11,10 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hickey.network.ImageServerApi;
+import com.hickey.tool.ConfigUtils;
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.base.BaseFragment;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.login.presenter.LoginFragmentPersenter;
@@ -24,8 +26,6 @@ import com.moonsister.tcjy.main.widget.MainActivity;
 import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;

@@ -7,9 +7,11 @@ import android.os.Bundle;
 
 import com.hickey.network.bean.RecommendMemberFragmentBean;
 import com.hickey.network.bean.TiXinrRecordBean;
+import com.hickey.tool.ConfigUtils;
 import com.hickey.tool.activity.pic.PictureSelectorActivity;
 import com.hickey.tool.constant.EnumConstant;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.ui.PlayDirectlyActivity;
 import com.moonsister.tcjy.center.widget.BuyDynamicRedPackketActivity;

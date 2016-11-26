@@ -6,15 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hickey.network.bean.RankBean;
+import com.hickey.tool.base.BaseFragment;
+import com.hickey.tool.widget.UIUtils;
+import com.hickey.tool.widget.XListView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.RankAdapter;
-import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.find.presenter.RankFragmentPresenter;
 import com.moonsister.tcjy.find.presenter.RankFragmentPresenterImpl;
 import com.moonsister.tcjy.find.view.RankFragmentView;
-import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tcjy.widget.XListView;
 
 import java.util.List;
 

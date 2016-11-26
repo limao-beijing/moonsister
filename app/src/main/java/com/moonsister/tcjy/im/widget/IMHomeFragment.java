@@ -1,7 +1,6 @@
 package com.moonsister.tcjy.im.widget;
 
 import android.annotation.TargetApi;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,15 +11,15 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.hickey.tool.activity.FragmentUtils;
+import com.hickey.tool.base.BaseFragment;
+import com.hickey.tool.base.BaseIView;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseFragment;
-import com.moonsister.tcjy.base.BaseIView;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.im.prsenter.IMHomeFragmentPresenter;
 import com.moonsister.tcjy.im.prsenter.IMHomeFragmentPresenterImpl;
 import com.moonsister.tcjy.im.view.IMHomeView;
-import com.moonsister.tcjy.utils.FragmentUtils;
 import com.trello.rxlifecycle.FragmentEvent;
 
 import butterknife.Bind;

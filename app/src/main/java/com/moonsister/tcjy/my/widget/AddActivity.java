@@ -2,14 +2,14 @@ package com.moonsister.tcjy.my.widget;
 
 import android.view.View;
 
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.utils.UIUtils;
 
 /**
  * Created by x on 2016/8/26.
  */
-public class AddActivity extends BaseActivity{
+public class AddActivity extends BaseActivity {
     @Override
     protected View setRootContentView() {
         return UIUtils.inflateLayout(R.layout.activity_add);

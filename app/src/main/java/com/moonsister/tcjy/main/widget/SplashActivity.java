@@ -3,11 +3,11 @@ package com.moonsister.tcjy.main.widget;
 import android.content.Intent;
 import android.view.View;
 
-import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.utils.UIUtils;
+import com.hickey.tool.base.BaseActivity;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
+import com.moonsister.tcjy.R;
+import com.moonsister.tcjy.manager.UserInfoManager;
 
 
 /**

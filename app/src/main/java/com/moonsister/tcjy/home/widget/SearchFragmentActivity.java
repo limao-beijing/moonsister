@@ -3,7 +3,8 @@ package com.moonsister.tcjy.home.widget;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.moonsister.tcjy.base.BaseFragmentActivity;
+import com.hickey.tool.base.BaseFragmentActivity;
+
 
 /**
  * Created by jb on 2016/8/26.

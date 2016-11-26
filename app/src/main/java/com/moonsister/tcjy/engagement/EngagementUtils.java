@@ -1,13 +1,13 @@
 package com.moonsister.tcjy.engagement;
 
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.utils.UIUtils;
+import com.hickey.tool.widget.UIUtils;
 import com.hickey.tool.lang.StringUtis;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.moonsister.tcjy.utils.UIUtils.getStringRes;
+import static com.hickey.tool.widget.UIUtils.getStringRes;
 
 /**
  * Created by jb on 2016/11/12.

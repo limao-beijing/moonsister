@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.dialogFragment.view;
 
 import com.hickey.network.bean.EngagementPermissTextBane;
-import com.moonsister.tcjy.base.BaseIView;
+import com.hickey.tool.base.BaseIView;
 
 
 /**

@@ -3,6 +3,7 @@ package com.moonsister.tcjy.dialogFragment.widget;
 import android.support.annotation.NonNull;
 import android.view.View;
 
+import com.hickey.tool.base.BaseDialogFragment;
 import com.moonsister.tcjy.R;
 import com.hickey.tool.constant.EnumConstant;
 

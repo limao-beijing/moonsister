@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.main.presenter;
 
 import com.hickey.network.bean.RecommendMemberFragmentBean;
-import com.moonsister.tcjy.base.BaseIModel;
+import com.hickey.tool.base.BaseIModel;
 import com.moonsister.tcjy.main.model.RecommendMemberFragmentModel;
 import com.moonsister.tcjy.main.model.RecommendMemberFragmentModelImpl;
 import com.moonsister.tcjy.main.view.RecommendMemberFragmentView;

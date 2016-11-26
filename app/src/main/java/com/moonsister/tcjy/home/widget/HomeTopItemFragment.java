@@ -6,15 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hickey.network.bean.HomeTopItemBean;
+import com.hickey.tool.base.BaseFragment;
 import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.widget.XListView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.HomeTopItemFragmentAdapter;
-import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.home.presenetr.HomeTopItemFragmentPersenter;
 import com.moonsister.tcjy.home.presenetr.HomeTopItemFragmentPersenterImpl;
 import com.moonsister.tcjy.home.view.HomeTopItemFragmentView;
-import com.moonsister.tcjy.widget.XListView;
 
 import java.util.List;
 

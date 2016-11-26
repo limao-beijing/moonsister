@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.hickey.network.bean.PersonInfoDetail;
+import com.hickey.tool.base.BaseDialogFragment;
 import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.login.presenter.RegActivityPresenter;
@@ -15,7 +16,7 @@ import com.moonsister.tcjy.login.view.RegThridActivityView;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.widget.BirthdayActivity;
-import com.moonsister.tcjy.utils.ConfigUtils;
+import com.hickey.tool.ConfigUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;

@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.my.view;
 
 import com.hickey.network.bean.PersonalReviseMessageBean;
-import com.moonsister.tcjy.base.BaseIView;
+import com.hickey.tool.base.BaseIView;
 
 
 /**

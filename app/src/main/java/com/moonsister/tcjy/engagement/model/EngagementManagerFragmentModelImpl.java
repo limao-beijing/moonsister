@@ -1,7 +1,7 @@
 package com.moonsister.tcjy.engagement.model;
 
 import com.moonsister.tcjy.AppConstant;
-import com.hickey.network.AppointmentServerApi;
+import com.hickey.network.ModuleServerApi;
 import com.hickey.network.bean.EngagementManagerBean;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.hickey.tool.constant.EnumConstant;
@@ -15,11 +15,11 @@ import rx.Observable;
 public class EngagementManagerFragmentModelImpl implements EngagementManagerFragmentModel {
     @Override
     public void loadData(EnumConstant.ManagerType type, int page, onLoadDateSingleListener listener) {
-        Observable<EngagementManagerBean> observable = AppointmentServerApi.getAppAPI().getEngagementList(page, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        Observable<EngagementManagerBean> observable = ModuleServerApi.getAppAPI().getEngagementList(page, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         if (type == EnumConstant.ManagerType.passivity) {
-            observable = AppointmentServerApi.getAppAPI().getEngagementPassivityList(page, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+            observable = ModuleServerApi.getAppAPI().getEngagementPassivityList(page, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         } else {
-            observable = AppointmentServerApi.getAppAPI().getEngagementList(page, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+            observable = ModuleServerApi.getAppAPI().getEngagementList(page, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         }
 
         ObservableUtils.parser(observable, new ObservableUtils.Callback<EngagementManagerBean>() {
@@ -37,7 +37,7 @@ public class EngagementManagerFragmentModelImpl implements EngagementManagerFrag
 
 //    @Override
 //    public void submitSuccess(String id, onLoadDateSingleListener listener) {
-//        Observable<StatusBean> observable = AppointmentServerApi.getAppAPI().getSubmitSuccess(id, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+//        Observable<StatusBean> observable = ModuleServerApi.getAppAPI().getSubmitSuccess(id, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
 //        ObservableUtils.parser(observable, new ObservableUtils.Callback<StatusBean>() {
 //            @Override
 //            public void onSuccess(StatusBean bean) {
@@ -54,7 +54,7 @@ public class EngagementManagerFragmentModelImpl implements EngagementManagerFrag
 //
 //    @Override
 //    public void submitInviteSuccess(String id,String type, onLoadDateSingleListener listener) {
-//        Observable<StatusBean> observable = AppointmentServerApi.getAppAPI().getsubmitInviteSuccess(id,type ,UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+//        Observable<StatusBean> observable = ModuleServerApi.getAppAPI().getsubmitInviteSuccess(id,type ,UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
 //        ObservableUtils.parser(observable, new ObservableUtils.Callback<StatusBean>() {
 //            @Override
 //            public void onSuccess(StatusBean bean) {

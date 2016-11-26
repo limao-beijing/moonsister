@@ -3,17 +3,17 @@ package com.moonsister.tcjy.center.presenter;
 import com.hickey.network.bean.BaseBean;
 import com.hickey.network.bean.PayRedPacketPicsBean;
 import com.hickey.network.bean.VipRule;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.constant.EnumConstant;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.center.model.BuyDynamicRedPacketModel;
 import com.moonsister.tcjy.center.model.BuyDynamicRedPacketModelImpl;
 import com.moonsister.tcjy.center.view.BuyDynamicRedPackketView;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
-import com.moonsister.tcjy.utils.UIUtils;
 
 /**
  * Created by jb on 2016/6/29.

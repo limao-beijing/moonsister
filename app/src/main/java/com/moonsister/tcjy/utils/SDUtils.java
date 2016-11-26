@@ -14,6 +14,7 @@ import android.content.Context;
 import android.os.Environment;
 import android.os.StatFs;
 
+import com.hickey.tool.ConfigUtils;
 import com.hickey.tool.file.PrefUtils;
 
 

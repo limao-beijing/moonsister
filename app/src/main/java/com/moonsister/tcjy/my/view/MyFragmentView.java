@@ -2,7 +2,7 @@ package com.moonsister.tcjy.my.view;
 
 import com.hickey.network.bean.DynamicItemBean;
 import com.hickey.network.bean.UserInfoDetailBean;
-import com.moonsister.tcjy.base.BaseIView;
+import com.hickey.tool.base.BaseIView;
 
 import java.util.List;
 

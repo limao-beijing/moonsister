@@ -12,9 +12,9 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.VideoView;
 
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.umeng.analytics.MobclickAgent;
 
 public class ShowShortVideoActivity extends BaseActivity implements

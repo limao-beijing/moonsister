@@ -8,11 +8,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hickey.network.ImageServerApi;
+import com.hickey.tool.ConfigUtils;
+import com.hickey.tool.base.BaseActivity;
 import com.hickey.tool.constant.EnumConstant;
 import com.hickey.tool.file.PrefUtils;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.NoScrollGridView;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.center.presenter.DynamicPublishPresenter;
 import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
 import com.moonsister.tcjy.center.view.DefaultDynamicView;
@@ -20,12 +23,9 @@ import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.GaodeManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
 import com.moonsister.tcjy.widget.MySwitch;
-import com.hickey.tool.widget.NoScrollGridView;
 import com.moonsister.tcjy.widget.RoundedImageView;
 import com.trello.rxlifecycle.ActivityEvent;
 

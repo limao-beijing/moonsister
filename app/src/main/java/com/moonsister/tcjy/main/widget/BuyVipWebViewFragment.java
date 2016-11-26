@@ -9,10 +9,11 @@ import android.webkit.JsResult;
 
 import com.hickey.network.ServerApi;
 import com.hickey.network.bean.PersonInfoDetail;
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.base.BaseFragment;
+import com.hickey.tool.widget.WebView;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.js.JavaScriptObject;
@@ -21,7 +22,6 @@ import com.moonsister.tcjy.main.presenter.BuyVipFragmentPersenterImpl;
 import com.moonsister.tcjy.main.view.BuyVipFragmentView;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.widget.WebView;
 
 import java.util.Arrays;
 

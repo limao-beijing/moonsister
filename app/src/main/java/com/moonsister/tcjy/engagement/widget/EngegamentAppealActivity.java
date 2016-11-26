@@ -3,13 +3,13 @@ package com.moonsister.tcjy.engagement.widget;
 import android.view.View;
 import android.widget.EditText;
 
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.engagement.presenter.EngegamentAppealPresenter;
 import com.moonsister.tcjy.engagement.presenter.EngegamentAppealPresenterImpl;
 import com.moonsister.tcjy.engagement.view.EngegamentAppealView;
-import com.moonsister.tcjy.utils.UIUtils;
-import com.hickey.tool.lang.StringUtis;
 
 import butterknife.Bind;
 import butterknife.OnClick;

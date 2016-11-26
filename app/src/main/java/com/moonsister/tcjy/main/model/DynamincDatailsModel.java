@@ -2,7 +2,7 @@ package com.moonsister.tcjy.main.model;
 
 import com.hickey.network.bean.BaseBean;
 import com.hickey.network.bean.CommentDataListBean;
-import com.moonsister.tcjy.base.BaseIModel;
+import com.hickey.tool.base.BaseIModel;
 
 
 /**

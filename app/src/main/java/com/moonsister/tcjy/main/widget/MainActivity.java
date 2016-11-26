@@ -13,12 +13,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hickey.network.bean.PayRedPacketPicsBean;
+import com.hickey.tool.ConfigUtils;
+import com.hickey.tool.activity.FragmentUtils;
+import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.base.BaseFragment;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.ApplicationConfig;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.dialogFragment.DialogMannager;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
@@ -36,10 +39,7 @@ import com.moonsister.tcjy.my.widget.HreatFragment;
 import com.moonsister.tcjy.my.widget.MyFragment;
 import com.moonsister.tcjy.update.UpdateManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.utils.FragmentUtils;
 import com.moonsister.tcjy.utils.LogUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import butterknife.Bind;
@@ -351,7 +351,7 @@ public class MainActivity extends BaseActivity implements MainView {
                             IMManager.getInstance().logoutIMService(UserInfoManager.getInstance().getUid());
                             UserInfoManager.getInstance().logout();
                             showToast(UIUtils.getStringRes(R.string.login_code_timeout));
-                            ((ApplicationConfig) ConfigUtils.getInstance().getApplicationContext()).logout();
+                            ConfigUtils.getInstance().logout();
                             ActivityUtils.startLoginMainActivity();
                             imHomeFragment = null;
                             findFragment = null;

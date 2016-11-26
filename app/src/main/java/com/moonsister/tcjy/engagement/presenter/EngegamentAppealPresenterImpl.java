@@ -1,12 +1,12 @@
 package com.moonsister.tcjy.engagement.presenter;
 
 import com.hickey.network.bean.DefaultDataBean;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.lang.StringUtis;
-import com.moonsister.tcjy.base.BaseIModel;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.engagement.model.EngegamentAppealModel;
 import com.moonsister.tcjy.engagement.model.EngegamentAppealModelImpl;
 import com.moonsister.tcjy.engagement.view.EngegamentAppealView;
-import com.moonsister.tcjy.utils.UIUtils;
 
 /**
  * Created by jb on 2016/9/29.

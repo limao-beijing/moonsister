@@ -2,12 +2,13 @@ package com.moonsister.tcjy.main.model;
 
 import com.hickey.network.ServerApi;
 import com.hickey.network.bean.DefaultDataBean;
+import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ObservableUtils;
-import com.moonsister.tcjy.utils.UIUtils;
 
 import rx.Observable;
 
@@ -23,12 +24,12 @@ public class UserActionModelImpl implements UserActionModel {
      * @param listener
      */
     @Override
-    public void wacthAction(String uid, String type, onLoadDateSingleListener listener) {
+    public void wacthAction(String uid, String type, BaseIModel.onLoadDateSingleListener listener) {
         Observable<DefaultDataBean> observable = ServerApi.getAppAPI().getWacthAction(uid, type, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<DefaultDataBean>() {
             @Override
             public void onSuccess(DefaultDataBean bean) {
-                listener.onSuccess(bean, DataType.DATA_ZERO);
+                listener.onSuccess(bean, BaseIModel.DataType.DATA_ZERO);
             }
 
             @Override
@@ -54,7 +55,7 @@ public class UserActionModelImpl implements UserActionModel {
                     listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
                 } else {
                     if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success)) {
-                        listener.onSuccess(bean, DataType.DATA_ZERO);
+                        listener.onSuccess(bean, BaseIModel.DataType.DATA_ZERO);
                     } else {
                         listener.onFailure(bean.getMsg());
                     }
