@@ -1,5 +1,7 @@
 package com.hyphenate.easeui.mvp.model;
 
+import com.hickey.network.bean.resposen.ChargeResBean;
+
 import static com.hickey.network.ModuleServerApi.getAppAPI;
 
 
@@ -8,7 +10,7 @@ import static com.hickey.network.ModuleServerApi.getAppAPI;
  */
 public class EaseChatRowChargeImageModelImpl implements EaseChatRowChargeImageModel {
     @Override
-    public void getImagePic(String lid, String acthcode, final onLoadDateSingleListener listenter) {
+    public void getImagePic(String lid, String acthcode, final onLoadDateSingleListener<ChargeResBean> listenter) {
         ObservableUtis.$(getAppAPI().getChargeMessage(lid, acthcode), DataType.DATA_ZERO, listenter);
     }
 }

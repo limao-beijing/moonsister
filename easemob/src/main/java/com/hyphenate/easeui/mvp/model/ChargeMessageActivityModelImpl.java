@@ -5,6 +5,7 @@ import android.content.Context;
 import com.hickey.network.ModuleServerApi;
 import com.hickey.network.aliyun.AliyunManager;
 import com.hickey.network.aliyun.FilePathUtlis;
+import com.hickey.network.bean.resposen.BaseModel;
 import com.hickey.network.bean.resposen.ChargeMessageBean;
 import com.hickey.tool.base.BaseResponse;
 import com.hyphenate.easeui.ui.ChargeMessageActivity;
@@ -24,7 +25,7 @@ import rx.functions.Func1;
  */
 public class ChargeMessageActivityModelImpl implements ChargeMessageActivityModel {
     @Override
-    public void submitData(Context context, final String money, final List<String> contents, final String desc, final int type, final String uid, final long duration, final String authcode, onLoadDateSingleListener<ChargeMessageBean> listenter) {
+    public void submitData(Context context, final boolean checked, final String money, final List<String> contents, final String desc, final int type, final String uid, final long duration, final String authcode, onLoadDateSingleListener<BaseModel> listenter) {
         Observable<BaseResponse<ChargeMessageBean>> observable = Observable.create(new Observable.OnSubscribe<String>() {
             @Override
             public void call(Subscriber<? super String> subscriber) {
@@ -33,10 +34,16 @@ public class ChargeMessageActivityModelImpl implements ChargeMessageActivityMode
         }).flatMap(new Func1<String, Observable<BaseResponse<ChargeMessageBean>>>() {
             @Override
             public Observable<BaseResponse<ChargeMessageBean>> call(String s) {
-                return ModuleServerApi.getAppAPI().sendChargeMsg(money, s, desc, type, uid, authcode);
+                return ModuleServerApi.getAppAPI().sendChargeMsg((checked ? "1" : "0"), money, s, desc, type, uid, authcode);
             }
         });
         ObservableUtis.$(observable, DataType.DATA_ZERO, listenter);
+    }
+
+    @Override
+    public void loadInitData(String authcode, onLoadDateSingleListener<BaseModel> listener) {
+        ObservableUtis.$(ModuleServerApi.getAppAPI().getChargeMessageInitData(authcode), DataType.DATA_ONE, listener);
+        ;
     }
 
     private void uploadData(Context context, List<String> contents, int type, long duration, Subscriber<? super String> subscriber) {
@@ -49,7 +56,7 @@ public class ChargeMessageActivityModelImpl implements ChargeMessageActivityMode
                 videoJson.put("v", videoPtah);
                 videoJson.put("l", videoPic);
                 videoJson.put("s", "");
-                videoJson.put("sc", duration);
+                videoJson.put("sc", duration / 1000);
                 videoJson.put("size", "");
                 subscriber.onNext(videoJson.toString());
             } else {

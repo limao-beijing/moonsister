@@ -12,7 +12,7 @@ import com.hyphenate.easeui.CustomConstant;
 public class MessageUtil {
     public static EMMessage createRPMessage(FragmentActivity activity, Intent data, String username) {
         String money = data.getStringExtra(CustomConstant.ESSAGE_ATTRIBUTE_MONEY);
-        EMMessage redMeg = EMMessage.createTxtSendMessage("红包 : " + money, username);
+        EMMessage redMeg = EMMessage.createTxtSendMessage("[ 红包 ]" + money, username);
         redMeg.setAttribute(CustomConstant.MESSAGE_TYPE_IS_RED_PACKET_MESSAGE, true);
         redMeg.setAttribute(CustomConstant.ESSAGE_ATTRIBUTE_MONEY, money);
         return redMeg;
@@ -22,37 +22,24 @@ public class MessageUtil {
         EMMessage redMeg = null;
         int type = data.getIntExtra("type", -1);
         if (type == 1) {
-            redMeg = EMMessage.createTxtSendMessage("[收费视频]", username);
+            redMeg = EMMessage.createTxtSendMessage("[ 视频 ]", username);
             redMeg.setAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_VIDEO_MESSAGE, true);
+            redMeg.setAttribute(CustomConstant.ESSAGE_ATTRIBUTE_PLAY_TIME, data.getLongExtra(CustomConstant.ESSAGE_ATTRIBUTE_PLAY_TIME, 0));
+            redMeg.setAttribute(CustomConstant.ESSAGE_ATTRIBUTE_VIDEO_DURATION, data.getLongExtra(CustomConstant.ESSAGE_ATTRIBUTE_VIDEO_DURATION, 0));
         } else if (type == 2) {
-            redMeg = EMMessage.createTxtSendMessage("[收费图片]", username);
+            redMeg = EMMessage.createTxtSendMessage("[ 图片 ]", username);
             redMeg.setAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_IMAGE_MESSAGE, true);
+            redMeg.setAttribute(CustomConstant.ESSAGE_ATTRIBUTE_PIC_NUMBER, data.getIntExtra(CustomConstant.ESSAGE_ATTRIBUTE_PIC_NUMBER, 0));
         }
         if (redMeg == null)
             return null;
-
-        redMeg.setAttribute("pic", data.getStringExtra("pic"));
-        redMeg.setAttribute("lid", data.getStringExtra("lid"));
-        redMeg.setAttribute("msg", data.getStringExtra("msg"));
-        redMeg.setAttribute("money", data.getStringExtra("money"));
-        redMeg.setAttribute("look", false);
-//        redMeg.setAttribute("datas", data.getStringExtra("datas"));
+        redMeg.setAttribute(CustomConstant.ESSAGE_ATTRIBUTE_EXPIRE_TIME,data.getLongExtra(CustomConstant.ESSAGE_ATTRIBUTE_EXPIRE_TIME,0));
+        redMeg.setAttribute(CustomConstant.ESSAGE_ATTRIBUTE_PIC, data.getStringExtra(CustomConstant.ESSAGE_ATTRIBUTE_PIC));
+        redMeg.setAttribute(CustomConstant.ESSAGE_ATTRIBUTE_LID, data.getStringExtra(CustomConstant.ESSAGE_ATTRIBUTE_LID));
+        redMeg.setAttribute(CustomConstant.ESSAGE_ATTRIBUTE_MSG, data.getStringExtra(CustomConstant.ESSAGE_ATTRIBUTE_MSG));
+        redMeg.setAttribute(CustomConstant.ESSAGE_ATTRIBUTE_MONEY, data.getStringExtra(CustomConstant.ESSAGE_ATTRIBUTE_MONEY));
+        redMeg.setAttribute(CustomConstant.ESSAGE_ATTRIBUTE_LOOK, false);
         return redMeg;
     }
 
-//    public static EMMessage createChargeImageMessage(FragmentActivity activity, Intent data, String username) {
-//        EMMessage redMeg = EMMessage.createTxtSendMessage("收费图片 : ", username);
-//        redMeg.setAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_IMAGE_MESSAGE, true);
-//        redMeg.setAttribute("pic", data.getStringExtra("pic"));
-//        redMeg.setAttribute("lid", data.getStringExtra("lid"));
-//        redMeg.setAttribute("msg", data.getStringExtra("msg"));
-//        redMeg.setAttribute("money", data.getStringExtra("money"));
-//        redMeg.setAttribute("look", false);
-//        redMeg.setAttribute("datas", data.getStringExtra("datas"));
-//        return redMeg;
-//    }
-//
-//    public static EMMessage createChargeVideoMessage(FragmentActivity activity, Intent data, String username) {
-//        return null;
-//    }
 }

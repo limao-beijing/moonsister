@@ -11,7 +11,7 @@ import com.hyphenate.easeui.mvp.view.ChargeMessageDialogView;
 /**
  * Created by jb on 2016/11/26.
  */
-public class ChargeMessageDialogPresenterImpl implements ChargeMessageDialogPresenter, BaseIModel.onLoadDateSingleListener<String> {
+public class ChargeMessageDialogPresenterImpl implements ChargeMessageDialogPresenter, BaseIModel.onLoadDateSingleListener<Long> {
     private ChargeMessageDialogView view;
     private ChargeMessageDialogModel model;
 
@@ -33,8 +33,8 @@ public class ChargeMessageDialogPresenterImpl implements ChargeMessageDialogPres
     }
 
     @Override
-    public void onSuccess(String s, BaseIModel.DataType dataType) {
-        view.setSuccess();
+    public void onSuccess(Long rxpire, BaseIModel.DataType dataType) {
+        view.setSuccess(rxpire);
         view.hideLoading();
     }
 

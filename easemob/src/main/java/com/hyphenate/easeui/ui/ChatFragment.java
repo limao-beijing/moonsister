@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.easemob.easeui.R;
 import com.hickey.tool.activity.video.ImageGridActivity;
+import com.hickey.tool.constant.EnumConstant;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.easeui.Constant;
@@ -80,6 +81,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
      */
     private boolean isRobot;
     private String mAuthcode;
+    private EnumConstant.PermissionReasult mHavePermission;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -353,18 +355,14 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
 
             case ITEM_CHARGE_IMAGE:
                 Intent chargeIntent = new Intent(getActivity(), ChargeMessageActivity.class);
+                chargeIntent.putExtra("havePerimssion", mHavePermission == EnumConstant.PermissionReasult.HAVE_PERSSION);
                 chargeIntent.putExtra("id", toChatUsername);
                 chargeIntent.putExtra("authcode", mAuthcode);
                 startActivityForResult(chargeIntent, REQUEST_CODE_CHARGE_MESSAGE);
                 break;
-//        case ITEM_TRANSFER_PACKET://进入转账页面
-//            MessageUtil.startTransferActivityForResult(this, toChatUsername, REQUEST_CODE_SEND_TRANSFER_PACKET);
-//                break;
-            //end of red packet code
             default:
                 break;
         }
-        //keep exist extend menu
         return false;
     }
 
@@ -411,6 +409,10 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
             // videoCallBtn.setEnabled(false);
             inputMenu.hideExtendMenuContainer();
         }
+    }
+
+    public void setHavePermission(EnumConstant.PermissionReasult havePermission) {
+        mHavePermission = havePermission;
     }
 
 

@@ -20,7 +20,7 @@ import rx.schedulers.Schedulers;
  */
 public class ChargeMessageDialogModelImpl implements ChargeMessageDialogModel {
     @Override
-    public void pay(final Activity activity, EnumConstant.PayType type, String lid, String acthcode, final onLoadDateSingleListener<String> listener) {
+    public void pay(final Activity activity, EnumConstant.PayType type, String lid, String acthcode, final onLoadDateSingleListener<Long> listener) {
         Observable<BaseResponse<ChargeMessagePayBean>> observable = ModuleServerApi.getAppAPI().getChargePay("1", "1", lid, acthcode);
         observable.map(new BaseHttpFunc<ChargeMessagePayBean>())
                 .subscribeOn(Schedulers.io())
@@ -41,13 +41,13 @@ public class ChargeMessageDialogModelImpl implements ChargeMessageDialogModel {
                         if (response == null) {
                             listener.onFailure("支付失败");
                         } else if (TextUtils.equals(response.getType(), "1")) {
-                            listener.onSuccess("余额支付成功", DataType.DATA_ZERO);
+                            listener.onSuccess(response.getExpire_time(), DataType.DATA_ZERO);
                         } else if (TextUtils.equals(response.getType(), "2")) {
                             AiBeiPayManager.getInstance().pay(activity, response.getAbcode(), new AiBeiPayManager.AiBeiResultCallback() {
                                 @Override
                                 public void onPayResult(int resultCode, String resultInfo) {
                                     if (resultCode == 1) {
-                                        listener.onSuccess("支付成功", DataType.DATA_ZERO);
+                                        listener.onSuccess(response.getExpire_time(), DataType.DATA_ZERO);
                                     } else {
                                         listener.onFailure("支付失败");
                                     }

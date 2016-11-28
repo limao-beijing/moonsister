@@ -5,7 +5,7 @@ package com.hickey.network.bean.resposen;
  */
 public class ChargeMessagePayBean extends BaseModel {
     private String abcode;
-    private String expire_time;
+    private long expire_time;
     private String type;
 
     public String getAbcode() {
@@ -16,11 +16,11 @@ public class ChargeMessagePayBean extends BaseModel {
         this.abcode = abcode;
     }
 
-    public String getExpire_time() {
+    public long getExpire_time() {
         return expire_time;
     }
 
-    public void setExpire_time(String expire_time) {
+    public void setExpire_time(long expire_time) {
         this.expire_time = expire_time;
     }
 

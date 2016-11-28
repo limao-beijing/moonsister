@@ -17,11 +17,26 @@ public class ChargeMessageBean extends BaseModel {
 
     private String source_id;
     private String send_id;
+    //过期时间
     private long expire_time;
     private String pic;
     private long size;
-    private  long sc;
+    private long sc;
+    //播放时长
+    private long expire_sc;
     private List<?> friend_list;
+
+    public long getExpire_sc() {
+        return expire_sc;
+    }
+
+    public void setExpire_sc(long expire_sc) {
+        this.expire_sc = expire_sc;
+    }
+
+    public long getSc() {
+        return sc;
+    }
 
     public void setSc(long sc) {
         this.sc = sc;

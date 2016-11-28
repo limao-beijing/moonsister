@@ -10,16 +10,21 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.easemob.easeui.R;
+import com.hickey.network.bean.resposen.ChargeInitBean;
 import com.hickey.network.bean.resposen.ChargeMessageBean;
 import com.hickey.tool.activity.pic.PictureSelectorActivity;
 import com.hickey.tool.activity.video.ImageGridActivity;
+import com.hickey.tool.lang.StringUtis;
 import com.hickey.tool.widget.NoScrollGridView;
+import com.hyphenate.easeui.CustomConstant;
 import com.hyphenate.easeui.mvp.presenter.ChargeMessageActivityPresenter;
 import com.hyphenate.easeui.mvp.presenter.ChargeMessageActivityPresenterImpl;
 import com.hyphenate.easeui.mvp.view.ChargeMessageActivityView;
@@ -49,6 +54,7 @@ public class ChargeMessageActivity extends com.hickey.tool.base.BaseActivity imp
     private NoScrollGridView gv;
     private EditText et_money;
     private EditText et_msg;
+    private TextView tv_show_fengcheng;
     //image
     private List<String> pics;
     //发送类型
@@ -61,6 +67,9 @@ public class ChargeMessageActivity extends com.hickey.tool.base.BaseActivity imp
     private String toUid;
     private String authcode;
     private ChargeMessageActivityPresenter presenter;
+    private int maxMoney;
+    private int minMoney;
+    private CheckBox checkBox;
 
     @Override
     protected View setRootContentView() {
@@ -74,12 +83,18 @@ public class ChargeMessageActivity extends com.hickey.tool.base.BaseActivity imp
         ll_select_layout = $(R.id.ll_select_layout);
         et_money = $(R.id.et_money);
         et_msg = $(R.id.et_msg);
+        tv_show_fengcheng = $(R.id.tv_show_fengcheng);
+        checkBox = $(R.id.cb_send);
         Intent intent = getIntent();
         toUid = intent.getStringExtra("id");
         authcode = intent.getStringExtra("authcode");
-        initListener();
+        boolean perimssion = intent.getBooleanExtra("havePerimssion", false);
+        checkBox.setVisibility(perimssion ? View.VISIBLE : View.GONE);
         presenter = new ChargeMessageActivityPresenterImpl();
         presenter.attachView(this);
+        presenter.loadInitData(authcode);
+        initListener();
+
 
     }
 
@@ -114,6 +129,11 @@ public class ChargeMessageActivity extends com.hickey.tool.base.BaseActivity imp
         } else if (i == R.id.tv_send) {
             String msg = et_msg.getText().toString().trim();
             String money = et_money.getText().toString().trim();
+            int i1 = StringUtis.string2Int(money);
+            if (i1 < minMoney || i1 > maxMoney) {
+                transfePageMsg("输入的金额不正确");
+                return;
+            }
             if (type == 0 || TextUtils.isEmpty(msg) || TextUtils.isEmpty(money)) {
                 Toast.makeText(this, "信息不完整", Toast.LENGTH_SHORT).show();
                 return;
@@ -126,7 +146,7 @@ public class ChargeMessageActivity extends com.hickey.tool.base.BaseActivity imp
                 ArrayList<String> vs = new ArrayList<>();
                 vs.add(videoPath);
                 vs.add(videoPic);
-                presenter.submitData(money, vs, msg, type, toUid, duration, authcode);
+                presenter.submitData(checkBox.isChecked(), money, vs, msg, type, toUid, duration, authcode);
 
 
             } else if (type == TYPE_IMAGE) {
@@ -134,7 +154,7 @@ public class ChargeMessageActivity extends com.hickey.tool.base.BaseActivity imp
                     Toast.makeText(this, "信息不完整", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                presenter.submitData(money, pics, msg, type, toUid, duration, authcode);
+                presenter.submitData(checkBox.isChecked(), money, pics, msg, type, toUid, duration, authcode);
             } else {
                 Toast.makeText(this, "信息不完整", Toast.LENGTH_SHORT).show();
                 return;
@@ -225,19 +245,37 @@ public class ChargeMessageActivity extends com.hickey.tool.base.BaseActivity imp
 
     @Override
     public void setData(ChargeMessageBean bean) {
+        if (bean == null)
+            return;
         String msg = et_msg.getText().toString().trim();
         String money = et_money.getText().toString().trim();
         Intent intent = new Intent();
-        intent.putExtra("lid", bean.getSource_id());
-        intent.putExtra("pic", bean.getPic());
-        intent.putExtra("msg", msg);
-        intent.putExtra("money", money);
         intent.putExtra("type", type);
-        intent.putExtra("expire_time", System.currentTimeMillis() + (bean.getExpire_time() * 1000));
+        intent.putExtra(CustomConstant.ESSAGE_ATTRIBUTE_LID, bean.getSource_id());
+        intent.putExtra(CustomConstant.ESSAGE_ATTRIBUTE_PIC, bean.getPic());
+        intent.putExtra(CustomConstant.ESSAGE_ATTRIBUTE_MSG, msg);
+        intent.putExtra(CustomConstant.ESSAGE_ATTRIBUTE_MONEY, money);
+        intent.putExtra(CustomConstant.ESSAGE_ATTRIBUTE_PIC_NUMBER, pics == null ? 0 : pics.size());
+        intent.putExtra(CustomConstant.ESSAGE_ATTRIBUTE_VIDEO_DURATION, duration);
+        intent.putExtra(CustomConstant.ESSAGE_ATTRIBUTE_EXPIRE_TIME, (System.currentTimeMillis() / 1000) + (bean.getExpire_time()));
+        intent.putExtra(CustomConstant.ESSAGE_ATTRIBUTE_PLAY_TIME, bean.getExpire_sc());
         setResult(Activity.RESULT_OK, intent);
         finish();
     }
 
+    @Override
+    public void setInitData(ChargeInitBean model) {
+        // android:hint=""
+        maxMoney = model.getChat_money_max();
+        minMoney = model.getChat_money_min();
+        et_money.setHint("请输入" + minMoney + "-" + maxMoney + "元范围");
+        tv_show_fengcheng.setText(model.getFencheng_msg());
+    }
+
+    @Override
+    protected String initTitleName() {
+        return "收费视频/图片";
+    }
 
     private class ShowPicAdapter extends BaseAdapter {
 

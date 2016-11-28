@@ -2,9 +2,7 @@ package com.hyphenate.easeui.widget.chatrow;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -12,31 +10,30 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.easemob.easeui.R;
-import com.hickey.tool.base.BaseDialogFragment;
-import com.hickey.tool.constant.EnumConstant;
+import com.hickey.network.bean.resposen.ChargeResBean;
+import com.hickey.tool.time.TimeUtils;
 import com.hickey.tool.widget.UIUtils;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.easeui.CustomConstant;
 import com.hyphenate.easeui.mvp.presenter.EaseChatRowChargeImagePresenter;
 import com.hyphenate.easeui.mvp.presenter.EaseChatRowChargeImagePresenterImpl;
 import com.hyphenate.easeui.mvp.view.EaseChatRowChargeImageView;
-import com.hyphenate.easeui.ui.ChargeMessageDialog;
-import com.hyphenate.easeui.ui.PlayDirectlyActivity;
+import com.hyphenate.easeui.ui.ChargeVideoActivity;
 import com.hyphenate.exceptions.HyphenateException;
-
-import java.util.ArrayList;
 
 /**
  * Created by jb on 2016/11/24.
  */
 public class EaseChatRowChargeVideo extends EaseChatRow implements View.OnClickListener, EaseChatRowChargeImageView {
-    private TextView tv_msg, tv_money;
+    private TextView tv_msg, tv_money, tv_video_time;
     private ImageView iv_image;
     private View rl_charge_bg;
     private String lid;
     private boolean look;
     private String money;
     private String mAuthcode;
+
+    private long expireTime;
     private EaseChatRowChargeImagePresenter presenter;
 
     public EaseChatRowChargeVideo(Context context, String mAuthcode, EMMessage message, int position, BaseAdapter adapter) {
@@ -59,6 +56,8 @@ public class EaseChatRowChargeVideo extends EaseChatRow implements View.OnClickL
         iv_image = $(R.id.iv_image);
         tv_money = $(R.id.tv_money);
         rl_charge_bg = $(R.id.rl_charge_bg);
+        tv_video_time = $(R.id.tv_video_time);
+
         presenter = new EaseChatRowChargeImagePresenterImpl();
         presenter.attachView(this);
     }
@@ -72,17 +71,22 @@ public class EaseChatRowChargeVideo extends EaseChatRow implements View.OnClickL
     protected void onSetUpView() {
         try {
             Glide.with(this.getContext()).load(message.getStringAttribute("pic")).into(iv_image);
-            money = message.getStringAttribute(CustomConstant.ESSAGE_ATTRIBUTE_MONEY);
-            tv_money.setText("红包视频,10秒试看");
+            money = message.getStringAttribute(CustomConstant.ESSAGE_ATTRIBUTE_MONEY, "");
+            expireTime = message.getLongAttribute(CustomConstant.ESSAGE_ATTRIBUTE_EXPIRE_TIME, 0);
+            long playTime = message.getLongAttribute(CustomConstant.ESSAGE_ATTRIBUTE_PLAY_TIME, 0);
+            tv_money.setText("红包视频," + playTime + "秒试看");
+
+            tv_video_time.setText(TimeUtils.stringForTime((int) message.getLongAttribute(CustomConstant.ESSAGE_ATTRIBUTE_VIDEO_DURATION, 0)));
             tv_msg.setText(message.getStringAttribute(CustomConstant.ESSAGE_ATTRIBUTE_MSG));
             look = message.getBooleanAttribute(CustomConstant.ESSAGE_ATTRIBUTE_LOOK);
             lid = message.getStringAttribute(CustomConstant.ESSAGE_ATTRIBUTE_LID);
             if (message.direct() == EMMessage.Direct.RECEIVE) {
                 if (look) {
-                    rl_charge_bg.setVisibility(GONE);
+                    rl_charge_bg.setVisibility(View.GONE);
                 } else {
-                    rl_charge_bg.setVisibility(VISIBLE);
+                    rl_charge_bg.setVisibility(View.VISIBLE);
                 }
+
             }
             iv_image.setOnClickListener(this);
 
@@ -112,10 +116,12 @@ public class EaseChatRowChargeVideo extends EaseChatRow implements View.OnClickL
     }
 
     @Override
-    public void setPic(ArrayList<String> datas) {
-        if (datas.size() >= 1) {
-            Intent intent = new Intent(context, PlayDirectlyActivity.class);
-            intent.putExtra("path", datas.get(0));
+    public void setPic(ChargeResBean datas) {
+        if (datas.getCont().size() >= 1) {
+            Intent intent = new Intent(context, ChargeVideoActivity.class);
+            intent.putExtra("path", datas.getCont().get(0));
+            intent.putExtra(CustomConstant.ESSAGE_ATTRIBUTE_EMMESSAGE, message);
+            intent.putExtra(CustomConstant.ESSAGE_ATTRIBUTE_ACTHCODE, mAuthcode);
             activity.startActivity(intent);
         }
 
@@ -123,23 +129,10 @@ public class EaseChatRowChargeVideo extends EaseChatRow implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        if (!look && message.direct() == EMMessage.Direct.RECEIVE) {
-            ChargeMessageDialog dialog = new ChargeMessageDialog();
-            Bundle bundle = new Bundle();
-            bundle.putString(CustomConstant.ESSAGE_ATTRIBUTE_MONEY, money);
-            bundle.putString(CustomConstant.ESSAGE_ATTRIBUTE_ACTHCODE, mAuthcode);
-            dialog.setArguments(bundle);
-            dialog.setOnCallBack(new BaseDialogFragment.OnCallBack() {
-                @Override
-                public void onStatus(BaseDialogFragment dialogFragment, EnumConstant.DialogCallBack statusCode) {
-                    if (statusCode == EnumConstant.DialogCallBack.CONFIRM) {
-                        presenter.getImagePic(lid, mAuthcode);
-                        dialogFragment.dismissDialogFragment();
-                    }
-                }
-            });
-            dialog.showDialogFragment(((AppCompatActivity) context).getSupportFragmentManager());
-        } else
-            presenter.getImagePic(lid, mAuthcode);
+        if (expireTime < System.currentTimeMillis() / 1000) {
+            transfePageMsg("资源已过期");
+            return;
+        }
+        presenter.getImagePic(lid, mAuthcode);
     }
 }

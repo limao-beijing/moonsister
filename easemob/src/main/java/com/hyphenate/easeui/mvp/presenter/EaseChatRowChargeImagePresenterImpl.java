@@ -1,18 +1,17 @@
 package com.hyphenate.easeui.mvp.presenter;
 
 
+import com.hickey.network.bean.resposen.ChargeResBean;
 import com.hickey.tool.base.BaseIModel;
 import com.hyphenate.easeui.mvp.model.EaseChatRowChargeImageModel;
 import com.hyphenate.easeui.mvp.model.EaseChatRowChargeImageModelImpl;
 import com.hyphenate.easeui.mvp.view.EaseChatRowChargeImageView;
 
-import java.util.ArrayList;
-
 /**
  * Created by jb on 2016/11/25.
  */
 
-public class EaseChatRowChargeImagePresenterImpl implements EaseChatRowChargeImagePresenter, BaseIModel.onLoadDateSingleListener {
+public class EaseChatRowChargeImagePresenterImpl implements EaseChatRowChargeImagePresenter, BaseIModel.onLoadDateSingleListener<ChargeResBean> {
     private EaseChatRowChargeImageView view;
     private EaseChatRowChargeImageModel model;
 
@@ -34,10 +33,8 @@ public class EaseChatRowChargeImagePresenterImpl implements EaseChatRowChargeIma
     }
 
     @Override
-    public void onSuccess(Object o, BaseIModel.DataType dataType) {
-        if (o instanceof ArrayList) {
-            view.setPic((ArrayList<String>) o);
-        }
+    public void onSuccess(ChargeResBean bean, BaseIModel.DataType dataType) {
+        view.setPic(bean);
         view.hideLoading();
     }
 

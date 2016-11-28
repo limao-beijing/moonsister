@@ -9,5 +9,5 @@ import com.hickey.tool.constant.EnumConstant;
  * Created by jb on 2016/11/26.
  */
 public interface ChargeMessageDialogModel extends BaseIModel {
-    void pay(Activity activity, EnumConstant.PayType type, String lid, String acthcode, onLoadDateSingleListener<String> listener);
+    void pay(Activity activity, EnumConstant.PayType type, String lid, String acthcode, onLoadDateSingleListener<Long> listener);
 }

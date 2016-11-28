@@ -28,21 +28,25 @@
             android:background="@drawable/ease_default_avatar"
             android:scaleType="fitXY"/>
 
+
         <RelativeLayout
             android:id="@+id/bubble"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="@dimen/margin_chat_activity"
+            android:layout_below="@+id/tv_userid"
+            android:layout_marginLeft="@dimen/margin_chat_activity"
+            android:layout_marginRight="30dp"
             android:layout_toLeftOf="@id/iv_userhead"
-            android:background="@drawable/ease_chatto_bg">
+            android:background="@drawable/ease_chatto_bg"
+            android:padding="15dp"
+            >
 
             <TextView
                 android:id="@+id/tv_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="18sp"/>
+                android:textColor="#151c22"
+                android:textSize="16sp"/>
 
             <ImageView
                 android:id="@+id/iv_image"
@@ -53,39 +57,44 @@
                 android:scaleType="centerCrop"
                 />
 
-
             <RelativeLayout
                 android:id="@+id/rl_charge_bg"
-                android:layout_width="180dp"
-                android:layout_height="80dp"
+                android:layout_width="149dp"
+                android:layout_height="85dp"
                 android:layout_below="@+id/tv_msg"
-                android:layout_marginTop="50dp"
-                android:visibility="gone">
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                >
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black"/>
 
                 <ImageView
                     android:id="@+id/iv_charge_lock"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="true"
                     android:src="@drawable/em_charge_lock"/>
 
                 <TextView
                     android:id="@+id/tv_money"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/iv_charge_lock"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    android:text="收费视频"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="#ffffff"
+                    android:textSize="9sp"/>
+
+                <TextView
+                    android:id="@+id/tv_video_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="10dp"/>
 
             </RelativeLayout>
-
 
         </RelativeLayout>
 

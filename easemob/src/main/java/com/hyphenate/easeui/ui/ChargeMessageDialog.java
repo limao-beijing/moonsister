@@ -7,6 +7,8 @@ import android.widget.TextView;
 import com.easemob.easeui.R;
 import com.hickey.tool.base.BaseDialogFragment;
 import com.hickey.tool.constant.EnumConstant;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMMessage;
 import com.hyphenate.easeui.CustomConstant;
 import com.hyphenate.easeui.mvp.presenter.ChargeMessageDialogPresenter;
 import com.hyphenate.easeui.mvp.presenter.ChargeMessageDialogPresenterImpl;
@@ -21,6 +23,7 @@ public class ChargeMessageDialog extends BaseDialogFragment implements View.OnCl
     private ChargeMessageDialogPresenter presenter;
     private String lid;
     private String acthcode;
+    private EMMessage message;
 
     @NonNull
     @Override
@@ -30,8 +33,13 @@ public class ChargeMessageDialog extends BaseDialogFragment implements View.OnCl
 
     @Override
     protected void initData() {
-        String money = getArguments().getString(CustomConstant.ESSAGE_ATTRIBUTE_MONEY);
-        lid = getArguments().getString(CustomConstant.ESSAGE_ATTRIBUTE_LID);
+        String money = "";
+        try {
+            message = getArguments().getParcelable(CustomConstant.ESSAGE_ATTRIBUTE_EMMESSAGE);
+            lid = message.getStringAttribute(CustomConstant.ESSAGE_ATTRIBUTE_LID, "");
+            money = message.getStringAttribute(CustomConstant.ESSAGE_ATTRIBUTE_MONEY, "");
+        } catch (Exception e) {
+        }
         acthcode = getArguments().getString(CustomConstant.ESSAGE_ATTRIBUTE_ACTHCODE);
         tvMoney = (TextView) mRootView.findViewById(R.id.tv_money);
         tvMoney.setText("￥ " + money);
@@ -47,6 +55,9 @@ public class ChargeMessageDialog extends BaseDialogFragment implements View.OnCl
         if (i == R.id.tv_submit) {
             presenter.pay(getActivity(), EnumConstant.PayType.IAPP_PAY, lid, acthcode);
         } else if (i == R.id.iv_cancel) {
+            if (mOnCallBack != null) {
+                mOnCallBack.onStatus(this, EnumConstant.DialogCallBack.CANCEL);
+            }
             dismissDialogFragment();
         }
     }
@@ -67,8 +78,11 @@ public class ChargeMessageDialog extends BaseDialogFragment implements View.OnCl
     }
 
     @Override
-    public void setSuccess() {
+    public void setSuccess(Long rxpire) {
         if (mOnCallBack != null) {
+            message.setAttribute(CustomConstant.ESSAGE_ATTRIBUTE_EXPIRE_TIME, System.currentTimeMillis() + rxpire * 1000);
+            message.setAttribute(CustomConstant.ESSAGE_ATTRIBUTE_LOOK, true);
+            EMClient.getInstance().chatManager().updateMessage(message);
             mOnCallBack.onStatus(this, EnumConstant.DialogCallBack.CONFIRM);
         }
     }

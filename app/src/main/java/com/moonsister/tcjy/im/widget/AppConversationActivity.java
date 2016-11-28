@@ -86,11 +86,18 @@ public class AppConversationActivity extends BaseActivity {
                     if (mReasult != EnumConstant.PermissionReasult.HAVE_PERSSION) {
                         setRxbus();
                     }
+                    if (chatFragment != null) {
+                        chatFragment.setHavePermission(mReasult);
+                    }
                 }
             });
         else {
             mReasult = EnumConstant.PermissionReasult.HAVE_PERSSION;
+            if (chatFragment != null) {
+                chatFragment.setHavePermission(mReasult);
+            }
         }
+
     }
 
     private void setRxbus() {
@@ -102,41 +109,6 @@ public class AppConversationActivity extends BaseActivity {
                 }).create();
     }
 
-
-//        PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
-//        if (memoryPersonInfoDetail.getVipStatus() == 1) {
-//            return;
-//        }
-//        if (memoryPersonInfoDetail.getAttestation() != 3) {
-//            return;
-//        }
-//        if (memoryPersonInfoDetail.getUserFriendList() != null && memoryPersonInfoDetail.getUserFriendList().contains(mTargetId)) {
-//            return;
-//        }
-//        AlearDialog alearDialog = new AlearDialog(AlearDialog.DialogType.Certification_im_1002, this);
-//        alearDialog.setListenter(new AlearDialog.onClickListenter() {
-//            @Override
-//            public void clickType(AlearDialog.clickType type) {
-//                switch (type) {
-//                    case cancel:
-//                        finish();
-//                        break;
-//                    case confirm_vip:
-//                        if (StringUtis.equals("1", sex))
-//                            ActivityUtils.startBuyVipActivity();
-//                        else
-//                            ActivityUtils.startRenZhengThreeActivity();
-//                        break;
-//                    case confirm:
-//                        ActivityUtils.startCertificationActivity();
-//                        break;
-//
-//                }
-//                alearDialog.dismiss();
-//            }
-//        });
-
-//    }
 
     @Override
     protected String initTitleName() {
@@ -208,7 +180,8 @@ public class AppConversationActivity extends BaseActivity {
                     case NOT_PERSSION:
                         if (mImCount > 0) {
                             isSend = true;
-                            mImCount--;
+                            if (message != null)
+                                mImCount--;
                         } else {
                             isSend = false;
                             showPermissionDialog();
@@ -221,8 +194,10 @@ public class AppConversationActivity extends BaseActivity {
                 }
                 if (mHelper == null)
                     mHelper = new SendMsgForServiceHelper();
-                if (mReasult != EnumConstant.PermissionReasult.HAVE_PERSSION)
+                if (mReasult != EnumConstant.PermissionReasult.HAVE_PERSSION && message != null) {
                     mHelper.send(message);
+                }
+
                 return isSend;
             }
         });

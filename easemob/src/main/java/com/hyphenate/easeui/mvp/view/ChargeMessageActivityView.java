@@ -1,5 +1,6 @@
 package com.hyphenate.easeui.mvp.view;
 
+import com.hickey.network.bean.resposen.ChargeInitBean;
 import com.hickey.network.bean.resposen.ChargeMessageBean;
 import com.hickey.tool.base.BaseIView;
 
@@ -8,4 +9,6 @@ import com.hickey.tool.base.BaseIView;
  */
 public interface ChargeMessageActivityView  extends BaseIView{
     void setData(ChargeMessageBean bean);
+
+    void setInitData(ChargeInitBean model);
 }

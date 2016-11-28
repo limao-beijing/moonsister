@@ -10,14 +10,15 @@ import com.hickey.network.bean.EngagementPermissTextBane;
 import com.hickey.network.bean.EngagementTextBane;
 import com.hickey.network.bean.PayBean;
 import com.hickey.network.bean.StatusBean;
+import com.hickey.network.bean.resposen.ChargeInitBean;
 import com.hickey.network.bean.resposen.ChargeMessageBean;
 import com.hickey.network.bean.resposen.ChargeMessagePayBean;
+import com.hickey.network.bean.resposen.ChargeResBean;
 import com.hickey.network.gson.GsonConverterFactory;
 import com.hickey.tool.base.BaseResponse;
 import com.hickey.tool.security.UnicodeUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Authenticator;
@@ -339,6 +340,7 @@ public class ModuleServerApi {
         /**
          * 收费消息
          *
+         * @param s
          * @param money
          * @param content
          * @param desc
@@ -349,7 +351,8 @@ public class ModuleServerApi {
          */
         @FormUrlEncoded
         @POST("chat/pub")
-        Observable<BaseResponse<ChargeMessageBean>> sendChargeMsg(@Field("money") String money,
+        Observable<BaseResponse<ChargeMessageBean>> sendChargeMsg(@Field("send_friend") String send_friend,
+                                                                  @Field("money") String money,
                                                                   @Field("contents") String content,
                                                                   @Field("desc") String desc,
                                                                   @Field("type") int type,
@@ -362,8 +365,8 @@ public class ModuleServerApi {
          * @param lid
          */
         @GET("chat/get2")
-        Observable<BaseResponse<ArrayList<String>>> getChargeMessage(@Query("source_id") String lid,
-                                                                     @Query("authcode") String acthcode);
+        Observable<BaseResponse<ChargeResBean>> getChargeMessage(@Query("source_id") String lid,
+                                                                 @Query("authcode") String acthcode);
 
         /**
          * 购买操作
@@ -377,6 +380,15 @@ public class ModuleServerApi {
                                                                     @Query("version_type") String version_type,
                                                                     @Query("source_id") String lid,
                                                                     @Query("authcode") String acthcode);
+
+        /**
+         * 收费消息发布初始数据
+         *
+         * @param authcode
+         * @return
+         */
+        @GET("chat/chat_init")
+        Observable<BaseResponse<ChargeInitBean>> getChargeMessageInitData(@Query("authcode") String authcode);
     }
 
 

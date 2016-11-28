@@ -12,11 +12,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.easemob.easeui.R;
+import com.hickey.network.bean.resposen.ChargeResBean;
 import com.hickey.tool.activity.pic.ImagePagerActivity;
 import com.hickey.tool.base.BaseDialogFragment;
 import com.hickey.tool.constant.EnumConstant;
 import com.hickey.tool.widget.UIUtils;
-import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.easeui.CustomConstant;
 import com.hyphenate.easeui.mvp.presenter.EaseChatRowChargeImagePresenter;
@@ -25,14 +25,12 @@ import com.hyphenate.easeui.mvp.view.EaseChatRowChargeImageView;
 import com.hyphenate.easeui.ui.ChargeMessageDialog;
 import com.hyphenate.exceptions.HyphenateException;
 
-import java.util.ArrayList;
-
 /**
  * Created by jb on 2016/11/22.
  */
 public class EaseChatRowChargeImage extends EaseChatRow implements View.OnClickListener, EaseChatRowChargeImageView {
 
-    private TextView tv_msg, tv_money;
+    private TextView tv_msg, tv_money, tv_pic_number;
     private ImageView iv_image;
     private View rl_charge_bg;
     private String lid;
@@ -40,6 +38,7 @@ public class EaseChatRowChargeImage extends EaseChatRow implements View.OnClickL
     private String money;
     private EaseChatRowChargeImagePresenter presenter;
     private String mActhcode;
+    private long expireTime;
 
     public EaseChatRowChargeImage(Context context, String acthcode, EMMessage message, int position, BaseAdapter adapter) {
         super(context, message, position, adapter);
@@ -57,6 +56,7 @@ public class EaseChatRowChargeImage extends EaseChatRow implements View.OnClickL
         iv_image = $(R.id.iv_image);
         tv_money = $(R.id.tv_money);
         rl_charge_bg = $(R.id.rl_charge_bg);
+        tv_pic_number = $(R.id.tv_pic_number);
         presenter = new EaseChatRowChargeImagePresenterImpl();
         presenter.attachView(this);
     }
@@ -70,8 +70,11 @@ public class EaseChatRowChargeImage extends EaseChatRow implements View.OnClickL
     protected void onSetUpView() {
         try {
             Glide.with(this.getContext()).load(message.getStringAttribute("pic")).into(iv_image);
+            expireTime = message.getLongAttribute(CustomConstant.ESSAGE_ATTRIBUTE_EXPIRE_TIME, 0);
             money = message.getStringAttribute("money");
             tv_money.setText("红包图集,需支付" + money + "元拆开查看");
+            int PicNumber = message.getIntAttribute(CustomConstant.ESSAGE_ATTRIBUTE_PIC_NUMBER, 0);
+            tv_pic_number.setText(PicNumber + "张");
             tv_msg.setText(message.getStringAttribute("msg"));
             look = message.getBooleanAttribute("look");
             lid = message.getStringAttribute("lid");
@@ -85,6 +88,8 @@ public class EaseChatRowChargeImage extends EaseChatRow implements View.OnClickL
 
         } catch (HyphenateException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         iv_image.setOnClickListener(this);
     }
@@ -97,21 +102,21 @@ public class EaseChatRowChargeImage extends EaseChatRow implements View.OnClickL
 
     @Override
     public void onClick(View v) {
+        if (expireTime < System.currentTimeMillis() / 1000) {
+            transfePageMsg("资源已过期");
+            return;
+        }
         if (!look && message.direct() == EMMessage.Direct.RECEIVE) {
             ChargeMessageDialog dialog = new ChargeMessageDialog();
             Bundle bundle = new Bundle();
-            bundle.putString(CustomConstant.ESSAGE_ATTRIBUTE_MONEY, money);
             bundle.putString(CustomConstant.ESSAGE_ATTRIBUTE_ACTHCODE, mActhcode);
-            bundle.putString(CustomConstant.ESSAGE_ATTRIBUTE_LID, lid);
+            bundle.putParcelable(CustomConstant.ESSAGE_ATTRIBUTE_EMMESSAGE, message);
             dialog.setArguments(bundle);
             dialog.setOnCallBack(new BaseDialogFragment.OnCallBack() {
                 @Override
                 public void onStatus(BaseDialogFragment dialogFragment, EnumConstant.DialogCallBack statusCode) {
                     if (statusCode == EnumConstant.DialogCallBack.CONFIRM) {
                         presenter.getImagePic(lid, mActhcode);
-                        message.setAttribute(CustomConstant.ESSAGE_ATTRIBUTE_LOOK, true);
-                        EMClient.getInstance().chatManager().saveMessage(message);
-                        adapter.notifyDataSetChanged();
                         dialogFragment.dismissDialogFragment();
                     }
                 }
@@ -145,11 +150,11 @@ public class EaseChatRowChargeImage extends EaseChatRow implements View.OnClickL
     }
 
     @Override
-    public void setPic(ArrayList<String> datas) {
+    public void setPic(ChargeResBean datas) {
         Intent intent = new Intent(context, ImagePagerActivity.class);
         // 图片url,为了演示这里使用常量，一般从数据库中或网络中获取
-        intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, datas);
-        intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_INDEX, position);
+        intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, datas.getCont());
+        intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_INDEX, 0);
         activity.startActivity(intent);
     }
 }
