@@ -37,12 +37,12 @@ public class ChargeMessageActivityModelImpl implements ChargeMessageActivityMode
                 return ModuleServerApi.getAppAPI().sendChargeMsg((checked ? "1" : "0"), money, s, desc, type, uid, authcode);
             }
         });
-        ObservableUtis.$(observable, DataType.DATA_ZERO, listenter);
+        ObservableMapUtils.$_Map(observable, DataType.DATA_ZERO, listenter);
     }
 
     @Override
     public void loadInitData(String authcode, onLoadDateSingleListener<BaseModel> listener) {
-        ObservableUtis.$(ModuleServerApi.getAppAPI().getChargeMessageInitData(authcode), DataType.DATA_ONE, listener);
+        ObservableMapUtils.$_Map(ModuleServerApi.getAppAPI().getChargeMessageInitData(authcode), DataType.DATA_ONE, listener);
         ;
     }
 

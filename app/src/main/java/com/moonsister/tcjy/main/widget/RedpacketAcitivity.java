@@ -16,6 +16,7 @@ import com.hickey.network.ImageServerApi;
 import com.hickey.tool.base.BaseActivity;
 import com.hickey.tool.lang.StringUtis;
 import com.hickey.tool.widget.UIUtils;
+import com.hyphenate.easeui.CustomConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
@@ -162,9 +163,9 @@ public class RedpacketAcitivity extends BaseActivity implements PlayUserAcitivit
     }
 
     @Override
-    public void pageFinish() {
+    public void succseeFinish() {
         Intent intent = new Intent();
-        intent.putExtra("money", editText.getText().toString().trim());
+        intent.putExtra(CustomConstant.ESSAGE_ATTRIBUTE_RED_PACKET_MONEY, editText.getText().toString().trim());
         setResult(Activity.RESULT_OK, intent);
         finish();
     }

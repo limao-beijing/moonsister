@@ -19,6 +19,7 @@
             android:src="@drawable/em_charge_cancel"/>
 
         <TextView
+            android:id="@+id/tv_rule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"

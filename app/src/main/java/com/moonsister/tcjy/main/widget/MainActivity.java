@@ -20,7 +20,6 @@ import com.hickey.tool.base.BaseFragment;
 import com.hickey.tool.lang.StringUtis;
 import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.AppConstant;
-import com.moonsister.tcjy.ApplicationConfig;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.dialogFragment.DialogMannager;
 import com.moonsister.tcjy.event.Events;
@@ -97,6 +96,7 @@ public class MainActivity extends BaseActivity implements MainView {
         super.onStart();
         if (StringUtis.isEmpty(UserInfoManager.getInstance().getAuthcode()))
             shwoSelectSexDialog();
+
     }
 
     /**
@@ -104,10 +104,19 @@ public class MainActivity extends BaseActivity implements MainView {
      */
     public void shwoSelectSexDialog() {
         DialogMannager.getInstance().showSelectSexDialog(getSupportFragmentManager());
+
     }
 
     public void bindPhoneDialog() {
         DialogMannager.getInstance().showBindPhoneDialog(getSupportFragmentManager());
+
+    }
+
+    /**
+     * 兴趣
+     */
+    public void showInterestDialog() {
+        DialogMannager.getInstance().showInterestSelectDialog(getSupportFragmentManager());
     }
 
     @Override
@@ -215,6 +224,7 @@ public class MainActivity extends BaseActivity implements MainView {
         if (imHomeFragment == null)
             imHomeFragment = new IMHomeFragment();
         enterPage(imHomeFragment);
+
 
     }
 

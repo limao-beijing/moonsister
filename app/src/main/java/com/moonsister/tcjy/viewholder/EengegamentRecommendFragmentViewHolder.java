@@ -1,7 +1,11 @@
 package com.moonsister.tcjy.viewholder;
 
+import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hickey.network.ImageServerApi;
@@ -10,7 +14,7 @@ import com.hickey.tool.base.BaseRecyclerViewHolder;
 import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.moonsister.tcjy.widget.CircularImageView;
+import com.moonsister.tcjy.widget.RoundedImageView;
 
 import butterknife.Bind;
 
@@ -19,7 +23,7 @@ import butterknife.Bind;
  */
 public class EengegamentRecommendFragmentViewHolder extends BaseRecyclerViewHolder<EngagemengRecommendBean.DataBean> {
     @Bind(R.id.civ_user_avater)
-    CircularImageView mCivUserAvater;
+    RoundedImageView mCivUserAvater;
     @Bind(R.id.iv_add_v)
     ImageView mIvAddV;
     @Bind(R.id.tv_user_name)
@@ -36,6 +40,8 @@ public class EengegamentRecommendFragmentViewHolder extends BaseRecyclerViewHold
     ImageView mIvEngegament;
     @Bind(R.id.tv_signature)
     TextView tv_signature;
+    @Bind(R.id.ll_user_info)
+    LinearLayout ll_user_info;
 
     public EengegamentRecommendFragmentViewHolder(View view) {
         super(view);
@@ -52,16 +58,32 @@ public class EengegamentRecommendFragmentViewHolder extends BaseRecyclerViewHold
         mTvAddress.setText(bean.getResidence());
         mTvWeight.setText(bean.getWeight());
         tv_signature.setText(bean.getSignature());
+        String type = bean.getHomeType();
+        if (TextUtils.equals("3", type)) {
+            mIvEngegament.setVisibility(View.GONE);
+            tv_signature.setVisibility(View.GONE);
+            RelativeLayout.LayoutParams llParams = (RelativeLayout.LayoutParams) ll_user_info.getLayoutParams();
+            llParams.addRule(RelativeLayout.BELOW, mTvUserName.getId());
+            ll_user_info.setLayoutParams(llParams);
+            int dimension = (int) mCivUserAvater.getContext().getResources().getDimension(R.dimen.x96);
+            ViewGroup.LayoutParams params = mCivUserAvater.getLayoutParams();
+            params.height = dimension;
+            params.width = dimension;
+            mCivUserAvater.setLayoutParams(params);
 
+            return;
+        }
+        mIvEngegament.setVisibility(View.VISIBLE);
         mIvEngegament.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (bean.getEngegamentType() == EnumConstant.EngegamentType.All) {
+                if (bean.getEngegamentType() == EnumConstant.EngegamentType.All || TextUtils.equals(type, "2")) {
                     ActivityUtils.startPersonEngagementTypeActivity(bean.getUid(), bean.getNickname(), bean.getFace());
                 } else
                     ActivityUtils.startEngagemengOrderActivity(bean.getEngegamentType(), bean.getUid(), bean.getNickname(), bean.getFace());
             }
         });
+
     }
 
     @Override

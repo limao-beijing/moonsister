@@ -2,10 +2,12 @@ package com.moonsister.tcjy.dialogFragment;
 
 import android.support.v4.app.FragmentManager;
 
+import com.hickey.tool.base.BaseDialogFragment;
 import com.moonsister.tcjy.dialogFragment.widget.BindPhoneDialogFragment;
 import com.moonsister.tcjy.dialogFragment.widget.EngagementDelectDioalogFragment;
 import com.moonsister.tcjy.dialogFragment.widget.EngagementPermissDialogFragment;
 import com.moonsister.tcjy.dialogFragment.widget.ImPermissionDialog;
+import com.moonsister.tcjy.dialogFragment.widget.InterestDialogFragment;
 import com.moonsister.tcjy.dialogFragment.widget.SelectSexDialogFragment;
 
 /**
@@ -49,6 +51,16 @@ public class DialogMannager {
     }
 
     /**
+     * 选择兴趣
+     *
+     * @param manager
+     */
+    public void showInterestSelectDialog(FragmentManager manager) {
+        InterestDialogFragment fragment = InterestDialogFragment.newInstance();
+        fragment.showDialogFragment(manager);
+    }
+
+    /**
      * 显示聊天权限的弹框
      *
      * @param sex
@@ -65,15 +77,23 @@ public class DialogMannager {
      *
      * @param manager
      */
-    public void showEngagementPermission(String sex, FragmentManager manager, ImPermissionDialog.OnCallBack onCallBack) {
+    public void showEngagementPermission(String sex, FragmentManager manager, BaseDialogFragment.OnCallBack onCallBack) {
         EngagementPermissDialogFragment dialog = EngagementPermissDialogFragment.newInstance(sex);
         dialog.showDialogFragment(manager);
         dialog.setOnCallBack(onCallBack);
     }
 
-    public void showEngaggementDialogFragment(FragmentManager manager, ImPermissionDialog.OnCallBack onCallBack) {
+    /**
+     * 约会的权限
+     *
+     * @param manager
+     * @param onCallBack
+     */
+    public void showEngaggementDialogFragment(FragmentManager manager, BaseDialogFragment.OnCallBack onCallBack) {
         EngagementDelectDioalogFragment fragment = EngagementDelectDioalogFragment.newInstance();
         fragment.showDialogFragment(manager);
         fragment.setOnCallBack(onCallBack);
     }
+
+
 }

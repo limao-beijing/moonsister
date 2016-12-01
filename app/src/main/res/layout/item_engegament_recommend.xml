@@ -2,17 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/x180"
-                android:background="@color/white"
+                android:background="#FFFFFF"
                 android:padding="@dimen/x30">
 
-    <com.moonsister.tcjy.widget.CircularImageView
+    <com.moonsister.tcjy.widget.RoundedImageView
 
         android:id="@+id/civ_user_avater"
         android:layout_width="@dimen/x128"
         android:layout_height="@dimen/x128"
         android:layout_centerVertical="true"
-
-        android:src="@mipmap/ic_launcher"/>
+        />
 
     <ImageView
         android:id="@+id/iv_add_v"
@@ -39,10 +38,11 @@
         android:textStyle="bold"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/ll_user_info"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tv_user_name"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/tv_user_name"
         android:layout_toLeftOf="@+id/iv_engegament"
         android:gravity="center_vertical">
 
@@ -110,8 +110,8 @@
         android:id="@+id/iv_engegament"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/engegament_icon"
+        android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"/>
+        android:src="@mipmap/engegament_icon"/>
 
 </RelativeLayout>

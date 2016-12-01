@@ -67,7 +67,7 @@ public class SelectSexDialogFragment extends BaseDialogFragment implements Manor
         dismissDialogFragment();
         Activity context = ConfigUtils.getInstance().getActivityContext();
         if (context instanceof MainActivity) {
-            ((MainActivity) context).bindPhoneDialog();
+            ((MainActivity) context).showInterestDialog();
         }
 
     }

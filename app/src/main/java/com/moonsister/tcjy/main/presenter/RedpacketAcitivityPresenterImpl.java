@@ -34,7 +34,7 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
     public void swicthAction(int id) {
         switch (id) {
             case R.id.action_back:
-                view.pageFinish();
+                view.finish();
                 break;
             case R.id.tv_weixin_play:
                 view.weixinPay();
@@ -78,7 +78,7 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
                     UIUtils.sendDelayedOneMillis(new Runnable() {
                         @Override
                         public void run() {
-                            view.pageFinish();
+                            view.succseeFinish();
                         }
                     });
                 } else if (StringUtis.equals("8000", o))
@@ -100,7 +100,7 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
                     UIUtils.sendDelayedOneMillis(new Runnable() {
                         @Override
                         public void run() {
-                            view.pageFinish();
+                            view.succseeFinish();
                         }
                     });
                 } else {

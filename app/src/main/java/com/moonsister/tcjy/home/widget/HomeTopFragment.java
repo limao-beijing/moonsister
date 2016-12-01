@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hickey.tool.base.BaseFragment;
-import com.hickey.tool.constant.EnumConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.banner.BannerManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
@@ -27,7 +26,7 @@ public class HomeTopFragment extends BaseFragment {
     TextView tvHomeNew;
     @Bind(R.id.fl_banner)
     ViewGroup flBanner;
-    private HomeTopItemFragment homeHotFragment, homeNearbyFragment, honeNewFragment;
+    private BaseFragment homeHotFragment, homeNearbyFragment, honeNewFragment;
     private BannerManager bannerManager;
 
     @Override
@@ -56,23 +55,30 @@ public class HomeTopFragment extends BaseFragment {
                 break;
             case R.id.tv_home_hot:
                 if (homeHotFragment == null) {
-                    homeHotFragment = HomeTopItemFragment.newInstance();
-                    homeHotFragment.setType(EnumConstant.HomeTopFragmentTop.HOT);
+                    homeHotFragment = new HomeDynamicFragment();
+//                    homeHotFragment = HomeTopItemFragment.newInstance();
+//                    homeHotFragment.setType(EnumConstant.HomeTopFragmentTop.HOT);
                 }
                 switchNatvigationSelect(homeHotFragment);
 
                 break;
             case R.id.tv_home_nearby:
                 if (homeNearbyFragment == null) {
-                    homeNearbyFragment = HomeTopItemFragment.newInstance();
-                    homeNearbyFragment.setType(EnumConstant.HomeTopFragmentTop.NAERBY);
+                    homeNearbyFragment = new HomePersonFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type", "2");
+                    homeNearbyFragment.setArguments(bundle);
+//                    homeNearbyFragment.setType(EnumConstant.HomeTopFragmentTop.NAERBY);
                 }
                 switchNatvigationSelect(homeNearbyFragment);
                 break;
             case R.id.tv_home_new:
                 if (honeNewFragment == null) {
-                    honeNewFragment = HomeTopItemFragment.newInstance();
-                    honeNewFragment.setType(EnumConstant.HomeTopFragmentTop.NEW);
+                    honeNewFragment = new HomePersonFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type", "3");
+                    honeNewFragment.setArguments(bundle);
+//                    honeNewFragment.setType(EnumConstant.HomeTopFragmentTop.NEW);
                 }
                 switchNatvigationSelect(honeNewFragment);
                 break;

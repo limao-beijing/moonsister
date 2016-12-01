@@ -162,7 +162,6 @@
         <activity android:name="com.moonsister.tcjy.main.widget.ShowShortVideoActivity"/>
         <activity android:name="com.moonsister.tcjy.main.widget.FillOutMessageActivity"/>
         <activity android:name="com.moonsister.tcjy.find.widget.VideoDynamicActivity"/>
-        <activity android:name="com.moonsister.tcjy.js.WebActivity"/>
         <activity
             android:name="com.moonsister.tcjy.my.widget.RZFirstActivity"
             android:screenOrientation="portrait"/>

@@ -14,6 +14,8 @@ import com.hyphenate.exceptions.HyphenateException;
  */
 
 public class ChatRowRedPacket extends EaseChatRow {
+    private TextView tv;
+
     public ChatRowRedPacket(Context context, EMMessage message, int position, BaseAdapter adapter) {
         super(context, message, position, adapter);
     }
@@ -25,19 +27,8 @@ public class ChatRowRedPacket extends EaseChatRow {
 
     @Override
     protected void onFindViewById() {
+        tv = (TextView) findViewById(R.id.tv);
 
-        try {
-            TextView tv = (TextView) findViewById(R.id.tv);
-            String money = message.getStringAttribute(CustomConstant.ESSAGE_ATTRIBUTE_MONEY);
-            if (message.direct() == EMMessage.Direct.SEND) {//消息方向，自己发送的
-                money = "您发了一个" + money + "元红包";
-            } else {
-                money = "您收到一个" + money + "元红包";
-            }
-            tv.setText(money);
-        } catch (HyphenateException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -47,7 +38,17 @@ public class ChatRowRedPacket extends EaseChatRow {
 
     @Override
     protected void onSetUpView() {
-
+        try {
+            String money = message.getStringAttribute(CustomConstant.ESSAGE_ATTRIBUTE_RED_PACKET_MONEY);
+            if (message.direct() == EMMessage.Direct.SEND) {//消息方向，自己发送的
+                money = "您发了一个" + money + "元红包";
+            } else {
+                money = "您收到一个" + money + "元红包";
+            }
+            tv.setText(money);
+        } catch (HyphenateException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -28,11 +28,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hickey.tool.file.SDUtils;
+import com.hickey.tool.lang.StringUtis;
 import com.hickey.tool.time.DateUtils;
 import com.hickey.tool.time.TextFormater;
+import com.hickey.tool.url.URIUtils;
 import com.moonsister.tool.BuildConfig;
 import com.moonsister.tool.R;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -168,14 +172,30 @@ public class ImageGridFragment extends Fragment implements OnItemClickListener {
 
         if (position == 0) {
 
+//            Intent intent = new Intent();
+//            intent.setClass(getActivity(), RecorderVideoActivity.class);
+//            startActivityForResult(intent, 100);
+
             Intent intent = new Intent();
-            intent.setClass(getActivity(), RecorderVideoActivity.class);
+            intent.setAction("android.media.action.VIDEO_CAPTURE");
+            intent.addCategory("android.intent.category.DEFAULT");
+            File file = new File(SDUtils.getRootFile(getActivity()) + File.separator + System.currentTimeMillis() + ".mp4");
+            if (file.exists()) {
+                file.delete();
+            }
+            Uri uri2 = Uri.fromFile(file);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri2);
+            intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+            intent.putExtra(MediaStore.EXTRA_SIZE_LIMIT, 1024 * 1024 * 100);
+            intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 60);
+//            Intent intent = new Intent();
+//            intent.setClass(this, TakeVideoActivity.class);
             startActivityForResult(intent, 100);
         } else {
             VideoEntity vEntty = mList.get(position - 1);
             // limit the size to 10M
-            if (vEntty.size > 1024 * 1024 * 10) {
-                String st = getResources().getString(R.string.temporary_does_not_10);
+            if (vEntty.size > 1024 * 1024 * 50) {
+                String st = getResources().getString(R.string.temporary_does_not_50);
                 Toast.makeText(getActivity(), st, Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -314,13 +334,32 @@ public class ImageGridFragment extends Fragment implements OnItemClickListener {
                 int size = (int) cursor.getLong(cursor
                         .getColumnIndexOrThrow(MediaStore.Video.Media.SIZE));
 
-                VideoEntity entty = new VideoEntity();
-                entty.ID = id;
-                entty.title = title;
-                entty.filePath = url;
-                entty.duration = duration;
-                entty.size = size;
-                mList.add(entty);
+//                VideoEntity entty = new VideoEntity();
+//                entty.ID = id;
+//                entty.title = title;
+//                entty.filePath = url;
+//                entty.duration = duration;
+//                entty.size = size;
+//                mList.add(entty);
+                if (url.endsWith(".mp4") || url.endsWith(".MP4")) {
+                    VideoEntity entty = new VideoEntity();
+                    entty.ID = id;
+                    entty.title = title;
+                    entty.filePath = url;
+//                    MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+//                    retriever.setDataSource(entty.filePath);
+//                    Bitmap bitmap = retriever.getFrameAtTime();
+//                    if (bitmap == null)
+//                        continue;
+                    entty.duration = duration;
+                    entty.size = size;
+                    String dataSize = TextFormater.getDataSize(entty.size);
+
+
+                    if (!StringUtis.isEmpty(dataSize) && !StringUtis.equals(dataSize, "error") && !dataSize.startsWith("-")) {
+                        mList.add(entty);
+                    }
+                }
             } while (cursor.moveToNext());
 
         }
@@ -333,36 +372,48 @@ public class ImageGridFragment extends Fragment implements OnItemClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == 100) {
-                Uri uri = data.getParcelableExtra("uri");
-                String[] projects = new String[]{MediaStore.Video.Media.DATA,
-                        MediaStore.Video.Media.DURATION};
-                Cursor cursor = getActivity().getContentResolver().query(
-                        uri, projects, null,
-                        null, null);
-                int duration = 0;
-                String filePath = null;
-
-                if (cursor.moveToFirst()) {
-                    // path：MediaStore.Audio.Media.DATA
-                    filePath = cursor.getString(cursor
-                            .getColumnIndexOrThrow(MediaStore.Video.Media.DATA));
-                    // duration：MediaStore.Audio.Media.DURATION
-                    duration = cursor
-                            .getInt(cursor
-                                    .getColumnIndexOrThrow(MediaStore.Video.Media.DURATION));
-//                    EMLog.d(TAG, "duration:" + duration);
-                }
-                if (cursor != null) {
-                    cursor.close();
-                    cursor = null;
-                }
-
-                getActivity().setResult(Activity.RESULT_OK, getActivity().getIntent().putExtra("path", filePath).putExtra("dur", duration));
-                getActivity().finish();
-
-            }
+        if (data == null)
+            return;
+        if (requestCode == 100) {
+            Uri data1 = data.getData();
+            getActivity().setResult(Activity.RESULT_OK, data.putExtra("path", URIUtils.getRealFilePath(getActivity().getApplicationContext(), data1)));
+            getActivity().finish();
         }
     }
+//
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode == Activity.RESULT_OK) {
+//            if (requestCode == 100) {
+//                Uri uri = data.getParcelableExtra("uri");
+//                String[] projects = new String[]{MediaStore.Video.Media.DATA,
+//                        MediaStore.Video.Media.DURATION};
+//                Cursor cursor = getActivity().getContentResolver().query(
+//                        uri, projects, null,
+//                        null, null);
+//                int duration = 0;
+//                String filePath = null;
+//
+//                if (cursor.moveToFirst()) {
+//                    // path：MediaStore.Audio.Media.DATA
+//                    filePath = cursor.getString(cursor
+//                            .getColumnIndexOrThrow(MediaStore.Video.Media.DATA));
+//                    // duration：MediaStore.Audio.Media.DURATION
+//                    duration = cursor
+//                            .getInt(cursor
+//                                    .getColumnIndexOrThrow(MediaStore.Video.Media.DURATION));
+////                    EMLog.d(TAG, "duration:" + duration);
+//                }
+//                if (cursor != null) {
+//                    cursor.close();
+//                    cursor = null;
+//                }
+//
+//                getActivity().setResult(Activity.RESULT_OK, getActivity().getIntent().putExtra("path", filePath).putExtra("dur", duration));
+//                getActivity().finish();
+//
+//            }
+//        }
+//    }
 }

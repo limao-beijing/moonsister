@@ -71,6 +71,6 @@ public class ChargeMessageDialogModelImpl implements ChargeMessageDialogModel {
 //                        return null;
 //                    }
 //                });
-//        ObservableUtis.$(observable, DataType.DATA_ZERO, listener);
+//        ObservableMapUtils.$(observable, DataType.DATA_ZERO, listener);
     }
 }

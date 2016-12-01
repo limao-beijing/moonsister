@@ -11,6 +11,6 @@ import static com.hickey.network.ModuleServerApi.getAppAPI;
 public class EaseChatRowChargeImageModelImpl implements EaseChatRowChargeImageModel {
     @Override
     public void getImagePic(String lid, String acthcode, final onLoadDateSingleListener<ChargeResBean> listenter) {
-        ObservableUtis.$(getAppAPI().getChargeMessage(lid, acthcode), DataType.DATA_ZERO, listenter);
+        ObservableMapUtils.$_Map(getAppAPI().getChargeMessage(lid, acthcode), DataType.DATA_ZERO, listenter);
     }
 }

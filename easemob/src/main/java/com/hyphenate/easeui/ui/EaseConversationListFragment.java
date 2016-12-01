@@ -249,22 +249,35 @@ public class EaseConversationListFragment extends EaseBaseFragment {
          * so use synchronized to make sure timestamp of last message won't change.
          */
         synchronized (conversations) {
+
             for (EMConversation conversation : conversations.values()) {
                 if (conversation.getAllMessages().size() != 0) {
                     sortList.add(new Pair<Long, EMConversation>(conversation.getLastMessage().getMsgTime(), conversation));
+                } else {
+                    EMClient.getInstance().chatManager().deleteConversation(conversation.getUserName(), true);
                 }
             }
         }
+
+
         try {
             // Internal is TimSort algorithm, has bug
             sortConversationByLastChatTime(sortList);
+//            if (sortList)
         } catch (Exception e) {
             e.printStackTrace();
         }
+        int i = 0;
         List<EMConversation> list = new ArrayList<EMConversation>();
         for (Pair<Long, EMConversation> sortItem : sortList) {
-            list.add(sortItem.second);
+            if (i > 300) {
+                EMClient.getInstance().chatManager().deleteConversation(sortItem.second.getUserName(), true);
+            } else {
+                list.add(sortItem.second);
+            }
+            i++;
         }
+
         return list;
     }
 

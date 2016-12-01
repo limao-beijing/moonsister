@@ -1,5 +1,6 @@
 package com.hyphenate.easeui.ui;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
@@ -7,12 +8,14 @@ import android.widget.TextView;
 import com.easemob.easeui.R;
 import com.hickey.tool.base.BaseDialogFragment;
 import com.hickey.tool.constant.EnumConstant;
+import com.hickey.tool.js.WebActivity;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.easeui.CustomConstant;
 import com.hyphenate.easeui.mvp.presenter.ChargeMessageDialogPresenter;
 import com.hyphenate.easeui.mvp.presenter.ChargeMessageDialogPresenterImpl;
 import com.hyphenate.easeui.mvp.view.ChargeMessageDialogView;
+
 
 /**
  * Created by jb on 2016/11/25.
@@ -45,6 +48,7 @@ public class ChargeMessageDialog extends BaseDialogFragment implements View.OnCl
         tvMoney.setText("￥ " + money);
         mRootView.findViewById(R.id.tv_submit).setOnClickListener(this);
         mRootView.findViewById(R.id.iv_cancel).setOnClickListener(this);
+        mRootView.findViewById(R.id.tv_rule).setOnClickListener(this);
         presenter = new ChargeMessageDialogPresenterImpl();
         presenter.attachView(this);
     }
@@ -59,6 +63,10 @@ public class ChargeMessageDialog extends BaseDialogFragment implements View.OnCl
                 mOnCallBack.onStatus(this, EnumConstant.DialogCallBack.CANCEL);
             }
             dismissDialogFragment();
+        } else if (i == R.id.tv_rule) {
+            Intent intent = new Intent(getActivity(), WebActivity.class);
+            intent.putExtra("url", "http://module.chuse.hk/index.php/index/chat/html?authcode=" + acthcode);
+            getActivity().startActivity(intent);
         }
     }
 

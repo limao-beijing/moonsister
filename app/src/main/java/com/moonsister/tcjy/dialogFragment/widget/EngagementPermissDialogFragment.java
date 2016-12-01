@@ -28,7 +28,6 @@ public class EngagementPermissDialogFragment extends BaseDialogFragment implemen
     TextView mTvVipRule;
     @Bind(R.id.tv_upgrade_vip)
     TextView tv_upgrade_vip;
-    private ImPermissionDialog.OnCallBack mOnCallBack;
     private EngagementPermissPersenter persenter;
 
     @NonNull

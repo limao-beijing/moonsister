@@ -14,11 +14,13 @@ import com.hickey.network.bean.resposen.ChargeInitBean;
 import com.hickey.network.bean.resposen.ChargeMessageBean;
 import com.hickey.network.bean.resposen.ChargeMessagePayBean;
 import com.hickey.network.bean.resposen.ChargeResBean;
+import com.hickey.network.bean.resposen.InterestBean;
 import com.hickey.network.gson.GsonConverterFactory;
 import com.hickey.tool.base.BaseResponse;
 import com.hickey.tool.security.UnicodeUtils;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Authenticator;
@@ -389,6 +391,31 @@ public class ModuleServerApi {
          */
         @GET("chat/chat_init")
         Observable<BaseResponse<ChargeInitBean>> getChargeMessageInitData(@Query("authcode") String authcode);
+
+        /**
+         * 兴趣选项
+         *
+         * @param authcode
+         * @param channel
+         * @return
+         */
+        @GET("user/get_questions")
+        Observable<BaseResponse<List<InterestBean>>> getInterstSelectInit(@Query("authcode") String authcode,
+                                                                          @Query("channel") String channel);
+
+        /**
+         * 提交选项
+         *
+         * @param content
+         * @param authcode
+         * @param channel
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("user/post_answers")
+        Observable<BaseResponse> getInterstSubmit(@Field("contents") String content,
+                                                  @Field("authcode") String authcode,
+                                                  @Field("channel") String channel);
     }
 
 

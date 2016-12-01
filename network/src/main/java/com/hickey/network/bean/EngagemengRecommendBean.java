@@ -48,6 +48,7 @@ public class EngagemengRecommendBean extends BaseBean {
         private String age;
         private String vip_level;
         private EnumConstant.EngegamentType mEngegamentType;
+        private String mHomeType;
 
         public String getUid() {
             return uid;
@@ -143,6 +144,14 @@ public class EngagemengRecommendBean extends BaseBean {
 
         public EnumConstant.EngegamentType getEngegamentType() {
             return mEngegamentType;
+        }
+
+        public void setHomeType(String homeType) {
+            mHomeType = homeType;
+        }
+
+        public String getHomeType() {
+            return mHomeType;
         }
     }
 }

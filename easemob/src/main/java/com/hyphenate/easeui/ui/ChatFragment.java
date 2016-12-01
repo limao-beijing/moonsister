@@ -355,7 +355,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
 
             case ITEM_CHARGE_IMAGE:
                 Intent chargeIntent = new Intent(getActivity(), ChargeMessageActivity.class);
-                chargeIntent.putExtra("havePerimssion", mHavePermission == EnumConstant.PermissionReasult.HAVE_PERSSION);
+                chargeIntent.putExtra("havePerimssion",mHavePermission==EnumConstant.PermissionReasult.HAVE_PERSSION);
                 chargeIntent.putExtra("id", toChatUsername);
                 chargeIntent.putExtra("authcode", mAuthcode);
                 startActivityForResult(chargeIntent, REQUEST_CODE_CHARGE_MESSAGE);

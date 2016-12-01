@@ -14,6 +14,8 @@ import com.hickey.network.bean.DefaultDataBean;
 import com.hickey.network.bean.DownApkBean;
 import com.hickey.network.bean.DynamicBean;
 import com.hickey.network.bean.DynamicDatailsBean;
+import com.hickey.network.bean.DynamicItemBean;
+import com.hickey.network.bean.EngagemengRecommendBean;
 import com.hickey.network.bean.FrientBaen;
 import com.hickey.network.bean.GetMoneyBean;
 import com.hickey.network.bean.GoodSelectBaen;
@@ -25,7 +27,6 @@ import com.hickey.network.bean.LoginBean;
 import com.hickey.network.bean.NearbyBean;
 import com.hickey.network.bean.PayBean;
 import com.hickey.network.bean.PayRedPacketPicsBean;
-import com.hickey.network.bean.PermissionBean;
 import com.hickey.network.bean.PersonalMessageBean;
 import com.hickey.network.bean.PersonalReviseMessageBean;
 import com.hickey.network.bean.PingbiBean;
@@ -49,9 +50,11 @@ import com.hickey.network.bean.VersionInfo;
 import com.hickey.network.bean.VipRule;
 import com.hickey.network.bean.WithdRawDepositBean;
 import com.hickey.network.gson.GsonConverterFactory;
+import com.hickey.tool.base.BaseResponse;
 import com.hickey.tool.security.UnicodeUtils;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Authenticator;
@@ -1284,18 +1287,43 @@ public class ServerApi {
                                               @Field("channel") String id);
 
 
+//        /**
+//         * 权限检查
+//         *
+//         * @param authcode
+//         * @param type
+//         * @param id
+//         * @return
+//         */
+//        @GET("")
+//        Observable<PermissionBean> checkVip(@Query("authcode") String authcode,
+//                                            @Query("act_type") String type,
+//                                            @Query("channel") String id);
+
         /**
-         * 权限检查
+         * 修改首页初始数据
          *
-         * @param authcode
+         * @param page
          * @param type
-         * @param id
          * @return
          */
-        @GET("")
-        Observable<PermissionBean> checkVip(@Query("authcode") String authcode,
-                                            @Query("act_type") String type,
-                                            @Query("channel") String id);
+        @GET("index/tlist2")
+        Observable<BaseResponse<List<DynamicItemBean>>> gethomeTwoInitData(@Query("page") int page,
+                                                                           @Query("search_type") String type,
+                                                                           @Query("authcode") String authcode,
+                                                                           @Query("channel") String channelId);
+        /**
+         * 修改首页初始数据
+         *
+         * @param page
+         * @param type
+         * @return
+         */
+        @GET("index/tlist2")
+        Observable<BaseResponse<List<EngagemengRecommendBean.DataBean>>> gethomePersonInitData(@Query("page") int page,
+                                                                                               @Query("search_type") String type,
+                                                                                               @Query("authcode") String authcode,
+                                                                                               @Query("channel") String channelId);
     }
 }
 

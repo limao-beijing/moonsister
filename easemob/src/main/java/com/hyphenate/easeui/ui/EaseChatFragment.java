@@ -770,7 +770,8 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
             return;
         }
         if (!message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_IMAGE_MESSAGE, false) &&
-                !message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_VIDEO_MESSAGE, false)) {
+                !message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_VIDEO_MESSAGE, false)&&
+                !message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_RED_PACKET_MESSAGE, false)) {
             if (mMsgListenter != null && !mMsgListenter.isSendMsg(message)) {
                 return;
             }
@@ -785,15 +786,17 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
             message.setChatType(ChatType.ChatRoom);
         }
         //send message
-        JSONObject object = new JSONObject();
-        EaseUser user = EaseUI.getInstance().getUserProfileProvider().getUser(message.getFrom());
+
         try {
+            JSONObject object = new JSONObject();
+            EaseUser user = EaseUI.getInstance().getUserProfileProvider().getUser(message.getFrom());
             object.put(CustomConstant.MESSAGE_Attribute_NIKE, user.getNick());
             object.put(CustomConstant.MESSAGE_Attribute_AVATER, user.getAvatar());
+            message.setAttribute(CustomConstant.ESSAGE_ATTRIBUTE_USERINFO, object);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        message.setAttribute(CustomConstant.ESSAGE_ATTRIBUTE_USERINFO, object);
+
         EMClient.getInstance().chatManager().sendMessage(message);
         //refresh ui
         if (isMessageListInited) {

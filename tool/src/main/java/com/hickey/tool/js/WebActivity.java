@@ -1,4 +1,4 @@
-package com.moonsister.tcjy.js;
+package com.hickey.tool.js;
 
 
 import android.view.KeyEvent;
@@ -9,16 +9,15 @@ import com.hickey.tool.base.BaseActivity;
 import com.hickey.tool.lang.StringUtis;
 import com.hickey.tool.widget.UIUtils;
 import com.hickey.tool.widget.WebView;
-import com.moonsister.tcjy.R;
+import com.moonsister.tool.R;
 
-import butterknife.Bind;
 
 /**
  * Created by jb on 2016/9/8.
  */
 public class WebActivity extends BaseActivity implements WebView.onWebViewListener {
-    @Bind(R.id.web_view)
-    WebView mWebView;
+
+    private WebView mWebView;
 
     @Override
     protected View setRootContentView() {
@@ -28,6 +27,7 @@ public class WebActivity extends BaseActivity implements WebView.onWebViewListen
 
     @Override
     protected void initView() {
+        mWebView = (WebView) findViewById(R.id.web_view);
         String url = getIntent().getStringExtra("url");
         if (StringUtis.isEmpty(url)) {
             finish();
