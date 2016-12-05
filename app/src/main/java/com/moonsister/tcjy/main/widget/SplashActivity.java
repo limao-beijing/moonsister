@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.view.View;
 
 import com.hickey.tool.base.BaseActivity;
-import com.hickey.tool.lang.StringUtis;
 import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.manager.UserInfoManager;
 
 
 /**
@@ -21,14 +19,14 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        String authcode = UserInfoManager.getInstance().getAuthcode();
-        if (StringUtis.isEmpty(authcode)) {
+//        String authcode = UserInfoManager.getInstance().getAuthcode();
+//        if (StringUtis.isEmpty(authcode)) {
 //            startActivity(new Intent(this, ManorGrilActivity.class));
-            startActivity(new Intent(this, WelcomeGuideActivity.class));
-            finish();
-        } else {
-            enterMian();
-        }
+//            startActivity(new Intent(this, WelcomeGuideActivity.class));
+//            finish();
+//        } else {
+        enterMian();
+//        }
 
     }
 

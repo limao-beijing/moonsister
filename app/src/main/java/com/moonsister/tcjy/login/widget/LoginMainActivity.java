@@ -24,11 +24,10 @@ public class LoginMainActivity extends BaseActivity implements LoginMainView {
 
     @Bind(R.id.frameLyout_login_main_content)
     FrameLayout frameLyoutHomeContent;
-    @Bind(R.id.tv_navigation_login)//登录按钮
+    @Bind(R.id.tv_navigation_login)
     TextView tv_navigation_login;
-    @Bind(R.id.tv_navigation_register)//注册按钮
+    @Bind(R.id.tv_navigation_register)
     TextView tv_navigation_register;
-
     private LoginMainPresenter presenter;
     private FragmentManager fragmentManager;
     protected String regiterCode;
@@ -48,11 +47,9 @@ public class LoginMainActivity extends BaseActivity implements LoginMainView {
     protected View setRootContentView() {
         presenter = new LoginMainPresenterImpl(this);
         return UIUtils.inflateLayout(R.layout.activity_login_main);
-//        return UIUtils.inflateLayout(R.layout.login_page);
     }
 
     private BaseFragment currentFragment, loginFragment, regiterFragment;
-//    private BaseFragment currentFragment, loginFragment;
 
     @Override
     public void swicth2Login() {

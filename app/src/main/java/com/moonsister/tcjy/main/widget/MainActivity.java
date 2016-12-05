@@ -17,7 +17,6 @@ import com.hickey.tool.ConfigUtils;
 import com.hickey.tool.activity.FragmentUtils;
 import com.hickey.tool.base.BaseActivity;
 import com.hickey.tool.base.BaseFragment;
-import com.hickey.tool.lang.StringUtis;
 import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
@@ -25,7 +24,7 @@ import com.moonsister.tcjy.dialogFragment.DialogMannager;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.find.widget.FindFragment;
-import com.moonsister.tcjy.home.widget.HomeTopFragment;
+import com.moonsister.tcjy.home.widget.HomeFragment;
 import com.moonsister.tcjy.im.widget.IMHomeFragment;
 import com.moonsister.tcjy.main.presenter.MainPresenter;
 import com.moonsister.tcjy.main.presenter.MainPresenterImpl;
@@ -34,8 +33,8 @@ import com.moonsister.tcjy.manager.CallLoopManager;
 import com.moonsister.tcjy.manager.GaodeManager;
 import com.moonsister.tcjy.manager.IMLoopManager;
 import com.moonsister.tcjy.manager.IMManager;
+import com.moonsister.tcjy.manager.RecommendMananger;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.my.widget.HreatFragment;
 import com.moonsister.tcjy.my.widget.MyFragment;
 import com.moonsister.tcjy.update.UpdateManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
@@ -71,8 +70,8 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     protected void onStart() {
         super.onStart();
-        if (StringUtis.isEmpty(UserInfoManager.getInstance().getAuthcode()))
-            shwoSelectSexDialog();
+//        if (StringUtis.isEmpty(UserInfoManager.getInstance().getAuthcode()))
+//            shwoSelectSexDialog();
 
     }
 
@@ -194,8 +193,11 @@ public class MainActivity extends BaseActivity implements MainView {
         /**
          * 打招呼轮询
          */
-        CallLoopManager.getInstance().start(this, appx_banner_container, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
-
+//        CallLoopManager.getInstance().start(this, appx_banner_container, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        /**
+         * 首页推荐会员
+         */
+        RecommendMananger.getInstance().start();
     }
 
 
@@ -215,8 +217,8 @@ public class MainActivity extends BaseActivity implements MainView {
     public void switch2Home() {
 //        BaiduManager.getInstance(this).show(this, appx_banner_container);
         if (homeFragment == null)
-//            homeFragment = new HomeFragment();
-            homeFragment = new HomeTopFragment();
+            homeFragment = new HomeFragment();
+//            homeFragment = new HomeTopFragment();
         enterPage(homeFragment);
     }
 
@@ -257,8 +259,8 @@ public class MainActivity extends BaseActivity implements MainView {
             return;
         }
         if (myFragment == null)
-//            myFragment = new MyFragment();
-            myFragment = new HreatFragment();
+            myFragment = new MyFragment();
+//            myFragment = new HreatFragment();
 
         enterPage(myFragment);
 

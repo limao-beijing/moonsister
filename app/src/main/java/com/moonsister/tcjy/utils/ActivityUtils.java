@@ -16,6 +16,7 @@ import com.hickey.tool.lang.StringUtis;
 import com.hickey.tool.widget.UIUtils;
 import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.ui.PlayDirectlyActivity;
+import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.center.widget.BuyDynamicRedPackketActivity;
 import com.moonsister.tcjy.center.widget.DefaultDynamicSendActivity;
 import com.moonsister.tcjy.center.widget.DynamicPublishActivity;
@@ -43,6 +44,7 @@ import com.moonsister.tcjy.login.widget.FindPasswordNextActivity;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
 import com.moonsister.tcjy.main.model.ImageScanModelImpl;
 import com.moonsister.tcjy.main.widget.BuyVipActivity;
+import com.moonsister.tcjy.main.widget.DynamicActivity;
 import com.moonsister.tcjy.main.widget.DynamicAtionActivity;
 import com.moonsister.tcjy.main.widget.DynamicDatailsActivity;
 import com.moonsister.tcjy.main.widget.HomePageActivity;
@@ -180,11 +182,12 @@ public class ActivityUtils {
      * 进入用户信息列表
      */
     public static void startDynamicActivity(String userId) {
+        Intent intent = getIntent(DynamicActivity.class);
 //        Intent intent = new Intent(ConfigUtils.getInstance().getApplicationContext(), DynamicActivity.class);
-//        LogUtils.e(TAG, "userid : " + userId);
-//        intent.putExtra(AppConstant.USER_ID, userId);
-//        startActivity(intent);
-        startHomePageActivity(userId);
+        LogUtils.e(TAG, "userid : " + userId);
+        intent.putExtra(AppConstant.USER_ID, userId);
+        startActivity(intent);
+//        startHomePageActivity(userId);
     }
 
     /**
@@ -264,10 +267,10 @@ public class ActivityUtils {
      * @param avatar
      */
     public static void startAppConversationActivity(String userId, String name, String avatar) {
-//        if (!UserInfoManager.getInstance().isLogin()) {
-//            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
-//            return;
-//        }
+        if (!UserInfoManager.getInstance().isLogin()) {
+            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+            return;
+        }
 //        Uri uri = Uri.parse("rong://" + ConfigUtils.getInstance().getApplicationContext().getApplicationInfo().processName)
 //                .buildUpon().appendPath("conversation")
 //                .appendPath(Conversation.ConversationType.PRIVATE.getName().toLowerCase())
@@ -315,6 +318,10 @@ public class ActivityUtils {
      * 认证
      */
     public static void startCertificationActivity() {
+        if (!UserInfoManager.getInstance().isLogin()) {
+            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+            return;
+        }
 //        startActivity(CertificationActivity.class);
         startRenZhengActivity();
     }
@@ -652,6 +659,10 @@ public class ActivityUtils {
      * 开启购买vip
      */
     public static void startBuyVipActivity() {
+        if (!UserInfoManager.getInstance().isLogin()) {
+            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+            return;
+        }
         Intent intent = getIntent(BuyVipActivity.class);
         startActivity(intent);
     }
