@@ -109,8 +109,8 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
             });
 
             xlv.addHeaderView(headHolder.getContentView());
-            presenter.loadHeader(userId);
-            headHolder.onClick(headHolder.getContentView().findViewById(R.id.rl_all));
+//            presenter.loadHeader(userId);
+//            headHolder.onClick(headHolder.getContentView().findViewById(R.id.rl_all));
         }
         xlv.setVerticalLinearLayoutManager();
         xlv.setLoadingListener(new XRecyclerView.LoadingListener() {
@@ -128,10 +128,13 @@ public class HomePageFragment extends BaseFragment implements HomePageFragmentVi
                 presenter.loadMore(userId, type);
             }
         });
-        if (isAddHeaderView()) {
-            presenter.loadHeader(userId);
-        }
         xlv.setRefreshing(true);
+//        if (isAddHeaderView()) {
+//            presenter.loadHeader(userId);
+//        } else {
+//
+//        }
+
         setRx();
     }
 

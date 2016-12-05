@@ -2,7 +2,9 @@ package com.moonsister.tcjy.home.widget;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,7 +29,7 @@ import butterknife.OnClick;
 /**
  * Created by jb on 2016/7/10.
  */
-public class SearchReasonActivity extends BaseActivity implements TextWatcher, SearchResultActivityView {
+public class SearchReasonActivity extends BaseActivity implements TextWatcher, SearchResultActivityView, View.OnKeyListener {
     @Bind(R.id.et_channel_find)
     EditText etChannelFind;
     @Bind(R.id.btn_search_pager_cancel)
@@ -57,13 +59,27 @@ public class SearchReasonActivity extends BaseActivity implements TextWatcher, S
         xlv.setEmptyView(tv_not_data);
         presenter = new SearchResultActivityPresenterImpl();
         presenter.attachView(this);
-        search();
+        etChannelFind.setHint(key);
+        etChannelFind.setOnKeyListener(this);
+        saveKey();
+        presenter.loadBasicData(key);
+
     }
 
     private void search() {
-        etChannelFind.setHint(key);
-        saveKey();
-        presenter.loadBasicData(key);
+        String s = btn_search_pager_cancel.getText().toString();
+        if (StringUtis.equals(s, UIUtils.getStringRes(R.string.cancel))) {
+            finish();
+        } else {
+            key = etChannelFind.getText().toString();
+//            if (adapter != null)
+//                adapter=null;
+            etChannelFind.setHint(key);
+            saveKey();
+            presenter.loadBasicData(key);
+        }
+
+
     }
 
     private void saveKey() {
@@ -129,9 +145,9 @@ public class SearchReasonActivity extends BaseActivity implements TextWatcher, S
         if (searchReasonBaen == null)
             return;
 //        if (adapter == null) {
-            adapter = new SearchAdapter(searchReasonBaen.getData());
-            adapter.setSearchReasonActivityView(this);
-            xlv.setAdapter(adapter);
+        adapter = new SearchAdapter(searchReasonBaen.getData());
+        adapter.setSearchReasonActivityView(this);
+        xlv.setAdapter(adapter);
 //        } else {
 //            adapter.addListData(searchReasonBaen.getData());
 //            adapter.onRefresh();
@@ -140,14 +156,20 @@ public class SearchReasonActivity extends BaseActivity implements TextWatcher, S
 
     @OnClick(R.id.btn_search_pager_cancel)
     public void onClick() {
-        String s = btn_search_pager_cancel.getText().toString();
-        if (StringUtis.equals(s, UIUtils.getStringRes(R.string.cancel))) {
-            finish();
-        } else {
-            key = etChannelFind.getText().toString();
-//            if (adapter != null)
-//                adapter=null;
+        search();
+
+    }
+
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_ENTER) {
+            // 先隐藏键盘
+            ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
+                    .hideSoftInputFromWindow(SearchReasonActivity.this.getCurrentFocus()
+                            .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            //进行搜索操作的方法，在该方法中可以加入mEditSearchUser的非空判断
             search();
         }
+        return false;
     }
 }

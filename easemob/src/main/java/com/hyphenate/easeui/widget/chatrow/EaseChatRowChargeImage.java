@@ -28,7 +28,7 @@ import com.hyphenate.exceptions.HyphenateException;
 /**
  * Created by jb on 2016/11/22.
  */
-public class EaseChatRowChargeImage extends EaseChatRow implements View.OnClickListener, EaseChatRowChargeImageView {
+public class EaseChatRowChargeImage extends EaseChatRow implements EaseChatRowChargeImageView {
 
     private TextView tv_msg, tv_money, tv_pic_number;
     private ImageView iv_image;
@@ -68,9 +68,17 @@ public class EaseChatRowChargeImage extends EaseChatRow implements View.OnClickL
 
     @Override
     protected void onSetUpView() {
+
         try {
-            Glide.with(this.getContext()).load(message.getStringAttribute("pic")).into(iv_image);
             expireTime = message.getLongAttribute(CustomConstant.ESSAGE_ATTRIBUTE_EXPIRE_TIME, 0);
+            if (expireTime < System.currentTimeMillis() / 1000) {
+                iv_image.setBackgroundResource(R.drawable.em_charge_expire);
+                tv_money.setVisibility(GONE);
+                tv_msg.setVisibility(GONE);
+                rl_charge_bg.setVisibility(GONE);
+                return;
+            }
+            Glide.with(this.getContext()).load(message.getStringAttribute("pic")).into(iv_image);
             money = message.getStringAttribute("money");
             tv_money.setText("红包图集,需支付" + money + "元拆开查看");
             int PicNumber = message.getIntAttribute(CustomConstant.ESSAGE_ATTRIBUTE_PIC_NUMBER, 0);
@@ -91,17 +99,11 @@ public class EaseChatRowChargeImage extends EaseChatRow implements View.OnClickL
         } catch (Exception e) {
             e.printStackTrace();
         }
-        iv_image.setOnClickListener(this);
     }
 
 
     @Override
     protected void onBubbleClick() {
-
-    }
-
-    @Override
-    public void onClick(View v) {
         if (expireTime < System.currentTimeMillis() / 1000) {
             transfePageMsg("资源已过期");
             return;

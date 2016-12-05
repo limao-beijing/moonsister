@@ -51,6 +51,7 @@ public class DynamicItemBean extends BaseDataBean {
     private String vip_view_num;
     private String buy_num;
     private String ispay;
+    private int mPageType;
 
     public String getVip_view_num() {
         return vip_view_num;
@@ -331,5 +332,13 @@ public class DynamicItemBean extends BaseDataBean {
 
     public void setProfession(String profession) {
         this.profession = profession;
+    }
+
+    public void setPageType(int pageType) {
+        mPageType = pageType;
+    }
+
+    public int getPageType() {
+        return mPageType;
     }
 }

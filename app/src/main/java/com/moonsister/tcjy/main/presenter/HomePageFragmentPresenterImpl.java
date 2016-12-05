@@ -112,9 +112,9 @@ public class HomePageFragmentPresenterImpl implements HomePageFragmentPresenter,
                     }
                 }
 
-
+                page++;
             }
-            page++;
+
         }
         view.hideLoading();
     }

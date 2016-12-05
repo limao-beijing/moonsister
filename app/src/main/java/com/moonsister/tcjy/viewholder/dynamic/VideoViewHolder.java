@@ -124,7 +124,7 @@ public class VideoViewHolder extends BaseRecyclerViewHolder<DynamicItemBean> {
 //                public void onPrepared(MediaPlayer mp) {
 //                    iv_play_background.setVisibility(View.GONE);
 //                    iv_play.setVisibility(View.GONE);
-//                    play.start();
+//                    play.showTopBanner();
 //                }
 //            });
 //

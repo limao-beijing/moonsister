@@ -67,11 +67,55 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        onBaseStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        onBaseResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        onBasePause();
+        if (isFinishing()) {
+            hideSoftInput();
+        }
+        MobclickAgent.onPause(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        onBaseStop();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        onBaseDestroy();
+        ButterKnife.unbind(this);
+        if (progressDialog != null) {
+            if (progressDialog.isShowing()) {
+            }
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
+        ConfigUtils.getInstance().removeActivity(this);
+    }
+
     public boolean isShowTitleView() {
         return true;
     }
 
-    protected void showToast(String msg) {
+    public void showToast(String msg) {
         UIUtils.showToast(this, msg);
     }
 
@@ -151,55 +195,6 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     protected abstract void initView();
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        onBaseStart();
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        onBaseResume();
-        MobclickAgent.onResume(this);
-    }
-
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        onBasePause();
-        if (isFinishing()) {
-            hideSoftInput();
-        }
-        MobclickAgent.onPause(this);
-    }
-
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        onBaseStop();
-
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        onBaseDestroy();
-        ButterKnife.unbind(this);
-        if (progressDialog != null) {
-            if (progressDialog.isShowing()) {
-            }
-            progressDialog.dismiss();
-            progressDialog = null;
-        }
-        ConfigUtils.getInstance().removeActivity(this);
-    }
-
-
     /**
      * super.onDestroy();子类继承
      *
@@ -241,7 +236,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     /**
      * 初始化加载进度条
      */
-    private void    initProgressDialog() {
+    private void initProgressDialog() {
         progressDialog = new ProgressDialog(this) {
             @Override
             public String getProgressDialogMsg() {
@@ -342,4 +337,17 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     }
 
 
+    public void showLoading() {
+        showProgressDialog();
+    }
+
+
+    public void hideLoading() {
+        hideProgressDialog();
+    }
+
+
+    public void transfePageMsg(String msg) {
+        showToast(msg);
+    }
 }

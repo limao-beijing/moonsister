@@ -270,7 +270,7 @@ public class EaseConversationListFragment extends EaseBaseFragment {
         int i = 0;
         List<EMConversation> list = new ArrayList<EMConversation>();
         for (Pair<Long, EMConversation> sortItem : sortList) {
-            if (i > 300) {
+            if (i > 80) {
                 EMClient.getInstance().chatManager().deleteConversation(sortItem.second.getUserName(), true);
             } else {
                 list.add(sortItem.second);

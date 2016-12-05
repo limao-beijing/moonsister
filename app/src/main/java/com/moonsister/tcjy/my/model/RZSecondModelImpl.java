@@ -82,7 +82,7 @@ public class RZSecondModelImpl implements RZSecondModel {
     }
 
     private void sumbitData(String address1, String address2, String height, String sexid, String nike, String avaterpath, ArrayList<String> pics, String orderID, onLoadDateSingleListener listener) {
-        LogUtils.e(RZSecondModelImpl.this, "start upload");
+        LogUtils.e(RZSecondModelImpl.this, "showTopBanner upload");
         ArrayList<DynamicContent> aliyunPtahs = new ArrayList<DynamicContent>();
         Observable.create(new Observable.OnSubscribe<ArrayList<DynamicContent>>() {
             @Override

@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -95,6 +94,8 @@ public class InterestDialogFragment extends BaseDialogFragment implements Intere
         int dimension = (int) getResources().getDimension(R.dimen.x96);
         Drawable drawable = getResources().getDrawable(R.mipmap.df_interest_point);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+
+//        Drawable lineBg = getResources().getDrawable(R.drawable.shape_imaginary_line);
         mLlContent.removeAllViews();
         int size = bean.getAnswer().size();
         for (int i = 0; i < size; i++) {
@@ -108,13 +109,13 @@ public class InterestDialogFragment extends BaseDialogFragment implements Intere
             tv.setOnClickListener(this);
             tv.setTextColor(getResources().getColor(R.color.black));
             mLlContent.addView(tv, params);
-            if (i != size - 1) {
-                ImageView line = new ImageView(getContext());
-                LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                line.setBackground(getResources().getDrawable(R.drawable.shape_imaginary_line));
-                line.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-                mLlContent.addView(line, params1);
-            }
+//            if (i != size - 1) {
+//                ImageView line = new ImageView(getContext());
+//                LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//                line.setBackground(lineBg);
+//                line.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+//                mLlContent.addView(line, params1);
+//            }
         }
 
     }

@@ -150,7 +150,7 @@ public class FillOutMessageActivity extends BaseActivity implements FilloutActiv
 //                        e.printStackTrace();
 //                    }
 //                }
-//            }).start();
+//            }).showTopBanner();
 //        }
 //    }
 

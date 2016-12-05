@@ -24,7 +24,7 @@ import com.hyphenate.exceptions.HyphenateException;
 /**
  * Created by jb on 2016/11/24.
  */
-public class EaseChatRowChargeVideo extends EaseChatRow implements View.OnClickListener, EaseChatRowChargeImageView {
+public class EaseChatRowChargeVideo extends EaseChatRow implements EaseChatRowChargeImageView {
     private TextView tv_msg, tv_money, tv_video_time;
     private ImageView iv_image;
     private View rl_charge_bg;
@@ -69,10 +69,21 @@ public class EaseChatRowChargeVideo extends EaseChatRow implements View.OnClickL
 
     @Override
     protected void onSetUpView() {
+
         try {
-            Glide.with(this.getContext()).load(message.getStringAttribute("pic")).into(iv_image);
-            money = message.getStringAttribute(CustomConstant.ESSAGE_ATTRIBUTE_MONEY, "");
             expireTime = message.getLongAttribute(CustomConstant.ESSAGE_ATTRIBUTE_EXPIRE_TIME, 0);
+
+            if (expireTime < System.currentTimeMillis() / 1000) {
+                iv_image.setBackgroundResource(R.drawable.em_charge_expire);
+                tv_money.setVisibility(GONE);
+                tv_msg.setVisibility(GONE);
+                rl_charge_bg.setVisibility(View.GONE);
+                return;
+            }
+            money = message.getStringAttribute(CustomConstant.ESSAGE_ATTRIBUTE_MONEY, "");
+            Glide.with(this.getContext()).load(message.getStringAttribute("pic")).into(iv_image);
+
+
             long playTime = message.getLongAttribute(CustomConstant.ESSAGE_ATTRIBUTE_PLAY_TIME, 0);
             tv_money.setText("红包视频," + playTime + "秒试看");
 
@@ -88,7 +99,6 @@ public class EaseChatRowChargeVideo extends EaseChatRow implements View.OnClickL
                 }
 
             }
-            iv_image.setOnClickListener(this);
 
         } catch (HyphenateException e) {
             e.printStackTrace();
@@ -97,7 +107,11 @@ public class EaseChatRowChargeVideo extends EaseChatRow implements View.OnClickL
 
     @Override
     protected void onBubbleClick() {
-
+        if (expireTime < System.currentTimeMillis() / 1000) {
+            transfePageMsg("资源已过期");
+            return;
+        }
+        presenter.getImagePic(lid, mAuthcode);
     }
 
     @Override
@@ -127,12 +141,4 @@ public class EaseChatRowChargeVideo extends EaseChatRow implements View.OnClickL
 
     }
 
-    @Override
-    public void onClick(View v) {
-        if (expireTime < System.currentTimeMillis() / 1000) {
-            transfePageMsg("资源已过期");
-            return;
-        }
-        presenter.getImagePic(lid, mAuthcode);
-    }
 }

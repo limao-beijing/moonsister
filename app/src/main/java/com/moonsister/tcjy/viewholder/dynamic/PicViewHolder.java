@@ -67,7 +67,7 @@ public class PicViewHolder extends BaseRecyclerViewHolder<DynamicItemBean> {
             tv_add_v.setVisibility(View.GONE);
         tvContent.setText(bean.getTitle());
 //        tvTime.setText(TimeUtils.format(bean.getCreate_time() * 1000));
-        if (StringUtis.equals(bean.getIstop(),"1")) {
+        if (StringUtis.equals(bean.getIstop(), "1")) {
             tvTime.setText(UIUtils.getStringRes(R.string.up_dynamic));
             tvTime.setTextColor(UIUtils.getResources().getColor(R.color.home_navigation_text_red));
         } else {
@@ -103,7 +103,7 @@ public class PicViewHolder extends BaseRecyclerViewHolder<DynamicItemBean> {
         gv_user_pic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ActivityUtils.startDynamicDatailsActivity(bean.getLatest_id(),bean.getType());
+                ActivityUtils.startDynamicDatailsActivity(bean.getLatest_id(), bean.getType());
             }
         });
         gv_user_pic.setOnTouchInvalidPositionListener(new NoScrollGridView.OnTouchInvalidPositionListener() {
@@ -115,8 +115,8 @@ public class PicViewHolder extends BaseRecyclerViewHolder<DynamicItemBean> {
     }
 
     @Override
-    protected void onItemclick(View view,DynamicItemBean bean, int position) {
-        ActivityUtils.startDynamicDatailsActivity(bean.getLatest_id(),bean.getType());
+    protected void onItemclick(View view, DynamicItemBean bean, int position) {
+        ActivityUtils.startDynamicDatailsActivity(bean.getLatest_id(), bean.getType());
     }
 
     /**
@@ -207,7 +207,7 @@ public class PicViewHolder extends BaseRecyclerViewHolder<DynamicItemBean> {
                     if (StringUtis.equals(bean.getIspay(), "2")) {
                         ActivityUtils.startPayDynamicRedPackketActivity(bean.getMoney(), bean.getLatest_id());
                     } else {
-                        ActivityUtils.startImagePagerActivity(bean.getImg(), position);
+                        ActivityUtils.startImagePagerActivity(bean.getLatest_id(), bean.getImg(), position);
                     }
                 }
             });

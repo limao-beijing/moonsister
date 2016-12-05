@@ -38,7 +38,7 @@ public class HomeTopFragment extends BaseFragment {
     protected void initData() {
         onClick(tvHomeHot);
         bannerManager = new BannerManager();
-        bannerManager.start(getActivity(), flBanner);
+        bannerManager.showTopBanner(getActivity(), flBanner);
     }
 
     @Override

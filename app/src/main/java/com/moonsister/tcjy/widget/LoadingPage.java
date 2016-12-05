@@ -118,7 +118,7 @@ public abstract class LoadingPage<T> extends FrameLayout {
         if (state == STATE_NONE) {
             state = STATE_LOADING;
             // 创建了新的线程 复用android 自带的容器
-            // new Thread().start(); // 而应该对线程进行复用
+            // new Thread().showTopBanner(); // 而应该对线程进行复用
             // 线程池的概念
             Observable.create(new Observable.OnSubscribe<LoadResult>() {
                 @Override

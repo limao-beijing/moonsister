@@ -57,6 +57,8 @@
             android:layout_toRightOf="@+id/iv_search_icon"
             android:background="@null"
             android:hint="@string/search"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
             android:textColor="@color/white_778998"
             android:textColorHint="@color/text_gray_778998"
             android:textSize="@dimen/text_size_12"/>

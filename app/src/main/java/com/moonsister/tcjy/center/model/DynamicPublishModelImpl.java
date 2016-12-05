@@ -35,7 +35,7 @@ import rx.schedulers.Schedulers;
 public class DynamicPublishModelImpl implements DynamicPublishModel {
     @Override
     public void sendDynamicPics(EnumConstant.DynamicType dynamicType, String content, List<String> srcdatas, String tags, String address, onLoadDateSingleListener listener) {
-        LogUtils.e(DynamicPublishModelImpl.this, "start upload");
+        LogUtils.e(DynamicPublishModelImpl.this, "showTopBanner upload");
 //        ArrayList<DynamicContent> aliyunPtahs = new ArrayList<DynamicContent>();
 
         Observable.create(new Observable.OnSubscribe<ArrayList<DynamicContent>>() {

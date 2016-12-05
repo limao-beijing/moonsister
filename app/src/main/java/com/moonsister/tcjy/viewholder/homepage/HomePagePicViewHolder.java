@@ -92,7 +92,7 @@ public class HomePagePicViewHolder extends BaseHomePageViewHolder {
                     if (StringUtis.equals(bean.getIspay(), "2")) {
                         ActivityUtils.startPayDynamicRedPackketActivity(bean.getMoney(), bean.getLatest_id());
                     } else {
-                        ActivityUtils.startImagePagerActivity(bean.getImg(), position);
+                        ActivityUtils.startImagePagerActivity(bean.getLatest_id(), bean.getImg(), position);
                     }
                 }
             });

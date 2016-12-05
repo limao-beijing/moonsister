@@ -19,6 +19,7 @@ import java.util.List;
  */
 public class HomeDynamicFragment extends BaseListFragment<HomePageFragmentAdapter, DynamicItemBean> implements HomeDynamicView {
     private HomeDynamicFragmentPresenter presenter;
+    private String upID;
 
     @Override
     protected void initChildData() {
@@ -59,8 +60,11 @@ public class HomeDynamicFragment extends BaseListFragment<HomePageFragmentAdapte
     }
 
     @Override
-    public void setInitData(List<DynamicItemBean> bean) {
-        addData(bean);
+    public void setInitData(List<DynamicItemBean> t) {
+        for (DynamicItemBean itemBean : t) {
+            itemBean.setPageType(1);
+        }
+        addData(t);
     }
 
     private void setRx() {

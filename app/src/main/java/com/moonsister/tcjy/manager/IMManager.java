@@ -380,6 +380,10 @@ public class IMManager {
         IMManager.getInstance().upUserInfo(uid);
     }
 
+    /**
+     * 再次提醒时间
+     */
+    private long notifierTime;
 
     public void setMessageListener() {
 
@@ -397,8 +401,12 @@ public class IMManager {
                         String avater = userinfo.getString("avater");
                         String from = message.getFrom();
                         saveUserInfo(from, name, avater);
-                        EaseUI instance = EaseUI.getInstance();
-                        instance.getNotifier().onNewMsg(message);
+                        long l = System.currentTimeMillis();
+                        if ((l - notifierTime) > 30000) {
+                            EaseUI instance = EaseUI.getInstance();
+                            instance.getNotifier().onNewMsg(message);
+                            notifierTime = l;
+                        }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

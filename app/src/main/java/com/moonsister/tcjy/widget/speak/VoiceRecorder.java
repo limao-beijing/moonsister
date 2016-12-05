@@ -72,7 +72,7 @@ public class VoiceRecorder {
             }
         }).start();
         this.startTime = new Date().getTime();
-//    EMLog.d("voice", "start voice recording to file:" + this.file.getAbsolutePath());
+//    EMLog.d("voice", "showTopBanner voice recording to file:" + this.file.getAbsolutePath());
         return this.file == null ? null : this.file.getAbsolutePath();
     }
 

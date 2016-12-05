@@ -21,7 +21,6 @@ public class IMLoopManager {
     private IMManagerHandler handler;
     private String authcode;
     private String channel;
-
     public static IMLoopManager getInstance() {
         if (instance == null) {
             synchronized (IMManager.class) {

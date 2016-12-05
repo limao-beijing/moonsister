@@ -228,7 +228,7 @@ public class RenZhengActivityModelImpl implements RenZhengActivityModel {
 
     //    @Override
 //    public void sendDynamicPics(EnumConstant.DynamicType dynamicType, String content, List<String> srcdatas, String address, onLoadDateSingleListener defaultDynamicPresenter) {
-//        LogUtils.e(RenZhengActivityModelImpl.this, "start upload");
+//        LogUtils.e(RenZhengActivityModelImpl.this, "showTopBanner upload");
 ////        ArrayList<DynamicContent> aliyunPtahs = new ArrayList<DynamicContent>();
 //
 //        Observable.create(new Observable.OnSubscribe<ArrayList<DynamicContent>>() {

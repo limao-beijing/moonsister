@@ -3,9 +3,12 @@ package com.moonsister.tcjy.home.widget;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -16,10 +19,12 @@ import com.moonsister.tcjy.R;
 import butterknife.Bind;
 import butterknife.OnClick;
 
+import static android.content.Context.INPUT_METHOD_SERVICE;
+
 /**
  * Created by jb on 2016/8/26.
  */
-public class SearchHeaderFragment extends BaseFragment implements TextWatcher {
+public class SearchHeaderFragment extends BaseFragment implements TextWatcher, TextView.OnEditorActionListener {
     @Bind(R.id.tv_cancel)
     TextView tvCancel;
     @Bind(R.id.et_content)
@@ -38,6 +43,7 @@ public class SearchHeaderFragment extends BaseFragment implements TextWatcher {
     @Override
     protected void initData() {
         etContent.addTextChangedListener(this);
+        etContent.setOnEditorActionListener(this);
     }
 
 
@@ -86,6 +92,23 @@ public class SearchHeaderFragment extends BaseFragment implements TextWatcher {
         if (etContent != null)
             etContent.setText(key);
     }
+
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            ((InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE))
+                    .hideSoftInputFromWindow(getActivity().getCurrentFocus()
+                            .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            //进行搜索操作的方法，在该方法中可以加入mEditSearchUser的非空判断
+            if (!StringUtis.equals(tvCancel.getText().toString(), getString(R.string.cancel)))
+                if (listener != null) {
+                    listener.search(etContent.getText().toString());
+
+                }
+        }
+        return false;
+    }
+
 
     /**
      * 文字改变

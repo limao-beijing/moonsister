@@ -33,11 +33,11 @@
     </RelativeLayout>
 
     <ScrollView
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rl_head"
-        android:layout_marginTop="@dimen/x50">
+        android:layout_marginTop="@dimen/x50"
+        android:paddingBottom="@dimen/x50">
 
         <LinearLayout
 

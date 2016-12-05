@@ -8,6 +8,7 @@ import com.hickey.network.bean.DynamicItemBean;
 import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.HomePageFragmentAdapter;
+import com.moonsister.tcjy.main.model.ImageScanModelImpl;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.hickey.tool.ConfigUtils;
 import com.moonsister.tcjy.widget.speak.VoicePlay;
@@ -47,6 +48,8 @@ public class HomePageVideoViewHolder extends BaseHomePageViewHolder {
                 if (StringUtis.equals(dynamicItemBean.getIspay(), "2")) {
                     ActivityUtils.startPayDynamicRedPackketActivity(dynamicItemBean.getMoney(), dynamicItemBean.getLatest_id());
                 } else {
+                    ImageScanModelImpl model = new ImageScanModelImpl();
+                    model.upImageScanCount(dynamicItemBean.getLatest_id());
                     if (type == HomePageFragmentAdapter.TYPE_CHARGE_VIDEO || type == HomePageFragmentAdapter.TYPE_FREE_VIDEO) {
                         ActivityUtils.startShowShortVideoActivity(dynamicItemBean.getVideo());
                     } else {

@@ -137,7 +137,10 @@ public class BaseHomePageViewHolder extends BaseRecyclerViewHolder<DynamicItemBe
 
     @Override
     protected void onItemclick(View view, DynamicItemBean bean, int position) {
-        ActivityUtils.startDynamicDatailsActivity(bean.getLatest_id(), bean.getType());
+        if (bean.getPageType() == 1) {
+            ActivityUtils.startHomePageActivity(bean.getUid());
+        } else
+            ActivityUtils.startDynamicDatailsActivity(bean.getLatest_id(), bean.getType());
     }
 
     private void isShowRed(int type, DynamicItemBean dynamicItemBean) {

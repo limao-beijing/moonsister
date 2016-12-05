@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x30"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginRight="@dimen/x30"
+                android:background="#88000000"
+                android:orientation="vertical">
+
+    <com.moonsister.tcjy.widget.RoundedImageView
+        android:id="@+id/riv_avater"
+        android:layout_width="@dimen/x94"
+        android:layout_height="@dimen/x94"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/x20"
+        android:layout_marginLeft="@dimen/x30"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/riv_avater"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_toRightOf="@+id/riv_avater"
+        android:ellipsize="end"
+        android:enabled="true"
+        android:maxLines="1"
+        android:text="@string/loading"
+        android:textColor="@color/white"
+        android:textSize="13sp"/>
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="@dimen/x188"
+        android:layout_height="@dimen/x48"
+        android:layout_alignBottom="@+id/riv_avater"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_toRightOf="@+id/riv_avater"
+        android:background="@drawable/shape_background_white_f8f8f8"
+        android:gravity="center"
+        android:text="狠心忽略"
+        android:textColor="@color/yellow_ff8201"
+        android:textSize="13sp"/>
+
+    <TextView
+        android:id="@+id/tv_ok"
+        android:layout_width="@dimen/x188"
+        android:layout_height="@dimen/x48"
+        android:layout_alignBottom="@+id/riv_avater"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_toRightOf="@+id/tv_cancel"
+        android:background="@drawable/shape_background_yellow_ff8201"
+        android:gravity="center"
+        android:text="打个招呼"
+        android:textColor="@color/white"
+        android:textSize="13sp"/>
+
+</RelativeLayout>

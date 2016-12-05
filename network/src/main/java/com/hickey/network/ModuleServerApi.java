@@ -10,10 +10,12 @@ import com.hickey.network.bean.EngagementPermissTextBane;
 import com.hickey.network.bean.EngagementTextBane;
 import com.hickey.network.bean.PayBean;
 import com.hickey.network.bean.StatusBean;
+import com.hickey.network.bean.resposen.CallMessageBean;
 import com.hickey.network.bean.resposen.ChargeInitBean;
 import com.hickey.network.bean.resposen.ChargeMessageBean;
 import com.hickey.network.bean.resposen.ChargeMessagePayBean;
 import com.hickey.network.bean.resposen.ChargeResBean;
+import com.hickey.network.bean.resposen.IndividualResumeBean;
 import com.hickey.network.bean.resposen.InterestBean;
 import com.hickey.network.gson.GsonConverterFactory;
 import com.hickey.tool.base.BaseResponse;
@@ -416,6 +418,59 @@ public class ModuleServerApi {
         Observable<BaseResponse> getInterstSubmit(@Field("contents") String content,
                                                   @Field("authcode") String authcode,
                                                   @Field("channel") String channel);
+
+        /**
+         * 用户信息详细
+         *
+         * @param uid
+         * @param authcode
+         * @param channel
+         * @return
+         */
+        @GET("user/detail")
+        Observable<BaseResponse<IndividualResumeBean>> getIndividualResume(@Query("to_uid") String uid,
+                                                                           @Query("authcode") String authcode,
+                                                                           @Query("channel") String channel);
+
+        /**
+         * 数据推送
+         *
+         * @param authcode
+         * @param adress
+         * @param id
+         * @return
+         */
+        @GET("push/index")
+        Observable<BaseResponse<List<CallMessageBean>>> getCallMessagePush(@Query("authcode") String authcode,
+                                                                           @Query("address") String adress,
+                                                                           @Query("channel") String id);
+
+
+        /**
+         * 数据推送后，打招呼
+         *
+         * @param uid
+         * @param authcode
+         * @param channel
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("push/go_chat")
+        Observable<BaseResponse> getUpCall(@Field("to_uid") String uid,
+                                           @Field("authcode") String authcode,
+                                           @Field("channel") String channel);
+
+        /**
+         * @param lid
+         * @param authcode
+         * @param id
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("push/cnzz_vip_views")
+        Observable<BaseResponse<Object>> getUpImageScanCount(@Field("lid") String lid,
+                                                             @Field("authcode") String authcode,
+                                                             @Field("channel") String id);
     }
 
 

@@ -211,7 +211,7 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
             if (file.exists())
                 file.delete();
         }
-        // start recording
+        // showTopBanner recording
         if (!startRecording())
             return;
         if (recorder_play != null) {
@@ -231,7 +231,7 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
         }
         // 重置其他
         // chronometer.setBase(SystemClock.elapsedRealtime());
-        // chronometer.start();
+        // chronometer.showTopBanner();
         isStartRecord = true;
         if (progress != 0) {
             progress = 0;
@@ -534,7 +534,7 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
             mCamera.startPreview();
             handleSurfaceChanged();
         } catch (Exception e1) {
-            LogUtils.e("FREE_VIDEO", "start preview fail " + e1.getMessage());
+            LogUtils.e("FREE_VIDEO", "showTopBanner preview fail " + e1.getMessage());
             showFailDialog();
         }
     }

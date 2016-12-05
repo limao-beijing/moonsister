@@ -30,6 +30,7 @@ import com.moonsister.tcjy.im.widget.IMHomeFragment;
 import com.moonsister.tcjy.main.presenter.MainPresenter;
 import com.moonsister.tcjy.main.presenter.MainPresenterImpl;
 import com.moonsister.tcjy.main.view.MainView;
+import com.moonsister.tcjy.manager.CallLoopManager;
 import com.moonsister.tcjy.manager.GaodeManager;
 import com.moonsister.tcjy.manager.IMLoopManager;
 import com.moonsister.tcjy.manager.IMManager;
@@ -68,6 +69,14 @@ public class MainActivity extends BaseActivity implements MainView {
     private MainPresenter mMainPresenter;
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        if (StringUtis.isEmpty(UserInfoManager.getInstance().getAuthcode()))
+            shwoSelectSexDialog();
+
+    }
+
+    @Override
     protected View setRootContentView() {
         mMainPresenter = new MainPresenterImpl();
         mMainPresenter.attachView(this);
@@ -88,14 +97,6 @@ public class MainActivity extends BaseActivity implements MainView {
             }
         });
 
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (StringUtis.isEmpty(UserInfoManager.getInstance().getAuthcode()))
-            shwoSelectSexDialog();
 
     }
 
@@ -182,15 +183,19 @@ public class MainActivity extends BaseActivity implements MainView {
          */
         mMainPresenter.getUserFriendList();
 
-
+        /**
+         * 登录融云
+         */
+        mMainPresenter.loginRongyun();
         /**
          * 轮询消息
          */
         IMLoopManager.getInstance().start(UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         /**
-         * 登录融云
+         * 打招呼轮询
          */
-        mMainPresenter.loginRongyun();
+        CallLoopManager.getInstance().start(this, appx_banner_container, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+
     }
 
 
@@ -316,11 +321,22 @@ public class MainActivity extends BaseActivity implements MainView {
                 // 将系统当前的时间赋值给exitTime
                 exitTime = System.currentTimeMillis();
             } else {
+                CallLoopManager.getInstance().stop();
                 finish();
             }
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void hideSoftInput() {
+        super.hideSoftInput();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     /**

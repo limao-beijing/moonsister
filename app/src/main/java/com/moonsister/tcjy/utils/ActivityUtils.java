@@ -41,10 +41,12 @@ import com.moonsister.tcjy.im.widget.AppConversationActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordNextActivity;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
+import com.moonsister.tcjy.main.model.ImageScanModelImpl;
 import com.moonsister.tcjy.main.widget.BuyVipActivity;
 import com.moonsister.tcjy.main.widget.DynamicAtionActivity;
 import com.moonsister.tcjy.main.widget.DynamicDatailsActivity;
 import com.moonsister.tcjy.main.widget.HomePageActivity;
+import com.moonsister.tcjy.main.widget.IndividualResumeActivity;
 import com.moonsister.tcjy.main.widget.MainActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentOrderActivity;
@@ -68,7 +70,6 @@ import com.moonsister.tcjy.my.widget.InsertActivity;
 import com.moonsister.tcjy.my.widget.MakeMessageActivity;
 import com.moonsister.tcjy.my.widget.MoneyActivity;
 import com.moonsister.tcjy.my.widget.MyOrderActivity;
-import com.moonsister.tcjy.my.widget.PersonalActivity;
 import com.moonsister.tcjy.my.widget.PersonalReviseActivity;
 import com.moonsister.tcjy.my.widget.RZFirstActivity;
 import com.moonsister.tcjy.my.widget.RZSecondActivity;
@@ -418,7 +419,9 @@ public class ActivityUtils {
      * @param urls2
      * @param position
      */
-    public static void startImagePagerActivity(ArrayList<String> urls2, int position) {
+    public static void startImagePagerActivity(String lid, ArrayList<String> urls2, int position) {
+        ImageScanModelImpl model = new ImageScanModelImpl();
+        model.upImageScanCount(lid);
         Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), ImagePagerActivity.class);
         // 图片url,为了演示这里使用常量，一般从数据库中或网络中获取
         intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, urls2);
@@ -723,7 +726,8 @@ public class ActivityUtils {
 
     //跳转资料展示页面
     public static void startPersonalActivity(String uid) {
-        Intent intent = getIntent(PersonalActivity.class);
+//        Intent intent = getIntent(PersonalActivity.class);
+        Intent intent = getIntent(IndividualResumeActivity.class);
         intent.putExtra("id", uid);
         startActivity(intent);
     }

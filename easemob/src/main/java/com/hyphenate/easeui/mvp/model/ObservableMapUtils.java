@@ -91,4 +91,27 @@ public class ObservableMapUtils {
 
     }
 
+    /**
+     * 主线程调用
+     *
+     * @param observable
+     * @param <T>
+     * @return
+     */
+    public static <T> Observable getObservable(Observable<T> observable) {
+        return observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    /**
+     * Io线程调用
+     *
+     * @param observable
+     * @param <T>
+     * @return
+     */
+    public static <T> Observable getIOObservable(Observable<T> observable) {
+        return observable.subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io());
+    }
 }

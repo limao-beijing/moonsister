@@ -213,7 +213,7 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<DynamicItemBean> {
         gvUserPic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ActivityUtils.startDynamicDatailsActivity(bean.getLatest_id(),bean.getType());
+                ActivityUtils.startDynamicDatailsActivity(bean.getLatest_id(), bean.getType());
             }
         });
         gvUserPic.setOnTouchInvalidPositionListener(new NoScrollGridView.OnTouchInvalidPositionListener() {
@@ -282,7 +282,7 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<DynamicItemBean> {
 
     @Override
     protected void onItemclick(View view, DynamicItemBean bean, int position) {
-        ActivityUtils.startDynamicDatailsActivity(bean.getLatest_id(),bean.getType());
+        ActivityUtils.startDynamicDatailsActivity(bean.getLatest_id(), bean.getType());
     }
 
 
@@ -319,7 +319,7 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<DynamicItemBean> {
                     if (StringUtis.equals(bean.getIspay(), "2")) {
                         ActivityUtils.startPayDynamicRedPackketActivity(bean.getMoney(), bean.getLatest_id());
                     } else {
-                        ActivityUtils.startImagePagerActivity(bean.getImg(), position);
+                        ActivityUtils.startImagePagerActivity(bean.getLatest_id(), bean.getImg(), position);
                     }
                 }
             });

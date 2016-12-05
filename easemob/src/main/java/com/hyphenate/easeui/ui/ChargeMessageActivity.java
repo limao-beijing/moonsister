@@ -181,6 +181,11 @@ public class ChargeMessageActivity extends com.hickey.tool.base.BaseActivity imp
                 case REQUEST_CODE_SELECT_VIDEO:
                     if (data != null) {
                         duration = data.getLongExtra("dur", 0);
+                        if (duration < 10000) {
+                            showToast("视频时长需大于10S");
+                            return;
+                        }
+
                         videoPath = data.getStringExtra("path");
                         File file = new File(PathUtil.getInstance().getImagePath(), "thvideo" + System.currentTimeMillis());
                         try {

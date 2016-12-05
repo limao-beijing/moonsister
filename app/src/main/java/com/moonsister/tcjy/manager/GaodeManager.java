@@ -45,7 +45,7 @@ public class GaodeManager implements AMapLocationListener {
     }
 
     public void getLocLocation() {
-        LogUtils.e(this, "--------start loclocation---------");
+        LogUtils.e(this, "--------showTopBanner loclocation---------");
         initOption();
         locationClient.setLocationListener(this);
         locationClient.setLocationOption(locationOption);

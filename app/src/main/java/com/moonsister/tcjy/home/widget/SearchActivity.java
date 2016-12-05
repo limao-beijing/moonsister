@@ -2,7 +2,10 @@ package com.moonsister.tcjy.home.widget;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,7 +26,7 @@ import butterknife.OnClick;
 /**
  * Created by jb on 2016/7/10.
  */
-public class SearchActivity extends BaseActivity implements TextWatcher {
+public class SearchActivity extends BaseActivity implements TextWatcher, TextView.OnEditorActionListener {
     @Bind(R.id.et_channel_find)
     EditText etChannelFind;
     @Bind(R.id.btn_search_pager_cancel)
@@ -40,8 +43,8 @@ public class SearchActivity extends BaseActivity implements TextWatcher {
 
     @Override
     protected void initView() {
-
         etChannelFind.addTextChangedListener(this);
+        etChannelFind.setOnEditorActionListener(this);
     }
 
     @Override
@@ -101,18 +104,34 @@ public class SearchActivity extends BaseActivity implements TextWatcher {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_search_pager_cancel:
-                String s1 = btnSearchPagerCancel.getText().toString();
-                if (StringUtis.equals(s1, UIUtils.getStringRes(R.string.cancel))) {
-                    finish();
-                    return;
-                }
-                String s = etChannelFind.getText().toString();
-                ActivityUtils.startSearchReasonActivity(s);
+                search();
                 break;
             case R.id.tv_del_all:
                 CacheManager.saveObject(this, null, CacheManager.CachePath.SEARCH_HISTPRY);
                 initHistory();
                 break;
         }
+    }
+
+    private void search() {
+        String s1 = btnSearchPagerCancel.getText().toString();
+        if (StringUtis.equals(s1, UIUtils.getStringRes(R.string.cancel))) {
+            finish();
+            return;
+        }
+        String s = etChannelFind.getText().toString();
+        ActivityUtils.startSearchReasonActivity(s);
+    }
+
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
+                    .hideSoftInputFromWindow(SearchActivity.this.getCurrentFocus()
+                            .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            //进行搜索操作的方法，在该方法中可以加入mEditSearchUser的非空判断
+            search();
+        }
+        return false;
     }
 }

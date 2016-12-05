@@ -170,7 +170,7 @@
     -keepattributes Signature
     -keepattributes Exceptions
 
-#   融云 rongyun  start
+#   融云 rongyun  showTopBanner
 
 -keepclassmembers class fqcn.of.javascript.interface.for.webview {
  public *;
@@ -243,7 +243,7 @@
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
-#百度联盟 start
+#百度联盟 showTopBanner
 -keep public class com.baidu.appx.**
 
 -keep public class com.baidu.appx.** { *; }
@@ -252,7 +252,7 @@
 #百度联盟 end
 
 
-#爱贝支付 start
+#爱贝支付 showTopBanner
 
 #-----------keep httpclient -------------------
 -keep class org.apache.** {
