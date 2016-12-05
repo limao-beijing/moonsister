@@ -2,7 +2,7 @@ ext {
     android = [
             applicationId    : "yhl.app.mylove",
             compileSdkVersion: 23,
-            buildToolsVersion: "23.0.1",
+            buildToolsVersion: "25.0.0",
             minSdkVersion    : 17,
             targetSdkVersion : 21,
             versionCode      : 20006,
