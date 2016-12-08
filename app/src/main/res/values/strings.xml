@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">夜约会-同城交友</string>
+    <string name="app_name">转角</string>
     <!--<string name="app_name">探探寂陌陌生人-求约爱</string>-->
     <string name="app_home_page">首页</string>
     <string name="app_im_page">聊天</string>
@@ -387,6 +387,7 @@
     <string name="affirm">确定</string>
     <string name="engagement_delect">删除后无法恢复，这将造成您无法对该次约见进行查看、管理等操作，是否仍然删除?</string>
     <string name="home">主页</string>
+    <string name="vip">VIP</string>
 
 
 </resources>

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.hickey.network.bean.GoodSelectBaen;
 import com.hickey.tool.base.BaseFragment;
@@ -28,8 +27,6 @@ import butterknife.Bind;
 public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
     @Bind(R.id.recyclerview)
     XListView recyclerview;
-    @Bind(R.id.text_empty)
-    TextView textEmpty;
     private int pageType;
     private GoodSelectPresenter goodSelectPresenter;
     public static final int GOOD_SELECT = 1;
@@ -55,8 +52,6 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
     protected void initData() {
 
         recyclerview.setVerticalGridLayoutManager(2);
-        recyclerview.setEmptyView(textEmpty);
-
         recyclerview.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {

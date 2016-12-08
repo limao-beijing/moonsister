@@ -76,11 +76,11 @@
             android:value="57e63d92e0f55a159d002acd"/>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="OPPOSPDQ2014"/>
+            android:value="BDZHUANJIAO1008"/>
         <!--API  接口-->
         <meta-data
             android:name="API_CHANNEL"
-            android:value="2014"/>
+            android:value="1008"/>
         <!-- 友盟  end -->
         <!-- 高德 showTopBanner -->
         <meta-data

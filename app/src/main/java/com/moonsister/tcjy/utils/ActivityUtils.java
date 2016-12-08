@@ -323,7 +323,8 @@ public class ActivityUtils {
             return;
         }
 //        startActivity(CertificationActivity.class);
-        startRenZhengActivity();
+//        startRenZhengActivity();
+        startRenZhengThreeActivity();
     }
 
     /**

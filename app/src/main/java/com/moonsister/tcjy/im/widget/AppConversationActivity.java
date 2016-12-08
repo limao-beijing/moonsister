@@ -194,7 +194,7 @@ public class AppConversationActivity extends BaseActivity {
                 }
                 if (mHelper == null)
                     mHelper = new SendMsgForServiceHelper();
-                if (mReasult == EnumConstant.PermissionReasult.HAVE_PERSSION && message != null) {
+                if (isSend && message != null) {
                     if (!message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_IMAGE_MESSAGE, false) &&
                             !message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_CHARGE_VIDEO_MESSAGE, false) &&
                             !message.getBooleanAttribute(CustomConstant.MESSAGE_TYPE_IS_RED_PACKET_MESSAGE, false)) {

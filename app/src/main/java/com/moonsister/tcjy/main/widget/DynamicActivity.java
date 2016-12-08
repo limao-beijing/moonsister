@@ -221,8 +221,9 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
 
     @Override
     public void switch2AppointmentActivity() {
-        showToast(UIUtils.getStringRes(R.string.not_dredge));
+//        showToast(UIUtils.getStringRes(R.string.not_dredge));
 //        ActivityUtils.startPayAppointmentActivity();
+        ActivityUtils.startPersonEngagementTypeActivity(userId, nikeName, avater);
     }
 
     @Override

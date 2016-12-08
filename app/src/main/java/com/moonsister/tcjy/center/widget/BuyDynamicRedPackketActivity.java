@@ -1,13 +1,12 @@
 package com.moonsister.tcjy.center.widget;
 
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.AbsoluteSizeSpan;
 import android.view.View;
 import android.widget.TextView;
 
 import com.hickey.network.bean.VipRule;
+import com.hickey.tool.lang.StringUtis;
+import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.center.presenter.BuyDynamicRedPackketPersenter;
 import com.moonsister.tcjy.center.presenter.BuyDynamicRedPackketPersenterImpl;
@@ -15,8 +14,6 @@ import com.moonsister.tcjy.center.view.BuyDynamicRedPackketView;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.utils.ActivityUtils;
-import com.hickey.tool.widget.UIUtils;
-import com.hickey.tool.lang.StringUtis;
 import com.trello.rxlifecycle.ActivityEvent;
 import com.trello.rxlifecycle.components.RxActivity;
 
@@ -72,10 +69,11 @@ public class BuyDynamicRedPackketActivity extends RxActivity implements BuyDynam
     }
 
     protected void initView() {
-        SpannableString html = new SpannableString(money + " " + UIUtils.getStringRes(R.string.yuan));
-
-        html.setSpan(new AbsoluteSizeSpan(35, true), 0, money.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
-        tvMoney.setText(html);
+//        SpannableString html = new SpannableString(money + " " + UIUtils.getStringRes(R.string.yuan));
+//
+//        html.setSpan(new AbsoluteSizeSpan(35, true), 0, money.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+//        tvMoney.setText(html);
+        tvMoney.setText("对不起，您不是VIP");
     }
 
     @OnClick({R.id.tv_aliplay_play, R.id.tv_weixin_play, R.id.action_back, R.id.tv_single_buy, R.id.tv_upgrade_vip})

@@ -15,7 +15,7 @@ import rx.Observable;
 public class SearchResultActivityModelImpl implements SearchResultActivityModel {
     @Override
     public void loadBasicData(String key, int page, BaseIModel.onLoadDateSingleListener<SearchReasonBaen> listener) {
-        Observable<SearchReasonBaen> observable = ServerApi.getAppAPI().getSearchReason(key,page, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        Observable<SearchReasonBaen> observable = ServerApi.getAppAPI().getSearchReason(key.trim(), page, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<SearchReasonBaen>() {
             @Override
             public void onSuccess(SearchReasonBaen bean) {

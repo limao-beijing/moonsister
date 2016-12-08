@@ -5,8 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hickey.tool.log.L;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -174,7 +172,7 @@ public abstract class BaseRecyclerViewAdapter<T > extends RecyclerView.Adapter {
 
     public void onRefresh() {
         if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-            L.e(this, "主线程");
+//            L.e(this, "主线程");
         }
         notifyDataSetChanged();
     }

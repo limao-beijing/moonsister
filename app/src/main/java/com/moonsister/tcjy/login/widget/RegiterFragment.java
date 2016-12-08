@@ -57,6 +57,7 @@ public class RegiterFragment extends BaseFragment implements RegiterFragmentView
 
     @Override
     protected void initData() {
+        tvSubmit.setText(getString(R.string.submit));
     }
 
 

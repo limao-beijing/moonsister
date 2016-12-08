@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.hickey.tool.file.PrefUtils;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.GuideViewPagerAdapter;
 
@@ -149,7 +150,7 @@ public class WelcomeGuideActivity extends Activity implements View.OnClickListen
         Intent intent = new Intent(WelcomeGuideActivity.this,
                 MainActivity.class);
         startActivity(intent);
-//        SharedPreferencesUtil.putBoolean(WelcomeGuideActivity.this, SharedPreferencesUtil.FIRST_OPEN, false);
+        PrefUtils.setBoolean(getApplicationContext(), "FIRST_OPEN", true);
         finish();
     }
 

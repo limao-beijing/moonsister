@@ -176,8 +176,9 @@ public class ServerApi {
 
 
     public interface AppAPI {
-        String baseUrl = "http://v2.chuse.hk:88/index.php/index/";
+                String baseUrl = "http://v1.chuse.hk:88/index.php/index/";
 //        String baseUrl = "http://2testtest.yytbzs.cn:91/index.php/index/";
+//        String baseUrl = "http://2.yytbzs.cn:88/index.php/index/";
 
         /**
          * 登录
@@ -1312,6 +1313,7 @@ public class ServerApi {
                                                                            @Query("search_type") String type,
                                                                            @Query("authcode") String authcode,
                                                                            @Query("channel") String channelId);
+
         /**
          * 修改首页初始数据
          *

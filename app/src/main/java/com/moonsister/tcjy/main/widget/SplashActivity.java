@@ -4,12 +4,13 @@ import android.content.Intent;
 import android.view.View;
 
 import com.hickey.tool.base.BaseActivity;
+import com.hickey.tool.file.PrefUtils;
 import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
 
 
 /**
- * Creaort com.example.baidu.BaiduManager;ted by jb on 2016/8/30.
+ * by jb on 2016/8/30.
  */
 public class SplashActivity extends BaseActivity {
     @Override
@@ -20,13 +21,15 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void initView() {
 //        String authcode = UserInfoManager.getInstance().getAuthcode();
-//        if (StringUtis.isEmpty(authcode)) {
+        boolean open = PrefUtils.getBoolean(getApplicationContext(), "FIRST_OPEN", false);
+//        PrefUtils.setBoolean(getApplicationContext(), "FIRST_OPEN", true);
+        if (!open) {
 //            startActivity(new Intent(this, ManorGrilActivity.class));
-//            startActivity(new Intent(this, WelcomeGuideActivity.class));
-//            finish();
-//        } else {
-        enterMian();
-//        }
+            startActivity(new Intent(this, WelcomeGuideActivity.class));
+            finish();
+        } else {
+            enterMian();
+        }
 
     }
 

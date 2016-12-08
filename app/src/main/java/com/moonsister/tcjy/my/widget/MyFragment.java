@@ -62,17 +62,22 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
 
     @Override
     protected void initData() {
-        int certification = UserInfoManager.getInstance().getCertificationStatus();
-        /**
-         * 认证状态 1 已认证  2 认证中  3 未认证
-         */
-        if (certification == 1) {
-            tv_certification.setText(UIUtils.getStringRes(R.string.already_Certification));
-        } else if (certification == 2) {
-            tv_certification.setText(UIUtils.getStringRes(R.string.Certificationing));
-        } else
-            tv_certification.setText(UIUtils.getStringRes(R.string.not_Certificationing));
 
+        String sex = UserInfoManager.getInstance().getUserSex();
+        if (StringUtis.equals(sex, "1")) {
+            tv_certification.setText(UIUtils.getStringRes(R.string.vip));
+        } else {
+            int certification = UserInfoManager.getInstance().getCertificationStatus();
+            /**
+             * 认证状态 1 已认证  2 认证中  3 未认证
+             */
+            if (certification == 1) {
+                tv_certification.setText(UIUtils.getStringRes(R.string.already_Certification));
+            } else if (certification == 2) {
+                tv_certification.setText(UIUtils.getStringRes(R.string.Certificationing));
+            } else
+                tv_certification.setText(UIUtils.getStringRes(R.string.not_Certificationing));
+        }
         recyclerview.setVerticalLinearLayoutManager();
         recyclerview.addHeaderView(initHeadLayout());
         recyclerview.setLoadingListener(new XRecyclerView.LoadingListener() {
@@ -237,25 +242,30 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
      */
     @Override
     public void swich2PersonRed() {
-        int certification = UserInfoManager.getInstance().getCertificationStatus();
-        /**
-         * 认证状态 1 已认证  2 认证中  3 未认证
-         */
-        if (certification == 1) {
-            String stringRes = UIUtils.getStringRes(R.string.already_Certification);
-            String certificationStatus = tv_certification.getText().toString().trim();
-            if (!StringUtis.equals(certificationStatus, stringRes))
-                tv_certification.setText(stringRes);
-            showToast(stringRes);
-        } else if (certification == 2) {
-            String str = UIUtils.getStringRes(R.string.Certificationing);
-            String certificationStatus = tv_certification.getText().toString().trim();
-            if (!StringUtis.equals(certificationStatus, str))
-                tv_certification.setText(str);
-            ActivityUtils.startRZThidActivity();
-        } else
+        String sex = UserInfoManager.getInstance().getUserSex();
+        if (StringUtis.equals("1", sex)) {
+            ActivityUtils.startBuyVipActivity();
+        } else {
+            int certification = UserInfoManager.getInstance().getCertificationStatus();
+            /**
+             * 认证状态 1 已认证  2 认证中  3 未认证
+             */
+            if (certification == 1) {
+                String stringRes = UIUtils.getStringRes(R.string.already_Certification);
+                String certificationStatus = tv_certification.getText().toString().trim();
+                if (!StringUtis.equals(certificationStatus, stringRes))
+                    tv_certification.setText(stringRes);
+                showToast(stringRes);
+            } else if (certification == 2) {
+                String str = UIUtils.getStringRes(R.string.Certificationing);
+                String certificationStatus = tv_certification.getText().toString().trim();
+                if (!StringUtis.equals(certificationStatus, str))
+                    tv_certification.setText(str);
+                ActivityUtils.startRZThidActivity();
+            } else
 
-            ActivityUtils.startCertificationActivity();
+                ActivityUtils.startCertificationActivity();
+        }
 
 
     }
@@ -265,7 +275,8 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
      */
     @Override
     public void swich2WithdRawDeposit() {
-        ActivityUtils.startWithdRawDepositActivity();
+
+        ActivityUtils.startMoneyActivity(UserInfoManager.getInstance().getUid());
     }
 
     /**
@@ -273,8 +284,9 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
      */
     @Override
     public void swich2Appointment() {
-        showToast(UIUtils.getStringRes(R.string.not_dredge));
+//        showToast(UIUtils.getStringRes(R.string.not_dredge));
 //        ActivityUtils.startAppointmentActivity();
+        ActivityUtils.startEngagementManagerActivity();
     }
 
     /**

@@ -1,76 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <LinearLayout
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:id="@+id/layout_root"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/layout_root"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--android:background="@color/app_gred_background"-->
+
     <RelativeLayout
-        android:background="@color/white"
-        android:layout_height="@dimen/y0"
+        android:background="@color/app_gred_background"
+        android:layout_height="@dimen/y60"
         android:layout_width="match_parent"
         android:id="@+id/layout_head">
 
-
-    <!--<View-->
+        <!--<View-->
         <!--android:background="@color/app_line"-->
         <!--android:layout_height="match_parent"-->
         <!--android:layout_width="@dimen/x2"-->
         <!--android:id="@+id/center_line"-->
         <!--android:layout_centerHorizontal="true"/>-->
 
-    <TextView
-        android:layout_width="@dimen/x240"
-        android:layout_height="match_parent"
-        android:id="@+id/tv_friend"
-        android:gravity="center"
-        android:text="@string/my_friend"
-        android:textColor="@drawable/selector_home_text_color"
-        />
-    <View
-        android:id="@+id/center_line"
-        android:layout_width="@dimen/x2"
-        android:layout_height="match_parent"
-        android:background="@color/app_line"
-        android:layout_marginLeft="@dimen/x240"
-        />
-    <TextView
-        android:layout_height="match_parent"
-        android:layout_width="@dimen/x240"
-        android:id="@+id/tv_wacth"
-        android:textColor="@drawable/selector_home_text_color"
-        android:text="@string/my_wacth"
-        android:gravity="center"
-        android:layout_toRightOf="@+id/tv_friend"/>
-        <!--android:visibility="invisible"/>&lt;!&ndash;添加的&ndash;&gt;-->
+        <TextView
+            android:layout_width="@dimen/x240"
+            android:layout_height="match_parent"
+            android:id="@+id/tv_friend"
+            android:gravity="center"
+            android:text="@string/my_friend"
+            android:textColor="@drawable/selector_home_text_color"
+            />
+        <View
+            android:id="@+id/center_line"
+            android:layout_width="@dimen/x2"
+            android:layout_height="match_parent"
+            android:background="@color/app_line"
+            android:layout_marginLeft="@dimen/x240"
+            />
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="@dimen/x240"
+            android:id="@+id/tv_wacth"
+            android:textColor="@drawable/selector_home_text_color"
+            android:text="@string/my_wacth"
+            android:gravity="center"
+            android:layout_toRightOf="@+id/tv_friend"/>
 
-    <View
-        android:id="@+id/center_line2"
-        android:layout_width="@dimen/x2"
-        android:layout_height="match_parent"
-        android:background="@color/app_line"
-        android:layout_marginLeft="@dimen/x480"/>
+        <View
+            android:id="@+id/center_line2"
+            android:layout_width="@dimen/x2"
+            android:layout_height="match_parent"
+            android:background="@color/app_line"
+            android:layout_marginLeft="@dimen/x480"/>
 
-    <TextView
-        android:layout_height="match_parent"
-        android:layout_width="@dimen/x240"
-        android:id="@+id/tv_fen"
-        android:textColor="@drawable/selector_home_text_color"
-        android:text="@string/my_fen"
-        android:gravity="center"
-        android:layout_toRightOf="@id/tv_wacth"/>
-        <!--android:visibility="invisible"/>&lt;!&ndash;添加的&ndash;&gt;-->
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="@dimen/x240"
+            android:id="@+id/tv_fen"
+            android:textColor="@drawable/selector_home_text_color"
+            android:text="@string/my_fen"
+            android:gravity="center"
+            android:layout_toRightOf="@id/tv_wacth" />
 
-    <View
-        android:layout_height="@dimen/x1"
-        android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        style="@style/app_line_horizontal"/>
+        <View
+            android:layout_height="@dimen/x1"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            style="@style/app_line_horizontal"/>
 
-</RelativeLayout>
+    </RelativeLayout>
 
     <FrameLayout
         android:layout_height="match_parent"
