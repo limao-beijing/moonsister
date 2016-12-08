@@ -4,12 +4,12 @@ import com.hickey.network.ServerApi;
 import com.hickey.network.bean.BaseBean;
 import com.hickey.network.bean.RegThridBean;
 import com.hickey.network.bean.RegiterBean;
+import com.hickey.tool.ConfigUtils;
 import com.hickey.tool.lang.StringUtis;
 import com.hickey.tool.parse.JsonUtils;
 import com.hickey.tool.phoneinfo.PhoneInfoUtils;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.hickey.tool.ConfigUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 
@@ -23,7 +23,7 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
 
 
     @Override
-    public void loadSubmit(String phoneNumber, String code, onLoadSubmitListenter listenter) {
+    public void loadSubmit(String phoneNumber, String code, onLoadDateSingleListener<BaseBean> listenter) {
 
         Observable<RegiterBean> observable = ServerApi.getAppAPI().verifySecurityCode(phoneNumber, code, AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<RegiterBean>() {
@@ -32,43 +32,23 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
                 if (StringUtis.equals(baseBean.getCode(), "1")) {
                     uploadPhoneInfo(phoneNumber);
                 }
-                listenter.onSubmitSuccess(baseBean);
+                listenter.onSuccess(baseBean,DataType.DATA_ONE);
             }
 
             @Override
             public void onFailure(String msg) {
-                listenter.onSubmitFailure(msg, new Exception());
+
+                listenter.onFailure(msg);
             }
         });
-//        .observeOn(AndroidSchedulers.mainThread())
-//                .subscribeOn(Schedulers.io())
-//
-//                .subscribe(new Subscriber<RegiterBean>() {
-//                    @Override
-//                    public void onCompleted() {
-//
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        LogUtils.e(TAG, "Throwable : " + e.getMessage().toString());
-//                        listenter.onSubmitFailure(e.getLocalizedMessage(), (Exception) e);
-//                    }
-//
-//                    @Override
-//                    public void onNext(RegiterBean baseBean) {
-//                        LogUtils.e(TAG, "onNext : " + baseBean.toString());
-//                        listenter.onSubmitSuccess(baseBean);
-//                    }
-//                });
     }
 
     @Override
-    public void loadSecurity(String phoneMunber, final onLoadDateSingleListener listener) {
+    public void loadSecurity(String phoneMunber, final onLoadDateSingleListener<BaseBean> listener) {
         Observable<BaseBean> observable = ServerApi.getAppAPI().sendSecurityCode(phoneMunber, AppConstant.CHANNEL_ID);
-        ObservableUtils.parser(observable, new ObservableUtils.Callback<RegiterBean>() {
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<BaseBean>() {
             @Override
-            public void onSuccess(RegiterBean baseBean) {
+            public void onSuccess(BaseBean baseBean) {
                 listener.onSuccess(baseBean, DataType.DATA_ZERO);
             }
 
@@ -78,29 +58,6 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
                 listener.onFailure(msg);
             }
         });
-
-
-//        observable.observeOn(AndroidSchedulers.mainThread())
-//                .subscribeOn(Schedulers.io())
-//                .subscribe(new Subscriber<BaseBean>() {
-//                    @Override
-//                    public void onCompleted() {
-//                        LogUtils.e(TAG, "onCompleted");
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        LogUtils.e(TAG, "Throwable : " + ((Exception) e).getMessage());
-//                        listener.onFailure(e.getLocalizedMessage());
-//
-//                    }
-//
-//                    @Override
-//                    public void onNext(BaseBean baseBean) {
-//                        LogUtils.e(TAG, "onNext : " + baseBean.toString());
-//
-//                    }
-//                });
     }
 
     private void uploadPhoneInfo(String phoneMunber) {

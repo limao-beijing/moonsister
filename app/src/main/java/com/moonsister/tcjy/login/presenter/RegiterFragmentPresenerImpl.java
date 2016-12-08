@@ -13,7 +13,7 @@ import com.moonsister.tcjy.utils.LogUtils;
 /**
  * Created by pc on 2016/6/14.
  */
-public class RegiterFragmentPresenerImpl implements RegiterFragmentPresener, BaseIModel.onLoadDateSingleListener<BaseBean>, RegiterFragmentModel.onLoadSubmitListenter<RegiterBean> {
+public class RegiterFragmentPresenerImpl implements RegiterFragmentPresener, BaseIModel.onLoadDateSingleListener<BaseBean> {
     private RegiterFragmentView view;
     private RegiterFragmentModel fragmentModel;
 
@@ -45,12 +45,28 @@ public class RegiterFragmentPresenerImpl implements RegiterFragmentPresener, Bas
 
     @Override
     public void onSuccess(BaseBean baseBean, BaseIModel.DataType type) {
-        view.hideLoading();
-        if (baseBean != null) {
-            if ("1".equals(baseBean.getCode()))
-                view.LoopMsg();
-            view.requestFailed(baseBean.getMsg());
+        switch (type) {
+            case DATA_ZERO:
+                if (baseBean != null) {
+                    if ("1".equals(baseBean.getCode()))
+                        view.LoopMsg();
+                    view.requestFailed(baseBean.getMsg());
+                }
+                break;
+            case DATA_ONE:
+                if ("1".equals(baseBean.getCode()) && baseBean instanceof RegiterBean)
+                    ConfigUtils.getInstance().getMainHandler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            view.navigationNext(((RegiterBean) baseBean).getData().getAuthcode());
+                        }
+                    }, 1000);
+
+
+                break;
         }
+        view.hideLoading();
+
     }
 
     @Override
@@ -59,32 +75,32 @@ public class RegiterFragmentPresenerImpl implements RegiterFragmentPresener, Bas
         view.requestFailed(msg);
     }
 
-
-    @Override
-    public void onSubmitSuccess(RegiterBean baseBean) {
-        view.hideLoading();
-        if (baseBean != null) {
-            view.requestFailed(baseBean.getMsg());
-            if ("1".equals(baseBean.getCode()))
-                ConfigUtils.getInstance().getMainHandler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        LogUtils.e(RegiterFragmentPresenerImpl.class,"RegiterCode  : " +baseBean.getData().toString());
-                        view.navigationNext(baseBean.getData().getAuthcode());
-                    }
-                },1000);
-
-
-
-        }
-
-
-    }
-
-    @Override
-    public void onSubmitFailure(String msg, Exception e) {
-        view.hideLoading();
-        view.requestFailed(msg);
-    }
+//
+//    @Override
+//    public void onSubmitSuccess(RegiterBean baseBean) {
+//        view.hideLoading();
+//        if (baseBean != null) {
+//            view.requestFailed(baseBean.getMsg());
+//            if ("1".equals(baseBean.getCode()))
+//                ConfigUtils.getInstance().getMainHandler().postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        LogUtils.e(RegiterFragmentPresenerImpl.class,"RegiterCode  : " +baseBean.getData().toString());
+//                        view.navigationNext(baseBean.getData().getAuthcode());
+//                    }
+//                },1000);
+//
+//
+//
+//        }
+//
+//
+//    }
+//
+//    @Override
+//    public void onSubmitFailure(String msg, Exception e) {
+//        view.hideLoading();
+//        view.requestFailed(msg);
+//    }
 
 }
