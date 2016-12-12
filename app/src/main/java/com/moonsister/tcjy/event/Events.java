@@ -16,7 +16,7 @@ public class Events<T> {
         LOGIN_SUCCSS, LOGIN_CODE_TIMEOUT,
         SWITCH_ITEM, BUY_VIP_SUCCESS, MONEY_CHANGE, GET_IM_SERVICE_KEY,
         RenZhengThreeActivity_res_change, CLICK_ENGAGEMENT_SUCCESS,
-        CLICK_ENGAGEMENT_LEVEL_NOT, REN_ZHENG_SUCCESS, EM_SEND_CMD, ENGAGEMENT_ACTION_SUCCESS,
+        CLICK_ENGAGEMENT_LEVEL_NOT, REN_ZHENG_SUCCESS, EM_SEND_CMD, ENGAGEMENT_ACTION_SUCCESS, PersonThreeFragment_delete_pic, MyThreeFragment_level, DynamicResAddActivity_up_success,
     }
 
     public EventEnum what;

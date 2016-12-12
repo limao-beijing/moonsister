@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">转角</string>
+    <string name="app_name">阿狸阿猫-视讯交友</string>
     <!--<string name="app_name">探探寂陌陌生人-求约爱</string>-->
     <string name="app_home_page">首页</string>
     <string name="app_im_page">聊天</string>
@@ -388,6 +388,18 @@
     <string name="engagement_delect">删除后无法恢复，这将造成您无法对该次约见进行查看、管理等操作，是否仍然删除?</string>
     <string name="home">主页</string>
     <string name="vip">VIP</string>
+    <string name="feelingsquare_title">传情广场</string>
+    <string name="open_vip">开通VIP</string>
+    <string name="dynamic_manager">资料管理</string>
+    <string name="finance_manager">财务管理</string>
+    <string name="home_square">传情广场</string>
+    <string name="already_binding">已绑定 : </string>
+    <string name="online_user">实时在线会员</string>
+    <string name="my_three_pic"> 图片 ( %1$s )</string>
+    <string name="my_three_video"> 视频 ( %1$s )</string>
+    <string name="my_three_voice"> 语音 ( %1$s )</string>
+    <string name="add_res">添加</string>
+    <string name="regiter_text">注册</string>
 
 
 </resources>

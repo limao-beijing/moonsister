@@ -148,7 +148,7 @@ public class WelcomeGuideActivity extends Activity implements View.OnClickListen
 
     private void enterMainActivity() {
         Intent intent = new Intent(WelcomeGuideActivity.this,
-                MainActivity.class);
+                ManorGrilActivity.class);
         startActivity(intent);
         PrefUtils.setBoolean(getApplicationContext(), "FIRST_OPEN", true);
         finish();

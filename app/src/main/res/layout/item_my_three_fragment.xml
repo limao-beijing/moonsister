@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+             android:layout_width="@dimen/x236"
+             android:layout_height="@dimen/x236">
+
+    <ImageView
+        android:id="@+id/iv_show_bg"
+        android:layout_width="@dimen/x236"
+        android:layout_height="@dimen/x236"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher"
+        />
+
+    <ImageView
+        android:id="@+id/tv_mohu"
+        android:layout_width="@dimen/x236"
+        android:layout_height="@dimen/x236"
+        android:background="@mipmap/pic_mohu"/>
+
+    <ImageView
+        android:id="@+id/iv_show_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@mipmap/my_three_video"/>
+
+    <ImageView
+        android:id="@+id/iv_delete_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:padding="@dimen/x20"
+        android:src="@mipmap/pic_delete"
+        android:visibility="gone"/>
+</FrameLayout>

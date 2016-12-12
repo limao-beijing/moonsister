@@ -21,9 +21,17 @@ public class RegOneBean extends BaseBean {
 
     public static class DataBean {
         private String authcode;
-
+        private String uid;
         public String getAuthcode() {
             return authcode;
+        }
+
+        public String getUid() {
+            return uid;
+        }
+
+        public void setUid(String uid) {
+            this.uid = uid;
         }
 
         public void setAuthcode(String authcode) {

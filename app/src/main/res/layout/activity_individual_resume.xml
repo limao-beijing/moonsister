@@ -319,7 +319,7 @@
                     android:layout_alignTop="@+id/iv_impression"
                     android:layout_marginLeft="@dimen/x30"
                     android:layout_toRightOf="@+id/iv_impression"
-                    android:text="资料"
+                    android:text="自我印象"
                     android:textColor="@color/text_gray_778998"
                     android:textSize="16sp"/>
 
@@ -337,6 +337,144 @@
                     android:textSize="16sp"/>
 
             </RelativeLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_pic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/y30"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginTop="@dimen/x20"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_marginTop="@dimen/y30"
+                    android:text="私密图片："
+                    android:textColor="#737c7d"/>
+
+                <ImageView
+                    android:id="@+id/pvt_picture"
+                    android:layout_width="@dimen/x188"
+                    android:layout_height="@dimen/x188"
+                    android:layout_marginTop="@dimen/y30"
+                    android:scaleType="centerCrop"
+                    />
+
+                <ImageView
+                    android:id="@+id/pvt_picture2"
+                    android:layout_width="@dimen/x188"
+                    android:layout_height="@dimen/x188"
+                    android:layout_marginLeft="@dimen/x3"
+                    android:layout_marginTop="@dimen/y30"
+                    android:scaleType="centerCrop"
+                    />
+
+                <ImageView
+                    android:id="@+id/pvt_picture3"
+                    android:layout_width="@dimen/x188"
+                    android:layout_height="@dimen/x188"
+                    android:layout_marginLeft="@dimen/x3"
+                    android:layout_marginTop="@dimen/y30"
+                    android:scaleType="centerCrop"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginRight="@dimen/x30"
+                android:scaleType="centerCrop"/>
+
+
+            <LinearLayout
+                android:layout_marginLeft="@dimen/x30"
+
+                android:id="@+id/ll_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/y30"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_marginTop="@dimen/y30"
+                    android:text="私密视频："
+                    android:textColor="#737c7d"/>
+
+                <ImageView
+                    android:id="@+id/pvt_video_1"
+                    android:layout_width="@dimen/x188"
+                    android:layout_height="@dimen/x188"
+                    android:layout_marginTop="@dimen/y30"
+                    android:scaleType="centerCrop"/>
+
+                <ImageView
+                    android:id="@+id/pvt_video_2"
+                    android:layout_width="@dimen/x188"
+                    android:layout_height="@dimen/x188"
+                    android:layout_marginLeft="@dimen/x3"
+                    android:layout_marginTop="@dimen/y30"
+                    android:scaleType="centerCrop"/>
+
+                <ImageView
+                    android:id="@+id/pvt_video_3"
+                    android:layout_width="@dimen/x188"
+                    android:layout_height="@dimen/x188"
+                    android:layout_marginLeft="@dimen/x3"
+                    android:layout_marginTop="@dimen/y30"
+                    android:scaleType="centerCrop"/>
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_marginLeft="@dimen/x30"
+
+                android:id="@+id/ll_vioce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/y30"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_marginTop="@dimen/y30"
+                    android:text="私密语音："
+                    android:textColor="#737c7d"/>
+
+                <ImageView
+                    android:id="@+id/pvt_voice_1"
+                    android:layout_width="@dimen/x188"
+                    android:layout_height="@dimen/x188"
+                    android:layout_marginTop="@dimen/y30"
+                    android:scaleType="centerCrop"/>
+
+                <ImageView
+                    android:id="@+id/pvt_voice_2"
+                    android:layout_width="@dimen/x188"
+                    android:layout_height="@dimen/x188"
+                    android:layout_marginLeft="@dimen/x3"
+                    android:layout_marginTop="@dimen/y30"
+                    android:scaleType="centerCrop"/>
+
+                <ImageView
+                    android:id="@+id/pvt_voice_3"
+                    android:layout_width="@dimen/x188"
+                    android:layout_height="@dimen/x188"
+                    android:layout_marginLeft="@dimen/x3"
+                    android:layout_marginTop="@dimen/y30"
+                    android:scaleType="centerCrop"/>
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

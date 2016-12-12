@@ -2,17 +2,19 @@ package com.hickey.pay.aibeipay;
 
 public class PayConfig {
 
-    /**
-     * appid		-- 应用appid
-     * privateKey   -- 应用私钥
-     * publicKey	-- 平台公钥(platKey)
-     * notifyurl	-- 商户服务端接收支付结果通知的地址
-     * */
+	/**
+	 * appid		-- 应用appid
+	 * privateKey   -- 应用私钥
+	 * publicKey	-- 平台公钥(platKey)
+	 * notifyurl	-- 商户服务端接收支付结果通知的地址
+	 * */
 
 
-    /**线上环境*/
-	public static final String appid = "3006375744";
-	public static final String publicKey="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCQ/SCVH37QQ8m8q2Z1+x/E1hvz0H9XWyHpOzHPGMuDc2EVQLDBxTFCIauwjPxmWboV8uy9ueCqm4fsp3Dm/kIAX2k4/QX7ifzie3eep8Ppo5n3m6T50R6BKm6VXJLuPAyqUjhgIWmYpxgZJEhMpnV982DzLmPpCy2wIc/6jORXGQIDAQAB";
+	/**
+	 * 线上环境
+	 */
+	public static final String appid = "3007713586";
+	public static final String publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCcC57+vzodUrUHXyxPlspg7OQ/D1rDmye93WQXyGcPlHtXom8xi/2BrK0q15w+Ii04KyZj4m4fejeyeTVCK0doPm66pzINuzDmwZlbbafH/AFDKZ7Q8dMNtnp8Y5JQnjiYmz3vfN2vOQUF/eMy5WRWalRlGa9k3XpXWSMsxKxOGwIDAQAB";
 //    /**
 //     * demo
 //     * 线上环境

@@ -218,13 +218,25 @@
     </style>
 
 
-
     <style name="text_engament_main" parent="android:Widget.TextView">
         <item name="android:textColor">@color/text_gray_737c7d</item>
         <item name="android:textSize">@dimen/text_size_16</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="my_v3_text" parent="android:Widget.TextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:textColor">@color/text_gray_737c7d</item>
+        <item name="android:textSize">@dimen/text_size_13</item>
+
+    </style>
+
+    <style name="NoBackGroundDialog" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
 </resources>

@@ -55,6 +55,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name="com.moonsister.tcjy.main.widget.SplashActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppStartLoad">
             <intent-filter>
@@ -63,7 +64,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.moonsister.tcjy.main.widget.ManorGrilActivity"/>
+        <activity
+            android:name="com.moonsister.tcjy.main.widget.ManorGrilActivity"
+            android:launchMode="singleTask"/>
         <activity
             android:name="com.moonsister.tcjy.main.widget.MainActivity"
             android:launchMode="singleTask"
@@ -76,11 +79,11 @@
             android:value="57e63d92e0f55a159d002acd"/>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="BDZHUANJIAO1008"/>
+            android:value="OPPOALAM3003"/>
         <!--API  接口-->
         <meta-data
             android:name="API_CHANNEL"
-            android:value="1008"/>
+            android:value="3003"/>
         <!-- 友盟  end -->
         <!-- 高德 showTopBanner -->
         <meta-data
@@ -139,7 +142,10 @@
         <activity android:name="com.moonsister.tcjy.engagement.widget.EngagementDetailsActivity"/>
         <activity android:name="com.moonsister.tcjy.engagement.widget.EngagementTypeActivity"/>
         <activity android:name="com.moonsister.tcjy.engagement.widget.EngagementedDetailsActivity"/>
+        <activity android:name=".main.widget.PersonThreeActivity"/>
+        <activity android:name=".home.widget.HomeSearchActivity"/>
         <activity android:name=".main.widget.IndividualResumeActivity"/>
+        <activity android:name=".my.widget.EditDynamicActivity"/>
         <activity
             android:name="com.moonsister.tcjy.main.widget.WelcomeGuideActivity"
             android:screenOrientation="portrait"/>
@@ -163,6 +169,7 @@
         <activity android:name="com.moonsister.tcjy.main.widget.ShowShortVideoActivity"/>
         <activity android:name="com.moonsister.tcjy.main.widget.FillOutMessageActivity"/>
         <activity android:name="com.moonsister.tcjy.find.widget.VideoDynamicActivity"/>
+        <activity android:name=".my.widget.DynamicResAddActivity"/>
         <activity
             android:name="com.moonsister.tcjy.my.widget.RZFirstActivity"
             android:screenOrientation="portrait"/>

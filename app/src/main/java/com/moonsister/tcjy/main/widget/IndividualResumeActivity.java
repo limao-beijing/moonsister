@@ -12,8 +12,6 @@ import com.moonsister.tcjy.main.view.IndividualResumeView;
 import com.moonsister.tcjy.viewholder.IndividualResumeViewHolder;
 import com.trello.rxlifecycle.ActivityEvent;
 
-import butterknife.OnClick;
-
 /**
  * Created by jb on 2016/12/1.
  */
@@ -61,12 +59,5 @@ public class IndividualResumeActivity extends BaseActivity implements Individual
         holder.refreshView(bean);
     }
 
-
-    @OnClick({})
-    public void onClick(View view) {
-        switch (view.getId()) {
-
-        }
-    }
 
 }

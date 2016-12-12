@@ -7,16 +7,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hickey.network.bean.PersonInfoDetail;
 import com.hickey.tool.base.BaseActivity;
 import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
+import com.moonsister.tcjy.login.widget.RegActivity;
 import com.moonsister.tcjy.main.presenter.ManorFrilActivityPresenter;
 import com.moonsister.tcjy.main.presenter.ManorFrilActivityPresenterImpl;
 import com.moonsister.tcjy.main.view.ManorGrilActivityView;
-import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.my.widget.InsertActivity;
 import com.moonsister.tcjy.utils.ActivityUtils;
 
 import butterknife.Bind;
@@ -44,12 +42,12 @@ public class ManorGrilActivity extends BaseActivity implements ManorGrilActivity
             SharedPreferences.Editor edit = sp.edit();
             edit.putBoolean("isFirst", false);
             //应用首次启动
-            LayoutInflater.from(this).inflate(R.layout.manorgril, null);
+            LayoutInflater.from(this).inflate(R.layout.manorgril_fen, null);
         } else {
             //应用非首次启动
             ActivityUtils.startLoginMainActivity();
         }
-        return UIUtils.inflateLayout(R.layout.manorgril);
+        return UIUtils.inflateLayout(R.layout.manorgril_fen);
     }
 
     @Override
@@ -84,12 +82,9 @@ public class ManorGrilActivity extends BaseActivity implements ManorGrilActivity
     @Override
     public void getReg(String authcode) {
 //        RxBus.getInstance().send(Events.EventEnum.BUY_VIP_SUCCESS, null);
-        PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();//获得对象
-        memoryPersonInfoDetail.setAuthcode(authcode);//保存值
-        memoryPersonInfoDetail.setLogin(true);
-        UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
 
-        Intent intent = new Intent(ManorGrilActivity.this, InsertActivity.class);
+
+        Intent intent = new Intent(ManorGrilActivity.this, RegActivity.class);
         startActivity(intent);
         this.finish();
     }

@@ -15,7 +15,7 @@ import rx.Observable;
 public class IndividualResumeModelImpl implements IndividualResumeModel {
     @Override
     public void loadInitData(String uid, onLoadDateSingleListener<IndividualResumeBean> listenter) {
-        Observable<BaseResponse<IndividualResumeBean>> observable = ModuleServerApi.getAppAPI().getIndividualResume(uid, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+        Observable<BaseResponse<IndividualResumeBean>> observable = ModuleServerApi.getAppAPI().getIndividualResume(uid, "1", UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableMapUtils.$_Map(observable, DataType.DATA_ZERO, listenter);
     }
 }

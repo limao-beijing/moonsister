@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.login.widget;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -18,6 +19,7 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.login.presenter.LoginFragmentPersenter;
 import com.moonsister.tcjy.login.presenter.LoginFragmentPersenterImpl;
 import com.moonsister.tcjy.login.view.LoginFragmentView;
+import com.moonsister.tcjy.main.widget.ManorGrilActivity;
 import com.moonsister.tcjy.utils.ActivityUtils;
 
 import butterknife.Bind;
@@ -59,7 +61,7 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
         return super.onTouch(v, event);
     }
 
-    @OnClick({R.id.tv_forget_password, R.id.submit_login})
+    @OnClick({R.id.tv_forget_password, R.id.submit_login, R.id.reg_new_people})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_forget_password:
@@ -67,6 +69,12 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
                 break;
             case R.id.submit_login:
                 login();
+                break;
+            case R.id.reg_new_people:
+                Intent intent = new Intent(getActivity(), ManorGrilActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+//                ActivityUtils.startManorGrilActivity();
                 break;
         }
     }

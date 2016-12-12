@@ -16,14 +16,18 @@ import com.hickey.network.bean.DynamicBean;
 import com.hickey.network.bean.DynamicDatailsBean;
 import com.hickey.network.bean.DynamicItemBean;
 import com.hickey.network.bean.EngagemengRecommendBean;
+import com.hickey.network.bean.FeelingSquareFilterBean;
+import com.hickey.network.bean.FeelingSquarePMDBean;
 import com.hickey.network.bean.FrientBaen;
 import com.hickey.network.bean.GetMoneyBean;
 import com.hickey.network.bean.GoodSelectBaen;
+import com.hickey.network.bean.HomeThreeFragmentBean;
 import com.hickey.network.bean.HomeTopItemBean;
 import com.hickey.network.bean.InsertBaen;
 import com.hickey.network.bean.KeyMateBean;
 import com.hickey.network.bean.LableBean;
 import com.hickey.network.bean.LoginBean;
+import com.hickey.network.bean.MyThreeFragmentBean;
 import com.hickey.network.bean.NearbyBean;
 import com.hickey.network.bean.PayBean;
 import com.hickey.network.bean.PayRedPacketPicsBean;
@@ -38,7 +42,9 @@ import com.hickey.network.bean.RegThridBean;
 import com.hickey.network.bean.RegiterBean;
 import com.hickey.network.bean.RongyunBean;
 import com.hickey.network.bean.SearchReasonBaen;
+import com.hickey.network.bean.StatusBean;
 import com.hickey.network.bean.TiXinrRecordBean;
+import com.hickey.network.bean.TopBannerBean;
 import com.hickey.network.bean.UserDetailBean;
 import com.hickey.network.bean.UserFriendListBean;
 import com.hickey.network.bean.UserInfoBannerBean;
@@ -176,7 +182,7 @@ public class ServerApi {
 
 
     public interface AppAPI {
-                String baseUrl = "http://v1.chuse.hk:88/index.php/index/";
+        String baseUrl = "http://v3.chuse.hk:88/index.php/index/";
 //        String baseUrl = "http://2testtest.yytbzs.cn:91/index.php/index/";
 //        String baseUrl = "http://2.yytbzs.cn:88/index.php/index/";
 
@@ -1267,11 +1273,11 @@ public class ServerApi {
          * @param adtype
          */
         @GET("ad/get")
-        Observable<BannerBean> getBannerData(@Query("width") String width,
-                                             @Query("height") String height,
-                                             @Query("authcode") String authcode,
-                                             @Query("channel") String channelId,
-                                             @Query("adtype") String adtype);
+        Observable<TopBannerBean> getBannerData(@Query("width") String width,
+                                                @Query("height") String height,
+                                                @Query("authcode") String authcode,
+                                                @Query("channel") String channelId,
+                                                @Query("adtype") String adtype);
 
         /**
          * 认证申请:第二步，提交媒体数据信息【品牌版】
@@ -1326,6 +1332,101 @@ public class ServerApi {
                                                                                                @Query("search_type") String type,
                                                                                                @Query("authcode") String authcode,
                                                                                                @Query("channel") String channelId);
+
+        //跑马灯
+        @GET("home/horn")
+        Observable<FeelingSquarePMDBean> getPMDContent(
+                @Field("laba") String laba,
+                @Field("authcode") String authcode,
+                @Field("channel") String channel);
+
+
+        //筛选
+        @POST("home/scrccen")
+        Observable<FeelingSquareFilterBean> getSquareFilterList(
+                @Query("username") String username,
+                @Query("sex") String sex,
+                @Query("birthday") String birthday,
+                @Query("mobile") String smoblie,
+                @Query("height") String height,
+                @Query("weixin") String weixin,
+                @Query("weight") String weight,
+                @Query("distance_love") String distance_love,
+                @Query("qq") String qq);
+
+        /**
+         * 广场：数据列表综合
+         *
+         * @param type
+         * @param serialize
+         * @param page
+         * @param authcode
+         * @param id
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("index/v3")
+        Observable<HomeThreeFragmentBean> getHomeThree(@Field("type") String type,
+                                                       @Field("params") String serialize,
+                                                       @Field("page") int page,
+                                                       @Field("flag") int flag,
+                                                       @Field("authcode") String authcode,
+                                                       @Field("channel") String id);
+
+        /**
+         * 用户资源信息
+         *
+         * @param page
+         * @param type
+         * @param authcode
+         * @param id
+         * @return
+         */
+        @GET("source/get_source_list")
+        Observable<MyThreeFragmentBean> getMyThreeFragment(@Query("uid") String uid,
+                                                           @Query("page") int page,
+                                                           @Query("source_type") String type,
+                                                           @Query("authcode") String authcode,
+                                                           @Query("channel") String id);
+
+        /**
+         * @param authcode
+         * @param id
+         */
+        @GET("index/v3_notice")
+        Observable<BannerBean> getloadBannerData(@Query("authcode") String authcode,
+                                                 @Query("channel") String id);
+
+
+        /**
+         * 用户资源列表
+         *
+         * @param id
+         * @param authcode
+         * @param id1
+         * @return
+         */
+        @GET("source/del")
+        Observable<StatusBean> getDeleteRes(@Query("source_id") String id,
+                                            @Query("authcode") String authcode,
+                                            @Query("channel") String id1);
+
+
+        /**
+         * 用户资源发布
+         *
+         * @param type
+         * @param json
+         * @param authcode
+         * @param id
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("source/add")
+        Observable<BaseBean> getDynamicResAdd(@Field("source_type") int type,
+                                              @Field("contents") String json,
+                                              @Field("authcode") String authcode,
+                                              @Field("channel") String id);
     }
 }
 

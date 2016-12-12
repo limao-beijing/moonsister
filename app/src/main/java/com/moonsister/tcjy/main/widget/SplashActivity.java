@@ -5,8 +5,10 @@ import android.view.View;
 
 import com.hickey.tool.base.BaseActivity;
 import com.hickey.tool.file.PrefUtils;
+import com.hickey.tool.lang.StringUtis;
 import com.hickey.tool.widget.UIUtils;
 import com.moonsister.tcjy.R;
+import com.moonsister.tcjy.manager.UserInfoManager;
 
 
 /**
@@ -20,7 +22,7 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-//        String authcode = UserInfoManager.getInstance().getAuthcode();
+//
         boolean open = PrefUtils.getBoolean(getApplicationContext(), "FIRST_OPEN", false);
 //        PrefUtils.setBoolean(getApplicationContext(), "FIRST_OPEN", true);
         if (!open) {
@@ -28,7 +30,14 @@ public class SplashActivity extends BaseActivity {
             startActivity(new Intent(this, WelcomeGuideActivity.class));
             finish();
         } else {
-            enterMian();
+            String authcode = UserInfoManager.getInstance().getAuthcode();
+            if (StringUtis.isEmpty(authcode)) {
+                Intent intent = new Intent(this,
+                        ManorGrilActivity.class);
+                startActivity(intent);
+                finish();
+            } else
+                enterMian();
         }
 
     }

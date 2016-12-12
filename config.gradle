@@ -1,12 +1,12 @@
 ext {
     android = [
-            applicationId    : "com.r434818735.gjf",
+            applicationId    : "com.tongcheng.xiehou",
             compileSdkVersion: 23,
             buildToolsVersion: "25.0.0",
             minSdkVersion    : 17,
             targetSdkVersion : 21,
             versionCode      : 20004,
-            versionName      : "2.5.3"
+            versionName      : "2.2.6"
     ]
     dependencies = [
             "numberprogressbar"     : "com.daimajia.numberprogressbar:library:1.2@aar",

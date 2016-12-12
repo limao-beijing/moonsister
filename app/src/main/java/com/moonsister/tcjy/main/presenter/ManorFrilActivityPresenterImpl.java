@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.main.presenter;
 
+import com.hickey.network.bean.PersonInfoDetail;
 import com.hickey.network.bean.RegOneBean;
 import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.lang.StringUtis;
@@ -9,18 +10,20 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.main.model.ManorGrilActivityModel;
 import com.moonsister.tcjy.main.model.ManorGrilActivityModelImpl;
 import com.moonsister.tcjy.main.view.ManorGrilActivityView;
+import com.moonsister.tcjy.manager.UserInfoManager;
+
 
 /**
  * Created by x on 2016/8/31.
  */
-public class ManorFrilActivityPresenterImpl implements ManorFrilActivityPresenter,BaseIModel.onLoadDateSingleListener<RegOneBean> {
+public class ManorFrilActivityPresenterImpl implements ManorFrilActivityPresenter, BaseIModel.onLoadDateSingleListener<RegOneBean> {
     private ManorGrilActivityView view;
     private ManorGrilActivityModel model;
 
     @Override
     public void regOne(int sex) {
         view.showLoading();
-        model.regone(sex,this);
+        model.regone(sex, this);
     }
 
     @Override
@@ -40,7 +43,12 @@ public class ManorFrilActivityPresenterImpl implements ManorFrilActivityPresente
         if (regOneBean == null) {
             view.transfePageMsg(UIUtils.getStringRes(R.string.request_failed));
         } else {
-            if (StringUtis.equals(regOneBean.getCode(), AppConstant.code_request_success)){
+            if (StringUtis.equals(regOneBean.getCode(), AppConstant.code_request_success)) {
+                PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();//获得对象
+                memoryPersonInfoDetail.setAuthcode(regOneBean.getData().getAuthcode());//保存值
+                memoryPersonInfoDetail.setLogin(true);
+                memoryPersonInfoDetail.setId(regOneBean.getData().getUid());
+                UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
                 view.getReg(regOneBean.getData().getAuthcode());
             }
             view.transfePageMsg(regOneBean.getMsg());

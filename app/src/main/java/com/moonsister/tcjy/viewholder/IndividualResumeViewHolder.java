@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hickey.network.ImageServerApi;
@@ -18,6 +19,8 @@ import com.moonsister.tcjy.main.model.UserActionModelImpl;
 import com.moonsister.tcjy.main.widget.IndividualResumeActivity;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.widget.RoundedImageView;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -61,6 +64,30 @@ public class IndividualResumeViewHolder extends BaseHolder<IndividualResumeBean>
     TextView mTvImpressionInfo;
     @Bind(R.id.tv_wacth)
     TextView tv_wacth;
+    @Bind(R.id.pvt_picture)
+    ImageView mPvtPicture;
+    @Bind(R.id.pvt_picture2)
+    ImageView mPvtPicture2;
+    @Bind(R.id.pvt_picture3)
+    ImageView mPvtPicture3;
+    @Bind(R.id.pvt_video_1)
+    ImageView mPvtVideo1;
+    @Bind(R.id.pvt_video_2)
+    ImageView mPvtVideo2;
+    @Bind(R.id.pvt_video_3)
+    ImageView mPvtVideo3;
+    @Bind(R.id.pvt_voice_1)
+    ImageView mPvtVoice1;
+    @Bind(R.id.pvt_voice_2)
+    ImageView mPvtVoice2;
+    @Bind(R.id.pvt_voice_3)
+    ImageView mPvtVoice3;
+    @Bind(R.id.ll_pic)
+    LinearLayout mLlPic;
+    @Bind(R.id.ll_video)
+    LinearLayout mLlVideo;
+    @Bind(R.id.ll_vioce)
+    LinearLayout mLlVioce;
     private final Context mContext;
     private IndividualResumeBean data;
     private BaseActivity mActivity;
@@ -89,7 +116,7 @@ public class IndividualResumeViewHolder extends BaseHolder<IndividualResumeBean>
         mTvImpressionInfo.setText(data.getAddinfo_a3());
         mIvUserAge.setText(data.getAge());
 
-        String follow = data.getFollow();
+        String follow = data.getIsfollow();
         boolean equals = StringUtis.equals(follow, "1");
         Drawable drawable = UIUtils.getResources().getDrawable(!equals ? R.mipmap.resume_wacth : R.mipmap.resume_wacthed);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
@@ -119,6 +146,38 @@ public class IndividualResumeViewHolder extends BaseHolder<IndividualResumeBean>
             }
 
         }
+
+        List<IndividualResumeBean.ImageDataBean> images = data.getImage_data();
+        List<IndividualResumeBean.ImageDataBean> videos = data.getImage_video();
+        List<IndividualResumeBean.ImageDataBean> voices = data.getImage_voice();
+        showImage(images, mPvtPicture, mPvtPicture2, mPvtPicture3);
+        showImage(videos, mPvtVideo1, mPvtVideo2, mPvtVideo3);
+        showImage(voices, mPvtVoice1, mPvtVoice2, mPvtVoice3);
+        if (images != null && images.size() != 0) {
+            mLlPic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ActivityUtils.startPersonThreeActivity(data.getUid(), data.getNickname(), data.getFace());
+                }
+            });
+        }
+        if (videos != null && videos.size() != 0) {
+            mLlVideo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ActivityUtils.startPersonThreeActivity(data.getUid(), data.getNickname(), data.getFace());
+                }
+            });
+        }
+        if (voices != null && voices.size() != 0) {
+            mLlPic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ActivityUtils.startPersonThreeActivity(data.getUid(), data.getNickname(), data.getFace());
+                }
+            });
+        }
+
     }
 
     @OnClick({R.id.iv_look_weixin, R.id.iv_look_qq, R.id.iv_look_phone, R.id.rl_reward, R.id.rl_im, R.id.rl_wacth, R.id.rl_pay, R.id.rl_flower, R.id.rl_engagement})
@@ -174,7 +233,7 @@ public class IndividualResumeViewHolder extends BaseHolder<IndividualResumeBean>
         if (StringUtis.isEmpty(data.getUid()) || data == null)
             return;
         UserActionModelImpl model = new UserActionModelImpl();
-        String follow = StringUtis.equals(data.getFollow(), "1") ? "2" : "1";
+        String follow = StringUtis.equals(data.getIsfollow(), "1") ? "2" : "1";
 
         model.wacthAction(data.getUid(), follow, new BaseIModel.onLoadDateSingleListener<BaseBean>() {
             @Override
@@ -186,7 +245,7 @@ public class IndividualResumeViewHolder extends BaseHolder<IndividualResumeBean>
                     tv_wacth.setCompoundDrawables(drawable, null, null, null);
                     tv_wacth.setText(UIUtils.getStringRes(equals ? R.string.wacth : R.string.not_wacth));
                     mActivity.showToast(bean.getMsg());
-                    data.setFollow(follow);
+                    data.setIsfollow(follow);
                 }
             }
 
@@ -198,6 +257,47 @@ public class IndividualResumeViewHolder extends BaseHolder<IndividualResumeBean>
         });
 
     }
+
+    private void showImage(List<IndividualResumeBean.ImageDataBean> pics, ImageView imageView1, ImageView imageView2, ImageView imageView3) {
+        if (pics == null || pics.size() == 0) {
+            imageView1.setImageResource(R.mipmap.person_no_data);
+            imageView2.setVisibility(View.GONE);
+            imageView3.setVisibility(View.GONE);
+            return;
+        }
+
+        for (int i = 0; i < pics.size(); i++) {
+            if (i == 0) {
+                String pic1 = pics.get(i).getS();
+                if (StringUtis.isEmpty(pic1)) {
+                    imageView1.setVisibility(View.GONE);
+                } else {
+                    ImageServerApi.showURLImage(imageView1, pics.get(i).getS());
+
+                }
+
+            }
+            if (i == 1) {
+                String pic1 = pics.get(i).getS();
+                if (StringUtis.isEmpty(pic1)) {
+                    imageView2.setVisibility(View.GONE);
+                } else {
+                    ImageServerApi.showURLImage(imageView2, pics.get(i).getS());
+
+                }
+            }
+            if (i == 2) {
+                String pic1 = pics.get(i).getS();
+                if (StringUtis.isEmpty(pic1)) {
+                    imageView3.setVisibility(View.GONE);
+                } else {
+                    ImageServerApi.showURLImage(imageView3, pics.get(i).getS());
+                }
+            }
+
+        }
+    }
+
 
     /**
      * @return

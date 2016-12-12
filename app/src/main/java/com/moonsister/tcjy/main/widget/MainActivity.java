@@ -23,8 +23,9 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.dialogFragment.DialogMannager;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
-import com.moonsister.tcjy.find.widget.FindFragment;
+import com.moonsister.tcjy.find.widget.OnlineFragment;
 import com.moonsister.tcjy.home.widget.HomeFragment;
+import com.moonsister.tcjy.home.widget.HomeThreeFragment;
 import com.moonsister.tcjy.im.widget.IMHomeFragment;
 import com.moonsister.tcjy.main.presenter.MainPresenter;
 import com.moonsister.tcjy.main.presenter.MainPresenterImpl;
@@ -36,6 +37,7 @@ import com.moonsister.tcjy.manager.IMManager;
 import com.moonsister.tcjy.manager.RecommendMananger;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.widget.MyFragment;
+import com.moonsister.tcjy.my.widget.MyThreeFragment;
 import com.moonsister.tcjy.update.UpdateManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.LogUtils;
@@ -219,6 +221,7 @@ public class MainActivity extends BaseActivity implements MainView {
         if (homeFragment == null)
             homeFragment = new HomeFragment();
 //            homeFragment = new HomeTopFragment();
+        homeFragment = new HomeThreeFragment();
         enterPage(homeFragment);
     }
 
@@ -230,6 +233,7 @@ public class MainActivity extends BaseActivity implements MainView {
         }
         if (imHomeFragment == null)
             imHomeFragment = new IMHomeFragment();
+
         enterPage(imHomeFragment);
 
 
@@ -248,7 +252,8 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     public void switchFind() {
         if (findFragment == null)
-            findFragment = new FindFragment();
+//            findFragment = new FindFragment();
+            findFragment = new OnlineFragment();
         enterPage(findFragment);
     }
 
@@ -261,7 +266,7 @@ public class MainActivity extends BaseActivity implements MainView {
         if (myFragment == null)
             myFragment = new MyFragment();
 //            myFragment = new HreatFragment();
-
+        myFragment = new MyThreeFragment();
         enterPage(myFragment);
 
     }

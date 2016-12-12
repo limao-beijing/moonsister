@@ -8,7 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.hickey.network.ImageServerApi;
-import com.hickey.network.bean.BannerBean;
+import com.hickey.network.bean.TopBannerBean;
 import com.hickey.tool.base.BaseIModel;
 import com.hickey.tool.lang.StringUtis;
 import com.moonsister.tcjy.manager.UserInfoManager;
@@ -36,14 +36,14 @@ public class HomeTopBanner {
             }
         }
         BannerManagerModel model = new BannerManagerModelImpl();
-        model.loadBannerData(new BaseIModel.onLoadDateSingleListener<BannerBean>() {
+        model.loadBannerData(new BaseIModel.onLoadDateSingleListener<TopBannerBean>() {
             @Override
-            public void onSuccess(BannerBean bean, BaseIModel.DataType dataType) {
+            public void onSuccess(TopBannerBean bean, BaseIModel.DataType dataType) {
                 if (bean != null) {
                     String code = bean.getCode();
 
                     if (StringUtis.equals(code, "1")) {
-                        BannerBean.DataBean data = bean.getData();
+                        TopBannerBean.DataBean data = bean.getData();
                         if (data != null)
                             selelctBanner(data, viewGroup, activity);
                         else {
@@ -66,7 +66,7 @@ public class HomeTopBanner {
         });
     }
 
-    public void selelctBanner(BannerBean.DataBean data, ViewGroup viewGroup, Activity activity) {
+    public void selelctBanner(TopBannerBean.DataBean data, ViewGroup viewGroup, Activity activity) {
         if (viewGroup == null || activity == null)
             return;
         if (StringUtis.equals(data.getType(), "-1")) {

@@ -429,6 +429,7 @@ public class ModuleServerApi {
          */
         @GET("user/detail")
         Observable<BaseResponse<IndividualResumeBean>> getIndividualResume(@Query("to_uid") String uid,
+                                                                           @Query("get_source")String get_source,
                                                                            @Query("authcode") String authcode,
                                                                            @Query("channel") String channel);
 

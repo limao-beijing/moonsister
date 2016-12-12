@@ -35,6 +35,7 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.find.widget.NearbyActivity;
 import com.moonsister.tcjy.find.widget.RankActivity;
 import com.moonsister.tcjy.find.widget.VideoDynamicActivity;
+import com.moonsister.tcjy.home.widget.HomeSearchActivity;
 import com.moonsister.tcjy.home.widget.SearchActivity;
 import com.moonsister.tcjy.home.widget.SearchFragmentActivity;
 import com.moonsister.tcjy.home.widget.SearchReasonActivity;
@@ -53,6 +54,7 @@ import com.moonsister.tcjy.main.widget.MainActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentOrderActivity;
 import com.moonsister.tcjy.main.widget.PersonInfoChangeActivity;
+import com.moonsister.tcjy.main.widget.PersonThreeActivity;
 import com.moonsister.tcjy.main.widget.RecommendMemberActivity;
 import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
 import com.moonsister.tcjy.main.widget.RelationActivity;
@@ -65,6 +67,8 @@ import com.moonsister.tcjy.my.widget.AddCardActivity;
 import com.moonsister.tcjy.my.widget.AppointmentActivity;
 import com.moonsister.tcjy.my.widget.BirthdayActivity;
 import com.moonsister.tcjy.my.widget.ChangepwdActivity;
+import com.moonsister.tcjy.my.widget.DynamicResAddActivity;
+import com.moonsister.tcjy.my.widget.EditDynamicActivity;
 import com.moonsister.tcjy.my.widget.FollowActivity;
 import com.moonsister.tcjy.my.widget.GetMoneyActivity;
 import com.moonsister.tcjy.my.widget.HreatFragment;
@@ -917,5 +921,51 @@ public class ActivityUtils {
         intent.putExtra("id", id);
         startActivity(intent);
 
+    }
+    /**
+     * 首页搜索
+     *
+     * @param pageType
+     */
+    public static void startHomeSearchActivity(String pageType) {
+        Intent intent = getIntent(HomeSearchActivity.class);
+        intent.putExtra("type", pageType);
+        startActivity(intent);
+    }
+    /**
+     * 编辑页面
+     *
+     * @param uid
+     * @param nickname
+     * @param face
+     */
+    public static void startEditDynamicActivity(String type, String uid, String nickname, String face) {
+        Intent intent = getIntent(EditDynamicActivity.class);
+        intent.putExtra("name", nickname);
+        intent.putExtra("avater", face);
+        intent.putExtra("id", uid);
+        intent.putExtra("type", type);
+        startActivity(intent);
+    }
+
+    /**
+     * 添加动态资源
+     */
+    public static void startDynamicResAddActivity(String type) {
+        Intent intent = getIntent(DynamicResAddActivity.class);
+        intent.putExtra("type", type);
+        startActivity(intent);
+    }
+    /**
+     * 三版个人展示
+     *
+     * @param id
+     */
+    public static void startPersonThreeActivity(String id, String nikename, String avater) {
+        Intent intent = getIntent(PersonThreeActivity.class);
+        intent.putExtra("name", nikename);
+        intent.putExtra("avater", avater);
+        intent.putExtra("id", id);
+        startActivity(intent);
     }
 }

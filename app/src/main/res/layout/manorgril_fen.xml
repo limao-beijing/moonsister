@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f8"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y208"
+        android:background="@mipmap/engagements" />
+
+    <ImageView
+        android:id="@+id/imageview_man"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y62"
+        android:background="@mipmap/image_man" />
+
+    <ImageView
+        android:id="@+id/imageview_gril"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@mipmap/image_gril" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/y36"
+        android:text="选择后不可更改性别，务必认真填写哦～"
+        android:textColor="@color/grid_line"
+        android:textSize="16sp"
+        android:id="@+id/textView"/>
+
+    <TextView
+        android:id="@+id/textview_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/y25"
+        android:text="已有账号？点此直接登录"
+        android:textColor="@color/color_ffd305"
+        android:textSize="16sp" />
+</LinearLayout>

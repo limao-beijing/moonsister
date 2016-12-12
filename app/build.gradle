@@ -77,8 +77,9 @@ dependencies {
     compile project(':pay')
     compile project(':baidu')
     compile project(':easemob')
-    /*    compile project(':tool')*/
+    compile project(':tool')
     compile project(':network')
+    compile project(':filterlibrary')
     //阿里云
     compile rootProject.ext.dependencies["appcompat-v7"]
 

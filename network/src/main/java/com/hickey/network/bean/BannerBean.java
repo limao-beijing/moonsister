@@ -1,14 +1,15 @@
 package com.hickey.network.bean;
 
 /**
- * Created by jb on 2016/9/9.
+ * Created by jb on 2016/9/30.
  */
+
 public class BannerBean extends BaseBean {
 
     /**
-     * type : 2
-     * img : http://2.yytbzs.cn:88/static/ad/banner-top3.png
-     * param : http://2test.yytbzs.cn:88/indextest.php/index/mmvip/info
+     * data : 这是公告：不夜城同学刚充值一年的VIP用户。小红同学充值了半年的VIP及用户。
+     * code : 1
+     * jump_url : http://3.yytbzs.cn:88/index.php/index/mmvip/jump_url
      */
 
     private DataBean data;
@@ -22,50 +23,32 @@ public class BannerBean extends BaseBean {
     }
 
     public static class DataBean {
-        private String type;
-        private String img;
-        private String param;
-        private int width;
-        private int height;
+        private String data;
+        private String code;
+        private String jump_url;
 
-        public int getWidth() {
-            return width;
+        public String getData() {
+            return data;
         }
 
-        public void setWidth(int width) {
-            this.width = width;
+        public void setData(String data) {
+            this.data = data;
         }
 
-        public int getHeight() {
-            return height;
+        public String getCode() {
+            return code;
         }
 
-        public void setHeight(int height) {
-            this.height = height;
+        public void setCode(String code) {
+            this.code = code;
         }
 
-        public String getType() {
-            return type;
+        public String getJump_url() {
+            return jump_url;
         }
 
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public String getImg() {
-            return img;
-        }
-
-        public void setImg(String img) {
-            this.img = img;
-        }
-
-        public String getParam() {
-            return param;
-        }
-
-        public void setParam(String param) {
-            this.param = param;
+        public void setJump_url(String jump_url) {
+            this.jump_url = jump_url;
         }
     }
 }
